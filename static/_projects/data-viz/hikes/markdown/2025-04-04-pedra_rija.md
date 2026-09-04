@@ -7,6 +7,8 @@ people:
   - Serhii Ivanenko
 ascent: 380
 descent: 410
+images:
+  2025-04-04-00.jpg: {w: 3472, h: 4640, blur: 'data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAACwBQCdASoSABgAPtFWo0uoJKMhsAgBABoJZgCxHuN/gK7CaCisWEl81RRqvLK2dKwKljYE4AAA/lLWVf1NaV9bYObGxF7v/J0JEVgKE/Wz3AIwgA0/ts8XX1KsiuAZ/JtJFzPWfrSQe/QlsE5WhpQ5FSakamK4hUjQ9YlMXAglQHYqTf0+IvI+zEaZCcCGML+sYoGQ6l0KLRG4pUliPdKqZGyqbrR+dClCpnx15fCjFQtjdLOwsyeeX770S8gAAAA='}
 ---
 As soon as I and Serhii landed at the Madeira airport, we immediately took
 a taxi and drove to Pico do Areeiro (1818 m). The taxi driver was really confused where

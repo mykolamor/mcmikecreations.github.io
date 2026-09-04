@@ -8,6 +8,15 @@ people:
   - Mikuláš Netík
 ascent: 360
 descent: 310
+images:
+  2025-07-26-00.jpg: {w: 3472, h: 4640, blur: 'data:image/webp;base64,UklGRsYAAABXRUJQVlA4ILoAAABQBQCdASoSABgAPtFepE6oJSMiKAqpABoJYwDCgYx2d7y8e8+o1fvYExPKP/1nykWs+gAA/utj5992LfpwSfnd3CMYprvO/EaHhuO/H1iqeftKMPydh0cJ6hy8khp/lynRFrhU7Bh3E+12EO+WTF/tgYBMKW93yrPz40qk7X3S3P6B4iZpToZe4O9oLMorXN4mA95h4kye5bahjhzb+0GMzNX8vhm00APNQAqmDcNHNx5URHu1XHiRgAA='}
+  2025-07-26-01.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRuAAAABXRUJQVlA4INQAAABwBQCdASoYABIAPtFep0+oJKMiKAgBABoJQBYdsZFMwyOKOP9b3bP42wby4ovN2yssahgAAP7t4DnLRBp++Dd5ZTU50CU6Ztz5yhJTGfa9cVTZS6luCGlg+kZHZR/NOzdZuuVRqEhfUTbOWvS64+xAuq6jtAJfUYP2vGlbTf0wN5/MkeutdrN0SQPXEDmvcja9PDIU69PYcQPWW8Xg08K0Ifi+gLhdLolvLtbHQwDb3XiyvIwe58mLvYNbgiBYQwR7Rti3OwOkLocAYyczOxU+HiAAAA=='}
+  2025-07-26-02.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAACQBACdASoYABIAPtFepU6oJSMiKAqpABoJYwC06AvFCiELG/2HIXx0o5lvtBAA/vQymY196m7UE2VqFnrOARFWWJCY9Yubv3j/FIeuKn2k2mBnwKdvSbcr+RQgsCNCFMd/Eh6lRFMdsiwxkb/v97zABafFVEAH44XRPxhzPdffyEiEQ9KimI7fcu8JdMVhTFa0a0kWxHm4nA3fBsdorkTIDXlctsVZVUhbz0cAyqxzVTTJ+8KAAA=='}
+  2025-07-26-06.jpg: {w: 3456, h: 4608, blur: 'data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAABQBQCdASoSABgAPtFgqE+oJSOiKAgBABoJYwC/aoA6gKoOFrLtaUg3VvmcU3ZeQA9QYsAA/hn2JYLpaHvfuKLnkwhjiK6DSiVYVA26A3Ydy8EvzRmpHzLf+jCA4igq/7kkcapOo19kGMrXaFLq2TcblBEOL8CfAr2+tvbS2wU9wUCaSI7jazUWqR3WuvH7b+svXCpDsyGorUVMT8mjRqJnRFs08/m2UHllVzVkLcnHcDpJ6fChUIbJXanlEqruxvAc6AAA'}
+  2025-07-26-03.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAABQBQCdASoYABIAPtFWokuoJKMhsAgBABoJZQC+SCHgAhQUKX6ug9a3ZNrHHR0JyMiiUbAA/vHUpKs8aC+MonC/jKktOq00+d9YUxddPVpnKH2s34Duap1QWqMhXOC2nDBgbpvFrRCCzBhUKF32NWtCZZg2i3kohlEtSahDWbzlnN1lsEmxWRnbjjdaldrRKx7/7UIroQg2vFhCDa+HUNhcL1YEFUrRdrQ2+QwL4AA='}
+  2025-07-26-04.jpg: {w: 3472, h: 4640, blur: 'data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAAAQBQCdASoSABgAPtFep0+oJKMiKAgBABoJZQCuN1/DypDeGVjcEbPnPGR66/++AeKwAPnveUhRUZzd90WlHe4AJinWtaCDtHSZLar79gs2Qn5Zq0fefYbGZ3kJsD2tfZYy5pHqrjNuc/Usaeh+UnehdGTn4jz42DTHedu52AZeOOggNjgy+l527+9Q7OqyWI3LfI5mpt4R9p4mYEG9H9Awgz3WqVJ86+CkoQoEx/emnzBighGDNGr+yo7435qLYLcRwAAA'}
+  2025-07-26-07.jpg: {w: 2472, h: 3296, blur: 'data:image/webp;base64,UklGRggBAABXRUJQVlA4IPwAAADwBQCdASoSABgAPtFcqU2oJSQiKAqpABoJZAC/avKGAZ46cCep1gkQ3qZYdKcdebwSbccYZMXcwAD+9PTOJi7JpbdvIh8XkSz4VKEV5m2dAv/3elq7u97pS+UEb82k6WeK90qH2JTB5UnOn31QWbGjGXpppmz35PA2q04AHseOlRlU99HSvIUcoounq/IZIZfCrrSW38BO4gT92BYGlaUl+gnaVl0nL0X3ZS+2h1oaceeC3QtgiwkmXOA3ptQx6WVt2rLyx+UZ6/6Yz8xlL4dHMY17wZXCv4Hx6591HExwuQObzK1ytNgs0LgfS1GqCQRkRK95hRE0Z/1OwAA='}
+  2025-07-26-05.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAAAQBQCdASoYABIAPtFcp04oJSOiKAqpABoJQBibAig/HgJ1xU5cmA0q/R5fYsJOnASAAP7nZdtZAw6Agi7bTWHG0fTJ2sIyBDbF8eZeNk047UeHXCH8xVJAc5EGnZYW9ZdYtnW0dI7UWWlclBIcDaBwI73zyE153kEfXV6dcZNGiIjOLYWwbL5+ikEOAfghDIWZBwAA'}
 ---
 Topo from bergsteigen.com for [Norissteig](https://www.bergsteigen.com/touren/klettersteig/norissteig-klettersteig/)
 and [Höhenglücksteig](https://www.bergsteigen.com/touren/klettersteig/hoehengluecksteig-klettersteig/):

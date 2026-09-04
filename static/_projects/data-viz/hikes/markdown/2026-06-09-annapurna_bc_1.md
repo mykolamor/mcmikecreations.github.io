@@ -10,6 +10,14 @@ ascent: 639
 descent: 119
 distance: 4140
 duration: 140
+images:
+  2026-06-09-00.jpg: {w: 8160, h: 6120, blur: 'data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAADwBACdASoYABIAPtFcpU6oJKMiKAqpABoJQBadAb1NjNBgZMM13Bb281p1025J4MgA/lvxntglOWp5qnRxwQ7ovEMzXXB1A5Pe4fQc3ZBHqR5+xGDMNLoovqqoJIF4X2HCl5gC1nwykWA8slTZjgWjFC9LfvMNLEiSuFXqweacONohygq+M8iR9/wSc6N/GW1+hrvxxCddRDqy4kB1EjrNcgAAAA=='}
+  2026-06-09-01.jpg: {w: 8160, h: 6120, blur: 'data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAABQBQCdASoYABIAPtFepE6oJSMiKAqpABoJQAAFQ/6mAhd0S4Vz29kJUlwXg16N4BOOGwAA/tWdDynTvkSgXgFYkN7Wsan8Soki19b2XxFT3SuNQg7w+3Zyn6oICKveuBIfhQ48Q1e5Bjx8PymX1afvt+0Lqa5OSNhd/XV/mEkujTERBM2EUehMhTUoGOH5HtlBKCVobmjK5tByiAUYGDW8/DgAIdjyYA0O+tuYncUVLOKbwny1n1QPoA0hpUoAAAA='}
+  2026-06-09-02.jpg: {w: 8160, h: 6120, blur: 'data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAABQBQCdASoYABIAPtFap04oJSOiKAqpABoJYwCsAA9k67mpgs1ywmP5fWMVpG+56IAimgAA/sF8iN3D3CudRjJMNs+6piOnUN25yU6dM1F3XkcoIQL8kJ4rlHkZz/SuxpWPFnTdfuYbXH1K/h05maCmwmKJXkpbfHRsbBs6bns0jqjYhQvRNCULSvVwEXdBIV7HmxwiN09B7X3i4gwAAA=='}
+  2026-06-09-03.jpg: {w: 4080, h: 3060, blur: 'data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABwBACdASoYABIAPtFcok4oJSKiKA1RABoJZQCw7AoujBGsMuv7KNwJWbLL4AD+v/IE11foUDhvgbzlEx1IWn49xgAX5GZIzt20UdBYlJtEEaOzvyDjP61l/0hixF5qquNc7Xo2qYE1uM04v2+CD6YNjpct7KbaVbF7fTgA'}
+  2026-06-09-04.jpg: {w: 6120, h: 8160, blur: 'data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAAAwBQCdASoSABgAPtFcpk4oJSMiKAqpABoJZQCo9BDeJ9/GRx8ugT94Kn11UTGzImgj0AD+ymC49sujJhivZsV5ztzxryM9d02+FUPipEJp9ZzcqRVbxJ8YOm3OLPNxcK9+vKkJAjsobBkPCjkaWutCdCUkZVKrrkCXjeEqAOYsDESHAt4Rai43Dcja5TUfqg7YBscb/XieDTraoMHoQ8sKtMayJ1eDgSAoibSTuW3MgAAA'}
+  2026-06-09-05.jpg: {w: 8160, h: 6120, blur: 'data:image/webp;base64,UklGRtYAAABXRUJQVlA4IMoAAADQBACdASoYABIAPtFcpk6oJSMiKAqpABoJZQAAL8VBCbtXCK0Pm9cbY+AXA6SQAAD+63N6dmy4iQSgNExtBLYHAIUUH+HCMZDlKB7gmggkzD2rcUrksbLMSkO7daAqX/MHC+BaMSR+mtVUvjSz09fyfRgEEkeO2/hrzs6hPVoARnp3xG8dGzzfz/A1rs6kEgxKqpXdkzfCZeDtBt6gXrDJEI7tXjZAg4U4qn5IQW2nuCgTU0OGDuzkKM29ohzafVhY3A5ENeQAAAAA'}
+  2026-06-09-06.jpg: {w: 8160, h: 6120, blur: 'data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAQBQCdASoYABIAPs1OokunpCMht/VYAPAZiWMAtOgQ7UBaPlsE2aFmmKqYx55kqDlQAP7qkTbZlxuNGdI1mF04K6q7T5/kseEH5g1bv7/ogVgAMhlqiEASWgfAJ/qlVApPeBoJZelx4iC8fdv4DTE+GPmOquPVQUOyEZASDpnD2vh6o3M419uXqxSnAAAA'}
 ---
 Now that I got introduced to the region on my [Kathmandu Day Tour](/hikes/2026-06-07-kathmandu_day_tour/),
 it was time to do what I came for. Namely, go all the way to the Base Camp of

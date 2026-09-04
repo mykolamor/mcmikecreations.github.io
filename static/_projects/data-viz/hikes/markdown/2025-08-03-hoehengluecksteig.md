@@ -7,6 +7,13 @@ people:
   - David Bilan
 ascent: 360
 descent: 310
+images:
+  2025-08-03-04.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRtgAAABXRUJQVlA4IMwAAABQBQCdASoYABIAPtFepU6oJSMiKAqpABoJZQC7BagSBYWL6yWzxQ9Oqspkq/Rcsvh4E6AA/NbGTl/gubjYzznu9yoiKv9+mf8/iTRWvCesX/A7WOOh99rtWTcCUdHIYr4AT34DawGw6Af0CG0A+y0ekAUIVwkf3wkCzMsCp+SPQHIM+ZVuLro+nT9hoZK/FOG7tUeVUEZrKCoGj5EhZ7gJhBRfIQNrCY3YIBKE+Esm9+1iaEtU3rL58cGasWcyCfpeyR2lhkOwwm3AAAA='}
+  2025-08-03-03.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRuQAAABXRUJQVlA4INgAAACwBQCdASoYABIAPtFepU6oJSMiKAqpABoJZQDE2d0jfhHtGwKiry7+pPAnN73XM3sZasOGv9AA88zyjA9mCdu63JxQ6oGvKJEYOxeGyclAM8X/tU1ZRiEV4TP3vtU34j0Er7sZPdlpgEkTqRf95itXRF53Il/n61ZYWo9VpmDiuFE6+dbby6iHiJW5bTyg+y8lv1it411kubRNnd0Kez0L8YeAgGPVkICW2kBbBMlXStQEpT6FpZogsUjELz5m+4NE8DWu8alLhTGtNGBvMpEKiYtcccPAAAA='}
+  2025-08-03-00.jpg: {w: 3456, h: 4608, blur: 'data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAADwBACdASoSABgAPtFeqE+oJKOiKAgBABoJZwAALa47KULIjEDsnxPaq+1zWvORp3AA/vYKotRwWXqa60hgAfuYwqvvkahYc0x69K/o3PdfTFx4Up0YNDf6zQbuTQF8RnT5JnE7/ccqJ6UjR5u+GmKqU742uXWqEtMpdJSH5+fg1p7dx+YDrfNK9ke+8nID013jPYdxJvVMQv20/HYAAAAA'}
+  2025-08-03-02.jpg: {w: 1288, h: 966, blur: 'data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAABQBQCdASoYABIAPtFgqU+oJaOiKAgBABoJZQDCgYwScD0oKw3WeQPMNdezG6kR3OAi6AAA/vaJ1jIesPiHFuqujy05gUiOLMW0NMjm2Xh+ZQDJhcKVS8t/2Da4MkRXT9zuulxZpXDO5KxW6kD/exFrzRdacQOuI4UImupt1xPJ6zV8Olgaypk/DjTkl+rQpy05EBO7ZyCe5iKX92LzRAAA'}
+  2025-08-03-06.jpg: {w: 3472, h: 4640, blur: 'data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAAAQBQCdASoSABgAPtFgqU+oJSOiKAgBABoJZQCw7BGXAyrqYwPxaiO0iY3pGzN3QdiEAP7uOIS+Qw6GmFtjaukg4kOt2OYO1TU2VCeO1g2Xn3Mbfcmj5khT3W3c36bEngxH99xNgjPsaH6FuPJYQU4p0kfXAqK7oukzihhQrgky4+sDum2CMdZ2UByXWQP01xdQx+p0ulyLBFYzR/Hr5Hw6lxnstPWsa6HGMBbHckoZ0HE5UMyTSUEnMFcO2hMeVQhuDgAA'}
+  2025-08-03-01.jpg: {w: 1536, h: 2048, blur: 'data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAAAQBQCdASoSABgAPtFgqk+oJaOiKAgBABoJZwAALnTY1lM+yLGb9pKAzxK52b0o4gbAAP0DipjR8v0rB8Ipk5ZPyGFoR8rC2z7JsgBnwLDCm3/awstBR/T3K+dPZ+f7gGtn7vSVu6MtYlxC2G4G7NIp8eRXX6fGSC533Tt49p4oKcDB1eK92FlSkMLzYq8XCfFpCLPCdsoAAA=='}
 ---
 Topo from bergsteigen.com for [Norissteig](https://www.bergsteigen.com/touren/klettersteig/norissteig-klettersteig/)
 and [Höhenglücksteig](https://www.bergsteigen.com/touren/klettersteig/hoehengluecksteig-klettersteig/):

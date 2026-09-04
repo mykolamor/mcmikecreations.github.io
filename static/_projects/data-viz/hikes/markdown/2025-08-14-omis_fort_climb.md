@@ -6,6 +6,11 @@ tags:
   - Croatia
 ascent: 280
 descent: 300
+images:
+  2025-08-14-00.jpg: {w: 8160, h: 6120, blur: 'data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAABwBQCdASoYABIAPtFaqk2oJSQiKAqpABoJZwDNhYxsbnlVRK0Zmc6RN/b36BrZa97PNuAAAP40bC4+qcMl38q5D3UX/nZRBU+N81XXVWHPQl6/O9gWsH8lEP84Ppv3KIzidA1Zl/1BPS8xJhUEN13PPYc4p87yShwXkSgvhrdetTmX1FE8+2xcSVc8+OeCcLV+OzY1EoOhoDhZLbAAAA=='}
+  2025-08-14-01.jpg: {w: 8160, h: 6120, blur: 'data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAACwBACdASoYABIAPtFWo0uoJKMhsAgBABoJYwC06CHWrKGX0sghU3LenAu2fjsAAP3d7469GDDvKl23LyHZOQ19bQjgLXXJlZzZhC+HkrhY2mxekghyTDVUQr6fEZJyp31tDLmhLu1f/xdLVM9CKnngLOjFDb4XCxXFWwrZE8NXGod6Y2anBJbOAK8AAA=='}
+  2025-08-14-02.jpg: {w: 8160, h: 6120, blur: 'data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABQBQCdASoYABIAPtFcpU0oJSOiMBgIAQAaCWUAxnwQ7k7eeqJTGl49TwOxVw8QnQez6CAA/sReIAEATG1NnMQsgVJKKtXEE3AduDhZABeF0wXseODaZhfn1w/Bezd21CXKj3J4Cz1csGVbbT1twHaNAyz5WVqMNVHMY/m0+NevgAAA'}
+  2025-08-14-03.jpg: {w: 8160, h: 6120, blur: 'data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAwBQCdASoYABIAPtFWpE2oJCMiMBgIAQAaCWUAvkgQN+oybQy8+W3dZUQVBiUl/XQ4AAD+jiWeV1JmYjy14evMQQ9rTGl2lZS3jqACONDaKDvxPOBDMqvnuAYoyBJk+SzJNa1sMgAVMeXNlApAntbravkPChoOmT4211LEswV4Y5vS0AA='}
 ---
 Topo from [bergsteigen.com](https://www.bergsteigen.com/touren/klettersteig/ferrata-fortica-omis/):
 ![Topo of the climb](/images/hikes/topo/omis_fort_climb.png)
