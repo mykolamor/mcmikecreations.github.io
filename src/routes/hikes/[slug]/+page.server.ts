@@ -66,7 +66,7 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 		const postIndex = allPosts.findIndex(p => p.anchor === slug);
 		const page = postIndex !== -1 ? Math.floor(postIndex / defaultPageSize) + 1 : 1;
 
-		const { html: postHtml, media } = await parseMarkdown(postRaw);
+		const { html: postHtml, media } = await parseMarkdown(postRaw, mergedDate.tags);
 		locals.postContent = postHtml;
 
 		let showStatistics = false;

@@ -133,6 +133,28 @@ def test_preview_uses_preview_size(tmp_path):
     assert "size=preview" in calls[0]
 
 
+def test_original_is_cached_and_uses_source_extension(tmp_path):
+    session = StubSession([])
+    calls = []
+    session.get = lambda url, timeout=None: (calls.append(url), StubSession._R(content=b"FULLRES"))[1]
+    c = _client(tmp_path, session)
+    p1 = c.original("abc123", "IMG_20240831_112834.HEIC")
+    p2 = c.original("abc123", "IMG_20240831_112834.HEIC")
+    assert p1 == p2
+    assert p1.suffix == ".heic"
+    assert p1.read_bytes() == b"FULLRES"
+    assert len([u for u in calls if "abc123" in u]) == 1, "cache was not used"
+    assert calls[0].endswith("/api/assets/abc123/original")
+
+
+def test_original_falls_back_to_bin_suffix_when_unknown(tmp_path):
+    session = StubSession([])
+    session.get = lambda url, timeout=None: StubSession._R(content=b"X")
+    c = _client(tmp_path, session)
+    p = c.original("noext", "")
+    assert p.suffix == ".bin"
+
+
 def test_missing_api_key_raises(tmp_path):
     s = config.Settings(api_key="", immich_url=BASE, cache_dir=tmp_path / "c")
     with pytest.raises(ValueError, match="IMMICH_API_KEY"):

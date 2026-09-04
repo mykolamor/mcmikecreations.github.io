@@ -27,7 +27,7 @@ export const load: PageLoad = async ({ data, fetch, params }) => {
 				const res = await fetch(path);
 				if (res.ok) {
 					const postRaw = await res.text();
-					clientHtml = (await parseMarkdown(postRaw)).html;
+					clientHtml = (await parseMarkdown(postRaw, data.post.tags)).html;
 				}
 			} else {
 				hasHydrated = true;

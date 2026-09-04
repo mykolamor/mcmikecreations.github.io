@@ -21,3 +21,40 @@ DirectoryIndex index.html
 		Header set X-Robots-Tag "noindex"
 	</FilesMatch>
 </IfModule>
+
+<IfModule mod_deflate.c>
+	# Text formats compress well; images/video/fonts below are already
+	# compressed, so gzipping them again would waste CPU for no gain.
+	AddOutputFilterByType DEFLATE text/html text/css text/plain
+	AddOutputFilterByType DEFLATE text/javascript application/javascript
+	AddOutputFilterByType DEFLATE application/json
+	AddOutputFilterByType DEFLATE image/svg+xml
+	AddOutputFilterByType DEFLATE application/xml text/xml
+</IfModule>
+
+<IfModule mod_expires.c>
+	ExpiresActive On
+
+	# Photos and fonts aren't content-hashed - a later re-run of
+	# scripts/image_optimize.py could change a same-named file's bytes, so
+	# this stays well short of a year and is not marked immutable. Listed
+	# before the /_app/immutable/ rule below so that rule (more specific,
+	# and the only one of the two that's actually safe to mark immutable)
+	# applies last and wins for any hashed asset whose extension also
+	# happens to match here (e.g. a font or icon under /_app/immutable/).
+	<FilesMatch "\.(avif|webp|jpg|jpeg|png|gif|svg|ico|woff2?|ttf)$">
+		ExpiresDefault "access plus 30 days"
+		<IfModule mod_headers.c>
+			Header set Cache-Control "public, max-age=2592000"
+		</IfModule>
+	</FilesMatch>
+
+	# Vite content-hashes every file under /_app/immutable/, so a new
+	# deploy always gets a new URL - safe to cache forever.
+	<If "%{REQUEST_URI} =~ m#^/_app/immutable/#">
+		ExpiresDefault "access plus 1 year"
+		<IfModule mod_headers.c>
+			Header set Cache-Control "public, max-age=31536000, immutable"
+		</IfModule>
+	</If>
+</IfModule>

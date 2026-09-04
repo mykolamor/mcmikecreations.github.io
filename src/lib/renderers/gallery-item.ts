@@ -16,6 +16,8 @@ export interface GalleryImage extends GalleryItemBase {
 	src: string;
 	/** Low resolution stand-in, shown blurred until `src` has loaded. */
 	placeholder?: string;
+	/** Small real image for the thumbnail strip — sharper than `placeholder`, much lighter than `src`. */
+	thumb?: string;
 }
 
 export interface GalleryVideo extends GalleryItemBase {

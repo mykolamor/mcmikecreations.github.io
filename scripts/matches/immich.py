@@ -135,6 +135,29 @@ class ImmichClient:
     def preview(self, asset_id: str) -> Path:
         return self._fetch_image(asset_id, "preview", ".jpg")
 
+    def original(self, asset_id: str, original_file_name: str) -> Path:
+        """Full-resolution original, cached by asset id.
+
+        Unlike thumbnail/preview, the original is served in its native
+        format (HEIC, JPEG, ...), so the cache file's extension is taken
+        from the source filename rather than fixed.
+        """
+        suffix = Path(original_file_name).suffix.lower() or ".bin"
+        directory = self.settings.cache_dir / "original"
+        directory.mkdir(parents=True, exist_ok=True)
+        path = directory / f"{asset_id}{suffix}"
+        if self.settings.use_cache and path.is_file() and path.stat().st_size > 0:
+            return path
+        r = self.session.get(
+            f"{self.base}/api/assets/{asset_id}/original",
+            timeout=self.settings.timeout,
+        )
+        r.raise_for_status()
+        tmp = path.with_suffix(path.suffix + ".part")
+        tmp.write_bytes(r.content)
+        tmp.replace(path)
+        return path
+
     def _fetch_image(self, asset_id: str, size: str, suffix: str) -> Path:
         directory = self.settings.cache_dir / size
         directory.mkdir(parents=True, exist_ok=True)

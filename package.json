@@ -64,6 +64,7 @@
 		"geojson": "^0.5.0",
 		"gray-matter": "^4.0.3",
 		"highlight.js": "^11.11.1",
+		"js-yaml": "^5.4.1",
 		"leaflet": "^1.9.4",
 		"marked": "^18.0.2",
 		"swiper": "^14.1.0",

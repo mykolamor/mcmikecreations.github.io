@@ -98,6 +98,15 @@ def report_path(out_dir: Path, post_name: str) -> Path:
     return Path(out_dir) / (Path(post_name).stem + ".json")
 
 
+def read_report(out_dir: Path, post_name: str) -> dict:
+    path = report_path(out_dir, post_name)
+    if not path.is_file():
+        raise FileNotFoundError(
+            f"No match report for {post_name!r} at {path} — run image_match.py on it first."
+        )
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 def write_report(report: dict, out_dir: Path, post_name: str) -> Path:
     out = report_path(out_dir, post_name)
     out.parent.mkdir(parents=True, exist_ok=True)

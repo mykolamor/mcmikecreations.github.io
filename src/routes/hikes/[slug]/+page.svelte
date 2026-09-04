@@ -152,7 +152,7 @@
 					if (res.ok) {
 						const postRaw = await res.text();
 						// @ts-ignore
-						data.clientHtml = (await parseMarkdown(postRaw)).html;
+						data.clientHtml = (await parseMarkdown(postRaw, data.post.tags)).html;
 					}
 				}
 			}
@@ -176,44 +176,18 @@
 		const geojson = await geojsonRes.json();
 		if (runId !== contentRunId) return;
 
-		const paragraphs = contentEl.querySelectorAll('p');
-
-		const anchorEl = (index: number): Element =>
-			paragraphs[index] ?? paragraphs[paragraphs.length - 1] ?? contentEl;
-
-		const offset = data.post.tags.includes('Climb') ? 1 : 0;
-
-		// 3D map (Three.js) - after 1st paragraph
-		const map3dWrapper = document.createElement('div');
-		map3dWrapper.className = 'w-full mx-auto not-prose my-4';
-		const map3dInner = document.createElement('div');
-		map3dInner.style.cssText = 'position: relative; width: 100%; aspect-ratio: 1 / 1; overflow: hidden;';
-		const map3dEl = document.createElement('div');
-		map3dEl.style.cssText = 'position: absolute; inset: 0;';
-		map3dInner.appendChild(map3dEl);
-		map3dWrapper.appendChild(map3dInner);
-		anchorEl(offset).insertAdjacentElement('afterend', map3dWrapper);
-
-		// Elevation chart - directly below the 3D map
-		const map3dElevWrapper = document.createElement('div');
-		map3dElevWrapper.className = 'w-full mx-auto not-prose';
-		map3dWrapper.insertAdjacentElement('afterend', map3dElevWrapper);
-
-		// 2D interactive map (Leaflet.js) - after 2nd paragraph
-		const map2dWrapper = document.createElement('div');
-		map2dWrapper.className = 'w-full mx-auto not-prose my-4';
-		const map2dInner = document.createElement('div');
-		map2dInner.style.cssText = 'position: relative; isolation: isolate; width: 100%; aspect-ratio: 1 / 1; overflow: hidden;';
-		const map2dEl = document.createElement('div');
-		map2dEl.style.cssText = 'position: absolute; inset: 0;';
-		map2dInner.appendChild(map2dEl);
-		map2dWrapper.appendChild(map2dInner);
-		anchorEl(offset + 1).insertAdjacentElement('afterend', map2dWrapper);
-
-		// Elevation chart - directly below the 2D map
-		const elevWrapper = document.createElement('div');
-		elevWrapper.className = 'w-full mx-auto not-prose';
-		map2dWrapper.insertAdjacentElement('afterend', elevWrapper);
+		// The 3D map, 2D map, and both elevation charts are no longer built here:
+		// parseMarkdown already reserved their boxes (correct position, correct
+		// aspect-ratio) as part of the HTML this content came from - server-
+		// rendered on first load, and from every client-side re-parse alike. All
+		// that's left is to find those mount points and populate them, so the
+		// article never has widgets pop into existence and shove content down
+		// after it's already been painted.
+		const map3dEl = contentEl.querySelector<HTMLElement>('[data-hike-widget="map3d-mount"]');
+		const map3dElevWrapper = contentEl.querySelector<HTMLElement>('[data-hike-widget="elev3d-mount"]');
+		const map2dEl = contentEl.querySelector<HTMLElement>('[data-hike-widget="map2d-mount"]');
+		const elevWrapper = contentEl.querySelector<HTMLElement>('[data-hike-widget="elev2d-mount"]');
+		if (!map3dEl || !map3dElevWrapper || !map2dEl || !elevWrapper) return;
 
 		const newMap3dHandle = initMap3d(map3dEl, geojson, data.map);
 		const newMap2dHandle = await initMap2d(map2dEl, geojson, data.map.properties.nodes);

@@ -89,6 +89,14 @@ IMAGE_EXTENSIONS = frozenset({".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif"
 # lumped in with local videos.
 YOUTUBE_HOSTS = ("youtube.com", "youtu.be")
 
+# --- AVIF/LQIP generation ---------------------------------------------------
+# Target long edge (larger of width/height) per tier, not target width — a
+# portrait photo scales by height, not width. See scripts/image_optimize.py.
+AVIF_TIERS = (640, 1280, 2560)
+DEFAULT_AVIF_QUALITY = 50
+DEFAULT_LQIP_LONG_EDGE = 24
+DEFAULT_LQIP_QUALITY = 50
+
 
 def repo_root() -> Path:
     """Repository root, derived from this file's location."""
@@ -122,6 +130,9 @@ class Settings:
     trust_album: bool = DEFAULT_TRUST_ALBUM
     workers: int = DEFAULT_WORKERS
     timeout: int = DEFAULT_TIMEOUT
+    avif_quality: int = DEFAULT_AVIF_QUALITY
+    lqip_long_edge: int = DEFAULT_LQIP_LONG_EDGE
+    lqip_quality: int = DEFAULT_LQIP_QUALITY
     force: bool = False
     verbose: bool = False
 

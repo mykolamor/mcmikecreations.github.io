@@ -288,7 +288,7 @@
 					{#each items as item, i (i)}
 						<div class="swiper-slide mg-thumb">
 							{#if item.kind === 'image'}
-								<img src={item.placeholder ?? item.src} alt="" loading="lazy" />
+								<img src={item.thumb ?? item.placeholder ?? item.src} alt="" loading="lazy" />
 							{:else if item.kind === 'video'}
 								<!-- svelte-ignore a11y_media_has_caption -->
 								<!-- The `#t=0.1` fragment makes browsers paint a real frame. -->
