@@ -54,7 +54,7 @@ class Remote:
         return self.client.preview(asset_id)
 
     def original_bytes(self, asset_id: str) -> bytes:
-        """The untouched original, for re-compressing into a web copy."""
+        """The untouched original, for converting into a web copy."""
         r = self.client.session.get(
             f"{self.client.base}/api/assets/{asset_id}/original",
             timeout=self.settings.timeout,

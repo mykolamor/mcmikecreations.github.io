@@ -126,6 +126,31 @@ def test_repointing_local_path_to_a_missing_file(app):
     assert media[web_path_for("demo", "gone.jpg")]["status"] == "missing_local"
 
 
+def test_avif_converted_image_shows_as_present(app, tmp_path):
+    """image_optimize.py deletes the matched original and leaves
+    `<stem>-<tier>.avif` tiers in its place; the review UI must still
+    treat that as present on disk instead of "missing on disk"."""
+    stories = tmp_path / "static/images/projects/data-viz/hikes/stories/demo"
+    (stories / "2024-08-31-00.jpg").unlink()
+    (stories / "2024-08-31-00-640.avif").write_bytes(b"small")
+    (stories / "2024-08-31-00-2560.avif").write_bytes(b"biggest-tier")
+    d = api.hike_detail(app, "2024-08-31-demo.md")
+    matched = d["media"][0]
+    assert matched["has_local"] is True
+    assert matched["local_size"] == len(b"biggest-tier")
+
+
+def test_local_file_serves_the_largest_avif_tier_when_the_original_is_gone(app, tmp_path):
+    stories = tmp_path / "static/images/projects/data-viz/hikes/stories/demo"
+    (stories / "2024-08-31-00.jpg").unlink()
+    (stories / "2024-08-31-00-640.avif").write_bytes(b"small")
+    (stories / "2024-08-31-00-2560.avif").write_bytes(b"biggest-tier")
+    body, ctype = api.local_file(
+        app, "/images/projects/data-viz/hikes/stories/demo/2024-08-31-00.jpg")
+    assert body == b"biggest-tier"
+    assert ctype == "image/avif"
+
+
 def test_add_rejects_an_invalid_spec(app):
     from matches.web.jobs import JobRegistry
     with pytest.raises(api.ApiError):

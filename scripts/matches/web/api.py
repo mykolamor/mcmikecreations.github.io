@@ -3,6 +3,7 @@
 import mimetypes
 from pathlib import Path
 
+from .. import config
 from ..review import actions
 from ..review.model import site_url_for, status_color
 from ..review.remote import RemoteUnavailable, asset_to_dict
@@ -43,9 +44,24 @@ def list_hikes(state) -> dict:
     ]}
 
 
+def _on_disk(local_path: Path | None) -> Path | None:
+    """The file to show/serve for `local_path`: itself if present, else the
+    largest AVIF tier `image_optimize.py` generated in its place - it deletes
+    the original once conversion succeeds (see `optimize.optimize_post`)."""
+    if local_path is None:
+        return None
+    if local_path.is_file():
+        return local_path
+    for target in sorted(config.AVIF_TIERS, reverse=True):
+        candidate = local_path.with_name(f"{local_path.stem}-{target}.avif")
+        if candidate.is_file():
+            return candidate
+    return None
+
+
 def _media_row(m) -> dict:
     local_path = Path(m.local_path) if m.local_path else None
-    has_local = bool(local_path and local_path.is_file())
+    on_disk = _on_disk(local_path)
     return {
         "order": m.order,
         "label": m.label,
@@ -54,8 +70,8 @@ def _media_row(m) -> dict:
         "status": m.status,
         "color": status_color(m.status),
         "matched_name": m.matched_name,
-        "has_local": has_local,
-        "local_size": local_path.stat().st_size if has_local else None,
+        "has_local": on_disk is not None,
+        "local_size": on_disk.stat().st_size if on_disk else None,
         "match": (m.entry or {}).get("match"),
         "confidence": (m.entry or {}).get("confidence"),
         "resolved_by": (m.entry or {}).get("resolved_by"),
@@ -105,10 +121,11 @@ def local_file(state, web_path: str) -> tuple[bytes, str]:
     target = (root / web_path.lstrip("/")).resolve()
     if not target.is_relative_to(root):
         raise ApiError("Path escapes the static root", 403)
-    if not target.is_file():
+    on_disk = _on_disk(target)
+    if on_disk is None:
         raise ApiError(f"Not found: {web_path}", 404)
-    ctype = mimetypes.guess_type(target.name)[0] or "application/octet-stream"
-    return target.read_bytes(), ctype
+    ctype = mimetypes.guess_type(on_disk.name)[0] or "application/octet-stream"
+    return on_disk.read_bytes(), ctype
 
 
 def preview_file(state, asset_id: str) -> tuple[bytes, str]:
@@ -195,7 +212,6 @@ def start_add(state, jobs, body: dict) -> dict:
         asset_id=body.get("asset_id") or None,
         asset_name=body.get("asset_name", ""),
         out_name=body.get("out_name", ""),
-        compress_mode=body.get("compress_mode", "hd"),
     )
     problem = actions.validate(spec)
     if problem:

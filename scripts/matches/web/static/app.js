@@ -288,10 +288,9 @@ function syncAddDialog() {
   $("add-asset").disabled = mode === "local";
   $("add-pick").disabled = mode === "local";
   $("add-out").disabled = mode !== "remote";
-  $("add-mode").disabled = mode !== "remote";
   $("add-hint").textContent = {
     local: "The image is already on disk; the matcher searches Immich for its original.",
-    remote: "The original is downloaded and compressed with image_compress.py into the hike's folder.",
+    remote: "The original is downloaded and converted to AVIF tiers + a blur placeholder into the hike's folder.",
     both: "Nothing is downloaded or matched — the mapping is written straight into the JSON.",
   }[mode];
   suggestOutName();
@@ -315,7 +314,6 @@ async function submitAdd() {
       local_path: $("add-local").value.trim(),
       asset_name: $("add-asset").value.trim(),
       out_name: $("add-out").value.trim(),
-      compress_mode: $("add-mode").value,
     });
     const result = await waitForJob(job, "Adding media");
     await selectHike(state.post);

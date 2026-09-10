@@ -1,4 +1,4 @@
-from matches.postwriter import merge_images_front_matter
+from matches.postwriter import merge_images_front_matter, upsert_image_front_matter
 
 SAMPLE = """---
 title: Hochalm in Completionist Mode
@@ -47,3 +47,41 @@ def test_merge_is_idempotent_and_replaces_not_duplicates(tmp_path):
     assert text.count("images:") == 1
     assert "a.jpg" not in text
     assert "b.jpg: {w: 2, h: 2}" in text
+
+
+def test_upsert_adds_an_image_key_when_none_exists(tmp_path):
+    post = tmp_path / "post.md"
+    post.write_text(SAMPLE, encoding="utf-8")
+
+    upsert_image_front_matter(post, "2026-08-23-05.jpg", {"w": 100, "h": 80, "blur": "data:image/webp;base64,ZZ"})
+
+    text = post.read_text(encoding="utf-8")
+    assert "images:\n  2026-08-23-05.jpg: {w: 100, h: 80, blur: 'data:image/webp;base64,ZZ'}\n" in text
+    assert "ascent: 1414\n" in text  # rest of front matter untouched
+
+
+def test_upsert_adds_one_image_without_touching_existing_entries(tmp_path):
+    post = tmp_path / "post.md"
+    post.write_text(SAMPLE, encoding="utf-8")
+    merge_images_front_matter(post, {
+        "2026-08-23-00.jpg": {"w": 4080, "h": 3060, "blur": "data:image/webp;base64,AAAA"},
+    })
+
+    upsert_image_front_matter(post, "2026-08-23-05.jpg", {"w": 100, "h": 80, "blur": "data:image/webp;base64,ZZ"})
+
+    text = post.read_text(encoding="utf-8")
+    assert text.count("images:") == 1
+    assert "2026-08-23-00.jpg: {w: 4080, h: 3060" in text  # untouched
+    assert "2026-08-23-05.jpg: {w: 100, h: 80, blur: 'data:image/webp;base64,ZZ'}" in text
+
+
+def test_upsert_replaces_an_existing_entry_for_the_same_filename(tmp_path):
+    post = tmp_path / "post.md"
+    post.write_text(SAMPLE, encoding="utf-8")
+    merge_images_front_matter(post, {"2026-08-23-05.jpg": {"w": 1, "h": 1}})
+
+    upsert_image_front_matter(post, "2026-08-23-05.jpg", {"w": 100, "h": 80, "blur": "data:image/webp;base64,ZZ"})
+
+    text = post.read_text(encoding="utf-8")
+    assert text.count("2026-08-23-05.jpg") == 1
+    assert "2026-08-23-05.jpg: {w: 100, h: 80, blur: 'data:image/webp;base64,ZZ'}" in text

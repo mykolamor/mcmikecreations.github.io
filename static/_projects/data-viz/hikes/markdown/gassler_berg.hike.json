@@ -1,0 +1,75 @@
+{
+  "name": "Gassler Berg",
+  "description": "Hike from Gmund to Hausham via Buchberg (996 m), Gassler Berg (1180 m), Oeder Kogel (1135 m), Schußkogel (1134 m), and Wallenburger Kogel (936 m).",
+  "image": "/images/projects/data-viz/hikes/gassler_berg.jpg",
+  "origin": {
+    "lat": 47.74440260945156,
+    "lon": 11.789143203910864
+  },
+  "height": 512,
+  "checkpoints": [
+    [11.7349962, 47.7496082],
+    [11.7541109, 47.7331856],
+    [11.7683304, 47.7338721],
+    [11.7765773, 47.7344509],
+    [11.7863439, 47.7348091],
+    [11.7966675, 47.7449950],
+    [11.8401733, 47.7505216]
+  ],
+  "nodes": [
+    {
+      "id": 1023521644,
+      "lat": 47.7331856,
+      "lon": 11.7541109,
+      "tags": {
+        "name": "Buchberg",
+        "ele": "995.5",
+        "natural": "peak"
+      }
+    },
+    {
+      "id": 1743681602,
+      "lat": 47.7338721,
+      "lon": 11.7683304,
+      "tags": {
+        "name": "Gassler Berg",
+        "ele": "1178",
+        "natural": "peak",
+        "wikidata": "Q16064616"
+      }
+    },
+    {
+      "id": 1743681826,
+      "lat": 47.7344509,
+      "lon": 11.7765773,
+      "tags": {
+        "name": "Oeder Kogel",
+        "ele": "1135",
+        "natural": "peak",
+        "wikidata": "Q16320527"
+      }
+    },
+    {
+      "id": 1743682069,
+      "lat": 47.7348091,
+      "lon": 11.7863439,
+      "tags": {
+        "name": "Schußkogel",
+        "ele": "1134",
+        "natural": "peak",
+        "wikidata": "Q18289376"
+      }
+    },
+    {
+      "id": 1743682072,
+      "lat": 47.7449950,
+      "lon": 11.7966675,
+      "tags": {
+        "name": "Wallenburger Kogel",
+        "ele": "936",
+        "natural": "peak",
+        "wikidata": "Q18334815"
+      }
+    }
+  ]
+}

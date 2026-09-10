@@ -104,7 +104,7 @@
       <label class="inline"><input type="radio" name="mode" value="local" checked>
         A local image — find its Immich original</label>
       <label class="inline"><input type="radio" name="mode" value="remote">
-        An Immich asset — download and compress it locally</label>
+        An Immich asset — download and convert it to AVIF locally</label>
       <label class="inline"><input type="radio" name="mode" value="both">
         Both — just record the mapping</label>
     </div>
@@ -115,16 +115,8 @@
       <input id="add-asset" type="text" spellcheck="false">
       <button id="add-pick" type="button">Pick…</button>
     </div>
-    <div class="row">
-      <div style="flex:1">
-        <label>Save as</label>
-        <input id="add-out" type="text" spellcheck="false" placeholder="2025-08-13-12.jpg">
-      </div>
-      <div>
-        <label>Compression</label>
-        <select id="add-mode"><option>hd</option><option>standard</option></select>
-      </div>
-    </div>
+    <label>Save as</label>
+    <input id="add-out" type="text" spellcheck="false" placeholder="2025-08-13-12.jpg">
     <p class="muted" id="add-hint"></p>
     <menu>
       <button value="cancel">Cancel</button>

@@ -3,8 +3,8 @@
 Every function here is called on a worker thread and must not touch widgets.
 """
 
-import importlib.util
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -16,6 +16,8 @@ from PIL import Image
 from .. import config
 from ..markdown import MediaRef, parse_capture_date
 from ..matcher import match_image
+from ..optimize import encode_avif_tiers, encode_lqip_data_uri, open_exif_corrected
+from ..postwriter import upsert_image_front_matter
 from .model import build_entry, web_path_for
 from .remote import asset_to_dict
 
@@ -34,7 +36,6 @@ class AddSpec:
     asset_id: str | None = None
     asset_name: str = ""
     out_name: str = ""      # filename to write for MODE_REMOTE
-    compress_mode: str = "hd"
 
 
 def validate(spec: "AddSpec") -> str:
@@ -49,21 +50,20 @@ def validate(spec: "AddSpec") -> str:
     if spec.mode in (MODE_REMOTE, MODE_BOTH) and not (spec.asset_id or spec.asset_name):
         return "Choose an Immich asset."
     if spec.mode == MODE_REMOTE and not spec.out_name:
-        return "Give the compressed file a name."
+        return "Give the converted file a name."
     return ""
-
-
-def _load_image_compress():
-    """Import the sibling script by path - it is not part of the package."""
-    path = Path(__file__).resolve().parents[2] / "image_compress.py"
-    spec = importlib.util.spec_from_file_location("image_compress", path)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
 
 
 def stories_dir(settings: config.Settings, slug: str) -> Path:
     return settings.static_root / "images/projects/data-viz/hikes/stories" / slug
+
+
+_AVIF_TIER_SUFFIX = "|".join(str(t) for t in config.AVIF_TIERS)
+# `<NN>.ext` for a plain file, or `<NN>-<tier>.avif` for one of
+# optimize.py's tiers - it deletes the original once those are written, so
+# that's the only trace of the index left on disk (see optimize.optimize_post
+# and review.actions.download_and_optimize).
+_INDEX_RE = re.compile(rf"^(\d+)(?:-(?:{_AVIF_TIER_SUFFIX})\.avif|\.[^.]+)$")
 
 
 def next_out_name(settings: config.Settings, slug: str, date: str,
@@ -80,9 +80,9 @@ def next_out_name(settings: config.Settings, slug: str, date: str,
         for f in folder.iterdir():
             if not f.name.startswith(prefix):
                 continue
-            num = f.name[len(prefix):].split(".", 1)[0]
-            if num.isdigit():
-                next_index = max(next_index, int(num) + 1)
+            m = _INDEX_RE.match(f.name[len(prefix):])
+            if m:
+                next_index = max(next_index, int(m.group(1)) + 1)
     return f"{prefix}{next_index:02d}{ext}"
 
 
@@ -115,9 +115,15 @@ def match_single(settings, remote, post, local_path: Path) -> dict:
                        decision.resolved_by, decision.confidence)
 
 
-def download_and_compress(settings, remote, post, asset_id: str,
-                          out_name: str, mode: str = "hd") -> tuple[Path, dict]:
-    """Fetch an original, compress it into the hike's folder, return the entry."""
+def download_and_optimize(settings, remote, post, asset_id: str,
+                          out_name: str) -> tuple[Path, dict]:
+    """Fetch an original and convert it straight to AVIF tiers + an LQIP
+    blur placeholder in the hike's folder - the same pipeline
+    `image_optimize.py` runs after a match, but for one freshly added image.
+    Updates the post's front matter and returns the report entry. No
+    original-resolution file is written to the folder, matching what
+    `optimize.optimize_post` leaves behind for every other matched image.
+    """
     target_dir = stories_dir(settings, post.slug)
     target_dir.mkdir(parents=True, exist_ok=True)
     out_path = target_dir / out_name
@@ -129,11 +135,20 @@ def download_and_compress(settings, remote, post, asset_id: str,
         tmp.write(data)
         tmp_path = Path(tmp.name)
     try:
-        _load_image_compress().compress_whatsapp(
-            tmp_path, out_path, max_edge=None, mode=mode
-        )
+        img = open_exif_corrected(tmp_path)
     finally:
         tmp_path.unlink(missing_ok=True)
+
+    out_base = out_path.with_suffix("")
+    tiers = encode_avif_tiers(img, out_base, config.AVIF_TIERS, settings.avif_quality)
+    if tiers:
+        blur = encode_lqip_data_uri(img, settings.lqip_long_edge, settings.lqip_quality)
+        meta = {"w": img.width, "h": img.height, "blur": blur}
+    else:
+        # Smaller than the smallest tier: record dims only, same as an
+        # unmatched image (see optimize.optimize_post).
+        meta = {"w": img.width, "h": img.height}
+    upsert_image_front_matter(post.path, out_path.name, meta)
 
     entry = build_entry(
         web_path_for(post.slug, out_path.name), out_path,
@@ -154,8 +169,8 @@ def apply_add_spec(settings, remote, post, spec: AddSpec) -> dict:
             raise ValueError(
                 f"No Immich asset found for {spec.asset_id or spec.asset_name!r}"
             )
-        _, entry = download_and_compress(
-            settings, remote, post, asset.id, spec.out_name, spec.compress_mode
+        _, entry = download_and_optimize(
+            settings, remote, post, asset.id, spec.out_name
         )
         return entry
 
