@@ -1,0 +1,54 @@
+{
+  "name": "Großer Laber",
+  "description": "Hike from Oberau to Ettal via Kleiner Laber (1205 m), Mühlberg (1305 m), and Großer Laber (1466 m).",
+  "image": "/images/projects/data-viz/hikes/grosser_laber.jpg",
+  "origin": {
+    "lat": 47.569577036593756,
+    "lon": 11.117790795582787
+  },
+  "height": 384,
+  "checkpoints": [
+    [11.1393003, 47.5596144],
+    [11.1292092, 47.5752543],
+    [11.1173541, 47.5716100],
+    [11.1185921, 47.5778643],
+    [11.0932308, 47.5686928]
+  ],
+  "nodes": [
+    {
+      "id": 703834455,
+      "lat": 47.5752543,
+      "lon": 11.1292092,
+      "tags": {
+        "name": "Kleiner Laber",
+        "ele": "1205",
+        "natural": "peak",
+        "wikidata": "Q31534471"
+      }
+    },
+    {
+      "id": 703354390,
+      "lat": 47.5716100,
+      "lon": 11.1173541,
+      "tags": {
+        "name": "Mühlberg",
+        "ele": "1305",
+        "natural": "peak",
+        "wikidata": "Q31530111"
+      }
+    },
+    {
+      "id": 702260997,
+      "lat": 47.5778643,
+      "lon": 11.1185921,
+      "tags": {
+        "name": "Großer Laber",
+        "ele": "1466",
+        "natural": "peak",
+        "summit:cross": "yes",
+        "summit:register": "yes",
+        "wikidata": "Q31543959"
+      }
+    }
+  ]
+}
