@@ -1,0 +1,39 @@
+{
+  "name": "Walchensee",
+  "description": "Hike from Urfeld to Einsiedl via Fischberg (1164 m).",
+  "image": "/images/projects/data-viz/hikes/fischberg.jpg",
+  "origin": {
+    "lat": 47.591462247489595,
+    "lon": 11.345149689166487
+  },
+  "height": 512,
+  "checkpoints": [
+    [11.3458048, 47.6177291],
+    [11.3914884, 47.6000678],
+    [11.3948072, 47.5866038],
+    [11.3047868, 47.5710232]
+  ],
+  "nodes": [
+    {
+      "id": 1431131352,
+      "lat": 47.6000678,
+      "lon": 11.3914884,
+      "tags": {
+        "name": "Fischberg",
+        "ele": "1164",
+        "natural": "peak",
+        "wikidata": "Q31546939"
+      }
+    },
+    {
+      "id": 4730936370,
+      "lat": 47.5866038,
+      "lon": 11.3948072,
+      "tags": {
+        "name": "Waldschänke Niedernach",
+        "amenity": "restaurant",
+        "cuisine": "bavarian"
+      }
+    }
+  ]
+}
