@@ -21,8 +21,8 @@ import pillow_heif
 
 pillow_heif.register_heif_opener()  # Immich originals are frequently HEIC
 
-from . import config
-from .markdown import find_media_refs
+from . import config, rawimage
+from .markdown import _on_disk, find_media_refs
 from .report import read_report
 
 
@@ -46,7 +46,7 @@ def tier_dimensions(width: int, height: int, target_long_edge: int) -> tuple[int
 
 def open_exif_corrected(path: Path) -> Image.Image:
     """Open an image, apply its EXIF orientation, and normalize to RGB."""
-    img = Image.open(path)
+    img = rawimage.open_image(path)
     img.load()
     img = ImageOps.exif_transpose(img)
     return img.convert("RGB")
@@ -143,7 +143,7 @@ def optimize_post(
             if wa_sibling.exists():
                 wa_sibling.unlink()
         elif ref.exists:
-            w, h = probe_dimensions(ref.local_path)
+            w, h = probe_dimensions(_on_disk(ref.local_path))
             images[filename] = {"w": w, "h": h}
         # else: unmatched/ambiguous with no local file (missing_local) — nothing to record.
 

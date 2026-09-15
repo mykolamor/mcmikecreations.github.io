@@ -98,6 +98,33 @@ def test_empty_key_without_keep_clears_it(app):
     assert app.settings.api_key == ""
 
 
+def test_candidate_search_sees_report_changes_made_after_server_startup(app):
+    """A CLI rerun (`image_match.py --force`) can rewrite a post's report on
+    disk while the review server keeps running. The next candidate lookup
+    must search the album the fresh report names, not the one cached in
+    memory since the server started - otherwise a manual "paste an asset
+    URL" match fails with "No asset named ... among this hike's candidates"
+    even for the asset the fresh report already recorded as the match."""
+    calls = []
+
+    class FakeClient:
+        def search_assets(self, album_ids=None, taken_after=None, taken_before=None):
+            calls.append(album_ids[0] if album_ids else None)
+            return []
+
+    app.remote._client = FakeClient()
+    api.candidate_assets(app, "2024-08-31-demo.md")
+    assert calls == ["x"]
+
+    report_path = app.settings.out_dir / "2024-08-31-demo.json"
+    data = json.loads(report_path.read_text())
+    data["album"]["id"] = "y"
+    report_path.write_text(json.dumps(data))
+
+    api.candidate_assets(app, "2024-08-31-demo.md")
+    assert calls[-1] == "y", "candidate search used the report cached at server startup"
+
+
 def test_remembered_key_round_trips_and_is_private(app, tmp_path):
     app.set_credentials("remembered-key", "https://immich.example", True)
     path = tmp_path / "cfg.json"

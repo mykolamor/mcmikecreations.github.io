@@ -88,5 +88,21 @@ def test_outlier_filename_has_no_capture_date(tmp_path):
     assert refs[3].capture_date is None
 
 
+def test_avif_tier_makes_ref_exist(tmp_path):
+    """find_media_refs reports exists=True when AVIF tiers exist
+    even if the original .jpg was deleted by optimize.py."""
+    static = tmp_path / "static"
+    story = static / "images/projects/data-viz/hikes/stories/aiplspitz"
+    story.mkdir(parents=True, exist_ok=True)
+    # Only AVIF tiers exist, no original .jpg
+    for tier in (640, 1280, 2560):
+        (story / f"2024-08-31-00-{tier}.avif").write_bytes(b"avif")
+    post = _write(tmp_path)
+    refs = find_media_refs(post, static)
+    ref = [r for r in refs if r.web_path.endswith("2024-08-31-00.jpg")][0]
+    assert ref.exists is True
+    assert ref.local_path == story / "2024-08-31-00.jpg"
+
+
 def test_post_slug_strips_date_prefix(tmp_path):
     assert post_slug(_write(tmp_path)) == "aiplspitz"

@@ -16,10 +16,18 @@ class ApiError(Exception):
 
 
 def _post(state, name: str):
+    """The post, freshly re-read from disk.
+
+    A CLI run (`image_match.py --force`) can rewrite a post's report while
+    this server keeps running - reloading here means every handler acts on
+    what's actually on disk, not a snapshot cached since server startup or
+    the last refresh.
+    """
     try:
-        return state.post(name)
+        post = state.post(name)
     except KeyError:
         raise ApiError(f"No such post: {name}", 404)
+    return post.load()
 
 
 def _entry(post, web_path: str) -> dict:
@@ -81,7 +89,7 @@ def _media_row(m) -> dict:
 
 
 def hike_detail(state, name: str) -> dict:
-    post = _post(state, name).load()
+    post = _post(state, name)
     report = post.report or {}
     return {
         "name": post.name,
@@ -133,7 +141,8 @@ def preview_file(state, asset_id: str) -> tuple[bytes, str]:
         path = state.remote.preview_path(asset_id)
     except RemoteUnavailable as exc:
         raise ApiError(str(exc), 409)
-    return Path(path).read_bytes(), "image/jpeg"
+    ctype = mimetypes.guess_type(path.name)[0] or "image/jpeg"
+    return Path(path).read_bytes(), ctype
 
 
 # --- writes -----------------------------------------------------------------

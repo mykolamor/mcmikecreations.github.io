@@ -90,6 +90,37 @@ def test_probe_dimensions_reads_exif_corrected_size(tmp_path):
     assert probe_dimensions(path) == (300, 400)
 
 
+def test_open_exif_corrected_decodes_raw_originals_via_rawpy(tmp_path, monkeypatch):
+    """A matched asset whose Immich `original` is a camera raw file must
+    still be openable for AVIF-tier generation, via rawpy rather than
+    Pillow's native (raw-incapable) decoders."""
+    import numpy as np
+    import rawpy
+
+    from matches import rawimage
+
+    path = tmp_path / "orig1.nef"
+    path.write_bytes(b"fake-raw-bytes")
+
+    class FakeRaw:
+        def extract_thumb(self):
+            raise rawpy.LibRawNoThumbnailError("no thumb")
+
+        def postprocess(self):
+            return np.zeros((2, 9, 3), dtype="uint8")
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *exc_info):
+            return False
+
+    monkeypatch.setattr(rawimage.rawpy, "imread", lambda p: FakeRaw())
+    img = open_exif_corrected(path)
+    assert img.size == (9, 2)
+    assert img.mode == "RGB"
+
+
 import json
 
 import pytest
@@ -195,6 +226,23 @@ def test_optimize_post_dry_run_writes_nothing_and_deletes_nothing(tmp_path):
     unmatched_meta = images["2026-01-01-01.jpg"]
     assert unmatched_meta == {"w": 300, "h": 400}
     assert (story / "2026-01-01-01.jpg").exists()
+
+
+def test_optimize_post_probes_already_avif_converted_unmatched_image(tmp_path):
+    """An image that a previous optimize run already converted to AVIF tiers
+    (deleting the source .jpg), but whose match flipped to "unmatched" on a
+    later re-run of the matcher, must still be probed for dimensions instead
+    of crashing on the now-missing .jpg."""
+    post_path, client, settings, story = _setup_testhike_post(tmp_path)
+
+    # Simulate: the unmatched image was already AVIF-converted by an earlier
+    # optimize run (source deleted, only the largest tier remains).
+    (story / "2026-01-01-01.jpg").unlink()
+    Image.new("RGB", (240, 320), (4, 5, 6)).save(story / "2026-01-01-01-2560.avif", "AVIF")
+
+    images = optimize_post(post_path, client, settings)
+
+    assert images["2026-01-01-01.jpg"] == {"w": 240, "h": 320}
 
 
 def test_optimize_post_raises_without_a_report(tmp_path):

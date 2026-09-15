@@ -13,7 +13,21 @@ from pathlib import Path
 import requests
 from PIL import Image
 
-from . import config
+import pillow_avif  # noqa: F401  (registers AVIF read/write in Pillow)
+import pillow_heif
+
+pillow_heif.register_heif_opener()  # Immich originals are frequently HEIC
+
+from . import config, rawimage
+
+_CONTENT_TYPE: dict[str, str] = {
+    "image/jpeg": ".jpg",
+    "image/png": ".png",
+    "image/webp": ".webp",
+    "image/avif": ".avif",
+    "image/heic": ".heic",
+    "image/heif": ".heif",
+}
 
 
 @dataclass(frozen=True)
@@ -75,6 +89,10 @@ class ImmichClient:
         self.base = settings.immich_url.rstrip("/")
         self.session = session or requests.Session()
         self.session.headers.update({"x-api-key": settings.api_key})
+        self._filenames: dict[str, str] = {}
+
+    def _record_filename(self, asset: Asset) -> None:
+        self._filenames[asset.id] = asset.original_file_name
 
     # --- metadata -----------------------------------------------------------
 
@@ -89,7 +107,9 @@ class ImmichClient:
     def get_asset(self, asset_id: str) -> Asset:
         r = self.session.get(f"{self.base}/api/assets/{asset_id}", timeout=self.settings.timeout)
         r.raise_for_status()
-        return Asset.from_json(r.json())
+        asset = Asset.from_json(r.json())
+        self._record_filename(asset)
+        return asset
 
     def search_assets(
         self,
@@ -121,7 +141,10 @@ class ImmichClient:
             )
             r.raise_for_status()
             block = r.json()["assets"]
-            assets.extend(Asset.from_json(i) for i in block.get("items", []))
+            new_assets = [Asset.from_json(i) for i in block.get("items", [])]
+            for a in new_assets:
+                self._record_filename(a)
+            assets.extend(new_assets)
             nxt = block.get("nextPage")
             if not nxt:
                 return assets
@@ -158,17 +181,47 @@ class ImmichClient:
         tmp.replace(path)
         return path
 
+    def _cached_path(self, directory: Path, asset_id: str, default_suffix: str) -> Path | None:
+        """An already-downloaded file for this asset, under whichever suffix
+        it was actually saved as - Immich's Content-Type for a given size
+        isn't fixed (e.g. it may serve AVIF where WebP/JPEG used to be the
+        norm), so the cache-hit check can't assume `default_suffix`."""
+        for suffix in dict.fromkeys((default_suffix, *_CONTENT_TYPE.values())):
+            candidate = directory / f"{asset_id}{suffix}"
+            if candidate.is_file() and candidate.stat().st_size > 0:
+                return candidate
+        return None
+
     def _fetch_image(self, asset_id: str, size: str, suffix: str) -> Path:
         directory = self.settings.cache_dir / size
         directory.mkdir(parents=True, exist_ok=True)
-        path = directory / f"{asset_id}{suffix}"
-        if self.settings.use_cache and path.is_file() and path.stat().st_size > 0:
-            return path
+        if self.settings.use_cache:
+            cached = self._cached_path(directory, asset_id, suffix)
+            if cached is not None:
+                return cached
         r = self.session.get(
             f"{self.base}/api/assets/{asset_id}/thumbnail?size={size}",
             timeout=self.settings.timeout,
         )
+        if getattr(r, "status_code", 200) == 404 and size != "preview":
+            return self.preview(asset_id)
+        if getattr(r, "status_code", 200) == 404 and size == "preview":
+            fname = self._filenames.get(asset_id, f"{asset_id}.dng")
+            return self.original(asset_id, fname)
         r.raise_for_status()
+        try:
+            content_type = r.headers.get("Content-Type", "")
+        except AttributeError:
+            content_type = ""
+        content_type = content_type.split(";")[0].strip()
+        actual_suffix = _CONTENT_TYPE.get(content_type, suffix)
+        for stale_suffix in dict.fromkeys((suffix, *_CONTENT_TYPE.values())):
+            if stale_suffix == actual_suffix:
+                continue
+            stale = directory / f"{asset_id}{stale_suffix}"
+            if stale.is_file():
+                stale.unlink()
+        path = directory / f"{asset_id}{actual_suffix}"
         tmp = path.with_suffix(path.suffix + ".part")
         tmp.write_bytes(r.content)
         tmp.replace(path)
@@ -179,12 +232,17 @@ class ImmichClient:
         fetch = self.thumbnail if kind == "thumbnail" else self.preview
         if not asset_ids:
             return
+        def _safe_fetch(asset_id: str):
+            try:
+                return fetch(asset_id)
+            except Exception:
+                return None
         with ThreadPoolExecutor(max_workers=self.settings.workers) as pool:
-            list(pool.map(fetch, asset_ids))
+            list(pool.map(_safe_fetch, asset_ids))
 
     @staticmethod
     def open_image(path: Path) -> Image.Image:
-        img = Image.open(path)
+        img = rawimage.open_image(path)
         img.load()
         return img
 

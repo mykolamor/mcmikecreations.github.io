@@ -22,7 +22,7 @@ class Remote:
         self.settings = settings
         self._client: ImmichClient | None = None
         self._albums = None
-        self._asset_cache: dict[str, list[Asset]] = {}
+        self._asset_cache: dict[tuple, list[Asset]] = {}
 
     @property
     def available(self) -> bool:
@@ -70,16 +70,20 @@ class Remote:
         Falls back to the window alone when the report named no album, and to
         the post's own date when there is no report at all.
         """
-        key = post.name
-        if key in self._asset_cache:
-            return self._asset_cache[key]
-
         report = post.report or {}
         window = report.get("date_window") or {}
         lo, hi = window.get("from"), window.get("to")
         if not (lo and hi):
             lo, hi = self._window_from_post(post)
         album_id = (report.get("album") or {}).get("id")
+
+        # Keyed on what was actually searched, not just the post name - a
+        # report rewritten on disk since the last lookup (a CLI rerun, a
+        # manual album fix) must trigger a fresh query rather than replay
+        # whatever an earlier album/window search happened to find.
+        key = (post.name, album_id, lo, hi)
+        if key in self._asset_cache:
+            return self._asset_cache[key]
 
         assets = self.client.search_assets(
             album_ids=[album_id] if album_id else None,
@@ -123,7 +127,8 @@ class Remote:
         if post is None:
             self._asset_cache.clear()
         else:
-            self._asset_cache.pop(post.name, None)
+            for key in [k for k in self._asset_cache if k[0] == post.name]:
+                del self._asset_cache[key]
 
 
 def asset_to_dict(asset: Asset) -> dict:

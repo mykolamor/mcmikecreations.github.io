@@ -84,6 +84,10 @@ def build_parser() -> argparse.ArgumentParser:
                            "default because wrong timestamps then hide real matches.")
     tune.add_argument("--album-coverage-min", type=float, default=config.DEFAULT_ALBUM_COVERAGE_MIN,
                       help="Minimum share of post-name words an album must contain to be guessed.")
+    tune.add_argument("--original-area-factor", type=float, default=config.DEFAULT_ORIGINAL_AREA_FACTOR,
+                      help="Pixel-area ratio at which a larger shortlisted candidate is treated "
+                           "as a possible full-resolution original and preferred over a closer-"
+                           "scoring but smaller duplicate.")
 
     run = p.add_argument_group("execution")
     run.add_argument("--workers", type=int, default=config.DEFAULT_WORKERS,
@@ -110,6 +114,7 @@ def settings_from_args(args) -> config.Settings:
         sift_max_edge=args.sift_max_edge,
         residual_blur=args.residual_blur,
         album_coverage_min=args.album_coverage_min,
+        original_area_factor=args.original_area_factor,
         trust_album=not args.no_trust_album,
         workers=args.workers,
         timeout=args.timeout,

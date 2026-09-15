@@ -27,9 +27,10 @@ class StubSession:
         self.headers = {}
 
     class _R:
-        def __init__(self, payload=None, content=b""):
+        def __init__(self, payload=None, content=b"", content_type="image/webp"):
             self._payload = payload
             self.content = content
+            self.headers = {"Content-Type": content_type}
 
         def raise_for_status(self):
             return None
@@ -155,6 +156,35 @@ def test_original_falls_back_to_bin_suffix_when_unknown(tmp_path):
     assert p.suffix == ".bin"
 
 
+def test_open_image_decodes_raw_originals_via_rawpy(tmp_path, monkeypatch):
+    """A DNG fetched as the original-file fallback must still open, using
+    rawpy rather than Pillow's native (raw-incapable) decoders."""
+    import rawpy
+
+    from matches import rawimage
+
+    path = tmp_path / "abc123.dng"
+    path.write_bytes(b"fake-raw-bytes")
+
+    class FakeRaw:
+        def extract_thumb(self):
+            raise rawpy.LibRawNoThumbnailError("no thumb")
+
+        def postprocess(self):
+            import numpy as np
+            return np.zeros((3, 5, 3), dtype="uint8")
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *exc_info):
+            return False
+
+    monkeypatch.setattr(rawimage.rawpy, "imread", lambda p: FakeRaw())
+    img = ImmichClient.open_image(path)
+    assert img.size == (5, 3)
+
+
 def test_missing_api_key_raises(tmp_path):
     s = config.Settings(api_key="", immich_url=BASE, cache_dir=tmp_path / "c")
     with pytest.raises(ValueError, match="IMMICH_API_KEY"):
@@ -166,3 +196,88 @@ def test_missing_url_raises(tmp_path):
     s = config.Settings(api_key="k", immich_url="", cache_dir=tmp_path / "c")
     with pytest.raises(ValueError, match="IMMICH_URL"):
         ImmichClient(s, session=StubSession([]))
+
+
+def test_thumbnail_saves_avif_when_content_type_says_so(tmp_path):
+    """When Immich returns image/avif, the cached file gets .avif extension."""
+    session = StubSession([{"assets": {"items": [], "nextPage": None}}])
+    c = _client(tmp_path, session)
+    # Override get to return AVIF content-type
+    class AVIFResponse:
+        content = b"AVIFDATA"
+        headers = {"Content-Type": "image/avif"}
+        def raise_for_status(self):
+            pass
+    session.get = lambda url, timeout=None: AVIFResponse()
+    path = c.thumbnail("abc123")
+    assert path.suffix == ".avif"
+    assert path.name == "abc123.avif"
+
+
+def test_thumbnail_replaces_stale_webp_cache_with_avif(tmp_path):
+    """When Content-Type changes from webp to avif, old cache is cleaned up
+    and the new format is used on re-download."""
+    class AVIFResponse:
+        content = b"AVIFDATA"
+        headers = {"Content-Type": "image/avif"}
+        def raise_for_status(self):
+            pass
+    # Use no_cache so the stale .webp is not returned from cache;
+    # the download will clean it up and save as .avif
+    s = config.Settings(api_key="k", immich_url=BASE, cache_dir=tmp_path / "cache",
+                        use_cache=False)
+    session = StubSession([])
+    session.get = lambda url, timeout=None: AVIFResponse()
+    c = ImmichClient(s, session=session)
+    path = c.thumbnail("abc123")
+    assert path.suffix == ".avif"
+    assert path.read_bytes() == b"AVIFDATA"
+
+
+def test_thumbnail_keeps_webp_when_content_type_is_webp(tmp_path):
+    """Normal case: webp content-type produces .webp file."""
+    session = StubSession([])
+    c = _client(tmp_path, session)
+    path = c.thumbnail("abc123")
+    assert path.suffix == ".webp"
+
+
+def test_thumbnail_cache_is_reused_when_content_type_differs_from_default(tmp_path):
+    """A previously cached .avif thumbnail must be recognized as a cache hit
+    on the next run, even though the guessed default suffix is .webp."""
+    session = StubSession([])
+    calls = []
+    original_get = session.get
+
+    def counting_get(url, timeout=None):
+        calls.append(url)
+        return original_get(url, timeout=timeout)
+
+    session.get = counting_get
+
+    class AVIFResponse:
+        content = b"AVIFDATA"
+        headers = {"Content-Type": "image/avif"}
+        def raise_for_status(self):
+            pass
+
+    session.get = lambda url, timeout=None: (calls.append(url), AVIFResponse())[1]
+    c = _client(tmp_path, session)
+    p1 = c.thumbnail("abc123")
+    p2 = c.thumbnail("abc123")
+    assert p1 == p2 and p1.suffix == ".avif"
+    assert len(calls) == 1, "cached .avif file was not recognized; re-downloaded instead"
+
+
+def test_thumbnail_falls_back_to_suffix_for_unknown_content_type(tmp_path):
+    """Unknown Content-Type falls back to the requested suffix."""
+    class UnknownResponse:
+        content = b"DATA"
+        headers = {"Content-Type": "application/octet-stream"}
+        def raise_for_status(self):
+            pass
+    session = StubSession([])
+    session.get = lambda url, timeout=None: UnknownResponse()
+    c = _client(tmp_path, session)
+    path = c.thumbnail("abc123")
+    assert path.suffix == ".webp"

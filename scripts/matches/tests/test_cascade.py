@@ -95,3 +95,33 @@ def test_ambiguous_pair_records_alternatives():
     d = match_image(recompress(a), _ref(), assets, client, settings)
     assert d.status == "ambiguous"
     assert d.alternatives, "runners-up were not recorded"
+
+
+def test_prefers_the_full_resolution_original_over_a_compressed_duplicate():
+    """A previously-recompressed re-upload of the same photo can score closer
+    to the web query than the true full-resolution original does - the query
+    is itself a lossy downscale, and a duplicate that already went through a
+    similar lossy pipeline lands nearer it than an untouched original does.
+    See the seekarkreuz/schneefernerkopf match reports, where the algorithm
+    picked a 1024x766 WhatsApp re-export over the 4640x3472 camera original.
+
+    Once a much larger candidate is on the shortlist, stage 2 must defer to
+    stage 3 rather than shortcut on thumbnail scores alone."""
+    from PIL import Image as PILImage
+
+    a = synthetic_image(1, size=(1200, 900))
+    query = recompress(a)                             # the web-published copy
+    compressed_dup = recompress(a)                     # a second lossy re-export
+    large_original = a.resize((4800, 3600), PILImage.Resampling.LANCZOS)
+    client = FakeClient({"small": compressed_dup, "large": large_original})
+    small_asset = Asset("small", "/lib/small.jpg", "small.jpg",
+                         "2024-08-31T09:00:00Z", "2024-08-31T11:00:00Z",
+                         compressed_dup.width, compressed_dup.height, None, None)
+    large_asset = Asset("large", "/lib/large.jpg", "large.jpg",
+                         "2024-08-31T09:00:00Z", "2024-08-31T11:00:00Z",
+                         large_original.width, large_original.height, None, None)
+    assets = [small_asset, large_asset]                # small listed first
+    d = match_image(query, _ref(), assets, client, config.Settings())
+    assert d.status == "matched"
+    assert d.best.asset.id == "large"
+    assert client.preview_calls, "stage 2 shortcut past the larger candidate"

@@ -72,6 +72,27 @@ class Candidate:
     residual: "sig.ResidualScore | None" = None
 
 
+def _area(asset: Asset) -> int:
+    return asset.width * asset.height
+
+
+def _prefer_original(pool: list[Candidate], best: Candidate, accept: float,
+                      distance) -> Candidate:
+    """Among candidates that independently clear `accept`, take the
+    highest-resolution asset rather than the merely closest-scoring one.
+
+    A previously-recompressed re-upload of the same photo can score a hair
+    closer to a recompressed web query than the true full-resolution
+    original does. Once a candidate is good enough to count as "the same
+    photo" on its own, resolution should decide, not a fractional distance
+    edge.
+    """
+    good = [c for c in pool if distance(c) < accept]
+    if len(good) <= 1:
+        return best
+    return max(good, key=lambda c: _area(c.asset))
+
+
 @dataclass
 class Decision:
     ref: MediaRef
@@ -157,12 +178,22 @@ def match_image(
     best = shortlist[0]
     runner = shortlist[1] if len(shortlist) > 1 else None
     margin = (runner.bm_distance / best.bm_distance) if runner and best.bm_distance > 0 else float("inf")
-    if best.bm_distance < settings.bm_accept and margin >= settings.bm_margin:
+    # A much larger candidate on the shortlist might be the true original of
+    # a compressed duplicate that happens to score closer on raw thumbnail
+    # colour - defer to stage 3's exposure-normalised comparison instead of
+    # shortcutting past it. See `_prefer_original`.
+    outliers = [c for c in shortlist if _area(c.asset) >= _area(best.asset) * settings.original_area_factor]
+    if best.bm_distance < settings.bm_accept and margin >= settings.bm_margin and not outliers:
         return Decision(ref, "matched", "high", "blockmean", best,
                         shortlist[1:3])
 
     # Stage 3 - previews only for what stage 2 could not settle.
     finalists = shortlist[: max(settings.residual_top_k, 1)]
+    finalist_ids = {c.asset.id for c in finalists}
+    for c in outliers:
+        if c.asset.id not in finalist_ids:
+            finalists.append(c)
+            finalist_ids.add(c.asset.id)
     client.prefetch([c.asset.id for c in finalists], kind="preview")
     for cand in finalists:
         try:
@@ -186,7 +217,10 @@ def match_image(
         return Decision(ref, "unmatched", None, None, None, resolved[:3])
     if ratio < settings.mae_margin:
         return Decision(ref, "ambiguous", "low", "residual", best, resolved[1:3])
-    return Decision(ref, "matched", "medium", "residual", best, resolved[1:3])
+    chosen = _prefer_original(resolved, best, settings.mae_accept,
+                              lambda c: c.residual.mae)
+    alternatives = [c for c in resolved if c.asset.id != chosen.asset.id][:2]
+    return Decision(ref, "matched", "medium", "residual", chosen, alternatives)
 
 
 def choose_album(
@@ -246,7 +280,7 @@ def match_post(
     explicit_albums: list[str] | None = None,
 ) -> PostResult:
     """Match every media reference in one post."""
-    from .markdown import find_media_refs, parse_capture_date, post_slug
+    from .markdown import find_media_refs, parse_capture_date, post_slug, _on_disk
 
     refs = find_media_refs(post_path, settings.static_root)
     slug = post_slug(post_path)
@@ -261,8 +295,9 @@ def match_post(
         if ref.kind != "image" or not ref.exists:
             decisions.append(decide_non_image(ref))
             continue
+        local_path = _on_disk(ref.local_path)
         try:
-            query = Image.open(ref.local_path)
+            query = Image.open(local_path)
             query.load()
         except Exception:
             decisions.append(Decision(ref, "missing_local", None, None, None, []))

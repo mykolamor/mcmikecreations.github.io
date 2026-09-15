@@ -80,9 +80,29 @@ DEFAULT_RESIDUAL_BLUR = 3.0
 DEFAULT_MAE_ACCEPT = 2.5
 DEFAULT_MAE_MARGIN = 1.5
 
+# --- Preferring the higher-resolution original -------------------------------
+# A photo that was re-exported and re-uploaded (a WhatsApp/Messenger share, a
+# social re-post) can score a hair closer to a recompressed web query than
+# the true full-resolution original does: block-mean is raw RGB with no
+# exposure normalisation, and the query is itself a lossy downscale, so a
+# duplicate that already went through a similar lossy pipeline lands nearer
+# it than an untouched original does. Once another shortlisted candidate is
+# at least this many times larger in pixel area, stage 2 defers to stage 3
+# rather than shortcut past it, and stage 3 prefers the largest candidate
+# among everything that independently clears `mae_accept` rather than the
+# merely closest-scoring one. Real cases: a 1024x766 WhatsApp re-export
+# (mae 0.15) narrowly beating a 4640x3472 camera original (mae 0.32, still
+# well inside the accept ceiling) despite being visibly worse quality.
+DEFAULT_ORIGINAL_AREA_FACTOR = 1.5
+
 # --- Media classification ---------------------------------------------------
 VIDEO_EXTENSIONS = frozenset({".mp4", ".mov", ".webm", ".m4v"})
-IMAGE_EXTENSIONS = frozenset({".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif"})
+IMAGE_EXTENSIONS = frozenset({".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif", ".avif"})
+# Camera raw formats Immich may store as an asset's `original`. Pillow can't
+# decode these; rawpy (LibRaw) is used instead - see `rawimage.open_image`.
+RAW_EXTENSIONS = frozenset({
+    ".dng", ".cr2", ".cr3", ".nef", ".arw", ".raf", ".orf", ".rw2", ".pef", ".srw", ".raw",
+})
 # Embedded with image syntax - ![alt](https://www.youtube.com/watch?v=...) - so
 # they are references like any other, but they have no local file and nothing
 # to match against Immich. They get their own kind and status rather than being
@@ -124,6 +144,7 @@ class Settings:
     residual_top_k: int = DEFAULT_RESIDUAL_TOP_K
     mae_accept: float = DEFAULT_MAE_ACCEPT
     mae_margin: float = DEFAULT_MAE_MARGIN
+    original_area_factor: float = DEFAULT_ORIGINAL_AREA_FACTOR
     sift_max_edge: int = DEFAULT_SIFT_MAX_EDGE
     residual_blur: float = DEFAULT_RESIDUAL_BLUR
     album_coverage_min: float = DEFAULT_ALBUM_COVERAGE_MIN
