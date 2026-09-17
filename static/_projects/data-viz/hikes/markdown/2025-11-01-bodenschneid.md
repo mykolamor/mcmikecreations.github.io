@@ -3,6 +3,8 @@ title: DAAD Trip to Bodenschneid
 description: A medium difficulty muddy walk to the peak and down to Bodenschneidhaus.
 tags:
   - DAAD FK
+people:
+  - Annette Schörner
 ascent: 510
 descent: 830
 images:

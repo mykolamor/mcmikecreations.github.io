@@ -5,6 +5,7 @@ tags:
   - DAAD FK
 people:
   - Mikuláš Netík
+  - Dennis Makhandia
 ascent: 1600
 descent: 1600
 ---

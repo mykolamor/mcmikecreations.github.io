@@ -86,8 +86,13 @@
 			{ "network": "Instagram", "url": "https://www.instagram.com/vitez693/" }
 		]
 	},
+	"Dennis Makhandia": {
+		"links": [
+			{ "network": "Instagram", "url": "https://www.instagram.com/d_makhandia/" },
+			{ "network": "LinkedIn", "url": "https://www.linkedin.com/in/dennis-makhandia/" }
+		]
+	},
 	"Dmytro Servetnyk": {},
 	"Natalia Kushch": {},
-	"Dennis Makhandia": {},
 	"Liubov Bilinska": {}
 }

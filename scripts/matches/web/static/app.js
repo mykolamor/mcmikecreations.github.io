@@ -1,7 +1,7 @@
 "use strict";
 
 const $ = (id) => document.getElementById(id);
-const state = { hikes: [], post: null, detail: null, item: null, assets: [] };
+const state = { hikes: [], post: null, detail: null, item: null, assets: [], immichUrl: "" };
 
 async function api(path, options) {
   const res = await fetch(path, {
@@ -123,6 +123,7 @@ function selectItem(m, keepMessage) {
     [m.web_path, m.local_size != null && humanSize(m.local_size)]
       .filter(Boolean).join(" · ");
 
+  $("remote-open").disabled = !m.match;
   if (!m.match) {
     showFrame("remote", null, m.in_report ? "no Immich match recorded"
                                           : "not in the JSON yet — use Add media");
@@ -224,6 +225,7 @@ async function waitForJob(job, label) {
 
 async function openSettings() {
   const s = await api("/api/settings");
+  state.immichUrl = s.immich_url || "";
   $("set-url").value = s.immich_url || "";
   $("set-key").value = "";
   $("set-key").placeholder = s.has_key
@@ -347,6 +349,10 @@ $("remote-apply").onclick = applyRemote;
 $("local-path").onkeydown = (e) => { if (e.key === "Enter") { e.preventDefault(); applyLocal(); } };
 $("remote-path").onkeydown = (e) => { if (e.key === "Enter") { e.preventDefault(); applyRemote(); } };
 $("pick-btn").onclick = () => openPicker($("remote-path"));
+$("remote-open").onclick = () => {
+  if (!state.item?.match || !state.immichUrl) return;
+  window.open(`${state.immichUrl}/photos/${state.item.match.asset_id}`, "_blank", "noopener");
+};
 $("add-pick").onclick = () => openPicker($("add-asset"), suggestOutName);
 $("add-asset").onchange = suggestOutName;
 $("settings-btn").onclick = openSettings;
@@ -363,6 +369,7 @@ $("settings-dlg").addEventListener("close", async () => {
       remember: $("set-remember").checked,
       keep: !$("set-key").value.trim(),
     });
+    state.immichUrl = $("set-url").value.trim();
     await checkConnection();
     msg("Settings saved");
   } catch (e) { msg(e.message, true); }
@@ -390,6 +397,7 @@ $("open-site").setAttribute("aria-disabled", "true");
 
 (async function boot() {
   await loadHikes();
+  state.immichUrl = (await api("/api/settings")).immich_url || "";
   await checkConnection();
   msg(`${state.hikes.length} hikes`);
 })();

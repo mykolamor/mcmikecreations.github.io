@@ -5,6 +5,7 @@ tags:
   - DAAD FK
 people:
   - Mikuláš Netík
+  - Viktor Lebruška
 ascent: 400
 descent: 680
 ---

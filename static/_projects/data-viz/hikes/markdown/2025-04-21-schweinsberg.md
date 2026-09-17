@@ -4,6 +4,7 @@ description: Annette organized a group hike with Easter egg hunting for DAAD sch
 tags:
   - DAAD FK
 people:
+  - Viktor Lebruška
   - Annette Schörner
 ascent: 750
 descent: 670

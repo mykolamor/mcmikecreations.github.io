@@ -1,0 +1,279 @@
+{
+  "name": "Annapurna Base Camp Day 4",
+  "description": "Hike from Annapurna Base Camp to Chhomrong.",
+  "image": "/images/projects/data-viz/hikes/annapurna_bc_4.jpg",
+  "origin": {
+    "lat": 28.480310242675063,
+    "lon": 83.86276245117189
+  },
+  "height": 1024,
+  "checkpoints": [
+    [83.8178193, 28.4189768],
+    [83.8887343, 28.4846128]
+  ],
+  "nodes": [
+    {
+      "id": 727090665,
+      "lat": 28.5183959,
+      "lon": 83.8063433,
+      "tags": {
+        "name": "Annapurna South",
+        "ele": "7219",
+        "natural": "peak",
+        "wikidata": "Q20190791",
+        "visited": "no"
+      }
+    },
+    {
+      "id": 727108156,
+      "lat": 28.4979796,
+      "lon": 83.9458756,
+      "tags": {
+        "name": "Machapuchare",
+        "ele": "6993",
+        "natural": "peak",
+        "prominence": "1293",
+        "wikidata": "Q1051394",
+        "wikipedia": "en:Machapuchare",
+        "visited": "no"
+      }
+    },
+    {
+      "id": 2935182022,
+      "lat": 28.6056550,
+      "lon": 83.9635144,
+      "tags": {
+        "name": "Gangapurna",
+        "ele": "7455",
+        "natural": "peak",
+        "wikidata": "Q1133863",
+        "wikipedia": "de:Gangapurna",
+        "visited": "no"
+      }
+    },
+    {
+      "id": 2935181986,
+      "lat": 28.5853509,
+      "lon": 83.9891091,
+      "tags": {
+        "name": "Annapurna III",
+        "ele": "7555",
+        "natural": "peak",
+        "wikidata": "Q564576",
+        "prominence": "725",
+        "visited": "no"
+      }
+    },
+    {
+      "id": 289923681,
+      "lat": 28.5958063,
+      "lon": 83.8199199,
+      "tags": {
+        "name": "Annapurna I",
+        "ele": "8091",
+        "natural": "peak",
+        "wikidata": "Q159621",
+        "wikipedia": "en:Annapurna",
+        "prominence": "2984",
+        "visited": "no"
+      }
+    },
+    {
+      "id": 2883814653,
+      "lat": 28.5783028,
+      "lon": 83.8007250,
+      "tags": {
+        "name": "Baraha Shikhar (Annapurna Fang Peak)",
+        "alt_name": "Bharha Chuli",
+        "ele": "7647",
+        "natural": "peak",
+        "visited": "no"
+      }
+    },
+    {
+      "id": 2883814670,
+      "lat": 28.6073547,
+      "lon": 83.8864370,
+      "tags": {
+        "name": "Tarke Kang",
+        "alt_name": "Glacier Dome",
+        "ele": "7193",
+        "natural": "peak",
+        "wikidata": "Q31652628",
+        "visited": "no"
+      }
+    },
+    {
+      "id": 219995240,
+      "lat": 28.4189768,
+      "lon": 83.8178193,
+      "tags": {
+        "name": "Lucky Guest House and Restaurant",
+        "building": "yes",
+        "tourism": "hotel",
+        "phone": "+9779746068008, +9779846054685"
+      }
+    },
+    {
+      "id": 6965620685,
+      "lat": 28.4263260,
+      "lon": 83.8193496,
+      "tags": {
+        "shop": "convenience"
+      }
+    },
+    {
+      "id": 541645987,
+      "lat": 28.4220084,
+      "lon": 83.8170466,
+      "tags": {
+        "name": "Gumba",
+        "building": "yes",
+        "amenity": "place_of_worship"
+      }
+    },
+    {
+      "id": 1736683294,
+      "lat": 28.4283500,
+      "lon": 83.8260670,
+      "tags": {
+        "name": "Green View",
+        "tourism": "hotel"
+      }
+    },
+    {
+      "id": 1226405162,
+      "lat": 28.4287334,
+      "lon": 83.8304150,
+      "tags": {
+        "name": "Namaste Buddha Lodge",
+        "building": "yes",
+        "tourism": "alpine_hut"
+      }
+    },
+    {
+      "id": 1736669828,
+      "lat": 28.4356548,
+      "lon": 83.8384571,
+      "tags": {
+        "name": "Sinuwa Guesthouse",
+        "tourism": "hotel"
+      }
+    },
+    {
+      "id": 12254467701,
+      "lat": 28.4568200,
+      "lon": 83.8566859,
+      "tags": {
+        "name": "Bambou Guest House & Restaurant",
+        "tourism": "hotel"
+      }
+    },
+    {
+      "id": 13700242205,
+      "lat": 28.4634920,
+      "lon": 83.8610123,
+      "tags": {
+        "name": "Nice bathing",
+        "waterway": "waterfall"
+      }
+    },
+    {
+      "id": 350865285,
+      "lat": 28.4698117,
+      "lon": 83.8697313,
+      "tags": {
+        "name": "Dovan Guest House",
+        "building": "yes",
+        "tourism": "guest_house"
+      }
+    },
+    {
+      "id": 13700242706,
+      "lat": 28.4734553,
+      "lon": 83.8748305,
+      "tags": {
+        "name": "Greenland guest house and restaurant",
+        "tourism": "alpine_hut"
+      }
+    },
+    {
+      "id": 1237496868,
+      "lat": 28.4788404,
+      "lon": 83.8850332,
+      "tags": {
+        "name": "Pojenhyam Baraha Than Temple",
+        "alt_name": "Shakti Pitha",
+        "amenity": "place_of_worship",
+        "building": "temple",
+        "religion": "buddhist"
+      }
+    },
+    {
+      "id": 6855810185,
+      "lat": 28.4787550,
+      "lon": 83.8858165,
+      "tags": {
+        "name": "108 Chahara",
+        "alt_name": "१०८ छहरा",
+        "waterway": "waterfall"
+      }
+    },
+    {
+      "id": 6966299856,
+      "lat": 28.4846128,
+      "lon": 83.8887343,
+      "tags": {
+        "name": "Himalaya Cafe",
+        "amenity": "cafe"
+      }
+    },
+    {
+      "id": 1382932111,
+      "lat": 28.4931070,
+      "lon": 83.8927034,
+      "tags": {
+        "name": "Hinku Cave",
+        "natural": "cave_entrance",
+        "tourism": "yes"
+      }
+    },
+    {
+      "id": 4193344289,
+      "lat": 28.4983007,
+      "lon": 83.8991697,
+      "tags": {
+        "name": "Deurali Guest House",
+        "tourism": "guest_house"
+      }
+    },
+    {
+      "id": 12347743970,
+      "lat": 28.5086017,
+      "lon": 83.9048181,
+      "tags": {
+        "name": "The Rodolfo Viewpoint",
+        "tourism": "viewpoint"
+      }
+    },
+    {
+      "id": 4193344090,
+      "lat": 28.5267300,
+      "lon": 83.9075282,
+      "tags": {
+        "name": "Shankar Guest House and Restaurant",
+        "tourism": "guest_house"
+      }
+    },
+    {
+      "id": 4193344490,
+      "lat": 28.5304557,
+      "lon": 83.8782661,
+      "tags": {
+        "name": "Annapurna Sanctuary Lodge & Restaurant",
+        "tourism": "guest_house",
+        "contact:phone": "+977994610000, +977061696988"
+      }
+    }
+  ]
+}

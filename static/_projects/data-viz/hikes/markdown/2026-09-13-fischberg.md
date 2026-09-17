@@ -34,12 +34,12 @@ one of the south Bavarian lakes.
 
 I was happy to do that, and we agreed on a round tour around Walchensee,
 starting from the small café near the bottom of [Jochberg (1565 m)](/hikes/2025-12-14-lainbachfall_jochberg/).
-At firstб I was thinking of reversing the route and ending the hike at the
+At first, I was thinking of reversing the route and ending the hike at the
 café, but David suggested doing it clockwise, since that café wasn't that great
 from his memory.
 
 We started off nice and slow, with clouds covering the sun and a light breeze.
-It was hard to decide if we should weare jackets or not, but we decided to keep
+It was hard to decide if we should wear jackets or not, but we decided to keep
 them on for now. The boat rental seemed to be closed already for the season,
 although I could see some people in the distance swimming in the water, mostly
 locals.
