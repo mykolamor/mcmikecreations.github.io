@@ -8,6 +8,12 @@ people:
   - Annette Schörner
 ascent: 750
 descent: 670
+images:
+  2025-04-21-00.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAAAwBQCdASoYABIAPtFepE6oJSMiKAqpABoJQBifGggrAJOd1jAUWHAERqGp+puOOH7hwAD+2Bpa7vqxYJC2NiIqhq5q7+J8hyVOmoNR6P+8mTcdL7zBugItZxDXRl7sNQDUvJftachYYqYH6XI0ovhl1rIdZb4vHLF7Y8ChSUcO1J6yxffXWdjsEehya2jG2XPdlA+LKV+d34RI93o2gCRqhZsDwtThyKr1d7heI5neH/uly1QGo1bMABKoAA=='}
+  2025-04-21-01.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAAAwBQCdASoYABIAPtFaqE4oJSQiKAqpABoJYwCC5QRfQ8Sh+MpZzAwzTMZTfKCysFWN+AD+6rdW0XCFTrClnZDmsid7sUWUJdAqESqpZ2uTJySQoJkb/Zn+m+7Zdk+NP1+e5rYQ7ECaRi2/RXnwg3Ov6Sj6W0+gqgnmVU1VcelfQ0xZSYPThE3O4noEvP4PsSzdLTk1vcN6q9f61WXfiONjFehmmV0uCOAHAAAA'}
+  2025-04-21-02.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAAAQBQCdASoYABIAPtFUoUwoJKMiMBgMAQAaCUAW2QHoa/VqPn3VeOScwlHr+zgfXgVIAP7WFgV6KkNyd7wwQdPBT3TTe7XH2nNV2Q9ddopO4x58y1SlFXuaUeUp5iBgHLIK3K+aoDxCscmwHEXfFoW4QtiSURPRJtv6ZshracB9OrUwasLv3BuC1a3y+K8AF0c9XwaHVR3fban/2LMhoBSNMcj65d+DZTHBxyOv5QMkDAAA'}
+  2025-04-21-03.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRu4AAABXRUJQVlA4IOIAAACQBQCdASoYABIAPtFgqU+oJSOiKAgBABoJQBiiKCpMQIF0si5znoK9J7ML63xxT1jvS8aBkADMJZLV5tz7S8LvfeDtsEmoPWw74uKXYplfuS+WVUhmSMmCtp8wo9pJmDcGWMLcp6L/ity9symNTANumtpj67H0bjZKve2t3QWafmEMnmBc6c5g6Q5/ImHYd8ZnSdXBZNE2b8vz7WqfPmokSafB4pj10x1Qs97V0D3fImdfhGpvKrRlsEFXLfkh8TzNy5XQUmm0prY5+Oi3vcCC4oMpEJvI4AO/A7B3mZQw9YAA'}
+  2025-04-21-04.jpg: {w: 1600, h: 1200, blur: 'data:image/webp;base64,UklGRs4AAABXRUJQVlA4IMIAAAAQBQCdASoYABIAPtFgqU+oJSOiKAgBABoJZQC4MYv+a25IqIdNOX64GROgL0sN6g4oAP7q10TpADfM7e1jeo9xzyy9mFPNIIKICaf9s2nsXXBlUavuvkeVUhGqaAf1WOb8eEA3VcdysFvbN2FtJ2SsTe4yjrhn2FxHmxaag4z5esjF6UyaY3P8w3M5XRad7BrDaiL5cZ4Q/yb0SzgzU53jsRbjM3xCwQW8vov0X6Xs4kflmralJSLwYZYeL+Wtvq3AAA=='}
 ---
 When we started the route together with Annette and DAAD scholars she assembled,
 I didn't know where exactly we were going, only that it's close to Bayrischzell

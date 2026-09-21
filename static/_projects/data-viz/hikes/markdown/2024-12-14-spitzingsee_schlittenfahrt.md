@@ -8,6 +8,16 @@ people:
   - Viktor Lebruška
 ascent: 400
 descent: 680
+images:
+  2024-12-14-00.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAABQBQCdASoYABIAPtFcpU0oJSOiMBgIAQAaCWcAzjgQ7U6UKNmnPOnY6/N1Uo3yaWkdrmQA/tNHaVh3rmGTDexeD+x1luco/yIOZFu7Dg/E8wNJQNz8J4sG39c0gNw6/zUWeKsFd4/uc+WnOqHm0NliMCTDbRmudNRDbonVYT5RiH/x28MX36u1A4iegnwPiePHgAAA'}
+  2024-12-14-01.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRrwAAABXRUJQVlA4ILAAAACQBQCdASoYABIAPtFUokuoJKMhsBgMAQAaCWkAv+8sE6KGAXgJvxiDRHB423dny+zovcYtwAD+taW2o+pzo3NDTYf2oY7uVvRS4qqeOmdzu/Hl8mH37zSUvIr/8dLEqh6wnY5fmEAK9z6c6fZoHt5MqkGQ6PEHz5Sl2qRCFyWMZJ+7nnIhhIkdCwrm7UO1VhKy2FGbyM+x6J/mrJbMs13s6k8nG7yrzhuki9kJ0dgAAA=='}
+  2024-12-14-02.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAABwBACdASoYABIAPtFUpk2oJCOjMBgIAQAaCWcAzjgQ7iZ6SfpHPd2+f1XYAAD+w0isVt0K+bEjQr/M3SUxdXHWdJz4TTO7kXhbcwHdBHVYDR6Gv8T7BzYk5WVlMXlDKdgfvnw6Bc/qrmLdmqlcob38e69US/Ga38qx4ZSP2oigAA=='}
+  2024-12-14-03.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAADQBACdASoYABIAPtFgqE+oJSOiKAgBABoJZwDHMAsj/W5WKuh05BC/Daz/pHI9gADhDTw8ZGP860+Z5SDZ4Ev5fuXuyZ0eCs06c6zRhdFioMRx1TD2tJR5kSyOLzlydSYdWwnAHWOjU/hM9f0o/GokolOBz1jsfgSMAUPjJFrEbbUNqrFu/af3W919iRNAySWTRjMzrp/rBEMN14qJw4AA'}
+  2024-12-14-04.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAABwBACdASoYABIAPtFapU0oJSOiMBgIAQAaCWcAzFgQ6W2QCzDB8hgvth99AAD+wzxrolPmwX0dr4FQLQrUaetcwtyZjwTKJZnSOHr5gXVE1UYK8os298v2u4y4zRDlfMfhZwOz3HYd2vwWx3cbTAZZVnlT43L7WDS+2rkG92baSjw3NY7Q8AAA'}
+  2024-12-14-08.jpg: {w: 1200, h: 1600, blur: 'data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAABwBACdASoSABgAPtFapE0oJSMiKA1RABoJZwDImA9jWre/0A0/iKmKPceQAAD+6Zmv6H4buPVIHDoCJ6h1HVOEGnqQJfFGp4DB8l9v8slOlIYdSs5D3UQcQbISYc48QGYLumcr/vnq+aWpBA08WenTUxVugUaEapuQ9Bgn0Id7mw1/sv2BefWHT7ODM8l8zXRGX0chWhdwE0RUEsycAA=='}
+  2024-12-14-05.jpg: {w: 3472, h: 4640, blur: 'data:image/webp;base64,UklGRvoAAABXRUJQVlA4IO4AAACwBQCdASoSABgAPtFgqU+oJSOiKAgBABoJZwAIFjidb5pXPVSFyVYhwh7/8v60+hMZCQvlrwAA+Nv0/gmNfcvI2lp5vUvbG80+AJGD/H4clbmOLgCiXd1p2SMGe9jlXTdvh5CiIrmTZUa/MdmGtxdtiol6CkCBdkAz3Eotdbyj+G3IFdsbiGnhOvs4Xy8zeoEIHcEbgIuV2ADxAhdxISU15h6NamozEqh6dWX8QHwC69Vp0uLzVH8+66bIQPVzAZYffOFgQ+X72POzHqv+LjJzkGJJaC4FE5YTmnN9u+xU8TQ3aSuPYpdO879sWAAA'}
+  2024-12-14-06.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAADQBACdASoYABIAPtFepU6oJSMiKAqpABoJQBllsYYJ+3Lb11k2asxsTTcWmcBUlgD+gWAPOrjafZSE19/KA7mIb68elquKV6a9vyZRt2x3rbwP18no5KplZr0QISNliutKVbmeOqXXfFwtNFXb7ra/gwRk19JBTfxO1xjcCbijzSFUaO65ipuiv+9F8if8NuQglfm4yNkPhnIUOnIvox7t9DrdEbwPTgAAAA=='}
+  2024-12-14-07.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRuQAAABXRUJQVlA4INgAAABwBQCdASoYABIAPtFep0+oJKMiKAgBABoJZwC/OYvCc3Ipwe48QnONODUryWF57tnZ+obAAPljB//YeNsuxmyP+gBv66aNCrcJm8mqM7E4LRfVBjBsW09hzuQcq+fInYb++tH7zKAJx2g6bqnoTO32SSwrrYo/c2S+RUDO5dQwlbEUe+29rY6QnSqn+cQi6/6jMR4OS/YhZCvympkLPlgPCGpKA3662GHnR1cufeP4+fjGIzPDflQwvVtO+m/ejnoAYwsHp31Q3G0zlm1Ljov+llvaiZYsAAA='}
 ---
 In the middle of the week, Annette posted an invite to a sledding trip at
 Spitzingsee. I haven't done any sledding in years, so I was excited to join.

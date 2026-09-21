@@ -5,6 +5,12 @@ tags:
   - DAAD FK
 ascent: 760
 descent: 800
+images:
+  2025-04-27-00.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRuQAAABXRUJQVlA4INgAAABwBQCdASoYABIAPtFcpk6oJSMiKAqpABoJZQCzgYw6ahR7GS91X1CUeQKq1wIgqudh9suAAPp2oFUpEeVA8DziCv85Iew+nunEZ+u22LWgatInHx5/SM7Wo6sTccdjov/JDqmO1h1oOdz3+mLsfdBOqD7vr5i3qebUPr+mPKy9RxF9ch/8bSPhD0ErnR1+0WS1iWwmuaH1/q1LZ93WZ68szJxbTfACmWcVWI9V2fQjXmpy6DLmyjvId1/Ki0RumkpH+763W65KPyL78NWpmZI91/ZXPt5AAAA='}
+  2025-04-27-01.jpg: {w: 3472, h: 4640, blur: 'data:image/webp;base64,UklGRtYAAABXRUJQVlA4IMoAAADQBQCdASoSABgAPtFepk4oJSMiKAqpABoJZgCpI3WroAr8M30tFVlV6LTKHj1qzNJXtPq1eiqAAM424rgEv7DI3V5Mini2dIOAgTloUcTpVOFmM/sOxslgdOxhC+YRG2uXwL9XIdqFQTPSoUWmG+UDZX7l1unQcqhrcrelqZNTnlxIt7t6IUT9qQlUIqu9Yf4i8vB3NoKBGpUO/gRb4wuQ4VZ3QCHmVvUyuO6Qn0uAqLt8rhVgq3v/CImm8GPv8Bb2B1Jia+4foAAA'}
+  2025-04-27-02.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAABwBQCdASoYABIAPtFgqU+oJSOiKAgBABoJQBYj2U9ABJoVCUSeKEwdctMxbUZ7+JjepP/gAP6yEbPf6x07HMGIibyM4udfDjdpnSBt5oVdA74REgvizm7c0242aeSEukTwpjMjhV/XZVo4Nr2ZhOXftj08U0fyVFv6CZJ6puAfDX9j5L1ZWBIx768wCTg03phA7W6VfFCyGOU1EDm9gp7CWdJT+qm0mqBIrZKHrhRnTQFLCLGySrBdxeXgQAAA'}
+  2025-04-27-03.jpg: {w: 3472, h: 4640, blur: 'data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAQBQCdASoSABgAPs1YoUunpSMhsBgMAPAZiWUAwzQ0b9YBSOge0A/88NIy6IKVXmwAAP7vySgI7RMHmaJspa8lkM0uMWm+sHl4phhOz0x4VaqtUhiRVOg+YIOSmzx2chjerJW1dZquSYFq/EPqSm8Ssv+dfbrYh8SFeBnmFEbLrEnKgAA='}
+  2025-04-27-04.jpg: {w: 1944, h: 2592, blur: 'data:image/webp;base64,UklGRgABAABXRUJQVlA4IPQAAADwBQCdASoSABgAPtFepk6oJSMiKAqpABoJbACdMuN/UdBYbFHF7sCUAtMriJt3eX8jCHXl2t5asAD2Xt81JUjioOTyywbrpQpAb8awXSNx4hpWQ/ZVuaEWtUJ1u/YyUxZ/Cjev/viBAtAVIfS86LHC9jwaOIGf/XSaJIgh/EIUM4V5P88h0sXuwvII+rbWzSVHMUgDWxNzO7Jg0cts7qF/hASI28zeQGHXDSKiW2m/+IaXMeairveuqZ2/xXPqINNJmbgnKV5HAQYf10VoVO8u/wSOsQajzbLmjDJak7kVhC9N9GwiMrPxiXe7AcZinsG/7gAA'}
 ---
 I organized this hike with the DAAD scholars and David as a way to ease more
 people into hiking, as many participants from before have finished their
