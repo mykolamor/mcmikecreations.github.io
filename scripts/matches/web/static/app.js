@@ -53,6 +53,7 @@ async function loadHikes() {
 }
 
 async function selectHike(name) {
+  if (name !== state.post) clearItem();
   state.post = name;
   renderHikes();
   msg("Loading…");
@@ -111,6 +112,7 @@ function selectItem(m, keepMessage) {
   }
   $("local-path").value = m.web_path;
   $("remote-path").value = m.matched_name || "";
+  $("remove-btn").disabled = false;
 
   if (m.kind === "youtube") {
     showFrame("local", null, "YouTube embed — nothing stored locally");
@@ -141,6 +143,21 @@ function selectItem(m, keepMessage) {
         .filter(Boolean).join(" · ");
   }
   if (!keepMessage) msg("");
+}
+
+function clearItem() {
+  state.item = null;
+  $("remove-btn").disabled = true;
+  for (const id of ["local-path", "local-apply", "remote-path", "remote-apply",
+                    "pick-btn", "remote-open"]) $(id).disabled = true;
+  $("local-path").value = "";
+  $("remote-path").value = "";
+  const badge = $("entry-status");
+  badge.textContent = "";
+  badge.style.color = badge.style.borderColor = "";
+  showFrame("local", null, "Select a media item");
+  showFrame("remote", null, "");
+  $("local-caption").textContent = $("remote-caption").textContent = "";
 }
 
 function humanSize(bytes) {
@@ -205,6 +222,30 @@ async function applyRemote() {
     renderDetail();
     await loadHikes();
     msg($("remote-path").value ? "Match saved" : "Match cleared");
+  } catch (e) { msg(e.message, true); }
+}
+
+async function removeItem() {
+  const m = state.item;
+  if (!m) return;
+  const what = [
+    m.in_report && "its entry in the JSON",
+    "its reference and front matter in the post",
+    m.kind !== "youtube" && m.has_local && "its local files",
+  ].filter(Boolean).join(", ");
+  if (!confirm(`Remove ${m.label}?\n\nThis deletes ${what}.`)) return;
+  try {
+    const r = await post("/api/entry/remove", { post: state.post, web_path: m.web_path });
+    clearItem();
+    state.detail = r.detail;
+    renderDetail();
+    await loadHikes();
+    const x = r.removed;
+    msg(`Removed ${m.label}: ` + [
+      x.in_report && "JSON entry",
+      x.md_lines && `${x.md_lines} line(s) in the post`,
+      x.files.length && `${x.files.length} file(s)`,
+    ].filter(Boolean).join(", "));
   } catch (e) { msg(e.message, true); }
 }
 
@@ -358,6 +399,7 @@ $("add-asset").onchange = suggestOutName;
 $("settings-btn").onclick = openSettings;
 $("add-btn").onclick = () => { syncAddDialog(); $("add-dlg").showModal(); };
 $("rerun-btn").onclick = rerun;
+$("remove-btn").onclick = removeItem;
 for (const r of document.querySelectorAll('input[name="mode"]')) r.onchange = syncAddDialog;
 
 $("settings-dlg").addEventListener("close", async () => {

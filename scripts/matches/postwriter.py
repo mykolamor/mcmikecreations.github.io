@@ -67,3 +67,46 @@ def upsert_image_front_matter(post_path: Path, filename: str, meta: dict) -> Non
         data["images"] = images_map
     images_map[filename] = _image_entry(meta)
     _dump_front_matter(post_path, data, body)
+
+
+def _is_ref_line(line: str, web_path: str) -> bool:
+    """True for a line holding just the `![alt](web_path)` reference, with or
+    without a `"title"`. Every media reference in this corpus sits on a line
+    of its own (see `markdown.find_media_refs`)."""
+    s = line.strip()
+    return s.startswith("![") and (
+        s.endswith(f"]({web_path})") or f"]({web_path} \"" in s
+    )
+
+
+def remove_media_from_post(post_path: Path, web_path: str) -> int:
+    """Drop every line referencing `web_path` from the post body, and that
+    file's entry from front matter's `images` map. Returns how many body
+    lines were removed.
+
+    A reference that stood between two blank lines takes one of them with it,
+    so removing a lone image doesn't leave a double gap in the text.
+    """
+    data, body = _load_front_matter(post_path)
+    lines = body.split("\n")
+    kept: list[str] = []
+    removed = 0
+    for i, line in enumerate(lines):
+        if not _is_ref_line(line, web_path):
+            kept.append(line)
+            continue
+        removed += 1
+        nxt = lines[i + 1] if i + 1 < len(lines) else ""
+        if kept and not kept[-1].strip() and not nxt.strip():
+            kept.pop()
+
+    images_map = data.get("images")
+    filename = web_path.rsplit("/", 1)[-1]
+    if images_map is not None and filename in images_map:
+        del images_map[filename]
+        if not images_map:
+            del data["images"]
+    elif not removed:
+        return 0  # nothing to change: leave the file byte-for-byte alone
+    _dump_front_matter(post_path, data, "\n".join(kept))
+    return removed

@@ -310,3 +310,27 @@ def test_settings_report_url_presence(app):
     payload = api.get_settings(app)
     assert payload["has_url"] is True
     assert payload["immich_url"] == "https://immich.example"   # trailing slash trimmed
+
+
+def test_remove_entry_clears_report_post_and_files(app, tmp_path):
+    web = web_path_for("demo", "2024-08-31-00.jpg")
+    stories = tmp_path / "static/images/projects/data-viz/hikes/stories/demo"
+    (stories / "2024-08-31-00-640.avif").write_bytes(b"x")
+    (stories / "2024-08-31-01.jpg").write_bytes(b"keep")
+    r = api.remove_entry(app, {"post": "2024-08-31-demo.md", "web_path": web})
+    assert r["removed"] == {"in_report": True, "md_lines": 1,
+                            "files": ["2024-08-31-00.jpg", "2024-08-31-00-640.avif"]}
+    assert [m["kind"] for m in r["detail"]["media"]] == ["youtube"]
+    assert sorted(f.name for f in stories.iterdir()) == ["2024-08-31-01.jpg"]
+    report = json.loads((tmp_path / "out/2024-08-31-demo.json").read_text())
+    assert report["entries"] == [] and report["stats"]["total"] == 0
+    assert "2024-08-31-00.jpg" not in (tmp_path / "markdown/2024-08-31-demo.md").read_text()
+
+
+def test_remove_entry_handles_youtube_and_unknown_items(app):
+    r = api.remove_entry(app, {"post": "2024-08-31-demo.md",
+                               "web_path": "https://www.youtube.com/watch?v=abc123"})
+    assert r["removed"] == {"in_report": False, "md_lines": 1, "files": []}
+    with pytest.raises(api.ApiError) as exc:
+        api.remove_entry(app, {"post": "2024-08-31-demo.md", "web_path": "/nope.jpg"})
+    assert exc.value.status == 404

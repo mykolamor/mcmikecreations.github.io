@@ -17,7 +17,7 @@ from .. import config
 from ..markdown import MediaRef, parse_capture_date
 from ..matcher import match_image
 from ..optimize import encode_avif_tiers, encode_lqip_data_uri, open_exif_corrected
-from ..postwriter import upsert_image_front_matter
+from ..postwriter import remove_media_from_post, upsert_image_front_matter
 from .model import build_entry, web_path_for
 from .remote import asset_to_dict
 
@@ -182,6 +182,44 @@ def apply_add_spec(settings, remote, post, spec: AddSpec) -> dict:
             "matched" if asset else "unmatched", "manual", "manual",
         )
     raise ValueError(f"Unknown mode: {spec.mode}")
+
+
+def local_files_for(settings: config.Settings, web_path: str) -> list[Path]:
+    """Everything on disk standing for `web_path`: the file itself and any
+    AVIF tiers `image_optimize.py` wrote in its place. Only paths inside the
+    static root are ever returned."""
+    root = settings.static_root.resolve()
+    target = (root / web_path.lstrip("/")).resolve()
+    if not target.is_relative_to(root):
+        raise ValueError(f"Path escapes the static root: {web_path}")
+    candidates = [target] + [
+        target.with_name(f"{target.stem}-{t}.avif") for t in config.AVIF_TIERS
+    ]
+    return [c for c in candidates if c.is_file()]
+
+
+def remove_media(settings: config.Settings, post, web_path: str) -> dict:
+    """Forget one media item entirely: its report entry, its reference and
+    `images` front matter in the post, and its local files. Returns what was
+    removed, for the caller to report."""
+    # Resolved first: a path escaping the static root fails before anything
+    # has been touched.
+    files = [] if web_path.startswith("http") else local_files_for(settings, web_path)
+    report = post.report or {}
+    entries = report.get("entries", [])
+    before = len(entries)
+    entries[:] = [e for e in entries if e["web_path"] != web_path]
+    in_report = len(entries) != before
+    if in_report:
+        post.recount()
+        post.save()
+
+    lines = remove_media_from_post(post.path, web_path)
+
+    for f in files:
+        f.unlink()
+    return {"in_report": in_report, "md_lines": lines,
+            "files": [f.name for f in files]}
 
 
 def settings_to_argv(settings: config.Settings) -> list[str]:

@@ -51,6 +51,8 @@ button{cursor:pointer;background:var(--panel)}
 button:hover:not(:disabled){border-color:var(--accent)}
 button:disabled,input:disabled{opacity:.5;cursor:not-allowed}
 button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+button.danger{color:#cf222e}
+button.danger:hover:not(:disabled){border-color:#cf222e}
 .pill{font-size:11px;padding:2px 8px;border-radius:10px;border:1px solid var(--line);
       color:var(--muted);white-space:nowrap}
 .pill.ok{color:#1a7f37;border-color:#1a7f37}

@@ -1,0 +1,164 @@
+{
+  "name": "Dürnbachwand",
+  "description": "Hike from Neuhaus to Spitzingsee via Anklspitz (1112 m), Dürnbachwand (1260 m), Schlierseespitz (1279 m), Freudenreichkapelle (1587 m), and Brecherspitz Vorgipfel (1643 m).",
+  "image": "/images/projects/data-viz/hikes/duernbachwand.jpg",
+  "origin": {
+    "lat": 47.683996754422495,
+    "lon": 11.8707275390625
+  },
+  "height": 512,
+  "checkpoints": [
+    [11.8733766, 47.7062602],
+    [11.8708218, 47.6952837],
+    [11.8665749, 47.6946420],
+    [11.8662156, 47.6940627],
+    [11.8629108, 47.6908221],
+    [11.8617174, 47.6842313],
+    [11.8620073, 47.6793009],
+    [11.8634550, 47.6767017],
+    [11.8645597, 47.6751604],
+    [11.8542289, 47.6701495],
+    [11.8880556, 47.6618854]
+  ],
+  "nodes": [
+    {
+      "id": 1472279573,
+      "lat": 47.6952837,
+      "lon": 11.8708218,
+      "tags": {
+        "name": "Anklspitz",
+        "ele": "1112",
+        "natural": "peak",
+        "summit:cross": "yes",
+        "summit:register": "no"
+      }
+    },
+    {
+      "id": 3743479379,
+      "lat": 47.6946420,
+      "lon": 11.8665749,
+      "tags": {
+        "name": "Dürnbachwand",
+        "ele": "1260",
+        "natural": "peak",
+        "summit:cross": "yes",
+        "summit:register": "no"
+      }
+    },
+    {
+      "id": 3743479381,
+      "lat": 47.6940627,
+      "lon": 11.8662156,
+      "tags": {
+        "name": "Schlierseespitz",
+        "ele": "1279",
+        "natural": "peak",
+        "summit:cross": "no",
+        "summit:register": "no"
+      }
+    },
+    {
+      "id": 3743479380,
+      "lat": 47.6908221,
+      "lon": 11.8629108,
+      "tags": {
+        "ele": "1445",
+        "natural": "peak",
+        "visited": "missing"
+      }
+    },
+    {
+      "id": 3233329670,
+      "lat": 47.6842313,
+      "lon": 11.8617174,
+      "tags": {
+        "ele": "1524",
+        "natural": "peak",
+        "visited": "missing"
+      }
+    },
+    {
+      "id": 48844974,
+      "lat": 47.6793009,
+      "lon": 11.8620073,
+      "tags": {
+        "name": "Freudenreichkapelle",
+        "alt_name": "St. Leonhard",
+        "amenity": "place_of_worship",
+        "building": "chapel",
+        "denomination": "catholic",
+        "ele": "1587.2",
+        "heritage": "4",
+        "heritage:operator": "BLfD",
+        "ref:BLfD": "D-1-82-131-101",
+        "religion": "christian",
+        "wikidata": "Q41237067",
+        "wikipedia": "de:St. Leonhard (Freudenreichsattel)"
+      }
+    },
+    {
+      "id": 4278669243,
+      "lat": 47.6767017,
+      "lon": 11.8634550,
+      "tags": {
+        "name": "Birkenstein",
+        "amenity": "place_of_worship",
+        "building": "wayside_shrine",
+        "denomination": "catholic",
+        "historic": "wayside_shrine",
+        "religion": "christian"
+      }
+    },
+    {
+      "id": 2641015239,
+      "lat": 47.6751604,
+      "lon": 11.8645597,
+      "tags": {
+        "name": "Brecherspitz Vorgipfel",
+        "natural": "peak",
+        "ele": "1643",
+        "summit:cross": "no",
+        "summit:register": "no"
+      }
+    },
+    {
+      "id": 60315210,
+      "lat": 47.6701495,
+      "lon": 11.8542289,
+      "tags": {
+        "name": "Obere Firstalm",
+        "tourism": "alpine_hut",
+        "ele": "1369",
+        "building": "yes",
+        "amenity": "restaurant",
+        "email": "info@firstalm.de",
+        "phone": "+4980267302",
+        "website": "https://firstalm.de/",
+        "wikidata": "Q27926449",
+        "wikipedia": "de:Firstalm"
+      }
+    },
+    {
+      "id": 60313973,
+      "lat": 47.6677153,
+      "lon": 11.8507295,
+      "tags": {
+        "name": "Untere Firstalm",
+        "amenity": "restaurant",
+        "building": "yes"
+      }
+    },
+    {
+      "id": 4004528624,
+      "lat": 47.6605904,
+      "lon": 11.8858221,
+      "tags": {
+        "name": "Alte Wurzhütte",
+        "amenity": "restaurant",
+        "cuisine": "bavarian",
+        "phone": "+4980266068201",
+        "website": "https://www.alte-wurzhuette.de/"
+      }
+    }
+  ]
+}

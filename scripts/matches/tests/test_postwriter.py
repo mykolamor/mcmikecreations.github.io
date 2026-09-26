@@ -85,3 +85,53 @@ def test_upsert_replaces_an_existing_entry_for_the_same_filename(tmp_path):
     text = post.read_text(encoding="utf-8")
     assert text.count("2026-08-23-05.jpg") == 1
     assert "2026-08-23-05.jpg: {w: 100, h: 80, blur: 'data:image/webp;base64,ZZ'}" in text
+
+
+REMOVE_SAMPLE = """---
+title: Demo
+images:
+  2024-08-31-00.jpg: {w: 10, h: 20}
+  2024-08-31-01.jpg: {w: 30, h: 40}
+---
+Intro.
+
+![Lone](/images/projects/data-viz/hikes/stories/demo/2024-08-31-00.jpg)
+
+![Pair A](/images/projects/data-viz/hikes/stories/demo/2024-08-31-01.jpg "autoplay")
+![Pair B](/images/projects/data-viz/hikes/stories/demo/2024-08-31-02.jpg)
+
+Outro.
+"""
+
+
+def test_remove_media_drops_a_lone_reference_and_its_gap(tmp_path):
+    from matches.postwriter import remove_media_from_post
+
+    post = tmp_path / "post.md"
+    post.write_text(REMOVE_SAMPLE, encoding="utf-8")
+    n = remove_media_from_post(post, "/images/projects/data-viz/hikes/stories/demo/2024-08-31-00.jpg")
+    text = post.read_text(encoding="utf-8")
+    assert n == 1
+    assert "2024-08-31-00.jpg" not in text
+    assert "2024-08-31-01.jpg: {w: 30, h: 40}" in text
+    assert "Intro.\n\n![Pair A]" in text
+
+
+def test_remove_media_keeps_the_rest_of_a_group(tmp_path):
+    from matches.postwriter import remove_media_from_post
+
+    post = tmp_path / "post.md"
+    post.write_text(REMOVE_SAMPLE, encoding="utf-8")
+    remove_media_from_post(post, "/images/projects/data-viz/hikes/stories/demo/2024-08-31-01.jpg")
+    text = post.read_text(encoding="utf-8")
+    assert "Pair A" not in text and "2024-08-31-01.jpg" not in text
+    assert "\n\n![Pair B](/images/projects/data-viz/hikes/stories/demo/2024-08-31-02.jpg)\n\nOutro." in text
+
+
+def test_remove_media_leaves_an_unreferenced_post_untouched(tmp_path):
+    from matches.postwriter import remove_media_from_post
+
+    post = tmp_path / "post.md"
+    post.write_text(REMOVE_SAMPLE, encoding="utf-8")
+    assert remove_media_from_post(post, "/images/other.jpg") == 0
+    assert post.read_text(encoding="utf-8") == REMOVE_SAMPLE

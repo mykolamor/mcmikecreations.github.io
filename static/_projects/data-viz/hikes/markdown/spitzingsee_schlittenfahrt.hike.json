@@ -33,6 +33,16 @@
         "wikidata": "Q27926449",
         "wikipedia": "de:Firstalm"
       }
+    },
+    {
+      "id": 60313973,
+      "lat": 47.6677153,
+      "lon": 11.8507295,
+      "tags": {
+        "name": "Untere Firstalm",
+        "amenity": "restaurant",
+        "building": "yes"
+      }
     }
   ]
 }

@@ -195,6 +195,21 @@ def set_remote_match(state, body: dict) -> dict:
     return {"ok": True, "detail": hike_detail(state, post.name)}
 
 
+def remove_entry(state, body: dict) -> dict:
+    """Remove a media item from the report, the post, and the disk."""
+    post = _post(state, body["post"])
+    web_path = body.get("web_path") or ""
+    if not any(m.web_path == web_path for m in post.media):
+        raise ApiError(f"No media item {web_path}", 404)
+    try:
+        with state.lock:
+            removed = actions.remove_media(state.settings, post, web_path)
+            post.load()
+    except ValueError as exc:
+        raise ApiError(str(exc))
+    return {"ok": True, "removed": removed, "detail": hike_detail(state, post.name)}
+
+
 def suggest_out_name(state, body: dict) -> dict:
     """Suggest `<capture-date>-<NN>.jpg`, following this hike's existing naming."""
     post = _post(state, body["post"])
