@@ -8,6 +8,34 @@ export interface Map2dHandle {
     destroy?: () => void;
 }
 
+/** A located post photo pinned on the map, drawn from its blur placeholder. */
+export interface Map2dPhoto {
+    lat: number;
+    lon: number;
+    /** Tiny data-URI image (the post's LQIP) used as the marker face. */
+    blur: string;
+    alt: string;
+    /** Index into the post's `media` list, i.e. the image's `data-media-index`. */
+    mediaIndex: number;
+}
+
+const PHOTO_MARKER_SIZE = 30;
+
+/**
+ * Keep the items that don't sit within `minPixelDistance` of an earlier kept
+ * one at the map's current zoom — earlier items win, so callers control
+ * priority by order.
+ */
+function declutter<T extends { lat: number; lon: number }>(map: any, items: T[], minPixelDistance: number): T[] {
+    const zoom = map.getZoom();
+    const kept: { item: T; point: any }[] = [];
+    for (const item of items) {
+        const point = map.project([item.lat, item.lon], zoom);
+        if (!kept.some((k) => point.distanceTo(k.point) < minPixelDistance)) kept.push({ item, point });
+    }
+    return kept.map((k) => k.item);
+}
+
 function getRouteCenter(geojson: any): [number, number] {
     const coords = geojson?.features?.[0]?.geometry?.coordinates;
     if (!coords?.length) return [0, 0];
@@ -18,7 +46,9 @@ function getRouteCenter(geojson: any): [number, number] {
 export async function initMap2d(
     container: HTMLElement,
     geojson: any,
-    nodes?: any[] | null
+    nodes?: any[] | null,
+    photos?: Map2dPhoto[],
+    onPhotoClick?: (mediaIndex: number) => void
 ): Promise<Map2dHandle> {
     const noop: Map2dHandle = { setIndicator: () => {} };
     const { L } = await import('$lib/components/leaflet.almostover.js');
@@ -61,12 +91,16 @@ export async function initMap2d(
         layers: [mapOsm],
     }).setView([lat, lon], 12);
 
+    // Created up front so the layer control can list it as a toggleable overlay;
+    // filled once the route has set the initial zoom (see renderPhotos below).
+    const photosLayer = photos?.length ? L.layerGroup().addTo(map) : undefined;
+
     const layerControl = L.control.layers({
         'OSM Mirror': mapOsmLocal,
         'Mapy.cz Outdoor': mapMapyczLocal,
         'Mapbox Satellite': mapSatelliteLocal,
         'OpenStreetMap': mapOsm,
-    }).addTo(map);
+    }, photosLayer ? { 'Photos': photosLayer } : undefined).addTo(map);
 
     const controlsContainer = layerControl.getContainer();
     if (controlsContainer) {
@@ -98,24 +132,32 @@ export async function initMap2d(
 
     map.fitBounds(hikesLayer.getBounds(), { padding: [16, 16] });
 
+    if (photosLayer && photos) {
+        const renderPhotos = () => {
+            photosLayer.clearLayers();
+            for (const photo of declutter(map, photos, PHOTO_MARKER_SIZE)) {
+                const icon = L.divIcon({
+                    html: `<div style="box-sizing:border-box;width:100%;height:100%;border:2px solid white;border-radius:6px;overflow:hidden;box-shadow:0 2px 4px rgba(0,0,0,.4);cursor:pointer;"><img src="${photo.blur.replace(/"/g, '&quot;')}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;margin:0;" /></div>`,
+                    className: '',
+                    iconSize: [PHOTO_MARKER_SIZE, PHOTO_MARKER_SIZE],
+                    iconAnchor: [PHOTO_MARKER_SIZE / 2, PHOTO_MARKER_SIZE / 2]
+                });
+                // `title` doubles as the hover tooltip and the focused marker's accessible name.
+                L.marker([photo.lat, photo.lon], { icon, title: photo.alt, alt: photo.alt, riseOnHover: true })
+                    .on('click', () => onPhotoClick?.(photo.mediaIndex))
+                    .addTo(photosLayer);
+            }
+        };
+        renderPhotos();
+        map.on('zoomend', renderPhotos);
+    }
+
     if (nodes?.length) {
         const nodesLayer = L.layerGroup().addTo(map);
 
         const renderNodes = () => {
             nodesLayer.clearLayers();
-            const visible: any[] = [];
-            const minPixelDistance = 24;
-
-            for (const node of nodes) {
-                const p1 = map.project([node.lat, node.lon], map.getZoom());
-                const overlaps = visible.some((n: any) => {
-                    const p2 = map.project([n.lat, n.lon], map.getZoom());
-                    return p1.distanceTo(p2) < minPixelDistance;
-                });
-                if (!overlaps) visible.push(node);
-            }
-
-            for (const node of visible) {
+            for (const node of declutter(map, nodes, 24)) {
                 const name = node.tags?.name || node.tags?.natural || 'POI';
                 const ele = node.tags?.ele ? ` (${node.tags.ele}m)` : '';
                 const { emoji, color } = getNodeIconDetails(node.tags ?? {});

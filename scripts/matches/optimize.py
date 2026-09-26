@@ -85,6 +85,21 @@ def encode_lqip_data_uri(img: Image.Image, long_edge: int, quality: int) -> str:
     return f"data:image/webp;base64,{encoded}"
 
 
+def gps_meta(match: dict | None) -> dict:
+    """`{"lat", "lon"}` for a report match's Immich coordinates, rounded to
+    6 decimals (~0.1 m), or {} when the asset has none or they're invalid.
+    Merged into an image's front-matter entry so the post's 2D map can pin
+    the photo where it was taken."""
+    if not match:
+        return {}
+    lat, lon = match.get("latitude"), match.get("longitude")
+    if not isinstance(lat, (int, float)) or not isinstance(lon, (int, float)):
+        return {}
+    if not (-90 <= lat <= 90 and -180 <= lon <= 180):
+        return {}
+    return {"lat": round(lat, 6), "lon": round(lon, 6)}
+
+
 def probe_dimensions(path: Path) -> tuple[int, int]:
     """Intrinsic (EXIF-corrected) dimensions of a local image, no Immich call."""
     img = open_exif_corrected(path)
@@ -134,7 +149,7 @@ def optimize_post(
                 images[filename] = {"w": img.width, "h": img.height}
                 continue
             blur = encode_lqip_data_uri(img, settings.lqip_long_edge, settings.lqip_quality)
-            images[filename] = {"w": img.width, "h": img.height, "blur": blur}
+            images[filename] = {"w": img.width, "h": img.height, **gps_meta(match), "blur": blur}
             if dry_run:
                 continue
             if ref.local_path.exists():

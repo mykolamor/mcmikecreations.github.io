@@ -23,7 +23,7 @@
 	import AppBreadcrumbs from '$lib/components/AppBreadcrumbs.svelte';
 	import { parseMarkdown } from '$lib/hikes/hikes-info';
 	import HikeContacts from '../components/HikeContacts.svelte';
-	import { initMap2d, type Map2dHandle } from '$lib/hikes/map-2d';
+	import { initMap2d, type Map2dHandle, type Map2dPhoto } from '$lib/hikes/map-2d';
 	import { initElevationChart } from '$lib/hikes/map-elevation';
 	import { initMap3d, type Map3dHandle } from '$lib/hikes/map-3d';
 
@@ -190,7 +190,16 @@
 		if (!map3dEl || !map3dElevWrapper || !map2dEl || !elevWrapper) return;
 
 		const newMap3dHandle = initMap3d(map3dEl, geojson, data.map);
-		const newMap2dHandle = await initMap2d(map2dEl, geojson, data.map.properties.nodes);
+		const photos: Map2dPhoto[] = [];
+		data.post.media.forEach((item, mediaIndex) => {
+			if (item.kind === 'image' && item.location && item.placeholder) {
+				photos.push({ ...item.location, blur: item.placeholder, alt: item.alt, mediaIndex });
+			}
+		});
+		const newMap2dHandle = await initMap2d(
+			map2dEl, geojson, data.map.properties.nodes, photos,
+			(mediaIndex) => openGallery(mediaIndex + headerOffset)
+		);
 
 		if (runId !== contentRunId) {
 			// A newer navigation started while these were being created: they were

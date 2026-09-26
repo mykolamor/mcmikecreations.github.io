@@ -89,6 +89,14 @@ function insertHikeWidgetPlaceholders(html: string, tags: string[]): string {
     );
 }
 
+/** The image's coordinates if its front matter carries a valid pair, else undefined. */
+function readLocation(meta: HikeImageMeta): { lat: number; lon: number } | undefined {
+    const { lat, lon } = meta;
+    if (typeof lat !== 'number' || typeof lon !== 'number') return undefined;
+    if (!Number.isFinite(lat) || !Number.isFinite(lon) || Math.abs(lat) > 90 || Math.abs(lon) > 180) return undefined;
+    return { lat, lon };
+}
+
 export async function parseMarkdown(postRaw: string, tags: string[] = []): Promise<ParsedPost> {
     // Drop any leading YAML front matter before rendering. Uses the
     // dependency-free stripper so this stays safe in the client bundle, which
@@ -220,6 +228,7 @@ export async function parseMarkdown(postRaw: string, tags: string[] = []): Promi
                                 src: fallbackSrc,
                                 thumb: thumbSrc,
                                 placeholder: meta.blur,
+                                location: readLocation(meta),
                                 alt: text,
                                 title: title || undefined,
                                 captionHtml: renderedText

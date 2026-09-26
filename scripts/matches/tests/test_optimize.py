@@ -127,7 +127,7 @@ import pytest
 
 from matches import config
 from matches.immich import ImmichClient
-from matches.optimize import optimize_post
+from matches.optimize import gps_meta, optimize_post
 from matches.tests.test_immich import StubSession, BASE  # reuse the existing stub
 
 
@@ -169,7 +169,8 @@ def _setup_testhike_post(tmp_path):
     _write_report(out_dir, "2026-01-01-testhike.md", [
         {
             "web_path": matched_web, "status": "matched",
-            "match": {"asset_id": "orig1", "original_file_name": "orig1.jpg"},
+            "match": {"asset_id": "orig1", "original_file_name": "orig1.jpg",
+                      "latitude": 47.1234567, "longitude": 11.7654321},
         },
         {"web_path": unmatched_web, "status": "unmatched", "match": None},
     ])
@@ -197,6 +198,8 @@ def test_optimize_post_converts_matched_and_probes_unmatched(tmp_path):
     matched_meta = images["2026-01-01-00.jpg"]
     assert matched_meta["w"] == 3000 and matched_meta["h"] == 2000
     assert matched_meta["blur"].startswith("data:image/webp;base64,")
+    assert matched_meta["lat"] == 47.123457 and matched_meta["lon"] == 11.765432
+    assert list(matched_meta) == ["w", "h", "lat", "lon", "blur"]
     assert not (story / "2026-01-01-00.jpg").exists()  # original deleted
     assert (story / "2026-01-01-00-640.avif").exists()
     assert (story / "2026-01-01-00-1280.avif").exists()
@@ -254,3 +257,19 @@ def test_optimize_post_raises_without_a_report(tmp_path):
     client = ImmichClient(settings, session=StubSession([]))
     with pytest.raises(FileNotFoundError):
         optimize_post(posts_dir / "2026-01-01-nomatch.md", client, settings)
+
+
+def test_gps_meta_rounds_to_six_decimals():
+    assert gps_meta({"latitude": 47.1234567, "longitude": -11.7654321}) == {
+        "lat": 47.123457, "lon": -11.765432}
+
+
+def test_gps_meta_is_empty_without_coordinates():
+    assert gps_meta(None) == {}
+    assert gps_meta({"latitude": None, "longitude": 11.0}) == {}
+    assert gps_meta({"latitude": 47.0}) == {}
+
+
+def test_gps_meta_rejects_out_of_range_coordinates():
+    assert gps_meta({"latitude": 91.0, "longitude": 11.0}) == {}
+    assert gps_meta({"latitude": 47.0, "longitude": 181.0}) == {}

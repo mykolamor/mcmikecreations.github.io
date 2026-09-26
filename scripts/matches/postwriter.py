@@ -110,3 +110,33 @@ def remove_media_from_post(post_path: Path, web_path: str) -> int:
         return 0  # nothing to change: leave the file byte-for-byte alone
     _dump_front_matter(post_path, data, "\n".join(kept))
     return removed
+
+
+def merge_image_fields(post_path: Path, updates: dict[str, dict], dry_run: bool = False) -> int:
+    """Set extra fields (e.g. `lat`/`lon`) on files already present in front
+    matter's `images` map. New keys go just before `blur`, so the long data
+    URI stays last on the line; files not in the map are ignored, never
+    added. Returns how many entries changed; the file is only rewritten if
+    at least one did, and never when `dry_run` is set."""
+    data, body = _load_front_matter(post_path)
+    images_map = data.get("images")
+    if not images_map:
+        return 0
+    changed = 0
+    for filename, fields in updates.items():
+        entry = images_map.get(filename)
+        if entry is None:
+            continue
+        before = dict(entry)
+        for key, value in fields.items():
+            if key in entry:
+                entry[key] = value
+            elif "blur" in entry:
+                entry.insert(list(entry).index("blur"), key, value)
+            else:
+                entry[key] = value
+        if dict(entry) != before:
+            changed += 1
+    if changed and not dry_run:
+        _dump_front_matter(post_path, data, body)
+    return changed

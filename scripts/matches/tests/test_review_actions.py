@@ -94,6 +94,35 @@ def test_download_and_optimize_writes_avif_tiers_and_updates_front_matter(tmp_pa
     assert "2026-01-01-00.jpg: {w: 3000, h: 2000, blur:" in text
 
 
+def test_download_and_optimize_records_gps_from_the_asset(tmp_path):
+    import dataclasses
+    import io
+    from types import SimpleNamespace
+
+    from PIL import Image
+
+    settings = config.Settings(static_root=tmp_path / "static", out_dir=tmp_path / "out")
+    post_path = tmp_path / "2026-01-01-demo.md"
+    post_path.write_text("---\ntitle: Test\n---\nbody\n", encoding="utf-8")
+    post = SimpleNamespace(slug="demo", path=post_path)
+
+    original = io.BytesIO()
+    Image.new("RGB", (3000, 2000), (10, 20, 30)).save(original, "JPEG")
+    located = dataclasses.replace(ASSET, latitude=47.5, longitude=11.25)
+
+    class FakeRemote:
+        def candidates_for(self, post):
+            return [located]
+
+        def original_bytes(self, asset_id):
+            return original.getvalue()
+
+    actions.download_and_optimize(settings, FakeRemote(), post, located.id, "2026-01-01-00.jpg")
+
+    text = post_path.read_text(encoding="utf-8")
+    assert "2026-01-01-00.jpg: {w: 3000, h: 2000, lat: 47.5, lon: 11.25, blur:" in text
+
+
 def test_next_out_name_starts_at_zero_for_an_empty_folder(tmp_path):
     settings = config.Settings(static_root=tmp_path)
     assert actions.next_out_name(settings, "demo", "2026-06-10") == "2026-06-10-00.jpg"

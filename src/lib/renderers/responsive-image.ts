@@ -10,6 +10,9 @@
 export interface HikeImageMeta {
 	w: number;
 	h: number;
+	/** Where the photo was taken (from the matched Immich asset's EXIF), when known. */
+	lat?: number;
+	lon?: number;
 	/** Present only for images with generated AVIF tiers. */
 	blur?: string;
 }
