@@ -24,6 +24,7 @@ pillow_heif.register_heif_opener()  # Immich originals are frequently HEIC
 from . import config, rawimage
 from .markdown import _on_disk, find_media_refs
 from .report import read_report
+from .terrain import Terrain
 
 
 def tier_dimensions(width: int, height: int, target_long_edge: int) -> tuple[int, int] | None:
@@ -100,6 +101,14 @@ def gps_meta(match: dict | None) -> dict:
     return {"lat": round(lat, 6), "lon": round(lon, 6)}
 
 
+def location_meta(match: dict | None, terrain: Terrain) -> dict:
+    """`gps_meta` plus `demEle`, the terrain height the post's 3D map renders
+    under that coordinate (see `terrain`), so the photo can be pinned onto
+    the 3D map too. Just the GPS when the DEM tile isn't downloaded."""
+    gps = gps_meta(match)
+    return {**gps, **terrain.meta(gps.get("lat"), gps.get("lon"))}
+
+
 def probe_dimensions(path: Path) -> tuple[int, int]:
     """Intrinsic (EXIF-corrected) dimensions of a local image, no Immich call."""
     img = open_exif_corrected(path)
@@ -122,6 +131,7 @@ def optimize_post(
     report = read_report(settings.out_dir, post_path.name)
     entries_by_path = {e["web_path"]: e for e in report["entries"]}
     refs = find_media_refs(post_path, settings.static_root)
+    terrain = Terrain.for_settings(settings)
 
     images: dict[str, dict] = {}
     for ref in refs:
@@ -149,7 +159,7 @@ def optimize_post(
                 images[filename] = {"w": img.width, "h": img.height}
                 continue
             blur = encode_lqip_data_uri(img, settings.lqip_long_edge, settings.lqip_quality)
-            images[filename] = {"w": img.width, "h": img.height, **gps_meta(match), "blur": blur}
+            images[filename] = {"w": img.width, "h": img.height, **location_meta(match, terrain), "blur": blur}
             if dry_run:
                 continue
             if ref.local_path.exists():

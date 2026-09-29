@@ -24,6 +24,7 @@
       "id": 83052777,
       "lat": 47.5932618,
       "lon": 12.2033567,
+      "demEle": 713.2,
       "tags": {
         "name": "Gasthaus Veitenhof",
         "tourism": "alpine_hut",
@@ -39,6 +40,7 @@
       "id": 83052779,
       "lat": 47.5938525,
       "lon": 12.2171144,
+      "demEle": 779.9,
       "tags": {
         "name": "Pfandlhof",
         "tourism": "alpine_hut",
@@ -54,6 +56,7 @@
       "id": 83052786,
       "lat": 47.6037405,
       "lon": 12.2309587,
+      "demEle": 1160.0,
       "tags": {
         "name": "Ritzaualm",
         "tourism": "alpine_hut",
@@ -69,6 +72,7 @@
       "id": 83122401,
       "lat": 47.6059383,
       "lon": 12.2392654,
+      "demEle": 1380.6,
       "tags": {
         "name": "Vorderkaiserfeldenhütte",
         "tourism": "alpine_hut",
@@ -86,6 +90,7 @@
       "id": 966046973,
       "lat": 47.6121415,
       "lon": 12.2628159,
+      "demEle": 1894.0,
       "tags": {
         "name": "Einserkogel",
         "natural": "peak",
@@ -97,6 +102,7 @@
       "id": 1488838379,
       "lat": 47.610584,
       "lon": 12.2650454,
+      "demEle": 1862.6,
       "tags": {
         "name": "Zwölferkogel",
         "natural": "peak",
@@ -107,6 +113,7 @@
       "id": 266412290,
       "lat": 47.6100527,
       "lon": 12.2767442,
+      "demEle": 1948.8,
       "tags": {
         "name": "Pyramidenspitze",
         "natural": "peak",
@@ -121,6 +128,7 @@
       "id": 256041880,
       "lat": 47.606892,
       "lon": 12.2778148,
+      "demEle": 1967.2,
       "tags": {
         "name": "Vordere Kesselschneid",
         "natural": "peak",

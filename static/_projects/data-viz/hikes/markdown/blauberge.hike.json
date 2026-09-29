@@ -19,6 +19,7 @@
       "id": 440346596,
       "lat": 47.5897362,
       "lon": 11.7347352,
+      "demEle": 1537.2,
       "tags": {
         "name": "Predigtstuhl",
         "natural": "peak",
@@ -31,6 +32,7 @@
       "id": 294649757,
       "lat": 47.5884175,
       "lon": 11.7496419,
+      "demEle": 1762.3,
       "tags": {
         "name": "Wichtlplatte",
         "natural": "peak",
@@ -41,6 +43,7 @@
       "id": 268973925,
       "lat": 47.5891188,
       "lon": 11.7532551,
+      "demEle": 1753.3,
       "tags": {
         "name": "Blaubergschneid",
         "natural": "peak",
@@ -51,6 +54,7 @@
       "id": 268972719,
       "lat": 47.5901574,
       "lon": 11.7672996,
+      "demEle": 1759.3,
       "tags": {
         "name": "Blaubergkopf",
         "natural": "peak",
@@ -63,6 +67,7 @@
       "id": 345807520,
       "lat": 47.5906428,
       "lon": 11.7760479,
+      "demEle": 1766.8,
       "tags": {
         "name": "Karspitz",
         "natural": "peak",
@@ -73,6 +78,7 @@
       "id": 268974034,
       "lat": 47.5911671,
       "lon": 11.7810799,
+      "demEle": 1832.7,
       "tags": {
         "name": "Halserspitz",
         "natural": "peak",
@@ -86,6 +92,7 @@
       "id": 30907084,
       "lat": 47.5881087,
       "lon": 11.7904834,
+      "demEle": 1462.6,
       "tags": {
         "name": "Bayerische Wildalm",
         "tourism": "wilderness_hut",

@@ -18,6 +18,7 @@
       "id": 1431131352,
       "lat": 47.6000678,
       "lon": 11.3914884,
+      "demEle": 1157.1,
       "tags": {
         "name": "Fischberg",
         "ele": "1164",
@@ -29,6 +30,7 @@
       "id": 4730936370,
       "lat": 47.5866038,
       "lon": 11.3948072,
+      "demEle": 820.3,
       "tags": {
         "name": "Waldschänke Niedernach",
         "amenity": "restaurant",

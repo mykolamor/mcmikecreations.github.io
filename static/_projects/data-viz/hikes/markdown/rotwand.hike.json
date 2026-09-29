@@ -20,6 +20,7 @@
       "id": 93450441,
       "lat": 47.6651508,
       "lon": 11.9062683,
+      "demEle": 1412.1,
       "tags": {
         "name": "Schönfeldhütte",
         "tourism": "alpine_hut",
@@ -36,6 +37,7 @@
       "id": 5469566999,
       "lat": 47.6606654,
       "lon": 11.920228,
+      "demEle": 1585.4,
       "tags": {
         "name": "Lochgrabensattel",
         "natural": "saddle",
@@ -46,6 +48,7 @@
       "id": 266993268,
       "lat": 47.6584811,
       "lon": 11.9211109,
+      "demEle": 1657.3,
       "tags": {
         "name": "Taubenstein",
         "natural": "peak",
@@ -61,6 +64,7 @@
       "id": 10676465928,
       "lat": 47.6584409,
       "lon": 11.9218715,
+      "demEle": 1657.9,
       "tags": {
         "name": "Taubensteinsattel",
         "natural": "saddle",
@@ -71,6 +75,7 @@
       "id": 2874807218,
       "lat": 47.6479779,
       "lon": 11.9260025,
+      "demEle": 1766.9,
       "tags": {
         "name": "Kirchstein",
         "natural": "peak",
@@ -81,6 +86,7 @@
       "id": 91920694,
       "lat": 47.6462348,
       "lon": 11.9352992,
+      "demEle": 1724.9,
       "tags": {
         "name": "Rotwandhaus",
         "tourism": "alpine_hut",
@@ -97,6 +103,7 @@
       "id": 3859294830,
       "lat": 47.6494437,
       "lon": 11.9313898,
+      "demEle": 1810.1,
       "tags": {
         "name": "Rotwandkopf",
         "natural": "peak",
@@ -110,6 +117,7 @@
       "id": 26864487,
       "lat": 47.6502104,
       "lon": 11.9344203,
+      "demEle": 1844.4,
       "tags": {
         "name": "Rotwand",
         "natural": "peak",

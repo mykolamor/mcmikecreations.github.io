@@ -22,6 +22,7 @@
       "id": 1261026316,
       "lat": 47.6656433,
       "lon": 11.5110664,
+      "demEle": 1436.7,
       "tags": {
         "name": "Kirchel",
         "natural": "peak",
@@ -35,6 +36,7 @@
       "id": 1254353419,
       "lat": 47.6606163,
       "lon": 11.5086377,
+      "demEle": 1627.0,
       "tags": {
         "name": "Stangeneck",
         "natural": "peak",
@@ -46,6 +48,7 @@
       "id": 449238477,
       "lat": 47.6597349,
       "lon": 11.5015440,
+      "demEle": 1622.8,
       "tags": {
         "name": "Vorderer Kirchstein",
         "natural": "peak",
@@ -58,6 +61,7 @@
       "id": 269134696,
       "lat": 47.6565948,
       "lon": 11.4990327,
+      "demEle": 1669.6,
       "tags": {
         "name": "Latschenkopf",
         "natural": "peak",
@@ -72,6 +76,7 @@
       "id": 269132073,
       "lat": 47.6554914,
       "lon": 11.4948924,
+      "demEle": 1628.9,
       "tags": {
         "name": "Probstalmsattel",
         "natural": "saddle",
@@ -83,6 +88,7 @@
       "id": 1411465448,
       "lat": 47.6531047,
       "lon": 11.4862838,
+      "demEle": 1638.9,
       "tags": {
         "name": "Achselköpfe",
         "natural": "peak",
@@ -95,6 +101,7 @@
       "id": 778231935,
       "lat": 47.6540337,
       "lon": 11.4776478,
+      "demEle": 1678.4,
       "tags": {
         "name": "Rotöhrsattel",
         "natural": "saddle",
@@ -105,6 +112,7 @@
       "id": 26862546,
       "lat": 47.6531721,
       "lon": 11.4655437,
+      "demEle": 1773.4,
       "tags": {
         "name": "Benediktenwand",
         "natural": "peak",
@@ -119,6 +127,7 @@
       "id": 97575267,
       "lat": 47.6576176,
       "lon": 11.4623110,
+      "demEle": 1328.6,
       "tags": {
         "name": "Tutzinger Hütte",
         "amenity": "restaurant",
@@ -140,6 +149,7 @@
       "id": 4732623385,
       "lat": 47.6739314,
       "lon": 11.4430379,
+      "demEle": 964.2,
       "tags": {
         "name": "Lainbachwasserfälle",
         "height": "25",

@@ -22,6 +22,7 @@
       "id": 264035398,
       "lat": 47.615268,
       "lon": 12.0543473,
+      "demEle": 1674.1,
       "tags": {
         "name": "Trainsjoch",
         "natural": "peak",
@@ -36,6 +37,7 @@
       "id": 1913686966,
       "lat": 47.6174517,
       "lon": 12.0378767,
+      "demEle": 1348.4,
       "tags": {
         "name": "Nesselberg",
         "natural": "peak",

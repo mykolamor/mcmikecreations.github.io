@@ -19,6 +19,7 @@
       "id": 1711924736,
       "lat": 47.6498367,
       "lon": 11.3819654,
+      "demEle": 801.3,
       "tags": {
         "name": "Lainbachfall",
         "waterway": "waterfall",
@@ -29,6 +30,7 @@
       "id": 2081253533,
       "lat": 47.6443372,
       "lon": 11.3727532,
+      "demEle": 942.6,
       "tags": {
         "name": "Kienstein",
         "natural": "peak",
@@ -42,6 +44,7 @@
       "id": 748804706,
       "lat": 47.6393841,
       "lon": 11.3760576,
+      "demEle": 1234.7,
       "tags": {
         "name": "Sonnenspitz",
         "natural": "peak",
@@ -55,6 +58,7 @@
       "id": 1841764370,
       "lat": 47.625939,
       "lon": 11.3718596,
+      "demEle": 1546.8,
       "tags": {
         "name": "Jochberg",
         "natural": "peak",

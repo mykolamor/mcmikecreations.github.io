@@ -20,6 +20,7 @@
       "id": 1141059170,
       "lat": 47.7537784,
       "lon": 12.8761479,
+      "demEle": 1279.3,
       "tags": {
         "name": "Fuderheustein",
         "natural": "peak",
@@ -32,6 +33,7 @@
       "id": 1142708301,
       "lat": 47.7535170,
       "lon": 12.8709902,
+      "demEle": 1340.2,
       "tags": {
         "name": "Fuderheuberg",
         "natural": "peak",
@@ -45,6 +47,7 @@
       "id": 942283724,
       "lat": 47.7532079,
       "lon": 12.8636617,
+      "demEle": 1272.2,
       "tags": {
         "name": "Steinerne Jäger",
         "natural": "peak",
@@ -55,6 +58,7 @@
       "id": 80751554,
       "lat": 47.7550497,
       "lon": 12.8494729,
+      "demEle": 1728.4,
       "tags": {
         "name": "Reichenhaller Haus",
         "alt_name": "Staufenhaus",
@@ -71,6 +75,7 @@
       "id": 304238134,
       "lat": 47.7549634,
       "lon": 12.8487577,
+      "demEle": 1732.3,
       "tags": {
         "name": "Hochstaufen",
         "natural": "peak",

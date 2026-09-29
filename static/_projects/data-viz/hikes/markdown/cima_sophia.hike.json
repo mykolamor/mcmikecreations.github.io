@@ -22,6 +22,7 @@
       "id": 5906629046,
       "lat": 46.1710813,
       "lon": 10.9406454,
+      "demEle": 2299.8,
       "tags": {
         "name": "Cima Sophia",
         "natural": "peak",
@@ -32,6 +33,7 @@
       "id": 4097856091,
       "lat": 46.1655181,
       "lon": 10.9528253,
+      "demEle": 1873.2,
       "tags": {
         "name": "Palon de Tovre",
         "natural": "peak",
@@ -42,6 +44,7 @@
       "id": 121789060,
       "lat": 46.1571926,
       "lon": 10.9544623,
+      "demEle": 1497.6,
       "tags": {
         "name": "Rifugio La Montanara",
         "tourism": "alpine_hut",

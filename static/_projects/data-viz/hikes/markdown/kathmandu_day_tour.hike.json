@@ -19,6 +19,7 @@
       "id": 201223707,
       "lat": 27.7149219,
       "lon": 85.2903959,
+      "demEle": 1402.4,
       "tags": {
         "name": "Swayambhunath",
         "amenity": "place_of_worship",
@@ -34,6 +35,7 @@
       "id": 1414600808,
       "lat": 27.7048846,
       "lon": 85.3079745,
+      "demEle": 1313.3,
       "tags": {
         "name": "Taleju Temple",
         "amenity": "place_of_worship",
@@ -46,6 +48,7 @@
       "id": 56688296,
       "lat": 27.7214508,
       "lon": 85.3619819,
+      "demEle": 1339.2,
       "tags": {
         "name": "Boudhanāth Stupa",
         "alt_name": "Boudha Stupa",
@@ -62,6 +65,7 @@
       "id": 913170315,
       "lat": 27.7103428,
       "lon": 85.3486834,
+      "demEle": 1311.6,
       "tags": {
         "name": "Pashupatinath Temple",
         "building": "temple",

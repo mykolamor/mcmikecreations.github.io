@@ -21,6 +21,7 @@
       "id": 99318407,
       "lat": 47.3374513,
       "lon": 11.3428627,
+      "demEle": 1268.8,
       "tags": {
         "name": "Möslalm",
         "alt_name": "Arzler Kristenalm",
@@ -38,6 +39,7 @@
       "id": 1627270003,
       "lat": 47.3051777,
       "lon": 11.3504655,
+      "demEle": 2230.6,
       "tags": {
         "name": "Frau Hitt",
         "natural": "peak",

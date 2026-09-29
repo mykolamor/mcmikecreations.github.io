@@ -21,6 +21,7 @@
       "id": 2853862101,
       "lat": 47.6509569,
       "lon": 12.0390806,
+      "demEle": 1636.7,
       "tags": {
         "name": "Fellalm-Sattel",
         "natural": "saddle",
@@ -31,6 +32,7 @@
       "id": 264037688,
       "lat": 47.6465626,
       "lon": 12.0376336,
+      "demEle": 1824.1,
       "tags": {
         "name": "Großer Traithen",
         "natural": "peak",
@@ -45,6 +47,7 @@
       "id": 1487711769,
       "lat": 47.6442319,
       "lon": 12.0435734,
+      "demEle": 1806.4,
       "tags": {
         "name": "Unterbergerjoch",
         "natural": "peak",
@@ -57,6 +60,7 @@
       "id": 448824397,
       "lat": 47.6457112,
       "lon": 12.054693,
+      "demEle": 1718.0,
       "tags": {
         "name": "Steilnerjoch",
         "alt_name": "Steintraithen; Steilner Joch",
@@ -71,6 +75,7 @@
       "id": 811044030,
       "lat": 47.6446513,
       "lon": 12.0984905,
+      "demEle": 1352.2,
       "tags": {
         "name": "Brünnsteinhaus",
         "tourism": "alpine_hut",

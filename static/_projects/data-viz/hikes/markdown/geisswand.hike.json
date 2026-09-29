@@ -23,6 +23,7 @@
       "id": 1781859543,
       "lat": 47.8426523,
       "lon": 13.776766,
+      "demEle": 751.2,
       "tags": {
         "name": "Baalstein",
         "natural": "peak",
@@ -35,6 +36,7 @@
       "id": 1781859544,
       "lat": 47.840867,
       "lon": 13.7771705,
+      "demEle": 844.9,
       "tags": {
         "name": "Geißwand",
         "natural": "peak",

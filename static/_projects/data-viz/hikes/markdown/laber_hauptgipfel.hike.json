@@ -19,6 +19,7 @@
       "id": 446758934,
       "lat": 47.5831408,
       "lon": 11.0975734,
+      "demEle": 1625.8,
       "tags": {
         "name": "Schartenkopf",
         "natural": "peak",
@@ -29,6 +30,7 @@
       "id": 5997401874,
       "lat": 47.5849787,
       "lon": 11.10044,
+      "demEle": 1643.9,
       "tags": {
         "name": "Laber Hauptgipfel",
         "natural": "peak",
@@ -41,6 +43,7 @@
       "id": 452941377,
       "lat": 47.5858442,
       "lon": 11.102169,
+      "demEle": 1632.2,
       "tags": {
         "name": "Laber",
         "natural": "peak",

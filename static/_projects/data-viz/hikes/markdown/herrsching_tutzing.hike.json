@@ -20,6 +20,7 @@
       "id": 1207420,
       "lat": 47.9742914,
       "lon": 11.1830029,
+      "demEle": 710.7,
       "tags": {
         "name": "Kloster Andechs",
         "building": "yes",
@@ -32,6 +33,7 @@
       "id": 72036146,
       "lat": 47.9674567,
       "lon": 11.1843369,
+      "demEle": 669.8,
       "tags": {
         "name": "St. Vitus",
         "amenity": "place_of_worship",
@@ -46,6 +48,7 @@
       "id": 79119143,
       "lat": 47.9532409,
       "lon": 11.2042345,
+      "demEle": 731.8,
       "tags": {
         "name": "St. Stephan",
         "amenity": "place_of_worship",
@@ -63,6 +66,7 @@
       "id": 373662966,
       "lat": 47.9480376,
       "lon": 11.220928,
+      "demEle": 707.1,
       "tags": {
         "name": "Unsere Liebe Frau",
         "amenity": "place_of_worship",
@@ -77,6 +81,7 @@
       "id": 27365348,
       "lat": 47.9480535,
       "lon": 11.2232232,
+      "demEle": 720.8,
       "tags": {
         "name": "St. Johannes Baptist",
         "amenity": "place_of_worship",
@@ -90,6 +95,7 @@
       "id": 261950928,
       "lat": 47.9442462,
       "lon": 11.2578042,
+      "demEle": 666.0,
       "tags": {
         "name": "Mariä Geburt",
         "amenity": "place_of_worship",
@@ -104,6 +110,7 @@
       "id": 238463222,
       "lat": 47.9108463,
       "lon": 11.2777178,
+      "demEle": 603.4,
       "tags": {
         "name": "St. Joseph",
         "amenity": "place_of_worship",

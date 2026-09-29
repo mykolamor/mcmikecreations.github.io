@@ -16,6 +16,7 @@
       "id": 111088094,
       "lat": 47.7302847,
       "lon": 12.0437261,
+      "demEle": 1146.7,
       "tags": {
         "name": "Schuhbräualm",
         "tourism": "alpine_hut",
@@ -29,6 +30,7 @@
       "id": 765097941,
       "lat": 47.7239382,
       "lon": 12.0435958,
+      "demEle": 1394.1,
       "tags": {
         "name": "Rampoldplatte",
         "natural": "peak",
@@ -42,6 +44,7 @@
       "id": 889074205,
       "lat": 47.7196296,
       "lon": 12.0615210,
+      "demEle": 1111.5,
       "tags": {
         "name": "Zugberg",
         "natural": "peak",
@@ -54,6 +57,7 @@
       "id": 82814302,
       "lat": 47.722558,
       "lon": 12.067936,
+      "demEle": 990.0,
       "tags": {
         "name": "Breitenberghütte",
         "alt_name": "Breitenberghaus",

@@ -23,6 +23,7 @@
       "id": 1470722107,
       "lat": 47.6424542,
       "lon": 11.7806027,
+      "demEle": 1492.1,
       "tags": {
         "name": "Daffenstein",
         "natural": "peak",
@@ -35,6 +36,7 @@
       "id": 909747952,
       "lat": 47.6408897,
       "lon": 11.785572,
+      "demEle": 1586.9,
       "tags": {
         "name": "Gams-Beobachtungspunkt",
         "amenity": "shelter",
@@ -46,6 +48,7 @@
       "id": 1469811232,
       "lat": 47.6387482,
       "lon": 11.7850676,
+      "demEle": 1655.0,
       "tags": {
         "name": "Grubereck",
         "natural": "peak",
@@ -57,6 +60,7 @@
       "id": 26864452,
       "lat": 47.6368812,
       "lon": 11.8035474,
+      "demEle": 1779.6,
       "tags": {
         "name": "Risserkogel",
         "natural": "peak",
@@ -70,6 +74,7 @@
       "id": 46372114,
       "lat": 47.6278934,
       "lon": 11.7578873,
+      "demEle": 823.5,
       "tags": {
         "name": "Schwaiger Alm",
         "amenity": "restaurant",

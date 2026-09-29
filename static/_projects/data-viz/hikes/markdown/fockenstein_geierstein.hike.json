@@ -21,6 +21,7 @@
       "id": 440952232,
       "lat": 47.6988794,
       "lon": 11.7045932,
+      "demEle": 1117.9,
       "tags": {
         "name": "Zwergelberg",
         "natural": "peak",
@@ -31,6 +32,7 @@
       "id": 37452163,
       "lat": 47.6890187,
       "lon": 11.6731547,
+      "demEle": 1263.9,
       "tags": {
         "name": "Aueralm",
         "tourism": "alpine_hut",
@@ -47,6 +49,7 @@
       "id": 1276074774,
       "lat": 47.6843889,
       "lon": 11.6522131,
+      "demEle": 1542.7,
       "tags": {
         "name": "Fockenstein",
         "natural": "peak",
@@ -61,6 +64,7 @@
       "id": 1427134777,
       "lat": 47.6765339,
       "lon": 11.6358042,
+      "demEle": 1327.3,
       "tags": {
         "name": "Schlagkopf",
         "natural": "peak",
@@ -72,6 +76,7 @@
       "id": 264055806,
       "lat": 47.6796515,
       "lon": 11.6190828,
+      "demEle": 1457.2,
       "tags": {
         "name": "Geierstein",
         "natural": "peak",

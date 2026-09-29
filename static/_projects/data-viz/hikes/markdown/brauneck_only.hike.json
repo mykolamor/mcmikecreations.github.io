@@ -19,6 +19,7 @@
       "id": 110343520,
       "lat": 47.6761223,
       "lon": 11.5539855,
+      "demEle": 713.5,
       "tags": {
         "name": "Jaegers",
         "amenity": "restaurant",
@@ -32,6 +33,7 @@
       "id": 109885527,
       "lat": 47.6736542,
       "lon": 11.5429737,
+      "demEle": 909.7,
       "tags": {
         "name": "Reiseralm",
         "amenity": "restaurant",
@@ -46,6 +48,7 @@
       "id": 101553587,
       "lat": 47.6631323,
       "lon": 11.5269823,
+      "demEle": 1490.3,
       "tags": {
         "name": "Panoramarestaurant Brauneck",
         "amenity": "restaurant",
@@ -59,6 +62,7 @@
       "id": 97581401,
       "lat": 47.6639027,
       "lon": 11.5249174,
+      "demEle": 1537.8,
       "tags": {
         "name": "Brauneck-Gipfelhaus",
         "amenity": "restaurant",
@@ -76,6 +80,7 @@
       "id": 97173084,
       "lat": 47.6641902,
       "lon": 11.5247915,
+      "demEle": 1538.5,
       "tags": {
         "name": "Brauneck",
         "natural": "peak",

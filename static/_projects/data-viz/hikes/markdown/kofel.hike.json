@@ -18,6 +18,7 @@
       "id": 296034076,
       "lat": 47.5868607,
       "lon": 11.0595271,
+      "demEle": 1193.3,
       "tags": {
         "name": "Kofel",
         "natural": "peak",
@@ -32,6 +33,7 @@
       "id": 12488719494,
       "lat": 47.5950427,
       "lon": 11.0615954,
+      "demEle": 842.1,
       "tags": {
         "name": "Ammerschlössel",
         "historic": "castle",

@@ -21,6 +21,7 @@
       "id": 13114781686,
       "lat": 47.3977864,
       "lon": 10.3399694,
+      "demEle": 1633.5,
       "tags": {
         "natural": "saddle",
         "ele": "1629"
@@ -30,6 +31,7 @@
       "id": 274823204,
       "lat": 47.4092371,
       "lon": 10.3476872,
+      "demEle": 1907.1,
       "tags": {
         "name": "Zeigersattel",
         "natural": "saddle",
@@ -42,6 +44,7 @@
       "id": 75922177,
       "lat": 47.4134741,
       "lon": 10.3469394,
+      "demEle": 1917.1,
       "tags": {
         "name": "Edmund-Probst-Haus",
         "tourism": "alpine_hut",
@@ -58,6 +61,7 @@
       "id": 276270971,
       "lat": 47.4218727,
       "lon": 10.3423461,
+      "demEle": 2192.0,
       "tags": {
         "name": "Nebelhorn",
         "natural": "peak",
@@ -72,6 +76,7 @@
       "id": 102542595,
       "lat": 47.4088164,
       "lon": 10.3236963,
+      "demEle": 1338.6,
       "tags": {
         "name": "Vordere Seealpe",
         "amenity": "biergarten",
@@ -87,6 +92,7 @@
       "id": 99203628,
       "lat": 47.4086956,
       "lon": 10.3130841,
+      "demEle": 1264.3,
       "tags": {
         "name": "Berggasthof Seealpe",
         "amenity": "restaurant",

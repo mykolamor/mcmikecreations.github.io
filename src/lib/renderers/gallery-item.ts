@@ -18,8 +18,8 @@ export interface GalleryImage extends GalleryItemBase {
 	placeholder?: string;
 	/** Small real image for the thumbnail strip — sharper than `placeholder`, much lighter than `src`. */
 	thumb?: string;
-	/** Where the photo was taken; pins it on the post's 2D map. */
-	location?: { lat: number; lon: number };
+	/** Where the photo was taken; pins it on the post's 2D map, and on the 3D map when `demEle` is known. */
+	location?: { lat: number; lon: number; demEle?: number };
 }
 
 export interface GalleryVideo extends GalleryItemBase {

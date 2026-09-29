@@ -20,6 +20,7 @@
       "id": 256042833,
       "lat": 47.6003181,
       "lon": 12.1647833,
+      "demEle": 701.5,
       "tags": {
         "name": "Thierberg",
         "natural": "peak",
@@ -32,6 +33,7 @@
       "id": 1837410,
       "lat": 47.5810714,
       "lon": 12.1688419,
+      "demEle": 533.3,
       "tags": {
         "name": "Festung Kufstein",
         "castle_type": "fortress",

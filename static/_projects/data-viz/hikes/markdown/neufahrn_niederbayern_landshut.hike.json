@@ -20,6 +20,7 @@
       "id": 6956416906,
       "lat": 48.691649,
       "lon": 12.2087026,
+      "demEle": 465.1,
       "tags": {
         "name": "Kapellenberg/Lourdes-Kapelle",
         "natural": "peak",
@@ -30,6 +31,7 @@
       "id": 185528411,
       "lat": 48.6123931,
       "lon": 12.1961825,
+      "demEle": 406.0,
       "tags": {
         "name": "Schloss Mirskofen",
         "building": "yes",

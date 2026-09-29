@@ -17,6 +17,7 @@
       "id": 4395226596,
       "lat": 43.4448339,
       "lon": 16.6982678,
+      "demEle": 260.4,
       "tags": {
         "name": "Fortica",
         "natural": "peak",
@@ -27,6 +28,7 @@
       "id": 145033136,
       "lat": 43.4447968,
       "lon": 16.6996614,
+      "demEle": 273.5,
       "tags": {
         "name": "Tvrđava \"Stari grad\"",
         "alt_name": "Fortica",

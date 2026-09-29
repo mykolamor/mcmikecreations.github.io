@@ -23,6 +23,7 @@
       "id": 5810277909,
       "lat": 47.3775867,
       "lon": 10.9352297,
+      "demEle": 1442.7,
       "tags": {
         "name": "Coburger Bank",
         "leisure": "picnic_table",
@@ -34,6 +35,7 @@
       "id": 17725549,
       "lat": 47.36861,
       "lon": 10.93464,
+      "demEle": 1653.0,
       "tags": {
         "name": "Seebensee",
         "natural": "water",
@@ -47,6 +49,7 @@
       "id": 154960992,
       "lat": 47.358315,
       "lon": 10.93462,
+      "demEle": 1867.7,
       "tags": {
         "name": "Drachensee",
         "natural": "water",
@@ -59,6 +62,7 @@
       "id": 26954262,
       "lat": 47.359922,
       "lon": 10.9335123,
+      "demEle": 1909.7,
       "tags": {
         "name": "Coburger Hütte",
         "amenity": "restaurant",
@@ -76,6 +80,7 @@
       "id": 26955651,
       "lat": 47.3735095,
       "lon": 10.9426366,
+      "demEle": 1576.3,
       "tags": {
         "name": "Seeben Alm",
         "amenity": "restaurant",
@@ -88,6 +93,7 @@
       "id": 430957208,
       "lat": 47.3874743,
       "lon": 10.9392006,
+      "demEle": 1120.5,
       "tags": {
         "name": "Brent Alm",
         "amenity": "restaurant",
@@ -102,6 +108,7 @@
       "id": 123125010,
       "lat": 47.3875476,
       "lon": 10.9383732,
+      "demEle": 1108.6,
       "tags": {
         "name": "Ehrwalder Almbahn Talstation",
         "aerialway": "station",
@@ -115,6 +122,7 @@
       "id": 310287862,
       "lat": 47.3577088,
       "lon": 10.9265357,
+      "demEle": 2224.3,
       "tags": {
         "name": "Drachenkopf",
         "alt_name": "Vorderer Drachenkopf",

@@ -28,6 +28,7 @@
       "id": 2114909062,
       "lat": 47.7194665,
       "lon": 11.4448587,
+      "demEle": 942.4,
       "tags": {
         "name": "Hollerkopf",
         "natural": "peak",
@@ -38,6 +39,7 @@
       "id": 389806116,
       "lat": 47.7273048,
       "lon": 11.4602762,
+      "demEle": 1202.8,
       "tags": {
         "name": "Enzenauer Kopf",
         "natural": "peak",
@@ -49,6 +51,7 @@
       "id": 1511563857,
       "lat": 47.71849,
       "lon": 11.4645391,
+      "demEle": 1198.9,
       "tags": {
         "name": "Fahrtkopf",
         "natural": "peak",
@@ -60,6 +63,7 @@
       "id": 389806117,
       "lat": 47.7224724,
       "lon": 11.4674014,
+      "demEle": 1258.9,
       "tags": {
         "name": "Angerlkopf",
         "natural": "peak",
@@ -73,6 +77,7 @@
       "id": 389806118,
       "lat": 47.7246598,
       "lon": 11.4816115,
+      "demEle": 1317.9,
       "tags": {
         "name": "Stallauer Kopf",
         "natural": "peak",
@@ -86,6 +91,7 @@
       "id": 389806119,
       "lat": 47.7337525,
       "lon": 11.4786369,
+      "demEle": 1212.9,
       "tags": {
         "name": "Stallauer Eck",
         "natural": "peak",
@@ -99,6 +105,7 @@
       "id": 261020752,
       "lat": 47.7235737,
       "lon": 11.4884518,
+      "demEle": 1333.4,
       "tags": {
         "name": "Zwiesel",
         "natural": "peak",
@@ -113,6 +120,7 @@
       "id": 414607685,
       "lat": 47.727705,
       "lon": 11.5133539,
+      "demEle": 1203.4,
       "tags": {
         "name": "Heigelkopf",
         "alt_name": "Heiglkopf",
@@ -129,6 +137,7 @@
       "id": 2117581057,
       "lat": 47.730822,
       "lon": 11.5125471,
+      "demEle": 1184.5,
       "tags": {
         "name": "Blombergkreuz",
         "natural": "peak",
@@ -142,6 +151,7 @@
       "id": 1644165590,
       "lat": 47.7335365,
       "lon": 11.5072874,
+      "demEle": 1234.4,
       "tags": {
         "name": "Blomberg Ostgipfel",
         "natural": "peak",
@@ -155,6 +165,7 @@
       "id": 1126963772,
       "lat": 47.735092,
       "lon": 11.4980106,
+      "demEle": 1198.4,
       "tags": {
         "name": "Berggasthof Blomberghaus",
         "tourism": "alpine_hut",
@@ -168,6 +179,7 @@
       "id": 414607694,
       "lat": 47.7333461,
       "lon": 11.4921002,
+      "demEle": 1242.1,
       "tags": {
         "name": "Blomberg Westgipfel",
         "natural": "peak",

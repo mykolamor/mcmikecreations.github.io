@@ -19,6 +19,7 @@
       "id": 60315210,
       "lat": 47.6701495,
       "lon": 11.8542289,
+      "demEle": 1367.1,
       "tags": {
         "name": "Obere Firstalm",
         "tourism": "alpine_hut",
@@ -36,6 +37,7 @@
       "id": 60313973,
       "lat": 47.6677153,
       "lon": 11.8507295,
+      "demEle": 1317.3,
       "tags": {
         "name": "Untere Firstalm",
         "amenity": "restaurant",
@@ -46,6 +48,7 @@
       "id": 2641015239,
       "lat": 47.6751604,
       "lon": 11.8645597,
+      "demEle": 1621.1,
       "tags": {
         "name": "Brecherspitz Vorgipfel",
         "natural": "peak",
@@ -58,6 +61,7 @@
       "id": 292352453,
       "lat": 47.6764385,
       "lon": 11.8710533,
+      "demEle": 1643.1,
       "tags": {
         "name": "Brecherspitz",
         "natural": "peak",

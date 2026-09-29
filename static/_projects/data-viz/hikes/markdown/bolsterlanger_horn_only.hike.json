@@ -19,6 +19,7 @@
       "id": 2164415346,
       "lat": 47.4607896,
       "lon": 10.2054673,
+      "demEle": 1521.3,
       "tags": {
         "name": "Hörnerbahn Bergstation",
         "aerialway": "station",
@@ -31,6 +32,7 @@
       "id": 281349904,
       "lat": 47.45927,
       "lon": 10.20833,
+      "demEle": 1557.8,
       "tags": {
         "name": "Bolsterlanger Horn",
         "natural": "peak",

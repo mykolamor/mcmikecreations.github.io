@@ -16,6 +16,7 @@
       "id": 727090665,
       "lat": 28.5183959,
       "lon": 83.8063433,
+      "demEle": 7170.2,
       "tags": {
         "name": "Annapurna South",
         "ele": "7219",
@@ -28,6 +29,7 @@
       "id": 727108156,
       "lat": 28.4979796,
       "lon": 83.9458756,
+      "demEle": 6856.0,
       "tags": {
         "name": "Machapuchare",
         "ele": "6993",
@@ -55,6 +57,7 @@
       "id": 219995240,
       "lat": 28.4189768,
       "lon": 83.8178193,
+      "demEle": 2197.4,
       "tags": {
         "name": "Lucky Guest House and Restaurant",
         "building": "yes",
@@ -66,6 +69,7 @@
       "id": 6965620685,
       "lat": 28.4263260,
       "lon": 83.8193496,
+      "demEle": 1965.9,
       "tags": {
         "shop": "convenience"
       }
@@ -74,6 +78,7 @@
       "id": 541645987,
       "lat": 28.4220084,
       "lon": 83.8170466,
+      "demEle": 2093.9,
       "tags": {
         "name": "Gumba",
         "building": "yes",
@@ -84,6 +89,7 @@
       "id": 1736683294,
       "lat": 28.4283500,
       "lon": 83.8260670,
+      "demEle": 2013.1,
       "tags": {
         "name": "Green View",
         "tourism": "hotel"
@@ -93,6 +99,7 @@
       "id": 1226405162,
       "lat": 28.4287334,
       "lon": 83.8304150,
+      "demEle": 2103.2,
       "tags": {
         "name": "Namaste Buddha Lodge",
         "building": "yes",
@@ -103,6 +110,7 @@
       "id": 1736669828,
       "lat": 28.4356548,
       "lon": 83.8384571,
+      "demEle": 2354.4,
       "tags": {
         "name": "Sinuwa Guesthouse",
         "tourism": "hotel"
@@ -112,6 +120,7 @@
       "id": 12254467701,
       "lat": 28.4568200,
       "lon": 83.8566859,
+      "demEle": 2313.3,
       "tags": {
         "name": "Bambou Guest House & Restaurant",
         "tourism": "hotel"
@@ -121,6 +130,7 @@
       "id": 13700242205,
       "lat": 28.4634920,
       "lon": 83.8610123,
+      "demEle": 2440.8,
       "tags": {
         "name": "Nice bathing",
         "waterway": "waterfall"
@@ -130,6 +140,7 @@
       "id": 350865285,
       "lat": 28.4698117,
       "lon": 83.8697313,
+      "demEle": 2505.9,
       "tags": {
         "name": "Dovan Guest House",
         "building": "yes",
@@ -140,6 +151,7 @@
       "id": 13700242706,
       "lat": 28.4734553,
       "lon": 83.8748305,
+      "demEle": 2558.3,
       "tags": {
         "name": "Greenland guest house and restaurant",
         "tourism": "alpine_hut"
@@ -149,6 +161,7 @@
       "id": 1237496868,
       "lat": 28.4788404,
       "lon": 83.8850332,
+      "demEle": 2719.0,
       "tags": {
         "name": "Pojenhyam Baraha Than Temple",
         "alt_name": "Shakti Pitha",
@@ -161,6 +174,7 @@
       "id": 6855810185,
       "lat": 28.4787550,
       "lon": 83.8858165,
+      "demEle": 2855.0,
       "tags": {
         "name": "108 Chahara",
         "alt_name": "१०८ छहरा",
@@ -171,6 +185,7 @@
       "id": 6966299856,
       "lat": 28.4846128,
       "lon": 83.8887343,
+      "demEle": 2838.3,
       "tags": {
         "name": "Himalaya Cafe",
         "amenity": "cafe"

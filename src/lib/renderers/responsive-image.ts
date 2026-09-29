@@ -13,6 +13,11 @@ export interface HikeImageMeta {
 	/** Where the photo was taken (from the matched Immich asset's EXIF), when known. */
 	lat?: number;
 	lon?: number;
+	/**
+	 * Terrain height (m) under lat/lon as the post's 3D map renders it
+	 * (scripts/matches/terrain.py); pins the photo onto the 3D map.
+	 */
+	demEle?: number;
 	/** Present only for images with generated AVIF tiers. */
 	blur?: string;
 }

@@ -28,6 +28,7 @@
       "id": 2770355657,
       "lat": 47.5822824,
       "lon": 10.992152,
+      "demEle": 1491.5,
       "tags": {
         "name": "Pürschling",
         "natural": "peak",
@@ -39,6 +40,7 @@
       "id": 13197350872,
       "lat": 47.5837771,
       "lon": 10.9924948,
+      "demEle": 1542.4,
       "tags": {
         "name": "August-Schuster-Haus",
         "alt_name": "Pürschlinghaus",
@@ -56,6 +58,7 @@
       "id": 522603018,
       "lat": 47.5857524,
       "lon": 10.9848614,
+      "demEle": 1712.6,
       "tags": {
         "name": "Latschenkopf",
         "natural": "peak",
@@ -67,6 +70,7 @@
       "id": 290506923,
       "lat": 47.5873731,
       "lon": 10.9863449,
+      "demEle": 1718.9,
       "tags": {
         "name": "Teufelstättkopf",
         "natural": "peak",
@@ -79,6 +83,7 @@
       "id": 2005598198,
       "lat": 47.5901918,
       "lon": 10.9917475,
+      "demEle": 1561.1,
       "tags": {
         "name": "Auf dem Stein",
         "natural": "peak",
@@ -91,6 +96,7 @@
       "id": 3253370804,
       "lat": 47.6014991,
       "lon": 10.9966936,
+      "demEle": 1394.8,
       "tags": {
         "name": "Bremeneck",
         "natural": "peak",
@@ -102,6 +108,7 @@
       "id": 3253363153,
       "lat": 47.6018138,
       "lon": 11.0038927,
+      "demEle": 1411.8,
       "tags": {
         "name": "Rosengarten",
         "natural": "peak",
@@ -115,6 +122,7 @@
       "id": 3253369961,
       "lat": 47.6068666,
       "lon": 11.0056656,
+      "demEle": 1361.2,
       "tags": {
         "name": "Schartenköpfl",
         "natural": "peak",
@@ -127,6 +135,7 @@
       "id": 4102642399,
       "lat": 47.6123428,
       "lon": 11.0046358,
+      "demEle": 1210.7,
       "tags": {
         "name": "Köpfel",
         "natural": "peak",

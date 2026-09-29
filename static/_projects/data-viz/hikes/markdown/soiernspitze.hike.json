@@ -19,6 +19,7 @@
       "id": 121940390,
       "lat": 47.4675002,
       "lon": 11.3563005,
+      "demEle": 1395.5,
       "tags": {
         "name": "Krinner-Kofler-Hütte",
         "tourism": "wilderness_hut",
@@ -35,6 +36,7 @@
       "id": 272070518,
       "lat": 47.474771,
       "lon": 11.3628685,
+      "demEle": 1786.7,
       "tags": {
         "name": "Jöchel",
         "natural": "saddle",
@@ -46,6 +48,7 @@
       "id": 67233894,
       "lat": 47.4815666,
       "lon": 11.3571077,
+      "demEle": 2235.1,
       "tags": {
         "name": "Soiernspitze",
         "natural": "peak",

@@ -23,6 +23,7 @@
       "id": 83052777,
       "lat": 47.5932618,
       "lon": 12.2033567,
+      "demEle": 713.2,
       "tags": {
         "name": "Gasthaus Veitenhof",
         "tourism": "alpine_hut",
@@ -38,6 +39,7 @@
       "id": 83052779,
       "lat": 47.5938525,
       "lon": 12.2171144,
+      "demEle": 779.9,
       "tags": {
         "name": "Pfandlhof",
         "tourism": "alpine_hut",
@@ -53,6 +55,7 @@
       "id": 83052786,
       "lat": 47.6037405,
       "lon": 12.2309587,
+      "demEle": 1160.0,
       "tags": {
         "name": "Ritzaualm",
         "tourism": "alpine_hut",
@@ -68,6 +71,7 @@
       "id": 83122401,
       "lat": 47.6037405,
       "lon": 12.2309587,
+      "demEle": 1160.0,
       "tags": {
         "name": "Vorderkaiserfeldenhütte",
         "tourism": "alpine_hut",
@@ -85,6 +89,7 @@
       "id": 266412097,
       "lat": 47.6094070,
       "lon": 12.2426926,
+      "demEle": 1576.1,
       "tags": {
         "name": "Naunspitze",
         "natural": "peak",
@@ -100,6 +105,7 @@
       "id": 256041995,
       "lat": 47.6089803,
       "lon": 12.2463971,
+      "demEle": 1730.6,
       "tags": {
         "name": "Petersköpfl",
         "natural": "peak",
@@ -114,6 +120,7 @@
       "id": 966046973,
       "lat": 47.6121415,
       "lon": 12.2628159,
+      "demEle": 1894.0,
       "tags": {
         "name": "Einserkogel",
         "natural": "peak",
@@ -125,6 +132,7 @@
       "id": 1488838379,
       "lat": 47.610584,
       "lon": 12.2650454,
+      "demEle": 1862.6,
       "tags": {
         "name": "Zwölferkogel",
         "natural": "peak",
@@ -135,6 +143,7 @@
       "id": 966046966,
       "lat": 47.6118412,
       "lon": 12.2705058,
+      "demEle": 1907.5,
       "tags": {
         "name": "Elferkogel",
         "natural": "peak",
@@ -145,6 +154,7 @@
       "id": 266412290,
       "lat": 47.6100527,
       "lon": 12.2767442,
+      "demEle": 1948.8,
       "tags": {
         "name": "Pyramidenspitze",
         "natural": "peak",

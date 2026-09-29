@@ -33,6 +33,7 @@
       "id": 942667605,
       "lat": 47.7223741,
       "lon": 11.6007828,
+      "demEle": 1092.1,
       "tags": {
         "name": "Schürfenkopf",
         "natural": "peak",
@@ -45,6 +46,7 @@
       "id": 1271399144,
       "lat": 47.7273579,
       "lon": 11.6080162,
+      "demEle": 1143.4,
       "tags": {
         "name": "Schwarzköpfel",
         "natural": "peak",
@@ -58,6 +60,7 @@
       "id": 401706780,
       "lat": 47.7295347,
       "lon": 11.620906,
+      "demEle": 1274.4,
       "tags": {
         "name": "Sulzkopf",
         "natural": "peak",
@@ -71,6 +74,7 @@
       "id": 281499400,
       "lat": 47.7222953,
       "lon": 11.6247509,
+      "demEle": 1324.9,
       "tags": {
         "name": "Rechelkopf",
         "natural": "peak",
@@ -85,6 +89,7 @@
       "id": 1272500634,
       "lat": 47.7214992,
       "lon": 11.6369916,
+      "demEle": 1278.3,
       "tags": {
         "name": "Mitterberg",
         "natural": "peak",
@@ -96,6 +101,7 @@
       "id": 1271398990,
       "lat": 47.720185,
       "lon": 11.6167245,
+      "demEle": 1170.4,
       "tags": {
         "name": "Rechelköpfel",
         "natural": "peak",
@@ -106,6 +112,7 @@
       "id": 440940585,
       "lat": 47.7155768,
       "lon": 11.6496965,
+      "demEle": 1288.2,
       "tags": {
         "name": "Gronetseck",
         "alt_name": "Grainharts Eck",
@@ -120,6 +127,7 @@
       "id": 440940577,
       "lat": 47.7190337,
       "lon": 11.6744,
+      "demEle": 1327.0,
       "tags": {
         "name": "Kogelkopf",
         "natural": "peak",
@@ -132,6 +140,7 @@
       "id": 440940579,
       "lat": 47.7146342,
       "lon": 11.6647047,
+      "demEle": 1378.5,
       "tags": {
         "name": "Luckenkopf",
         "natural": "peak",
@@ -145,6 +154,7 @@
       "id": 9892741718,
       "lat": 47.7100497,
       "lon": 11.6638254,
+      "demEle": 1291.7,
       "tags": {
         "name": "Brauneck",
         "natural": "peak",
@@ -155,6 +165,7 @@
       "id": 10300162542,
       "lat": 47.7018864,
       "lon": 11.6661234,
+      "demEle": 1337.1,
       "tags": {
         "name": "Spitzeck",
         "natural": "peak",
@@ -165,6 +176,7 @@
       "id": 4647797222,
       "lat": 47.7012898,
       "lon": 11.6755881,
+      "demEle": 1385.1,
       "tags": {
         "name": "Huder",
         "natural": "peak",
@@ -177,6 +189,7 @@
       "id": 10300162543,
       "lat": 47.6938922,
       "lon": 11.6721641,
+      "demEle": 1380.8,
       "tags": {
         "name": "Sattelkopf",
         "natural": "peak",
@@ -189,6 +202,7 @@
       "id": 37452163,
       "lat": 47.6890187,
       "lon": 11.6731547,
+      "demEle": 1263.9,
       "tags": {
         "name": "Aueralm",
         "tourism": "alpine_hut",
@@ -205,6 +219,7 @@
       "id": 3233329548,
       "lat": 47.7112511,
       "lon": 11.695073,
+      "demEle": 1125.4,
       "tags": {
         "name": "Auereck",
         "natural": "peak",
@@ -216,6 +231,7 @@
       "id": 3233329687,
       "lat": 47.7105567,
       "lon": 11.7034539,
+      "demEle": 1111.8,
       "tags": {
         "name": "Semmelberg",
         "natural": "peak",

@@ -24,6 +24,7 @@
       "id": 312593240,
       "lat": 48.9504566,
       "lon": 11.7398785,
+      "demEle": 422.1,
       "tags": {
         "name": "Burg Prunn",
         "historic": "castle",
@@ -39,6 +40,7 @@
       "id": 919557438,
       "lat": 48.9184881,
       "lon": 11.859725,
+      "demEle": 465.6,
       "tags": {
         "name": "Michelsberg",
         "natural": "peak",
@@ -51,6 +53,7 @@
       "id": 3722861040,
       "lat": 48.9542413,
       "lon": 11.7323485,
+      "demEle": 388.2,
       "tags": {
         "name": "Prunner Wand",
         "natural": "peak",
@@ -61,6 +64,7 @@
       "id": 3722861051,
       "lat": 48.9544219,
       "lon": 11.7318403,
+      "demEle": 381.9,
       "tags": {
         "name": "Prunner Turm",
         "natural": "peak",

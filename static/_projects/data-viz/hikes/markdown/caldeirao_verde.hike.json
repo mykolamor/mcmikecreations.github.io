@@ -17,6 +17,7 @@
       "id": 2319315497,
       "lat": 32.77445,
       "lon": -16.9354954,
+      "demEle": 1104.2,
       "tags": {
         "name": "Caldeirão Verde",
         "waterway": "waterfall"
@@ -26,6 +27,7 @@
       "id": 6513058893,
       "lat": 32.7789972,
       "lon": -16.9218614,
+      "demEle": 956.3,
       "tags": {
         "waterway": "waterfall"
       }
@@ -34,6 +36,7 @@
       "id": 6556491409,
       "lat": 32.7828182,
       "lon": -16.9135953,
+      "demEle": 930.2,
       "tags": {
         "waterway": "waterfall"
       }
@@ -42,6 +45,7 @@
       "id": 365253728,
       "lat": 32.7836487,
       "lon": -16.9061557,
+      "demEle": 889.0,
       "tags": {
         "amenity": "cafe",
         "building": "yes",

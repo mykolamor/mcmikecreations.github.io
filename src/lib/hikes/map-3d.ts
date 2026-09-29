@@ -11,6 +11,8 @@ import type { Map } from '$lib/data/map-info';
 import { getPixelsPerMeter } from '$lib/hikes/build-tiles';
 import { ThreePathContext } from '$lib/hikes/ThreePathContext';
 import { MeshLineHikeMaterial } from '$lib/hikes/meshline/MeshLineHikeMaterial';
+import { createMap3dMarkers, type Map3dMarkers, type Map3dNode } from '$lib/hikes/map-3d-markers';
+import { isPeakOrSaddle, type MapPhoto } from '$lib/hikes/map-utils';
 
 export interface Map3dHandle {
     setIndicator: (lat: number, lon: number, ele: number) => void;
@@ -39,7 +41,16 @@ function makeAltitudeFallback(altitudeMeters: number): THREE.DataTexture {
     return tex;
 }
 
-export function initMap3d(container: HTMLElement, geojson: any, hike: Map): Map3dHandle {
+export function initMap3d(
+    container: HTMLElement,
+    geojson: any,
+    hike: Map,
+    nodes?: Map3dNode[] | null,
+    photos?: MapPhoto[],
+    onPhotoClick?: (mediaIndex: number) => void,
+    /** Which nodes to raise on a vertical stem; peaks and saddles unless told otherwise. */
+    elevateNode: (node: Map3dNode) => boolean = isPeakOrSaddle
+): Map3dHandle {
     const noop: Map3dHandle = { setIndicator: () => {} };
 		const geometry = geojson?.features?.[0]?.geometry as (GeoPermissibleObjects & { coordinates: number[][] }) | null;
     const coords: number[][] = geometry?.coordinates ?? [];
@@ -97,11 +108,20 @@ export function initMap3d(container: HTMLElement, geojson: any, hike: Map): Map3
 		//controls.target.set(center[0] * SCENE_SCALE, 0, -center[1] * SCENE_SCALE);
     controls.update();
 
-    const render = () => renderer.render(scene, camera);
+    // Photo/POI markers, created once the scene is laid out (see below).
+    let markers: Map3dMarkers | undefined;
+    const render = () => {
+        // Markers first: they decide which stems this frame draws.
+        markers?.update(scene);
+        renderer.render(scene, camera);
+    };
     controls.addEventListener('change', render);
+    controls.addEventListener('start', () => markers?.closePopup());
 
     const onResize = () => {
-        renderer.setSize(container.offsetWidth || 512, container.offsetWidth || 512, false);
+        const width = container.offsetWidth || 512;
+        renderer.setSize(width, width, false);
+        markers?.setSize(width);
         render();
     };
     window.addEventListener('resize', onResize);
@@ -130,6 +150,11 @@ export function initMap3d(container: HTMLElement, geojson: any, hike: Map): Map3
     const tileGeoProto = new THREE.PlaneGeometry(tileScale, tileScale, TILE_SEGMENTS, TILE_SEGMENTS);
 
 		const group = new THREE.Group();
+		// Terrain only, drawn with depth-output materials for the markers' occlusion test.
+		const wantsMarkers = !!(nodes?.some((n) => typeof n.demEle === 'number') || photos?.some((p) => typeof p.demEle === 'number'));
+		const depthScene = new THREE.Scene();
+		const depthGroup = new THREE.Group();
+		depthScene.add(depthGroup);
 
 		tiles.map((tile : Array<number>) => {
 				const tx = tile[0];
@@ -169,6 +194,25 @@ export function initMap3d(container: HTMLElement, geojson: any, hike: Map): Map3
 						0
 				);
 				group.add(plane);
+
+				if (wantsMarkers) {
+						const depthMaterial = new TileMaterial({
+								diffuseTexture: satFallback,
+								displacementTexture: demFallback,
+								tOffset: 0,
+								tTileSize: tileScale,
+								tScale: pixelsPerMeter,
+								uvFromPosition: false,
+								colorFromUv: false,
+								includeDisplacement: true,
+								outputDepth: true,
+						});
+						// Same uniform object, so the DEM loaded below lifts both meshes alike.
+						depthMaterial.uniforms.tDisplacement = tileMaterial.uniforms.tDisplacement;
+						const depthPlane = new THREE.Mesh(tileGeoProto, depthMaterial);
+						depthPlane.position.copy(plane.position);
+						depthGroup.add(depthPlane);
+				}
 
 				// Route line: absolute elevation from geojson GPS track, offset 2 units above terrain
 				const context = new ThreePathContext();
@@ -271,6 +315,41 @@ export function initMap3d(container: HTMLElement, geojson: any, hike: Map): Map3
 		group.rotation.x = -Math.PI * 0.5;
 		group.scale.set(SCENE_SCALE, SCENE_SCALE, SCENE_SCALE_VERTICAL);
 		scene.add(group);
+		depthGroup.position.copy(group.position);
+		depthGroup.rotation.copy(group.rotation);
+		depthGroup.scale.copy(group.scale);
+
+		// `group`-local position of a point `ele` metres above sea level, placed the
+		// way the tiles are: relative to its tile plane's (rounded) position, not the
+		// raw projection, and lifted exactly like TileMaterial lifts vertices
+		// (height * tScale + tOffset, tOffset being 0 for tiles). With a `demEle`
+		// from scripts/matches/terrain.py it lands on the drawn surface. Null off the
+		// drawn tiles, where there's no terrain to stand on (or to occlude it).
+		const drawnTiles = new Set(tiles.map(([x, y]: number[]) => `${x}_${y}`));
+		const terrainPoint = (lat: number, lon: number, ele: number) => {
+				const [px, py] = projection([lon, lat]) ?? [0, 0];
+				const fx = px / tileScale - tiles.translate[0];
+				const fy = py / tileScale - tiles.translate[1];
+				const tx = Math.floor(fx);
+				const ty = Math.floor(fy);
+				if (!drawnTiles.has(`${tx}_${ty}`)) return null;
+				return new THREE.Vector3(
+						Math.round((tx + tiles.translate[0]) * tiles.scale) - 0.5 * tileScale + (fx - tx) * tileScale,
+						-Math.round((ty + tiles.translate[1]) * tiles.scale) + 0.5 * tileScale - (fy - ty) * tileScale,
+						ele * pixelsPerMeter
+				);
+		};
+
+		if (wantsMarkers) {
+				markers = createMap3dMarkers({
+						container, renderer, camera, group, depthScene, terrainPoint,
+						nodes: nodes ?? [],
+						photos: photos ?? [],
+						onPhotoClick,
+						elevateNode,
+						requestRender: () => render(),
+				});
+		}
 
     THREE.DefaultLoadingManager.onLoad = render;
     render();
@@ -296,7 +375,8 @@ export function initMap3d(container: HTMLElement, geojson: any, hike: Map): Map3
         destroy: () => {
             window.removeEventListener('resize', onResize);
             controls.dispose();
-            scene.traverse((obj) => {
+            markers?.dispose();
+            const disposeMesh = (obj: THREE.Object3D) => {
                 if (!(obj instanceof THREE.Mesh)) return;
                 obj.geometry?.dispose();
                 const materials = Array.isArray(obj.material) ? obj.material : [obj.material];
@@ -306,7 +386,9 @@ export function initMap3d(container: HTMLElement, geojson: any, hike: Map): Map3
                     }
                     material.dispose();
                 }
-            });
+            };
+            scene.traverse(disposeMesh);
+            depthScene.traverse(disposeMesh);
             renderer.dispose();
             if (renderer.domElement.parentElement === container) {
                 container.removeChild(renderer.domElement);

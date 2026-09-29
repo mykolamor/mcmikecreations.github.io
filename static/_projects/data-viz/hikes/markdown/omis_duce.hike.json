@@ -19,6 +19,7 @@
       "id": 168972370,
       "lat": 43.4489878,
       "lon": 16.6696911,
+      "demEle": 351.0,
       "tags": {
         "name": "Crkva Gospe Snježne",
         "name:en": "Church of Our Lady of the Snows",
@@ -35,6 +36,7 @@
       "id": 9510889687,
       "lat": 43.4501249,
       "lon": 16.6658171,
+      "demEle": 403.6,
       "tags": {
         "name": "Čeline",
         "natural": "peak",
@@ -45,6 +47,7 @@
       "id": 258604435,
       "lat": 43.4542915,
       "lon": 16.6795182,
+      "demEle": 221.9,
       "tags": {
         "name": "Crkva sv. Ante",
         "amenity": "place_of_worship",

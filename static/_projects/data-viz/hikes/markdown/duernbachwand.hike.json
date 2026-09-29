@@ -25,6 +25,7 @@
       "id": 1472279573,
       "lat": 47.6952837,
       "lon": 11.8708218,
+      "demEle": 1079.0,
       "tags": {
         "name": "Anklspitz",
         "ele": "1112",
@@ -37,6 +38,7 @@
       "id": 3743479379,
       "lat": 47.6946420,
       "lon": 11.8665749,
+      "demEle": 1224.1,
       "tags": {
         "name": "Dürnbachwand",
         "ele": "1260",
@@ -49,6 +51,7 @@
       "id": 3743479381,
       "lat": 47.6940627,
       "lon": 11.8662156,
+      "demEle": 1239.1,
       "tags": {
         "name": "Schlierseespitz",
         "ele": "1279",
@@ -61,6 +64,7 @@
       "id": 3743479380,
       "lat": 47.6908221,
       "lon": 11.8629108,
+      "demEle": 1409.0,
       "tags": {
         "ele": "1445",
         "natural": "peak",
@@ -71,6 +75,7 @@
       "id": 3233329670,
       "lat": 47.6842313,
       "lon": 11.8617174,
+      "demEle": 1503.3,
       "tags": {
         "ele": "1524",
         "natural": "peak",
@@ -81,6 +86,7 @@
       "id": 48844974,
       "lat": 47.6793009,
       "lon": 11.8620073,
+      "demEle": 1550.6,
       "tags": {
         "name": "Freudenreichkapelle",
         "alt_name": "St. Leonhard",
@@ -100,6 +106,7 @@
       "id": 4278669243,
       "lat": 47.6767017,
       "lon": 11.8634550,
+      "demEle": 1574.4,
       "tags": {
         "name": "Birkenstein",
         "amenity": "place_of_worship",
@@ -113,6 +120,7 @@
       "id": 2641015239,
       "lat": 47.6751604,
       "lon": 11.8645597,
+      "demEle": 1621.1,
       "tags": {
         "name": "Brecherspitz Vorgipfel",
         "natural": "peak",
@@ -125,6 +133,7 @@
       "id": 60315210,
       "lat": 47.6701495,
       "lon": 11.8542289,
+      "demEle": 1367.1,
       "tags": {
         "name": "Obere Firstalm",
         "tourism": "alpine_hut",
@@ -142,6 +151,7 @@
       "id": 60313973,
       "lat": 47.6677153,
       "lon": 11.8507295,
+      "demEle": 1317.3,
       "tags": {
         "name": "Untere Firstalm",
         "amenity": "restaurant",
@@ -152,6 +162,7 @@
       "id": 4004528624,
       "lat": 47.6605904,
       "lon": 11.8858221,
+      "demEle": 1089.4,
       "tags": {
         "name": "Alte Wurzhütte",
         "amenity": "restaurant",

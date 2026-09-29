@@ -24,6 +24,7 @@
       "id": 843412150,
       "lat": 47.5715028,
       "lon": 10.9606253,
+      "demEle": 954.2,
       "tags": {
         "name": "Schloss Linderhof",
         "building": "yes",
@@ -40,6 +41,7 @@
       "id": 522603014,
       "lat": 47.5851125,
       "lon": 10.9440361,
+      "demEle": 1612.2,
       "tags": {
         "name": "Dreisäuler Kopf",
         "natural": "peak",
@@ -51,6 +53,7 @@
       "id": 418778317,
       "lat": 47.5863533,
       "lon": 10.9603882,
+      "demEle": 1726.6,
       "tags": {
         "name": "Hennenkopf",
         "natural": "peak",
@@ -64,6 +67,7 @@
       "id": 522603016,
       "lat": 47.5867478,
       "lon": 10.9793405,
+      "demEle": 1687.2,
       "tags": {
         "name": "Laubeneck",
         "natural": "peak",
@@ -75,6 +79,7 @@
       "id": 13197350872,
       "lat": 47.5837771,
       "lon": 10.9924948,
+      "demEle": 1542.4,
       "tags": {
         "name": "August-Schuster-Haus",
         "alt_name": "Pürschlinghaus",
@@ -92,6 +97,7 @@
       "id": 522603018,
       "lat": 47.5857524,
       "lon": 10.9848614,
+      "demEle": 1712.6,
       "tags": {
         "name": "Latschenkopf",
         "natural": "peak",

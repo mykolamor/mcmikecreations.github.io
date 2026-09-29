@@ -21,6 +21,7 @@
       "id": 60315210,
       "lat": 47.6701495,
       "lon": 11.8542289,
+      "demEle": 1367.1,
       "tags": {
         "name": "Obere Firstalm",
         "tourism": "alpine_hut",
@@ -38,6 +39,7 @@
       "id": 60313973,
       "lat": 47.6677153,
       "lon": 11.8507295,
+      "demEle": 1317.3,
       "tags": {
         "name": "Untere Firstalm",
         "amenity": "restaurant",

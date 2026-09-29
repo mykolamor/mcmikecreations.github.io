@@ -16,10 +16,11 @@ from PIL import Image
 from .. import config
 from ..markdown import MediaRef, parse_capture_date
 from ..matcher import match_image
-from ..optimize import encode_avif_tiers, encode_lqip_data_uri, gps_meta, open_exif_corrected
+from ..optimize import encode_avif_tiers, encode_lqip_data_uri, location_meta, open_exif_corrected
 from ..postwriter import remove_media_from_post, upsert_image_front_matter
 from .model import build_entry, web_path_for
 from .remote import asset_to_dict
+from ..terrain import Terrain
 
 # What the caller wants done. Front ends only collect this; the work happens
 # here, off whatever thread the interface runs on.
@@ -143,7 +144,7 @@ def download_and_optimize(settings, remote, post, asset_id: str,
     tiers = encode_avif_tiers(img, out_base, config.AVIF_TIERS, settings.avif_quality)
     if tiers:
         blur = encode_lqip_data_uri(img, settings.lqip_long_edge, settings.lqip_quality)
-        gps = gps_meta(asset_to_dict(asset)) if asset else {}
+        gps = location_meta(asset_to_dict(asset), Terrain.for_settings(settings)) if asset else {}
         meta = {"w": img.width, "h": img.height, **gps, "blur": blur}
     else:
         # Smaller than the smallest tier: record dims only, same as an

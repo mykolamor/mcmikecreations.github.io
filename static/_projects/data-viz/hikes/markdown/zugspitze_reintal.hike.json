@@ -21,6 +21,7 @@
       "id": 27384190,
       "lat": 47.421215,
       "lon": 10.986297,
+      "demEle": 2924.2,
       "tags": {
         "name": "Zugspitze",
         "natural": "peak",
@@ -34,6 +35,7 @@
       "id": 236047957,
       "lat": 47.4209638,
       "lon": 10.9847945,
+      "demEle": 2937.0,
       "tags": {
         "name": "Münchner Haus",
         "tourism": "alpine_hut",
@@ -49,6 +51,7 @@
       "id": 31898848,
       "lat": 47.4134275,
       "lon": 10.9803555,
+      "demEle": 2578.8,
       "tags": {
         "name": "Zugspitzplatt",
         "ele": "2588",
@@ -62,6 +65,7 @@
       "id": 476498599,
       "lat": 47.4100105,
       "lon": 11.012732,
+      "demEle": 2054.7,
       "tags": {
         "name": "Knorrhütte",
         "tourism": "alpine_hut",
@@ -77,6 +81,7 @@
       "id": 173682244,
       "lat": 47.4052637,
       "lon": 11.0355503,
+      "demEle": 1370.5,
       "tags": {
         "name": "Reintalangerhütte",
         "tourism": "alpine_hut",

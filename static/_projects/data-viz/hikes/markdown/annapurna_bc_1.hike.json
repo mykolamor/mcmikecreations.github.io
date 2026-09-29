@@ -17,6 +17,7 @@
       "id": 727090665,
       "lat": 28.5183959,
       "lon": 83.8063433,
+      "demEle": 7170.2,
       "tags": {
         "name": "Annapurna South",
         "ele": "7219",
@@ -29,6 +30,7 @@
       "id": 11581492069,
       "lat": 28.4040108,
       "lon": 83.8229485,
+      "demEle": 1677.0,
       "tags": {
         "name": "Jhinu Danda jeep station",
         "amenity": "restaurant"
@@ -38,6 +40,7 @@
       "id": 6047606998,
       "lat": 28.4095174,
       "lon": 83.8240430,
+      "demEle": 1717.3,
       "tags": {
         "name": "Jhini Guest House",
         "amenity": "restaurant"
@@ -47,6 +50,7 @@
       "id": 219995240,
       "lat": 28.4189768,
       "lon": 83.8178193,
+      "demEle": 2197.4,
       "tags": {
         "name": "Lucky Guest House and Restaurant",
         "building": "yes",
@@ -58,6 +62,7 @@
       "id": 5141185722,
       "lat": 28.4171240,
       "lon": 83.8168528,
+      "demEle": 2296.4,
       "tags": {
         "name": "Real chhomrong lodge and restaurant",
         "tourism": "alpine_hut",

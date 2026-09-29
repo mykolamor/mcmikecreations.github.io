@@ -21,6 +21,7 @@
       "id": 96257994,
       "lat": 47.6481236,
       "lon": 11.8905576,
+      "demEle": 1034.8,
       "tags": {
         "name": "Blecksteinhaus",
         "tourism": "alpine_hut",

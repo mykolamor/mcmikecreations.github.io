@@ -17,6 +17,7 @@
       "id": 727090665,
       "lat": 28.5183959,
       "lon": 83.8063433,
+      "demEle": 7170.2,
       "tags": {
         "name": "Annapurna South",
         "ele": "7219",
@@ -29,6 +30,7 @@
       "id": 727108156,
       "lat": 28.4979796,
       "lon": 83.9458756,
+      "demEle": 6856.0,
       "tags": {
         "name": "Machapuchare",
         "ele": "6993",
@@ -108,6 +110,7 @@
       "id": 6966299856,
       "lat": 28.4846128,
       "lon": 83.8887343,
+      "demEle": 2838.3,
       "tags": {
         "name": "Himalaya Cafe",
         "amenity": "cafe"
@@ -117,6 +120,7 @@
       "id": 1382932111,
       "lat": 28.4931070,
       "lon": 83.8927034,
+      "demEle": 3129.4,
       "tags": {
         "name": "Hinku Cave",
         "natural": "cave_entrance",
@@ -127,6 +131,7 @@
       "id": 4193344289,
       "lat": 28.4983007,
       "lon": 83.8991697,
+      "demEle": 3206.2,
       "tags": {
         "name": "Deurali Guest House",
         "tourism": "guest_house"
@@ -136,6 +141,7 @@
       "id": 12347743970,
       "lat": 28.5086017,
       "lon": 83.9048181,
+      "demEle": 3738.3,
       "tags": {
         "name": "The Rodolfo Viewpoint",
         "tourism": "viewpoint"
@@ -145,6 +151,7 @@
       "id": 4193344090,
       "lat": 28.5267300,
       "lon": 83.9075282,
+      "demEle": 3672.0,
       "tags": {
         "name": "Shankar Guest House and Restaurant",
         "tourism": "guest_house"
@@ -154,6 +161,7 @@
       "id": 4193344490,
       "lat": 28.5304557,
       "lon": 83.8782661,
+      "demEle": 4116.7,
       "tags": {
         "name": "Annapurna Sanctuary Lodge & Restaurant",
         "tourism": "guest_house",

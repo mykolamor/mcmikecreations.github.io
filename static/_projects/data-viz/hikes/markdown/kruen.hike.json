@@ -21,6 +21,7 @@
       "id": 313172002,
       "lat": 47.4913807,
       "lon": 11.2139174,
+      "demEle": 923.8,
       "tags": {
         "name": "Kapelle Gerold",
         "amenity": "place_of_worship",
@@ -33,6 +34,7 @@
       "id": 1147768588,
       "lat": 47.4819651,
       "lon": 11.2387374,
+      "demEle": 938.7,
       "tags": {
         "name": "Klaiser Kapelle",
         "amenity": "place_of_worship",
@@ -48,6 +50,7 @@
       "id": 339247249,
       "lat": 47.4962891,
       "lon": 11.2531423,
+      "demEle": 898.3,
       "tags": {
         "name": "Alpengasthof Barmsee",
         "amenity": "restaurant",

@@ -23,6 +23,7 @@
       "id": 26862641,
       "lat": 47.63307,
       "lon": 11.6793681,
+      "demEle": 1577.0,
       "tags": {
         "name": "Buchstein",
         "natural": "peak",
@@ -35,6 +36,7 @@
       "id": 5340076821,
       "lat": 47.632728,
       "lon": 11.6783446,
+      "demEle": 1603.9,
       "tags": {
         "name": "Tegernseer Hütte",
         "tourism": "alpine_hut",
@@ -47,6 +49,7 @@
       "id": 301642754,
       "lat": 47.6326069,
       "lon": 11.676304,
+      "demEle": 1635.6,
       "tags": {
         "name": "Roßstein",
         "natural": "peak",

@@ -18,6 +18,7 @@
       "id": 99523239,
       "lat": 47.6724325,
       "lon": 11.5875751,
+      "demEle": 712.8,
       "tags": {
         "name": "Schloss Hohenburg",
         "historic": "castle",
@@ -31,6 +32,7 @@
       "id": 9101538957,
       "lat": 47.6656009,
       "lon": 11.6209367,
+      "demEle": 865.4,
       "tags": {
         "waterway": "waterfall"
       }
@@ -39,6 +41,7 @@
       "id": 901156954,
       "lat": 47.6621125,
       "lon": 11.6322388,
+      "demEle": 1019.1,
       "tags": {
         "waterway": "waterfall"
       }
@@ -47,6 +50,7 @@
       "id": 9278796023,
       "lat": 47.6518126,
       "lon": 11.6311714,
+      "demEle": 1353.8,
       "tags": {
         "name": "Lenggrieser Hütte",
         "amenity": "cafe",
@@ -64,6 +68,7 @@
       "id": 264056175,
       "lat": 47.6521541,
       "lon": 11.6431635,
+      "demEle": 1575.5,
       "tags": {
         "name": "Seekarkreuz",
         "alias": "Silberkopf",

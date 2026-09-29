@@ -25,6 +25,7 @@
       "id": 7329438513,
       "lat": 48.4817297,
       "lon": 12.0330994,
+      "demEle": 486.2,
       "tags": {
         "name": "Kuhberg",
         "natural": "peak",
@@ -35,6 +36,7 @@
       "id": 7329558590,
       "lat": 48.4880016,
       "lon": 12.0347533,
+      "demEle": 470.9,
       "tags": {
         "name": "Steinbuckel",
         "natural": "peak",
@@ -45,6 +47,7 @@
       "id": 1965417,
       "lat": 48.4925078,
       "lon": 12.0389841,
+      "demEle": 439.2,
       "tags": {
         "name": "Schloss Kronwinkl",
         "historic": "castle",
@@ -56,6 +59,7 @@
       "id": 150573146,
       "lat": 48.4827198,
       "lon": 12.0887735,
+      "demEle": 487.8,
       "tags": {
         "name": "Schloß Ast",
         "historic": "castle",
@@ -67,6 +71,7 @@
       "id": 2770577404,
       "lat": 48.5131292,
       "lon": 12.1048297,
+      "demEle": 462.3,
       "tags": {
         "name": "Ringwall Tiefenbach",
         "historic": "ruins"
@@ -76,6 +81,7 @@
       "id": 7563799011,
       "lat": 48.5165877,
       "lon": 12.1133482,
+      "demEle": 446.3,
       "tags": {
         "name": "Burgstall Schlossberg",
         "historic": "archaeological_site",
@@ -88,6 +94,7 @@
       "id": 7306641852,
       "lat": 48.5207204,
       "lon": 12.1308078,
+      "demEle": 470.2,
       "tags": {
         "name": "Birkenberg",
         "natural": "peak",
@@ -98,6 +105,7 @@
       "id": 8042266343,
       "lat": 48.5272906,
       "lon": 12.1510479,
+      "demEle": 459.2,
       "tags": {
         "name": "Annaberg",
         "natural": "peak",
@@ -108,6 +116,7 @@
       "id": 25206339,
       "lat": 48.5317029,
       "lon": 12.1524932,
+      "demEle": 468.7,
       "tags": {
         "name": "Burg Trausnitz",
         "historic": "castle",

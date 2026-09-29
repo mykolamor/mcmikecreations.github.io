@@ -25,6 +25,7 @@
       "id": 100510700,
       "lat": 47.5040869,
       "lon": 11.4927589,
+      "demEle": 1827.2,
       "tags": {
         "name": "Tölzer Hütte",
         "building": "yes",
@@ -44,6 +45,7 @@
       "id": 1621410767,
       "lat": 47.5090130,
       "lon": 11.4876000,
+      "demEle": 2072.8,
       "tags": {
         "name": "Schafreuter",
         "natural": "peak",
@@ -56,6 +58,7 @@
       "id": 304168699,
       "lat": 47.5008212,
       "lon": 11.4958072,
+      "demEle": 1909.7,
       "tags": {
         "name": "Delpsjoch",
         "natural": "peak",
@@ -68,6 +71,7 @@
       "id": 616751711,
       "lat": 47.5015183,
       "lon": 11.5134143,
+      "demEle": 1883.8,
       "tags": {
         "name": "Baumgartenjoch",
         "natural": "peak",
@@ -79,6 +83,7 @@
       "id": 136652067,
       "lat": 47.4922492,
       "lon": 11.5190347,
+      "demEle": 1327.9,
       "tags": {
         "name": "Jagdhütte Roßangerl",
         "building": "shooting_lodge",
@@ -89,6 +94,7 @@
       "id": 1482567406,
       "lat": 47.4939897,
       "lon": 11.5070241,
+      "demEle": 1554.9,
       "tags": {
         "name": "Jagdhütte Roßangerl",
         "building": "shooting_lodge",

@@ -23,6 +23,7 @@
       "id": 414147605,
       "lat": 49.5445946,
       "lon": 11.5315434,
+      "demEle": 535.4,
       "tags": {
         "name": "Kastell",
         "natural": "peak"
@@ -32,6 +33,7 @@
       "id": 10946117706,
       "lat": 49.5439361,
       "lon": 11.5327441,
+      "demEle": 552.4,
       "tags": {
         "name": "Azelstein",
         "natural": "peak",
@@ -43,6 +45,7 @@
       "id": 1278327978,
       "lat": 49.5438546,
       "lon": 11.5416089,
+      "demEle": 557.7,
       "tags": {
         "name": "Weiße Wand",
         "natural": "peak",
@@ -53,6 +56,7 @@
       "id": 426955494,
       "lat": 49.5440503,
       "lon": 11.5432897,
+      "demEle": 581.2,
       "tags": {
         "name": "Mittagfels",
         "natural": "peak",
@@ -63,6 +67,7 @@
       "id": 10946117713,
       "lat": 49.5458614,
       "lon": 11.5416824,
+      "demEle": 582.3,
       "tags": {
         "name": "Rutschen",
         "natural": "peak",
@@ -73,6 +78,7 @@
       "id": 829067169,
       "lat": 49.5473328,
       "lon": 11.5405763,
+      "demEle": 550.3,
       "tags": {
         "name": "Luginsland",
         "natural": "peak",
@@ -84,6 +90,7 @@
       "id": 1896552485,
       "lat": 49.5475376,
       "lon": 11.5421996,
+      "demEle": 560.0,
       "tags": {
         "name": "Petrus",
         "natural": "peak",
@@ -94,6 +101,7 @@
       "id": 427087093,
       "lat": 49.5486791,
       "lon": 11.5433907,
+      "demEle": 532.0,
       "tags": {
         "name": "Prellstein",
         "natural": "peak",
@@ -104,6 +112,7 @@
       "id": 10946117709,
       "lat": 49.5379721,
       "lon": 11.5470498,
+      "demEle": 587.3,
       "tags": {
         "name": "Gemeindeberg",
         "natural": "peak",
@@ -115,6 +124,7 @@
       "id": 275515277,
       "lat": 49.5509361,
       "lon": 11.5366231,
+      "demEle": 493.2,
       "tags": {
         "name": "Schmiedberg",
         "natural": "peak",
@@ -125,6 +135,7 @@
       "id": 403080335,
       "lat": 49.5505647,
       "lon": 11.5277691,
+      "demEle": 445.5,
       "tags": {
         "name": "Mittelbergwand",
         "natural": "peak",

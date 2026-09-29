@@ -21,6 +21,7 @@
       "id": 222472784,
       "lat": 47.6773464,
       "lon": 11.932217,
+      "demEle": 1325.0,
       "tags": {
         "name": "Geitauer Alm",
         "amenity": "restaurant",
@@ -31,6 +32,7 @@
       "id": 260826436,
       "lat": 47.6731724,
       "lon": 11.923695,
+      "demEle": 1711.2,
       "tags": {
         "name": "Aiplspitz",
         "natural": "peak",
@@ -45,6 +47,7 @@
       "id": 1976803003,
       "lat": 47.6718782,
       "lon": 11.9205621,
+      "demEle": 1672.7,
       "tags": {
         "name": "Tanzeck",
         "natural": "peak",
@@ -56,6 +59,7 @@
       "id": 260826433,
       "lat": 47.673511,
       "lon": 11.9060494,
+      "demEle": 1720.8,
       "tags": {
         "name": "Jägerkamp",
         "natural": "peak",
@@ -70,6 +74,7 @@
       "id": 93450441,
       "lat": 47.6651508,
       "lon": 11.9062683,
+      "demEle": 1412.1,
       "tags": {
         "name": "Schönfeldhütte",
         "tourism": "alpine_hut",

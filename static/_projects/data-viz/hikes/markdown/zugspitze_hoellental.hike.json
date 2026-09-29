@@ -17,6 +17,7 @@
       "id": 357482706,
       "lat": 47.4483891,
       "lon": 11.0444884,
+      "demEle": 1131.1,
       "tags": {
         "name": "Höllentaleingangshütte",
         "tourism": "alpine_hut",
@@ -30,6 +31,7 @@
       "id": 370669072,
       "lat": 47.4378683,
       "lon": 11.0248867,
+      "demEle": 1385.1,
       "tags": {
         "name": "Höllentalangerhütte",
         "tourism": "alpine_hut",
@@ -46,6 +48,7 @@
       "id": 27384190,
       "lat": 47.421215,
       "lon": 10.986297,
+      "demEle": 2924.2,
       "tags": {
         "name": "Zugspitze",
         "natural": "peak",
@@ -59,6 +62,7 @@
       "id": 236047957,
       "lat": 47.4209638,
       "lon": 10.9847945,
+      "demEle": 2937.0,
       "tags": {
         "name": "Münchner Haus",
         "tourism": "alpine_hut",

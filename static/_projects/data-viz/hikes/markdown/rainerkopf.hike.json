@@ -24,6 +24,7 @@
       "id": 1574152591,
       "lat": 47.6857619,
       "lon": 11.8423468,
+      "demEle": 1436.9,
       "tags": {
         "name": "Rainerkopf",
         "natural": "peak",
@@ -35,6 +36,7 @@
       "id": 60310929,
       "lat": 47.677766,
       "lon": 11.8390339,
+      "demEle": 1351.1,
       "tags": {
         "name": "Bodenschneidhaus",
         "tourism": "alpine_hut",
@@ -52,6 +54,7 @@
       "id": 60315210,
       "lat": 47.6701495,
       "lon": 11.8542289,
+      "demEle": 1367.1,
       "tags": {
         "name": "Obere Firstalm",
         "tourism": "alpine_hut",

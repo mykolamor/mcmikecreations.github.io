@@ -21,6 +21,7 @@
       "id": 4369817141,
       "lat": 47.7236176,
       "lon": 11.7956894,
+      "demEle": 1336.3,
       "tags": {
         "name": "Gindelalmschneid",
         "natural": "peak",
@@ -35,6 +36,7 @@
       "id": 3229970780,
       "lat": 47.7305888,
       "lon": 11.8104963,
+      "demEle": 1261.9,
       "tags": {
         "name": "Auer Berg",
         "natural": "peak",
@@ -46,6 +48,7 @@
       "id": 3229970782,
       "lat": 47.7323621,
       "lon": 11.8263212,
+      "demEle": 1168.7,
       "tags": {
         "name": "Rainer Berg",
         "natural": "peak",
@@ -57,6 +60,7 @@
       "id": 2641018246,
       "lat": 47.7376374,
       "lon": 11.8342723,
+      "demEle": 1054.7,
       "tags": {
         "name": "Huberspitz",
         "natural": "peak",

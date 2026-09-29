@@ -112,6 +112,12 @@ def remove_media_from_post(post_path: Path, web_path: str) -> int:
     return removed
 
 
+def read_images(post_path: Path) -> dict[str, dict]:
+    """The post's front-matter `images` map as plain dicts ({} if none)."""
+    data, _ = _load_front_matter(post_path)
+    return {name: dict(meta) for name, meta in (data.get("images") or {}).items()}
+
+
 def merge_image_fields(post_path: Path, updates: dict[str, dict], dry_run: bool = False) -> int:
     """Set extra fields (e.g. `lat`/`lon`) on files already present in front
     matter's `images` map. New keys go just before `blur`, so the long data

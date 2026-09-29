@@ -22,6 +22,7 @@
       "id": 84097007,
       "lat": 47.7141954,
       "lon": 11.9799002,
+      "demEle": 1270.4,
       "tags": {
         "name": "Kesselalm",
         "tourism": "alpine_hut",
@@ -37,6 +38,7 @@
       "id": 260979669,
       "lat": 47.7210941,
       "lon": 11.9877728,
+      "demEle": 1576.2,
       "tags": {
         "name": "Breitenstein",
         "natural": "peak",
@@ -51,6 +53,7 @@
       "id": 9895387909,
       "lat": 47.7053102,
       "lon": 11.9992281,
+      "demEle": 1480.1,
       "tags": {
         "name": "Türkenköpfl",
         "natural": "peak",
@@ -61,6 +64,7 @@
       "id": 26865134,
       "lat": 47.7034761,
       "lon": 12.0120518,
+      "demEle": 1801.8,
       "tags": {
         "name": "Wendelstein",
         "natural": "peak",
@@ -75,6 +79,7 @@
       "id": 220070602,
       "lat": 47.6944027,
       "lon": 12.0125794,
+      "demEle": 1346.3,
       "tags": {
         "name": "Siglhütte",
         "tourism": "wilderness_hut",
@@ -88,6 +93,7 @@
       "id": 3233329685,
       "lat": 47.6805761,
       "lon": 12.0081736,
+      "demEle": 946.0,
       "tags": {
         "name": "Reitberg",
         "natural": "peak",

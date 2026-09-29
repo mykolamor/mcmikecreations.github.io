@@ -24,6 +24,7 @@
       "id": 627403025,
       "lat": 47.3830166,
       "lon": 10.9679046,
+      "demEle": 1481.6,
       "tags": {
         "name": "Isentalkopfbahn",
         "aerialway": "station",
@@ -35,6 +36,7 @@
       "id": 61577689,
       "lat": 47.3852042,
       "lon": 10.9683897,
+      "demEle": 1503.5,
       "tags": {
         "name": "Ehrwalder Almbahn Bergstation",
         "aerialway": "station",
@@ -47,6 +49,7 @@
       "id": 237035038,
       "lat": 47.384827,
       "lon": 10.9684741,
+      "demEle": 1498.1,
       "tags": {
         "name": "Gasthof Ehrwalder Alm",
         "ele": "1502",
@@ -61,6 +64,7 @@
       "id": 650746778,
       "lat": 47.3848455,
       "lon": 10.9524273,
+      "demEle": 1279.7,
       "tags": {
         "name": "Ganghofer Blitz",
         "aerialway": "station",
@@ -72,6 +76,7 @@
       "id": 430957208,
       "lat": 47.3874743,
       "lon": 10.9392006,
+      "demEle": 1120.5,
       "tags": {
         "name": "Brent Alm",
         "amenity": "restaurant",
@@ -86,6 +91,7 @@
       "id": 123125010,
       "lat": 47.3875476,
       "lon": 10.9383732,
+      "demEle": 1108.6,
       "tags": {
         "name": "Ehrwalder Almbahn Talstation",
         "aerialway": "station",
@@ -99,6 +105,7 @@
       "id": 61577692,
       "lat": 47.3851077,
       "lon": 10.9690643,
+      "demEle": 1504.1,
       "tags": {
         "name": "Tirolerhaus",
         "amenity": "restaurant",
@@ -109,6 +116,7 @@
       "id": 286574960,
       "lat": 47.396354,
       "lon": 11.0165212,
+      "demEle": 2012.5,
       "tags": {
         "name": "Gatterl",
         "barrier": "gate",
@@ -122,6 +130,7 @@
       "id": 2510073225,
       "lat": 47.3929061,
       "lon": 11.0146928,
+      "demEle": 2037.9,
       "tags": {
         "name": "Feldernjöchl",
         "mountain_pass": "yes",
@@ -133,6 +142,7 @@
       "id": 286565100,
       "lat": 47.3896073,
       "lon": 11.0089761,
+      "demEle": 2108.7,
       "tags": {
         "name": "Am Brand",
         "mountain_pass": "yes",
@@ -144,6 +154,7 @@
       "id": 2700114094,
       "lat": 47.3874108,
       "lon": 10.9842118,
+      "demEle": 1915.8,
       "tags": {
         "name": "Issentalköpfl",
         "ele": "1925",
@@ -154,6 +165,7 @@
       "id": 31898848,
       "lat": 47.4134275,
       "lon": 10.9803555,
+      "demEle": 2578.8,
       "tags": {
         "name": "Zugspitzplatt",
         "ele": "2588",
@@ -167,6 +179,7 @@
       "id": 476498599,
       "lat": 47.4100105,
       "lon": 11.012732,
+      "demEle": 2054.7,
       "tags": {
         "name": "Knorrhütte",
         "tourism": "alpine_hut",
@@ -182,6 +195,7 @@
       "id": 4938335786,
       "lat": 47.4138898,
       "lon": 10.970039,
+      "demEle": 2664.6,
       "tags": {
         "name": "Schneefernerscharte",
         "ele": "2699",
@@ -192,6 +206,7 @@
       "id": 12806819227,
       "lat": 47.4118778,
       "lon": 10.9684542,
+      "demEle": 2798.1,
       "tags": {
         "ele": "2836",
         "natural": "peak",
@@ -202,6 +217,7 @@
       "id": 256042768,
       "lat": 47.4095968,
       "lon": 10.9699595,
+      "demEle": 2827.4,
       "tags": {
         "name": "Schneefernerkopf",
         "ele": "2874",

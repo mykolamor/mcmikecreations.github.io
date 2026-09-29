@@ -25,6 +25,7 @@
       "id": 399492387,
       "lat": 47.6561236,
       "lon": 11.6528113,
+      "demEle": 1556.3,
       "tags": {
         "name": "Brandkopf",
         "natural": "peak",
@@ -36,6 +37,7 @@
       "id": 264055810,
       "lat": 47.658927,
       "lon": 11.6545785,
+      "demEle": 1566.9,
       "tags": {
         "name": "Spitzkamp",
         "natural": "peak",
@@ -50,6 +52,7 @@
       "id": 264055809,
       "lat": 47.6611778,
       "lon": 11.6598621,
+      "demEle": 1588.4,
       "tags": {
         "name": "Auerkamp",
         "natural": "peak",
@@ -64,6 +67,7 @@
       "id": 264056090,
       "lat": 47.6661218,
       "lon": 11.6660249,
+      "demEle": 1571.9,
       "tags": {
         "name": "Ochsenkamp",
         "natural": "peak",
@@ -78,6 +82,7 @@
       "id": 264056178,
       "lat": 47.6716794,
       "lon": 11.6610511,
+      "demEle": 1229.9,
       "tags": {
         "name": "Hirschtalsattel",
         "natural": "saddle",

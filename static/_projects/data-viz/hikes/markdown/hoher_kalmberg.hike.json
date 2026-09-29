@@ -19,6 +19,7 @@
       "id": 990927426,
       "lat": 47.6207262,
       "lon": 13.5615579,
+      "demEle": 1583.2,
       "tags": {
         "name": "Goiserer Hütte",
         "tourism": "alpine_hut",
@@ -33,6 +34,7 @@
       "id": 435173020,
       "lat": 47.6124692,
       "lon": 13.5675514,
+      "demEle": 1785.2,
       "tags": {
         "name": "Hoher Kalmberg",
         "natural": "peak",

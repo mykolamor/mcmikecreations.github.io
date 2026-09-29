@@ -90,11 +90,11 @@ function insertHikeWidgetPlaceholders(html: string, tags: string[]): string {
 }
 
 /** The image's coordinates if its front matter carries a valid pair, else undefined. */
-function readLocation(meta: HikeImageMeta): { lat: number; lon: number } | undefined {
-    const { lat, lon } = meta;
+function readLocation(meta: HikeImageMeta): { lat: number; lon: number; demEle?: number } | undefined {
+    const { lat, lon, demEle } = meta;
     if (typeof lat !== 'number' || typeof lon !== 'number') return undefined;
     if (!Number.isFinite(lat) || !Number.isFinite(lon) || Math.abs(lat) > 90 || Math.abs(lon) > 180) return undefined;
-    return { lat, lon };
+    return typeof demEle === 'number' && Number.isFinite(demEle) ? { lat, lon, demEle } : { lat, lon };
 }
 
 export async function parseMarkdown(postRaw: string, tags: string[] = []): Promise<ParsedPost> {

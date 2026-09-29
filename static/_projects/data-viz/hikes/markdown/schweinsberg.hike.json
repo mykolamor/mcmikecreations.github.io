@@ -18,6 +18,7 @@
       "id": 9895387909,
       "lat": 47.7053102,
       "lon": 11.9992281,
+      "demEle": 1480.1,
       "tags": {
         "name": "Türkenköpfl",
         "natural": "peak",
@@ -28,6 +29,7 @@
       "id": 413585849,
       "lat": 47.7110389,
       "lon": 11.9876722,
+      "demEle": 1489.2,
       "tags": {
         "name": "Schweinsberg",
         "natural": "peak",
@@ -41,6 +43,7 @@
       "id": 84097007,
       "lat": 47.7141954,
       "lon": 11.9799002,
+      "demEle": 1270.4,
       "tags": {
         "name": "Kesselalm",
         "tourism": "alpine_hut",

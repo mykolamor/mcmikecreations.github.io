@@ -117,6 +117,16 @@ DEFAULT_AVIF_QUALITY = 50
 DEFAULT_LQIP_LONG_EDGE = 24
 DEFAULT_LQIP_QUALITY = 50
 
+# --- 3D map terrain ---------------------------------------------------------
+# Heights written as `demEle` are sampled the way the post's 3D map renders its
+# terrain (src/lib/hikes/map-3d.ts + meshline/dem-height.ts), so a marker at
+# that height sits exactly on the drawn surface. Change these only together
+# with their TypeScript counterparts.
+DEM_SUBDIR = "_projects/data-viz/maps/mapbox-terrain-dem-v1"  # under STATIC_SUBDIR
+TERRAIN_ZOOM = 13            # map-3d.ts ZOOM
+TERRAIN_TILE_SEGMENTS = 64   # map-3d.ts TILE_SEGMENTS
+DEM_BUFFER_PX = 1            # map-providers.js mapboxDEM: 514px tiles = 512 + 1px each side
+
 
 def repo_root() -> Path:
     """Repository root, derived from this file's location."""

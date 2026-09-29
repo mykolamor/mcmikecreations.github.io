@@ -17,6 +17,7 @@
       "id": 143270539,
       "lat": 47.6846631,
       "lon": 12.0054222,
+      "demEle": 992.9,
       "tags": {
         "name": "Bergcafé Siglhof",
         "amenity": "cafe",
@@ -32,6 +33,7 @@
       "id": 220070602,
       "lat": 47.6944027,
       "lon": 12.0125794,
+      "demEle": 1346.3,
       "tags": {
         "name": "Siglhütte",
         "access": "private",
@@ -48,6 +50,7 @@
       "id": 136892007,
       "lat": 47.7020736,
       "lon": 12.0123066,
+      "demEle": 1701.1,
       "tags": {
         "name": "Wendelsteinhaus",
         "amenity": "restaurant",
@@ -65,6 +68,7 @@
       "id": 140178107,
       "lat": 47.7021757,
       "lon": 12.0132786,
+      "demEle": 1719.5,
       "tags": {
         "name": "Wendelsteinkircherl",
         "amenity": "place_of_worship",
@@ -80,6 +84,7 @@
       "id": 26865134,
       "lat": 47.7034761,
       "lon": 12.0120518,
+      "demEle": 1801.8,
       "tags": {
         "name": "Wendelstein",
         "natural": "peak",
@@ -94,6 +99,7 @@
       "id": 342301041,
       "lat": 47.6736675,
       "lon": 12.0118233,
+      "demEle": 799.3,
       "tags": {
         "name": "Café Konditorei Huber",
         "amenity": "cafe",

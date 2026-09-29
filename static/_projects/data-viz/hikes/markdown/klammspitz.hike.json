@@ -22,6 +22,7 @@
       "id": 843412150,
       "lat": 47.5715028,
       "lon": 10.9606253,
+      "demEle": 954.2,
       "tags": {
         "name": "Schloss Linderhof",
         "building": "yes",

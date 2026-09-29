@@ -20,6 +20,7 @@
       "id": 909747952,
       "lat": 47.6408897,
       "lon": 11.785572,
+      "demEle": 1586.9,
       "tags": {
         "name": "Gams-Beobachtungspunkt",
         "amenity": "shelter",
@@ -31,6 +32,7 @@
       "id": 260692620,
       "lat": 47.6512206,
       "lon": 11.7846084,
+      "demEle": 1684.7,
       "tags": {
         "name": "Setzberg",
         "natural": "peak",

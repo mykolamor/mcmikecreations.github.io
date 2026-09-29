@@ -12,7 +12,9 @@ export default defineConfig({
 			// `build/` is adapter-static output (thousands of map tiles). The dev
 			// server never needs to watch it, and doing so exhausts the inotify
 			// watcher limit on Linux (ENOSPC).
-			ignored: ['**/build/**'],
+			// Same for the image matcher's Python venv and its ~23k-file cache,
+			// neither of which the site ever loads.
+			ignored: ['**/build/**', '**/scripts/.venv/**', '**/scripts/matches/hikes/.image-match-cache/**'],
 		},
 	},
 });

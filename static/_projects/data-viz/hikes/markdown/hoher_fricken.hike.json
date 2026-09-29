@@ -25,6 +25,7 @@
       "id": 519688895,
       "lat": 47.5313452,
       "lon": 11.1531653,
+      "demEle": 1906.6,
       "tags": {
         "name": "Hoher Fricken",
         "natural": "peak",
@@ -38,6 +39,7 @@
       "id": 429259298,
       "lat": 47.5238658,
       "lon": 11.1485315,
+      "demEle": 1657.9,
       "tags": {
         "name": "Ochsenberg",
         "natural": "peak",

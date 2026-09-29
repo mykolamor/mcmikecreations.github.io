@@ -21,6 +21,7 @@
       "id": 449491364,
       "lat": 47.5404528,
       "lon": 11.1757851,
+      "demEle": 2011.7,
       "tags": {
         "name": "Bischof",
         "natural": "peak",
@@ -34,6 +35,7 @@
       "id": 2526645264,
       "lat": 47.5460461,
       "lon": 11.1748876,
+      "demEle": 1937.1,
       "tags": {
         "name": "Henneneck",
         "natural": "peak",
@@ -46,6 +48,7 @@
       "id": 38173874,
       "lat": 47.5471087,
       "lon": 11.1888231,
+      "demEle": 1944.9,
       "tags": {
         "name": "Weilheimer Hütte",
         "alt_name": "Krottenkopfhütte",
@@ -62,6 +65,7 @@
       "id": 26863440,
       "lat": 47.5443752,
       "lon": 11.1914281,
+      "demEle": 2051.0,
       "tags": {
         "name": "Krottenkopf",
         "natural": "peak",

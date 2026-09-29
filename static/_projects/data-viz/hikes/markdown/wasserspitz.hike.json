@@ -25,6 +25,7 @@
       "id": 1579437934,
       "lat": 47.6803875,
       "lon": 11.8359142,
+      "demEle": 1510.8,
       "tags": {
         "name": "Wasserspitz",
         "natural": "peak",
@@ -38,6 +39,7 @@
       "id": 60310929,
       "lat": 47.677766,
       "lon": 11.8390339,
+      "demEle": 1351.1,
       "tags": {
         "name": "Bodenschneidhaus",
         "tourism": "alpine_hut",
@@ -55,6 +57,7 @@
       "id": 60315210,
       "lat": 47.6701495,
       "lon": 11.8542289,
+      "demEle": 1367.1,
       "tags": {
         "name": "Obere Firstalm",
         "tourism": "alpine_hut",
@@ -72,6 +75,7 @@
       "id": 60313973,
       "lat": 47.6677153,
       "lon": 11.8507295,
+      "demEle": 1317.3,
       "tags": {
         "name": "Untere Firstalm",
         "amenity": "restaurant",
@@ -82,6 +86,7 @@
       "id": 2338028258,
       "lat": 47.6622252,
       "lon": 11.8563377,
+      "demEle": 1499.3,
       "tags": {
         "name": "Stümpfling",
         "natural": "peak",
@@ -94,6 +99,7 @@
       "id": 60309009,
       "lat": 47.6601797,
       "lon": 11.8570706,
+      "demEle": 1480.3,
       "tags": {
         "name": "Jagahütt'n",
         "amenity": "restaurant",

@@ -21,6 +21,7 @@
       "id": 96257977,
       "lat": 47.6547504,
       "lon": 11.8868132,
+      "demEle": 1050.3,
       "tags": {
         "name": "Albert-Link-Hütte",
         "tourism": "alpine_hut",
@@ -38,6 +39,7 @@
       "id": 110224489,
       "lat": 47.6477752,
       "lon": 11.8759088,
+      "demEle": 1317.4,
       "tags": {
         "name": "Untere Haushamer Alm",
         "tourism": "wilderness_hut",
@@ -52,6 +54,7 @@
       "id": 309985323,
       "lat": 47.6426762,
       "lon": 11.8724862,
+      "demEle": 1591.9,
       "tags": {
         "name": "Stolzenberg",
         "natural": "peak",
@@ -63,6 +66,7 @@
       "id": 3906281333,
       "lat": 47.6432444,
       "lon": 11.8674221,
+      "demEle": 1582.9,
       "tags": {
         "name": "Stolzeneck",
         "natural": "peak",
@@ -73,6 +77,7 @@
       "id": 2338028257,
       "lat": 47.6485766,
       "lon": 11.8662068,
+      "demEle": 1582.0,
       "tags": {
         "name": "Rotkopf",
         "natural": "peak",
@@ -83,6 +88,7 @@
       "id": 443883206,
       "lat": 47.6556941,
       "lon": 11.8618557,
+      "demEle": 1566.3,
       "tags": {
         "name": "Roßkopf",
         "alt_name": "Rosskopf",
@@ -99,6 +105,7 @@
       "id": 60309009,
       "lat": 47.6601797,
       "lon": 11.8570706,
+      "demEle": 1480.3,
       "tags": {
         "name": "Jagahütt'n",
         "amenity": "restaurant",

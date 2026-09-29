@@ -22,6 +22,7 @@
       "id": 60315210,
       "lat": 47.6701495,
       "lon": 11.8542289,
+      "demEle": 1367.1,
       "tags": {
         "name": "Obere Firstalm",
         "tourism": "alpine_hut",
@@ -39,6 +40,7 @@
       "id": 1129365627,
       "lat": 47.6717531,
       "lon": 11.8381005,
+      "demEle": 1625.3,
       "tags": {
         "name": "Bodenschneid",
         "natural": "peak",
@@ -53,6 +55,7 @@
       "id": 797643804,
       "lat": 47.6745316,
       "lon": 11.8339866,
+      "demEle": 1562.0,
       "tags": {
         "name": "Rinnerspitz",
         "natural": "peak",
@@ -65,6 +68,7 @@
       "id": 60310929,
       "lat": 47.677766,
       "lon": 11.8390339,
+      "demEle": 1351.1,
       "tags": {
         "name": "Bodenschneidhaus",
         "tourism": "alpine_hut",

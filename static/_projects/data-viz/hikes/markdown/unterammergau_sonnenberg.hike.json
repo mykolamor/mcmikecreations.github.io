@@ -19,6 +19,7 @@
       "id": 13197350872,
       "lat": 47.5837771,
       "lon": 10.9924948,
+      "demEle": 1542.4,
       "tags": {
         "name": "August-Schuster-Haus",
         "alt_name": "Pürschlinghaus",
@@ -36,6 +37,7 @@
       "id": 344347709,
       "lat": 47.5841989,
       "lon": 11.016306,
+      "demEle": 1562.7,
       "tags": {
         "name": "Sonnenberg",
         "natural": "peak",

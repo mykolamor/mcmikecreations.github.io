@@ -22,6 +22,7 @@
       "id": 2273005201,
       "lat": 48.8378723,
       "lon": 12.183366,
+      "demEle": 380.6,
       "tags": {
         "name": "Löwendenkmal",
         "historic": "memorial",
@@ -35,6 +36,7 @@
       "id": 1802818,
       "lat": 48.9022551,
       "lon": 12.179567,
+      "demEle": 387.6,
       "tags": {
         "name": "Schloss Haus",
         "building": "yes",
@@ -50,6 +52,7 @@
       "id": 297564020,
       "lat": 48.9017822,
       "lon": 12.1827045,
+      "demEle": 384.2,
       "tags": {
         "name": "Wolfgangseiche",
         "denotation": "natural_monument",
@@ -65,6 +68,7 @@
       "id": 28963332,
       "lat": 48.9182167,
       "lon": 12.2044987,
+      "demEle": 360.7,
       "tags": {
         "name": "Schloß Alteglofsheim",
         "building": "yes",

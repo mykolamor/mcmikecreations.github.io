@@ -19,6 +19,7 @@
       "id": 3190662,
       "lat": 48.7371892,
       "lon": 12.1904357,
+      "demEle": 402.3,
       "tags": {
         "name": "Schlosshotel Neufahrn",
         "building": "yes",
@@ -34,6 +35,7 @@
       "id": 2273005201,
       "lat": 48.8378723,
       "lon": 12.183366,
+      "demEle": 380.6,
       "tags": {
         "name": "Löwendenkmal",
         "historic": "memorial",

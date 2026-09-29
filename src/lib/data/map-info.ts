@@ -54,6 +54,11 @@ interface MapNode {
 	id: number;
 	lat: number;
 	lon: number;
+	/**
+	 * Terrain height (m) under lat/lon as the post's 3D map renders it, from
+	 * scripts/backfill_terrain.py. Placement only - `tags.ele` stays OSM's value.
+	 */
+	demEle?: number;
 	tags: {
 		[key: string]: string | null | undefined;
 	};

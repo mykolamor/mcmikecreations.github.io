@@ -22,6 +22,7 @@
       "id": 313207153,
       "lat": 47.6712336,
       "lon": 12.0816908,
+      "demEle": 811.9,
       "tags": {
         "name": "Oberer Tatzelwurmwasserfall",
         "waterway": "waterfall",
@@ -32,6 +33,7 @@
       "id": 1277556865,
       "lat": 47.6608705,
       "lon": 12.091175,
+      "demEle": 984.6,
       "tags": {
         "name": "Schneelahner Hütte",
         "alt_name": "Schneelahnerhütte",
@@ -46,6 +48,7 @@
       "id": 811044030,
       "lat": 47.6446513,
       "lon": 12.0984905,
+      "demEle": 1352.2,
       "tags": {
         "name": "Brünnsteinhaus",
         "tourism": "alpine_hut",
@@ -61,6 +64,7 @@
       "id": 304317008,
       "lat": 47.6473418,
       "lon": 12.0971096,
+      "demEle": 1586.4,
       "tags": {
         "name": "Brünnstein",
         "natural": "peak",
@@ -75,6 +79,7 @@
       "id": 885182782,
       "lat": 47.6482196,
       "lon": 12.1489342,
+      "demEle": 804.4,
       "tags": {
         "name": "Gletscherblick",
         "natural": "peak",

@@ -24,6 +24,7 @@
       "id": 38723149,
       "lat": 50.7078507,
       "lon": 15.7312645,
+      "demEle": 853.9,
       "tags": {
         "name": "Betyna",
         "tourism": "alpine_hut",
@@ -35,6 +36,7 @@
       "id": 1354679430,
       "lat": 50.732746,
       "lon": 15.7333884,
+      "demEle": 1237.8,
       "tags": {
         "name": "Vodárna pro Sněžku",
         "historic": "technical_monument",
@@ -46,6 +48,7 @@
       "id": 19921121,
       "lat": 50.7394155,
       "lon": 15.7291969,
+      "demEle": 1391.3,
       "tags": {
         "name": "Dom Śląski",
         "alt_name": "Śląski Dom",
@@ -64,6 +67,7 @@
       "id": 1850303773,
       "lat": 50.7360326,
       "lon": 15.7396072,
+      "demEle": 1593.2,
       "tags": {
         "name": "Sněžka",
         "alt_name": "Śnieżka",
@@ -79,6 +83,7 @@
       "id": 19921110,
       "lat": 50.7346979,
       "lon": 15.6974086,
+      "demEle": 1415.9,
       "tags": {
         "name": "Luční bouda",
         "alt_name": "Schronisko Buda Łąkowa",
@@ -93,6 +98,7 @@
       "id": 6767676700,
       "lat": 50.7340107,
       "lon": 15.6654555,
+      "demEle": 1406.2,
       "tags": {
         "name": "Krakonoš",
         "alt_name": "Kozí hřbety",
@@ -106,6 +112,7 @@
       "id": 31128149,
       "lat": 50.7409194,
       "lon": 15.6473003,
+      "demEle": 1005.9,
       "tags": {
         "name": "Bouda Bílé Labe",
         "tourism": "alpine_hut",

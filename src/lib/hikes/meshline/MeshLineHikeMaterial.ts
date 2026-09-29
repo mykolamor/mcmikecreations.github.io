@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import { demHeightGlsl } from '$lib/hikes/meshline/dem-height'
 
 const vertexShader = /* glsl */ `
   #include <common>
@@ -26,6 +27,8 @@ const vertexShader = /* glsl */ `
   varying vec2 vUV;
   varying vec4 vColor;
   varying float vCounters;
+
+  ${demHeightGlsl}
   
   vec2 fix(vec4 i, float aspect) {
     vec2 res = i.xy / i.w;
@@ -39,9 +42,8 @@ const vertexShader = /* glsl */ `
     vCounters = counters;
     
     vUV = clamp(position.xy / tTileSize + vec2(0.5, 0.5), 0.0, 1.0);
-		vec4 heightColor = texture2D(tDisplacement, vUV) * 256.0;
 		// height in meters
-		float height = -10000.0 + ((heightColor.r * 256.0 * 256.0 + heightColor.g * 256.0 + heightColor.b) * 0.1);
+		float height = demHeight(tDisplacement, vUV);
 		float heightOffset = height * tScale + tOffset;
 		vec4 heightPos = vec4(position.x, position.y, position.z + heightOffset, 1.0);
   
