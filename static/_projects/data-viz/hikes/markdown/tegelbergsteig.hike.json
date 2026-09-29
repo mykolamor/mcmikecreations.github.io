@@ -1,0 +1,67 @@
+{
+  "name": "Tegelbergsteig",
+  "description": "Hike from Tegelbergbahn near Schwangau to Neuschwanstein via Tegelbergsteig.",
+  "image": "/images/projects/data-viz/hikes/tegelbergsteig.jpg",
+  "origin": {
+    "lat": 47.56254056158531,
+    "lon": 10.76180455092184
+  },
+  "height": 384,
+  "checkpoints": [
+    [10.7560762, 47.5684258],
+    [10.7713015, 47.5637573],
+    [10.7777632, 47.5611685],
+    [10.7494664, 47.5550050],
+    [10.7504319, 47.5578726],
+    [10.7401371, 47.5567196]
+  ],
+  "nodes": [
+    {
+      "id": 221601969,
+      "lat": 47.5575908,
+      "lon": 10.7495244,
+      "tags": {
+        "name": "Schloss Neuschwanstein",
+        "castle_type": "stately",
+        "contact:fax": "+49836293988-19",
+        "contact:phone": "+49836293988-0",
+        "contact:website": "https://www.neuschwanstein.de/",
+        "heritage": "4",
+        "heritage:operator": "BLfD",
+        "historic": "castle",
+        "importance": "international",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "ref:BLfD": "D-7-77-169-33",
+        "tourism": "attraction",
+        "wikidata": "Q4152",
+        "wikipedia": "de:Schloss Neuschwanstein"
+      }
+    },
+    {
+      "id": 1631172973,
+      "lat": 47.5549563,
+      "lon": 10.7494061,
+      "tags": {
+        "name": "Aussichtspunkt Marienbrücke",
+        "tourism": "viewpoint"
+      }
+    },
+    {
+      "id": 266995158,
+      "lat": 47.5681888,
+      "lon": 10.7562201,
+      "tags": {
+        "name": "Tegelbergbahn (Talstation)",
+        "aerialway": "station",
+        "email": "info@tegelbergbahn.de",
+        "phone": "+49836298360",
+        "public_transport": "station",
+        "tourism": "yes",
+        "website": "https://www.tegelbergbahn.de/",
+        "wikidata": "Q1524386",
+        "wikipedia": "en:Tegelberg Cable Car"
+      }
+    }
+  ]
+}
