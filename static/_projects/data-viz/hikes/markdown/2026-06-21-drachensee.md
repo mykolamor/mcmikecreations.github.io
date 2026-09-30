@@ -38,6 +38,9 @@ found an invitation from Stanislav from my [Trainsjoch (1707 m) hike](/hikes/202
 to visit Drachensee across the border from Garmisch. Without thinking much, I
 accepted the invite.
 
+Topo from [hikr.org](https://www.hikr.org/gallery/photo2416585.html?post_id=122531):
+![Topo of Hoher Gang](/images/hikes/topo/hoher_gang.jpg)
+
 ![Starting the hike near the Ehrwald cable car](/images/projects/data-viz/hikes/stories/drachensee/2026-06-21-00.jpg)
 ![Approaching the gravel Hoher Gang via ferrata](/images/projects/data-viz/hikes/stories/drachensee/2026-06-21-01.jpg)
 

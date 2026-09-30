@@ -47,6 +47,9 @@ force us to be productive). This year it was happening at Schneefernerhaus,
 a research station on the slope of [Zugspitze (2962 m)](/hikes/2025-09-18-zugspitze_hoellental/),
 the highest peak of Germany.
 
+Topo from [gipfelbuch.ch](https://www.gipfelbuch.ch/tourenfuehrer/routen/id/19455/Alpine_Wanderung/Schneefernerkopf):
+![Topo of Schneefernerkopf](/images/hikes/topo/schneefernerkopf.jpg)
+
 ![View from Ehrwald to Sonnenspitze (2417 m)](/images/projects/data-viz/hikes/stories/schneefernerkopf/2026-07-19-00.jpg)
 ![View from Ehrwald to Schneefernerkopf (2874 m)](/images/projects/data-viz/hikes/stories/schneefernerkopf/2026-07-19-01.jpg)
 

@@ -129,7 +129,8 @@ def download_and_optimize(settings, remote, post, asset_id: str,
     target_dir.mkdir(parents=True, exist_ok=True)
     out_path = target_dir / out_name
 
-    asset = next((a for a in remote.candidates_for(post) if a.id == asset_id), None)
+    asset = (next((a for a in remote.candidates_for(post) if a.id == asset_id), None)
+             or remote.find_asset(post, asset_id))
     data = remote.original_bytes(asset_id)
     suffix = Path(asset.original_file_name).suffix if asset else ".jpg"
     with tempfile.NamedTemporaryFile(suffix=suffix, delete=False) as tmp:

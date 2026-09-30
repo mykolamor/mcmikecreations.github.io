@@ -38,6 +38,9 @@ the trip fell through so Stanislav joined my by himself. The original
 participants reached out to him again to organize another trip there, and he
 reluctantly agreed.
 
+Topo from [hikr.org](https://www.hikr.org/gallery/photo2416585.html?post_id=122531):
+![Topo of Hoher Gang](/images/hikes/topo/hoher_gang.jpg)
+
 ![The slope near the beginning of the Hoher Gang via ferrata](/images/projects/data-viz/hikes/stories/drachenkopf/2026-07-12-00.jpg)
 
 Stanislav warned me that the hike will start very late due to transport issues.

@@ -4,11 +4,16 @@ The client is built lazily so the app still opens (and local editing still
 works) when no API key is set.
 """
 
+import re
 from datetime import datetime
 from pathlib import Path
 
+import requests
+
 from .. import config
 from ..immich import Asset, ImmichClient
+
+_UUID = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
 
 
 class RemoteUnavailable(RuntimeError):
@@ -114,7 +119,24 @@ class Remote:
             return None
         path = text.split("?", 1)[0].split("#", 1)[0].rstrip("/")
         needle = path.rsplit("/", 1)[-1].lower()
-        for a in self.candidates_for(post):
+        found = self._match(self.candidates_for(post), text, needle)
+        if found is None:
+            # Candidates are cached per post, so a photo uploaded to Immich
+            # since the last search is missing from them. Search once more.
+            self.invalidate(post)
+            found = self._match(self.candidates_for(post), text, needle)
+        if found is None and _UUID.fullmatch(needle):
+            # An explicit id needs no search at all - and must not, since a
+            # scan or screenshot carries its upload date, not the hike's.
+            try:
+                found = self.client.get_asset(needle)
+            except requests.HTTPError:
+                return None
+        return found
+
+    @staticmethod
+    def _match(assets: list[Asset], text: str, needle: str) -> Asset | None:
+        for a in assets:
             if a.id == text or a.id.lower() == needle:
                 return a
             if a.original_file_name.lower() == needle:

@@ -1,6 +1,7 @@
 """Offline tests for Remote.find_asset's filename/id/URL resolution."""
 
 import pytest
+import requests
 
 from matches import config
 from matches.immich import Asset
@@ -16,9 +17,19 @@ ASSET = Asset(
 )
 
 
+class _MissingAssetClient:
+    """Answers a by-id lookup the way Immich does for an unknown id."""
+
+    def get_asset(self, asset_id):
+        response = requests.Response()
+        response.status_code = 400
+        raise requests.HTTPError(response=response)
+
+
 @pytest.fixture
 def remote(monkeypatch):
     r = Remote(config.Settings(api_key="k", immich_url="https://immich.example"))
+    r._client = _MissingAssetClient()
     monkeypatch.setattr(r, "candidates_for", lambda post: [ASSET])
     return r
 
@@ -87,3 +98,42 @@ def test_candidates_for_requeries_when_the_reports_album_changes():
     post.report["album"]["id"] = "beta"
     r.candidates_for(post)
     assert fake.calls == ["alpha", "beta"]
+
+
+UPLOADED = Asset(
+    id="67a32af0-0198-4a6c-9e0c-9b0e5621480b",
+    original_path="/originals/Topo.jpg",
+    original_file_name="Topo.jpg",
+    file_created_at="2025-01-05T00:00:00Z",
+    local_date_time="2025-01-05T00:00:00",
+    width=100, height=100, latitude=None, longitude=None,
+)
+
+
+def test_finds_an_asset_uploaded_after_the_candidates_were_cached():
+    """The candidate list is cached per post, so a photo added to Immich
+    while the app runs must still resolve instead of replaying the stale
+    list."""
+    r = Remote(config.Settings(api_key="k", immich_url="https://immich.example"))
+    fake = _FakeSearchClient()
+    r._client = fake
+    post = _post("alpha")
+    r.candidates_for(post)
+    fake.search_assets = lambda **kw: [ASSET, UPLOADED]
+    assert r.find_asset(post, UPLOADED.id) is UPLOADED
+
+
+class _ByIdClient(_FakeSearchClient):
+    def get_asset(self, asset_id):
+        assert asset_id == UPLOADED.id
+        return UPLOADED
+
+
+def test_explicit_id_outside_the_album_and_window_is_fetched_directly():
+    """A scan or a screenshot carries its upload date, not the hike's, so an
+    id the user pasted resolves even when no candidate search returns it."""
+    r = Remote(config.Settings(api_key="k", immich_url="https://immich.example"))
+    r._client = _ByIdClient()
+    url = ("https://immich.example/albums/"
+           "d449afe2-277a-4462-8953-f44b1d8dd111/photos/" + UPLOADED.id)
+    assert r.find_asset(_post("alpha"), url) is UPLOADED
