@@ -54,77 +54,29 @@ export function haversineKm(c1: number[], c2: number[]): number {
 export interface MetricScales {
 	/** multiply a coordinate-derived (haversine) distance by this to reach the authoritative distance */
 	distanceFactor: number;
-	/** multiply an elevation excursion above `minElevation` by this to reach the authoritative vertical scale */
-	elevationFactor: number;
-	/** lowest elevation in the track; kept fixed when rescaling elevation labels */
-	minElevation: number;
 }
 
 /**
- * Compute the linear scale factors that map the raw GeoJSON coordinate track
- * onto the authoritative (possibly overridden) metrics.
+ * Compute the factor that maps the raw GeoJSON coordinate track onto the
+ * authoritative (possibly overridden) distance, so the elevation chart's
+ * x-axis reads in the same distance as the stat card.
  *
- * - `distanceFactor` stretches the haversine distance of the plotted track so
- *   its total matches the authoritative distance (the elevation chart's x-axis
- *   reads in the same distance as the stat card, whether or not overridden).
- * - `elevationFactor` compresses/expands the track's vertical excursions so its
- *   total vertical travel (ascent + descent) matches the authoritative totals,
- *   relative to the GeoJSON's *declared* ascent/descent baseline. A single
- *   linear factor cannot hit the ascent and descent targets separately, so the
- *   combined ascent+descent ratio is used. Applied to labels only (via
- *   {@link scaleElevation}); the plotted curve shape is left untouched.
- *
- * `authoritative` holds the override-merged metrics (canonical units).
- * `geoBaseline` holds the raw GeoJSON feature properties used as the un-overridden
- * reference — its declared ascent/descent are the elevation baseline so a hike
- * without an ascent/descent override is left exactly unchanged (factor 1). If the
- * GeoJSON declares no ascent/descent, the baseline falls back to the track's own
- * z-delta sum.
+ * Elevations are deliberately not scaled. Stretching the track's vertical
+ * excursions to match the stated ascent/descent kept the totals consistent
+ * but moved every absolute height: Zugspitze via Reintal topped out at
+ * 2129 m instead of 2962 m. The track's own elevations are within ~30 m of
+ * the real summits, so they are shown as they are.
  */
 export function computeMetricScales(
 	coords: number[][],
-	authoritative?: Partial<HikeMetrics> | null,
-	geoBaseline?: GeoProps
+	authoritative?: Partial<HikeMetrics> | null
 ): MetricScales {
-	if (!coords?.length) {
-		return { distanceFactor: 1, elevationFactor: 1, minElevation: 0 };
-	}
+	if (!coords?.length) return { distanceFactor: 1 };
 
 	let haversineTotal = 0;
-	let curveAscent = 0;
-	let curveDescent = 0;
-	let minElevation = coords[0][2] ?? 0;
-
-	for (let i = 0; i < coords.length; i++) {
-		const z = coords[i][2] ?? 0;
-		if (z < minElevation) minElevation = z;
-		if (i > 0) {
-			haversineTotal += haversineKm(coords[i - 1], coords[i]);
-			const dz = z - (coords[i - 1][2] ?? 0);
-			if (dz > 0) curveAscent += dz;
-			else curveDescent += -dz;
-		}
-	}
+	for (let i = 1; i < coords.length; i++) haversineTotal += haversineKm(coords[i - 1], coords[i]);
 
 	const authDistanceKm = authoritative?.distance != null ? authoritative.distance / 1000 : null;
 	const distanceFactor = authDistanceKm != null && haversineTotal > 0 ? authDistanceKm / haversineTotal : 1;
-
-	const authVertical =
-		authoritative?.ascent != null || authoritative?.descent != null
-			? (authoritative?.ascent ?? 0) + (authoritative?.descent ?? 0)
-			: null;
-	// Baseline: the GeoJSON's declared ascent+descent, so an un-overridden hike
-	// yields factor 1 exactly; fall back to the track's z-delta sum if absent.
-	const baselineVertical =
-		geoBaseline?.ascent != null || geoBaseline?.descent != null
-			? (geoBaseline?.ascent ?? 0) + (geoBaseline?.descent ?? 0)
-			: curveAscent + curveDescent;
-	const elevationFactor = authVertical != null && baselineVertical > 0 ? authVertical / baselineVertical : 1;
-
-	return { distanceFactor, elevationFactor, minElevation };
-}
-
-/** Map a raw elevation to its displayed value, keeping the minimum fixed. */
-export function scaleElevation(elevation: number, minElevation: number, elevationFactor: number): number {
-	return minElevation + (elevation - minElevation) * elevationFactor;
+	return { distanceFactor };
 }

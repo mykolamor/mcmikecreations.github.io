@@ -7,6 +7,11 @@ tags:
 gpx: /_projects/data-viz/hikes/gpx/wendelstein_tumdb.gpx
 ascent: 990
 descent: 990
+elapsed:
+  # Hand-picked photos: 2025-06-10-01.jpg (Alpacas) to 2025-06-10-07.jpg (View from Zeller Scharte (1611 m)).
+  start: '2025-06-10T10:39'
+  end: '2025-06-10T15:02'
+  source: photos
 images:
   2025-06-10-00.jpg: {w: 4640, h: 3472, lat: 47.683375, lon: 12.021456, demEle: 1138.2, blur: 'data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAAAwBQCdASoYABIAPs1Wo0unpKMhsBgMAPAZiUATpm5INTrQhuvYWD3cif9uRSyserWsKAD+7UblQRbVn7ZTo4Wz5/SrpRmrwBPZvyx67CMlkzm+4QkiC02XnEGDsjXcPUWlveNr17A8mAwaB3OB/zwUjDFQe4jIpd+ZHRixQ5KwLrrc+vg/mGGRJ8drTJejAAA='}
   2025-06-10-01.jpg: {w: 3472, h: 4640, lat: 47.684606, lon: 11.989225, demEle: 790.1, blur: 'data:image/webp;base64,UklGRtgAAABXRUJQVlA4IMwAAABwBQCdASoSABgAPtFgqU+oJSOiKAgBABoJQBadO4Fv/m0jbFdLXpLkTSDvVfBX3mcobrAAAP7dy7Tw1cGtvGbywhLrcM7NW1RQijGKnEnYLg2RFATeHE0MiJZXsz5CuRY5Its0jJAzHzAqwzhIMbyv6Pf0ycfraTR3S7fGFLy4wpJj9V3fFFTwv5tPSiYKB27Msudm3ZlUaCZJPrPalMSOYA5zevKMbizM9Zk3eTzUAS/FtuvmKthmV4GYhUPFTA6TWJuesPOTlinWAAA='}

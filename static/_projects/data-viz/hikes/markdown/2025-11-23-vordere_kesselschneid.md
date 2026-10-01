@@ -4,8 +4,11 @@ description: Extending the old route to a new peak with a broken finger.
 people:
   - Bohdan Pryshchenko
 gpx: /_projects/data-viz/hikes/gpx/vordere_kesselschneid.gpx
-ascent: 1780
-descent: 1730
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 27391
+ascent: 1989
+descent: 1944
+duration: 476
 images:
   2025-11-23-00.jpg: {w: 8160, h: 6120, blur: 'data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAADwBACdASoYABIAPtFcpk4oJSOiKAqpABoJZwDGQBEdfCOrk6QeOAR6Nvz/HOE3DsgA/urSjU6cV0aGBDQ0Sd0xVnbVZjEcaOscC42IDeNIlF6MaguVZYbfHsAT9iEkZvlk8DG3tOVfjVolhIM6UyYqkC4e2xdTLnIR3TLnYYKjLfCSAAA='}
   2025-11-23-06.jpg: {w: 4032, h: 3024, blur: 'data:image/webp;base64,UklGRtIAAABXRUJQVlA4IMYAAAAwBQCdASoYABIAPtFgqU+oJSOiKAgBABoJQBYj20g21s4G8wu3egUYnNv91xDAj/IplAD9tvK/qPhBveg3fkPYQ9yoE50OA3K+YKNtGXbj/gIZN0/iCcZKM69JqTRZxLnNdofWrVdBpJZzH2Xw+L8kaOi+HJXdJz5kmgj/trnqVUR9PaF6UFjne+TTYRthakjPYNu0B1rpjEcY3NW8FIqRWsiLT3N99Nx8ecnoh3Da3fhmZanl4NMMBJYaGrOAHB4pPXIAAAA='}

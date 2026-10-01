@@ -5,10 +5,11 @@ tags:
   - Climb
   - Work
 gpx: /_projects/data-viz/hikes/gpx/schneefernerkopf.gpx
-distance: 26600
-duration: 706
-ascent: 2449
-descent: 851
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 25356
+ascent: 2466
+descent: 866
+duration: 570
 images:
   2026-07-19-00.jpg: {w: 4080, h: 3060, lat: 47.408313, lon: 10.915174, demEle: 975.6, blur: 'data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAQBQCdASoYABIAPtFUpEuoJKOhsBgMAQAaCWUAygAPR/e/H7IA14WUnbrphQ9jhwAAAP7UtyDRQQx4tQvYY7MSYD5qzntM50KjA3awvs5fUdf+4ir/T8HUEkyi/avBLf+AVWfWz9/e4G7POEShvxnsONmoAAAA'}
   2026-07-19-01.jpg: {w: 4248, h: 3184, lat: 47.405135, lon: 10.918746, demEle: 978.8, blur: 'data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACQBACdASoYABIAPtFcpk4oJSOiKAqpABoJQBOgASV+g1/0HyLFjHReDqXJycAA/mDhuuzxY3FTGcsosaf0DUKSlOQ1i7FpnZmVrXmtp2K4zRgjFSmlPcG5S7C3ddRyqVMOgMtMg+3duNfYtq8duPDjCNO8iFhElXvEDqlx/WbGJ+3TyZcZrE0AAAA='}

@@ -5,6 +5,11 @@ people:
   - David Bilan
 ascent: 1150
 descent: 1170
+elapsed:
+  # Hand-picked photos: 2025-06-01-00.jpg (Weißach river) to 2025-06-01-14.jpg (Valley of the MTB Erz-Herzog-Johann Tour).
+  start: '2025-06-01T09:29'
+  end: '2025-06-01T18:36'
+  source: photos
 images:
   2025-06-01-00.jpg: {w: 4640, h: 3472, lat: 47.624456, lon: 11.732292, demEle: 912.7, blur: 'data:image/webp;base64,UklGRuIAAABXRUJQVlA4INYAAADwBACdASoYABIAPtFepE6oJSMiKAqpABoJQBbZMZoNDEnoziz90KItLNc8WUMcwwAA/jt84n9pItLu34Jb65FbzwgwIpXmNaktWloW+M8pAmbxakx/BmZ5DjYS539S0w4gxiQv1ZQxlsvZrFjqIhjZ8mUM68qnfGEH3Olk5Vx1aC/jxLSfaxlM5rkCwcLJ26wP1PxCEezXQtpCQpCbrc0GmTIQLk/y8gIT/rZmk56JzW1z8gNXfvnmq3N21Fl52WnX8N2tUDVqwDns/21fz05JAI//wAAA'}
   2025-06-01-01.jpg: {w: 3472, h: 4640, lat: 47.596908, lon: 11.742183, demEle: 978.4, blur: 'data:image/webp;base64,UklGRsYAAABXRUJQVlA4ILoAAAAQBQCdASoSABgAPtFcqU4oJSQiKAqpABoJZQC/Sf/gHokvd77o1AJ4CF88C4Jd1KTYAP7tSoUf+2oTZ4g46CobyXYv5xtLKIjQSwpAjFSiFA4/usVKxkYMn48ID34uZYDZOraTB0H2craOXn3kbgoetvyPPU3kiYlQ3SaY49PdSuHb0Z2RRxUvyg0U6t+M2Ss/nHqZ11J3Ca77dHTy2MLeeU+FNPYNlbUF3vbKqmcOa0BsmUip4x9AAAA='}

@@ -4,8 +4,11 @@ description: Taking a casual stroll after getting my wisdom teeth removed.
 tags:
   - Web
 gpx: /_projects/data-viz/hikes/gpx/neufahrn_niederbayern_landshut.gpx
-ascent: 332
-descent: 339
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 27597
+ascent: 281
+descent: 288
+duration: 309
 images:
   2026-05-01-00.jpg: {w: 8160, h: 6120, lat: 48.726582, lon: 12.189746, demEle: 410.0, blur: 'data:image/webp;base64,UklGRuIAAABXRUJQVlA4INYAAADwBQCdASoYABIAPtFcqE4oJSQiKAqpABoJYgC1GzQ/eEBXgBXr3YU+sGVeW6ByiDpr08lqsDw/IAD+5Qp4D5Uc3Jd/SjiuOI3QlXHOnCwilM9Xs53C/rMXNrR6h5djIKER2S9lsqWsViqFPUBUkJkMDRGY80GsIGOG56TR9T1kg2QBV7ap26GVpjpkEmkKNwErN/r9V+Nan81g74H/AsXBupAwo47XH+GI2CbNpg6OIFGvs4U6jBVy23HNPyLULtthi3ItSLzNMJAe5ibPIP7WZn+ZY8AA'}
   2026-05-01-01.jpg: {w: 8160, h: 6120, lat: 48.721356, lon: 12.194345, demEle: 406.5, blur: 'data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAACQBACdASoYABIAPtFSoUuoJKMhsAgBABoJQBdkGQBXNnHRT/lzPkZnWTN4hvQA9wmavHhCFa+kXxUsshWe72N9OqsOa0DWqzS1zPW6x2KOArsg+/KFzE4H0bmotTt6pIEhdrGjCgAAAA=='}

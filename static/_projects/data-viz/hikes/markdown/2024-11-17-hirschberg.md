@@ -7,6 +7,11 @@ people:
   - Mikuláš Netík
 ascent: 900
 descent: 940
+elapsed:
+  # Hand-picked photos: 2024-11-17-00.jpg (Setting of for the hike) to 2024-11-17-16.jpg (A cow on the way down).
+  start: '2024-11-17T10:26'
+  end: '2024-11-17T16:22'
+  source: photos
 images:
   2024-11-17-00.jpg: {w: 3472, h: 4640, lat: 47.648625, lon: 11.728394, demEle: 1065.5, blur: 'data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAABwBQCdASoSABgAPtFepE6oJSMiKAqpABoJYwC+aE3J/i2chYg6DWLuFZFQdwTy15Niw6iAAOI/tXmQkL0Mh6fvKfprq1UDAeVOS+YMPTsYEhdsXJmHnFKFzTP5NDk9qeY+t5xNrst94GL5JJQGINSmB42CGujQP1J/Kf7e1CNhhWT3ubc1ATZUoaLOI9A97PPGaqj6ix/HXgcC8YWpkYqvckuRDqvI/LLpXRXURrCnO58NooEHeq/5HiHkf995u/d72AtF9EQAAA=='}
   2024-11-17-01.jpg: {w: 4640, h: 3472, lat: 47.651017, lon: 11.725806, demEle: 1116.8, blur: 'data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAAAQBQCdASoYABIAPtFWpk2oJCOiMBgIAQAaCWUAsswLWbfUy0DfXuob9C41NTInCay4AP50zE+jnLLud4sS9mnsx7wtN755hCF0vP0/FT5niHkWNdJSN1OdbHDUm++XFKaYs10PzkETFltqcRhggAdolweSpY2B/k/x0LDg+3ULm0kBBduz6WUPBNiGPpo7nWFujLe6bqcIoIODAAA='}

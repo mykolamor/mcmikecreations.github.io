@@ -4,8 +4,11 @@ description: Chasing rainy clouds and wild deer towards Regensburg.
 tags:
   - Web
 gpx: /_projects/data-viz/hikes/gpx/neufahrn_niederbayern_eggmuehl.gpx
-ascent: 310
-descent: 331
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 19302
+ascent: 254
+descent: 277
+duration: 235
 images:
   2026-05-14-00.jpg: {w: 8160, h: 6120, lat: 48.736747, lon: 12.190729, demEle: 401.9, blur: 'data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAADQBACdASoYABIAPtFcp04oJSOiKAqpABoJZQDA3YwmWqMJH05z7UR9ixh7O1M8AADgMRVykUf6wcpEKGrOq8mwVQOo/AbqAbbDTrH2e84HVovjAwEYD9T7gu5QmfW9xY7fZsx/C5I0uPu8s53I3Vh42A2lId/WNTjxYnCH86uQDu7bV/uP5M3OoSQ7s3zK92S/8xVKw2AD7JgbrCbQzWwO9oWptMYcQIxeVtuF7oA2cwhGGiJIdkDMgWuaoEy4AAA='}
   2026-05-14-01.jpg: {w: 8160, h: 6120, lat: 48.736804, lon: 12.190765, demEle: 402.1, blur: 'data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAABwBACdASoYABIAPtFcpk6oJSMiKAqpABoJZQC06A8oCOMUivkPl3iWD4ZqwAD+sNyT17AtaBPZnYEQydHBrqsO2fQPgi220+I+qmr0tW/eDEp2w7k3Kwn6Mn5dg7l3reNiu5loyPu25KrEB4/iYL+zJCwyDqeiJkLY0pz0mnwXmw2KvzNuovbRwhM6WvH+MBNF5oRFdWfx1N6t6e6kqA2uMWA+LP3x3wAAAA=='}

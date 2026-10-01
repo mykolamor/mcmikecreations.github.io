@@ -4,8 +4,11 @@ description: Walking between two historic settlements and visiting local castles
 tags:
   - Web
 gpx: /_projects/data-viz/hikes/gpx/eggmuehl_koefering.gpx
-ascent: 258
-descent: 288
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 17627
+ascent: 218
+descent: 248
+duration: 206
 images:
   2026-07-05-00.jpg: {w: 4000, h: 3000, lat: 48.841394, lon: 12.191453, demEle: 367.1, blur: 'data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAACwBACdASoYABIAPtFSpU2oJCMiMBgIAQAaCWMAACobSoVoummjOceMEdoIFqWAAPyMB6yPioa3nFZUX49B1Iha9lakecB5x/e2UT9V9OgKdIBoCUrpzOC/cnYSuvM6bJBJPMhqsESNQvKOGyNfvgRSe6GDxFKoFvEwiiMHxRxXezBD5TSDweV+crra5OhI7AAAAA=='}
   2026-07-05-01.jpg: {w: 6120, h: 8160, lat: 48.8504, lon: 12.217688, demEle: 361.1, blur: 'data:image/webp;base64,UklGRsYAAABXRUJQVlA4ILoAAAAwBQCdASoSABgAPtFcqE4oJSQiKAqpABoJZwAD5jERz4t60We5T7KGoVKhmS1RUHVkUAD+8OgQXNgCat5/lRuqW14PXwMSLZEsUHiU2W8/FvcG6gCQQWhH9/VbS3sSDPy1etd5cn/cLxIhbmBhe/UYQQiS9A3S43oR+FhYZMN0GKL4IIMlc1ls8jiZ34oWHjkNgsuAmWN2U67+2uL1GTbi9bsCqw8GntPFXCKaqJRvVXOEsiH9GAMAAAA='}

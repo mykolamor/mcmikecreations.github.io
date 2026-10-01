@@ -6,8 +6,11 @@ people:
   - Pavlo Pustelnyk
 gpx: /_projects/data-viz/hikes/gpx/nebelhorn_2026.gpx
 filePath: /_projects/data-viz/hikes/geojson/nebelhorn_2026.json
-ascent: 1279
-descent: 165
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 14413
+ascent: 1273
+descent: 157
+duration: 255
 images:
   2026-05-23-00.jpg: {w: 5208, h: 3904, lat: 47.401286, lon: 10.293042, demEle: 910.3, blur: 'data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAABQBACdASoYABIAPtFcpUyoJSOiMBgIAQAaCWIAvdANtUjE+ILudQIdXJGYAN1XZe0bbDIyUZ2P3CzRajpPuYFrm6HvtYGeTVYPlRQNCpx7PxvzHAfnk2IR8WO4Kk32k/ITrnxJRJaaAneJaS8GMdr5Q1FxnoLVf4pQLiYAAAA='}
   2026-05-23-01.jpg: {w: 8160, h: 6120, lat: 47.388475, lon: 10.327616, demEle: 997.8, blur: 'data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAABQBQCdASoYABIAPtFYo00oJSMiMBgIAQAaCWgAuwAKpmXcnDHO19KQUZI4pGQpNcvh/sAA/t3p7Udy0WHN4G5/x/bwvEvh0rBnqvTboT6CPBL0ytz99fArQ/G9nL0PxFCdUuMyNpPpLcXKIr2FF/JrIoBWhglN6PNNPswSbLhEc5LhdJeo7rmI9QIHL30ZT6NWIxY3+5TdPKxAdzlR55N0sbTxlaxuJ1fkehtfIAA='}

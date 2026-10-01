@@ -6,10 +6,11 @@ tags:
 people:
   - David Bilan
 gpx: /_projects/data-viz/hikes/gpx/grosser_laber.gpx
-ascent: 1003
-descent: 771
-distance: 14360
-duration: 371
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 13674
+ascent: 1096
+descent: 864
+duration: 272
 images:
   2026-09-06-00.jpg: {w: 8160, h: 6120, lat: 47.565377, lon: 11.132227, demEle: 687.5, blur: 'data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAADwAwCdASoYABIAPtFcpE6oJSMiKAqpABoJYwC/7BDhNleXlPovRD8QAP7y6kCw4+N2P1SR7h5QWbLPMtb5JNajGkco3LiT0PH1ClTyQi2DLk3YGllM/1owwSOTwLRQR0oAgfqeAYIbJvzNmIrGVXU8sIim4ktySzYA2PRsWgV+0MbS76ffPpoB3g4oAAAA'}
   2026-09-06-01.jpg: {w: 8160, h: 6120, lat: 47.569509, lon: 11.134004, demEle: 810.1, blur: 'data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAAAwBQCdASoYABIAPtFgqU+oJSOiKAgBABoJQBfJAbdU37iLAisXAEs7oRSH9fyhhCCAAAD834r7yt+hv1DFlFeDO9a8GyMNjRdcmQ0v9fMfUc7Y1mWeyROTJODyCnxVv2I7T5Nt2VNsn352v2H6WZofIPgXlFrE2eF/rbkH+jLP+AA/G1yHz/baRTFk2RqiTjg41u4pLIjxBIFNYIQtGGVvf2VkQWeglbyATqpXDuZG6XIXao11HnF3UegQAA=='}

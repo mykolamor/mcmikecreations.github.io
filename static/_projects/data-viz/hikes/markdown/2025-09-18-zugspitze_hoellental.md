@@ -7,6 +7,13 @@ people:
   - David Bilan
 ascent: 2160
 descent: 20
+# Entered by hand (was in the GeoJSON summary, replacing the route planner's 261 min).
+duration: 441
+elapsed:
+  # Hand-picked photos: 2025-09-18-00.jpg (Trail near Hammersbach) to 2025-09-18-14.jpg (Us at the peak).
+  start: '2025-09-18T08:25'
+  end: '2025-09-18T16:18'
+  source: photos
 images:
   2025-09-18-00.jpg: {w: 4000, h: 3000, lat: 47.455868, lon: 11.044376, demEle: 918.7, blur: 'data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAACwBQCdASoYABIAPtFaoEuoJaMhsBgMAQAaCWIArhwPQ6wl8EyvZoY7O0IJuePv4pQ7z3B9XAAA4jCbbt5mtfIsJ2QIS+DvpghAol3nsLFPUtUVkLxOSHqkNoGCjqf8UdYXif1gopoYc8rgXqyOoFabHZ/kk03YvoYJZjh87k0n5wlkSeJOQywKqPctqmBDtJprFEs4RjJAAA=='}
   2025-09-18-01.jpg: {w: 4000, h: 3000, lat: 47.448983, lon: 11.043257, demEle: 1079.6, blur: 'data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAACQBQCdASoYABIAPtFepU6oJSMiKAqpABoJZwCsABI/C4vf4wp+AoIvhAA2/u4hUtChZBGdAAD+mrQbvjpJIC6BV01m7oiLjKLYmSFRpXkkFV/H5UxGpS7UqMnrkN1Bvm8a8UZ2EnijU7O28KkoBnI0Lp4iZ1zGKDt9DiMH6CpAqWsGOajsg8sY8h5fVQKf+jKatQgfAldeNqGtCfNle1M1KU8UEQoALxauUAAA'}

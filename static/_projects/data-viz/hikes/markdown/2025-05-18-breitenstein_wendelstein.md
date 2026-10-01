@@ -5,6 +5,11 @@ people:
   - David Bilan
 ascent: 1290
 descent: 1240
+elapsed:
+  # Hand-picked photos: 2025-05-18-00.jpg (Stone ruins near Wolfsee) to 2025-05-18-14.jpg (Mountain goats on Wendelstein (1838 m)).
+  start: '2025-05-18T09:13'
+  end: '2025-05-18T17:05'
+  source: photos
 images:
   2025-05-18-00.jpg: {w: 4640, h: 3472, lat: 47.715703, lon: 11.943578, demEle: 771.0, blur: 'data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAAAQBQCdASoYABIAPtFcp04oJSOiKAqpABoJQBYdghK6nPa2MYVaw9pzePVGndKMfSAAAP7Vup+yTWkQJYr1bXgZ7RqUOGiTJwqLLZAWVKonKCannwa63rgqLN55W4S9JHGmNX1qA10YomnD2Pv98oX8OKw36AazsqdJE29K/153ajv2zHKmpTgSaUvYqdj3hLFCq+YRiStfo7v8GbmU0IoA7dQO2IFLTEhIXmJtZHcBkAAA'}
   2025-05-18-01.jpg: {w: 4640, h: 3472, lat: 47.712019, lon: 11.944458, demEle: 768.2, blur: 'data:image/webp;base64,UklGRtIAAABXRUJQVlA4IMYAAADwBQCdASoYABIAPtFcpU6oJKMiKAqpABoJQBYj3HBTeAK4dM8wxHi80zYELST2DBd1jwTJos3BQAD9O+Wg+kcuPaJv6hyzxG4o+yyqcpxvBlgRf0Eh270BtSMDPFxe5S0ev5eldGZs7rTls6Q320BgjIiw3+mAoRfiDW2QuXDhmFgVJfI0Z5o93BeMroSMpFLSrwfzwWZSDTaAclKkoSj3FiZNax2EXI1sVDxFYio8iCz+NQPbmTYvTmIqesPzSrIuzTj4AAA='}

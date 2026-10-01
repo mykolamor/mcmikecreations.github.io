@@ -4,10 +4,11 @@ description: Exploring the other Brecherspitz Vorgipfel (1643 m) ridge after sur
 people:
   - David Bilan
 gpx: /_projects/data-viz/hikes/gpx/duernbachwand.gpx
-ascent: 1007
-descent: 704
-distance: 12640
-duration: 392
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 13463
+ascent: 1028
+descent: 727
+duration: 264
 images:
   2026-09-20-00.jpg: {w: 8160, h: 6120, lat: 47.695308, lon: 11.870757, demEle: 1083.4, blur: 'data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAAAQBQCdASoYABIAPtFQo0uoJCMhsBgMAQAaCUAWnQHm7f40dOZzqSelYULA4paawIOQAPpg0MXHmqD5GXlT96O+ZqkUy2NW7rUOPI9FNP8nMp061ufJ1v84l2HVU99MksEeQUHdIhwwQDn+4pDSiPdc0Lt9JIACmND/XWeDSgK6HnaUNVBFWVuEO3edyNJfbu1eqz61f2XOtkAA'}
   2026-09-20-01.jpg: {w: 8160, h: 6120, lat: 47.694698, lon: 11.866816, demEle: 1223.1, blur: 'data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAAAQBQCdASoYABIAPtFYo0uoJSMhsAgBABoJZgCdMw6CnHIdBpV7YGEC4MXyDA2IUF8wAPN1k/JWgY48U+qDLWSuIaVPTMGQQePXP3siT6idT1ejf5uDUBPC8goItPjvwXeqQ0MYxiUyMAJX9zC9HR9r/7YWIS+h2v2uMycqWiaZUo9MiYvwPFwo0Q6h1nqiWH02FngKslIAAA=='}

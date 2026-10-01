@@ -7,6 +7,11 @@ people:
   - David Bilan
 ascent: 940
 descent: 1260
+elapsed:
+  # Hand-picked photos: 2025-07-06-00.jpg (A butterfly sitting on David's backpack) to 2025-07-06-21.jpg (The ski lift going to Oberaudorf).
+  start: '2025-07-06T10:45'
+  end: '2025-07-06T18:49'
+  source: photos
 images:
   2025-07-06-00.jpg: {w: 2592, h: 1944, lat: 47.670711, lon: 12.090658, demEle: 752.8, blur: 'data:image/webp;base64,UklGRuYAAABXRUJQVlA4INoAAABQBQCdASoYABIAPtFYpEyoJSOiKA1RABoJYwC+SYx2QbpE1/W5I2vO8b5BKJiIL46rUgAA/rflvBs9a2YF5oSslu50pIRajmypcwyx5Wnm9QUXi1r0GvqkXO322unoHVns9rTqscUpp20k3vehsMYT5Iw4fzb5diqWZ9foz3k9ueewvhysgWLCzyHJ9+9ctWASdpcAeweq02W6pBDov8sG4QZAsqmkqEnkY822hF/GV4lBgr35zsA2TZwxbzoUz4C4Oq32MUPfFnamR4+WM1xOyVXxHZA0UwAAAA=='}
   2025-07-06-01.jpg: {w: 4640, h: 3472, lat: 47.665858, lon: 12.085508, demEle: 916.1, blur: 'data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAADQBACdASoYABIAPtFYpE0oJSOiKA1RABoJZACdMoABWlxAWJLWSlKz92RaJ9lWsAD+yNj3J4vE6oRfen4HAgoyZmBKr5az4aTz9GGwSX9o9uePp0HSCg4JejKWd6j7m1BFSKtasfmsVjK2mV0KdKrJchchIGvW1XsoGXBrXhO3pFfmMbQf9SsmPwXyP46EuwIzqYDD8AhGGWmd3WAZTtVro9gM1v/2vJcOmZRWowyiSrqrQqVPESgxh0CDAAAA'}

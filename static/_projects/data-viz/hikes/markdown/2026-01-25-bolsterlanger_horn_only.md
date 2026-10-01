@@ -6,8 +6,11 @@ tags:
 people:
   - Natalia Kushch
 gpx: /_projects/data-viz/hikes/gpx/bolsterlanger_horn_only.gpx
-ascent: 660
-descent: 780
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 14595
+ascent: 693
+descent: 811
+duration: 261
 images:
   2026-01-25-00.jpg: {w: 8160, h: 6120, lat: 47.46121, lon: 10.233043, demEle: 886.6, blur: 'data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAAAQBQCdASoYABIAPtFgqU+oJSOiKAgBABoJZQC7ABEJR5cO6G33L3wDrSEQJdFi/TtYAP6MTG1OyR4XJBKtNKw1K/tJILrL3QiCNGahLWRGjSxhwUijjZ/uLKmFqrfdFzjReq5DY213cdW/CPvlkoKo91blkX0FVSlE+fjUT4o+Js5Js6FhMMivSOnsov6L2l90a4ajpMhYAAAA'}
   2026-01-25-01.jpg: {w: 8160, h: 6120, lat: 47.463418, lon: 10.226839, demEle: 959.1, blur: 'data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAwCdASoYABIAPsVSoEunpKMhsAwA8BiJZwDI1B6VCdwcp0FubrMAAP6vmw7WEWUBnr0gAfASDYHOx/3/KIVXfYqhA95JZuxlDOwDDRlaS8GTjuKObZ5EHkQAAA=='}

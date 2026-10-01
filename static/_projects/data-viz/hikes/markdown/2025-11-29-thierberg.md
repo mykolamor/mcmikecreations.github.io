@@ -4,8 +4,11 @@ description: Socializing on a nice relaxing hike in Austria.
 tags:
   - DAAD FK
 gpx: /_projects/data-viz/hikes/gpx/thierberg.gpx
-ascent: 330
-descent: 190
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 10642
+ascent: 369
+descent: 235
+duration: 183
 images:
   2025-11-29-00.jpg: {w: 1600, h: 1200}
   2025-11-29-01.jpg: {w: 3560, h: 4744, lat: 47.615598, lon: 12.187785, demEle: 490.6, blur: 'data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAADQBACdASoSABgAPtFeqE+oJKOiKAgBABoJaQAAH2EYqsdMnrFdufoUz2Jy7Z7ggAD98EtQ68fb2Y92jZ3yPvBA5ALjSzEmlVHRBJl/sP6Aqz3vud418hxyvGYo2iHH2eMA/1GJ6d+LnGbWx8XzE700N+xYJgR1fFhs85qKwxfY4d4rUrArr/m/FpbrC/C0AE3i7FRqiMshEeSntLR5WCBAAAA='}

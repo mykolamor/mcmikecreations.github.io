@@ -8,6 +8,11 @@ people:
   - Viktor Lebruška
 ascent: 400
 descent: 680
+elapsed:
+  # Hand-picked photos: 2024-12-14-00.jpg (Spitzingsee frozen over) to 2024-12-14-07.jpg (A house on the way in Neuhaus).
+  start: '2024-12-14T11:02'
+  end: '2024-12-14T15:42'
+  source: photos
 images:
   2024-12-14-00.jpg: {w: 4640, h: 3472, lat: 47.661617, lon: 11.887142, demEle: 1087.5, blur: 'data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAABQBQCdASoYABIAPtFcpU0oJSOiMBgIAQAaCWcAzjgQ7U6UKNmnPOnY6/N1Uo3yaWkdrmQA/tNHaVh3rmGTDexeD+x1luco/yIOZFu7Dg/E8wNJQNz8J4sG39c0gNw6/zUWeKsFd4/uc+WnOqHm0NliMCTDbRmudNRDbonVYT5RiH/x28MX36u1A4iegnwPiePHgAAA'}
   2024-12-14-01.jpg: {w: 4640, h: 3472, lat: 47.663836, lon: 11.887086, demEle: 1088.8, blur: 'data:image/webp;base64,UklGRrwAAABXRUJQVlA4ILAAAACQBQCdASoYABIAPtFUokuoJKMhsBgMAQAaCWkAv+8sE6KGAXgJvxiDRHB423dny+zovcYtwAD+taW2o+pzo3NDTYf2oY7uVvRS4qqeOmdzu/Hl8mH37zSUvIr/8dLEqh6wnY5fmEAK9z6c6fZoHt5MqkGQ6PEHz5Sl2qRCFyWMZJ+7nnIhhIkdCwrm7UO1VhKy2FGbyM+x6J/mrJbMs13s6k8nG7yrzhuki9kJ0dgAAA=='}

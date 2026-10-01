@@ -4,8 +4,11 @@ description: Completing my route from Freising to Tutzing.
 tags:
   - Web
 gpx: /_projects/data-viz/hikes/gpx/muenchen_starnberg.gpx
-ascent: 190
-descent: 110
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 25698
+ascent: 251
+descent: 168
+duration: 242
 images:
   2025-06-29-00.jpg: {w: 4640, h: 3472, lat: 48.136881, lon: 11.55855, demEle: 525.3, blur: 'data:image/webp;base64,UklGRvgAAABXRUJQVlA4IOwAAADwBQCdASoYABIAPtFUpk2oJCOiMBgIAQAaCWwAnQMsE54FL6EwXBGdTIOUm7UeseWqiXJ4VP6xAAD+3YGk3jAlUu0hrYAeGKTn5Ry5ibwTcK8F984hTU5Tw741v0+J0qIxJQRH2ISO7hYZ7fG7XEh8L25wz4ojpOOTAB255kqYPGwW26uXV12seUoBbKe3kfDP837MLnKFbOtWuoVo5k/sOVAGUpeHaKA/8OE9+wgETQeRjUTZzlHvUNZKiyNZm6FKZkX5LNKG3pvmJVBeYAbXACetB+lQdBLk6xDnnGrvVbiz2H9c5knyq9qAAA=='}
   2025-06-29-01.jpg: {w: 4640, h: 3472, lat: 48.121731, lon: 11.541358, demEle: 536.7, blur: 'data:image/webp;base64,UklGRvoAAABXRUJQVlA4IO4AAACwBQCdASoYABIAPtFcp04oJSOiKAqpABoJZACA0NEE6AEZ3vr355ljNMWgTuOV2Z1r5zKDmGAA/q3BIV2MJ4pbZk2Pp4qJYU69uc9pmyeZVc0enqVKs++Xp4nXeFWa7HihahezFCfxLhWB1FzajmXUDMa4k/TvBau5fbc8pGLH+FYb99sx2AY9PQJ/x72Ms/M0XESjFGtleHmxkUtnKFm4Oy58+G+MTBnmGYazjoBrdK0WQziPBAOL656j3uKwfDJlfha2mGbN9w0Cn9mye5d65blFuVFYI49xAk42brPpWF4gHCyCBUH57zKMtAAA'}

@@ -5,6 +5,11 @@ tags:
   - Climb
 ascent: 860
 descent: 730
+elapsed:
+  # Hand-picked photos: 2025-07-20-00.jpg (Ruins I mentioned in the Breitenstein (1622 m) post) to 2025-07-20-21.jpg (The Easter egg hunting spot from the Schweinsberg (1514 m) hike).
+  start: '2025-07-20T12:14'
+  end: '2025-07-20T17:31'
+  source: photos
 images:
   2025-07-20-00.jpg: {w: 4640, h: 3472, lat: 47.711664, lon: 11.944764, demEle: 767.7, blur: 'data:image/webp;base64,UklGRvYAAABXRUJQVlA4IOoAAACwBQCdASoYABIAPtFepU6oJSMiKAqpABoJYgDInagR+wWLPOaQiZ9HXTseP3Tci4s/2Pr21AAA/nMUfRpsnJmEkTPrOmH6s6znAB0PObJu+fRcjvqBLwzNNfVL++IahFq6cAaB6vg2NPojU51Ct49TDCDJD0hLvRJXocRHshqhUeD5Bw6qpepPaX4NFyFL0buOE5suvpGc4c87sQZEE89yEH8oA4i8EK5nAxUTu3HOWA+cXSQd58d1x9dV72HU/I9WN59wzAxYs8H01qpMNTaNOh4/4L+jci7Z+Imm0SUhy4L18CZRfUAAAAA='}
   2025-07-20-01.jpg: {w: 3472, h: 4640, lat: 47.716958, lon: 11.977917, demEle: 1237.5, blur: 'data:image/webp;base64,UklGRuIAAABXRUJQVlA4INYAAABwBQCdASoSABgAPtFepE6oJSMiKAqpABoJQBOgO6Rw2lFuJooGLDwk0XVYl4tAp3ljHmLYAP7ANwQPWrOIKhUhN9ep0FkMvbe/5s3CI0nWFteSr9CVWoI60mCXF85OR7QTl01pYL4+jmVNtElP62peO/zhIHKKNgQUYGQUY+jf6nR7lOHV2Tl4CmzPulLGrXE/9VJQo+SdUl1lTl+1+7RMHocBy6STqjVX43H+kCdALrORe8SVfR27YMgRkYs0IN/LBW8t0r/IhEl2VyAFkTgFZwA2IXAA'}

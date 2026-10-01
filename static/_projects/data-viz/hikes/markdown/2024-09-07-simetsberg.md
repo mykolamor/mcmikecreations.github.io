@@ -5,6 +5,11 @@ tags:
   - DAAD FK
 ascent: 970
 descent: 990
+elapsed:
+  # Hand-picked photos: 2024-09-07-00.jpg (View from the bottom of the mountain) to 2024-09-07-08.jpg (Walchensee shore with a view towards Jochberg (1565 m)).
+  start: '2024-09-07T12:01'
+  end: '2024-09-07T18:14'
+  source: photos
 images:
   2024-09-07-00.jpg: {w: 3472, h: 4640, lat: 47.563906, lon: 11.262903, demEle: 1516.5, blur: 'data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAADQBQCdASoSABgAPtFcpU0oJSOiMBgIAQAaCWYArDLfJcMLfBE1sQFSjVel+Nwb84T2WLHPoY+gAP6GRrSsXDHEe3kUrj/VkmSMcfumpvte3IuNVKueJIQdgwLV8PI3LACyN/zJNBe8uebK2ns+pH5T39UnrHfKXNkc0jHBjO/PMMwTgousZ9DKXdaW3BXT3ROVvgD14uhxTfj+xX1RG1XGaSeXB+Ba2gZPa4golYsDjwN++R3VcAZgojq109ugAAA='}
   2024-09-07-07.jpg: {w: 3472, h: 4640, lat: 47.561883, lon: 11.278175, demEle: 1213.6, blur: 'data:image/webp;base64,UklGRhABAABXRUJQVlA4IAQBAADQBgCdASoSABgAPtFep0+oJKMiKAgBABoJaACdMsvERxcYh2VjewRumpcm5A99QxKPC8dYw/ox2LNkPk/4udgA/heqJpACOjq8fA3QVSwUWvj2YKkHpI4v8fOD47wzHCfbF8JCYSJGvF1bVpOBMuWac2S2gauMrLXXiC5/rzUPYK0FS4077RhbPHfwyut+6kJeMuaOd1VKenhFj7ZcgfjTFF78oQKayusiFq2OKz9iIyLtEHWA/SFO9CH5ztPemw5wQd1WSgonbeJkBw4XjSEojVhnHxqYgu7Sr4HiFCYiB63/UNncr+HMZYKVj6dUh8yoWuxouf9+7eEB8npsfnzi2UAAAA=='}

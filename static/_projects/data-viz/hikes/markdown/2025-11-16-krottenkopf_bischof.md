@@ -4,8 +4,11 @@ description: Catching the last warm days of the year and finishing off my to-do 
 people:
   - Bohdan Pryshchenko
 gpx: /_projects/data-viz/hikes/gpx/krottenkopf_bischof.gpx
-ascent: 1660
-descent: 1670
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 26871
+ascent: 1849
+descent: 1860
+duration: 468
 images:
   2025-11-16-00.jpg: {w: 8160, h: 6120, blur: 'data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAADwBACdASoYABIAPtFcpk4oJSOiKAqpABoJQBOgAbmeDxAt2aQkDP1hslQ0U6cuf4AA/k7+GbkjbY0YtUSd5oX0OzZ5RgObV7IHqMcKNzFO+3paG3nPqXhEGWZX3KesQLgolxx3Im/noyXo8VypnRFjSGj0pfLWGs9mcQqTMEfQi6cZJqGoj86NODkd2vVtwAA='}
   2025-11-16-01.jpg: {w: 8160, h: 6120, lat: 47.541807, lon: 11.146045, demEle: 999.4, blur: 'data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAABQBQCdASoYABIAPtFUpk2oJCOiMBgIAQAaCWcAxkARdpw1yQ1B02FqiDdB6LapqYUpvgAA/ieYh1RkTU5YT8/jh3DZkdBdUsrEV/Xy3XWkwAI1D5WtIlpxDWmIaXWl+le5HN3bMHBl9oyh43biIISO/w9dzEKyMrtUPT4U4IuS+EjPzyaK60XLtCa4BfZR+uPWX6RduE0koAAA'}

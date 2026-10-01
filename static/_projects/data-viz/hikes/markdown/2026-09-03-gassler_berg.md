@@ -4,10 +4,11 @@ description: Enjoying the fresh weather by visiting all peaks towards Hausham.
 tags:
   - Web
 gpx: /_projects/data-viz/hikes/gpx/gassler_berg.gpx
-ascent: 905
-descent: 882
-distance: 19710
-duration: 332
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 18648
+ascent: 880
+descent: 857
+duration: 296
 images:
   2026-09-03-00.jpg: {w: 8160, h: 6120, lat: 47.748506, lon: 11.742535, demEle: 768.8, blur: 'data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAAAwBACdASoYABIAPtFYpEuoJSOhsAgBABoJZQCzgB7HyEnBCPIyXPCc/QAA/o+Dv1x3W4uvPQ1AlPua7kzYmPUL+VVPW5Z/Wuf391rFI5jLorRS5tfqfOTbEXwbeIxv2Obqed2poxzSyvAA'}
   2026-09-03-01.jpg: {w: 4744, h: 3560, lat: 47.737964, lon: 11.756813, demEle: 859.6, blur: 'data:image/webp;base64,UklGRu4AAABXRUJQVlA4IOIAAADQBQCdASoYABIAPtFepU6oJSMiKAqpABoJQBOggQI9Y2tCV/v4CWTnWXgJnE8T7Lvmv3iLpCeAAMxkTLA+8kTz4oCJF4EGKyq9tG5vD/0Xmg33RGyaO5BLUziFrGQxMk3U8CSkeD/zsiRbU0InGX8+fKhg2aCCfMUCKjurnrTmRb9FjnsSKco6L2eTerlkcr2/Pop7nisJfPfNtD54UvXObmHlS0VoNfmDAzuWBEdKO7vVYCeLNJcik1JHf4341ve6J1BqzD6aEY0+THt9XFUAPWwx6kXIv58NgcdQOthMkQAA'}
@@ -31,7 +32,7 @@ images:
 ---
 After my questionable adventures in the dense forests near [Hochalm (1427 m)](/hikes/2026-08-23-hochalm/),
 I wanted to take it easy and enjoy a more relaxed hike. I dug into my backlog
-and saw I missed some peaks near [Hausham](/hikes/2025-10-27-auer_berg/) that
+and saw I missed some peaks near [Hausham](/hikes/2025-10-26-auer_berg/) that
 I wanted to explore. Did I visit the missing peaks? Yes, I did. Did I enjoy the
 hike? Absolutely! Do I need to buy new hiking attire again? Potentially...
 
@@ -186,5 +187,5 @@ thorns, fences, streams, or wetlands. That being said, I wouldn't recommend
 this hike to others. None of the peaks are easily accessible, they don't
 have any views, and the paths are overgrown and difficult to walk on. If you
 want to enjoy the smaller mountains of the Bavarian Alps, I highly suggest
-visiting [Gindelalmschneid (1335 m) and Auer Berg (1252 m)](/hikes/2025-10-27-auer_berg/)
+visiting [Gindelalmschneid (1335 m) and Auer Berg (1252 m)](/hikes/2025-10-26-auer_berg/)
 instead.

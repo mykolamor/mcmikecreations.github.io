@@ -7,6 +7,11 @@ people:
   - Natalia Kushch
 ascent: 1020
 descent: 810
+elapsed:
+  # Hand-picked photos: 2025-12-14-00.jpg (Lainbachfall) to 2025-12-14-11.jpg (Walchensee up close in the winter evening).
+  start: '2025-12-14T10:07'
+  end: '2025-12-14T17:22'
+  source: photos
 images:
   2025-12-14-00.jpg: {w: 8160, h: 6120, lat: 47.650057, lon: 11.381718, demEle: 788.9, blur: 'data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAABwBQCdASoYABIAPtFcpU6oJSMiKAqpABoJZwDH5YyURBZLSeMccYbUblizFnFNczSR9dwAAMnfh5TTCF4it30e5CPOLtmtkk+NkrRR8BTIOodUCkd7/EGRILCunVZVwtYuNtbYeKXIGZjsPwXbvbb5rMm6QVNscGuQNV7HCxoahP5ppFdh+R86sw0I5npnx6XwX7pVfAOYGR6yRc5Foe/cJijmaKG3bklHkQ9NAAA='}
   2025-12-14-01.jpg: {w: 8160, h: 6120, lat: 47.65025, lon: 11.381175, demEle: 773.2, blur: 'data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAAAwBQCdASoYABIAPtFgqU+oJSOiKAgBABoJZQC/OA5X3IihTKfx1wg0h8bRIEOvVqhcgAD+F9YSdBgqKa+nQRBNdo6Nx99Ppg70EIOJK7k+MLErUKFnW4HggkRjOKI2pThlezQ4eYACWyOzSXEc9GRFJ/BQ4VrRxhF6+oeb+XQugzMXILHmzSPmSRoEgT70IkpXyx3wdY5d0Si6IcTjNRYAR4QAAA=='}
@@ -22,7 +27,7 @@ images:
   2025-12-14-11.jpg: {w: 4488, h: 3366, lat: 47.619369, lon: 11.348172, demEle: 848.1, blur: 'data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAACwAwCdASoYABIAPtFWo0uoJKMhsAgBABoJZwAAUqi9SLc62PrigAD+8rTPFR58S2BaTEQnU60bD0YZLdmV4xxemHmBpQvVwdoHcfARwONwvVNHXjzSYgy6qluJB8AA'}
 ---
 The group of Ukrainians I've met at the end of my recent hike to
-[Auer Berg (1252 m)](/hikes/2025-10-27-auer_berg/)
+[Auer Berg (1252 m)](/hikes/2025-10-26-auer_berg/)
 invited me to an outing up Jochberg, which I visited a couple of times before.
 With a fractured finger and nothing better to do, I gladly accepted the
 invitation and joined the group. We set out early in the morning, traveling in

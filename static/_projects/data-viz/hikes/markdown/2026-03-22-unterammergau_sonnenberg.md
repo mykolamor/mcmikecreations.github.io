@@ -4,8 +4,11 @@ description: Going back to the place I failed to take back what's mine.
 people:
   - Stanislav Kidalau
 gpx: /_projects/data-viz/hikes/gpx/unterammergau_sonnenberg.gpx
-ascent: 947
-descent: 947
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 17962
+ascent: 980
+descent: 980
+duration: 335
 images:
   2026-03-22-00.jpg: {w: 6120, h: 8160, lat: 47.596226, lon: 11.016616, demEle: 1159.2, blur: 'data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAADwBACdASoSABgAPtFWpkwoJKOiKA1RABoJYwCuHAhyyE1HpLgrIMOb/o4S5CUIZkAAzIFGawuqHzM7ovzybnPSC/JOXK5M4Zi7uMeB9GqK446q/8DS0AB+ljF4aXUZnOaC4wBFaV+u/9sedy1Zu8QZU9lOr32mBAZYAyw3x3YfTwtZS5UyA5ncKmXg9Dhf+uAtrtRbBLURgGuHgV9iekow/oMUTUeha+oD9VwjIAA='}
   2026-03-22-01.jpg: {w: 8160, h: 6120, lat: 47.587382, lon: 11.007806, demEle: 1301.1, blur: 'data:image/webp;base64,UklGRtYAAABXRUJQVlA4IMoAAABQBQCdASoYABIAPtFepU6oJSMiKAqpABoJaACC5WT/nMlQGSWg7mCU51fK47bIjUa1oOAA/r+jedf3tBBdXQFiOdY07ynmLTK+SXOdP0IBG+C5stPNdrhdJsdwoBUTFX9AmtsD/wuljuR/uECUoTcEUTVA6b3S19to20Y6sBDfFjBd2vPYp+WngmIlyjc7dOP0vgIu19iTlZyVm12heTdK5Y6Y4r8aCHjra8ruflMPJsmDccIo9dD2sIdzZMbRU+MiCvAQUdQyQxAA'}

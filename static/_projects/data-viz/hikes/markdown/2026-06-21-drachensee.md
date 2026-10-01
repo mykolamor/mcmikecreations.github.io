@@ -6,8 +6,11 @@ tags:
 people:
   - Stanislav Kidalau
 gpx: /_projects/data-viz/hikes/gpx/drachensee.gpx
-ascent: 1013
-descent: 995
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 15215
+ascent: 1028
+descent: 1002
+duration: 241
 images:
   2026-06-21-00.jpg: {w: 8160, h: 6120, lat: 47.383723, lon: 10.938182, demEle: 1153.0, blur: 'data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAABQBQCdASoYABIAPtFcpk4oJSMiKAqpABoJZACdAA+DOuyFx6+GOYqDf5z2TBB/j7Q5WwAA9f7vHjQeqbjLll6sScyMS1Texva2OzNKTCOxUH0MtPvfuBtBmeRz0aggFnBmBpaH5AXiw4EQzyak8AxOTWy7VPfa21Q2CRWjXz5XNDASEIavGWF/73Ji06UXOiBaM8y21nIpy06TOy9DDzatdjbQVi3PHmxKMqKAAAA='}
   2026-06-21-01.jpg: {w: 8160, h: 6120, lat: 47.377545, lon: 10.935227, demEle: 1444.3, blur: 'data:image/webp;base64,UklGRtwAAABXRUJQVlA4INAAAACQBQCdASoYABIAPtFgqE+oJSOiKAgBABoJQBfuKAGiCaDChJh0Z9rbMgTfqbXaVQT1mSwRwAD+P5KsP+417V41HYKU4qIXvcgSRTOOvMC3krT1/6AApye6sdw6/s0ZLVAArsOdACK3SDWMEHah6isc+vkbsqXHhc2xu1a5C1N+JNhgEBFkv4HCvu86JSi386G41Q2DTrlA7QAGpdDDqTtD8IO82JIMz4Kyg9ESUpyS0Z7vRCNgtS7OVjtK89yREiK45SlX/gxuHrN8E+jZgAAA'}

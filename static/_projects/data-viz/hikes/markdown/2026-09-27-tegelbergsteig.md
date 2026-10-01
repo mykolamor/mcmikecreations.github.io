@@ -6,10 +6,11 @@ tags:
 people:
   - David Bilan
 gpx: /_projects/data-viz/hikes/gpx/tegelbergsteig.gpx
-ascent: 926
-descent: 961
-distance: 15550
-duration: 500
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 15195
+ascent: 916
+descent: 951
+duration: 271
 images:
   2026-09-27-00.jpg: {w: 8160, h: 6120, lat: 47.568633, lon: 10.756827, demEle: 824.4, blur: 'data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAADQBACdASoYABIAPtFgqU+oJSOiKAgBABoJaACsINq+qAR90eHahtL/76Vk9jWNAAC8E/eLEmQqQo0+eyLb9D66HfRFrowZQfsrDh3576cj887H3fLkgq+ymGX1iJT7bsp6+qtGl8WE43z7gG9wogk/VZj95VMfsDCN+WyhgaaYwchCyZS+koR8ixV0f423dZnhGSOmePQPEnx0MTo1lmHXyC2X/YR/d0f/JUKPW3nNc2ytiiF9odJ3uAAAAA=='}
   2026-09-27-01.jpg: {w: 8160, h: 6120, lat: 47.564977, lon: 10.772169, demEle: 1105.4, blur: 'data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAAAQBQCdASoYABIAPtFepk6oJSMiKAqpABoJYwDE2Al3IHCfNhubKCHH5LhkSlHN5WAAANzWuLqeG5CmJ9qeDTogNuvncEYDg/33HmyGyMgPUS5RJjAMTz3RZ/d0yZ6pn8xEvK5C3UIMHH2C1oC7RnMDi+rcQd6LKpkNyYNvFB993nyN5NyxJBc4LhigbuTZQ2UqNG9ZKkl07S+H9R8VyXt5byFaTUym8EcBRlQAAAA='}

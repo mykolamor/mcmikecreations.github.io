@@ -8,6 +8,11 @@ people:
   - Mikuláš Netík
 ascent: 360
 descent: 310
+elapsed:
+  # Hand-picked photos: 2025-07-26-02.jpg (Going to Norissteig) to 2025-07-26-05.jpg (Going through the meadows).
+  start: '2025-07-26T11:48'
+  end: '2025-07-26T19:14'
+  source: photos
 images:
   2025-07-26-00.jpg: {w: 3472, h: 4640, lat: 49.509089, lon: 11.431578, blur: 'data:image/webp;base64,UklGRsYAAABXRUJQVlA4ILoAAABQBQCdASoSABgAPtFepE6oJSMiKAqpABoJYwDCgYx2d7y8e8+o1fvYExPKP/1nykWs+gAA/utj5992LfpwSfnd3CMYprvO/EaHhuO/H1iqeftKMPydh0cJ6hy8khp/lynRFrhU7Bh3E+12EO+WTF/tgYBMKW93yrPz40qk7X3S3P6B4iZpToZe4O9oLMorXN4mA95h4kye5bahjhzb+0GMzNX8vhm00APNQAqmDcNHNx5URHu1XHiRgAA='}
   2025-07-26-01.jpg: {w: 4640, h: 3472, lat: 49.509089, lon: 11.431578, blur: 'data:image/webp;base64,UklGRuAAAABXRUJQVlA4INQAAABwBQCdASoYABIAPtFep0+oJKMiKAgBABoJQBYdsZFMwyOKOP9b3bP42wby4ovN2yssahgAAP7t4DnLRBp++Dd5ZTU50CU6Ztz5yhJTGfa9cVTZS6luCGlg+kZHZR/NOzdZuuVRqEhfUTbOWvS64+xAuq6jtAJfUYP2vGlbTf0wN5/MkeutdrN0SQPXEDmvcja9PDIU69PYcQPWW8Xg08K0Ifi+gLhdLolvLtbHQwDb3XiyvIwe58mLvYNbgiBYQwR7Rti3OwOkLocAYyczOxU+HiAAAA=='}

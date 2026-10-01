@@ -6,6 +6,11 @@ people:
   - Maksym Honcharko
 ascent: 1050
 descent: 1420
+elapsed:
+  # Hand-picked photos: 2025-01-26-00.jpg (Sillbach waterfall) to 2025-01-26-16.jpg (Snow clearing machine in Rechenau).
+  start: '2025-01-26T09:25'
+  end: '2025-01-26T17:02'
+  source: photos
 images:
   2025-01-26-00.jpg: {w: 3472, h: 4640, blur: 'data:image/webp;base64,UklGRtoAAABXRUJQVlA4IM4AAADQBQCdASoSABgAPtFWpU0oJCOiMBgIAQAaCWcAxNmMbFsyNj//3/V+ITLVvI4jp0p9g+8mlAHAAP67G4gMiTaULMxH+qWVeZiEwdOu4zLUnxYW2Krp5WLReHFztOJLEOeJKA0+k4MPom67A1gzv5vq8tRi7rJrQ5rf1NMTnc4fiXAM9Uprh7MHhY24PnS/lDB4yEjU+TH07NCvldFnOJ9xZPcUTqrON9pMKE66UStiV/dzP1anNSygtOndE38/8YifgbC7F4AWBR1C9DQAAA=='}
   2025-01-26-01.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRuIAAABXRUJQVlA4INYAAACQBQCdASoYABIAPtFgqE+oJSOiKAgBABoJaQAD5YjyPZ4+zXS6EvLWlfmgfx6toEXEJiwOAAD9AhPQx5ivo3jXqght6tHB8CjaRJN0ml0rC1gFnV35bPLCF1BkuOJQDq009BcZZ0IKWabJ9fb42r+ItoI2SIh84hmYGLl8wP5nwufWOjhPnj1VL+JSVcOF2SWxVIAHqiqPu7x2GD+gh/qZLH5kGcBYReQECwP4n4GyAE4wmrEFFl6L5rYujK1rv9Ef/0tlUoCeOkxcRMOimYM//1eBAAAA'}

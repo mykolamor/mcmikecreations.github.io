@@ -8,8 +8,11 @@ people:
   - Myroslava Shkilniuk
   - Julia Krat
 gpx: /_projects/data-viz/hikes/gpx/drachenkopf.gpx
-ascent: 1566
-descent: 1549
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 19579
+ascent: 1570
+descent: 1551
+duration: 371
 images:
   2026-07-12-00.jpg: {w: 8160, h: 6120, lat: 47.377325, lon: 10.935297, demEle: 1460.8, blur: 'data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAABwBQCdASoYABIAPtFcqU2oJSQiKAqpABoJYgDE6fqgH3wQi0joVc9pgHBepGF/dvipdiVAAP7swjoK3NCtvR5Fn8gHzA3hh/SrXqvGNEZRrsYQooF+Ad+R8S7aKHVNPk3TLO89rQUprpuEXRgsqwU+sAY6LdIMa3u+T0IGpWjidk8yRMTP0TC+cZIOG13H0UGuy0qTwMNvOOdGvNwXTPUGWvxM2s6A1gMgvlxRELw2fTTqcmpxKgmgEqzG8d+1HelMAAAA'}
   2026-07-12-01.jpg: {w: 8160, h: 6120, lat: 47.374696, lon: 10.93585, demEle: 1673.8, blur: 'data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAABwBQCdASoYABIAPtFgqU+oJSOiKAgBABoJYgCdMoABXIG22TA+yu+zXfLrgE/v9K58WqCAAP4h1212O96b6ldgpC7SlDN3kxc+t1unEXF8jkEeweEWtjvBiAaPbZJGBiHlxOiItH+83NNhHtjGZtJy4Nl9zFoBsNjW+QbDMaC1tVXUCrJvUg5vm+BkPRhRTLzgAA=='}

@@ -6,6 +6,11 @@ people:
   - Veronica Vitez
 ascent: 1460
 descent: 1460
+elapsed:
+  # Hand-picked photos: 2024-10-27-00.jpg (Walking in the Oberstdorf valley towards Berggasthof Oytalhaus) to 2024-10-27-12.jpg (Oberstdorf at dusk).
+  start: '2024-10-27T11:10'
+  end: '2024-10-27T17:39'
+  source: photos
 images:
   2024-10-27-00.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAABQBACdASoYABIAPtFWpU2oJCOjMBgIAQAaCWIAtOgNZdzL0SGvRode4dgAAPyIC4tK22d7RN8tI1A7R9r9HDjIAjZNqRRL4gDTY9tkuKUpXgDQRGV0UBFq4tRgq/GFziMUl2iKmZVqh6xIopzTs2mMC3I98QyHMAt5iQyADn1FEzFQDSTofw7QDuFcvTza0mDl7QcDp+OiLDBuAAA='}
   2024-10-27-01.jpg: {w: 3472, h: 4640, blur: 'data:image/webp;base64,UklGRuoAAABXRUJQVlA4IN4AAABQBQCdASoSABgAPtFepU6oJSMiKAqpABoJZgCdMoRkAANhJicKsNDMGnY0mspEAYFWCoAA/h1ZJt7VqqJCaU4FFWhOkOc0sieMSrVLAjz3GfgKsGs92dWdMtVMzDkv/agD0zEv3YhHK5XU3RlqBf00WxS965I0H1fz1qaCfSJggEbEtQi9ziJin6RBGsXtj2/Mez5lPX4CrISuzlcH1r0Q86UQNS1oX/4e3Zl2rhCHUwXeZx/e/5Co8HwdD7KCRrxBpDOI3ICHPe++Rdc3eCTMl0dY6LAnNXSCPQmdoAA='}

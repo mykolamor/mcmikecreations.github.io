@@ -5,6 +5,11 @@ people:
   - Serhii Ivanenko
 ascent: 810
 descent: 530
+elapsed:
+  # Hand-picked photos: 2025-12-23-00.jpg (Frozen bushes in Neuhaus) to 2025-12-23-11.jpg (Foggy icy Spitzingsee).
+  start: '2025-12-23T09:19'
+  end: '2025-12-23T14:23'
+  source: photos
 images:
   2025-12-23-00.jpg: {w: 3560, h: 4744, lat: 47.706106, lon: 11.874462, demEle: 807.6, blur: 'data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAABwBQCdASoSABgAPtFSpU2oJCMiMBgIAQAaCWcAtsgLg0FlG4Wclk8OjJbvgo6NYxKzL5LYAP7XSWZP7kHnrmnMgmU3S1xi02n1rSpXSbmthbzgFgqX8cpwQd54edD0uUvdXju6MN9SyhrEMhgHnLUUqrQSBB0JZq9u0E9d+VpqoPq4WTYMNquekNb/8Th+Fjfxk1Q7eY7zFcAA'}
   2025-12-23-02.jpg: {w: 4744, h: 3560, lat: 47.683502, lon: 11.84551, demEle: 1258.2, blur: 'data:image/webp;base64,UklGRtoAAABXRUJQVlA4IM4AAABwBQCdASoYABIAPtFepE6oJSMiKAqpABoJQBYdsZZNb9rzKxWsAMQkHI2gYD6tWaRhKx+gAN5lWrJhZOU/ai2HZ341elmkQmCG5lJFqZXyb2Z9Uz0eYU2O/AYIrTFXtPUa+u8JQBCH5prph2MmizqdLRQHaQt9y4P+vFikRGKPOGo5kIgVzIwVDM4IG4vLvYI5LGT65QSrKnWPiZFT4kd8z3jiubNpFtE1HbhkTf087/VoRJRQlZ11rSbix9kjBiyS1Y9hXqoE7uNCAAAAAA=='}
@@ -25,7 +30,7 @@ easily accessible ones, the area between Tegernsee and Spitzingsee seemed to
 offer a good option. Since I've already done hikes to [Wasserspitz (1552 m)](/hikes/2025-09-07-wasserspitz/),
 and [Bodenschneid (1669 m)](/hikes/2025-11-01-bodenschneid/),
 Rainerkopf (1463 m) was the only remaining
-peak on that ridge. Don't confuse it with [Rainer Berg (1169 m)](/hikes/2025-10-27-auer_berg/),
+peak on that ridge. Don't confuse it with [Rainer Berg (1169 m)](/hikes/2025-10-26-auer_berg/),
 which is a different mountain near Spitzingsee.
 
 ![Frozen bushes in Neuhaus](/images/projects/data-viz/hikes/stories/rainerkopf/2025-12-23-00.jpg)

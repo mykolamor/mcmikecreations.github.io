@@ -5,6 +5,11 @@ people:
   - David Bilan
 ascent: 2430
 descent: 2430
+elapsed:
+  # Hand-picked photos: 2025-06-21-02.jpg (View of Partnachklamm) to 2025-06-21-23.jpg (Detour around Partnachklamm).
+  start: '2025-06-21T09:22'
+  end: '2025-06-22T04:11'
+  source: photos
 images:
   2025-06-21-01.jpg: {w: 4640, h: 3472, lat: 48.3185, lon: 11.661553, demEle: 463.1, blur: 'data:image/webp;base64,UklGRuQAAABXRUJQVlA4INgAAACQBQCdASoYABIAPtFgqE+oJSOiKAgBABoJQBdja/h5IhvsRGEx8x0jn/aTwLFV5iBsCp4w0AD+F3LVw0GilxKEGAI99WqW1tiwotHfOlTaBCaSWdKY7o2g04YefxvD5c+NHLYJFbGZ0WPzpfcdRYhbmWJ+x2ishfMD12sTSz/FG5/rpupDv+Si/xnW/Zl4r6nikwwIZS1EERPZT5+MPpjv6VqMR43DrKpm1Jz9Mv+rnXxqplJX1vuBic1GoRkLQLaITqBpxz95MmMVSj+oekE1EKUq+6eAAAA='}
   2025-06-21-02.jpg: {w: 3472, h: 4640, lat: 47.427067, lon: 11.103425, demEle: 1036.5, blur: 'data:image/webp;base64,UklGRvgAAABXRUJQVlA4IOwAAACwBQCdASoSABgAPtFgqE+oJSOiKAgBABoJZACdMzFvZngBjE5lrrlvZtk9R8kMWGE2YJ8kvAAAzimlsFZ6um1VDqf+Hn5vX/np2+YF/vkpQCK5A6D6mBh8Hy749LergL3GX71mIhVsTort2agSC3sSjp/qVQK3cMhzPHHjmFwjwXx88eySYqp1a7pBp6+4tmUnFovsaXjDe1MqAcnziaHS2/p87rbhHPhc1CTYV86ZWzkMTbC10OLAqVrXBAoP2AZls0/YikkcvkJGdMX4/v7IHt3x095t1ec0wWUF1StU2NV0PI39FL/x6iAAAA=='}

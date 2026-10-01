@@ -7,8 +7,11 @@ tags:
 people:
   - Mikuláš Netík
 gpx: /_projects/data-viz/hikes/gpx/snezka_krakonos.gpx
-ascent: 1004
-descent: 1060
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 26478
+ascent: 1014
+descent: 1068
+duration: 369
 images:
   2026-04-11-00.jpg: {w: 3000, h: 4000, lat: 50.70523, lon: 15.733494, demEle: 833.8, blur: 'data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAAAwBACdASoSABgAPtFcpk4oJSMiKAqpABoJZACdAAtzMAd7lEQjTf9aNAAA/hYv6IqD/IXOwJZSIAGPWh+lLY6GNnl8tUMwAH9wS35ewH/wlgZwUW0f3SZnebxntZT6inF9dI4Ap++b/r9ioyBkCAQGIaYgYhmL0WxO1lB2ORHr9adSwCzVRDOf/Ub3mX+YumIf1CpBDKCkSYn5aU0l2qb1vNccnrYcYVAJw5SAAAA='}
   2026-04-11-01.jpg: {w: 4080, h: 3060, lat: 50.720332, lon: 15.725472, demEle: 944.7, blur: 'data:image/webp;base64,UklGRsYAAABXRUJQVlA4ILoAAABwBQCdASoYABIAPtFcpk6oJSOiKAqpABoJZwDBkywTogXfupS7cNhVJJlxMyWMZkjwRoeAAP5+em37pfI+052V+X51Zf4BeKRHOULRq+haQ4HikAEp+4IIt7bJBgyw/W/yxd8H2zZyt8e5CP74MNvgPsBr48oxhZMDaNCH7BypvzxDz7vDlRuxxQSweBgTsxjKHOCTQg/GkX+lB3FzxokZQbZA1/E3JewZ9VAk3Utwt9zT4gB4CuAAAAA='}

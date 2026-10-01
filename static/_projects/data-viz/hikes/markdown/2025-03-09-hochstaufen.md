@@ -7,6 +7,11 @@ people:
   - Mikuláš Netík
 ascent: 1330
 descent: 1310
+elapsed:
+  # Hand-picked photos: 2025-03-09-00.jpg (The start of the ascent to Fuderheustein (1321 m)) to 2025-03-09-07.jpg (Bad Reichenhall at night).
+  start: '2025-03-09T11:20'
+  end: '2025-03-09T18:40'
+  source: photos
 images:
   2025-03-09-00.jpg: {w: 3472, h: 4640, lat: 47.750881, lon: 12.896353, demEle: 746.3, blur: 'data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAADwBACdASoSABgAPtFcpk4oJSOiKAqpABoJYgCsM1XBXNkX0naK5h1+7m6XG6Lo0AAAyy4k8qxZvzScpo+zgHLl6OLz+JRqRrNjRM87Qp1tFNBafBpkRyXselxlcuyc+wXcf6sYa92zOAlkVesBSGrQuiyScXNBV8L4ra4egCQGaRvF5Yhe52KbToGZIK7Ke93yhLctIPse8PrgTkDZLBwqLPVC+fMw6jokkJ6Xl9X3PQW/PkrAAA=='}
   2025-03-09-01.jpg: {w: 3472, h: 4640, lat: 47.753303, lon: 12.878142, demEle: 1275.5, blur: 'data:image/webp;base64,UklGRggBAABXRUJQVlA4IPwAAADwBQCdASoSABgAPtFeqE+oJKOiKAgBABoJbAC7L9Y+d7xqUD4BdBw4SwsM55/dSXPqu3aNO2mrAAD3K5UAH4JykHtX1ru54nkMxzFcXitM3v9xnK7pAuxYFBJylk1bu5GwROEiqbNTquyJtMI4pKRwxY1u5VzL/J3WUpEJqWVe7b1Ifu2LYE6HIopzFZE05mSwP6eNP1Gt4sYUGc2KpBR9CqGfOTKOSLSUiE+tNBL7rBq+6t/PTqRXk5ELooUh4DesJPMYZydV53dSTESdpH86APTKkmu+sR+zLO9zCZIJut2QGds2iGlUB537CGsJU0OymcRvnRtDbgXwAAA='}

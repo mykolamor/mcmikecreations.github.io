@@ -4,8 +4,11 @@ description: Joining a Ukrainian group to Fockenstein, then taking on Geierstein
 tags:
   - Wandern für glückliche Menschen
 gpx: /_projects/data-viz/hikes/gpx/fockenstein_geierstein.gpx
-ascent: 1287
-descent: 1365
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 22120
+ascent: 1376
+descent: 1452
+duration: 389
 images:
   2026-04-05-00.jpg: {w: 8160, h: 6120, lat: 47.702716, lon: 11.726684, demEle: 753.7, blur: 'data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAAAwBQCdASoYABIAPtFcpk6oJSMiKAqpABoJQBOmcnApVjyURJM3+un93XTgseq+o2PJYAD+1xXNaryqmgw914f2aAH8g+1KIo8DsSoR0aZeeS7mQVdzqrcKRaL9OXOioN5UZl1uvnt0mujfl1B5KHohaXTET+JQwh0YomeGivyC+5g8auYcwrAV+dC8JA6wYYMpbymJ4DojnwM6QIkm94PzDlVpY0VMmY71KV9Gzawi1lpYWZ51FCNYKpU4RZDlAAA='}
   2026-04-05-01.jpg: {w: 8160, h: 6120, lat: 47.704289, lon: 11.715636, demEle: 831.2, blur: 'data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACQBACdASoYABIAPtFYpU0oJSOiMBgIAQAaCWIAqPQPHrgdmT4ACkJLVsSihkAAy9leJHEBkW32kiWdJfylvSeJ2K2GWg7LqVO35yZydemYjwgt7LlUNvk64BB+/LwM1uIgTPQQ4QnjoJBQlfpu19zgfYgZiFD+y8+Qd/PHhErhMCmJcmnPQrlAAAA='}

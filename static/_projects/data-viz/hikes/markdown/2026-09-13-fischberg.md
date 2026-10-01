@@ -4,10 +4,11 @@ description: Walking around the lake to enjoy the views.
 people:
   - David Bilan
 gpx: /_projects/data-viz/hikes/gpx/fischberg.gpx
-ascent: 488
-descent: 484
-distance: 25070
-duration: 492
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 25123
+ascent: 441
+descent: 437
+duration: 404
 images:
   2026-09-13-00.jpg: {w: 8160, h: 6120, lat: 47.618021, lon: 11.346485, demEle: 807.9, blur: 'data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAADwBACdASoYABIAPtFepU6oJSMiKAqpABoJQBadAVAaR7ux4Q5OJY4qN3+i0me8FYAA/u/Xi1oHJR9DqpzjqldB0jykckt6aaRH5/3D85sXjsPqi9yh1BdFoMntzOWoiaSd9I2vrXKvZ1J0Ag1ELMijyEMOQ/KOU80AtbTs2QoIVal0JGiuNNJxCA8Bg8AA'}
   2026-09-13-01.jpg: {w: 8160, h: 6120, lat: 47.617957, lon: 11.347286, demEle: 802.2, blur: 'data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAABQBACdASoYABIAPtFYo0uoJSMhsAgBABoJYgCdM4T+4BuaOS3ZS/7qZnNgAMqj3CPh9c9uXgEs+TprilHHZx43DehEvh6f8UEZPKrWt+CtmhOS/JyiKAJh1Qz9Eq8q8ANwQwu1f2uJTUM5IR66ay+TE6x+NHGCAAA='}

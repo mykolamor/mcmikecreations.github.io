@@ -5,8 +5,11 @@ people:
   - Bohdan Pryshchenko
   - Stanislav Kidalau
 gpx: /_projects/data-viz/hikes/gpx/trainsjoch.gpx
-ascent: 1230
-descent: 910
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 29273
+ascent: 1290
+descent: 969
+duration: 421
 images:
   2026-01-18-00.jpg: {w: 8160, h: 6120, lat: 47.616013, lon: 12.187076, demEle: 490.0, blur: 'data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAACwBQCdASoYABIAPtFcp04oJSOiKAqpABoJZwDE32gEEAE26E83ftWnJw+DFuhGE2af/t1+kQgA/utb69tudZCdkeVJQ6P0D/GoANytjQUAhZ9UaQlTODFnCBMpJGYlUasuPrK7gUfyX44W7In9VfYkkoDAzxUrUFWXOQKA4yFpvJlZd6q7YaX25OTuRc8u2XhouOvSK+mmDW5a7u1OJu2JAIRGc3KmV6ZO4ieSmD5jAAAA'}
   2026-01-18-01.jpg: {w: 3024, h: 4032, lat: 47.613986, lon: 12.154367, demEle: 523.1, blur: 'data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAADwBACdASoSABgAPtFgqU+oJSOiKAgBABoJZQDE2A8k6MO5x5gSHxtDc6V435xFvdwAzj66PCFgRV/f7k9d584NKEFYtgrzGgKGNvGT+Lc6QKdfPmQg8kp6sMPP9ruSWoVVlntibc2vMypHeSZytNxBFM0Xs0IYWHotttuzP6zYumRwBsIqWE1Cpvl2RVD+GZTTiz5YTUejNYQeFn/AbxA1J7WzZrNQAAA='}

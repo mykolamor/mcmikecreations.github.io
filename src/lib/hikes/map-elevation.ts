@@ -1,10 +1,10 @@
 import { select, pointer, scaleLinear, line as d3Line, area as d3Area, curveMonotoneX, axisBottom, axisLeft, bisectLeft } from 'd3';
 import { primaryGeometryColor, secondaryIndicatorColor } from '$lib/hikes/build-geometry';
-import { computeMetricScales, haversineKm, scaleElevation, type HikeMetrics } from '$lib/hikes/hike-metrics';
+import { computeMetricScales, haversineKm, type HikeMetrics } from '$lib/hikes/hike-metrics';
 
 interface ElevationPoint {
     dist: number; // km (already scaled to the authoritative distance)
-    ele: number;  // m (raw track elevation; labels are scaled on display)
+    ele: number;  // m (raw track elevation)
     lat: number;
     lon: number;
 }
@@ -20,11 +20,9 @@ export function initElevationChart(
     const coords: number[][] = geojson?.features?.[0]?.geometry?.coordinates;
     if (!coords?.length) return { setIndicator: () => {}, hideIndicator: () => {} };
 
-    // Map the raw track onto the authoritative (possibly overridden) metrics:
-    // distances are stretched so the total matches; elevation labels are scaled
-    // so the vertical travel matches, while the plotted curve keeps its shape.
-    const { distanceFactor, elevationFactor, minElevation } = computeMetricScales(coords, metrics, geojson?.features?.[0]?.properties);
-    const displayEle = (ele: number) => scaleElevation(ele, minElevation, elevationFactor);
+    // Distances are stretched so the total matches the authoritative distance;
+    // elevations are the track's own (see computeMetricScales).
+    const { distanceFactor } = computeMetricScales(coords, metrics);
 
     const points: ElevationPoint[] = [];
     let cumDist = 0;
@@ -93,7 +91,7 @@ export function initElevationChart(
 
     // Y axis (labels scaled to the authoritative vertical range; curve shape unchanged)
     const yAxisG = g.append('g').call(
-        axisLeft(yScale).ticks(5).tickFormat((d: any) => `${Math.round(displayEle(d as number))} m`)
+        axisLeft(yScale).ticks(5).tickFormat((d: any) => `${Math.round(d as number)} m`)
     );
     yAxisG.select('.domain').attr('stroke', '#9ca3af');
     yAxisG.selectAll('.tick line').attr('stroke', '#9ca3af');
@@ -186,7 +184,7 @@ export function initElevationChart(
         // Elevation label positioning
         const labelPad = 5;
         const labelH = 18;
-        const labelText = `${displayEle(pt.ele).toFixed(0)} m`;
+        const labelText = `${pt.ele.toFixed(0)} m`;
         const textEl = cursor.select<SVGTextElement>('.ele-label-text').text(labelText);
         const textW = (textEl.node()?.getBBox().width ?? 40) + labelPad * 2 + 4;
         const labelX = cx > iW / 2 ? cx - textW - labelPad : cx + labelPad;

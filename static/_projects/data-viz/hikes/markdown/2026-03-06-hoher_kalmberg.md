@@ -4,8 +4,11 @@ description: Taking Pavlo for a tour near Hallstätter See.
 people:
   - Pavlo Pustelnyk
 gpx: /_projects/data-viz/hikes/gpx/hoher_kalmberg.gpx
-ascent: 1107
-descent: 1229
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 19276
+ascent: 1108
+descent: 1379
+duration: 431
 images:
   2026-03-06-00.jpg: {w: 8160, h: 6120, lat: 47.595414, lon: 13.539322, demEle: 942.2, blur: 'data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAAAQBQCdASoYABIAPtFcpk6oJSMiKAqpABoJQBUegi+/J2PilJIdoq9MJilZX7+XtDDAAP7TdewX3wEhet1VtM6WX2muXVupOsBM3ZNdD0kpUvBafXTIcvYWJcCaCUtp7kJaqjSkQTaVxWBBQmsalwRsR/GpsFURudzMjN7zAfxdsW/hcJDfb4ERC/7NnFTcnqShkGi9femkENPBxELOI0AAAAA='}
   2026-03-06-01.jpg: {w: 8160, h: 6120, lat: 47.596353, lon: 13.542743, demEle: 1018.4, blur: 'data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAABQBQCdASoYABIAPtFgqE+oJSOiKAgBABoJYwC7AA+D2Grg74drLeFAHTo2KCx35UgPqgAA/jtN3AIu5dwbDveBCviB58jTrC6bT173NweNB13r0zaiNKIQVjbhuQQTa+nGZ1H05zYeIZJ90dqEJcHec8/WIhwTKJxgaHHBaHjwrqiLshSDuhX4hcB74MXT2XfHwE7Jb1HiOQT9hA2HXjmDHT1Yzuw+gaYF1SJNhKkcWcoYaxcQwsjstgAAAA=='}

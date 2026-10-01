@@ -3,10 +3,6 @@ title: Kathmandu Day Tour
 description: Exploring the capital of Nepal on foot.
 tags:
   - Nepal
-ascent: 639
-descent: 119
-distance: 4140
-duration: 140
 images:
   2026-06-07-03.jpg: {w: 4000, h: 3000, lat: 27.714703, lon: 85.290462, demEle: 1394.5, blur: 'data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACwBACdASoYABIAPslWoEunpSMhsAwA8BkJZwDCgCHfYXtE+0ANBlEvDiCuqB4wAP7nJ1oKu8Xk9CFSSp/+mLoJC8yYVMdG0Jap3inoziTsSVkTWU6GoxsSfzXEh2g3ogA='}
   2026-06-07-00.jpg: {w: 3000, h: 4000, lat: 27.715771, lon: 85.289344, demEle: 1389.8, blur: 'data:image/webp;base64,UklGRtoAAABXRUJQVlA4IM4AAADQBQCdASoSABgAPtFgqE+oJSOiKAgBABoJZQC7BAgOWARJlVpIO2wcg8ltc3H7YGob/XVzghOgAP6qEqamxNjFA0KsjmVQqSn1sSSZZiinmQT2qB5HcHa1/HQo95cm0z3WFo1YzEIVNhfFZxxcGvC22i2xHG/dRZjItlZICH5PmZAcmlnFIouNxxgirQoE70jPqAMUAHwd86j6M9MzAXajgKe4j4cFZpq0I2B4wcxh5R8CD8vekLUetfi7CBbpsxtCAe0iimajEEpwsrAAAA=='}

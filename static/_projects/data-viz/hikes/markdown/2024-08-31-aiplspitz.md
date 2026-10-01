@@ -7,6 +7,11 @@ people:
   - Maksym Honcharko
 ascent: 1030
 descent: 740
+elapsed:
+  # Hand-picked photos: 2024-08-31-00.jpg (Dirt road towards mountain huts near Geitau) to 2024-08-31-19.jpg (The Spitzingsee church).
+  start: '2024-08-31T11:28'
+  end: '2024-08-31T15:55'
+  source: photos
 images:
   2024-08-31-00.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAADQBQCdASoYABIAPtFWpU2oJCOiMBgIAQAaCWgAnTMRvkAbrH/cR6ierJcdB7MHzw9NqhkRj7AAAP637I2jFwppgdp3RTpvn1j9jHwrjYTROeG7c93XCmpHbdqC5ORJqe6iC8/f8uvVwD67pUs4giiWO9qkM9B9BPGHlAHPmW2Fa5prlr3xgAz1xPWvWnf+qzXlUqD7n6E0dyZDpUVBVChYc70gblVIwYjL9Wjglo9rcnX2tveYhyOVxvhvfFTnlYuwoAAA'}
   2024-08-31-01.jpg: {w: 4640, h: 3472, lat: 47.678217, lon: 11.934067, demEle: 1258.0, blur: 'data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAAAwBQCdASoYABIAPtFcpU6oJSMiKAqpABoJZgB40iMgNBE3Aj4XtGzqdxGpN8Z2W1/mQAD+WYmkyfLSLomKe3hZk8j+r8Jl5+HB3vTeIJZK6Fo2pvfeS0t8yCJNP/Ju7qx7Wr//Uzk0Ea7ML8bKMC5VIn4kDdWggf8G5HIYTF3YztyXyHFfrlVWBvz8Uv+ODQLXOkkUrVCigLujPcwVtPWt/mrG9HvwNusBdRnyzX64OROSiAAAAA=='}

@@ -6,6 +6,11 @@ people:
   - Pavlo Pustelnyk
 ascent: 820
 descent: 1410
+elapsed:
+  # Hand-picked photos: 2025-12-29-01.jpg (An owl carved out of wood) to 2025-12-29-20.jpg (Molveno in the evening).
+  start: '2025-12-29T09:59'
+  end: '2025-12-29T17:00'
+  source: photos
 images:
   2025-12-29-00.jpg: {w: 8160, h: 6120, lat: 46.15305, lon: 10.960656, demEle: 1402.5, blur: 'data:image/webp;base64,UklGRsYAAABXRUJQVlA4ILoAAACQBQCdASoYABIAPtFWpk2oJCOiMBgIAQAaCWgAqSdVwanaQTNHMd8GEA0oRXTVt9PvmF68EAD+u8KX35PnDSldc2ZW5aYsVx6T45MGWxCr0eDM5Qukhm2kM1Gw4VsfGB/Vgw72tatHj2Q3Wsjr5KxErYkTs7nV6aNNxl/p6XCTeUlKeHTFLSmkdU5re+lDYe95b66PH227KFBxIb5QVaCISAX95wIWTOMeYiDAMb1w+UPJ2XXcvjgsMAA='}
   2025-12-29-01.jpg: {w: 6120, h: 8160, lat: 46.156638, lon: 10.954827, demEle: 1508.2, blur: 'data:image/webp;base64,UklGRuAAAABXRUJQVlA4INQAAADwBQCdASoSABgAPtFYpE0oJKOiMBgIAQAaCWIArDLrsLfqgRXJjXNZka3y2vFHa509i4BMtdtcAAD0dNWvtCNHNKjhoouajfSEy4LM/yJKQeVapB34xQ+ZyY81QDulhpXfAp0t2kYYSPVB+v75yJcgvSTfCLzsk0diTgHqJXDVBcnX8ToH/CkBZFkStdLYoyLGXFi6aYeGqNCP7jnbTnnapPe9Sut5maSkfyeokNLHPjbl0nY2Z27GDNhsv0Uodczk9KVes4IboOoyVzXmqxpecAAAAA=='}

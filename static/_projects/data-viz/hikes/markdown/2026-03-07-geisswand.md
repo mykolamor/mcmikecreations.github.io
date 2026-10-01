@@ -4,8 +4,11 @@ description: Letting Pavlo recover on a nice walk.
 people:
   - Pavlo Pustelnyk
 gpx: /_projects/data-viz/hikes/gpx/geisswand.gpx
-ascent: 462
-descent: 481
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 5679
+ascent: 460
+descent: 477
+duration: 123
 images:
   2026-03-07-00.jpg: {w: 6120, h: 8160, lat: 47.842397, lon: 13.786049, demEle: 486.5, blur: 'data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAACQBACdASoSABgAPslSnkunpKKhsAwA8BkJZQCsABtXVEp9n4m6+969qaLT24YA/mokQ4OXs+say2t4c6tvnD9RQC6GYknvQdOev285fbBvDczV/bsQ2XUCkF7grP/lZlfIz22RdiymqcSAg3fiIuqMm1h/jrWbnuWiMVAo6ZyzhZXYnk5XGkyHDEeekvWZxHYvIrOKEnxAAA=='}
   2026-03-07-01.jpg: {w: 8160, h: 6120, lat: 47.843446, lon: 13.775606, demEle: 654.9, blur: 'data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAADwBACdASoYABIAPtFSokwoJCMiMBgMAQAaCWUAuwAEIlJFAKUGSAItQkLiCSPKJgAA/nUvJcTAP435R6cPraehXUDNqAb0AiHkHWb0Tw4dkqcxCl8TuRB1XomG7tlxWXhM0kxTukrVRZimCxZZ6Eq2tPGX/hBcInl/9nFusV+oBK/MrF4rtgOaLMPkbF2pw5HIpQDaHxMfTDbWyyw6gAAA'}

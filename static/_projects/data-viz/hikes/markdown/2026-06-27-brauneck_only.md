@@ -4,8 +4,11 @@ description: Enjoying a fire show with rock music on a peak at sunset.
 people:
   - David Bilan
 gpx: /_projects/data-viz/hikes/gpx/brauneck_only.gpx
-ascent: 900
-descent: 82
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 7923
+ascent: 904
+descent: 89
+duration: 145
 images:
   2026-06-27-00.jpg: {w: 8160, h: 6120, lat: 47.681607, lon: 11.567157, demEle: 679.5, blur: 'data:image/webp;base64,UklGRuIAAABXRUJQVlA4INYAAADQBQCdASoYABIAPtFcqE4oJSQiKAqpABoJZACdOY29wIUcLy43ragCVhRtHE+wa3rIvJRud0qwAP7TdzyYv+afqKxVkEFlufAbwi06EOWR7X25HukJ9xAfWstxVd4Py9emyNqRqvDZCc+pGEgtd0Q0D8LHnymBuRJ2J1BVXFswG34CM4XIFQgvfFnI4TDae9Lnlo7UpAd+IYoTt35MS26m0dcvoiVG2zkHuloEGN5N6OP08SPHpZ1AvFYB39H7BqCS+1MVs/18QPstVwCZotsee+m9cAAA'}
   2026-06-27-01.jpg: {w: 8160, h: 6120, lat: 47.675172, lon: 11.541419, demEle: 952.0, blur: 'data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAADwBACdASoYABIAPtFSokwoJKMiMBgMAQAaCUAXYAIGNp97IEjH9Y/vW6GG6o9eNnwA/uyDIxZeph+Wj4OHc5NxWNJ7rcUD0KfLCOftR/OQiLDvrCeMuVblHd9VaqrYPjwdw+jP3cra20bRVt9C0twtqmVdgQUTZ4Q6gFkurXtAGk9NAUZsaNitxsXjpUh6s0ChZJ4j95WTbBaAOiZxsa7IAAA='}

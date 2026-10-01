@@ -5,6 +5,11 @@ people:
   - David Bilan
 ascent: 1030
 descent: 300
+elapsed:
+  # Hand-picked photos: 2025-09-07-00.jpg (Bergwacht car parking near the mountains) to 2025-09-07-13.jpg (Ready to take mountain carts down).
+  start: '2025-09-07T09:43'
+  end: '2025-09-07T15:24'
+  source: photos
 images:
   2025-09-07-00.jpg: {w: 8160, h: 6120, lat: 47.686976, lon: 11.794885, demEle: 748.4, blur: 'data:image/webp;base64,UklGRuIAAABXRUJQVlA4INYAAACQBQCdASoYABIAPtFcpE6oJSMiKAqpABoJZQDDrywTmoRhJKq//LzQcaWu9F7yNPjd11LDEAD+h+p3u49laXbqBOOqQ9orP7Y2yM4e/pWPrKOTZhMxc6bec8jzctYGbRo7+6vgjBcnz7tnkZZNfERRN1otJ2hAMsLJyO/3oUpnBqVu2/ppj+IWPlIYGsyNLQkc+0qBg0EEabthZDmXcCIVuLOKrLjUgOHIZFrkZDfUnRfCKRRiqm/fqGt/D+IbV/h694uHntN0wuHAiEFsg03wRna4AAAA'}
   2025-09-07-01.jpg: {w: 8160, h: 6120, lat: 47.692114, lon: 11.837968, demEle: 1095.2, blur: 'data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAACQBACdASoYABIAPtFaqE4oJSQiKAqpABoJQBdgAkXluD5BMWK2NeleysLtPIAA/uo57NncymAFsO4MnwWATIdosvCkAp2ian0wq7CMP7yvzRhGX1Hz60SUD3PtVnXpPHbWVw5bLMdC2rLMTJoLhhZcjOhGeV+QdtYpFcwipujBPoVWFtHvRM4XwO/Vk5HIG00pmeYZLEKU10b3wCZ9j7f5LIMl8KmUPmN4AAAA'}

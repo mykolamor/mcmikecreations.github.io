@@ -4,8 +4,11 @@ description: Recovering from 3 vaccines 2 days before while visiting 15 peaks on
 tags:
   - Web
 gpx: /_projects/data-viz/hikes/gpx/rechelkopf_semmelberg.gpx
-ascent: 1796
-descent: 1708
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 35434
+ascent: 1773
+descent: 1684
+duration: 559
 images:
   2026-05-17-00.jpg: {w: 8160, h: 6120, lat: 47.709624, lon: 11.561856, demEle: 666.4, blur: 'data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAAAQBQCdASoYABIAPtFcp04oJSOiKAqpABoJQBOmarg4q7EnvS8HyAx22wk8daDaumUAAP6Rf0BkaAyNmeqpY5T6Xo0JqPafoUVkP1+ed23t2xmLF4HimagNmMFFkoPO2hsBz2jBuRQxM2FGmk2tmFYEi8g+YD6WPqNng58+azCguxx9mEjyGBE7DlvzyTXpxhNp+/yoM+zgWhoY3+2d43BMwRXrOobACRtwAA=='}
   2026-05-17-01.jpg: {w: 8160, h: 6120, lat: 47.721283, lon: 11.600224, demEle: 1077.0, blur: 'data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAABwBQCdASoYABIAPtFUp02oJCOiMBgIAQAaCWUAsR9kAcX3oRRqJ9fNMxsn9NUBaEpIf/AAAOHbpKfVNDjuzfivX5UmHnyYtM6wg0POqFaln6n5ichQQLMNI3ARH0I8iVXPKc3TBNaEZ2op5Ztr5h8sn5ULpFPnH+vkC1hNcN+wspZSzBltw7cF5h923TZMUozJp5Yd2bANmyX0QAAAAA=='}

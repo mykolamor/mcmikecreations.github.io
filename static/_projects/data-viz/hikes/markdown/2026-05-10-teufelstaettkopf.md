@@ -4,8 +4,11 @@ description: Doing a Pürschling loop across all the fancy cliffs nearby.
 people:
   - Bohdan Pryshchenko
 gpx: /_projects/data-viz/hikes/gpx/teufelstaettkopf.gpx
-ascent: 1255
-descent: 1251
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 17591
+ascent: 1245
+descent: 1240
+duration: 275
 images:
   2026-05-10-00.jpg: {w: 4032, h: 3024, lat: 47.616228, lon: 11.028251, demEle: 832.6, blur: 'data:image/webp;base64,UklGRuYAAABXRUJQVlA4INoAAAAwBQCdASoYABIAPtFcpU6oJSMiKAqpABoJYwCdAdwAYva9OBhY2auwfQHz+q7Tybs6jADOPj7ujjf6u+gl5wenKvo/bJi7rzH1gFiG8MGVUAWZkKREO0SJM5R/nDNMzSXTJ0WC9DooxmrbeMyoeSiuTJY0bRzrl7yIriMuUO+6mQP6horj0KesB8jqC/3V44yvzGkJQF1ek6Ha42K370geHlOOGFbbhmFDrocg0r33hioCUL+Tvo4zmZnlWll//GgLGJsVaPWeYzV7OJskb2RzOJAys9rPUP5AAA=='}
   2026-05-10-01.jpg: {w: 4032, h: 3024, lat: 47.612552, lon: 11.023129, demEle: 851.0, blur: 'data:image/webp;base64,UklGRsQAAABXRUJQVlA4ILgAAAAQBQCdASoYABIAPtFcqE4oJSQiKAqpABoJZACdMuov/gGu3VeOdk+2w5YOdd3w66aAAMleodq2pdcUnXiEgSwfY10CBnffxcd9FI0NrO7gsj7wBKHr2pjiXeCOddMN71SpAxWDfAHJ0Xyabqtep6j0LvruN+Vs9G0uQ2ougHqr2728FLLj+E7Xxk6CNu0u2/HYx7R3cGP4V8gYbPj14K7bpax0HoQUhyK8b3iznQ8wBiZ+5vNVAAAA'}

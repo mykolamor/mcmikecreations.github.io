@@ -2,8 +2,11 @@
 title: Falling from Sonnenberg
 description: A free fall from a cliff keeps a doctor scared and stiff.
 gpx: /_projects/data-viz/hikes/gpx/oberammergau_sonnenberg.gpx
-ascent: 1293
-descent: 573
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 10732
+ascent: 1174
+descent: 455
+duration: 281
 images:
   2026-02-15-00.jpg: {w: 8160, h: 6120, lat: 47.598524, lon: 11.058588, demEle: 835.7, blur: 'data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAAAQBQCdASoYABIAPtFWpUwoJKOiKA1RABoJZwCw7BERQezXPuFz/7xRrNoF4bBdanEgAP7DgPV6VWWtC87fzicWRMwpmDCNBaCdjX0jgJOkdkyQGLTvTFAc8RiWf59vE5aU/NGiQ59Fm5wRmrthrQwNe16OOstfylfEpCDm/kiyyUMqsivBU5Sav9p1i4kOVRAvP5IM6xC1fmMwkPpRinLgAAA='}
   2026-02-15-01.jpg: {w: 8160, h: 6120, lat: 47.594672, lon: 11.054986, demEle: 891.3, blur: 'data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAAAQBQCdASoYABIAPtFgqE+oJSOiKAgBABoJZwDDcBEdejXVZQch+isn3L5oGbxiiWAAAP5sjQsU2JnW6ZxIP1yXtDt1IEL1999XmTg9maK7vQgqIXjR30ubKr33s2/3/HSqEQBzxWIqY4No3nODZnC54j6/cdAP7ahu6DT4SA6Ag2E0tVwSSp3tQQkra9bxSdn8ALOAAAA='}

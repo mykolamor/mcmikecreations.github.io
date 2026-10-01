@@ -2,8 +2,11 @@
 title: Revenge Against Risserkogel
 description: Returning to reach the goal of my failed winter hike.
 gpx: /_projects/data-viz/hikes/gpx/risserkogel.gpx
-ascent: 1253
-descent: 1238
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 17628
+ascent: 1249
+descent: 1232
+duration: 330
 images:
   2026-04-26-00.jpg: {w: 8160, h: 6120, lat: 47.644497, lon: 11.74734, demEle: 780.8, blur: 'data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAACQBACdASoYABIAPtFcpEyoJSOiMBgIAQAaCUAW2z/8A8/LNPAocf1+y+HTDAAA/UBBi/ZcUkUFpfY6DkBtT7JHC7+1obVcjm79jzIl5J7W3eGDjEg3EsJhDzy8posarSEjuDGdgWsBA8q/PL1clZhl0p2SJ5BUutaa72I9QAA='}
   2026-04-26-01.jpg: {w: 6120, h: 8160, lat: 47.645722, lon: 11.760893, demEle: 1020.7, blur: 'data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAACQBQCdASoSABgAPtFcp04oJSOiKAqpABoJYwDIyvJOAA38Tf379oy1FeVrgsTkSyF6XO82AAD2vKrbT2v8uBixEKQFFHVKnBpV7/idGtlaY3Z5d8xhluy1N10ioR16hTeVD4txslDT0fL2ZwZpelxl8oHfAxugHI3w5WRvh6dESJkgEfLfXf1u9MclK7ZG/zpgVqJUNpFbX79pgimU5xWqEtxkAwtXiu7LHXRIRcucxarghRmR0MgFpFAAAA=='}

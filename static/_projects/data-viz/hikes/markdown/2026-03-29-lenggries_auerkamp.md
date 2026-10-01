@@ -4,8 +4,11 @@ description: Doing a cliffside climb of the Kampen ridge after heavy snowfall.
 people:
   - Bohdan Pryshchenko
 gpx: /_projects/data-viz/hikes/gpx/lenggries_auerkamp.gpx
-ascent: 968
-descent: 1127
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 20930
+ascent: 939
+descent: 1098
+duration: 344
 images:
   2026-03-29-00.jpg: {w: 4000, h: 3000, lat: 47.62548, lon: 11.709632, demEle: 866.8, blur: 'data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAADQBACdASoYABIAPtFaqE4oJKQiKAqpABoJZwDCgYwcShXDHLwj76pzdTxMpqFEAAD+ct6jTd81paC24pjaSTdgNxKlRyNreRB4M4/mKPsV7PXMnHPxX4BY07hAuJvTsCWr/jucLxH5n28dBdcYocM/o0lCLzN28tG5xPE+f2yuR6JY8VOyrXHI6+FOucS7IuRaNCtfr7IbPzrZq7KCAmr3iTZZRhslVlyuGWlRmu7cZmwA'}
   2026-03-29-01.jpg: {w: 4032, h: 3024, blur: 'data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAACQBACdASoYABIAPtFWpE2oJKMpMBgIASAaCWcAx+QNHjAC2B+6qOIcH8CFubwA/qi2QkbufVcXYIqrS7Ams04iSEe62O1wRnxNRXM8bOUi13qQDUHGQ0GRh32fv53gkR7nnhIKzrmzIMJPwzHj5HrS2u+xAUEZSOOqqUnQAAA='}

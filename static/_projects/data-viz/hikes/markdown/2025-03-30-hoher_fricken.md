@@ -6,6 +6,11 @@ people:
   - Viktor Lebruška
 ascent: 1260
 descent: 1230
+elapsed:
+  # Hand-picked photos: 2025-03-30-00.jpg (Farchant park) to 2025-03-30-07.jpg (View from Berggasthof Panorama).
+  start: '2025-03-30T09:12'
+  end: '2025-03-30T17:17'
+  source: photos
 images:
   2025-03-30-00.jpg: {w: 4640, h: 3472, lat: 47.530561, lon: 11.122981, demEle: 689.5, blur: 'data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAAAwBQCdASoYABIAPtFcqU2oJSQiKAqpABoJQBOmW+Av/L671QlczqMyxGswue26Jg79AAD+7gvpQz3p8EYz7JUdgnoZyGk8uIInjt92ELF3hX1AqET9jxxkoPsZTk72eOvFwaK8KmTaLLmVe9wyhgWY+y1Q/kEHR1wJsBFhPvfghrxhdePChJa+bUkl4/nUqBLT7y29/q1CHNgUQAVTakcfQ4gAAA=='}
   2025-03-30-01.jpg: {w: 4640, h: 3472, lat: 47.525375, lon: 11.13195, demEle: 834.1, blur: 'data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAACwBQCdASoYABIAPtFepU6oJSMiKAqpABoJZwDJIf/l2AFtr/SdySgCu8kw176rq5oClic0p/QA9RkoElDWSN0MB2eJYE2SS2fr5cit3WS4FA0fkzWWgu7+P3IuzVmwPelb3kx+C1BE4WynfopwNV3B/7zVLMhPqllgpa0rcDCbZuVYjQpfRX0sxN4ZaMbOKKercoc7UbJL4WekpxKh3TYS6RT4J5hhYt1tbUwTNoRwAAAA'}

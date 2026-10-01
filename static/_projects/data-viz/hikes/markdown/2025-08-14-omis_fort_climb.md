@@ -6,6 +6,11 @@ tags:
   - Croatia
 ascent: 280
 descent: 300
+elapsed:
+  # Hand-picked photos: 2025-08-14-00.jpg (Basin on the way to the cliff) to 2025-08-14-03.jpg (A look deeper into the surrounding mountains).
+  start: '2025-08-14T06:35'
+  end: '2025-08-14T08:32'
+  source: photos
 images:
   2025-08-14-00.jpg: {w: 8160, h: 6120, lat: 43.445147, lon: 16.693364, demEle: 16.9, blur: 'data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAABwBQCdASoYABIAPtFaqk2oJSQiKAqpABoJZwDNhYxsbnlVRK0Zmc6RN/b36BrZa97PNuAAAP40bC4+qcMl38q5D3UX/nZRBU+N81XXVWHPQl6/O9gWsH8lEP84Ppv3KIzidA1Zl/1BPS8xJhUEN13PPYc4p87yShwXkSgvhrdetTmX1FE8+2xcSVc8+OeCcLV+OzY1EoOhoDhZLbAAAA=='}
   2025-08-14-01.jpg: {w: 8160, h: 6120, lat: 43.44515, lon: 16.697342, demEle: 223.3, blur: 'data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAACwBACdASoYABIAPtFWo0uoJKMhsAgBABoJYwC06CHWrKGX0sghU3LenAu2fjsAAP3d7469GDDvKl23LyHZOQ19bQjgLXXJlZzZhC+HkrhY2mxekghyTDVUQr6fEZJyp31tDLmhLu1f/xdLVM9CKnngLOjFDb4XCxXFWwrZE8NXGod6Y2anBJbOAK8AAA=='}

@@ -2,12 +2,13 @@
 title: Climbing in the Wild at Baumgartenjoch
 description: Traversing the slopes with no trail in sight.
 gpx: /_projects/data-viz/hikes/gpx/baumgartenjoch.gpx
-ascent: 2154
-descent: 2151
-distance: 28170
-duration: 672
 people:
   - Bohdan Pryshchenko
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 28712
+ascent: 2056
+descent: 2053
+duration: 468
 images:
   2026-08-02-00.jpg: {w: 8160, h: 6120, lat: 47.49516, lon: 11.459888, demEle: 900.8, blur: 'data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAAAQBQCdASoYABIAPtFcqU2oJSQiKAqpABoJQBWGargoQ1TtsZoe+js4eAm+kaLIavcIAP4LHZXvavPVI6f81LCewdi5V+M1bCxvYuNHWGtt9GlFxMZOZkitaG/6n0P/Sg/Dqn3BMwe6hSE0RtZFLynEuPhs2ltAu3vtpjtDYuj4dT3L8+ACBwv3lSQ6RVfBET/K/kRXO5luUyXvfDpEe2CG2JLM4BSg0qYAAA=='}
   2026-08-02-01.jpg: {w: 8160, h: 6120, lat: 47.49924, lon: 11.478923, demEle: 1469.6, blur: 'data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAADwBACdASoYABIAPsVSoEunpKMhsAwA8BiJQBOgBDuH6w9sgrX20vwQbLcofcO5oDAA/uqM5y+KhD0yHZIekpInL37kOlv09gPBGDXmosIoaEHwQKZoXDuXiKxfD1Lehz3eaggiSXlxs778cfaTnIR9LMRxAynG/5rtY24W2oQ8y2OFwzPPQS+QZBu9gAAA'}

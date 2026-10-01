@@ -2,11 +2,14 @@
 title: Droning into Laubeneck
 description: Exploring peaks near Linderhof from the air.
 gpx: /_projects/data-viz/hikes/gpx/laubeneck.gpx
-ascent: 1211
-descent: 1317
 people:
   - David Bilan
   - Dmytro Servetnyk
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 20139
+ascent: 1198
+descent: 1305
+duration: 358
 images:
   2026-07-26-00.jpg: {w: 8160, h: 6120, lat: 47.571317, lon: 10.960766, demEle: 952.7, blur: 'data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAABwBQCdASoYABIAPtFepk6oJSMiKAqpABoJZQDInJaANhVeKanX75SrrS5ncpBS4cHYuQgAAP638PK4pU9mx7dbwVZ4dd8WBVl+RXsTFHCIK05OnR+zsX/ebq7pSqXjxwj25IiV2Fv8nUl0DLFt3mcp6u3GrQ7j6J51zWPRFhenzPnmtZkoS+dpY6yof/HWs3XCqfJVvgNERdYThEmSx66FWrg50UehgAA='}
   2026-07-26-01.jpg: {w: 8160, h: 6120, lat: 47.584623, lon: 10.944773, demEle: 1580.4, blur: 'data:image/webp;base64,UklGRs4AAABXRUJQVlA4IMIAAACwBACdASoYABIAPtFgqE+oJSOiKAgBABoJQBkTAgs5uy3eor+awoq8k4A8u6kAAP7mgv4S32sf6R2wfEKsd/k4ihxSbh9gjB6/jrv/XxXnQK+hpCavOHD0lxw5KZyxEOpc4KmQ2fB65J9XphuAV/lLRk/YwffjduBfcyFqy1IbZ9JLyE7+cNNG1deHlyNwqEMXMmEuiWvJxm2zv2c0EIDw831X2ynnzUyhwBWKeBqx3bPJ1qCLW/gMxzKDLxz7yWQAAA=='}

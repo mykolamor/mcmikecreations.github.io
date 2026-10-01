@@ -5,6 +5,11 @@ tags:
   - DAAD FK
 ascent: 840
 descent: 1160
+elapsed:
+  # Hand-picked photos: 2024-10-12-01.jpg (Rote Valepp cliffside) to 2024-10-12-13.jpg (Cows on the side of the road at Geitau).
+  start: '2024-10-12T12:45'
+  end: '2024-10-12T17:50'
+  source: photos
 images:
   2024-10-12-00.jpg: {w: 3280, h: 2464, blur: 'data:image/webp;base64,UklGRioBAABXRUJQVlA4IB4BAACQBgCdASoYABIAPtFcpk6oJSMiKAqpABoJbACdMoR2iNGzoPICqBQbW88eC/ThBN6D/Wil1m3A4Jg0CQsAAP7sBShixSb6sdL4rOSNShImIHgBiUD1Eq50p+2Pngyd1lW3uj7YpuqUV/LRRXOTzEVdRu3nczOB23hZWp4lixY1PsZCZCXtsXd+ib5Q7I1iCbm2V7bROx3hQArfOOPkb1cGFjkxfKji6qHU69YCsiNtEgcQ7h1iR5CSCJ7KMCEwKLfVXl9cBopKihJgEDynx1rV5AxUYAbaUUif/Tg6F6Fl1uD/YHwBjMqfVuqrRnMjdaqPC7b/gPnBMbD/PVOBZ8ytIX0F3rLXeotMHkEUr8KZnzyXko25T3td9dhG0AAA'}
   2024-10-12-01.jpg: {w: 3472, h: 4640, lat: 47.633633, lon: 11.91885, demEle: 1121.8, blur: 'data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAACQBQCdASoSABgAPtFUpE2oJCMiMBgIAQAaCWIArDLT9TgjHYqloF7zCJrHhynP84+n8aY0oAD1hOTdhtKa/p0NhLj6pxolMOuC2do2qW7rHi7nYE3r8tjwNTGqY2pY7LqtUWi68lEkV1ryiAcB0/EP/uThF899mcklRqLwTh8PzBwntmuR39xeILR7ENHgYbWXKTkN85+58gHEvJWQGRFJ6hoSvIIxvbXtWwl0G1uryA9HweLXUB0mEkpn0utqQKZSHCQIncAAAA=='}

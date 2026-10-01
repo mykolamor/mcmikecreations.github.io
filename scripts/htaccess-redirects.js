@@ -31,6 +31,8 @@ const LEGACY = [
 	// Never real pages, but crawled and reported as 404s.
 	['/404/', '/'],
 	['/contact/', '/#contact'],
+	// Moved to the day the photos were actually taken.
+	['/hikes/2025-10-27-auer_berg/', '/hikes/2025-10-26-auer_berg/'],
 	// Post exists but is unpublished; it was renamed from 2024-01-30.
 	['/blog/2023-12-30-markdown-test/', '/blog/']
 ];

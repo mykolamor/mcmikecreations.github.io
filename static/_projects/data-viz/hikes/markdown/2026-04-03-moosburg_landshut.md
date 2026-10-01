@@ -4,8 +4,11 @@ description: Visiting cool castles and ruins between Moosburg and Landshut.
 tags:
   - Web
 gpx: /_projects/data-viz/hikes/gpx/moosburg_landshut.gpx
-ascent: 615
-descent: 623
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 31997
+ascent: 510
+descent: 532
+duration: 344
 images:
   2026-04-03-00.jpg: {w: 4080, h: 3060, lat: 48.460209, lon: 11.987668, demEle: 411.9, blur: 'data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAAAwBQCdASoYABIAPtFepk4oJSOiKAqpABoJZQDG9A9pd+fBObngwKNkYJw07IWUiOWr0AD+w/FBs9nX/5GuyqFySGqMS8I1Yf8G20qVjH8cgwywZa5hZRmYlaRo4rCW6EMD/fLjqZf4a4rltBKBilF4O2iU/mXhpG16XkzYBCukTticZ3NNawQCprPRSAtii0WejptDqRCT6oa1pvXq7IAAAAA='}
   2026-04-03-01.jpg: {w: 4080, h: 3060, lat: 48.460858, lon: 11.994528, demEle: 411.2, blur: 'data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAADwBACdASoYABIAPtFYpEyoJSOiKA1RABoJYwCsMt8Bm3DqdcITUd/v/s8Ce+VokAAA92ilnMlxzbgirB7QOOQQ4gx/8u2cjKU8JccLUA51+hcTHUlrmg3jAmlzxw0JIUjY7DDrCihlhRJIiEezl8VqFEBo80VJk4fjx2uud7sPabKNxzVTtuWSCNqbg7G4RCgAAA=='}

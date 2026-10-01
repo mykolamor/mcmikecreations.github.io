@@ -6,10 +6,11 @@ tags:
 people:
   - Parlad Dharel
 gpx: /_projects/data-viz/hikes/gpx/annapurna_bc_2.gpx
-ascent: 1349
-descent: 701
-distance: 14310
-duration: 345
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 13415
+ascent: 1327
+descent: 668
+duration: 292
 images:
   2026-06-10-01.jpg: {w: 8160, h: 6120, lat: 28.418924, lon: 83.81805, demEle: 2191.6, blur: 'data:image/webp;base64,UklGRtgAAABXRUJQVlA4IMwAAAAwBQCdASoYABIAPtFcpk6oJSMiKAqpABoJYwDMHY0CP5OOzD/kqHVpYd0hCun+zFEUAAD+Zr12LJK2ASslV8HZJh98dRaljOlyCisung6m0JXOALThQcoXQkkvVQspmLr1jK8JTwsFnT0DzSQI5kqswcOAT6jyJpDgrXS3dv/PoV+9tzFq4NfQgujTG2ZCJUPJaeojhs0ggPsi0E4Id6EY/JWpxQmqr7v1vyMOh2O+Z+RqNn7n19D7ltw7uGbfSck+z0a4pesyzgNAAAA='}
   2026-06-10-00.jpg: {w: 4852, h: 3636, lat: 28.41904, lon: 83.817812, demEle: 2195.2, blur: 'data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABwBACdASoYABIAPtFYoEuoJSMhsBgMAQAaCWUAvVgNulYVwSnNv6qZgpK6AADC1FyOfvTis1VPl4bdWkkLu3VWgTjpoI53DB1KkwGH4/ZHvlfsMZ/YGpNpYceLAAAA'}

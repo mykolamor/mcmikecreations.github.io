@@ -4,10 +4,11 @@ description: Finding trails among cliffs and spiky ferns at the Adriatic seaside
 gpx: /_projects/data-viz/hikes/gpx/omis_celine.gpx
 tags:
   - Croatia
-ascent: 614
-descent: 611
-distance: 9010
-duration: 195
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 8662
+ascent: 596
+descent: 593
+duration: 170
 images:
   2026-08-08-00.jpg: {w: 8160, h: 6120, lat: 43.444863, lon: 16.683828, demEle: 22.1, blur: 'data:image/webp;base64,UklGRuwAAABXRUJQVlA4IOAAAABQBQCdASoYABIAPtFaqU2oJSQiKAqpABoJZgCsMuFY0II4Ej2UhejXS5cj7ebjjNUgNAAAzBpgkHeaUD1T/sa+Z49uVqXU5dfREFDkHSvQ9ydv8wqTWVeXbMQcYfmrvWAy0je60YoAhVB4WbKkvjhHy7BN0Gdp00gWhK65XLNKxB30bAVEdwdQChqRBhHht6DvDHbUJUJTe2VInZAs60qQEo+z5UgkNCnKhQLmp9ERRAgjbqaPblBQ1M+LyMxp8KyIQsOFEIWFAB2sS+tujN0u6yi0s4XoQySlnq8OTAAAAA=='}
   2026-08-08-01.jpg: {w: 6120, h: 8160, lat: 43.445472, lon: 16.683577, demEle: 50.8, blur: 'data:image/webp;base64,UklGRrwAAABXRUJQVlA4ILAAAABQBQCdASoSABgAPtFepU6oJSMiKAqpABoJQBkiAkcuPOv2NAI6Arlk22sjptIOuvPSPmAA/lu0d+zj6jv0OxUvP1vS7d9vwVq6lypoFs3YH6K9xJ/Hbs+45yg48Pc29m8MCm63UszUQmal8B/VldIqUgCHchMOXS/+YQpyW9JXVElVrkhU3cmQVg8SPa05FY2o1hWMfzVVq9eMcEBtz0i0JE3oINEJ9Dm+ZrWuawAAAA=='}

@@ -2,7 +2,6 @@ import type { Feature, GeometryData } from '$lib/data/map-info';
 import { type GeoProjection } from 'd3-geo';
 import * as THREE from 'three';
 import { loadGeometry, secondaryGeometryColor } from '$lib/hikes/build-geometry';
-import { computeMetricScales, scaleElevation, type HikeMetrics } from '$lib/hikes/hike-metrics';
 
 export function getDistance(m : number) {
 	const km = Math.floor(m / 1000);
@@ -21,8 +20,7 @@ export async function buildStatistics(
 	fetch : (input: (RequestInfo | URL), init?: (RequestInit | undefined)) => Promise<Response>,
 	layer : Feature,
 	height : number,
-	rectHeightParam: number | undefined,
-	metrics?: Partial<HikeMetrics> | null
+	rectHeightParam: number | undefined
 ) {
 	const result : {
 		layers2d: Array<string>,
@@ -37,10 +35,6 @@ export async function buildStatistics(
 
 	if (layerData.modes.includes('2d')) {
 		const points = geometry.geometry.coordinates;
-		// Elevation labels are scaled to the authoritative (possibly overridden)
-		// ascent/descent; the plotted profile keeps its shape.
-		const { elevationFactor, minElevation } = computeMetricScales(points, metrics, geometry.properties);
-		const displayEle = (ele: number) => scaleElevation(ele, minElevation, elevationFactor);
 		const [minHeight, maxHeight] = points.reduce(
 			([minH, maxH] : Array<number>, curr: Array<number>) => [
 				curr[2] < minH ? curr[2] : minH,
@@ -53,14 +47,14 @@ export async function buildStatistics(
 		const rectWidth = containerSize / points.length;
 		const rectHeight = rectHeightParam ?? height * 0.125;
 		const rectangles = points.map((x : Array<number>, i : number) : string =>
-			`<rect width="${rectWidth}" height="${rectHeight}" x="${i * rectWidth}" fill="transparent" data-x="${x[0]}" data-y="${x[1]}" data-z="${x[2]}" data-dz="${displayEle(x[2]).toFixed(1)}" data-h="${rectHeight - (x[2] - minHeight) / deltaHeight * rectHeight}" />`
+			`<rect width="${rectWidth}" height="${rectHeight}" x="${i * rectWidth}" fill="transparent" data-x="${x[0]}" data-y="${x[1]}" data-z="${x[2]}" data-dz="${x[2].toFixed(1)}" data-h="${rectHeight - (x[2] - minHeight) / deltaHeight * rectHeight}" />`
 		).join('');
 		const paths = points.map((x : Array<number>, i : number) : string => `${i * rectWidth},${rectHeight - (x[2] - minHeight) / deltaHeight * rectHeight}`).join(' ');
 		result.layers2d.push(`<g><path fill="none" stroke-width="${rectHeight / 48}" stroke="${secondaryGeometryColor}" d="M 0,${rectHeight - (points[0][2] - minHeight) / deltaHeight * rectHeight} L ${paths}" /></g>`);
 		result.layers2d.push(`
 <g fill="var(--tw-prose-body)" style="font-size: ${10 * rectHeight / 48}px" class="align-middle">
-	<text y="${rectHeight - 5 * rectHeight / 48}">${Math.round(displayEle(minHeight))} m</text>
-	<text y="${5 * rectHeight / 48}">${Math.round(displayEle(maxHeight))} m</text>
+	<text y="${rectHeight - 5 * rectHeight / 48}">${Math.round(minHeight)} m</text>
+	<text y="${5 * rectHeight / 48}">${Math.round(maxHeight)} m</text>
 	<rect width="0" height="${15 * rectHeight / 48}" x=${containerSize} y="${-7.5 * rectHeight / 48}" class="fill-gray-200 dark:fill-gray-700" />
 	<text x=${containerSize} y="${5 * rectHeight / 48}" text-anchor="end" class="statsHeightIndicator"></text>
 </g>`);

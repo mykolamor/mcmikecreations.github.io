@@ -4,8 +4,11 @@ description: Checking off all easy hikes in the area at once.
 tags:
   - Web
 gpx: /_projects/data-viz/hikes/gpx/bichl_blomberg.gpx
-ascent: 1665
-descent: 1592
+# Computed from the recorded GPX by scripts/track_metrics.py.
+distance: 27701
+ascent: 1637
+descent: 1567
+duration: 467
 images:
   2026-03-15-00.jpg: {w: 8160, h: 6120, lat: 47.719829, lon: 11.420145, demEle: 640.0, blur: 'data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAABQBQCdASoYABIAPtFQpUuoJKOhsBgMAQAaCWMAvVgKSGbdCBBm0vbrXffqjEC4uFiQKeAA/tb+fNFlRd9NEw6WAMj+APtHt5lPQNf5FoAYKiDK5za4aNQ10k2Y53KrHOmCQejUrGsSlyxYUYZ+WZGWsgcTL8GeF+RyZqQVyWwOZ7Dqp7gRQkyCRBk3oVuQUKTDxAObiA/dNPinvyciQAAA'}
   2026-03-15-01.jpg: {w: 8160, h: 6120, lat: 47.717645, lon: 11.426368, demEle: 657.3, blur: 'data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACQBACdASoYABIAPtFYo0uoJSMlMAgBABoJZQDCgCP/eKzBJbRwt962YDfcugAA/u2WMY8fYkpCnCV5Zk2Yb+OJ9RlU47FIG6RuATq+u5flafRbPTx3auKWkPRRU90QAAA='}
