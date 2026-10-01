@@ -9,8 +9,14 @@ import {
 export interface Map2dHandle {
     setIndicator: (lat: number, lon: number) => void;
     hideIndicator?: () => void;
+    /** Center on a photo or POI node and ring it briefly. */
+    focusPoint?: (lat: number, lon: number) => void;
     destroy?: () => void;
 }
+
+/** Zoom a focused photo is shown at, unless the reader is already closer. */
+const FOCUS_ZOOM = 15;
+const FOCUS_RING_MS = 4000;
 
 /** Declutter `items` at the map's current zoom (see `declutterBy`). */
 function declutter<T extends { lat: number; lon: number }>(map: any, items: T[], minPixelDistance: number): T[] {
@@ -177,6 +183,17 @@ export async function initMap2d(
     }).addTo(map);
     indicator.getElement()?.classList.add('hidden');
 
+    // Ring for a photo or node focused from the post text. Separate from the
+    // marker itself, which may be decluttered away or have its layer switched off.
+    const focusRing = new L.CircleMarker([lat, lon], {
+        radius: PHOTO_MARKER_SIZE / 2 + 6,
+        color: secondaryIndicatorColor,
+        weight: 3,
+        fill: false,
+        interactive: false,
+    });
+    let focusTimer: ReturnType<typeof setTimeout> | undefined;
+
     return {
         setIndicator: (ilat: number, ilon: number) => {
             indicator.setLatLng([ilat, ilon]);
@@ -185,10 +202,18 @@ export async function initMap2d(
         hideIndicator: () => {
             indicator.getElement()?.classList.add('hidden');
         },
+        focusPoint: (plat: number, plon: number) => {
+            // The mirrored tile layers only exist at zoom 13, so stay within the active layer's range.
+            map.setView([plat, plon], Math.min(Math.max(map.getZoom(), FOCUS_ZOOM), map.getMaxZoom()));
+            focusRing.setLatLng([plat, plon]).addTo(map);
+            clearTimeout(focusTimer);
+            focusTimer = setTimeout(() => focusRing.remove(), FOCUS_RING_MS);
+        },
         // Leaflet registers its own window/document listeners internally;
         // map.remove() is what tears those down.
         destroy: () => {
             unsubscribePhotos?.();
+            clearTimeout(focusTimer);
             map.remove();
         },
     };

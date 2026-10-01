@@ -18,6 +18,13 @@ export interface HikeImageMeta {
 	 * (scripts/matches/terrain.py); pins the photo onto the 3D map.
 	 */
 	demEle?: number;
+	/**
+	 * When the photo was taken, local wall clock with offset
+	 * (`2026-09-27T11:18:16+02:00`), vetted by scripts/backfill_time.py.
+	 */
+	taken?: string;
+	/** `track`: `lat`/`lon` are the recorded track's position at `taken`, not the photo's own GPS. */
+	located?: 'track';
 	/** Present only for images with generated AVIF tiers. */
 	blur?: string;
 }

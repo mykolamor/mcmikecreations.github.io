@@ -9,6 +9,8 @@
 import { stripFrontmatter, extractFrontMatterBlock, isPlainObject } from '$lib/hikes/frontmatter';
 import { parseMediaFlags } from '$lib/renderers/media-flags';
 import type { GalleryItem } from '$lib/renderers/gallery-item';
+import { photoStopText, type PhotoStop } from '$lib/hikes/photo-stops';
+import { buildPlaceIndex, type PlaceIndex, type PlaceNode } from '$lib/hikes/place-links';
 import { avifTiers, buildAvifSrcset, avifVariantHref, type HikeImageMeta } from '$lib/renderers/responsive-image';
 
 export interface ProcessedPost {
@@ -63,7 +65,7 @@ function insertHikeWidgetPlaceholders(html: string, tags: string[]): string {
     const elev3dBlock =
         `<div class="w-full mx-auto not-prose" translate="no" style="aspect-ratio: ${ELEVATION_CHART_ASPECT_RATIO};" data-hike-widget="elev3d-mount"></div>`;
     const map2dBlock =
-        '<div class="w-full mx-auto not-prose my-4" translate="no" data-hike-widget="map2d-wrapper">' +
+        '<div id="hike-map" class="w-full mx-auto not-prose my-4" translate="no" data-hike-widget="map2d-wrapper">' +
         '<div style="position: relative; isolation: isolate; width: 100%; aspect-ratio: 1 / 1; overflow: hidden;">' +
         '<div style="position: absolute; inset: 0;" data-hike-widget="map2d-mount"></div>' +
         '</div></div>';
@@ -97,6 +99,11 @@ function readLocation(meta: HikeImageMeta): { lat: number; lon: number; demEle?:
     return typeof demEle === 'number' && Number.isFinite(demEle) ? { lat, lon, demEle } : { lat, lon };
 }
 
+/** The image's `taken` time if its front matter carries one, else undefined. */
+function readTaken(meta: HikeImageMeta): string | undefined {
+    return typeof meta.taken === 'string' && meta.taken ? meta.taken : undefined;
+}
+
 /** Placeholder links to a post that doesn't exist yet: `/404` or `/404/`. */
 function isPlaceholderHref(href: string | undefined): boolean {
     return /^\/404\/?$/.test((href ?? '').trim());
@@ -128,24 +135,94 @@ const LEADING_ENGLISH = new Set([
     'Across', 'Through', 'Between', 'Beside', 'Next', 'Finally', 'Also', 'Later',
 ]);
 
-/** Wraps `Name (1234 m)` place references in already-escaped HTML text. */
-function markToponyms(html: string): string {
+function unescapeHtml(text: string): string {
+    return text.replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+}
+
+/**
+ * Wraps `Name (1234 m)` place references in already-escaped HTML text. With
+ * `places`, a reference naming one of the hike's nodes also links to the 2D
+ * map, where the page's click handler centers it on the node. A link rather
+ * than a button: it wraps with the text around it, and without JavaScript it
+ * still jumps to the map.
+ */
+function markToponyms(html: string, places: PlaceIndex | null): string {
     return html.replace(TOPONYM, (match: string) => {
-        const words = match.split(/(\s)/);
+        // Words and the whitespace between them alternate: even indices are words.
+        // The elevation's own space is non-breaking, so a line never splits `(2024 m)`.
+        const words = match.replace(/\((\d{2,4})\s(m\))$/, '($1&nbsp;$2').split(/(\s)/);
         // Always keep at least one name word before the `(1234 m)` part.
         const elevationAt = words.findIndex((w) => w.startsWith('('));
         let start = 0;
         while (start + 2 < elevationAt && LEADING_ENGLISH.has(words[start])) start += 2;
-        return words.slice(0, start).join('') + `<span translate="no">${words.slice(start).join('')}</span>`;
+        const lead = words.slice(0, start).join('');
+
+        const nameWords = words.slice(start, elevationAt).filter((_, i) => i % 2 === 0).map(unescapeHtml);
+        const ele = Number(/\d+/.exec(words[elevationAt])?.[0]);
+        const place = places?.match(nameWords, ele);
+        if (!place) return lead + `<span translate="no">${words.slice(start).join('')}</span>`;
+
+        // The node's name says exactly where the place name starts, so words
+        // before it ("Approaching") stay translatable.
+        const linkAt = start + place.start * 2;
+        const { lat, lon } = place.node;
+        return words.slice(0, linkAt).join('') + '<span translate="no">' +
+            `<a class="mk-place" href="#hike-map" data-place-lat="${lat}" data-place-lon="${lon}" title="Show on the map">` +
+            `${words.slice(linkAt).join('')}</a></span>`;
     });
 }
 
-export async function parseMarkdown(postRaw: string, tags: string[] = []): Promise<ParsedPost> {
+/**
+ * The `km 13.4 · 2052 m · 11:18` line under a photo's caption. A button when
+ * the photo is on the maps, so clicking it can center them on the photo.
+ */
+function photoStopHtml(stop: PhotoStop | undefined, mediaIndex: number): string {
+    const text = stop ? photoStopText(stop) : '';
+    if (!text) return '';
+    const title = stop!.timeSource === 'track'
+        ? ' title="Time from my recorded track, where it passed this spot"'
+        : stop!.timeSource === 'photo' ? ' title="Time the photo was taken"' : '';
+    if (stop!.lat != null && stop!.lon != null) {
+        return `<button type="button" class="mk-photo-stop mk-photo-stop-link" translate="no" data-photo-stop="${mediaIndex}"${title} aria-label="${text}, show on the map">${text}</button>`;
+    }
+    return `<span class="mk-photo-stop" translate="no"${title}>${text}</span>`;
+}
+
+export interface ParseMarkdownOptions {
+    /**
+     * Where along the route each photo was taken, by media index (see
+     * `computePhotoStops`). Computed server-side; a client-side re-parse passes
+     * the copy the server load sent (`photoStopsFromRecord`), or the caption
+     * lines are left out.
+     */
+    stops?: Map<number, PhotoStop>;
+    /** The hike's POI nodes; place references naming one link to it on the map. */
+    nodes?: PlaceNode[] | null;
+}
+
+export async function parseMarkdown(
+    postRaw: string,
+    tags: string[] = [],
+    { stops, nodes }: ParseMarkdownOptions = {}
+): Promise<ParsedPost> {
     // Drop any leading YAML front matter before rendering. Uses the
     // dependency-free stripper so this stays safe in the client bundle, which
     // re-renders the body on navigation. Files without front matter are unchanged.
     const post = stripFrontmatter(postRaw);
-    const { Marked } = await import('marked');
+    const { Marked, Renderer } = await import('marked');
+    const places = buildPlaceIndex(nodes);
+    // Above zero while rendering a heading, a link or a figure caption: no
+    // place links there. Links can't nest, and captions are
+    // reused in the gallery, where the photo line already links to the map.
+    let placeLinksOff = 0;
+    const withoutPlaceLinks = <T>(render: () => T): T => {
+        placeLinksOff++;
+        try {
+            return render();
+        } finally {
+            placeLinksOff--;
+        }
+    };
 
     // The post's `images:` front-matter map (filename -> dims/blur), if any.
     // gray-matter can't be used here — its entry point does an unconditional
@@ -193,13 +270,18 @@ export async function parseMarkdown(postRaw: string, tags: string[] = []): Promi
                 // readers and crawlers to a dead end, so it renders as plain text;
                 // the markdown keeps the link, and writing that post later only
                 // means changing its URL.
-                if (!isPlaceholderHref(token.href)) return false;
+                if (!isPlaceholderHref(token.href)) {
+                    return withoutPlaceLinks(() => Renderer.prototype.link.call(this as any, token));
+                }
                 return `<span>${(this as any).parser.parseInline(token.tokens)}</span>`;
             },
             text(token: any) {
                 if (token.tokens) return false;
                 const html = token.escaped ? token.text : escapeHtml(token.text);
-                return markToponyms(html);
+                return markToponyms(html, placeLinksOff === 0 ? places : null);
+            },
+            heading(token: any) {
+                return withoutPlaceLinks(() => Renderer.prototype.heading.call(this as any, token));
             },
             image(token: any) {
                 const href = token.href || '';
@@ -210,7 +292,7 @@ export async function parseMarkdown(postRaw: string, tags: string[] = []): Promi
                 const safeTitle = title.replace(/"/g, '&quot;');
                 const safeText = text.replace(/"/g, '&quot;');
                 const renderedText = token.tokens?.length
-                    ? (this as any).parser.parseInline(token.tokens)
+                    ? withoutPlaceLinks(() => (this as any).parser.parseInline(token.tokens))
                     : safeText;
 
                 const isYoutubeLink = href.includes('youtube.com');
@@ -285,6 +367,7 @@ export async function parseMarkdown(postRaw: string, tags: string[] = []): Promi
                                 thumb: thumbSrc,
                                 placeholder: meta.blur,
                                 location: readLocation(meta),
+                                taken: readTaken(meta),
                                 alt: text,
                                 title: title || undefined,
                                 captionHtml: renderedText
@@ -300,7 +383,7 @@ export async function parseMarkdown(postRaw: string, tags: string[] = []): Promi
             <img src="${safeFallbackSrc}" ${safeTitle ? `title="${safeTitle}"` : ''} alt="${safeText}" width="${largest.width}" height="${largest.height}" loading="lazy" decoding="async" class="mk-img-pointer marked-image mk-fade-in" data-media-index="${mediaIndex}" onload="this.classList.add('mk-loaded')" />
         </picture>
     </span>
-    <figcaption class="mk-figcaption">${renderedText}</figcaption>
+    <figcaption class="mk-figcaption">${renderedText}${photoStopHtml(stops?.get(mediaIndex), mediaIndex)}</figcaption>
 </figure>`;
                         }
                     }
@@ -308,6 +391,7 @@ export async function parseMarkdown(postRaw: string, tags: string[] = []): Promi
                     media.push({
                         kind: 'image',
                         src: href.trim(),
+                        taken: meta ? readTaken(meta) : undefined,
                         alt: text,
                         title: title || undefined,
                         captionHtml: renderedText
@@ -316,7 +400,7 @@ export async function parseMarkdown(postRaw: string, tags: string[] = []): Promi
                     return `
 <figure class="mk-figure">
     <img src="${safeHref}" ${safeTitle ? `title="${safeTitle}"` : ''} alt="${safeText}"${dims} loading="lazy" decoding="async" class="mk-img-pointer marked-image" data-media-index="${mediaIndex}" />
-    <figcaption class="mk-figcaption">${renderedText}</figcaption>
+    <figcaption class="mk-figcaption">${renderedText}${photoStopHtml(stops?.get(mediaIndex), mediaIndex)}</figcaption>
 </figure>`;
                 }
             }
@@ -329,6 +413,13 @@ export async function parseMarkdown(postRaw: string, tags: string[] = []): Promi
 .mk-figure { width: 100%; margin-left: auto; margin-right: auto; display: flex; flex-direction: column; justify-content: center; }
 @media (min-width: 1280px) { .mk-figure { width: 75%; } }
 .mk-figcaption { text-align: center; }
+a.mk-place.mk-place { color: inherit !important; font-weight: inherit !important; text-decoration: underline dotted !important; text-decoration-thickness: 1px !important; text-underline-offset: 3px; }
+a.mk-place.mk-place:hover, a.mk-place.mk-place:focus-visible { text-decoration-style: solid !important; }
+.mk-photo-stop { display: block; margin: 0.15rem auto 0; padding: 0; border: 0; background: none; font: inherit; font-size: 0.8em; font-style: normal; font-variant-numeric: tabular-nums; color: rgb(107 114 128); }
+.mk-photo-stop-link { cursor: pointer; text-decoration: underline dotted; text-underline-offset: 3px; }
+.mk-photo-stop-link:hover, .mk-photo-stop-link:focus-visible { color: rgb(55 65 81); }
+:is(.dark) .mk-photo-stop { color: rgb(156 163 175); }
+:is(.dark) .mk-photo-stop-link:hover, :is(.dark) .mk-photo-stop-link:focus-visible { color: rgb(229 231 235); }
 .mk-img-no-pointer { pointer-events: none; margin-top: 0 !important; margin-bottom: 0 !important; }
 .mk-img-pointer { cursor: pointer; margin-top: 0 !important; margin-bottom: 0 !important; }
 .mk-img-shell { position: relative; display: block; width: 100%; overflow: hidden; cursor: pointer; }

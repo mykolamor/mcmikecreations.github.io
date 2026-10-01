@@ -17,6 +17,7 @@ FRONT_MATTER_RE = re.compile(r"^---\r?\n(.*?\r?\n)---\r?\n?", re.DOTALL)
 
 _yaml = YAML(typ="rt")
 _yaml.width = 100000  # keep each front-matter line (incl. long blur data URIs) on one line
+_yaml.preserve_quotes = True  # hand-quoted values (e.g. `elapsed` times) stay quoted
 _yaml.default_flow_style = False
 _yaml.indent(mapping=2, sequence=4, offset=2)  # preserve existing block-style indentation
 
@@ -121,8 +122,8 @@ def read_images(post_path: Path) -> dict[str, dict]:
 def merge_image_fields(post_path: Path, updates: dict[str, dict], dry_run: bool = False) -> int:
     """Set extra fields (e.g. `lat`/`lon`) on files already present in front
     matter's `images` map. New keys go just before `blur`, so the long data
-    URI stays last on the line; files not in the map are ignored, never
-    added. Returns how many entries changed; the file is only rewritten if
+    URI stays last on the line; a value of None removes the key. Files not
+    in the map are ignored, never added. Returns how many entries changed; the file is only rewritten if
     at least one did, and never when `dry_run` is set."""
     data, body = _load_front_matter(post_path)
     images_map = data.get("images")
@@ -135,7 +136,9 @@ def merge_image_fields(post_path: Path, updates: dict[str, dict], dry_run: bool 
             continue
         before = dict(entry)
         for key, value in fields.items():
-            if key in entry:
+            if value is None:
+                entry.pop(key, None)
+            elif key in entry:
                 entry[key] = value
             elif "blur" in entry:
                 entry.insert(list(entry).index("blur"), key, value)

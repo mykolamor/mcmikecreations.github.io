@@ -135,3 +135,13 @@ def test_remove_media_leaves_an_unreferenced_post_untouched(tmp_path):
     post.write_text(REMOVE_SAMPLE, encoding="utf-8")
     assert remove_media_from_post(post, "/images/other.jpg") == 0
     assert post.read_text(encoding="utf-8") == REMOVE_SAMPLE
+
+
+def test_merge_image_fields_none_removes_a_key(tmp_path):
+    from matches.postwriter import merge_image_fields
+    post = tmp_path / "2026-01-01-demo.md"
+    post.write_text("---\ntitle: Demo\nimages:\n  a.jpg: {w: 4, h: 3, taken: x, blur: 'B'}\n---\nbody\n",
+                    encoding="utf-8")
+    assert merge_image_fields(post, {"a.jpg": {"taken": None, "lat": None}}) == 1
+    assert "  a.jpg: {w: 4, h: 3, blur: 'B'}\n" in post.read_text(encoding="utf-8")
+    assert merge_image_fields(post, {"a.jpg": {"taken": None}}) == 0

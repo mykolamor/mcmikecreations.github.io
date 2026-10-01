@@ -20,6 +20,8 @@ export interface GalleryImage extends GalleryItemBase {
 	thumb?: string;
 	/** Where the photo was taken; pins it on the post's 2D map, and on the 3D map when `demEle` is known. */
 	location?: { lat: number; lon: number; demEle?: number };
+	/** When it was taken (see `HikeImageMeta.taken`); places it along the route. */
+	taken?: string;
 }
 
 export interface GalleryVideo extends GalleryItemBase {

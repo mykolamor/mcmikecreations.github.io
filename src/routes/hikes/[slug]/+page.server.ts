@@ -14,7 +14,9 @@ import { buildHikeContacts } from '$lib/hikes/contacts';
 import contactsBook from '$lib/data/contacts.json';
 import { postDateModified } from '$lib/hikes/date-modified.server';
 import { computeHikeFacts } from '$lib/hikes/hike-facts';
-import { readHikeElapsed } from '$lib/hikes/hike-facts.server';
+import { readHikeElapsed, readTimedTrack } from '$lib/hikes/hike-facts.server';
+import { computePhotoStops } from '$lib/hikes/photo-stops';
+import { computeMetricScales } from '$lib/hikes/hike-metrics';
 
 export const entries: EntryGenerator = () => {
 	return getAllPosts().map((p) => ({ slug: p.anchor }));
@@ -69,8 +71,10 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 		const postIndex = allPosts.findIndex(p => p.anchor === slug);
 		const page = postIndex !== -1 ? Math.floor(postIndex / defaultPageSize) + 1 : 1;
 
-		const { html: postHtml, media } = await parseMarkdown(postRaw, mergedDate.tags);
-		locals.postContent = postHtml;
+		const nodes = mergedProperties.nodes;
+		const parsed = await parseMarkdown(postRaw, mergedDate.tags, { nodes });
+		const media = parsed.media;
+		let postHtml = parsed.html;
 
 		let showStatistics = false;
 		let showFilePrimary: string | null = null;
@@ -100,6 +104,22 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 
 		const facts = computeHikeFacts(coordinates, mapProperties);
 		const gpxFile = showFileGpx ? `static${showFileGpx}` : null;
+
+		// Where along the route each photo was taken, for the line under its
+		// caption. The stops are keyed by media index, which only the first
+		// parse knows, so the body is rendered again with them.
+		const photoStops = computePhotoStops(
+			coordinates,
+			coordinates ? computeMetricScales(coordinates, mapProperties).distanceFactor : 1,
+			media.flatMap((item, mediaIndex) =>
+				item.kind === 'image' ? [{ mediaIndex, ...item.location, taken: item.taken }] : []
+			),
+			readTimedTrack(gpxFile)
+		);
+		if (photoStops.size > 0) {
+			postHtml = (await parseMarkdown(postRaw, mergedDate.tags, { stops: photoStops, nodes })).html;
+		}
+		locals.postContent = postHtml;
 		facts.elapsed = readHikeElapsed(frontmatter.elapsed, gpxFile);
 		// Front-matter durations are mine: computed from a recorded GPX by
 		// scripts/moving_time.py, or entered by hand. Without one, the duration
@@ -122,6 +142,7 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 				anchor: slug ?? '',
 				page,
 				media,
+				photoStops: Object.fromEntries(photoStops),
 			},
 			map: { ...mergedHike, properties: mapProperties },
 			facts,

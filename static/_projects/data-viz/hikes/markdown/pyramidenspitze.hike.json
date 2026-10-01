@@ -53,8 +53,8 @@
     },
     {
       "id": 83052786,
-      "lat": 47.6037405,
-      "lon": 12.2309587,
+      "lat": 47.6037099,
+      "lon": 12.2310176,
       "demEle": 1160.0,
       "tags": {
         "name": "Ritzaualm",
@@ -69,9 +69,9 @@
     },
     {
       "id": 83122401,
-      "lat": 47.6037405,
-      "lon": 12.2309587,
-      "demEle": 1160.0,
+      "lat": 47.6059560,
+      "lon": 12.2392963,
+      "demEle": 1381.8,
       "tags": {
         "name": "Vorderkaiserfeldenhütte",
         "tourism": "alpine_hut",

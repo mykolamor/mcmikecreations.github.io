@@ -2,6 +2,7 @@ import { error, isHttpError } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 import type { HttpError } from '@sveltejs/kit'
 import { parseMarkdown } from '$lib/hikes/hikes-info';
+import { photoStopsFromRecord } from '$lib/hikes/photo-stops';
 import { browser } from '$app/environment';
 
 let hasHydrated = false;
@@ -27,7 +28,10 @@ export const load: PageLoad = async ({ data, fetch, params }) => {
 				const res = await fetch(path);
 				if (res.ok) {
 					const postRaw = await res.text();
-					clientHtml = (await parseMarkdown(postRaw, data.post.tags)).html;
+					clientHtml = (await parseMarkdown(postRaw, data.post.tags, {
+						stops: photoStopsFromRecord(data.post.photoStops),
+						nodes: data.map.properties.nodes
+					})).html;
 				}
 			} else {
 				hasHydrated = true;

@@ -32,7 +32,8 @@
 	import HikeContacts from '../components/HikeContacts.svelte';
 	import { initMap2d, type Map2dHandle } from '$lib/hikes/map-2d';
 	import type { MapPhoto } from '$lib/hikes/map-utils';
-	import { initElevationChart } from '$lib/hikes/map-elevation';
+	import { initElevationChart, type ElevationPhotoTick } from '$lib/hikes/map-elevation';
+	import { photoStopsFromRecord } from '$lib/hikes/photo-stops';
 	import { initMap3d, type Map3dHandle } from '$lib/hikes/map-3d';
 
 	interface Props {
@@ -184,7 +185,10 @@
 					if (res.ok) {
 						const postRaw = await res.text();
 						// @ts-ignore
-						data.clientHtml = (await parseMarkdown(postRaw, data.post.tags)).html;
+						data.clientHtml = (await parseMarkdown(postRaw, data.post.tags, {
+							stops: photoStopsFromRecord(data.post.photoStops),
+							nodes: data.map.properties.nodes
+						})).html;
 					}
 				}
 			}
@@ -252,17 +256,47 @@
 			newMap3dHandle.hideIndicator?.();
 		};
 
+		const stops = Object.entries(data.post.photoStops ?? {});
+		const photoTicks: ElevationPhotoTick[] = stops.flatMap(([index, stop]) =>
+			stop.km != null ? [{ km: stop.km, mediaIndex: Number(index), alt: data.post.media[Number(index)]?.alt }] : []
+		);
+
 		// Each chart updates the maps and the OTHER chart.
 		elev3dHandle = initElevationChart(map3dElevWrapper, geojson, (lat, lon, ele, dist) => {
 			newMap2dHandle.setIndicator(lat, lon);
 			newMap3dHandle.setIndicator(lat, lon, ele);
 			elev2dHandle?.setIndicator(lat, lon, dist);
-		}, hideAllIndicators, data.map.properties);
+		}, hideAllIndicators, data.map.properties, photoTicks, onPhotoClick);
 		elev2dHandle = initElevationChart(elevWrapper, geojson, (lat, lon, ele, dist) => {
 			newMap2dHandle.setIndicator(lat, lon);
 			newMap3dHandle.setIndicator(lat, lon, ele);
 			elev3dHandle?.setIndicator(lat, lon, dist);
-		}, hideAllIndicators, data.map.properties);
+		}, hideAllIndicators, data.map.properties, photoTicks, onPhotoClick);
+
+		// A photo's caption line, or a place name that is one of the hike's
+		// nodes, brings the 2D map into view, centered on it.
+		const map2dWrapper = contentEl.querySelector<HTMLElement>('[data-hike-widget="map2d-wrapper"]');
+		const showOnMap = (lat: number, lon: number) => {
+			const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+			map2dWrapper?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+			newMap2dHandle.focusPoint?.(lat, lon);
+		};
+		contentEl.querySelectorAll<HTMLElement>('[data-photo-stop]').forEach((button) => {
+			button.addEventListener('click', () => {
+				const stop = data.post.photoStops?.[Number(button.dataset.photoStop)];
+				if (stop?.lat != null && stop.lon != null) showOnMap(stop.lat, stop.lon);
+			});
+		});
+		contentEl.querySelectorAll<HTMLAnchorElement>('a.mk-place').forEach((link) => {
+			link.addEventListener('click', (event) => {
+				const lat = Number(link.dataset.placeLat);
+				const lon = Number(link.dataset.placeLon);
+				if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
+				// Scroll smoothly ourselves instead of jumping to #hike-map.
+				event.preventDefault();
+				showOnMap(lat, lon);
+			});
+		});
 	});
 </script>
 
@@ -343,30 +377,34 @@
 					{/if}
 				</div>
 				<div>
-					<div class="flex flex-col md:flex-row gap-6 mb-6 not-prose w-full max-w-none">
-						{#if data.post.imageFull}
-							<div class="relative w-full md:w-48 lg:w-[24rem] aspect-video md:aspect-auto m-0 shrink-0 rounded-lg md:rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800">
-								<img src={data.post.image} alt={data.post.title} class="absolute inset-0 w-full h-full object-cover m-0 {fullImageLoaded ? 'opacity-0 delay-500' : 'opacity-100'} transition-opacity duration-1000" />
-								{#if fullResImageSrc}
-									<picture class="absolute inset-0 w-full h-full m-0">
-										<source media="(min-width: 768px)" srcset={fullResImageSrc} />
-										<img src={data.post.image} alt={data.post.title} class="w-full h-full object-cover m-0 transition-opacity duration-500 {fullImageLoaded ? 'opacity-100' : 'opacity-0'}" onload={() => fullImageLoaded = true} />
-									</picture>
-								{/if}
-								<button
-									type="button"
-									aria-label="Expand image"
-									onclick={openHeaderImage}
-									class="absolute inset-0 w-full h-full cursor-pointer bg-transparent border-0 p-0 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-500 focus-visible:outline-hidden"
-								></button>
-							</div>
-						{/if}
-						<div class="flex w-full flex-col justify-center">
-							<div class="flex flex-row flex-wrap gap-x-4 gap-y-4 md:gap-x-6 md:gap-y-6 my-2">
+					<div class="flex flex-col gap-4 md:gap-6 mb-6 not-prose w-full max-w-none">
+						<div class="flex flex-col md:flex-row gap-6">
+							{#if data.post.imageFull}
+								<div class="relative w-full md:w-48 lg:w-[24rem] aspect-video md:aspect-auto m-0 shrink-0 rounded-lg md:rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800">
+									<img src={data.post.image} alt={data.post.title} class="absolute inset-0 w-full h-full object-cover m-0 {fullImageLoaded ? 'opacity-0 delay-500' : 'opacity-100'} transition-opacity duration-1000" />
+									{#if fullResImageSrc}
+										<picture class="absolute inset-0 w-full h-full m-0">
+											<source media="(min-width: 768px)" srcset={fullResImageSrc} />
+											<img src={data.post.image} alt={data.post.title} class="w-full h-full object-cover m-0 transition-opacity duration-500 {fullImageLoaded ? 'opacity-100' : 'opacity-0'}" onload={() => fullImageLoaded = true} />
+										</picture>
+									{/if}
+									<button
+										type="button"
+										aria-label="Expand image"
+										onclick={openHeaderImage}
+										class="absolute inset-0 w-full h-full cursor-pointer bg-transparent border-0 p-0 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-500 focus-visible:outline-hidden"
+									></button>
+								</div>
+							{/if}
+							<div class="flex flex-row flex-wrap md:flex-col md:justify-center gap-4 w-full md:[&>*]:basis-auto md:[&>*]:grow-0">
 								{@render statTile(ClockOutline, data.durationSource === 'planner' ? 'Planner estimate*' : 'Moving time*', getTime(data.map.properties.duration ?? 0))}
 								{@render statTile(MapPinOutline, 'Distance', getDistance(data.map.properties.distance ?? 0))}
 								{@render statTile(ArrowUpOutline, 'Ascent', getDistance(data.map.properties.ascent ?? 0))}
 								{@render statTile(ArrowDownOutline, 'Descent', getDistance(data.map.properties.descent ?? 0))}
+							</div>
+						</div>
+						<div class="flex flex-col">
+							<div class="flex flex-row flex-wrap gap-4 md:gap-6">
 								{#if showElapsed && data.facts.elapsed}
 									{@render statTile(HourglassOutline, 'Elapsed**', (data.facts.elapsed.source === 'photos' ? '≥ ' : '') + getTime(data.facts.elapsed.minutes))}
 								{/if}

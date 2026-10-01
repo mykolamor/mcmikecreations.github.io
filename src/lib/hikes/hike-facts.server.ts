@@ -16,6 +16,7 @@
 import { readFileSync } from 'node:fs';
 import { isPlainObject } from '$lib/hikes/frontmatter';
 import type { ElapsedSource, HikeElapsed } from '$lib/hikes/hike-facts';
+import type { TimedPoint } from '$lib/hikes/photo-stops';
 
 const OVERNIGHT_GAP_MINUTES = 3 * 60;
 
@@ -66,4 +67,27 @@ function fromGpx(file: string): HikeElapsed | null {
  */
 export function readHikeElapsed(frontmatterElapsed: unknown, gpxFile: string | null): HikeElapsed | null {
 	return fromFrontmatter(frontmatterElapsed) ?? (gpxFile ? fromGpx(gpxFile) : null);
+}
+
+/**
+ * A recorded GPX's trackpoints with their times, for placing photos along it;
+ * [] for a planned track (no `<time>`) or a missing file.
+ */
+export function readTimedTrack(gpxFile: string | null): TimedPoint[] {
+	if (!gpxFile) return [];
+	let raw: string;
+	try {
+		raw = readFileSync(gpxFile, 'utf-8');
+	} catch {
+		return [];
+	}
+	const points: TimedPoint[] = [];
+	for (const m of raw.matchAll(/<trkpt\b([^>]*)>([\s\S]*?)<\/trkpt>/g)) {
+		const lat = /lat="([^"]+)"/.exec(m[1]);
+		const lon = /lon="([^"]+)"/.exec(m[1]);
+		const time = /<time>([^<]+)<\/time>/.exec(m[2]);
+		const t = time ? Date.parse(time[1]) : NaN;
+		if (lat && lon && Number.isFinite(t)) points.push({ lat: Number(lat[1]), lon: Number(lon[1]), t });
+	}
+	return points;
 }

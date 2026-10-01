@@ -20,6 +20,7 @@
       "id": 221601969,
       "lat": 47.5575908,
       "lon": 10.7495244,
+      "demEle": 964.0,
       "tags": {
         "name": "Schloss Neuschwanstein",
         "castle_type": "stately",
@@ -42,6 +43,7 @@
       "id": 1631172973,
       "lat": 47.5549563,
       "lon": 10.7494061,
+      "demEle": 989.7,
       "tags": {
         "name": "Aussichtspunkt Marienbrücke",
         "tourism": "viewpoint"
@@ -51,6 +53,7 @@
       "id": 266995158,
       "lat": 47.5681888,
       "lon": 10.7562201,
+      "demEle": 824.8,
       "tags": {
         "name": "Tegelbergbahn (Talstation)",
         "aerialway": "station",

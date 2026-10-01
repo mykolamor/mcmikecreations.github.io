@@ -9,12 +9,23 @@ interface ElevationPoint {
     lon: number;
 }
 
+/** A photo's place on the profile: `km` on the chart's own (stretched) distance scale. */
+export interface ElevationPhotoTick {
+    km: number;
+    mediaIndex: number;
+    alt?: string;
+}
+
+const PHOTO_TICK_SIZE = 7;
+
 export function initElevationChart(
     container: HTMLElement,
     geojson: any,
     onHover?: (lat: number, lon: number, ele: number, dist: number) => void,
     onLeave?: () => void,
-    metrics?: Partial<HikeMetrics> | null
+    metrics?: Partial<HikeMetrics> | null,
+    photoTicks?: ElevationPhotoTick[],
+    onPhotoClick?: (mediaIndex: number) => void
 ): { setIndicator: (lat: number, lon: number, preferredDist?: number) => void; hideIndicator: () => void } {
     let internalPoints: ElevationPoint[] = [];
     const coords: number[][] = geojson?.features?.[0]?.geometry?.coordinates;
@@ -168,6 +179,42 @@ export function initElevationChart(
             cursor.attr('visibility', 'hidden');
             onLeave?.();
         });
+
+    // Photo ticks: small markers standing on the x axis, drawn above the
+    // overlay so they take their own hover and click. Keyboard users reach the
+    // same photos through the caption lines, so the ticks stay out of the tab order.
+    if (photoTicks?.length) {
+        const ticksG = g.append('g').attr('aria-hidden', 'true');
+        const half = PHOTO_TICK_SIZE / 2;
+        for (const tick of photoTicks) {
+            if (!(tick.km >= 0 && tick.km <= distMax)) continue;
+            const x = xScale(tick.km);
+            const i = Math.max(0, Math.min(bisectLeft(distArray, tick.km), points.length - 1));
+            const pt = points[i];
+            const tickG = ticksG.append('g')
+                .style('cursor', onPhotoClick ? 'pointer' : 'default')
+                .on('pointerenter', () => {
+                    updateCursor(pt);
+                    onHover?.(pt.lat, pt.lon, pt.ele, pt.dist);
+                })
+                .on('pointerleave', () => {
+                    cursor.attr('visibility', 'hidden');
+                    onLeave?.();
+                })
+                .on('click', () => onPhotoClick?.(tick.mediaIndex));
+            if (tick.alt) tickG.append('title').text(tick.alt);
+            // A wider transparent hit area than the visible marker.
+            tickG.append('rect')
+                .attr('x', x - half - 3).attr('y', iH - PHOTO_TICK_SIZE - 4)
+                .attr('width', PHOTO_TICK_SIZE + 6).attr('height', PHOTO_TICK_SIZE + 8)
+                .attr('fill', 'transparent');
+            tickG.append('path')
+                .attr('d', `M${x},${iH - PHOTO_TICK_SIZE} L${x + half},${iH} L${x - half},${iH} Z`)
+                .attr('fill', secondaryIndicatorColor)
+                .attr('stroke', 'white')
+                .attr('stroke-width', 1);
+        }
+    }
 
     function updateCursor(pt: ElevationPoint) {
         if (!pt) {
