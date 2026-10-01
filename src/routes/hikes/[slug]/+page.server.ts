@@ -12,6 +12,9 @@ import { defaultGpxPath } from '$lib/data/hikes-db';
 import { readHikeContacts } from '$lib/hikes/frontmatter';
 import { buildHikeContacts } from '$lib/hikes/contacts';
 import contactsBook from '$lib/data/contacts.json';
+import { postDateModified } from '$lib/hikes/date-modified.server';
+import { computeHikeFacts } from '$lib/hikes/hike-facts';
+import { readHikeElapsed } from '$lib/hikes/hike-facts.server';
 
 export const entries: EntryGenerator = () => {
 	return getAllPosts().map((p) => ({ slug: p.anchor }));
@@ -81,6 +84,7 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 		showFileGpx = gpx.ok ? gpxUrl : null;
 
 		let mapProperties = mergedProperties;
+		let coordinates: number[][] | null = null;
 		if (geojsonRes.ok) {
 			const geojson = await geojsonRes.json();
 			const fp = geojson?.features?.[0]?.properties;
@@ -90,8 +94,18 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 					...mergedProperties,
 					...mergeMetrics(mergedProperties, fp),
 				};
+				coordinates = geojson.features[0].geometry?.coordinates ?? null;
 			}
 		}
+
+		const facts = computeHikeFacts(coordinates, mapProperties);
+		const gpxFile = showFileGpx ? `static${showFileGpx}` : null;
+		facts.elapsed = readHikeElapsed(frontmatter.elapsed, gpxFile);
+		// Front-matter durations are mine: computed from a recorded GPX by
+		// scripts/moving_time.py, or entered by hand. Without one, the duration
+		// is the route planner's estimate from the GeoJSON summary.
+		const durationSource: 'gpx' | 'manual' | 'planner' =
+			frontmatter.duration == null ? 'planner' : readHikeElapsed(null, gpxFile) ? 'gpx' : 'manual';
 
 		return {
 			post: {
@@ -102,6 +116,7 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 				headers: headers,
 				time: stats.text,
 				date: dateStr,
+				dateModified: postDateModified(`static${date.path}`, dateStr, frontmatter.updated),
 				tags: mergedDate.tags,
 				author: mergedDate.author ?? resume.basics.name,
 				anchor: slug ?? '',
@@ -109,6 +124,8 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 				media,
 			},
 			map: { ...mergedHike, properties: mapProperties },
+			facts,
+			durationSource,
 			contacts,
 			display: {
 				statistics: showStatistics,

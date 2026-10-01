@@ -37,6 +37,8 @@ export const load: PageLoad = async ({ data, fetch, params }) => {
 		return {
 			post: data.post,
 			map: data.map,
+			facts: data.facts,
+			durationSource: data.durationSource,
 			display: data.display,
 			contacts: data.contacts,
 			clientHtml,

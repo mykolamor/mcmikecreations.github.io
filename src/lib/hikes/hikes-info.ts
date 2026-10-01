@@ -56,19 +56,19 @@ function insertHikeWidgetPlaceholders(html: string, tags: string[]): string {
     }
 
     const map3dBlock =
-        '<div class="w-full mx-auto not-prose my-4" data-hike-widget="map3d-wrapper">' +
+        '<div class="w-full mx-auto not-prose my-4" translate="no" data-hike-widget="map3d-wrapper">' +
         '<div style="position: relative; width: 100%; aspect-ratio: 1 / 1; overflow: hidden;">' +
         '<div style="position: absolute; inset: 0;" data-hike-widget="map3d-mount"></div>' +
         '</div></div>';
     const elev3dBlock =
-        `<div class="w-full mx-auto not-prose" style="aspect-ratio: ${ELEVATION_CHART_ASPECT_RATIO};" data-hike-widget="elev3d-mount"></div>`;
+        `<div class="w-full mx-auto not-prose" translate="no" style="aspect-ratio: ${ELEVATION_CHART_ASPECT_RATIO};" data-hike-widget="elev3d-mount"></div>`;
     const map2dBlock =
-        '<div class="w-full mx-auto not-prose my-4" data-hike-widget="map2d-wrapper">' +
+        '<div class="w-full mx-auto not-prose my-4" translate="no" data-hike-widget="map2d-wrapper">' +
         '<div style="position: relative; isolation: isolate; width: 100%; aspect-ratio: 1 / 1; overflow: hidden;">' +
         '<div style="position: absolute; inset: 0;" data-hike-widget="map2d-mount"></div>' +
         '</div></div>';
     const elev2dBlock =
-        `<div class="w-full mx-auto not-prose" style="aspect-ratio: ${ELEVATION_CHART_ASPECT_RATIO};" data-hike-widget="elev2d-mount"></div>`;
+        `<div class="w-full mx-auto not-prose" translate="no" style="aspect-ratio: ${ELEVATION_CHART_ASPECT_RATIO};" data-hike-widget="elev2d-mount"></div>`;
 
     if (paragraphEnds.length === 0) {
         // No paragraph to anchor to (e.g. an all-figure post) — append at the end.
@@ -95,6 +95,49 @@ function readLocation(meta: HikeImageMeta): { lat: number; lon: number; demEle?:
     if (typeof lat !== 'number' || typeof lon !== 'number') return undefined;
     if (!Number.isFinite(lat) || !Number.isFinite(lon) || Math.abs(lat) > 90 || Math.abs(lon) > 180) return undefined;
     return typeof demEle === 'number' && Number.isFinite(demEle) ? { lat, lon, demEle } : { lat, lon };
+}
+
+/** Placeholder links to a post that doesn't exist yet: `/404` or `/404/`. */
+function isPlaceholderHref(href: string | undefined): boolean {
+    return /^\/404\/?$/.test((href ?? '').trim());
+}
+
+function escapeHtml(text: string): string {
+    return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+// Posts name places as `Wallberg (1722 m)` or `Vordere Kesselschneid (2002 m)`:
+// one to four capitalised words followed by an elevation. Browser translation
+// turns names like Gatterl or Feldernjöchl into nonsense, so these are marked
+// `translate="no"`. Lowercase words end the name, so "View towards Wendelstein
+// (1838 m)" only protects "Wendelstein (1838 m)".
+const TOPONYM = /(?<![\p{L}\p{N}])((?:\p{Lu}[\p{L}.'’-]*\s){0,3}\p{Lu}[\p{L}.'’-]*\s\(\d{2,4}\s?m\))/gu;
+
+// Capitalised English words that start a sentence ("The Nebelhorn (2224 m)",
+// "After Reintalangerhütte (1366 m)") and so get caught by TOPONYM, but are not
+// part of the name and should still be translated.
+const LEADING_ENGLISH = new Set([
+    'A', 'An', 'The', 'At', 'After', 'Before', 'Near', 'From', 'To', 'Towards', 'Toward',
+    'On', 'In', 'Into', 'Over', 'Under', 'Past', 'Behind', 'Above', 'Below', 'Beyond',
+    'Via', 'Of', 'And', 'Then', 'Back', 'Up', 'Down', 'View', 'Views', 'Around', 'Along',
+    'Across', 'Through', 'Between', 'Beside', 'Next', 'Finally', 'Also', 'Later',
+]);
+
+/** Wraps `Name (1234 m)` place references in already-escaped HTML text. */
+function markToponyms(html: string): string {
+    return html.replace(TOPONYM, (match: string) => {
+        const words = match.split(/(\s)/);
+        // Always keep at least one name word before the `(1234 m)` part.
+        const elevationAt = words.findIndex((w) => w.startsWith('('));
+        let start = 0;
+        while (start + 2 < elevationAt && LEADING_ENGLISH.has(words[start])) start += 2;
+        return words.slice(0, start).join('') + `<span translate="no">${words.slice(start).join('')}</span>`;
+    });
 }
 
 export async function parseMarkdown(postRaw: string, tags: string[] = []): Promise<ParsedPost> {
@@ -144,6 +187,19 @@ export async function parseMarkdown(postRaw: string, tags: string[] = []): Promi
                     return text + '\n';
                 }
                 return `<p>${text}</p>\n`;
+            },
+            link(token: any) {
+                // `/404/` marks a place that has no post yet. Linking it would send
+                // readers and crawlers to a dead end, so it renders as plain text;
+                // the markdown keeps the link, and writing that post later only
+                // means changing its URL.
+                if (!isPlaceholderHref(token.href)) return false;
+                return `<span>${(this as any).parser.parseInline(token.tokens)}</span>`;
+            },
+            text(token: any) {
+                if (token.tokens) return false;
+                const html = token.escaped ? token.text : escapeHtml(token.text);
+                return markToponyms(html);
             },
             image(token: any) {
                 const href = token.href || '';

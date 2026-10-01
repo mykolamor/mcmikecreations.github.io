@@ -6,7 +6,6 @@
 		HIKES_BLOG_TITLE,
 		HIKES_BLOG_DESCRIPTION,
 		HIKES_HERO_IMAGE,
-		hikePostTitle,
 		hikesListTitle,
 		hikesListDescription,
 		hikesTagTitle,
@@ -21,6 +20,7 @@
 		description: string;
 		image?: string | null;
 		date: string;
+		dateModified?: string;
 		author: string;
 		tags: string[];
 		anchor: string;
@@ -137,10 +137,11 @@
 			return graph(blogNode, {
 				'@type': 'BlogPosting',
 				inLanguage: 'en',
-				headline: hikePostTitle(props.title),
+				headline: props.title,
 				description: props.description,
 				...(props.image ? { image: absUrl(props.image) } : {}),
 				datePublished: props.date + 'T16:00:00+00:00',
+				...(props.dateModified ? { dateModified: props.dateModified + 'T16:00:00+00:00' } : {}),
 				author: { '@type': 'Person', name: props.author },
 				publisher: { '@type': 'Person', name: props.author },
 				keywords: props.tags.join(', '),

@@ -7,7 +7,14 @@
 		MapPinOutline,
 		ArrowUpOutline,
 		ArrowDownOutline,
-		ArrowLeftOutline
+		ArrowLeftOutline,
+		HourglassOutline,
+		UsersGroupOutline,
+		ChartLineUpOutline,
+		ChartLineDownOutline,
+		ArrowsRepeatOutline,
+		SortHorizontalOutline,
+		FlagOutline
 	} from 'flowbite-svelte-icons';
 	import ToTopButton from '$lib/components/ToTopButton.svelte';
 	import MediaGallery from '$lib/components/MediaGallery.svelte';
@@ -33,6 +40,30 @@
 	}
 
 	let { data }: Props = $props();
+
+	const ROUTE_TYPES = {
+		'loop': { label: 'Loop', icon: ArrowsRepeatOutline },
+		'out-and-back': { label: 'Out and back', icon: SortHorizontalOutline },
+		'point-to-point': { label: 'Point to point', icon: FlagOutline }
+	};
+
+	const DURATION_NOTES = {
+		gpx: 'Moving time from my recorded track, breaks excluded: any minute I covered at least 0.5 km/h.',
+		manual: 'My moving time, breaks excluded.',
+		planner: "This hike wasn't recorded, so this is the route planner's (openrouteservice) walking estimate."
+	};
+
+	const ELAPSED_NOTES = {
+		gpx: 'Elapsed is the full time from start to finish of the recorded track, breaks included.',
+		photos: 'Elapsed is the time between my first and last photo on the route, so the real time was longer.',
+		manual: 'Elapsed is the full time from start to finish, breaks included.'
+	};
+
+	// A moving time equal to the elapsed time to the minute means no breaks were
+	// detected; showing the same number twice would only confuse.
+	const showElapsed = $derived(
+		data.facts.elapsed != null && Math.abs(data.facts.elapsed.minutes - (data.map.properties.duration ?? 0)) > 1
+	);
 	let allHikesLink = $derived(data.post.page > 1 ? `/hikes/page/${data.post.page}/#${data.post.anchor}` : `/hikes/#${data.post.anchor}`);
 
 	let fullResImageSrc = $state<string | undefined>(undefined);
@@ -235,6 +266,18 @@
 	});
 </script>
 
+{#snippet statTile(Icon: typeof ClockOutline, label: string, value: string)}
+	<div class="flex items-center gap-3 basis-[140px] grow">
+		<div class="text-primary-600 dark:text-primary-500 bg-primary-100 dark:bg-primary-900 rounded-lg p-2 shrink-0">
+			<Icon class="w-6 h-6" />
+		</div>
+		<div>
+			<div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">{label}</div>
+			<div class="font-semibold whitespace-nowrap" translate="no">{value}</div>
+		</div>
+	</div>
+{/snippet}
+
 <AppMeta
 	title={hikePostTitle(data.post.title)}
 	description={data.post.description ?? undefined}
@@ -242,6 +285,7 @@
 	type="article"
 	tags={data.post.tags}
 	article-published_time="{data.post.date}T16:00:00+00:00"
+	article-modified_time="{data.post.dateModified}T16:00:00+00:00"
 	article-author={resume.basics.name}
 	article-section="Hikes"
 />
@@ -256,6 +300,7 @@
 	description={data.post.description ?? ''}
 	image={data.post.image}
 	date={data.post.date}
+	dateModified={data.post.dateModified}
 	author={data.post.author}
 	tags={data.post.tags}
 	anchor={data.post.anchor}
@@ -318,45 +363,34 @@
 						{/if}
 						<div class="flex w-full flex-col justify-center">
 							<div class="flex flex-row flex-wrap gap-x-4 gap-y-4 md:gap-x-6 md:gap-y-6 my-2">
-								<div class="flex items-center gap-3 basis-[140px] grow">
-									<div class="text-primary-600 dark:text-primary-500 bg-primary-100 dark:bg-primary-900 rounded-lg p-2 shrink-0">
-										<ClockOutline class="w-6 h-6" />
-									</div>
-									<div>
-										<div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">Duration*</div>
-										<div class="font-semibold whitespace-nowrap">{getTime(data.map.properties.duration ?? 0)}</div>
-									</div>
-								</div>
-								<div class="flex items-center gap-3 basis-[140px] grow">
-									<div class="text-primary-600 dark:text-primary-500 bg-primary-100 dark:bg-primary-900 rounded-lg p-2 shrink-0">
-										<MapPinOutline class="w-6 h-6" />
-									</div>
-									<div>
-										<div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">Distance</div>
-										<div class="font-semibold whitespace-nowrap">{getDistance(data.map.properties.distance ?? 0)}</div>
-									</div>
-								</div>
-								<div class="flex items-center gap-3 basis-[140px] grow">
-									<div class="text-primary-600 dark:text-primary-500 bg-primary-100 dark:bg-primary-900 rounded-lg p-2 shrink-0">
-										<ArrowUpOutline class="w-6 h-6" />
-									</div>
-									<div>
-										<div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">Ascent</div>
-										<div class="font-semibold whitespace-nowrap">{getDistance(data.map.properties.ascent ?? 0)}</div>
-									</div>
-								</div>
-								<div class="flex items-center gap-3 basis-[140px] grow">
-									<div class="text-primary-600 dark:text-primary-500 bg-primary-100 dark:bg-primary-900 rounded-lg p-2 shrink-0">
-										<ArrowDownOutline class="w-6 h-6" />
-									</div>
-									<div>
-										<div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">Descent</div>
-										<div class="font-semibold whitespace-nowrap">{getDistance(data.map.properties.descent ?? 0)}</div>
-									</div>
-								</div>
+								{@render statTile(ClockOutline, data.durationSource === 'planner' ? 'Planner estimate*' : 'Moving time*', getTime(data.map.properties.duration ?? 0))}
+								{@render statTile(MapPinOutline, 'Distance', getDistance(data.map.properties.distance ?? 0))}
+								{@render statTile(ArrowUpOutline, 'Ascent', getDistance(data.map.properties.ascent ?? 0))}
+								{@render statTile(ArrowDownOutline, 'Descent', getDistance(data.map.properties.descent ?? 0))}
+								{#if showElapsed && data.facts.elapsed}
+									{@render statTile(HourglassOutline, 'Elapsed**', (data.facts.elapsed.source === 'photos' ? '≥ ' : '') + getTime(data.facts.elapsed.minutes))}
+								{/if}
+								{#if data.facts.typicalDuration != null}
+									{@render statTile(UsersGroupOutline, 'Typical time***', '≈ ' + getTime(Math.round(data.facts.typicalDuration / 15) * 15))}
+								{/if}
+								{#if data.facts.highPoint != null}
+									{@render statTile(ChartLineUpOutline, 'Highest point', `${data.facts.highPoint} m`)}
+								{/if}
+								{#if data.facts.lowPoint != null}
+									{@render statTile(ChartLineDownOutline, 'Lowest point', `${data.facts.lowPoint} m`)}
+								{/if}
+								{#if data.facts.routeType}
+									{@render statTile(ROUTE_TYPES[data.facts.routeType].icon, 'Route type', ROUTE_TYPES[data.facts.routeType].label)}
+								{/if}
 							</div>
-							<div class="text-sm text-gray-500 dark:text-gray-400 mt-2">
-								* Duration is pure net walking time in summer with above average speed.
+							<div class="text-sm text-gray-500 dark:text-gray-400 mt-2 flex flex-col gap-1">
+								<span>* {DURATION_NOTES[data.durationSource]}</span>
+								{#if showElapsed && data.facts.elapsed}
+									<span>** {ELAPSED_NOTES[data.facts.elapsed.source]}</span>
+								{/if}
+								{#if data.facts.typicalDuration != null}
+									<span>*** Standard DAV walking time without breaks: 300 m up or 500 m down per hour, 4 km per hour on the flat.</span>
+								{/if}
 							</div>
 							{#if data.display.filePrimary || data.display.fileGpx}
 								<blockquote class="!mb-0 mt-4 border-l-4 border-gray-300 dark:border-gray-600 pl-4 py-1 italic text-gray-600 dark:text-gray-400">
