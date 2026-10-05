@@ -445,15 +445,34 @@ export interface HikeAuthoredFacts {
 }
 
 const SAC_RE = /^T([1-6])([+-]?)$/;
+/** A single grade, or a range for a stretch of mixed difficulty: `T1-T2` or `T1–T2`. */
+const SAC_RANGE_RE = /^(T[1-6][+-]?)[-–](T[1-6][+-]?)$/;
 
-/** Whether `grade` is an SAC hiking grade, `T1`–`T6` with an optional `+`/`-`. */
-export function isSacGrade(grade: string): boolean {
-	return SAC_RE.test(grade);
-}
-
-/** Orders SAC grades: T3- < T3 < T3+ < T4- …; -1 for anything else. */
-export function sacRank(grade: string): number {
+function sacSingleRank(grade: string): number {
 	const m = SAC_RE.exec(grade);
 	if (!m) return -1;
 	return Number(m[1]) * 3 + (m[2] === '+' ? 1 : m[2] === '-' ? -1 : 0);
+}
+
+/** Whether `grade` is an SAC hiking grade, `T1`–`T6` with an optional `+`/`-`, or an easier–harder range of two. */
+export function isSacGrade(grade: string): boolean {
+	if (SAC_RE.test(grade)) return true;
+	const m = SAC_RANGE_RE.exec(grade);
+	return !!m && sacSingleRank(m[1]) < sacSingleRank(m[2]);
+}
+
+/** The hardest grade in `grade`: the grade itself, or a range's upper end. */
+export function sacTop(grade: string): string {
+	return SAC_RANGE_RE.exec(grade)?.[2] ?? grade;
+}
+
+/** Orders SAC grades: T3- < T3 < T3+ < T4- …; a range ranks as its upper end; -1 for anything else. */
+export function sacRank(grade: string): number {
+	return sacSingleRank(sacTop(grade));
+}
+
+/** Writes a range with an en dash, `T1–T2`; single grades are unchanged. */
+export function normaliseSac(grade: string): string {
+	const m = SAC_RANGE_RE.exec(grade);
+	return m ? `${m[1]}–${m[2]}` : grade;
 }

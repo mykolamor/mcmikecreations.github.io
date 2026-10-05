@@ -46,6 +46,23 @@ test('a post lists place docs by slug; unknown ones fail, naming the post', () =
 	assert.throws(() => readPostPlaces({ places: 'knorrhuette' }, 'p.md', docs), /expected a list of place slugs/);
 });
 
+test('the sidecar lists route places; a post’s own list replaces them', () => {
+	const docs = new Map<string, PlaceDoc>([
+		['knorrhuette', parsePlaceDoc('knorrhuette.md', KNORR)],
+		['sonnalpin', parsePlaceDoc('sonnalpin.md', KNORR)]
+	]);
+	const sidecar = { places: ['knorrhuette'], source: 's.hike.json' };
+	const slugs = (fm: Record<string, unknown>) => readPostPlaces(fm, 'p.md', docs, sidecar).map((d) => d.slug);
+	assert.deepEqual(slugs({}), ['knorrhuette']);
+	assert.deepEqual(slugs({ places: null }), ['knorrhuette']);
+	assert.deepEqual(slugs({ places: ['sonnalpin'] }), ['sonnalpin']);
+	assert.deepEqual(slugs({ places: [] }), []);
+	assert.throws(
+		() => readPostPlaces({}, 'p.md', docs, { places: ['zugspitze'], source: '/x/s.hike.json' }),
+		/Hike sidecar \/x\/s\.hike\.json: places: unknown place "zugspitze"/
+	);
+});
+
 const REFS: PlaceDocRef[] = [{ slug: 'knorrhuette', title: 'Knorrhütte', names: ['Knorrhütte', 'Knorr hut'] }];
 const NODES = [{ lat: 47.41, lon: 10.99, tags: { name: 'Knorrhütte', ele: '2052' } }];
 const body = (md: string) => '---\ntitle: T\n---\n' + md;
@@ -76,6 +93,21 @@ test('no doc markers in headings, links or captions', async () => {
 	const md = '## Knorrhütte (2052 m)\n\n[Knorrhütte (2052 m)](/hikes/x/)\n\n![Knorrhütte (2052 m)](/images/a.jpg)\n';
 	const { html } = await parseMarkdown(body(md), [], { placeDocs: REFS });
 	assert.deepEqual(markers(html), []);
+});
+
+test('plain mentions of a doc\'s names are marked like references', async () => {
+	const md = 'Lunch at Knorrhütte, then the Knorr-hut terrace. Up to Knorrhütte (2052 m). Not knorrhütte or Knorrhüttenweg.\n\n## Knorrhütte\n\n[Knorrhütte](/hikes/x/)\n';
+	const { html } = await parseMarkdown(body(md), [], { nodes: NODES, placeDocs: REFS });
+	// Each mention links to the map; only the first reference to the doc, with or without an elevation, gets the marker.
+	const mapLinks = [...html.matchAll(/<a class="mk-place" href="#hike-map"[^>]*>([^<]+)<\/a>/g)].map((m) => m[1]);
+	assert.deepEqual(mapLinks, ['Knorrhütte', 'Knorrhütte (2052&nbsp;m)']);
+	assert.match(html, /at <span translate="no"><a class="mk-place"[^>]*>Knorrhütte<\/a><\/span><a class="mk-place-doc" href="#place-knorrhuette"/);
+	assert.deepEqual(markers(html), ['place-knorrhuette']);
+	// An alias that names no node is protected from translation, unlinked.
+	assert.match(html, /the <span translate="no">Knorr-hut<\/span> terrace/);
+	// Without nodes, the name is still protected and the first one carries the marker.
+	const plain = await parseMarkdown(body(md), [], { placeDocs: REFS });
+	assert.match(plain.html, /at <span translate="no">Knorrhütte<\/span><a class="mk-place-doc"/);
 });
 
 test('place: links point at a listed doc; unlisted slugs stay text', async () => {

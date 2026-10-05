@@ -208,6 +208,16 @@ test('SAC grades order with modifiers', () => {
 	assert.equal(sacRank('A'), -1);
 });
 
+test('SAC ranges rank as their upper end and read with an en dash', () => {
+	assert.equal(sacRank('T1-T2'), sacRank('T2'));
+	assert.ok(sacRank('T2–T3+') > sacRank('T3'));
+	const { facts } = read({ difficulty: { sections: [{ to: 'Gatterl', sac: 'T1-T2' }, { from: 'Gatterl', sac: 'T2' }] } });
+	assert.equal(facts!.difficulty!.sections![0].sac, 'T1–T2');
+	assert.equal(facts!.difficulty!.sac, 'T1–T2');
+	assert.throws(() => read({ difficulty: { sections: [{ sac: 'T3-T2' }] } }), /SAC grade/);
+	assert.throws(() => read({ difficulty: { sections: [{ sac: 'T2-T2' }] } }), /SAC grade/);
+});
+
 test('every enum value has a label in every language', () => {
 	for (const lang of LANGS) {
 		for (const [group, values] of Object.entries(ENUMS)) {

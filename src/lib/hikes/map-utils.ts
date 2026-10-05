@@ -28,6 +28,7 @@ export const getNodeIconDetails = (tags: any) => {
     }
     if (tags.highway === 'bus_stop') return { emoji: '🚌', color: '#2563eb' };
     if (tags.railway === 'station' || tags.railway === 'halt' || tags.public_transport === 'station') return { emoji: '🚉', color: '#dc2626' };
+    if (tags.amenity === 'parking' || tags.amenity === 'parking_entrance') return { emoji: '🅿️', color: '#1e40af' };
     if (tags.tourism === 'information') return { emoji: 'ℹ️', color: '#2563eb' };
     if (tags.place === 'village' || tags.place === 'town' || tags.place === 'city') return { emoji: '🏘️', color: '#7c3aed' };
     if (tags.aeroway === 'aerodrome') return { emoji: '✈️', color: '#6294ff' };
@@ -132,10 +133,11 @@ export function photoIconHtml(photo: MapPhoto): string {
     return `<div style="box-sizing:border-box;width:100%;height:100%;border:2px solid white;border-radius:6px;overflow:hidden;box-shadow:0 2px 4px rgba(0,0,0,.4);cursor:pointer;"><img src="${photo.blur.replace(/"/g, '&quot;')}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;margin:0;" /></div>`;
 }
 
-/** The coloured emoji disc a POI node marker shows. */
-export function nodeIconHtml(tags: any): string {
+/** The coloured emoji disc a POI node marker shows, with an optional badge (`nodeFactsBadgeHtml`) on top. */
+export function nodeIconHtml(tags: any, badge = ''): string {
     const { emoji, color } = getNodeIconDetails(tags ?? {});
-    return `<div style="background-color:${color};width:${NODE_MARKER_SIZE}px;height:${NODE_MARKER_SIZE}px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid white;box-shadow:0 2px 4px rgba(0,0,0,.3);font-size:13px;line-height:1;">${emoji}</div>`;
+    const disc = `<div style="background-color:${color};width:${NODE_MARKER_SIZE}px;height:${NODE_MARKER_SIZE}px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid white;box-shadow:0 2px 4px rgba(0,0,0,.3);font-size:13px;line-height:1;">${emoji}</div>`;
+    return badge ? `<div style="position:relative;">${disc}${badge}</div>` : disc;
 }
 
 /** Default `elevateNode` filter for the 3D map: peaks and saddles stand out on a stem. */
@@ -149,14 +151,15 @@ export function nodeTitle(tags: any): string {
     return tags?.name || tags?.natural || 'POI';
 }
 
-/** A POI node's popup body: name, OSM elevation, and its formatted tags. */
-export function nodePopupHtml(tags: any): string {
+/** A POI node's popup body: name, OSM elevation, its formatted tags, then `extra` (the facts about it). */
+export function nodePopupHtml(tags: any, extra = ''): string {
     const ele = tags?.ele ? ` (${tags.ele}m)` : '';
     const tagsList = formatTags(tags ?? {})
         .map(([k, v]: [string, string]) => `<tr><td style="padding-right:8px;font-weight:600;font-size:11px;color:#6b7280;vertical-align:top;white-space:nowrap;">${k}</td><td style="font-size:11px;word-break:break-word;">${v}</td></tr>`)
         .join('');
     return `<div style="margin-bottom:8px;"><b>${nodeTitle(tags)}</b>${ele}</div>`
-        + (tagsList ? `<div style="max-height:150px;overflow-y:auto;"><table style="min-width:100%;border-spacing:0;">${tagsList}</table></div>` : '');
+        + (tagsList ? `<div style="max-height:150px;overflow-y:auto;"><table style="min-width:100%;border-spacing:0;">${tagsList}</table></div>` : '')
+        + extra;
 }
 
 // --- Layer preferences ("Photos", "Route facts") ---------------------------

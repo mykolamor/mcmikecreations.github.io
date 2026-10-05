@@ -76,8 +76,10 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 		const page = postIndex !== -1 ? Math.floor(postIndex / defaultPageSize) + 1 : 1;
 
 		const nodes = mergedProperties.nodes;
-		// The post's place docs (`places:`): linked from the prose, shown at the bottom.
-		const placeDocs = placeDocsForPost(frontmatter, date.path);
+		const metaPath = readMetaPathOverride(frontmatter, date) ?? mergedProperties.metaPath ?? defaultMetaPath(routeStr);
+		const sidecar = getHikeMeta(metaPath);
+		// The post's place docs (`places:`, else the sidecar's): linked from the prose, shown at the bottom.
+		const placeDocs = placeDocsForPost(frontmatter, date.path, { places: sidecar?.places, source: metaPath });
 		const placeRefs: PlaceDocRef[] = placeDocs.map(({ slug, title, names }) => ({ slug, title, names }));
 		const parsed = await parseMarkdown(postRaw, mergedDate.tags, { nodes, placeDocs: placeRefs });
 		const media = parsed.media;
@@ -142,10 +144,9 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 
 		// The hand-written facts layer: the sidecar's route defaults with the
 		// post's own facts merged on top, places resolved on the route.
-		const metaPath = readMetaPathOverride(frontmatter, date) ?? mapProperties.metaPath ?? defaultMetaPath(routeStr);
 		const { facts: authored, warnings: factWarnings } = readHikeFacts({
 			post: frontmatter.facts,
-			sidecar: getHikeMeta(metaPath)?.facts,
+			sidecar: sidecar?.facts,
 			postSource: date.path,
 			sidecarSource: metaPath,
 			nodes,

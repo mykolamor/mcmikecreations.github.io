@@ -83,25 +83,32 @@ export function parsePlaceDoc(file: string, raw: string): PlaceDoc {
 }
 
 /**
- * The docs a post lists under `places:`, in its order, out of `docs`. Throws
- * on anything but a list of known slugs, naming the post.
+ * The docs a post lists under `places:`, in its order, out of `docs`. A post
+ * without its own `places:` (or with `places: null`) gets its sidecar's list;
+ * a post's list replaces the sidecar's, like other hike fields. Throws on
+ * anything but a list of known slugs, naming the file it came from.
  */
 export function readPostPlaces(
 	frontmatter: Record<string, unknown> | null | undefined,
 	postSource: string,
-	docs: ReadonlyMap<string, PlaceDoc>
+	docs: ReadonlyMap<string, PlaceDoc>,
+	sidecar?: { places?: unknown; source: string }
 ): PlaceDoc[] {
-	const value = frontmatter?.places;
-	if (value == null) return [];
+	if (frontmatter?.places != null) return readPlaceList(frontmatter.places, `Hike post ${postSource}`, docs);
+	if (sidecar?.places != null) return readPlaceList(sidecar.places, `Hike sidecar ${sidecar.source}`, docs);
+	return [];
+}
+
+function readPlaceList(value: unknown, where: string, docs: ReadonlyMap<string, PlaceDoc>): PlaceDoc[] {
 	if (!Array.isArray(value) || !value.every((v) => typeof v === 'string')) {
-		throw new Error(`Hike post ${postSource}: places: expected a list of place slugs, e.g. [knorrhuette]`);
+		throw new Error(`${where}: places: expected a list of place slugs, e.g. [knorrhuette]`);
 	}
 	const out: PlaceDoc[] = [];
 	for (const slug of new Set(value.map((v: string) => v.trim()))) {
 		const doc = docs.get(slug);
 		if (!doc) {
 			throw new Error(
-				`Hike post ${postSource}: places: unknown place "${slug}" (no static/_projects/data-viz/hikes/places/${slug}.md)`
+				`${where}: places: unknown place "${slug}" (no static/_projects/data-viz/hikes/places/${slug}.md)`
 			);
 		}
 		out.push(doc);

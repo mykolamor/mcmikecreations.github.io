@@ -44,6 +44,8 @@ export interface PlaceDocIndex {
 	match(words: string[]): { doc: PlaceDocRef; start: number } | null;
 	/** A doc by slug, for explicit `place:<slug>` links. */
 	get(slug: string): PlaceDocRef | undefined;
+	/** Replaces every plain mention of a doc's names in escaped HTML text (no tags) with `render`'s markup. */
+	markMentions(html: string, render: (text: string) => string): string;
 }
 
 /** An index over the post's place docs, or null when it lists none. */
@@ -55,13 +57,41 @@ export function buildPlaceDocIndex(docs: PlaceDocRef[] | null | undefined): Plac
 		bySlug.set(doc.slug, doc);
 		for (const name of doc.names) addPlaceName(byName, name, doc);
 	}
+	const mentions = mentionPattern(docs);
 	return {
 		match(words) {
 			const hit = matchTrailingWords(words, byName);
 			return hit && { doc: hit.value, start: hit.start };
 		},
-		get: (slug) => bySlug.get(slug)
+		get: (slug) => bySlug.get(slug),
+		markMentions: (html, render) => (mentions ? html.replace(mentions.re, render) : html)
 	};
+}
+
+/** Space and hyphen variants count as one: "Auer Berg" and "Auer-Berg" are one mention. */
+function mentionKey(text: string): string {
+	return text.replace(/(?:\s|&nbsp;|[-‐‑–])+/g, ' ');
+}
+
+/**
+ * Matches a doc's names as whole words, exactly as written apart from spaces
+ * and hyphens. Case counts, unlike a `Name (1234 m)` reference: a bare word
+ * is too easily an ordinary one ("Gatterl" the place, not "gatterl").
+ */
+function mentionPattern(docs: PlaceDocRef[]): { re: RegExp } | null {
+	const keys = new Set<string>();
+	for (const doc of docs) {
+		for (const name of doc.names) {
+			const key = mentionKey(escapeAttr(name.trim()));
+			if (key) keys.add(key);
+		}
+	}
+	if (!keys.size) return null;
+	// Longest first, so "Marienstein Kirche" wins over "Marienstein".
+	const alternatives = [...keys]
+		.sort((a, b) => b.length - a.length)
+		.map((key) => key.split(' ').map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('(?:\\s|&nbsp;|[-‐‑–])+'));
+	return { re: new RegExp(`(?<![\\p{L}\\p{N}])(?:${alternatives.join('|')})(?![\\p{L}\\p{N}])`, 'gu') };
 }
 
 function escapeAttr(text: string): string {

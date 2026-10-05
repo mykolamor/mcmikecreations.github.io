@@ -34,13 +34,21 @@ Markdown text, with images like a post's:
 
 ## Showing it in posts
 
-List the slug in each post's front matter:
+List the slug in the route's sidecar, `<slug>.hike.json`, so every post on that route
+shows it:
+
+```json
+"places": ["knorrhuette"]
+```
+
+A post can set its own list in its front matter, which **replaces** the sidecar's for
+that post (`places: []` shows none):
 
 ```yaml
 places: [knorrhuette]
 ```
 
-An unknown slug fails the build, naming the post. Each listed doc becomes a collapsed
+An unknown slug fails the build, naming the sidecar or post. Each listed doc becomes a collapsed
 section under **Places on this route**, after the facts and before the participants.
 Its photos join the post's gallery, after the post's own.
 

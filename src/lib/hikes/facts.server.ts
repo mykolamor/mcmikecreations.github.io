@@ -16,7 +16,7 @@
  */
 
 import {
-	ENUMS, LEVEL4, SNOWSHOE_GRADES, isSacGrade, sacRank,
+	ENUMS, LEVEL4, SNOWSHOE_GRADES, isSacGrade, normaliseSac, sacRank,
 	type BailoutRoute, type HikeAuthoredFacts, type Place, type Text
 } from './facts-schema';
 import { davDuration } from './hike-facts';
@@ -369,8 +369,10 @@ function validate(ctx: Ctx, spec: Spec, v: unknown, path: string): unknown {
 			}
 			return v;
 		case 'sac':
-			if (typeof v !== 'string' || !isSacGrade(v)) fail(ctx, path, 'expected an SAC grade, T1–T6 with an optional + or -');
-			return v;
+			if (typeof v !== 'string' || !isSacGrade(v)) {
+				fail(ctx, path, 'expected an SAC grade, T1–T6 with an optional + or -, or an easier–harder range like T1-T2');
+			}
+			return normaliseSac(v);
 		case 'text':
 			return readText(ctx, v, path);
 		case 'place':

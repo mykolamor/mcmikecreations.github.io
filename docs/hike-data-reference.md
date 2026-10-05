@@ -73,7 +73,7 @@ them, recursively:
 | Plain value (string, number, true/false, a choice like `high`) | Post wins. |
 | Translated text `{en, de}` | Merged per language. A post can add only `de` to the sidecar's English, or replace only `en`. A plain string counts as `{en}`. |
 | Object (`difficulty`, `access`, `plan`, `season`, …) | Merged field by field, all the way down. |
-| List of plain values (`season.best`, `route.trails`, `route.terrain`, `plan.for`, `plan.notFor`, `alternatives.*`, `tickets[].includes`, `conditions.weather`, `conditions.trail`) | Post's list **replaces** the sidecar's. `best: [8]` means August, not August plus the sidecar's months. |
+| List of plain values (`season.best`, `route.trails`, `route.terrain`, `route.peaks`, `plan.for`, `plan.notFor`, `alternatives.*`, `tickets[].includes`, `conditions.weather`, `conditions.trail`) | Post's list **replaces** the sidecar's. `best: [8]` means August, not August plus the sidecar's months. |
 | Price lists (`price: [...]`) | Replaced as a whole. |
 | List of entries (`hazards`, `bailouts`, `gear`, `stops`, …) | **Matched by an identity key** (table below). A matching post entry is merged into the sidecar's entry. Unmatched post entries are **appended** after the sidecar's. |
 | `null` in the post | **Deletes** the sidecar's value for that key. This is the opposite of 2a. |
@@ -123,15 +123,16 @@ Some values are computed from the track and only take over when you write nothin
 | Elapsed time | GPX timestamps (minus gaps over 3 h) | `elapsed: {start, end, source}` in the post |
 | Highest/lowest point, typical (DAV) time | The route's own elevations | none |
 | Route type | Track shape | `facts.route.type` |
-| Overall SAC grade | Hardest of `difficulty.sections[].sac` and non-optional `legs[].sac` | `facts.difficulty.sac`. If yours is easier than the computed one, the build warns. |
+| Overall SAC grade | Hardest of `difficulty.sections[].sac` and non-optional `legs[].sac` (a range counts as its upper end) | `facts.difficulty.sac`. If yours is easier than the computed one, the build warns. |
 | km and altitude of a facts place | Projected onto the route | none |
 | Bailout route length, ascent, descent, DAV time | Its GPX file | `bailouts[].time` is your own figure, shown separately |
 | `dateModified` | Last git commit that changed the post's text | `updated: YYYY-MM-DD` |
 
 ### 2d. Place docs aren't merged at all
 
-A post lists slugs (`places: [knorrhuette]`); each doc is shown as written. Nothing in
-a post changes a place doc.
+A sidecar or post lists slugs (`places: [knorrhuette]`); each doc is shown as written.
+Nothing in a post changes a place doc. The **list** follows §2a: a post's `places:`
+replaces the sidecar's, and an omitted or `null` one falls back to it.
 
 ---
 
@@ -154,6 +155,7 @@ a post changes a place doc.
                 "visited": "no" }                   // your own tag: yes / no / missing (peak marker colour)
     }
   ],
+  "places": ["knorrhuette"],                       // optional: place docs for every post on the route, see §6
   "facts": { … }                                    // optional: route-level facts defaults, see §5
 }
 ```
@@ -192,7 +194,7 @@ All keys are optional. The date and route come from the file name; there's no `d
 | `duration` | minutes | **Moving** time. |
 | `elapsed` | `{start, end, source}` | Wall-clock start and end (`'2026-07-18T20:30'`), `source: photos` (a lower bound) or `manual`. Wins over GPX timestamps. |
 | `updated` | date | Forces `dateModified` (JSON-LD, sitemap). |
-| `places` | list of slugs | Place docs shown at the bottom (§6). |
+| `places` | list of slugs | Place docs shown at the bottom (§6). Replaces the sidecar's list; `[]` shows none. |
 | `facts` | object | The facts layer (§5). `facts: {hidden: true}` switches it off for this post. |
 | `images` | map | **Don't write by hand.** Filename → `{w, h, lat?, lon?, demEle?, taken?, located?, blur}`, maintained by the image tools (§8). |
 | `filePath`, `metaPath` | path | Another GeoJSON or sidecar for this date (a different route variant). |
@@ -233,6 +235,11 @@ the planned `/de/` pages; today the page shows English.
   - A node's comes from `backfill_terrain.py`.
   - `{lat, lon}` places **in the sidecar** get one from the same script.
   - Places in a post's YAML and `km` places don't, unless you type `demEle` yourself.
+- **One marker per node.** Hazards, bailouts and water at a node (by name or
+  `{node}`) don't get a pin of their own on the 2D and 3D maps. The node's marker
+  wears a small badge with their emojis instead, and its popup lists them. Water on
+  a node already drawn as water (💧) adds no badge. A `{lat, lon}` or `km` place
+  keeps its own pin, however close to a node. The elevation charts still show pins.
 
 **Span:** `from` and/or `to` (places). An open end runs to the route's start or end.
 
@@ -251,13 +258,13 @@ story, **G** = guide below the story, **C** = elevation charts, **M** = 2D and 3
 |---|---|---|---|
 | `checked` | date | G | Default "checked …" stamp. |
 | `summary` | text | S | 1–2 sentences over the safety box. |
-| `difficulty.sac` | `T1`–`T6`, optional `+`/`-` | T G | Hand-written, else computed from sections and legs. |
+| `difficulty.sac` | `T1`–`T6`, optional `+`/`-`; or an easier–harder range, `T1-T2` | T G | Hand-written, else computed from sections and legs. Every `sac` field takes a range; it's shown with an en dash (`T1–T2`) and ranks as its upper end. |
 | `difficulty.note` | text | G | **The justification.** Always write one with a grade. |
-| `difficulty.sections[]` | span + `sac`, `viaFerrata`, `climbing`, `note` | G C | Coloured SAC band on the charts. |
+| `difficulty.sections[]` | span + `sac`, `viaFerrata`, `climbing`, `note` | G C | Coloured SAC band on the charts. Give a stretch of mixed difficulty a range (`T1-T2`) instead of splitting it; the band takes the harder grade's colour. |
 | `difficulty.viaFerrata[]` | `grade`, `scale` (schall/huesler/french/italian), span, `name`, `length`, `gain`, `time`, `note` | T G | The tile shows the hardest. |
 | `difficulty.climbing` | `grade`, `scale` (uiaa/french/yds), `note` | T G | |
 | `difficulty.exposure` | `level`: none/low/moderate/high, `note` | T G | |
-| `difficulty.fitness` | 1–5 | T G | |
+| `difficulty.fitness` | 1–5 | T G | Stamina the hike takes, the German guides' *Kondition*; shown as "N of 5". Technique goes in `sac`, not here. See [Fitness levels](#fitness-levels). |
 | `difficulty.winter` | `snowshoe` WT1–6, `skiTour`, `avalanche` 1–5, `note` | G | Only if it's done in winter. |
 | `season` | `best`, `possible` (months 1–12), `window {from: "06-20", to: "10-10"}`, `note` | T G | The tile shows `best`. |
 | `route.start`, `route.end` | place, or `{name, at?}` | G | A named trailhead needn't be a node. |
@@ -267,8 +274,8 @@ story, **G** = guide below the story, **C** = elevation charts, **M** = 2D and 3
 | `route.terrain` | list: road, forest-road, path, meadow, scree, ridge, secured, snow, glacier, … | G | |
 | `route.shade` | none/low/moderate/high | G | |
 | `route.trails` | list | G | Waymarked route numbers ("801"). |
-| `route.peaks` | list of places | G, JSON-LD | Become `Mountain` entities for search engines. |
-| `navigation` | `marking` good/partial/poor/none, `spans[]`, `note`, `offline` | G | |
+| `route.peaks` | list of places | G, JSON-LD | Become `Mountain` entities for search engines. See [`route` in detail](#route-in-detail). |
+| `navigation` | `marking` good/partial/poor/none, `spans[]`, `note`, `offline` | G | Details in [`navigation` in detail](#navigation-in-detail). |
 | `hazards[]` | `kind`, `label?`, `at` or span, `severity` low/medium/high, `season`, `note` | S C M | ~40 kinds (rockfall, snowfield, cattle, lightning, …). An unknown kind needs a `label`. With a span, the stretch is drawn on the charts and maps. |
 | `bailouts[]` | `at`, `to`, `via` trail/lift/road/bus/taxi/hut, `time`, `last`, `route`, `note` | S C M | `route`: a served GPX path, drawn dashed beside the main route. `last: true` marks the point of no return. |
 | `water[]` | `at`, `kind` tap/fountain/spring/stream/lake/hut/shop, `reliable`, `treat`, `note` | G C M | |
@@ -284,14 +291,14 @@ story, **G** = guide below the story, **C** = elevation charts, **M** = 2D and 3
 | `protectedAreas` | text | G | Naturschutzgebiet and similar zones, in your words. |
 | `drones` | text | G | Where drones are forbidden and why. |
 | `rules[]` | `kind` (protected-area, no-camping, no-drones, dogs-on-leash, …), `label?`, span, `season`, `note` | G | Short, place-bound rules. |
-| `suitability` | `kids`, `dogs`, `stroller`, `bike`, `winter`, `night`, `solo`, `note` | G | |
+| `suitability` | `kids`, `dogs`, `stroller`, `bike`, `winter`, `night`, `solo`, `note` | G | Fixed values: `kids` yes / older / no; `dogs` yes / leash / no; `stroller` true / false; `bike` yes / partial / no; `winter` yes / with-gear / no; `night` and `solo` yes / experienced ("experienced only") / no. `note` is free text. |
 | `legs[]` | `to`, `terrain[]`, `sac`, `viaFerrata`, `marking`, `optional`, `note` | G | A leg runs from the previous `to`. Optional legs don't count towards the SAC grade. |
 | `conditions` | `weather[]`, `temp {min, max}`, `visibility`, `snowLine`, `traction`, `trail[]`, `crowding`, `start`, `why`, `note` | S | **Post only.** |
 | `deviations[]` | `kind` (solo, night, unroped, off-trail, …), `at`, `note` | S | **Post only.** "Don't copy this." |
 | `plan.gear[]` | `item` (~55 kinds), `label?`, `need` essential/conditional/optional, `when`, `amount` | G | Checklist with tick boxes. |
 | `plan.for`, `plan.notFor` | lists of text | G | |
 | `plan.variants[]` | `name`, `summary`, `distance`, `ascent`, `descent`, `duration`, `sac`, `viaFerrata`, `link`, `recommended`, `note` | G | `link`: a post slug or URL. |
-| `plan.timing` | `start`, `turnaround`, `sunrise {start, note}`, `note` | G | |
+| `plan.timing` | `start`, `turnaround`, `sunrise {start, note}`, `note` | G | Quoted `"HH:MM"` times. `start`: latest sensible start. `turnaround`: the time to give up and head back if you haven't reached the top, wherever you are (shown as "Turn around by" / "Umkehrzeit"). Set it so you're off exposed ground before afternoon storms or dark; say why in `note`. |
 | `plan.alternatives` | `easier`, `harder`, `similar`: lists of post slugs | G | Shown with the posts' titles. |
 | `sources[]` | `title`, `url`, `kind`, `lang`, `note` | G | |
 | `hidden` | true/false | none | **Post only.** `true` switches the whole layer off, sidecar included, unread. |
@@ -299,6 +306,364 @@ story, **G** = guide below the story, **C** = elevation charts, **M** = 2D and 3
 The full enum lists (every hazard kind, gear item and so on) are in
 `src/lib/hikes/facts-schema.ts`. A value outside them fails the build and lists the
 allowed ones.
+
+#### Fitness levels
+
+Grade the whole day at a steady hiking pace, breaks not included. Take the **higher**
+of the two columns. Then go up one for altitude above ~2500 m, heat, or a heavy pack.
+Go down one when a lift takes most of the climb. Say why in `difficulty.note`.
+
+| Level | Typical time | Ascent | Who it suits |
+|---|---|---|---|
+| 1 | under 2 h | under 300 m | Anyone; a walk. |
+| 2 | 2–4 h | 300–700 m | Occasional hikers. |
+| 3 | 4–6 h | 700–1100 m | Regular hikers. |
+| 4 | 6–8 h | 1100–1500 m | Fit hikers used to long days. |
+| 5 | over 8 h | over 1500 m | Very fit; a full mountain day or more. |
+
+### `route` in detail
+
+The route's shape and where it goes: its ends, its type, the usual route compared
+with yours, detours, the ground underfoot, and the summits. The type is `RouteInfo` in
+`facts-schema.ts`, and the build checks it in `facts.server.ts`.
+
+```jsonc
+// <slug>.hike.json (from Schneefernerkopf, shortened)
+"route": {
+  "start": {
+    "name": {"en": "Ehrwald train station", "de": "Bahnhof Ehrwald"},
+    "at": {"lat": 47.40956, "lon": 10.913795, "demEle": 977.4}
+  },
+  "end": {"lat": 47.413305, "lon": 10.980198, "demEle": 2581.3, "name": "Sonnalpin"},
+  "type": "point-to-point",
+  "official": {"en": "The usual route takes the Ehrwalder Almbahn up and skips Issentalköpfl, …", "de": "…"},
+  "optional": [
+    {
+      "name": {"en": "Issentalköpfl", "de": "Issentalköpfl"},
+      "from": "Ehrwalder Almbahn Bergstation",
+      "to": "Issentalköpfl",
+      "note": {"en": "Overgrown, unmarked detour; only for peak baggers.", "de": "…"}
+    }
+  ],
+  "terrain": ["forest-road", "ski-slope", "meadow", "secured", "path", "scree", "snow", "ridge"],
+  "shade": "low",
+  "trails": ["801", "813"],
+  "peaks": ["Issentalköpfl", "Schneefernerkopf"]
+}
+```
+
+**Fields.** Every field is optional, and so is every field inside an `optional[]`
+entry.
+
+| Field | Type | Meaning |
+|---|---|---|
+| `start`, `end` | spot (below) | Where the walk starts and ends. Use the trailhead, station or bus stop a reader travels to, not the first node on the track. |
+| `type` | `loop` / `out-and-back` / `point-to-point` / `lollipop` / `traverse` | The route's shape. If you leave it out, it's computed from the track (below). |
+| `official` | text | How the usual or signposted route differs from yours: a lift you skipped, a peak you added, a different way down. Leave it out if you walked the usual route. |
+| `optional[]` | list of `{from?, to?, name?, note?}` | Detours off the main route, such as a side summit or a viewpoint. `from`/`to` is a span (see Shared building blocks). Name it in `name` and say who it's for in `note`. |
+| `terrain` | list of `road`, `forest-road`, `path`, `meadow`, `forest`, `ski-slope`, `rocky`, `scree`, `boulders`, `scramble`, `ridge`, `secured`, `snow`, `glacier`, `ice`, `mud`, `overgrown`, `steps`, `beach`, `urban` | The surfaces underfoot, listed in route order. For terrain per stretch, use `legs[].terrain`. See [`terrain`, `shade`, `trails`, `peaks`](#terrain-shade-trails-peaks). |
+| `shade` | `none` / `low` / `moderate` / `high` | How much of the route is shaded. It matters on summer days. |
+| `trails` | list of strings | Waymarked route numbers or names exactly as signposted (`"801"`, `"E5"`). Shown untranslated. |
+| `peaks` | list of places | Summits reached on the main route. They go in the guide and in the JSON-LD (below). |
+
+Any other key fails the build. So does a `type`, `terrain` or `shade` value that isn't
+on its list.
+
+**Spots: `start` and `end`.** These two take any place form, plus one more:
+`{name, at?}`, for a trailhead or town that isn't a node.
+
+| Form | Example | Result |
+|---|---|---|
+| Place (node name, `km N`, `{lat, lon, name?}`) | `"Knorrhütte"` | As anywhere else. A node name that matches nothing warns. |
+| `{name}` | `{name: {en: "Ehrwald train station"}}` | Shown as plain text, with no map link and no warning. |
+| `{name, at}` | `{name: {en: "Ehrwald station"}, at: {lat: …, lon: …}}` | `at` is looked up as a place for the map link and km, but your `name` is what's shown. |
+
+- In the `{name, …}` form, any key other than `name` and `at` fails the build. That
+  includes `{node: 123, name: …}`: since it has a `name`, it's read as a spot. Write
+  `{name: …, at: {node: 123}}` instead.
+- An object with `lat` is always read as a normal place, even if it has a `name`.
+
+**Computed vs. written `type`.** With no `type`, the build classifies the track
+(`classifyRoute` in `hike-facts.ts`):
+- `out-and-back` if most of the second half retraces the first.
+- `loop` if the start and end are close together.
+- `point-to-point` otherwise.
+
+It never computes `lollipop` or `traverse`, so write those yourself. Your `type`
+replaces the computed one in the guide's **Route type** row and in the JSON-LD. The
+**Route type** stat tile in the title card still shows the computed value.
+
+#### `terrain`, `shade`, `trails`, `peaks`
+
+These four describe the whole route in one line each. They have no spans and no km,
+and nothing draws them on the charts or maps. `terrain`, `shade` and `trails` appear
+only in the guide. `peaks` also goes into the JSON-LD.
+
+```jsonc
+// <slug>.hike.json (Wasenkogel, adapted)
+"terrain": ["forest-road", "ski-slope", "meadow", "path", "secured", "rocky"],
+"shade": "low",
+"trails": ["697", "699", "602", "532", "BK", "D7"],
+"peaks": ["Wasenkogel", "Nesselscheibe", "Gefällberg", {"node": 1638504578, "name": {"en": "Point 1212"}}]
+```
+
+```yaml
+# The same in a post's front matter
+facts:
+  route:
+    terrain: [forest-road, meadow, path, secured]
+    shade: low
+    trails: ["697", "699", BK]
+    peaks: [Wasenkogel, Nesselscheibe]
+```
+
+**`terrain`: a list of fixed values.**
+
+- Each entry must be one of the 20 values below, spelled exactly as shown (lower case,
+  hyphenated). Anything else fails the build:
+  `route.terrain[2]: unknown value "Scree" (expected one of: road, forest-road, …)`.
+- There's no `label` escape hatch like hazards have. If nothing fits, pick the
+  nearest value and explain it in `official` or a leg's `note`.
+- Order is kept exactly as written, and duplicates aren't removed. List each surface
+  once, in the order a walker first meets it.
+- Rendered as one comma-separated row: `forest road, ski slope, meadow, path`.
+
+Only the value names are enforced. The "use for" column is a convention, to keep
+posts comparable:
+
+| Value | Shown as (en / de) | Use for |
+|---|---|---|
+| `road` | road / Straße | Tarmac or paved road, including quiet lanes. |
+| `forest-road` | forest road / Forststraße | Wide gravel or dirt track a vehicle can drive. |
+| `path` | path / Pfad | An ordinary single-track footpath. The default walking surface. |
+| `meadow` | meadow / Wiese | Grass, pasture, alpine meadow, with or without a trodden line. |
+| `forest` | forest / Wald | Walking among trees where the woodland itself is the point: roots, needles, shade. A path through forest can be both `path` and `forest`. |
+| `ski-slope` | ski slope / Skipiste | A groomed piste in summer: wide, often steep, loose or grassy. |
+| `rocky` | rocky / felsig | Path over bedrock or slabs; hands rarely needed. |
+| `scree` | scree / Geröll | Small loose stones that slide underfoot. |
+| `boulders` | boulders / Blockgelände | Large blocks you step or hop between. |
+| `scramble` | scramble / Kraxelei | Hands needed for balance or upward progress, without protection. |
+| `ridge` | ridge / Grat | Walking along a crest. Say how exposed it is in `difficulty.exposure`. |
+| `secured` | secured / versichert | Cables, chains, ladders or iron rungs. For a graded via ferrata, add `difficulty.viaFerrata` too. |
+| `snow` | snow / Schnee | Snowfields you cross on foot, including old summer snow. |
+| `glacier` | glacier / Gletscher | Walking on glacier ice or snow over it. Add a `glacier` or `crevasses` hazard. |
+| `ice` | ice / Eis | Bare ice or iced-over path. |
+| `mud` | mud / Matsch | Sections that are regularly muddy, not after one rainy day (that's `conditions` in a post). |
+| `overgrown` | overgrown / zugewachsen | Vegetation covers the path: pushing through dwarf pine, high grass, nettles. |
+| `steps` | steps / Stufen | Built stairs: stone steps, timber steps. |
+| `beach` | beach / Strand | Sand or shingle shore. |
+| `urban` | urban / Ortschaft | Through a town or village: pavements, streets. |
+
+How many to list: what a reader would notice and pack for, not every 50 m of
+gravel. Six to eight is plenty for a long day. When the mix differs a lot from
+stretch to stretch, write `legs[]` with `terrain` per leg and keep the route-level list
+short. Both render, and neither is computed from the other.
+
+**`shade`: one fixed value.** One of `none`, `low`, `moderate`, `high`, the same
+four-step scale as `difficulty.exposure`. Rendered as **Shade** ("Schatten"):
+none / keine, low / gering, moderate / mittel, high / hoch. Anything else fails the build.
+Convention, judged by **walking time**, not distance:
+
+| Value | Use when |
+|---|---|
+| `none` | Practically no shade: above the treeline, open ridge, desert, beach. |
+| `low` | Short shaded stretches, under about a quarter of the day. Typical for an Alpine route that starts in forest and climbs out of it. |
+| `moderate` | Roughly half shaded. |
+| `high` | Mostly under trees or in a gorge. |
+
+Judge it for a sunny summer day around midday. If shade depends on the time of day
+(a north face shaded in the morning), say so in `official` or in a `sun`/`heat`
+hazard's `note`, which goes in the safety box.
+
+**`trails`: a list of free strings.**
+
+- Any non-empty string, no fixed list. A bare number is accepted and turned into a
+  string (`801` → `"801"`). Write it as a string anyway: in YAML, a number with a
+  leading zero or a decimal point (`08`, `1.2`) wouldn't come through as written.
+- Write the number or code exactly as it appears on the signposts: `"801"`, `"E5"`,
+  `"BK"`, `"Via Alpina"`. Don't add "Trail" or "Nr.". The row is the same in both
+  languages and marked `translate="no"`, so browsers won't translate it.
+- Order kept as written, duplicates kept. Route order is the most useful.
+- Rendered as **Waymarked trails** ("Markierte Wege"), comma-separated, plain text with
+  no links.
+- How well the route is marked doesn't belong here; that's `navigation`.
+
+**`peaks`: a list of places.** Every entry is a place in any of the forms in Shared
+building blocks:
+
+| Form | Example | Result |
+|---|---|---|
+| Node name | `"Wasenkogel"` | **The usual one.** Matched like story place links. Gets coordinates, `ele` from the node (else the track) and a map link. |
+| `{node, name?}` | `{node: 1638504578, name: {en: "Point 1212"}}` | A summit node with no OSM name, or that you want called something else. |
+| `{lat, lon, name, ele?}` | `{lat: 47.4212, lon: 10.9863, name: "Zugspitze", ele: 2962}` | A summit that isn't one of the hike's nodes. Give `ele`: a point near the route takes the track's elevation, but one off it gets none. |
+| `km N` | `"km 12.4"` | Possible, but it shows as "km 12.4", which is no name for a summit, and the JSON-LD `Mountain` gets that as its name. Avoid. |
+
+- A name that matches no node is a build **warning**, not an error. The summit still
+  shows, as plain text with no elevation and no map link, and in the JSON-LD it gets
+  no `geo`. Fix the spelling or switch to `{node}` / `{lat, lon}`.
+- Rendered as **Summits** ("Gipfel"): `Wasenkogel (1211 m), Nesselscheibe (1258 m)`.
+  Each name with coordinates is a link that centres the 2D map on it. No km is shown.
+- Order kept as written. List them in the order they're reached.
+- List summits **reached on the main route**. Detour summits go in `optional[]`
+  instead. Put them in `peaks` as well only if you want them in the guide's Summits row
+  and in the JSON-LD.
+- `peaks` doesn't feed the "bagged peaks" list on the `/hikes` index. That list comes
+  from the hike's nodes tagged `natural=peak` (minus `visited: no` / `missing`), so a
+  summit in `peaks` that isn't a node won't appear there.
+
+**JSON-LD.** Each entry in `peaks` becomes a schema.org `Mountain` in the
+post's `BlogPosting.about`:
+
+```json
+"about": [
+  {"@type": "Mountain", "name": "Wasenkogel",
+   "geo": {"@type": "GeoCoordinates", "latitude": 47.7288407, "longitude": 11.6905672, "elevation": 1211}}
+]
+```
+
+- `name` is always the **English** text.
+- `geo` appears only when the place has coordinates. `elevation` appears only when it
+  has `ele`.
+- With no `peaks`, the post has no `about`.
+
+**Merging (sidecar + post).** All four are replaced whole, never merged entry by entry:
+
+- `shade`: the post's value wins; `shade: null` removes it.
+- `terrain`, `trails`, `peaks`: the post's list replaces the sidecar's list. To add
+  one entry, repeat the whole list. To remove the field, write `null`. An empty list
+  `[]` also renders nothing.
+- Typical post-level use: a walk that skipped a summit writes its own `peaks`; a
+  winter walk writes `terrain` with `snow`.
+
+**How it renders** (guide, Route section):
+
+| Field | Shown as (en / de) |
+|---|---|
+| `start` / `end` | **Start** / **End** rows ("Start" / "Ziel"). Places link to the map. |
+| `type` | **Route type** row ("Routentyp"). |
+| `terrain` | **Terrain** row ("Gelände"), comma-separated labels. |
+| `shade` | **Shade** row ("Schatten"). |
+| `trails` | **Waymarked trails** row, comma-separated. |
+| `peaks` | **Summits** row, comma-separated place links. |
+| `official` | A paragraph under the rows: "**Standard route:** …" ("Normalweg"). |
+| `optional[]` | Its own heading, **Optional detours** ("Optionale Abstecher"). One line per entry: **name** (from – to) — note. |
+
+`peaks` also becomes one schema.org `Mountain` per summit in the post's JSON-LD:
+`name` is the English name, plus `geo` with latitude, longitude and elevation when the
+place has coordinates. Peaks that are nodes or `{lat, lon}` places get coordinates;
+an unmatched name doesn't. Detour summits belong in `optional`, not `peaks`, unless
+you want search engines to list them too (Schneefernerkopf does this for
+Issentalköpfl).
+
+**Merging (sidecar + post, §2b).**
+
+- `start`, `end`, `type`, `shade`: the post's value wins.
+- `official`: merged per language.
+- `terrain`, `trails`, `peaks`: the post's list **replaces** the sidecar's. To add one
+  summit, repeat the whole list.
+- `optional[]`: entries are matched on `name` (its English text), or on `from` + `to`
+  when there's no name. A matching post entry merges into the sidecar's; anything else
+  is appended. `remove: true` drops a sidecar entry.
+- `null` deletes: `type: null` brings back the computed type, and `route: null` drops
+  the whole block.
+
+**Related fields: which to use.**
+
+| You want to say | Use |
+|---|---|
+| Terrain, grade or marking stretch by stretch | `legs[]` |
+| How hard a stretch is | `difficulty.sections[]` |
+| A different route someone could take instead | `plan.variants[]` (a whole alternative), not `optional` (a detour off this one) |
+| How to reach `start` and get home from `end` | `access.transport[]`, `access.parking[]` |
+| Waymarking quality | `navigation` |
+
+### `navigation` in detail
+
+How easy the way is to find on the ground. It covers paint, signposts and cairns, not
+how hard the walking is (that's `difficulty`) or whether your phone works (that's
+`signal`). Type: `Navigation` in `facts-schema.ts`; validated in `facts.server.ts`.
+
+```jsonc
+// <slug>.hike.json (from Schneefernerkopf)
+"navigation": {
+  "marking": "partial",
+  "offline": true,
+  "note": {
+    "en": "Red-white-red to Knorrhütte, sparse paint and cairns after.",
+    "de": "Rot-weiß-rot bis zur Knorrhütte, danach spärliche Markierungen und Steinmänner."
+  },
+  "spans": [
+    {
+      "from": "Knorrhütte",
+      "to": "Zugspitzplatt",
+      "marking": "poor",
+      "note": {"en": "Faded paint on scree; easy to lose at night.", "de": "…"}
+    }
+  ]
+}
+```
+
+**Fields.** All optional except `spans[].marking`. Leave the block out rather than
+writing an empty `navigation: {}`.
+
+| Field | Type | Required | Meaning |
+|---|---|---|---|
+| `marking` | `good` / `partial` / `poor` / `none` | no | Waymarking along the **whole route**, judged by its typical stretch. Put the exceptions in `spans`. |
+| `note` | text | no | Your words: what the marks look like (red-white-red, blue-white for alpine routes, cairns, poles), where junctions are signed, where it's easy to go wrong. |
+| `offline` | true/false | no | `true` adds "Carry an offline map." Set it when the marks alone won't get you there, or when the signal is gone where you'd need a map. `false` and omitting it look the same. |
+| `spans[]` | list of objects | no | Stretches whose marking differs from the overall `marking`. |
+| `spans[].from`, `spans[].to` | place | at least one, in practice | The stretch, as a span (see Shared building blocks). An open end runs to the route's start or end. |
+| `spans[].marking` | `good` / `partial` / `poor` / `none` | **yes** | Marking on this stretch. Missing it fails the build. |
+| `spans[].note` | text | no | Why this stretch differs: faded paint, missing junction sign, marks under snow until July, … |
+
+Any other key, inside `navigation` or a span, fails the build with
+`unknown key "…" (expected one of: …)`.
+
+**Choosing a `marking` value.** The values are fixed. The meanings below are the
+convention, so grades stay comparable between posts:
+
+| Value | Shown as (en / de) | Use when |
+|---|---|---|
+| `good` | good / gut | Continuous marks and signed junctions. You could walk it without a map in clear weather. |
+| `partial` | partial / lückenhaft | Marked, but with gaps: unsigned junctions, stretches where you look for the next mark, or marks that lapse on open ground. A map helps. |
+| `poor` | poor / schlecht | Sparse, faded or ambiguous marks, or only cairns. Route-finding is needed, and in fog or darkness it gets hard. |
+| `none` | none / keine | No waymarks. You navigate by map, GPS or terrain. |
+
+**How it renders** (guide, Route section; no tiles, charts or maps):
+
+- `marking`, `note` and `offline` share one row labelled **Waymarking**
+  ("Markierung"): `partial — Red-white-red to Knorrhütte, … Carry an offline map.`
+  The row appears if any of the three is set; with no `marking` the note starts the
+  row.
+- Each span is a line under the list:
+  `Knorrhütte – Zugspitzplatt: waymarking poor — Faded paint on scree; …`.
+  With only `from`, it reads `Knorrhütte →`; with only `to`, `→ Zugspitzplatt`.
+  Places link to the map like everywhere else in the facts.
+- Spans are **not** drawn on the elevation charts or maps. To get a stretch drawn,
+  add a hazard with a span as well (below).
+
+**Merging (sidecar + post, §2b).**
+
+- `marking`, `offline`: the post's value wins. `note`: merged per language.
+- `spans` are matched on `from` + `to`, after the places are resolved. A post span
+  with the same ends is merged into the sidecar's (e.g. change only `marking`). Any
+  other post span is appended.
+- `{from: X, to: Y, remove: true}` drops the sidecar's span. `navigation: null` drops
+  the sidecar's whole block; `offline: null` drops just that field.
+- Typical use: the route is `good` in the sidecar, and a post on a snowy day adds a
+  span with `marking: none` and a note that the marks were under snow. Snow is
+  temporary, so it belongs in the post, not the sidecar.
+
+**Related fields: which to use.**
+
+| You want to say | Use |
+|---|---|
+| How well the whole route or a stretch is marked | `navigation` |
+| Marking per leg, in the legs table | `legs[].marking` (same four values). Use it if you already write `legs`; don't repeat the same stretch in `navigation.spans`. |
+| Getting lost here is a **safety** issue (fog on a plateau, a wrong turn towards a cliff) | Also a hazard `kind: poor-marking` or `kind: navigation` with a span and `severity`. That one goes in the safety box and is drawn on the charts and maps. |
+| Readers should carry a map or GPS | `offline: true`, and `plan.gear` items `offline-map`, `gps`, `paper-map`, `compass`, which go on the checklist. |
+| Where there's no phone signal | `signal[]` |
+| Waymarked route numbers ("801") | `route.trails` |
 
 ---
 
@@ -318,12 +683,30 @@ Markdown text, photos like a post's.
 ```
 
 - **Any other key fails the build.** No facts or metrics here.
-- A post shows docs with `places: [knorrhuette]` (an unknown slug fails the build).
-  They appear under **Places on this route**, collapsed. Their photos join the post's
-  gallery.
+- **Listing them.** Put route places in the sidecar, so every post on the route
+  shows them. Use a post's own list only when that day differs:
+
+  ```jsonc
+  // <slug>.hike.json
+  "places": ["knorrhuette", "sonnalpin"]
+  ```
+
+  ```yaml
+  # <date>-<slug>.md: omit to use the sidecar's list
+  places: [knorrhuette]   # replaces the sidecar's list for this post (repeat any you keep)
+  places: []              # shows no place docs on this post
+  ```
+
+  An unknown slug fails the build, naming the sidecar or post. The docs appear under
+  **Places on this route**, collapsed. Their photos join the post's gallery.
 - **Links from the story:**
-  - The first `Name (1234 m)` reference matching a doc's title or alias gets a small ⓘ
-    link; the name keeps its map link.
+  - A doc's title or alias in the text is marked whether or not it has an elevation:
+    `Knorrhütte (2052 m)` and plain "through Marienstein" look the same. The name
+    links to the 2D map when it's one of the hike's nodes. The **first** mention of
+    each doc also gets a small ⓘ, which scrolls to the doc and opens it.
+  - A plain mention must be spelled as written, case and accents included; spaces
+    and hyphens are interchangeable. It links to the map only when it's a node's
+    whole name. Headings, links and photo captions aren't marked.
   - `[the hut](place:knorrhuette)` links any text explicitly.
 - **Place doc or facts?** If it's about the place on any visit (history, beds, season,
   how to book), it's a place doc. If it's about this route passing it (water here at
@@ -374,12 +757,58 @@ the post only for what differs on that day.
 | `distance`, `ascent`, `descent`, `duration` | `scripts/track_metrics.py` for recorded tracks (`deploy.sh` runs it with `--missing-only`). |
 | `elapsed` | GPX timestamps automatically. Without them, hand-pick the first and last photo. |
 | `images:` (`w`, `h`, `blur`, AVIF tiers) | `scripts/image_match.py` (or the web UI `image_match_web.py`), then `scripts/image_optimize.py`. |
-| `images[].lat/lon` | `backfill_gps.py`, from Immich. |
+| `images[].lat/lon` | `image_optimize.py`, from Immich (`backfill_gps.py` for older posts). |
 | `images[].taken`, `located: track` | `backfill_time.py` (`deploy.sh` runs it). |
 | `demEle` (photos, nodes, sidecar facts places) | `scripts/backfill_terrain.py`. Run it after adding nodes or `{lat, lon}` facts places to a sidecar. |
 | Nodes | [Overpass turbo](https://overpass-turbo.eu/) around the route; keep the OSM shape. Then `node scripts/check-nodes.js`. |
 | Node `visited` | Your own comparison with Komoot's peak list. |
 | Map tiles | `scripts/map-download.js <slug>`, after setting `origin` and `height`. |
+
+### Scripts to run for each hike
+
+Run these from the repository root, in this order. `POST` arguments are the post's
+filename (`2026-07-19-schneefernerkopf.md`; the `.md` is optional). Every Python script
+takes `--dry-run` to preview its changes and `--help` for all its options. The image
+scripts read `$IMMICH_URL` and `$IMMICH_API_KEY`.
+
+```sh
+# 1. Sidecar nodes: check for duplicate ids, names and wikidata across all hikes.
+node scripts/check-nodes.js
+
+# 2. Map tiles, once the sidecar has `origin` and `height`. Takes the slug, not the
+#    post filename. Mapbox/Nextzen tokens come from the environment
+#    (mapboxDEMAccess, mapboxSatelliteAccess, nextzenAccess, ...).
+node scripts/map-download.js schneefernerkopf
+
+# 3. Match the post's compressed photos to their Immich originals. Writes
+#    scripts/matches/hikes/<post>.json. Album is guessed from the post name;
+#    pass --album "Name" if the guess is wrong. --force re-matches an existing report.
+#    To review or fix matches in the browser instead: scripts/.venv/bin/python scripts/image_match_web.py
+scripts/.venv/bin/python scripts/image_match.py 2026-07-19-schneefernerkopf.md
+
+# 4. Build the AVIF tiers and blur placeholders, and write the post's `images:`
+#    (w, h, blur, lat/lon and demEle from Immich). --force rebuilds an existing `images:`
+#    (see Gotchas: this resets hand-fixed GPS).
+scripts/.venv/bin/python scripts/image_optimize.py 2026-07-19-schneefernerkopf.md
+
+# 5. Photo timestamps (`taken`), and placing photos without GPS on the recorded track
+#    (`located: track`). deploy.sh also runs this for every post.
+scripts/.venv/bin/python scripts/backfill_time.py 2026-07-19-schneefernerkopf.md
+
+# 6. Distance, ascent, descent and moving time from the recorded GPX. Takes the slug
+#    or the post filename. deploy.sh runs it with --missing-only for every post;
+#    run it without that flag to overwrite metrics already written.
+scripts/.venv/bin/python scripts/track_metrics.py 2026-07-19-schneefernerkopf.md
+
+# 7. demEle for the sidecar's nodes and `{lat, lon}` facts places, and any located
+#    photo still missing it. Re-run whenever you add nodes or facts places.
+#    Nodes are done for every *.hike.json regardless of the POST argument.
+scripts/.venv/bin/python scripts/backfill_terrain.py 2026-07-19-schneefernerkopf.md
+```
+
+`backfill_gps.py` (photo `lat`/`lon`) and `backfill_file_size.py` were one-time
+backfills for posts made before `image_optimize.py` wrote those fields. A new hike
+doesn't need them.
 
 ### Facts (by hand; good sources)
 

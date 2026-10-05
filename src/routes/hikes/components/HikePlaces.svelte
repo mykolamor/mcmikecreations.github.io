@@ -2,7 +2,7 @@
 	// The post's place docs ("Places on this route"): reference text for huts,
 	// peaks and towns written once and shown in every post that lists them
 	// under `places:`. Each is collapsed until opened, or until a link in the
-	// story (the ⓘ after a place's name) points at it.
+	// story (a mention of its name, or the ⓘ after a reference) points at it.
 	import { placeDocAnchor, type RenderedPlaceDoc } from '$lib/hikes/place-docs';
 
 	interface Props {
@@ -51,6 +51,13 @@
 	}
 	details[open] > summary::before {
 		transform: rotate(90deg);
+	}
+	/* Links to a doc glide down to it rather than jump. Only on pages that have
+	   place docs, so it doesn't change scrolling site-wide. */
+	@media (prefers-reduced-motion: no-preference) {
+		:global(html:has([data-place-docs])) {
+			scroll-behavior: smooth;
+		}
 	}
 	@media (prefers-reduced-motion: reduce) {
 		summary::before {

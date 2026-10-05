@@ -3,12 +3,12 @@ import { CSS2DObject, CSS2DRenderer } from 'three/addons/renderers/CSS2DRenderer
 import { MeshLineGeometry } from '$lib/hikes/meshline/MeshLineGeometry';
 import { MeshLineMaterial } from '$lib/hikes/meshline/MeshLineMaterial';
 import {
-    declutterBy, factsPinLift, nodeIconHtml, nodePopupHtml, nodeTitle, photoIconHtml,
+    declutterBy, factsPinLift, getNodeIconDetails, nodeIconHtml, nodePopupHtml, nodeTitle, photoIconHtml,
     mapFactsPref, mapPhotosPref,
     NODE_MARKER_SIZE, PHOTO_MARKER_SIZE, type LayerPref, type MapPhoto
 } from '$lib/hikes/map-utils';
 import {
-    factsPinIconHtml, factsPinWidth, pinPopupHtml, pinText,
+    factsPinIconHtml, factsPinWidth, nodeFactsBadgeHtml, nodeFactsPopupHtml, pinPopupHtml, pinsByNode, pinText,
     FACTS_PIN_H, FACTS_PIN_POINTER, type FactsPin
 } from '$lib/hikes/facts-overlay';
 
@@ -39,6 +39,7 @@ const STEM_COLOR = '#ffffff';
 const STEM_WIDTH = 1;
 
 export interface Map3dNode {
+    id?: number;
     lat: number;
     lon: number;
     demEle?: number;
@@ -135,8 +136,10 @@ export function createMap3dMarkers(opts: Map3dMarkersOptions): Map3dMarkers | un
         typeof p.demEle === 'number' && terrainPoint(p.lat, p.lon, p.demEle) !== null;
     const photos = opts.photos.filter(onMap);
     const nodes = opts.nodes.filter(onMap);
-    const factsPins = (opts.factsPins ?? []).filter(onMap);
-    if (!photos.length && !nodes.length && !factsPins.length && !opts.hasFactsLines) return undefined;
+    const allFactsPins = (opts.factsPins ?? []).filter(onMap);
+    if (!photos.length && !nodes.length && !allFactsPins.length && !opts.hasFactsLines) return undefined;
+    // Facts about a POI node on the map go on its marker, not on a pin of their own.
+    const { onNodes: nodePins, loose: factsPins } = pinsByNode(allFactsPins, nodes.map((n) => n.id));
 
     const css = new CSS2DRenderer();
     Object.assign(css.domElement.style, { position: 'absolute', top: '0', left: '0', pointerEvents: 'none' });
@@ -243,9 +246,15 @@ export function createMap3dMarkers(opts: Map3dMarkersOptions): Map3dMarkers | un
         lineWidth: STEM_WIDTH,
     });
     const stemLocalHeight = (opts.elevatedStemHeight ?? ELEVATED_STEM_HEIGHT) / group.scale.z;
+    let factsEnabled = mapFactsPref.get();
+    /** Redraws the node markers that carry facts, for the "Route facts" toggle. */
+    const nodeBadges: (() => void)[] = [];
     for (const node of nodes) {
         const el = document.createElement('div');
-        el.innerHTML = nodeIconHtml(node.tags);
+        const pin = node.id != null ? nodePins.get(node.id) : undefined;
+        const badge = pin ? nodeFactsBadgeHtml(pin, getNodeIconDetails(node.tags ?? {}).emoji) : '';
+        el.innerHTML = nodeIconHtml(node.tags, factsEnabled ? badge : '');
+        if (badge) nodeBadges.push(() => { el.innerHTML = nodeIconHtml(node.tags, factsEnabled ? badge : ''); });
         const object = new CSS2DObject(el);
         const ground = at(node.lat, node.lon, node.demEle!);
         let stem: THREE.Mesh | undefined;
@@ -263,7 +272,9 @@ export function createMap3dMarkers(opts: Map3dMarkersOptions): Map3dMarkers | un
         }
         group.add(object);
         const marker: Marker = { kind: 'node', object, probe, size: NODE_MARKER_SIZE, stem, occluded: true, shown: false, changedAt: -Infinity };
-        interactive(el, nodeTitle(node.tags), () => (popupOwner === marker ? closePopup() : openPopup(marker, nodePopupHtml(node.tags))));
+        interactive(el, nodeTitle(node.tags), () => (popupOwner === marker
+            ? closePopup()
+            : openPopup(marker, nodePopupHtml(node.tags, pin && factsEnabled ? nodeFactsPopupHtml(pin) : ''))));
         prepare(el);
         markers.push(marker);
     }
@@ -292,7 +303,6 @@ export function createMap3dMarkers(opts: Map3dMarkersOptions): Map3dMarkers | un
 
     // --- Layer toggles (the 2D map's "Photos" and "Route facts" overlays) ---
     let photosEnabled = mapPhotosPref.get();
-    let factsEnabled = mapFactsPref.get();
     let toggles: HTMLDivElement | undefined;
     const unsubscribers: (() => void)[] = [];
     const addToggle = (text: string, pref: LayerPref, apply: (v: boolean) => void) => {
@@ -327,9 +337,12 @@ export function createMap3dMarkers(opts: Map3dMarkersOptions): Map3dMarkers | un
     if (photos.length) {
         addToggle('Photos', mapPhotosPref, (v) => { photosEnabled = v; });
     }
-    if (factsPins.length || opts.hasFactsLines) {
+    if (allFactsPins.length || opts.hasFactsLines) {
         addToggle('Route facts', mapFactsPref, (v) => {
             factsEnabled = v;
+            for (const redraw of nodeBadges) redraw();
+            // A node's open popup lists its facts only while they're on.
+            if (popupOwner?.kind === 'node') closePopup();
             opts.onFactsToggle?.(v);
         });
     }

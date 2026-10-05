@@ -229,7 +229,8 @@
 
 		// Place docs: Svelte renders (and may keep) their section, so its
 		// listeners go with `placesAbort`. Their photos join the gallery; a link
-		// to a doc (the ⓘ after its name, or `place:` links) opens it first.
+		// to a doc (a mention of its name, the ⓘ after a reference, or `place:`
+		// links) opens it first.
 		placesAbort = new AbortController();
 		const placesSignal = placesAbort.signal;
 		document.querySelectorAll<HTMLImageElement>('[data-place-docs] img[data-media-index]').forEach((img) => {
@@ -510,11 +511,11 @@
 					<div id="content">
 						{@html data.clientHtml ?? '%%SSR_POST_CONTENT%%'}
 					</div>
-					{#if data.authoredFacts}
-						<HikeFactsGuide facts={data.authoredFacts} lang="en" linkedPosts={data.linkedPosts} />
-					{/if}
 					{#if data.places?.length}
 						<HikePlaces places={data.places} />
+					{/if}
+					{#if data.authoredFacts}
+						<HikeFactsGuide facts={data.authoredFacts} lang="en" linkedPosts={data.linkedPosts} />
 					{/if}
 					<HikeContacts contacts={data.contacts} />
 				</div>

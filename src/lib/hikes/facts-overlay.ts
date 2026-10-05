@@ -12,7 +12,7 @@
  */
 
 import { cumulativeKm, pointAtKm, routeCoords } from './hike-metrics';
-import { textIn, type HikeAuthoredFacts, type Lang, type Place } from './facts-schema';
+import { sacTop, textIn, type HikeAuthoredFacts, type Lang, type Place } from './facts-schema';
 import { enumLabel, formatBailoutWhere, formatGrades, formatKm, formatRouteStats, formatWater, label } from './facts-format';
 
 export type FactsPinKind = 'hazard' | 'bailout' | 'water';
@@ -38,6 +38,8 @@ export interface FactsPin {
 	demEle?: number;
 	/** On one of the hike's POI nodes, which has its own marker on the map. */
 	onNode: boolean;
+	/** That node's id: the maps fold the pin into the node's marker (see `pinsByNode`). */
+	node?: number;
 	items: FactsPinItem[];
 }
 
@@ -146,7 +148,7 @@ export function buildFactsOverlay(
 		const key = placeKey(place);
 		let p = pins.get(key);
 		if (!p) {
-			p = { name: textIn(place.name, lang), lat: place.lat, lon: place.lon, km: place.km, ele: place.ele, demEle: place.demEle, onNode: place.node != null, items: [] };
+			p = { name: textIn(place.name, lang), lat: place.lat, lon: place.lon, km: place.km, ele: place.ele, demEle: place.demEle, onNode: place.node != null, node: place.node, items: [] };
 			pins.set(key, p);
 		}
 		p.items.push(item);
@@ -216,7 +218,7 @@ export function buildFactsOverlay(
 			from: km[0],
 			to: km[1],
 			row: 0,
-			color: (s.sac && SAC_COLOR[s.sac.slice(0, 2)]) || UNGRADED_COLOR,
+			color: (s.sac && SAC_COLOR[sacTop(s.sac).slice(0, 2)]) || UNGRADED_COLOR,
 			text: grade || undefined,
 			title: `${grade}${name ? ` ${name}` : ''}${s.note ? `: ${textIn(s.note, lang)}` : ''}`
 		});
@@ -341,11 +343,53 @@ function escapeHtml(s: string): string {
 	return s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 }
 
+/** A pin's items as popup rows. */
+function pinRowsHtml(pin: FactsPin): string {
+	return pin.items
+		.map((i) => `<div style="margin-top:4px;"><span style="color:${i.color};font-weight:600;">${i.emoji} ${escapeHtml(i.title)}</span>${i.note ? `<div style="font-size:11px;color:#4b5563;">${escapeHtml(i.note)}</div>` : ''}</div>`)
+		.join('');
+}
+
 /** Popup body for a pin on the map. */
 export function pinPopupHtml(pin: FactsPin): string {
 	const head = `<div style="margin-bottom:6px;"><b>${escapeHtml(pin.name)}</b>${pin.ele != null ? ` (${pin.ele} m)` : ''}${pin.km != null ? ` · ${formatKm(pin.km)}` : ''}</div>`;
-	const rows = pin.items
-		.map((i) => `<div style="margin-top:4px;"><span style="color:${i.color};font-weight:600;">${i.emoji} ${escapeHtml(i.title)}</span>${i.note ? `<div style="font-size:11px;color:#4b5563;">${escapeHtml(i.note)}</div>` : ''}</div>`)
+	return head + pinRowsHtml(pin);
+}
+
+/**
+ * Splits the pins between the hike's POI nodes and the rest. A pin whose place
+ * is one of `nodeIds` (the same node, not just nearby) shows on that node's
+ * marker instead of as a pin of its own: one marker per place.
+ */
+export function pinsByNode(pins: FactsPin[], nodeIds: Iterable<number | undefined>): { onNodes: Map<number, FactsPin>; loose: FactsPin[] } {
+	const ids = new Set(nodeIds);
+	const onNodes = new Map<number, FactsPin>();
+	const loose: FactsPin[] = [];
+	for (const pin of pins) {
+		if (pin.node != null && ids.has(pin.node)) onNodes.set(pin.node, pin);
+		else loose.push(pin);
+	}
+	return { onNodes, loose };
+}
+
+/** Where a node's facts badge starts, from the marker's left edge (px). */
+const NODE_BADGE_LEFT = 14;
+
+/**
+ * The badge a node's marker wears for the facts about it: the pin's emojis in a
+ * small pill at the marker's top right, outlined in the pin's colour. Water at
+ * a node already drawn as water (💧) adds nothing; '' when nothing is left.
+ */
+export function nodeFactsBadgeHtml(pin: FactsPin, nodeEmoji: string): string {
+	const emojis = pinKinds(pin)
+		.filter((k) => !(k === 'water' && nodeEmoji === '💧'))
+		.map((k) => pin.items.find((i) => i.kind === k)!.emoji)
 		.join('');
-	return head + rows;
+	if (!emojis) return '';
+	return `<div style="position:absolute;top:-7px;left:${NODE_BADGE_LEFT}px;box-sizing:border-box;height:15px;padding:0 2px;border:1.5px solid ${pinColor(pin)};border-radius:8px;background:white;display:flex;align-items:center;font-size:9px;line-height:1;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.3);pointer-events:none;">${emojis}</div>`;
+}
+
+/** The facts rows a node's popup gets below its own tags. */
+export function nodeFactsPopupHtml(pin: FactsPin): string {
+	return `<div style="margin-top:8px;border-top:1px solid #e5e7eb;padding-top:4px;">${pinRowsHtml(pin)}</div>`;
 }

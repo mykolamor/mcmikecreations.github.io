@@ -25,7 +25,14 @@ export function allPlaceDocs(): ReadonlyMap<string, PlaceDoc> {
 	return placesBySlug;
 }
 
-/** The place docs a post's front matter lists, in order; throws on an unknown slug. */
-export function placeDocsForPost(frontmatter: Record<string, unknown> | null | undefined, postSource: string): PlaceDoc[] {
-	return readPostPlaces(frontmatter, postSource, placesBySlug);
+/**
+ * The place docs a post lists, in order: its front matter's `places:`, else its
+ * sidecar's. Throws on an unknown slug.
+ */
+export function placeDocsForPost(
+	frontmatter: Record<string, unknown> | null | undefined,
+	postSource: string,
+	sidecar?: { places?: unknown; source: string }
+): PlaceDoc[] {
+	return readPostPlaces(frontmatter, postSource, placesBySlug, sidecar);
 }

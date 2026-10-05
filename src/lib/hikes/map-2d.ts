@@ -1,22 +1,25 @@
 import { providerFolder, providers } from '$lib/data/map-providers';
 import { primaryGeometryColor, secondaryIndicatorColor } from '$lib/hikes/build-geometry';
 import {
-    alternatingOffset, declutterBy, factsPinLift, nodeIconHtml, nodePopupHtml, photoIconHtml,
+    alternatingOffset, declutterBy, factsPinLift, getNodeIconDetails, nodeIconHtml, nodePopupHtml, photoIconHtml,
     mapFactsPref, mapPhotosPref,
     NODE_MARKER_SIZE, PHOTO_MARKER_SIZE, type LayerPref, type MapPhoto
 } from '$lib/hikes/map-utils';
 import {
-    factsPinIconHtml, factsPinWidth, offsetNearRoute, pinPopupHtml, pinText,
+    factsPinIconHtml, factsPinWidth, nodeFactsBadgeHtml, nodeFactsPopupHtml, offsetNearRoute, pinPopupHtml, pinsByNode, pinText,
     FACTS_PIN_H, FACTS_PIN_POINTER,
     type FactsMarks
 } from '$lib/hikes/facts-overlay';
 
 /**
  * How far a bailout route is pushed off the main route where they run
- * together (px): just clear of the main line's white casing. Further
- * routes alternate sides and step outwards.
+ * together, on the ground (m), so zoomed out it stays on the same road
+ * instead of drifting onto a neighbouring one. Capped on screen (px) where
+ * the dashed line just touches the main line, their white casings
+ * overlapping. Further routes alternate sides and step outwards.
  */
-const ROUTE_OFFSET_PX = 7;
+const ROUTE_OFFSET_M = 6;
+const ROUTE_OFFSET_MAX_PX = 4;
 /** Within this of the main route (px) a point gets the full offset, fading out by `ROUTE_OFFSET_FAR_PX`. */
 const ROUTE_OFFSET_NEAR_PX = 6;
 const ROUTE_OFFSET_FAR_PX = 12;
@@ -118,6 +121,9 @@ export async function initMap2d(
     // Hazards, bailout points, water and bailout routes from the post's facts.
     const factsLayer = facts && (facts.pins.length || facts.lines.length || facts.routes.length) ? L.layerGroup() : undefined;
     const unsubscribeFacts = factsLayer && bindLayerPref(map, factsLayer, mapFactsPref);
+    // Facts about a POI node go on its marker, not on a pin of their own.
+    const { onNodes: nodePins, loose: loosePins } = pinsByNode(factsLayer ? facts!.pins : [], (nodes ?? []).map((n) => n.id));
+    let unsubscribeNodeFacts: (() => void) | undefined;
 
     const overlays: Record<string, any> = {};
     if (photosLayer) overlays['Photos'] = photosLayer;
@@ -184,21 +190,29 @@ export async function initMap2d(
 
         const renderNodes = () => {
             nodesLayer.clearLayers();
+            // The node's facts show with the "Route facts" overlay, like the pins.
+            const factsOn = !!factsLayer && map.hasLayer(factsLayer);
             for (const node of declutter(map, nodes, NODE_MARKER_SIZE)) {
                 const half = NODE_MARKER_SIZE / 2;
+                const pin = factsOn ? nodePins.get(node.id) : undefined;
                 const icon = L.divIcon({
-                    html: nodeIconHtml(node.tags),
+                    html: nodeIconHtml(node.tags, pin ? nodeFactsBadgeHtml(pin, getNodeIconDetails(node.tags ?? {}).emoji) : ''),
                     className: '',
                     iconSize: [NODE_MARKER_SIZE, NODE_MARKER_SIZE],
                     iconAnchor: [half, half],
                     popupAnchor: [0, -half]
                 });
-                L.marker([node.lat, node.lon], { icon }).bindPopup(nodePopupHtml(node.tags)).addTo(nodesLayer);
+                L.marker([node.lat, node.lon], { icon }).bindPopup(nodePopupHtml(node.tags, pin ? nodeFactsPopupHtml(pin) : '')).addTo(nodesLayer);
             }
         };
 
         renderNodes();
         map.on('zoomend', renderNodes);
+        if (nodePins.size) {
+            map.on('overlayadd overlayremove', (e: any) => { if (e.layer === factsLayer) renderNodes(); });
+            // A toggle elsewhere on the page adds or removes the layer first (`bindLayerPref`).
+            unsubscribeNodeFacts = mapFactsPref.on(() => renderNodes());
+        }
     }
 
     if (factsLayer && facts) {
@@ -222,8 +236,11 @@ export async function initMap2d(
         const placeRoutes = () => {
             const zoom = map.getZoom();
             const main = mainCoords.map((c) => map.project([c[1], c[0]], zoom));
+            // Web Mercator ground resolution at the map's latitude (256px tiles).
+            const metersPerPx = 40075016.686 * Math.cos((map.getCenter().lat * Math.PI) / 180) / 2 ** (zoom + 8);
+            const step = Math.min(ROUTE_OFFSET_M / metersPerPx, ROUTE_OFFSET_MAX_PX);
             routeLines.forEach(({ route, casing, dashed }, i) => {
-                const offset = alternatingOffset(i, ROUTE_OFFSET_PX);
+                const offset = alternatingOffset(i, step);
                 const shifted = offsetNearRoute(
                     route.coords.map((c) => map.project(c, zoom)),
                     main,
@@ -240,7 +257,7 @@ export async function initMap2d(
             map.on('zoomend', placeRoutes);
         }
 
-        for (const pin of facts.pins) {
+        for (const pin of loosePins) {
             const width = factsPinWidth(pin);
             // A pin on a POI node stands above the node's own marker instead of covering it.
             const lift = factsPinLift(pin);
@@ -298,6 +315,7 @@ export async function initMap2d(
         destroy: () => {
             unsubscribePhotos?.();
             unsubscribeFacts?.();
+            unsubscribeNodeFacts?.();
             clearTimeout(focusTimer);
             map.remove();
         },

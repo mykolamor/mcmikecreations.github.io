@@ -1,0 +1,655 @@
+{
+  "name": "Wasenkogel",
+  "description": "Hike from Breitenbach to Gmund via Wasenkogel (1211 m), Nesselscheibe (1258 m), Gefällberg (1070 m), Platten (879 m), Hainzenhöhe (833 m), and Kaltenbrunner Eck (842 m).",
+  "image": "/images/projects/data-viz/hikes/wasenkogel.jpg",
+  "origin": {
+    "lat": 47.73609085456234,
+    "lon": 11.692525396478661
+  },
+  "height": 512,
+  "checkpoints": [
+    [11.7174809, 47.7203310],
+    [11.6905672, 47.7288407],
+    [11.6804520, 47.7284036],
+    [11.6682092, 47.7312885],
+    [11.6570780, 47.7313486],
+    [11.6502786, 47.7490516],
+    [11.6839371, 47.7498374],
+    [11.7131921, 47.7445866],
+    [11.7178535, 47.7478702],
+    [11.7276612, 47.7538060],
+    [11.7349962, 47.7496082]
+  ],
+  "places": ["marienstein"],
+  "nodes": [
+    {
+      "id": 2607182341,
+      "lat": 47.7288407,
+      "lon": 11.6905672,
+      "demEle": 1215.7,
+      "tags": {
+        "name": "Wasenkogel",
+        "natural": "peak",
+        "ele": "1211"
+      }
+    },
+    {
+      "id": 2597722489,
+      "lat": 47.7284036,
+      "lon": 11.6804520,
+      "demEle": 1264.8,
+      "tags": {
+        "name": "Nesselscheibe",
+        "natural": "peak",
+        "ele": "1258",
+        "wikidata": "Q16854886",
+        "wikipedia": "de:Nesselscheibe"
+      }
+    },
+    {
+      "id": 1638504578,
+      "lat": 47.7312885,
+      "lon": 11.6682092,
+      "demEle": 1213.8,
+      "tags": {
+        "natural": "peak",
+        "ele": "1212",
+        "visited": "missing"
+      }
+    },
+    {
+      "id": 1272834691,
+      "lat": 47.7313486,
+      "lon": 11.6570780,
+      "demEle": 1078.4,
+      "tags": {
+        "name": "Gefällberg",
+        "natural": "peak",
+        "ele": "1070",
+        "summit:cross": "no",
+        "wikidata": "Q31545349",
+        "wikipedia": "de:Gefällberg"
+      }
+    },
+    {
+      "id": 1272834694,
+      "lat": 47.7490516,
+      "lon": 11.6502786,
+      "demEle": 890.2,
+      "tags": {
+        "name": "Platten",
+        "natural": "peak",
+        "ele": "879",
+        "summit:cross": "no",
+        "wikidata": "Q236127",
+        "wikipedia": "de:Platten"
+      }
+    },
+    {
+      "id": 356022809,
+      "lat": 47.7498374,
+      "lon": 11.6839371,
+      "demEle": 808.5,
+      "tags": {
+        "name": "Marienstein",
+        "place": "hamlet",
+        "ele": "807",
+        "wikidata": "Q956430",
+        "wikipedia": "de:Marienstein (Waakirchen)"
+      }
+    },
+    {
+      "id": 1223715722,
+      "lat": 47.7445866,
+      "lon": 11.7131921,
+      "demEle": 833.5,
+      "tags": {
+        "name": "Hainzenhöhe",
+        "natural": "peak",
+        "ele": "833"
+      }
+    },
+    {
+      "id": 1200501391,
+      "lat": 47.7478702,
+      "lon": 11.7178535,
+      "demEle": 854.0,
+      "tags": {
+        "name": "Kaltenbrunner Eck",
+        "natural": "peak",
+        "ele": "842"
+      }
+    },
+    {
+      "id": 378435526,
+      "lat": 47.7196666,
+      "lon": 11.7065722,
+      "demEle": 808.5,
+      "tags": {
+        "name": "Breitenbachtal parking",
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "parking": "surface",
+        "supervised": "no"
+      }
+    },
+    {
+      "id": 165427124,
+      "lat": 47.7489248,
+      "lon": 11.6922621,
+      "demEle": 870.9,
+      "tags": {
+        "name": "Restaurant Steinberg",
+        "amenity": "restaurant",
+        "building": "yes"
+      }
+    },
+    {
+      "id": 5741212084,
+      "lat": 47.7272436,
+      "lon": 11.6876825,
+      "demEle": 1172.7,
+      "tags": {
+        "natural": "spring"
+      }
+    }
+  ],
+  "facts": {
+    "summary": {
+      "en": "A long hike across low summits west of Gmund over mountains mostly used in forestry.",
+      "de": "Eine lange Wanderung über niedrige Gipfel westlich von Gmund über Berge, die hauptsächlich in der Forstwirtschaft genutzt werden."
+    },
+    "difficulty": {
+      "note": {
+        "en": "T3 for the steep section from Gefällberg (1070 m) to the road; T2 for everything else.",
+        "de": "T3 für den steilen Abschnitt vom Gefällberg (1070 m) bis zur Straße; T2 für alles andere."
+      },
+      "sections": [
+        {
+          "to": {
+            "node": 1638504578,
+            "name": {
+              "en": "Unnamed hill",
+              "de": "Unbenannter Hügel"
+            }
+          },
+          "sac": "T2",
+          "note": {
+            "en": "Forest roads, dirt trails.",
+            "de": "Forststraßen, Schotterwege."
+          }
+        },
+        {
+          "from": {
+            "node": 1638504578,
+            "name": {
+              "en": "Unnamed hill",
+              "de": "Unbenannter Hügel"
+            }
+          },
+          "to": {
+            "lat": 47.7282882,
+            "lon": 11.656818,
+            "demEle": 943.3,
+            "name": {
+              "en": "Forestry track",
+              "de": "Forststraße"
+            }
+          },
+          "sac": "T3",
+          "note": {
+            "en": "Short secured passage before the gate.",
+            "de": "Kurze versicherte Passage vor dem Gatterl."
+          }
+        },
+        {
+          "from": {
+            "lat": 47.7282882,
+            "lon": 11.656818,
+            "demEle": 943.3,
+            "name": {
+              "en": "Forestry track",
+              "de": "Forststraße"
+            }
+          },
+          "to": {
+            "lat": 47.7515947,
+            "lon": 11.7205706,
+            "demEle": 784.0,
+            "name": {
+              "en": "Dirt path ending at the parking lot",
+              "de": "Schotterweg endet am Parkplatz"
+            }
+          },
+          "sac": "T1-T2",
+          "note": {
+            "en": "Forestry track occasionally interrupted by trails",
+            "de": "Forststraße gelegentlich unterbrochen von Wanderwegen"
+          }
+        }
+      ],
+      "fitness": 3
+    },
+    "season": {
+      "best": [5, 6, 7, 8, 9, 10],
+      "possible": [1, 2, 3, 4, 11, 12],
+      "window": {
+        "from": "04-20",
+        "to": "10-25"
+      },
+      "note": {
+        "en": "Snowfields on the slope in winter. Mud in spring.",
+        "de": "Schneefelder am Hang im Winter. Matsch im Frühjahr."
+      }
+    },
+    "route": {
+      "start": {
+        "name": {
+          "en": "Breitenbach, Bad Wiessee",
+          "de": "Breitenbach, Bad Wiessee"
+        },
+        "at": {
+          "lat": 47.7203310,
+          "lon": 11.7174809,
+          "demEle": 752.5,
+          "name": {
+            "en": "Breitenbach, Bad Wiessee",
+            "de": "Breitenbach, Bad Wiessee"
+          }
+        }
+      },
+      "end": {
+        "name": {
+          "en": "Bahnhof, Gmund",
+          "de": "Bahnhof, Gmund"
+        },
+        "at": {
+          "lat": 47.7496082,
+          "lon": 11.7349962,
+          "demEle": 735.9,
+          "name": {
+            "en": "Bahnhof, Gmund",
+            "de": "Bahnhof, Gmund"
+          }
+        }
+      },
+      "type": "point-to-point",
+      "official": {
+        "en": "The usual route takes the larger tractor road off of Nesselscheibe (1268 m) north-east towards Marienstein.",
+        "de": "Die übliche Route nimmt die größere Traktorstraße von der Nesselscheibe (1268 m) nordöstlich Richtung Marienstein."
+      },
+      "optional": [
+        {
+          "name": {
+            "en": "Gefällberg",
+            "de": "Gefällberg"
+          },
+          "from": {
+            "node": 1638504578,
+            "name": {
+              "en": "Unnamed hill",
+              "de": "Unbenannter Hügel"
+            }
+          },
+          "to": "Gefällberg",
+          "note": {
+            "en": "Overgrown, unmarked detour; only for peak baggers.",
+            "de": "Zugewachsener, unmarkierter Abstecher; nur für Gipfelsammler."
+          }
+        }
+      ],
+      "terrain": ["forest-road", "path", "road", "forest", "overgrown"],
+      "shade": "moderate",
+      "trails": ["697", "699", "602", "532", "BK", "D7"],
+      "peaks": ["Wasenkogel", "Nesselscheibe", "Gefällberg", "Platten", "Hainzenhöhe", "Kaltenbrunner Eck"]
+    },
+    "navigation": {
+      "marking": "good",
+      "offline": false,
+      "spans": [
+        {
+          "from": "Nesselscheibe",
+          "to": "Gefällberg",
+          "marking": "none",
+          "note": {
+            "en": "No markings, navigate by trail or compass along the ridge line.",
+            "de": "Keine Markierungen, entlang des Grats nach Weg oder Kompass navigieren."
+          }
+        }
+      ],
+      "note": {
+        "en": "Signs and markings showing directions.",
+        "de": "Wegweiser und Markierungen, die Richtungen anzeigen."
+      }
+    },
+    "hazards": [
+      {
+        "kind": "overgrown",
+        "from": {
+          "node": 1638504578,
+          "name": {
+            "en": "Unnamed hill",
+            "de": "Unbenannter Hügel"
+          }
+        },
+        "to": "Gefällberg",
+        "severity": "high",
+        "note": {
+          "en": "The trail is visible but highly overgrown with thorny plants.",
+          "de": "Der Weg ist sichtbar, aber stark zugewachsen mit dornigen Pflanzen."
+        }
+      }
+    ],
+    "bailouts": [
+      {
+        "at": "Wasenkogel",
+        "to": {
+          "en": "Towards Gmund, along Dürnbach",
+          "de": "Richtung Gmund, entlang des Dürnbachs"
+        },
+        "via": "trail",
+        "last": false,
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/wasenkogel-gmund.gpx",
+        "note": {
+          "en": "North along the stream through Kaltenbrunn.",
+          "de": "Nach Norden entlang des Bachs durch Kaltenbrunn."
+        }
+      },
+      {
+        "at": "Nesselscheibe",
+        "to": {
+          "en": "Towards Bad Wiessee, along Breitenbach",
+          "de": "Richtung Bad Wiessee, entlang des Breitenbachs"
+        },
+        "via": "trail",
+        "last": false,
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/nesselscheibe-breitenbach.gpx",
+        "note": {
+          "en": "South down the slope, then along the stream.",
+          "de": "Nach Süden den Hang hinunter, dann entlang des Bachs."
+        }
+      },
+      {
+        "at": {
+          "node": 1638504578
+        },
+        "to": {
+          "en": "Towards Gmund through forestry roads",
+          "de": "Richtung Gmund über Forststraßen"
+        },
+        "via": "trail",
+        "last": true,
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/nesselscheibe-gmund.gpx",
+        "note": {
+          "en": "North-east onto forestry roads.",
+          "de": "Nordost auf Forststraßen."
+        }
+      }
+    ],
+    "water": [
+      {
+        "at": {
+          "node": 5741212084,
+          "name": {
+            "en": "Spring",
+            "de": "Quelle"
+          }
+        },
+        "kind": "spring",
+        "reliable": "seasonal"
+      }
+    ],
+    "signal": [
+      {
+        "to": "Nesselscheibe",
+        "quality": "good",
+        "network": "O2"
+      },
+      {
+        "from": "Nesselscheibe",
+        "to": "Gefällberg",
+        "quality": "patchy",
+        "network": "O2"
+      },
+      {
+        "from": "Gefällberg",
+        "quality": "good"
+      }
+    ],
+    "stops": [
+      {
+        "at": "Restaurant Steinberg",
+        "kind": "restaurant",
+        "open": {
+          "from": "01-01",
+          "to": "12-31"
+        },
+        "days": {
+          "en": "Daily, closed Wednesdays",
+          "de": "Täglich, mittwochs Ruhetag"
+        },
+        "food": true,
+        "water": true,
+        "checked": "2026-10-05"
+      }
+    ],
+    "access": {
+      "carFree": "yes",
+      "checked": "2026-10-04",
+      "transport": [
+        {
+          "mode": "train",
+          "from": {
+            "en": "Munich Central Station",
+            "de": "München Hbf"
+          },
+          "to": {
+            "name": {
+              "en": "Gmund",
+              "de": "Gmund"
+            }
+          },
+          "direction": "there",
+          "line": "RB 57",
+          "operator": "Bayerische Regiobahn",
+          "duration": 61,
+          "changes": 0,
+          "first": "07:02",
+          "last": "20:02",
+          "frequency": {
+            "en": "hourly",
+            "de": "stündlich"
+          },
+          "ticket": {
+            "en": "Deutschlandticket valid to Bad Wiessee",
+            "de": "Deutschlandticket bis ad Wiessee gültig"
+          },
+          "url": "https://www.bahn.de/",
+          "note": {
+            "en": "Change in Gmund.",
+            "de": "Umstieg in Gmund."
+          }
+        },
+        {
+          "mode": "bus",
+          "from": {
+            "en": "Gmund",
+            "de": "Gmund"
+          },
+          "to": {
+            "name": {
+              "en": "Breitenbach, Bad Wiessee",
+              "de": "Breitenbach, Bad Wiessee"
+            }
+          },
+          "direction": "there",
+          "line": "359",
+          "operator": "MVV",
+          "duration": 7,
+          "changes": 0,
+          "first": "08:04",
+          "last": "22:05"
+        }
+      ],
+      "parking": [
+        {
+          "name": {
+            "en": "Breitenbachtal parking",
+            "de": "Parkplatz Breitenbachtal"
+          },
+          "at": "Breitenbachtal parking",
+          "size": "small",
+          "fills": "weekends",
+          "checked": "2026-10-04"
+        }
+      ]
+    },
+    "suitability": {
+      "kids": "yes",
+      "dogs": "yes",
+      "stroller": false,
+      "bike": "partial",
+      "winter": "yes",
+      "night": "no",
+      "solo": "yes",
+      "note": {
+        "en": "The overgrown sections are not accessible with bikes and get muddy in rainy or snowy seasons. Only Wasenkogel (1211 m) is suitable for strollers through a different route.",
+        "de": "Die zugewachsenen Abschnitte sind mit dem Fahrrad nicht befahrbar und werden in der Regen- oder Schneesaison schlammig. Lediglich der Wasenkogel (1211 m) ist über eine andere Route für Kinderwagen geeignet."
+      }
+    },
+    "legs": [
+      {
+        "to": "Wasenkogel",
+        "terrain": ["road", "forest-road", "path"],
+        "sac": "T1-T2",
+        "marking": "good"
+      },
+      {
+        "to": {
+          "node": 1638504578,
+          "name": {
+            "en": "Unnamed hill",
+            "de": "Unbenannter Hügel"
+          }
+        },
+        "terrain": ["forest-road", "path"],
+        "sac": "T2",
+        "marking": "good"
+      },
+      {
+        "to": {
+          "lat": 47.7282882,
+          "lon": 11.656818,
+          "demEle": 943.3,
+          "name": {
+            "en": "Forestry track",
+            "de": "Forststraße"
+          }
+        },
+        "terrain": ["path", "forest", "overgrown"],
+        "sac": "T3",
+        "marking": "none",
+        "optional": true,
+        "note": {
+          "en": "Unmarked overgrown trail, descent through the forest.",
+          "de": "Unmarkierter zugewachsener Weg, Abstieg durch den Wald."
+        }
+      },
+      {
+        "to": "Platten",
+        "terrain": ["forest-road"],
+        "sac": "T2",
+        "marking": "good"
+      },
+      {
+        "to": {
+          "lat": 47.7515947,
+          "lon": 11.7205706,
+          "demEle": 784.0,
+          "name": {
+            "en": "Dirt path ending at the parking lot",
+            "de": "Schotterweg endet am Parkplatz"
+          }
+        },
+        "terrain": ["forest-road","path","road"],
+        "sac": "T1-T2",
+        "marking": "good"
+      }
+    ],
+    "plan": {
+      "for": [
+        {
+          "en": "For hikers of all levels who love to explore",
+          "de": "Für Wanderer aller Leistungsstufen, die gerne auf Entdeckungstour gehen"
+        },
+        {
+          "en": "For beginners exploring an accessible mountain (short route)",
+          "de": "Für Anfänger, die einen leicht zu besteigenden Berg erkunden möchten (kurze Route)"
+        }
+      ],
+      "notFor": [
+        {
+          "en": "Afraid of getting dirty",
+          "de": "Angst, sich zu beschmutzen"
+        }
+      ],
+      "variants": [
+        {
+          "name": {
+            "en": "Wasenkogel (1211 m) only",
+            "de": "Nur der Wasenkogel (1211 m)"
+          },
+          "recommended": true,
+          "summary": {
+            "en": "Stay on the route until the first summit, then take the bailout route.",
+            "de": "Bleiben Sie auf der Route bis zum ersten Gipfel und nehmen Sie dann die Ausweichroute."
+          },
+          "distance": 9400,
+          "ascent": 603,
+          "descent": 585,
+          "duration": 139,
+          "sac": "T2"
+        },
+        {
+          "name": {
+            "en": "Loop to Nesselscheibe (1258 m)",
+            "de": "Rundwanderung zur Nesselscheibe (1258 m)"
+          },
+          "summary": {
+            "en": "Continue to Nesselscheibe (1258 m) and turn south for a loop.",
+            "de": "Weiter bis zur Nesselscheibe (1258 m) und dann nach Süden abbiegen, um eine Rundwanderung zu machen."
+          },
+          "distance": 12000,
+          "ascent": 775,
+          "descent": 775,
+          "duration": 173,
+          "sac": "T2"
+        }
+      ],
+      "timing": {
+        "start": "09:40"
+      },
+      "alternatives": {
+        "easier": ["2025-10-26-auer_berg"],
+        "harder": ["2026-05-17-rechelkopf_semmelberg"],
+        "similar": ["2026-09-03-gassler_berg", "2026-03-15-bichl_blomberg"]
+      },
+      "note": {
+        "en": "The trek goes near golf courses that shouldn't be walked on.",
+        "de": "Die Wanderroute führt in der Nähe von Golfplätzen entlang, auf denen man nicht laufen sollte."
+      }
+    },
+    "sources": [
+      {
+        "title": {
+          "en": "Marienstein (Waakirchen) on wikipedia.org",
+          "de": "Marienstein (Waakirchen) auf wikipedia.org"
+        },
+        "url": "https://de.wikipedia.org/wiki/Marienstein_(Waakirchen)",
+        "kind": "website",
+        "lang": "de"
+      }
+    ]
+  }
+}

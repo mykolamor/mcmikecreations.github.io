@@ -149,9 +149,47 @@ function unescapeHtml(text: string): string {
  *
  * With `docMarker`, a reference naming one of the post's place docs is also
  * followed by a small link to that doc's section (see `placeDocMarkerHtml`);
- * `docMarker` decides, so it can link each doc only once.
+ * `docMarker` decides, so it can link each doc only once. With `docs`, plain
+ * mentions of a doc's names in the text between references ("through
+ * Marienstein") are marked the same way, just without an elevation.
  */
 function markToponyms(
+    html: string,
+    places: PlaceIndex | null,
+    docMarker?: (nameWords: string[]) => string,
+    docs?: PlaceDocIndex | null
+): string {
+    if (!docs) return markReferences(html, places, docMarker);
+    let out = '';
+    let last = 0;
+    for (const m of html.matchAll(TOPONYM)) {
+        out += markMentions(html.slice(last, m.index), docs, places, docMarker) + markReferences(m[0], places, docMarker);
+        last = m.index! + m[0].length;
+    }
+    return out + markMentions(html.slice(last), docs, places, docMarker);
+}
+
+/** A place doc's name without an elevation, marked like a `Name (1234 m)` reference. */
+function markMentions(
+    html: string,
+    docs: PlaceDocIndex,
+    places: PlaceIndex | null,
+    docMarker?: (nameWords: string[]) => string
+): string {
+    return docs.markMentions(html, (text) => {
+        const nameWords = unescapeHtml(text.replace(/&nbsp;/g, ' ')).split(/\s+/);
+        // No elevation to check a partial name against, so only the whole name counts.
+        const place = places?.match(nameWords, NaN);
+        const marker = docMarker?.(nameWords) ?? '';
+        if (!place || place.start !== 0) return `<span translate="no">${text}</span>` + marker;
+        const { lat, lon } = place.node;
+        return '<span translate="no">' +
+            `<a class="mk-place" href="#hike-map" data-place-lat="${lat}" data-place-lon="${lon}" title="Show on the map">` +
+            `${text}</a></span>` + marker;
+    });
+}
+
+function markReferences(
     html: string,
     places: PlaceIndex | null,
     docMarker?: (nameWords: string[]) => string
@@ -210,9 +248,10 @@ export interface ParseMarkdownOptions {
     nodes?: PlaceNode[] | null;
     /**
      * The post's place docs (front matter `places:`). The first reference to
-     * each in the prose gets a link to its section, and `[text](place:<slug>)`
-     * links there explicitly. The server load sends the same list to the
-     * browser, so a client-side re-parse links exactly the same.
+     * each in the prose gets a link to its section, plain mentions of its
+     * names link there, and `[text](place:<slug>)` links there explicitly.
+     * The server load sends the same list to the browser, so a client-side
+     * re-parse links exactly the same.
      */
     placeDocs?: PlaceDocRef[] | null;
     /**
@@ -325,7 +364,7 @@ export async function parseMarkdown(
             text(token: any) {
                 if (token.tokens) return false;
                 const html = token.escaped ? token.text : escapeHtml(token.text);
-                return placeLinksOff === 0 ? markToponyms(html, places, docMarker) : markToponyms(html, null);
+                return placeLinksOff === 0 ? markToponyms(html, places, docMarker, docs) : markToponyms(html, null);
             },
             heading(token: any) {
                 return withoutPlaceLinks(() => Renderer.prototype.heading.call(this as any, token));

@@ -1,7 +1,7 @@
 // Run with: node_modules/.bin/jiti src/lib/hikes/facts-overlay.test.ts
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildFactsOverlay, chartPins, offsetNearRoute, pinEmojis, pinColor, routeSlice } from './facts-overlay';
+import { buildFactsOverlay, chartPins, nodeFactsBadgeHtml, offsetNearRoute, pinEmojis, pinColor, pinsByNode, routeSlice } from './facts-overlay';
 import type { HikeAuthoredFacts, Place } from './facts-schema';
 
 // A straight route north along lon 11.0: 11 points ~1.11 km apart.
@@ -52,6 +52,20 @@ test('pins group by place; spans become bands and map lines', () => {
 	assert.equal(grades[1].color, '#3b82f6');
 	assert.equal(o.lines.length, 1);
 	assert.ok(o.lines[0].coords.length >= 2);
+});
+
+test('pins on a drawn POI node fold into its marker; water on a water node adds no badge', () => {
+	const o = buildFactsOverlay(
+		{ bailouts: [{ at: at('Peak', 2, 7) }], water: [{ at: at('Spring', 4, 9) }, { at: at('Near peak', 2.01) }, { at: at('Undrawn', 6, 11) }] },
+		'en', COORDS, 1
+	);
+	const { onNodes, loose } = pinsByNode(o.pins, [7, 9, undefined]);
+	assert.deepEqual([...onNodes.keys()], [7, 9]);
+	// Close to a node isn't on it, and a node that isn't drawn keeps its pin.
+	assert.deepEqual(loose.map((p) => p.name), ['Near peak', 'Undrawn']);
+	assert.match(nodeFactsBadgeHtml(onNodes.get(7)!, '⛰️'), />🛟<\/div>$/);
+	assert.equal(nodeFactsBadgeHtml(onNodes.get(9)!, '💧'), '');
+	assert.match(nodeFactsBadgeHtml(onNodes.get(9)!, '📍'), />💧<\/div>$/);
 });
 
 test('chartPins merges pins that would overlap on the chart', () => {

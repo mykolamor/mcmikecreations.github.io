@@ -130,6 +130,11 @@ interface HikeMeta {
 	 * own `facts`. Raw: validated by `readHikeFacts` (`facts.server.ts`).
 	 */
 	facts?: unknown;
+	/**
+	 * Place doc slugs shown under every post on this route that has no
+	 * `places:` of its own. Raw: validated by `readPostPlaces` (`place-docs.server.ts`).
+	 */
+	places?: unknown;
 }
 
 interface Map {
