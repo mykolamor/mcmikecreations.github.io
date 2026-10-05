@@ -36,12 +36,13 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from . import config
-from .cli import resolve_posts
+from . import cliutil, config
+from .cliutil import resolve_posts
+from .markdown import is_place_doc
 from .postwriter import merge_image_fields, read_images
-from .report import read_report
+from .report import matched_by_filename, read_report
 from .terrain import Terrain
-from .track_metrics import MAX_INTERVAL_S, Point, gpx_for_post, read_track
+from .track_metrics import MAX_INTERVAL_S, Point, gpx_for_post, haversine_m, read_track
 
 TRACK_SLACK_S = 15 * 60
 AGREE_M = 250.0
@@ -78,12 +79,6 @@ def read_stamp(match: dict | None) -> Stamp | None:
     return Stamp(wall.isoformat(), utc.timestamp(), offset_min, wall.date().isoformat())
 
 
-def _distance_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    la1, lo1, la2, lo2 = map(math.radians, (lat1, lon1, lat2, lon2))
-    h = math.sin((la2 - la1) / 2) ** 2 + math.cos(la1) * math.cos(la2) * math.sin((lo2 - lo1) / 2) ** 2
-    return 2 * 6371000 * math.asin(math.sqrt(h))
-
-
 def position_at(track: list[Point], t: float) -> tuple[float, float] | None:
     """Where the recorded track was at unix time `t`, linearly interpolated.
 
@@ -95,7 +90,7 @@ def position_at(track: list[Point], t: float) -> tuple[float, float] | None:
     if track[i].time == t:
         return track[i].lat, track[i].lon
     a, b = track[i - 1], track[i]
-    if b.time - a.time > MAX_INTERVAL_S and _distance_m(a.lat, a.lon, b.lat, b.lon) > AGREE_M:
+    if b.time - a.time > MAX_INTERVAL_S and haversine_m(a.lat, a.lon, b.lat, b.lon) > AGREE_M:
         return None
     f = (t - a.time) / (b.time - a.time) if b.time > a.time else 0.0
     return a.lat + (b.lat - a.lat) * f, a.lon + (b.lon - a.lon) * f
@@ -108,7 +103,7 @@ def _segment_distance_m(lat: float, lon: float, a: Point, b: Point) -> float:
     bx, by = (b.lon - lon) * k, b.lat - lat
     dx, dy = bx - ax, by - ay
     f = 0.0 if dx == dy == 0 else max(0.0, min(1.0, -(ax * dx + ay * dy) / (dx * dx + dy * dy)))
-    return _distance_m(lat, lon, a.lat + (b.lat - a.lat) * f, a.lon + (b.lon - a.lon) * f)
+    return haversine_m(lat, lon, a.lat + (b.lat - a.lat) * f, a.lon + (b.lon - a.lon) * f)
 
 
 def track_distance_m(track: list[Point], t: float, lat: float, lon: float) -> float:
@@ -118,12 +113,12 @@ def track_distance_m(track: list[Point], t: float, lat: float, lon: float) -> fl
     ended (waiting at the trailhead, a hut at the top). Inside a recording
     gap it is anywhere on the straight line between the gap's two ends."""
     if t <= track[0].time:
-        return _distance_m(lat, lon, track[0].lat, track[0].lon)
+        return haversine_m(lat, lon, track[0].lat, track[0].lon)
     if t >= track[-1].time:
-        return _distance_m(lat, lon, track[-1].lat, track[-1].lon)
+        return haversine_m(lat, lon, track[-1].lat, track[-1].lon)
     pos = position_at(track, t)
     if pos:
-        return _distance_m(lat, lon, *pos)
+        return haversine_m(lat, lon, *pos)
     i = bisect.bisect_left([p.time for p in track], t)
     return _segment_distance_m(lat, lon, track[i - 1], track[i])
 
@@ -147,13 +142,7 @@ def _believable(stamp: Stamp, usual_offset: int, post_date: str, track: list[Poi
 def time_updates(post_date: str, images: dict[str, dict], report: dict,
                  track: list[Point], terrain) -> dict[str, dict]:
     """filename -> fields to set (None removes a field) for one post."""
-    stamps: dict[str, Stamp] = {}
-    for entry in report.get("entries", []):
-        if entry.get("status") != "matched":
-            continue
-        stamp = read_stamp(entry.get("match"))
-        if stamp:
-            stamps[entry["web_path"].rsplit("/", 1)[-1]] = stamp
+    stamps: dict[str, Stamp] = matched_by_filename(report, read_stamp)
     offsets = Counter(s.offset_min for s in stamps.values())
     usual_offset = offsets.most_common(1)[0][0] if offsets else None
 
@@ -188,9 +177,27 @@ def time_updates(post_date: str, images: dict[str, dict], report: dict,
     return updates
 
 
-def backfill_post(post_path: Path, updates: dict[str, dict], dry_run: bool = False) -> int:
-    """Apply `updates` to the post's existing `images` entries; return how many changed."""
-    return merge_image_fields(post_path, updates, dry_run=dry_run)
+def post_updates(post_path: Path, settings: config.Settings, terrain=None) -> dict[str, dict]:
+    """`time_updates` for one post, from its match report and recorded track on disk.
+    A place doc has neither a date nor a track, so it gets nothing."""
+    if is_place_doc(post_path):
+        return {}
+    try:
+        report = read_report(settings.out_dir, post_path.name)
+    except FileNotFoundError:
+        report = {"entries": []}
+    gpx = gpx_for_post(post_path.read_text(encoding="utf-8"), post_path.stem, settings.static_root)
+    track = read_track(gpx.read_text(encoding="utf-8")) if gpx.exists() else []
+    terrain = terrain or Terrain.for_settings(settings)
+    return time_updates(post_path.stem[:10], read_images(post_path), report, track, terrain)
+
+
+def refresh_post(post_path: Path, settings: config.Settings, terrain=None) -> int:
+    """Bring one post's `taken` and track locations up to date with its match
+    report. Called after anything rewrites the report or the `images` map
+    (image_optimize.py, the review web UI), so new photos get `taken` without
+    a separate backfill run. Returns how many entries changed."""
+    return merge_image_fields(post_path, post_updates(post_path, settings, terrain))
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -199,38 +206,23 @@ def build_parser() -> argparse.ArgumentParser:
         description="Add `taken` from match reports to hike post images, and place "
                     "photos without GPS on the recorded track by that time.",
     )
-    p.add_argument("posts", nargs="*", metavar="POST", default=[],
-                   help="Post filenames without a path, e.g. 2024-08-31-aiplspitz.md "
-                        "(the .md is optional). Omit to process every post.")
-    p.add_argument("--posts-dir", default=None, help="Directory holding the hike markdown posts.")
-    p.add_argument("--out-dir", default=None, help="Directory holding the per-post JSON reports.")
-    p.add_argument("--dry-run", action="store_true",
-                   help="Report what would change without writing any file.")
+    cliutil.add_posts(p)
+    cliutil.add_posts_dir(p)
+    cliutil.add_out_dir(p)
+    cliutil.add_dry_run(p)
     return p
 
 
 def main(argv=None) -> int:
     args = build_parser().parse_args(argv)
-    kwargs = {}
-    if args.posts_dir:
-        kwargs["posts_dir"] = Path(args.posts_dir)
-    if args.out_dir:
-        kwargs["out_dir"] = Path(args.out_dir)
-    settings = config.Settings(**kwargs)
+    settings = cliutil.settings_from_dirs(args)
     terrain = Terrain.for_settings(settings)
 
     total = 0
     posts = resolve_posts(args, settings)
     for path in posts:
-        try:
-            report = read_report(settings.out_dir, path.name)
-        except FileNotFoundError:
-            report = {"entries": []}
-        markdown = path.read_text(encoding="utf-8")
-        gpx = gpx_for_post(markdown, path.stem)
-        track = read_track(gpx.read_text(encoding="utf-8")) if gpx.exists() else []
-        updates = time_updates(path.stem[:10], read_images(path), report, track, terrain)
-        updated = backfill_post(path, updates, dry_run=args.dry_run)
+        updates = post_updates(path, settings, terrain)
+        updated = merge_image_fields(path, updates, dry_run=args.dry_run)
         if updated:
             total += updated
             placed = sum(1 for f in updates.values() if f.get("located") == "track")
@@ -239,6 +231,5 @@ def main(argv=None) -> int:
                   + (f", placed {placed} on the track" if placed else "")
                   + (f", dropped {dropped} timestamp(s)" if dropped else ""))
 
-    print(f"\ntotal: {total} image(s) updated across {len(posts)} post(s)"
-          + (" (dry run, nothing written)" if args.dry_run else ""))
+    cliutil.print_summary("\ntotal", f"{total} image(s) updated", len(posts), "post(s)", args.dry_run)
     return 0

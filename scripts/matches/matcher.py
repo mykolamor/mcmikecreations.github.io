@@ -280,7 +280,7 @@ def match_post(
     explicit_albums: list[str] | None = None,
 ) -> PostResult:
     """Match every media reference in one post."""
-    from .markdown import find_media_refs, parse_capture_date, post_slug, _on_disk
+    from .markdown import find_media_refs, on_disk, parse_capture_date, post_slug
 
     refs = find_media_refs(post_path, settings.static_root)
     slug = post_slug(post_path)
@@ -295,7 +295,7 @@ def match_post(
         if ref.kind != "image" or not ref.exists:
             decisions.append(decide_non_image(ref))
             continue
-        local_path = _on_disk(ref.local_path)
+        local_path = on_disk(ref.local_path)
         try:
             query = Image.open(local_path)
             query.load()

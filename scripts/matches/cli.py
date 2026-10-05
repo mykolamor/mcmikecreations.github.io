@@ -1,11 +1,11 @@
 """Command-line interface for Immich image matching."""
 
 import argparse
-import os
 import sys
-from pathlib import Path
 
-from . import config
+from . import cliutil, config
+from .backfill_time import refresh_post
+from .cliutil import resolve_posts
 from .immich import ImmichClient
 from .matcher import match_post
 from .report import build_report, report_path, write_report
@@ -20,10 +20,10 @@ def build_parser() -> argparse.ArgumentParser:
         ),
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
-    p.add_argument(
-        "posts", nargs="*", metavar="POST", default=[],
-        help="Post filenames without a path, e.g. 2024-08-31-aiplspitz.md "
-             "(the .md is optional). Omit to process every post.",
+    cliutil.add_posts(
+        p, help="Post filenames without a path, e.g. 2024-08-31-aiplspitz.md "
+                "(the .md is optional), or place docs, e.g. knorrhuette. "
+                "Omit to process every post and place doc.",
     )
     p.add_argument(
         "--album", action="append", default=[], metavar="NAME",
@@ -39,22 +39,21 @@ def build_parser() -> argparse.ArgumentParser:
                      help=f"Immich API key. Defaults to ${config.API_KEY_ENV}.")
     src.add_argument("--site-url", default=config.DEFAULT_SITE_URL,
                      help="Base URL of the deployed site, used for 'Open on site' links.")
-    src.add_argument("--posts-dir", default=None,
-                     help="Directory holding the hike markdown posts.")
+    cliutil.add_posts_dir(src)
+    src.add_argument("--places-dir", default=None,
+                     help="Directory holding the place docs. Defaults to `places` next to --posts-dir.")
     src.add_argument("--static-root", default=None,
                      help="Directory that /images/... paths resolve against.")
 
     out = p.add_argument_group("output")
-    out.add_argument("--out-dir", default=None,
-                     help="Where per-post JSON mappings are written.")
+    cliutil.add_out_dir(out, help="Where per-post JSON mappings are written.")
     out.add_argument("--cache-dir", default=None,
                      help="Thumbnail and preview cache. Defaults to a dot-directory inside --out-dir.")
     out.add_argument("--no-cache", action="store_true",
                      help="Re-download images instead of reusing the cache.")
     out.add_argument("--force", action="store_true",
                      help="Re-match posts that already have an output file.")
-    out.add_argument("--dry-run", action="store_true",
-                     help="Report what would be matched without writing any file.")
+    cliutil.add_dry_run(out, help="Report what would be matched without writing any file.")
 
     tune = p.add_argument_group("matching thresholds")
     tune.add_argument("--date-window-days", type=int, default=config.DEFAULT_DATE_WINDOW_DAYS,
@@ -99,6 +98,15 @@ def build_parser() -> argparse.ArgumentParser:
     return p
 
 
+# Flags that aren't run settings, or that a subprocess re-running a match
+# (review.actions.settings_to_argv) must not inherit: the key goes through
+# the environment so it never shows in a process listing, and the caller
+# picks the posts, --force and output itself.
+NOT_INHERITED = frozenset({"help", "posts", "album", "api_key", "force", "dry_run", "verbose"})
+# store_true flags that switch a Settings field (the value) off.
+NEGATED = {"no_cache": "use_cache", "no_trust_album": "trust_album"}
+
+
 def settings_from_args(args) -> config.Settings:
     kwargs = dict(
         site_url=args.site_url,
@@ -121,30 +129,7 @@ def settings_from_args(args) -> config.Settings:
         force=args.force,
         verbose=args.verbose,
     )
-    kwargs["immich_url"] = args.immich_url or os.environ.get(
-        config.IMMICH_URL_ENV, "")
-    kwargs["api_key"] = args.api_key or os.environ.get(config.API_KEY_ENV, "")
-    for name in ("posts_dir", "static_root", "out_dir", "cache_dir"):
-        value = getattr(args, name, None)
-        if value:
-            kwargs[name] = Path(value)
-    return config.Settings(**kwargs)
-
-
-def resolve_posts(args, settings: config.Settings) -> list[Path]:
-    """Post paths to process. Empty selection means every post."""
-    if not args.posts:
-        return sorted(settings.posts_dir.glob("*.md"))
-    chosen: list[Path] = []
-    for name in args.posts:
-        if "/" in name or "\\" in name:
-            raise SystemExit(f"Post names must not contain a path: {name!r}")
-        stem = name[:-3] if name.endswith(".md") else name
-        path = settings.posts_dir / f"{stem}.md"
-        if not path.is_file():
-            raise SystemExit(f"No such post: {path}")
-        chosen.append(path)
-    return chosen
+    return cliutil.settings_from_dirs(args, **kwargs, **cliutil.immich_credentials(args))
 
 
 def main(argv=None) -> int:
@@ -187,6 +172,7 @@ def main(argv=None) -> int:
 
         if not args.dry_run:
             write_report(report, settings.out_dir, path.name)
+            refresh_post(path, settings)
 
     print(
         f"\ntotal: {totals['matched']} matched, {totals['ambiguous']} ambiguous, "

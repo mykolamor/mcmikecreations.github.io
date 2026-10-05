@@ -3,15 +3,9 @@
 from datetime import datetime, timezone
 
 from matches import backfill_time as bt
+from matches.postwriter import merge_image_fields, read_images
+from matches.tests.conftest import BLUR, FakeTerrain, report_entry
 from matches.track_metrics import Point
-
-BLUR = "data:image/webp;base64,ZZ"
-WEB = "/images/projects/data-viz/hikes/stories/demo/"
-
-
-class FakeTerrain:
-    def meta(self, lat, lon):
-        return {} if lat is None else {"demEle": round(1000 + lat, 1)}
 
 
 def _ts(iso: str) -> float:
@@ -20,7 +14,7 @@ def _ts(iso: str) -> float:
 
 def _entry(name, local, utc, status="matched"):
     match = {"local_date_time": local, "file_created_at": utc} if status == "matched" else None
-    return {"web_path": WEB + name, "status": status, "match": match}
+    return report_entry(name, match, status)
 
 
 # A straight track north along lon 11.0, 10:00-11:00 UTC, ~1.1 km per 10 min.
@@ -117,11 +111,11 @@ def test_backfill_writes_and_is_idempotent(tmp_path):
                     encoding="utf-8")
     updates = {"a.jpg": {"taken": "2026-06-01T12:30:00+02:00", "lat": 47.03, "lon": 11.0,
                          "demEle": 1047.0, "located": "track"}}
-    assert bt.backfill_post(post, updates) == 1
+    assert merge_image_fields(post, updates) == 1
     text = post.read_text(encoding="utf-8")
     assert ("  a.jpg: {w: 4, h: 3, taken: '2026-06-01T12:30:00+02:00', lat: 47.03, lon: 11.0, "
             f"demEle: 1047.0, located: track, blur: '{BLUR}'}}\n") in text
-    assert bt.backfill_post(post, updates) == 0
+    assert merge_image_fields(post, updates) == 0
 
 
 def test_photo_after_the_recording_ended_passes_at_the_end_point():
@@ -144,3 +138,19 @@ def test_photo_without_gps_well_after_the_recording_keeps_only_its_time():
     report = {"entries": [_entry("a.jpg", "2026-06-01T15:00:00Z", "2026-06-01T13:00:00Z")]}
     assert bt.time_updates("2026-06-01", images, report, TRACK, FakeTerrain()) == {
         "a.jpg": {"taken": "2026-06-01T15:00:00+02:00"}}
+
+
+def test_refresh_post_reads_the_report_and_writes_taken(tmp_path):
+    from matches import config
+    from matches.report import write_report
+
+    posts, out = tmp_path / "markdown", tmp_path / "out"
+    posts.mkdir()
+    post = posts / "2026-06-01-nowhere-planned.md"
+    post.write_text("---\ntitle: T\nimages:\n  a.jpg: {w: 4, h: 3}\n---\nbody\n", encoding="utf-8")
+    write_report({"entries": [_entry("a.jpg", "2026-06-01T12:20:00Z", "2026-06-01T10:20:00Z")]},
+                 out, post.name)
+    settings = config.Settings(posts_dir=posts, out_dir=out)
+    assert bt.refresh_post(post, settings) == 1
+    assert read_images(post)["a.jpg"]["taken"] == "2026-06-01T12:20:00+02:00"
+    assert bt.refresh_post(post, settings) == 0

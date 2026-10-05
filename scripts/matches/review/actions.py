@@ -14,11 +14,12 @@ from pathlib import Path
 from PIL import Image
 
 from .. import config
-from ..markdown import MediaRef, parse_capture_date
+from ..cli import NEGATED, NOT_INHERITED, build_parser
+from ..markdown import MediaRef, avif_tier_paths, images_prefix, parse_capture_date
 from ..matcher import match_image
 from ..optimize import encode_avif_tiers, encode_lqip_data_uri, location_meta, open_exif_corrected
 from ..postwriter import remove_media_from_post, upsert_image_front_matter
-from .model import build_entry, web_path_for
+from .model import build_entry, manual_entry, web_path_for
 from .remote import asset_to_dict
 from ..terrain import Terrain
 
@@ -55,20 +56,28 @@ def validate(spec: "AddSpec") -> str:
     return ""
 
 
-def stories_dir(settings: config.Settings, slug: str) -> Path:
-    return settings.static_root / "images/projects/data-viz/hikes/stories" / slug
+def _kind(post) -> str:
+    """"post" or "place" (see `HikePost.kind`); anything without one is a post."""
+    return getattr(post, "kind", "post")
 
 
-_AVIF_TIER_SUFFIX = "|".join(str(t) for t in config.AVIF_TIERS)
+def stories_dir(settings: config.Settings, slug: str, kind: str = "post") -> Path:
+    """Folder a post's story images live in, or a place doc's images (kind "place")."""
+    return settings.static_root / images_prefix(kind).strip("/") / slug
+
+
 # `<NN>.ext` for a plain file, or `<NN>-<tier>.avif` for one of
 # optimize.py's tiers - it deletes the original once those are written, so
 # that's the only trace of the index left on disk (see optimize.optimize_post
-# and review.actions.download_and_optimize).
-_INDEX_RE = re.compile(rf"^(\d+)(?:-(?:{_AVIF_TIER_SUFFIX})\.avif|\.[^.]+)$")
+# and review.actions.download_and_optimize). The tier suffixes come from
+# `avif_tier_paths`, so they always match what's actually written.
+_AVIF_TIER_SUFFIX = "|".join(re.escape(p.name.removeprefix("NN"))
+                             for p in avif_tier_paths(Path("NN")))
+_INDEX_RE = re.compile(rf"^(\d+)(?:{_AVIF_TIER_SUFFIX}|\.[^.]+)$")
 
 
 def next_out_name(settings: config.Settings, slug: str, date: str,
-                  ext: str = ".jpg") -> str:
+                  ext: str = ".jpg", kind: str = "post") -> str:
     """Suggest `<date>-<NN><ext>`, one past the highest index already on disk
 
     for that date in the hike's folder - the naming convention every existing
@@ -76,7 +85,7 @@ def next_out_name(settings: config.Settings, slug: str, date: str,
     """
     prefix = f"{date}-"
     next_index = 0
-    folder = stories_dir(settings, slug)
+    folder = stories_dir(settings, slug, kind)
     if folder.is_dir():
         for f in folder.iterdir():
             if not f.name.startswith(prefix):
@@ -90,8 +99,7 @@ def next_out_name(settings: config.Settings, slug: str, date: str,
 def match_single(settings, remote, post, local_path: Path) -> dict:
     """Run the cascade for one local image and return a report entry."""
     assets = remote.candidates_for(post)
-    slug = post.slug
-    web = web_path_for(slug, local_path.name)
+    web = web_path_for(post.slug, local_path.name, _kind(post))
     ref = MediaRef(
         index=-1, web_path=web, local_path=local_path, kind="image",
         capture_date=parse_capture_date(local_path.name), exists=True,
@@ -125,7 +133,7 @@ def download_and_optimize(settings, remote, post, asset_id: str,
     original-resolution file is written to the folder, matching what
     `optimize.optimize_post` leaves behind for every other matched image.
     """
-    target_dir = stories_dir(settings, post.slug)
+    target_dir = stories_dir(settings, post.slug, _kind(post))
     target_dir.mkdir(parents=True, exist_ok=True)
     out_path = target_dir / out_name
 
@@ -153,11 +161,7 @@ def download_and_optimize(settings, remote, post, asset_id: str,
         meta = {"w": img.width, "h": img.height}
     upsert_image_front_matter(post.path, out_path.name, meta)
 
-    entry = build_entry(
-        web_path_for(post.slug, out_path.name), out_path,
-        asset_to_dict(asset) if asset else None,
-        "matched" if asset else "unmatched", "manual", "manual",
-    )
+    entry = manual_entry(web_path_for(post.slug, out_path.name, _kind(post)), out_path, asset)
     return out_path, entry
 
 
@@ -179,11 +183,8 @@ def apply_add_spec(settings, remote, post, spec: AddSpec) -> dict:
 
     if spec.mode == MODE_BOTH:
         asset = remote.find_asset(post, spec.asset_id or spec.asset_name)
-        return build_entry(
-            web_path_for(post.slug, spec.local_path.name), spec.local_path,
-            asset_to_dict(asset) if asset else None,
-            "matched" if asset else "unmatched", "manual", "manual",
-        )
+        return manual_entry(web_path_for(post.slug, spec.local_path.name, _kind(post)),
+                            spec.local_path, asset)
     raise ValueError(f"Unknown mode: {spec.mode}")
 
 
@@ -195,10 +196,7 @@ def local_files_for(settings: config.Settings, web_path: str) -> list[Path]:
     target = (root / web_path.lstrip("/")).resolve()
     if not target.is_relative_to(root):
         raise ValueError(f"Path escapes the static root: {web_path}")
-    candidates = [target] + [
-        target.with_name(f"{target.stem}-{t}.avif") for t in config.AVIF_TIERS
-    ]
-    return [c for c in candidates if c.is_file()]
+    return [c for c in [target, *avif_tier_paths(target)] if c.is_file()]
 
 
 def remove_media(settings: config.Settings, post, web_path: str) -> dict:
@@ -229,33 +227,21 @@ def settings_to_argv(settings: config.Settings) -> list[str]:
     """CLI flags reproducing these settings, so a subprocess inherits them.
 
     Without this the child would silently fall back to defaults and write to
-    the wrong directory whenever the caller overrode anything.
+    the wrong directory whenever the caller overrode anything. Derived from
+    image_match.py's own parser, so a flag added there is inherited too.
     """
-    argv = [
-        "--immich-url", settings.immich_url,
-        "--site-url", settings.site_url,
-        "--posts-dir", str(settings.posts_dir),
-        "--static-root", str(settings.static_root),
-        "--out-dir", str(settings.out_dir),
-        "--cache-dir", str(settings.cache_dir),
-        "--date-window-days", str(settings.date_window_days),
-        "--ar-tolerance", str(settings.ar_tolerance),
-        "--phash-top-k", str(settings.phash_top_k),
-        "--bm-accept", str(settings.bm_accept),
-        "--bm-margin", str(settings.bm_margin),
-        "--residual-top-k", str(settings.residual_top_k),
-        "--mae-accept", str(settings.mae_accept),
-        "--mae-margin", str(settings.mae_margin),
-        "--sift-max-edge", str(settings.sift_max_edge),
-        "--residual-blur", str(settings.residual_blur),
-        "--album-coverage-min", str(settings.album_coverage_min),
-        "--workers", str(settings.workers),
-        "--timeout", str(settings.timeout),
-    ]
-    if not settings.use_cache:
-        argv.append("--no-cache")
-    if not settings.trust_album:
-        argv.append("--no-trust-album")
+    argv: list[str] = []
+    for action in build_parser()._actions:
+        dest = action.dest
+        if not action.option_strings or dest in NOT_INHERITED:
+            continue
+        flag = max(action.option_strings, key=len)
+        if dest in NEGATED:
+            if not getattr(settings, NEGATED[dest]):
+                argv.append(flag)
+            continue
+        value = settings.places_root if dest == "places_dir" else getattr(settings, dest)
+        argv += [flag, str(value)]
     return argv
 
 

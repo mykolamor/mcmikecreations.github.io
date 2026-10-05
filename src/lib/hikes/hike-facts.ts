@@ -6,7 +6,7 @@
  * matter and is resolved server-side (`hike-facts.server.ts`).
  */
 
-import { haversineKm, type HikeMetrics } from '$lib/hikes/hike-metrics';
+import { cumulativeKm, haversineKm, type HikeMetrics } from './hike-metrics';
 
 export type RouteType = 'loop' | 'out-and-back' | 'point-to-point';
 
@@ -56,8 +56,7 @@ export function davDuration(distanceM: number, ascentM: number, descentM: number
 /** Roughly evenly spaced points along the track, by distance. */
 function resample(coords: number[][], count: number): number[][] {
 	if (coords.length <= count) return coords;
-	const cumulative = [0];
-	for (let i = 1; i < coords.length; i++) cumulative.push(cumulative[i - 1] + haversineKm(coords[i - 1], coords[i]));
+	const cumulative = cumulativeKm(coords);
 	const total = cumulative[cumulative.length - 1];
 	const out: number[][] = [];
 	let j = 0;

@@ -1,7 +1,8 @@
 "use strict";
 
 const $ = (id) => document.getElementById(id);
-const state = { hikes: [], post: null, detail: null, item: null, assets: [], immichUrl: "" };
+const state = { hikes: [], post: null, detail: null, item: null, assets: [], immichUrl: "",
+                placeEdit: null };
 
 async function api(path, options) {
   const res = await fetch(path, {
@@ -17,10 +18,26 @@ async function api(path, options) {
 const post = (path, body) =>
   api(path, { method: "POST", body: JSON.stringify(body || {}) });
 
+// Inputs that edit the selected item's report entry: only usable once it has one.
+const ENTRY_INPUTS = ["local-path", "local-apply", "remote-path", "remote-apply", "pick-btn"];
+
 function msg(text, isError) {
   const el = $("msg");
   el.textContent = text || "";
   el.style.color = isError ? "#cf222e" : "";
+}
+
+// A list row: a name on the left, a grayed detail on the right.
+function listItem(name, sub, onClick) {
+  const li = document.createElement("li");
+  for (const [className, text] of [["name", name], ["sub", sub]]) {
+    const span = document.createElement("span");
+    span.className = className;
+    span.textContent = text;
+    li.appendChild(span);
+  }
+  li.onclick = onClick;
+  return li;
 }
 
 // --- hikes -------------------------------------------------------------------
@@ -29,20 +46,25 @@ function renderHikes() {
   const needle = $("hike-filter").value.trim().toLowerCase();
   const ul = $("hikes");
   ul.innerHTML = "";
+  let placesHeader = false;
   for (const h of state.hikes) {
     if (needle && !h.name.toLowerCase().includes(needle)) continue;
-    const li = document.createElement("li");
-    li.className = h.name === state.post ? "sel" : "";
+    // Place docs come after the posts (the server lists them that way), under their own heading.
+    if (h.kind === "place" && !placesHeader) {
+      placesHeader = true;
+      const group = document.createElement("li");
+      group.className = "group";
+      group.textContent = "Places";
+      ul.appendChild(group);
+    }
     // matched / photos / all media — videos and YouTube can never be matched,
     // so the middle number is the one worth judging progress against.
     const c = h.counts || {};
     const label = c.media ? `${c.matched}/${c.photos}/${c.media}` : "—";
-    li.innerHTML = `<span class="name"></span><span class="sub"></span>`;
-    li.querySelector(".sub").textContent = label;
-    li.querySelector(".name").textContent = h.name.replace(/\.md$/, "");
+    const li = listItem(h.name.replace(/\.md$/, ""), label, () => selectHike(h.name));
+    li.className = h.name === state.post ? "sel" : "";
     li.title = c.media
       ? `${c.matched} matched of ${c.photos} photos (${c.media} media items)` : h.name;
-    li.onclick = () => selectHike(h.name);
     ul.appendChild(li);
   }
 }
@@ -50,6 +72,11 @@ function renderHikes() {
 async function loadHikes() {
   state.hikes = (await api("/api/hikes")).hikes;
   renderHikes();
+}
+
+function hikesMessage() {
+  const places = state.hikes.filter((h) => h.kind === "place").length;
+  return `${state.hikes.length - places} hikes, ${places} places`;
 }
 
 async function selectHike(name) {
@@ -60,6 +87,19 @@ async function selectHike(name) {
   state.detail = await api(`/api/hikes/${encodeURIComponent(name)}`);
   renderDetail();
   msg("");
+}
+
+// The open hike re-read from the server, and the list's counts with it.
+async function reloadPost() {
+  await selectHike(state.post);
+  await loadHikes();
+}
+
+// A write's returned detail shown, and the list's counts updated to match.
+async function applyDetail(detail) {
+  state.detail = detail;
+  renderDetail();
+  await loadHikes();
 }
 
 // --- media -------------------------------------------------------------------
@@ -74,6 +114,10 @@ function renderDetail() {
     (win.from ? ` · ${win.from} → ${win.to}` : "");
   $("add-btn").disabled = false;
   $("rerun-btn").disabled = false;
+  // A place doc has no page of its own, so nothing to open; it gets a text editor instead.
+  const isPlace = d.kind === "place";
+  $("rerun-btn").textContent = isPlace ? "Re-run match for this place" : "Re-run match for this hike";
+  $("edit-place-btn").hidden = !isPlace;
   const site = $("open-site");
   site.href = d.site_url || "#";
   site.setAttribute("aria-disabled", d.site_url ? "false" : "true");
@@ -82,14 +126,10 @@ function renderDetail() {
   const ul = $("media");
   ul.innerHTML = "";
   for (const m of d.media) {
-    const li = document.createElement("li");
+    const li = listItem(m.label, m.matched_name || "", () => selectItem(m));
     li.style.color = m.color;
     if (state.item && state.item.web_path === m.web_path) li.className = "sel";
-    li.innerHTML = `<span class="name"></span><span class="sub"></span>`;
-    li.querySelector(".name").textContent = m.label;
-    li.querySelector(".sub").textContent = m.matched_name || "";
     li.title = `${m.status}${m.in_report ? "" : " (not in JSON)"}`;
-    li.onclick = () => selectItem(m);
     ul.appendChild(li);
   }
   // Keep the open item in sync after a save.
@@ -107,9 +147,7 @@ function selectItem(m, keepMessage) {
   badge.style.color = m.color;
   badge.style.borderColor = m.color;
 
-  for (const id of ["local-path", "local-apply", "remote-path", "remote-apply", "pick-btn"]) {
-    $(id).disabled = !m.in_report;
-  }
+  for (const id of ENTRY_INPUTS) $(id).disabled = !m.in_report;
   $("local-path").value = m.web_path;
   $("remote-path").value = m.matched_name || "";
   $("remove-btn").disabled = false;
@@ -148,8 +186,7 @@ function selectItem(m, keepMessage) {
 function clearItem() {
   state.item = null;
   $("remove-btn").disabled = true;
-  for (const id of ["local-path", "local-apply", "remote-path", "remote-apply",
-                    "pick-btn", "remote-open"]) $(id).disabled = true;
+  for (const id of [...ENTRY_INPUTS, "remote-open"]) $(id).disabled = true;
   $("local-path").value = "";
   $("remote-path").value = "";
   const badge = $("entry-status");
@@ -206,9 +243,7 @@ async function applyLocal() {
       post: state.post, web_path: state.item.web_path, value: $("local-path").value,
     });
     state.item = { ...state.item, web_path: r.web_path };
-    state.detail = r.detail;
-    renderDetail();
-    await loadHikes();
+    await applyDetail(r.detail);
     msg("Local path saved");
   } catch (e) { msg(e.message, true); }
 }
@@ -218,9 +253,7 @@ async function applyRemote() {
     const r = await post("/api/entry/remote", {
       post: state.post, web_path: state.item.web_path, value: $("remote-path").value,
     });
-    state.detail = r.detail;
-    renderDetail();
-    await loadHikes();
+    await applyDetail(r.detail);
     msg($("remote-path").value ? "Match saved" : "Match cleared");
   } catch (e) { msg(e.message, true); }
 }
@@ -237,9 +270,7 @@ async function removeItem() {
   try {
     const r = await post("/api/entry/remove", { post: state.post, web_path: m.web_path });
     clearItem();
-    state.detail = r.detail;
-    renderDetail();
-    await loadHikes();
+    await applyDetail(r.detail);
     const x = r.removed;
     msg(`Removed ${m.label}: ` + [
       x.in_report && "JSON entry",
@@ -279,42 +310,74 @@ async function openSettings() {
   $("settings-dlg").showModal();
 }
 
+// Tests the saved settings and shows the outcome in the header pill. Returns
+// the test's result, or `{ error }` when it failed.
 async function checkConnection() {
   const pill = $("conn");
   try {
     const r = await post("/api/settings/test", {});
     pill.textContent = `Immich: ${r.albums} albums`;
     pill.className = "pill ok";
+    return r;
   } catch (e) {
     pill.textContent = `Immich: ${e.message}`;
     pill.className = "pill bad";
+    return { error: e.message };
   }
+}
+
+// The settings dialog's fields sent to the server. An empty key box keeps the current key.
+function saveSettings() {
+  const key = $("set-key").value.trim();
+  return post("/api/settings", {
+    api_key: key,
+    immich_url: $("set-url").value.trim(),
+    remember: $("set-remember").checked,
+    keep: !key,
+  });
 }
 
 async function openPicker(targetInput, onPick) {
   const dlg = $("pick-dlg");
   const list = $("pick-list");
-  list.innerHTML = "<li>Loading…</li>";
-  dlg.showModal();
-  try {
-    state.assets = (await api(`/api/assets/${encodeURIComponent(state.post)}`)).assets;
-  } catch (e) {
+  // A place doc has no date to search around: search Immich by text and/or dates instead.
+  // The last search stays the place's candidates on the server, for matching and Apply.
+  const isPlace = state.detail?.kind === "place";
+  $("pick-search").hidden = !isPlace;
+  const fail = (message) => {
     list.innerHTML = "";
     const li = document.createElement("li");
-    li.textContent = e.message;
+    li.textContent = message;
     list.appendChild(li);
-    return;
-  }
+  };
+  const load = async (params) => {
+    list.innerHTML = "<li>Loading…</li>";
+    const query = params ? `?${new URLSearchParams(params)}` : "";
+    try {
+      state.assets = (await api(`/api/assets/${encodeURIComponent(state.post)}${query}`)).assets;
+    } catch (e) {
+      fail(e.message);
+      return false;
+    }
+    return true;
+  };
+  $("pick-go").onclick = async () => {
+    if (await load({ q: $("pick-query").value.trim(), from: $("pick-from").value, to: $("pick-to").value })) draw();
+  };
+  $("pick-query").onkeydown = (e) => { if (e.key === "Enter") { e.preventDefault(); $("pick-go").click(); } };
+  dlg.showModal();
+  if (!(await load())) return;
   const draw = () => {
     const needle = $("pick-filter").value.trim().toLowerCase();
     list.innerHTML = "";
+    if (isPlace && !state.assets.length) {
+      fail("Search Immich above: a text like the place's name, and/or dates.");
+      return;
+    }
     for (const a of state.assets) {
       if (needle && !a.name.toLowerCase().includes(needle)) continue;
-      const li = document.createElement("li");
-      li.innerHTML = `<span class="name"></span><span class="sub">${a.taken} · ${a.size}</span>`;
-      li.querySelector(".name").textContent = a.name;
-      li.onclick = () => { targetInput.value = a.name; dlg.close(); onPick?.(); };
-      list.appendChild(li);
+      list.appendChild(listItem(a.name, `${a.taken} · ${a.size}`,
+                                () => { targetInput.value = a.name; dlg.close(); onPick?.(); }));
     }
   };
   $("pick-filter").oninput = draw;
@@ -359,8 +422,7 @@ async function submitAdd() {
       out_name: $("add-out").value.trim(),
     });
     const result = await waitForJob(job, "Adding media");
-    await selectHike(state.post);
-    await loadHikes();
+    await reloadPost();
     msg(`Added ${result.web_path.split("/").pop()} (${result.status})`);
   } catch (e) { msg(e.message, true); }
 }
@@ -370,11 +432,74 @@ async function rerun() {
     $("rerun-btn").disabled = true;
     const { job } = await post("/api/rerun", { post: state.post });
     const result = await waitForJob(job, `Matching ${state.post}`);
-    await selectHike(state.post);
-    await loadHikes();
+    await reloadPost();
     msg((result.output || "done").split("\n")[0]);
   } catch (e) { msg(e.message, true); }
   finally { $("rerun-btn").disabled = false; }
+}
+
+// --- place docs ----------------------------------------------------------------
+
+async function openPlaceEditor(create) {
+  const fields = ["title", "description", "tags", "aliases", "body"];
+  state.placeEdit = { create };
+  $("place-slug-row").hidden = !create;
+  $("place-dlg-title").textContent = create ? "New place" : `Edit ${state.post}`;
+  $("place-insert").disabled = create || !state.item || state.item.kind === "youtube";
+  $("place-hint").textContent = create
+    ? "Creates <slug>.md next to the posts. Add images afterwards with Add media…, then insert them into the text."
+    : "Images: add them with Add media…, select one in the list, then Insert selected image.";
+  if (create) {
+    $("place-slug").value = "";
+    for (const f of fields) $(`place-${f}`).value = "";
+  } else {
+    try {
+      const p = await api(`/api/places/${encodeURIComponent(state.post)}`);
+      $("place-title").value = p.title;
+      $("place-description").value = p.description;
+      $("place-tags").value = p.tags.join(", ");
+      $("place-aliases").value = p.aliases.join(", ");
+      $("place-body").value = p.body;
+    } catch (e) { msg(e.message, true); return; }
+  }
+  $("place-dlg").showModal();
+}
+
+function insertSelectedImage() {
+  const m = state.item;
+  if (!m) return;
+  const body = $("place-body");
+  const caption = m.label.replace(/\.[^.]+$/, "");
+  const sep = body.value.endsWith("\n\n") || !body.value ? "" : body.value.endsWith("\n") ? "\n" : "\n\n";
+  body.value += `${sep}![${caption}](${m.web_path})\n`;
+  body.focus();
+}
+
+async function savePlace() {
+  const create = state.placeEdit?.create;
+  const split = (id) => $(id).value.split(",").map((s) => s.trim()).filter(Boolean);
+  try {
+    const r = await post("/api/places/save", {
+      create,
+      slug: $("place-slug").value.trim(),
+      name: create ? undefined : state.post,
+      title: $("place-title").value.trim(),
+      description: $("place-description").value.trim(),
+      tags: split("place-tags"),
+      aliases: split("place-aliases"),
+      body: $("place-body").value,
+    });
+    state.hikes = r.hikes;
+    state.post = r.detail.name;
+    state.detail = r.detail;
+    renderHikes();
+    renderDetail();
+    msg(create ? `Created ${r.detail.name}` : `Saved ${r.detail.name}`);
+  } catch (e) {
+    msg(e.message, true);
+    // Keep what was typed: reopen the editor on a failed save.
+    $("place-dlg").showModal();
+  }
 }
 
 // --- wiring ------------------------------------------------------------------
@@ -382,7 +507,7 @@ async function rerun() {
 $("refresh-btn").onclick = async () => {
   state.hikes = (await post("/api/refresh", {})).hikes;
   renderHikes();
-  msg(`${state.hikes.length} hikes`);
+  msg(hikesMessage());
 };
 $("hike-filter").oninput = renderHikes;
 $("local-apply").onclick = applyLocal;
@@ -399,37 +524,28 @@ $("add-asset").onchange = suggestOutName;
 $("settings-btn").onclick = openSettings;
 $("add-btn").onclick = () => { syncAddDialog(); $("add-dlg").showModal(); };
 $("rerun-btn").onclick = rerun;
+$("new-place-btn").onclick = () => openPlaceEditor(true);
+$("edit-place-btn").onclick = () => openPlaceEditor(false);
+$("place-insert").onclick = insertSelectedImage;
+$("place-dlg").addEventListener("close", () => {
+  if ($("place-dlg").returnValue === "save") savePlace();
+});
 $("remove-btn").onclick = removeItem;
 for (const r of document.querySelectorAll('input[name="mode"]')) r.onchange = syncAddDialog;
 
 $("settings-dlg").addEventListener("close", async () => {
   if ($("settings-dlg").returnValue !== "save") return;
   try {
-    await post("/api/settings", {
-      api_key: $("set-key").value.trim(),
-      immich_url: $("set-url").value.trim(),
-      remember: $("set-remember").checked,
-      keep: !$("set-key").value.trim(),
-    });
+    await saveSettings();
     state.immichUrl = $("set-url").value.trim();
     await checkConnection();
     msg("Settings saved");
   } catch (e) { msg(e.message, true); }
 });
 $("set-test").onclick = async () => {
-  const key = $("set-key").value.trim();
-  const url = $("set-url").value.trim();
-  if (key || url) {
-    await post("/api/settings", {
-      api_key: key, immich_url: url, keep: !key,
-      remember: $("set-remember").checked,
-    });
-  }
-  try {
-    const r = await post("/api/settings/test", {});
-    $("set-hint").textContent = `OK — ${r.albums} albums`;
-  } catch (e) { $("set-hint").textContent = e.message; }
-  await checkConnection();
+  if ($("set-key").value.trim() || $("set-url").value.trim()) await saveSettings();
+  const r = await checkConnection();
+  $("set-hint").textContent = r.error || `OK — ${r.albums} albums`;
 };
 $("add-dlg").addEventListener("close", () => {
   if ($("add-dlg").returnValue === "add") submitAdd();
@@ -441,5 +557,5 @@ $("open-site").setAttribute("aria-disabled", "true");
   await loadHikes();
   state.immichUrl = (await api("/api/settings")).immich_url || "";
   await checkConnection();
-  msg(`${state.hikes.length} hikes`);
+  msg(hikesMessage());
 })();

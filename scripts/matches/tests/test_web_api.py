@@ -6,8 +6,10 @@ from pathlib import Path
 import pytest
 
 from matches import config
+from matches.report import write_report
 from matches.review.actions import settings_to_argv
 from matches.review.model import build_entry, web_path_for
+from matches.tests.conftest import app_state, hike_tree, make_asset
 from matches.web import api, state as web_state
 
 POST = """---
@@ -20,29 +22,19 @@ title: Test
 
 @pytest.fixture
 def app(tmp_path, monkeypatch):
-    posts = tmp_path / "markdown"
-    posts.mkdir()
-    (posts / "2024-08-31-demo.md").write_text(POST, encoding="utf-8")
-    stories = tmp_path / "static/images/projects/data-viz/hikes/stories/demo"
-    stories.mkdir(parents=True)
-    (stories / "2024-08-31-00.jpg").write_bytes(b"\xff\xd8\xff\xd9")
-    out = tmp_path / "out"
-    out.mkdir()
+    tree = hike_tree(tmp_path, posts={"2024-08-31-demo.md": POST},
+                     story_files={"stories/demo/2024-08-31-00.jpg": b"\xff\xd8\xff\xd9"})
     entry = build_entry(web_path_for("demo", "2024-08-31-00.jpg"),
-                        stories / "2024-08-31-00.jpg",
+                        tree.images / "stories/demo/2024-08-31-00.jpg",
                         {"asset_id": "a1", "original_file_name": "IMG_1.jpg"},
                         "matched")
-    (out / "2024-08-31-demo.json").write_text(json.dumps({
+    write_report({
         "post": "2024-08-31-demo.md", "slug": "demo", "entries": [entry],
         "stats": {}, "album": {"name": "Demo_Album", "id": "x", "source": "guessed"},
         "date_window": {"from": "2024-08-28", "to": "2024-09-03"},
         "candidate_count": 5, "immich_url": "x", "generated_at": "x",
-    }))
-    # Never touch the developer's real remembered-key file.
-    monkeypatch.setattr(web_state, "CONFIG_PATH", tmp_path / "cfg.json")
-    settings = config.Settings(posts_dir=posts, static_root=tmp_path / "static",
-                               out_dir=out, api_key="", immich_url="")
-    return web_state.AppState(settings)
+    }, tree.out, "2024-08-31-demo.md")
+    return app_state(tree, monkeypatch)
 
 
 def test_list_and_detail(app):
@@ -195,12 +187,9 @@ def test_suggest_name_requires_credentials(app):
 
 
 def test_suggest_name_builds_a_dated_index(app, monkeypatch):
-    from matches.immich import Asset
-
-    asset = Asset(id="a9", original_path="/o/IMG_9.jpg", original_file_name="IMG_9.jpg",
-                 file_created_at="2024-08-31T10:00:00Z",
-                 local_date_time="2024-08-31T10:00:00",
-                 width=10, height=10, latitude=None, longitude=None)
+    asset = make_asset(id="a9", original_file_name="IMG_9.jpg",
+                       file_created_at="2024-08-31T10:00:00Z",
+                       local_date_time="2024-08-31T10:00:00")
     monkeypatch.setattr(app.remote, "find_asset", lambda post, text: asset)
     r = api.suggest_out_name(app, {"post": "2024-08-31-demo.md", "asset": "IMG_9.jpg"})
     # 2024-08-31-00.jpg is already on disk for this post (see the `app` fixture).
@@ -233,6 +222,37 @@ def test_settings_survive_a_subprocess_round_trip(tmp_path):
     assert parsed.mae_accept == 9.5
     assert parsed.residual_blur == 1.25
     assert parsed.date_window_days == 7
+
+
+def test_every_cli_flag_survives_a_subprocess_round_trip(tmp_path):
+    """settings_to_argv is derived from image_match.py's parser, so a flag
+    added there must reach the child too. Every inherited flag gets a
+    non-default value here; one the round trip loses (settings_to_argv,
+    the parser or settings_from_args dropping it) fails, and so does a new
+    flag that maps to no Settings field."""
+    from matches.cli import NEGATED, NOT_INHERITED, build_parser, settings_from_args
+
+    defaults = config.Settings()
+    overrides = {}
+    for action in build_parser()._actions:
+        dest = action.dest
+        if not action.option_strings or dest in NOT_INHERITED:
+            continue
+        if dest in NEGATED:
+            overrides[NEGATED[dest]] = not getattr(defaults, NEGATED[dest])
+        elif action.type is int:
+            overrides[dest] = action.default + 7
+        elif action.type is float:
+            overrides[dest] = action.default * 2 + 0.25
+        elif dest.endswith("_url"):
+            overrides[dest] = f"https://{dest.replace('_', '-')}.example"
+        else:
+            overrides[dest] = tmp_path / dest
+    assert "original_area_factor" in overrides
+    original = config.Settings(**overrides)
+    parsed = settings_from_args(build_parser().parse_args(["x.md", *settings_to_argv(original)]))
+    for name in overrides:
+        assert getattr(parsed, name) == getattr(original, name), name
 
 
 def test_detail_carries_the_deployed_site_url(app):
@@ -334,3 +354,19 @@ def test_remove_entry_handles_youtube_and_unknown_items(app):
     with pytest.raises(api.ApiError) as exc:
         api.remove_entry(app, {"post": "2024-08-31-demo.md", "web_path": "/nope.jpg"})
     assert exc.value.status == 404
+
+
+def test_matching_an_asset_writes_its_taken_into_front_matter(app, monkeypatch, tmp_path):
+    from matches.postwriter import read_images
+
+    post = tmp_path / "markdown/2024-08-31-demo.md"
+    post.write_text(POST.replace("title: Test\n", "title: Test\nimages:\n  2024-08-31-00.jpg: {w: 4, h: 3}\n"),
+                    encoding="utf-8")
+    asset = make_asset(id="a9", original_file_name="IMG_9.jpg",
+                       file_created_at="2024-08-31T08:00:00Z",
+                       local_date_time="2024-08-31T10:00:00Z")
+    monkeypatch.setattr(app.remote, "find_asset", lambda post, text: asset)
+    api.set_remote_match(app, {"post": "2024-08-31-demo.md",
+                               "web_path": web_path_for("demo", "2024-08-31-00.jpg"),
+                               "value": "IMG_9.jpg"})
+    assert read_images(post)["2024-08-31-00.jpg"]["taken"] == "2024-08-31T10:00:00+02:00"

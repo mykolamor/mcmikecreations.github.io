@@ -15,13 +15,23 @@
  *
  * Both may be set on a hike, on a single date, or in a post's front matter; see
  * `resolveHikeForDate` and `frontmatter.server`.
+ *
+ * The rules themselves are glob-free and live in `hikes-core.js`, shared with
+ * the Node scripts; this module only supplies the globbed files.
  */
 
-import type { HikeMeta, Map, MapDate, MapProperties } from './map-info';
+import type { HikeMeta, Map, MapDate } from './map-info';
+import { resolveHikeForDate as resolveWith } from './hikes-core';
 
-const metaFolder = '/_projects/data-viz/hikes/markdown';
-const geoFolder = '/_projects/data-viz/hikes/geojson';
-const routeFolder = '/projects/data-viz/hikes';
+export {
+	applyDateOverrides,
+	defaultFilePath,
+	defaultGpxPath,
+	defaultMetaPath,
+	hikeRoute,
+	hikeSlug,
+	withHikeMeta
+} from './hikes-core';
 
 const sidecars = import.meta.glob('/static/_projects/data-viz/hikes/markdown/*.hike.json', {
 	eager: true,
@@ -32,31 +42,6 @@ const sidecars = import.meta.glob('/static/_projects/data-viz/hikes/markdown/*.h
 // resolves the key set at build time without inlining every GPX file.
 const gpxFiles = import.meta.glob('/static/_projects/data-viz/hikes/**/*.gpx', { query: '?url' });
 const gpxPaths = new Set(Object.keys(gpxFiles).map((key) => key.replace(/^\/static/, '')));
-
-/** Route slug, e.g. `/projects/data-viz/hikes/seekarkreuz` -> `seekarkreuz`. */
-export function hikeSlug(route: string): string {
-	return route.substring(route.lastIndexOf('/') + 1);
-}
-
-/** The page a hike lives at. */
-export function hikeRoute(slug: string): string {
-	return `${routeFolder}/${slug}`;
-}
-
-/** Where a hike's sidecar lives unless something says otherwise. */
-export function defaultMetaPath(slug: string): string {
-	return `${metaFolder}/${slug}.hike.json`;
-}
-
-/** Where a hike's route GeoJSON lives unless something says otherwise. */
-export function defaultFilePath(slug: string): string {
-	return `${geoFolder}/${slug}.json`;
-}
-
-/** Where a route's GPX track lives by convention, derived from its GeoJSON path. */
-export function defaultGpxPath(filePath: string): string {
-	return filePath.replace('geojson', 'gpx').replace('json', 'gpx');
-}
 
 /** Whether a GPX file actually exists at the given served path. */
 export function hasGpxFile(path: string): boolean {
@@ -78,69 +63,9 @@ export function getHikeMeta(metaPath: string): HikeMeta | undefined {
 }
 
 /**
- * Fold a sidecar into a hike, in the key order `hikes.json` used to have.
- *
- * The sidecar owns its seven fields outright: swapping one in replaces them all,
- * including dropping `nodes` again if the new sidecar declares none.
- */
-export function withHikeMeta(hike: Map, meta: HikeMeta): Map {
-	const properties: MapProperties = { ...hike.properties, checkpoints: meta.checkpoints };
-	if (meta.nodes === undefined) delete properties.nodes;
-	else properties.nodes = meta.nodes;
-
-	return {
-		name: meta.name,
-		image: meta.image,
-		properties,
-		description: meta.description,
-		route: hike.route,
-		height: meta.height,
-		standardFeatures: { origin: meta.origin }
-	};
-}
-
-/** The four metrics a date may pin for itself, overriding the hike's. */
-const DATE_METRICS = ['distance', 'duration', 'ascent', 'descent'] as const;
-
-/**
- * Promote a date's own `filePath` / metric overrides into a hike's properties.
- *
- * Returns `properties` unchanged (same reference) when the date overrides
- * nothing.
- */
-export function applyDateOverrides(properties: MapProperties, date: MapDate): MapProperties {
-	let out: MapProperties | null = null;
-	const claim = () => (out ??= { ...properties });
-
-	if (date.filePath) claim().filePath = date.filePath;
-	for (const key of DATE_METRICS) {
-		if (date[key] != null) claim()[key] = date[key];
-	}
-
-	return out ?? properties;
-}
-
-/**
  * The hike as one of its dates sees it: the date's `metaPath` sidecar swapped in
- * and its `filePath` / metric overrides promoted.
- *
- * A blogged date already carries its post's front-matter fields, folded in when
- * the model was built, so this covers front matter too for everything at date
- * level. Hike-level front-matter keys still need `applyPostOverrides`.
+ * and its `filePath` / metric overrides promoted. See `hikes-core`.
  */
 export function resolveHikeForDate(hike: Map, date: MapDate): Map {
-	let base = hike;
-
-	if (date.metaPath) {
-		const meta = getHikeMeta(date.metaPath);
-		if (!meta) {
-			throw new Error(
-				`Unknown sidecar "${date.metaPath}" on date ${date.date} of hike route "${hike.route}"`
-			);
-		}
-		base = withHikeMeta(base, meta);
-	}
-
-	const properties = applyDateOverrides(base.properties, date);
-	return properties === base.properties ? base : { ...base, properties };
+	return resolveWith(hike, date, getHikeMeta);
 }

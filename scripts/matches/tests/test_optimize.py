@@ -128,7 +128,7 @@ import pytest
 from matches import config
 from matches.immich import ImmichClient
 from matches.optimize import gps_meta, optimize_post
-from matches.tests.test_immich import StubSession, BASE  # reuse the existing stub
+from matches.tests.conftest import BASE, StubSession
 
 
 def _write_post(dir_, name, web_paths):

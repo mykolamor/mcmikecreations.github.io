@@ -3,7 +3,7 @@
 import json
 
 from matches import backfill_file_size as bf
-from matches.immich import Asset
+from matches.tests.conftest import make_asset
 
 
 class FakeClient:
@@ -13,9 +13,7 @@ class FakeClient:
 
     def get_asset(self, asset_id):
         self.calls.append(asset_id)
-        return Asset(asset_id, "/o/x.jpg", "x.jpg", "2024-01-01T00:00:00Z",
-                     "2024-01-01T00:00:00", 10, 10, None, None,
-                     file_size=self.sizes[asset_id])
+        return make_asset(id=asset_id, file_size=self.sizes[asset_id])
 
 
 def _entry(match=None):

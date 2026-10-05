@@ -76,10 +76,6 @@ class AppState:
                 raise KeyError(name)
             return post
 
-    def reload_post(self, name: str) -> HikePost:
-        with self.lock:
-            return self.post(name).load()
-
     # --- credentials --------------------------------------------------------
 
     def set_credentials(self, api_key: str, immich_url: str,
@@ -104,6 +100,7 @@ class AppState:
             "key_hint": f"...{key[-4:]}" if key else "",
             "key_remembered": bool(load_saved()),
             "posts_dir": str(self.settings.posts_dir),
+            "places_dir": str(self.settings.places_root),
             "static_root": str(self.settings.static_root),
             "out_dir": str(self.settings.out_dir),
             "config_path": str(CONFIG_PATH),

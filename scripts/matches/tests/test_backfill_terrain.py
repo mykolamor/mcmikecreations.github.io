@@ -3,21 +3,7 @@
 import json
 
 from matches import backfill_terrain as bt
-
-BLUR = "data:image/webp;base64,ZZ"
-
-
-class FakeTerrain:
-    """Height = 1000 + lat, None south of 40°."""
-
-    def height(self, lat, lon):
-        return None if lat < 40 else round(1000 + lat, 1)
-
-    def meta(self, lat, lon):
-        if lat is None or lon is None:
-            return {}
-        h = self.height(lat, lon)
-        return {} if h is None else {"demEle": h}
+from matches.tests.conftest import BLUR, FakeTerrain
 
 
 def test_photo_updates_only_for_located_images_on_tiles():
@@ -95,3 +81,65 @@ def test_hike_json_dry_run_writes_nothing(tmp_path):
     path.write_text(HIKE, encoding="utf-8")
     assert bt.backfill_hike_json(path, FakeTerrain(), dry_run=True) == 1
     assert path.read_text(encoding="utf-8") == HIKE
+
+
+FACTS_HIKE = """{
+  "name": "Demo",
+  "checkpoints": [[11.0, 47.5]],
+  "facts": {
+    "bailouts": [
+      {
+        "at": {
+          "lat": 47.25,
+          "lon": 11.0,
+          "name": "Spot"
+        },
+        "route": "/x.gpx"
+      },
+      {
+        "at": "Knorrhütte"
+      }
+    ],
+    "route": {
+      "start": {
+        "name": "Station",
+        "at": {
+          "lat": 30.0,
+          "lon": 11.0
+        }
+      },
+      "end": {
+        "lat": 47.5,
+        "lon": 11.1,
+        "demEle": 1047.5
+      }
+    },
+    "hazards": [
+      {
+        "kind": "cold",
+        "note": {
+          "lat": "not a place",
+          "lon": 1
+        }
+      }
+    ]
+  }
+}
+"""
+
+
+def test_hike_json_backfill_sets_dem_ele_on_facts_places(tmp_path):
+    path = tmp_path / "facts.hike.json"
+    path.write_text(FACTS_HIKE, encoding="utf-8")
+    # No nodes at all: facts places alone are backfilled.
+    assert bt.backfill_hike_json(path, FakeTerrain()) == 1
+    data = json.loads(path.read_text(encoding="utf-8"))
+    # Placed right after lon, like a node's.
+    assert list(data["facts"]["bailouts"][0]["at"]) == ["lat", "lon", "demEle", "name"]
+    assert data["facts"]["bailouts"][0]["at"]["demEle"] == 1047.2
+    # Off the DEM tiles, already right, or not a place: untouched.
+    assert "demEle" not in data["facts"]["route"]["start"]["at"]
+    assert data["facts"]["route"]["end"]["demEle"] == 1047.5
+    assert data["facts"]["hazards"][0]["note"] == {"lat": "not a place", "lon": 1}
+    assert "[11.0, 47.5]" in path.read_text(encoding="utf-8")
+    assert bt.backfill_hike_json(path, FakeTerrain()) == 0

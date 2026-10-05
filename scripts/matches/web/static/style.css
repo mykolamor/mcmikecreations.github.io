@@ -79,3 +79,15 @@ dialog menu{display:flex;justify-content:flex-end;gap:8px;margin:16px 0 0;paddin
           border-radius:6px;padding:4px 8px;text-decoration:none;white-space:nowrap}
 .btn-link:hover{border-color:var(--accent)}
 .btn-link[aria-disabled="true"]{opacity:.5;pointer-events:none}
+
+/* Place docs: their own group in the list, and the editor. */
+.list li.group{cursor:default;color:var(--muted);font-size:11px;text-transform:uppercase;
+               letter-spacing:.04em;padding-top:10px;border-bottom:1px solid var(--line)}
+.list li.group:hover{background:none}
+.list li .kind{font-size:10px;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:0 5px}
+.list li.sel .kind{color:#e8f0fe;border-color:#e8f0fe}
+dialog textarea{width:100%;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--text);
+                background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 8px;resize:vertical}
+.row .grow{flex:1;min-width:0}
+.row .grow input{width:100%}
+#pick-search input[type=search]{flex:1}

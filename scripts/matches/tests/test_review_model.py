@@ -5,9 +5,9 @@ from pathlib import Path
 
 import pytest
 
-from matches import config
 from matches.review.model import (STATUS_NOT_IN_JSON, HikeIndex, HikePost,
                                build_entry, status_color, web_path_for)
+from matches.tests.conftest import hike_tree
 
 POST = """---
 title: Test
@@ -21,17 +21,9 @@ title: Test
 
 @pytest.fixture
 def workspace(tmp_path):
-    posts = tmp_path / "markdown"
-    posts.mkdir()
-    (posts / "2024-08-31-demo.md").write_text(POST, encoding="utf-8")
-    stories = tmp_path / "static/images/projects/data-viz/hikes/stories/demo"
-    stories.mkdir(parents=True)
-    (stories / "2024-08-31-00.jpg").write_bytes(b"x")
-    out = tmp_path / "out"
-    out.mkdir()
-    settings = config.Settings(posts_dir=posts, static_root=tmp_path / "static",
-                               out_dir=out, api_key="k")
-    return settings, posts / "2024-08-31-demo.md", out
+    tree = hike_tree(tmp_path, posts={"2024-08-31-demo.md": POST},
+                     story_files={"stories/demo/2024-08-31-00.jpg": b"x"}, api_key="k")
+    return tree.settings, tree.posts / "2024-08-31-demo.md", tree.out
 
 
 def _report(entries):
@@ -140,14 +132,9 @@ def test_counts_are_derived_from_media_not_stats(workspace):
 
 def test_counts_track_matches(workspace):
     settings, post_path, out = workspace
-    import json as _json
     entry = build_entry(web_path_for("demo", "2024-08-31-00.jpg"),
                         Path("/x/2024-08-31-00.jpg"),
                         {"asset_id": "a1", "original_file_name": "IMG_1.jpg"}, "matched")
-    (out / "2024-08-31-demo.json").write_text(_json.dumps(
-        {"post": "2024-08-31-demo.md", "slug": "demo", "entries": [entry],
-         "stats": {}, "album": {"name": None, "id": None, "source": "none"},
-         "date_window": {"from": "2024-08-28", "to": "2024-09-03"},
-         "candidate_count": 0, "immich_url": "x", "generated_at": "x"}))
+    (out / "2024-08-31-demo.json").write_text(json.dumps(_report([entry])))
     post = HikePost(post_path, settings).load()
     assert post.counts == {"matched": 1, "photos": 2, "media": 4}

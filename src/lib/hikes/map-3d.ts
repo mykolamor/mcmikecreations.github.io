@@ -10,9 +10,10 @@ import { tile } from 'd3-tile';
 import type { Map } from '$lib/data/map-info';
 import { getPixelsPerMeter } from '$lib/hikes/build-tiles';
 import { ThreePathContext } from '$lib/hikes/ThreePathContext';
-import { MeshLineHikeMaterial } from '$lib/hikes/meshline/MeshLineHikeMaterial';
+import { MeshLineHikeMaterial, type MeshLineHikeMaterialParameters } from '$lib/hikes/meshline/MeshLineHikeMaterial';
 import { createMap3dMarkers, type Map3dMarkers, type Map3dNode } from '$lib/hikes/map-3d-markers';
-import { isPeakOrSaddle, type MapPhoto } from '$lib/hikes/map-utils';
+import { alternatingOffset, isPeakOrSaddle, mapFactsPref, type MapPhoto } from '$lib/hikes/map-utils';
+import { offsetNearRoute, type FactsMarks } from '$lib/hikes/facts-overlay';
 
 export interface Map3dHandle {
     setIndicator: (lat: number, lon: number, ele: number) => void;
@@ -28,6 +29,15 @@ const USE_ELEVATION = true;
 const SCENE_SCALE = 0.2;
 const SCENE_SCALE_VERTICAL = 0.4;
 const LINE_WIDTH = 2;
+/** Facts lines, in the same (projection) units as LINE_WIDTH: hazard stretches under the route, bailout routes beside it. */
+const HAZARD_LINE_WIDTH = 4;
+const BAILOUT_LINE_WIDTH = 1.5;
+/** Bailout routes are pushed this far off the main route's centre where they share it, clear of its half width. */
+const BAILOUT_OFFSET = LINE_WIDTH / 2 + BAILOUT_LINE_WIDTH / 2 + 0.25;
+const BAILOUT_OFFSET_NEAR = 1.5;
+const BAILOUT_OFFSET_FAR = 3;
+/** Length of one dash plus its gap along a bailout route, in projection units. */
+const BAILOUT_DASH_PERIOD = 6;
 
 // Creates a 1x1 texture that encodes 'altitudeMeters' in Mapbox RGB-DEM format
 function makeAltitudeFallback(altitudeMeters: number): THREE.DataTexture {
@@ -49,7 +59,8 @@ export function initMap3d(
     photos?: MapPhoto[],
     onPhotoClick?: (mediaIndex: number) => void,
     /** Which nodes to raise on a vertical stem; peaks and saddles unless told otherwise. */
-    elevateNode: (node: Map3dNode) => boolean = isPeakOrSaddle
+    elevateNode: (node: Map3dNode) => boolean = isPeakOrSaddle,
+    facts?: FactsMarks
 ): Map3dHandle {
     const noop: Map3dHandle = { setIndicator: () => {} };
 		const geometry = geojson?.features?.[0]?.geometry as (GeoPermissibleObjects & { coordinates: number[][] }) | null;
@@ -149,9 +160,44 @@ export function initMap3d(
     const textureLoader = new THREE.TextureLoader();
     const tileGeoProto = new THREE.PlaneGeometry(tileScale, tileScale, TILE_SEGMENTS, TILE_SEGMENTS);
 
+		// Facts lines as GeoJSON, clipped and draped per tile like the route.
+		// Bailout routes are first pushed beside the main route where they
+		// share it, in projection units (the 3D map's scale is fixed).
+		const mainXY = coords.map((c) => {
+				const [x, y] = projection([c[0], c[1]]) ?? [0, 0];
+				return { x, y };
+		});
+		const factsLines: { geometry: GeoPermissibleObjects; color: string; width: number; dashed: boolean; opacity: number }[] = [
+				...(facts?.lines ?? []).map((l) => ({
+						geometry: { type: 'LineString', coordinates: l.coords.map(([lat, lon]) => [lon, lat]) } as GeoPermissibleObjects,
+						color: l.color, width: HAZARD_LINE_WIDTH, dashed: false, opacity: 0.55,
+				})),
+				...(facts?.routes ?? []).map((r, i) => {
+						const offset = alternatingOffset(i, BAILOUT_OFFSET);
+						const xy = r.coords.map(([lat, lon]) => {
+								const [x, y] = projection([lon, lat]) ?? [0, 0];
+								return { x, y };
+						});
+						// Projection y grows down like the screen, so the side matches the 2D map's.
+						const shifted = offsetNearRoute(xy, mainXY, offset, BAILOUT_OFFSET_NEAR, BAILOUT_OFFSET_FAR);
+						return {
+								geometry: {
+										type: 'LineString',
+										coordinates: shifted.map((p) => projection.invert?.([p.x, p.y]) ?? [0, 0]),
+								} as GeoPermissibleObjects,
+								color: r.color, width: BAILOUT_LINE_WIDTH, dashed: true, opacity: 1,
+						};
+				}),
+		];
+		// Toggled with the "Route facts" checkbox; the pins follow through the markers.
+		const factsGroup = new THREE.Group();
+		factsGroup.visible = mapFactsPref.get();
+
 		const group = new THREE.Group();
+		group.add(factsGroup);
 		// Terrain only, drawn with depth-output materials for the markers' occlusion test.
-		const wantsMarkers = !!(nodes?.some((n) => typeof n.demEle === 'number') || photos?.some((p) => typeof p.demEle === 'number'));
+		const wantsMarkers = !!(nodes?.some((n) => typeof n.demEle === 'number') || photos?.some((p) => typeof p.demEle === 'number')
+				|| facts?.pins.some((p) => typeof p.demEle === 'number') || facts?.lines.length || facts?.routes.length);
 		const depthScene = new THREE.Scene();
 		const depthGroup = new THREE.Group();
 		depthScene.add(depthGroup);
@@ -225,18 +271,25 @@ export function initMap3d(
 				const path = geoPath(projection, context);
 				path(geometry);
 
+				// The draped-line material on this tile: the route's, or a facts line's with `overrides`.
+				const hikeLineMaterial = (overrides: Partial<MeshLineHikeMaterialParameters>) => new MeshLineHikeMaterial({
+					tOffset: OFFSET,
+					tTileSize: tileScale,
+					tScale: pixelsPerMeter,
+					map: lineFallback,
+					tDisplacement: demFallback,
+					depthTest: true,
+					resolution: new THREE.Vector2(512, 512),
+					...overrides,
+				} as MeshLineHikeMaterialParameters);
+				// A path point (in projection units) in a line mesh's local space on this tile, at height `z`.
+				const toTilePoint = (v: THREE.Vector2, z = 0.0) => new THREE.Vector3(
+					v.x - tileScale * 0.5 - tileData.x,
+					-v.y + tileScale * 0.5 + tileData.y,
+					z);
+
 				const meshLineMaterial = USE_ELEVATION
-						? new MeshLineHikeMaterial({
-								tOffset: OFFSET,
-								tTileSize: tileScale,
-								tScale: pixelsPerMeter,
-								map: lineFallback,
-								tDisplacement: demFallback,
-								depthTest: true,
-								useMap: 1,
-								resolution: new THREE.Vector2(512, 512),
-								lineWidth: LINE_WIDTH
-						})
+						? hikeLineMaterial({ useMap: 1, lineWidth: LINE_WIDTH })
 						: new MeshLineMaterial({
 								color: primaryGeometryColor,
 								resolution: new THREE.Vector2(512, 512),
@@ -247,14 +300,8 @@ export function initMap3d(
 						// @ts-expect-error Erasing geometry type above
 						const coordinates : Array<number>[] = geometry.coordinates ?? geometry.geometry?.coordinates ?? [];
 						const points = !USE_ELEVATION && points2d.length === coordinates.length
-								? points2d.map((v, i) => new THREE.Vector3(
-										v.x - tileScale * 0.5 - tileData.x,
-										-v.y + tileScale * 0.5 + tileData.y,
-										coordinates[i][2] * pixelsPerMeter + OFFSET))
-								: points2d.map((v) => new THREE.Vector3(
-										v.x - tileScale * 0.5 - tileData.x,
-										-v.y + tileScale * 0.5 + tileData.y,
-										0.0));
+								? points2d.map((v, i) => toTilePoint(v, coordinates[i][2] * pixelsPerMeter + OFFSET))
+								: points2d.map((v) => toTilePoint(v));
 
 						const buffer = new MeshLineGeometry().setFromPoints( points );
 
@@ -262,6 +309,37 @@ export function initMap3d(
 						line.position.set(tileData.x, -tileData.y, 0);
 						line.renderOrder = 800;
 						group.add(line);
+				}
+
+				// Facts lines on this tile: one material per drawn path, since a
+				// dash's length is relative to the path it's on.
+				const factsMaterials: MeshLineHikeMaterial[] = [];
+				for (const fl of factsLines) {
+						const ctx = new ThreePathContext();
+						geoPath(projection, ctx)(fl.geometry);
+						for (const p of ctx.paths) {
+								const points2d = p.getPoints();
+								if (points2d.length < 2) continue;
+								let length = 0;
+								for (let i = 1; i < points2d.length; i++) length += points2d[i].distanceTo(points2d[i - 1]);
+								const material = hikeLineMaterial({
+										useMap: 0,
+										color: fl.color,
+										opacity: fl.opacity,
+										transparent: true,
+										lineWidth: fl.width,
+										...(fl.dashed && length > 0
+												? { useDash: 1, dashArray: BAILOUT_DASH_PERIOD / length, dashRatio: 0.45 }
+												: {}),
+								} as Partial<MeshLineHikeMaterialParameters>);
+								factsMaterials.push(material);
+								const points = points2d.map((v) => toTilePoint(v));
+								const mesh = new THREE.Mesh(new MeshLineGeometry().setFromPoints(points), material);
+								mesh.position.set(tileData.x, -tileData.y, 0);
+								// Hazard stretches under the route (800), bailout routes over it.
+								mesh.renderOrder = fl.dashed ? 810 : 790;
+								factsGroup.add(mesh);
+						}
 				}
 
 				textureLoader.load(satUrl, (tex) => {
@@ -278,6 +356,10 @@ export function initMap3d(
 					tileMaterial.uniforms.tDisplacement.value = tex;
 					meshLineMaterial.uniforms.tDisplacement.value = tex;
 					meshLineMaterial.needsUpdate = true;
+					for (const m of factsMaterials) {
+							m.uniforms.tDisplacement.value = tex;
+							m.needsUpdate = true;
+					}
 					render();
 				});
     });
@@ -345,6 +427,9 @@ export function initMap3d(
 						container, renderer, camera, group, depthScene, terrainPoint,
 						nodes: nodes ?? [],
 						photos: photos ?? [],
+						factsPins: facts?.pins,
+						hasFactsLines: factsLines.length > 0,
+						onFactsToggle: (on) => { factsGroup.visible = on; },
 						onPhotoClick,
 						elevateNode,
 						requestRender: () => render(),

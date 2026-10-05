@@ -228,6 +228,7 @@ contacts:
 | `ascent`, `descent` | number | **metres** |
 | `filePath` | string | a different route GeoJSON for this date; defaults to `<slug>.json` |
 | `metaPath` | string | a different sidecar for this date; defaults to `<slug>.hike.json` |
+| `places` | string[] | place docs shown at the bottom, by slug: `[knorrhuette]`. See [Adding a place doc](adding-a-place.md) |
 
 ### Keys that set the hike
 

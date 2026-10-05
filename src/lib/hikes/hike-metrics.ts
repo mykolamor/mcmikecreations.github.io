@@ -51,6 +51,30 @@ export function haversineKm(c1: number[], c2: number[]): number {
 	return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
+/** The GeoJSON coordinates that are points, `[lon, lat, ele?]`. */
+export function routeCoords(coords: number[][] | null | undefined): number[][] {
+	return (coords ?? []).filter((c) => Array.isArray(c) && c.length >= 2);
+}
+
+/** Distance (km) from the first point to each point, every step times `factor` (the chart's stretch). */
+export function cumulativeKm(coords: number[][], factor = 1): number[] {
+	const out: number[] = coords.length ? [0] : [];
+	for (let i = 1; i < coords.length; i++) out.push(out[i - 1] + haversineKm(coords[i - 1], coords[i]) * factor);
+	return out;
+}
+
+/** The point `km` along the route (`cum` from `cumulativeKm`), between its two neighbours. Needs two points or more. */
+export function pointAtKm(coords: number[][], cum: number[], km: number): { lat: number; lon: number; ele?: number } {
+	let i = 1;
+	while (i < cum.length - 1 && cum[i] < km) i++;
+	const seg = cum[i] - cum[i - 1];
+	const f = seg > 0 ? (km - cum[i - 1]) / seg : 0;
+	const [aLon, aLat, aEle] = coords[i - 1];
+	const [bLon, bLat, bEle] = coords[i];
+	const ele = typeof aEle === 'number' && typeof bEle === 'number' ? aEle + (bEle - aEle) * f : undefined;
+	return { lat: aLat + (bLat - aLat) * f, lon: aLon + (bLon - aLon) * f, ...(ele != null ? { ele } : {}) };
+}
+
 export interface MetricScales {
 	/** multiply a coordinate-derived (haversine) distance by this to reach the authoritative distance */
 	distanceFactor: number;
@@ -73,8 +97,7 @@ export function computeMetricScales(
 ): MetricScales {
 	if (!coords?.length) return { distanceFactor: 1 };
 
-	let haversineTotal = 0;
-	for (let i = 1; i < coords.length; i++) haversineTotal += haversineKm(coords[i - 1], coords[i]);
+	const haversineTotal = cumulativeKm(coords).at(-1)!;
 
 	const authDistanceKm = authoritative?.distance != null ? authoritative.distance / 1000 : null;
 	const distanceFactor = authDistanceKm != null && haversineTotal > 0 ? authDistanceKm / haversineTotal : 1;

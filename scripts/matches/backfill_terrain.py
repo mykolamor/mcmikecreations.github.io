@@ -3,7 +3,11 @@ photos and POI nodes so both can be pinned onto a post's 3D map.
 
 Photos: every front-matter `images` entry that already carries `lat`/`lon`
 (see backfill_gps) gets a `demEle` beside them. Nodes: every node in every
-`*.hike.json` gets a top-level `demEle` beside its `lat`/`lon`. A node's OSM
+`*.hike.json` gets a top-level `demEle` beside its `lat`/`lon`. Facts places:
+every `{lat, lon}` place in a `*.hike.json`'s `facts` (route defaults for the
+post's facts layer, see src/lib/hikes/facts.server.ts) gets one too, so its
+pin can stand on the 3D map like a node; places in a post's front matter
+aren't touched (that YAML is hand-formatted and commented). A node's OSM
 `tags.ele` is left alone - it stays what the popup shows, while `demEle`
 is only for placement, as it's what the terrain under the marker is drawn at.
 
@@ -17,8 +21,8 @@ import json
 from decimal import Decimal
 from pathlib import Path
 
-from . import config
-from .cli import resolve_posts
+from . import cliutil, config
+from .cliutil import resolve_posts
 from .postwriter import merge_image_fields, read_images
 from .terrain import Terrain
 
@@ -30,15 +34,11 @@ def build_parser() -> argparse.ArgumentParser:
         prog="backfill_terrain.py",
         description="Add `demEle` (3D map terrain height) to located post images and hike nodes.",
     )
-    p.add_argument("posts", nargs="*", metavar="POST", default=[],
-                   help="Post filenames without a path, e.g. 2024-08-31-aiplspitz.md "
-                        "(the .md is optional). Omit to process every post.")
-    p.add_argument("--posts-dir", default=None,
-                   help="Directory holding the hike markdown posts and their .hike.json files.")
+    cliutil.add_posts(p)
+    cliutil.add_posts_dir(p, help="Directory holding the hike markdown posts and their .hike.json files.")
     p.add_argument("--no-nodes", action="store_true", help="Skip the *.hike.json nodes.")
     p.add_argument("--no-photos", action="store_true", help="Skip the posts' front-matter images.")
-    p.add_argument("--dry-run", action="store_true",
-                   help="Report what would change without writing any file.")
+    cliutil.add_dry_run(p)
     return p
 
 
@@ -89,20 +89,56 @@ def _with_dem_ele(node: dict, dem_ele: float) -> dict:
     return out
 
 
+# Keys a `{lat, lon}` facts place may have (facts.server.ts `readRawPlace`).
+FACTS_PLACE_KEYS = frozenset(config.schema_keys()["factsPlaceKeys"])
+
+
+def _is_facts_place(value) -> bool:
+    return (isinstance(value, dict) and "lat" in value and "lon" in value
+            and set(value) <= FACTS_PLACE_KEYS
+            and all(isinstance(value[k], (int, float, Decimal)) for k in ("lat", "lon")))
+
+
+def _set_dem_ele(place: dict, terrain: Terrain) -> tuple[dict, int]:
+    """`place` (a node or a facts place) with `demEle` set to the terrain
+    height under it, and 1 if that changed it, else 0. Off the DEM tiles it
+    is left as it is."""
+    h = terrain.height(float(place["lat"]), float(place["lon"]))
+    if h is None or place.get("demEle") == Decimal(str(h)):
+        return place, 0
+    return _with_dem_ele(place, h), 1
+
+
+def _backfill_facts_places(value, terrain: Terrain) -> tuple[object, int]:
+    """`value` (any part of a sidecar's `facts`) with `demEle` set on every
+    `{lat, lon}` place in it, and how many changed."""
+    if _is_facts_place(value):
+        return _set_dem_ele(value, terrain)
+    if not isinstance(value, (dict, list)):
+        return value, 0
+    out = dict(value) if isinstance(value, dict) else list(value)
+    changed = 0
+    for k, v in (value.items() if isinstance(value, dict) else enumerate(value)):
+        out[k], n = _backfill_facts_places(v, terrain)
+        changed += n
+    return out, changed
+
+
 def backfill_hike_json(path: Path, terrain: Terrain, dry_run: bool = False) -> int:
-    """Set `demEle` on every node of one .hike.json; return how many changed."""
+    """Set `demEle` on every node and every `{lat, lon}` facts place of one
+    .hike.json; return how many changed."""
     text = path.read_text(encoding="utf-8")
     data = json.loads(text, parse_float=Decimal)
-    nodes = data.get("nodes") if isinstance(data, dict) else None
-    if not nodes:
+    if not isinstance(data, dict):
         return 0
     changed = 0
+    nodes = data.get("nodes") or []
     for i, node in enumerate(nodes):
-        h = terrain.height(float(node["lat"]), float(node["lon"]))
-        if h is None or node.get("demEle") == Decimal(str(h)):
-            continue
-        nodes[i] = _with_dem_ele(node, h)
-        changed += 1
+        nodes[i], n = _set_dem_ele(node, terrain)
+        changed += n
+    if "facts" in data:
+        data["facts"], n = _backfill_facts_places(data["facts"], terrain)
+        changed += n
     if changed and not dry_run:
         trailing = "\n" if text.endswith("\n") else ""
         path.write_text(dump_hike_json(data) + trailing, encoding="utf-8")
@@ -111,10 +147,8 @@ def backfill_hike_json(path: Path, terrain: Terrain, dry_run: bool = False) -> i
 
 def main(argv=None) -> int:
     args = build_parser().parse_args(argv)
-    kwargs = {"posts_dir": Path(args.posts_dir)} if args.posts_dir else {}
-    settings = config.Settings(**kwargs)
+    settings = cliutil.settings_from_dirs(args)
     terrain = Terrain.for_settings(settings)
-    suffix = " (dry run, nothing written)" if args.dry_run else ""
 
     if not args.no_photos:
         total = 0
@@ -125,7 +159,7 @@ def main(argv=None) -> int:
             if updated:
                 total += updated
                 print(f"{path.name}: set demEle on {updated} image(s)")
-        print(f"photos: {total} image(s) updated across {len(posts)} post(s){suffix}")
+        cliutil.print_summary("photos", f"{total} image(s) updated", len(posts), "post(s)", args.dry_run)
 
     if not args.no_nodes:
         total = 0
@@ -134,6 +168,7 @@ def main(argv=None) -> int:
             updated = backfill_hike_json(path, terrain, dry_run=args.dry_run)
             if updated:
                 total += updated
-                print(f"{path.name}: set demEle on {updated} node(s)")
-        print(f"nodes: {total} node(s) updated across {len(files)} file(s){suffix}")
+                print(f"{path.name}: set demEle on {updated} node(s) and facts place(s)")
+        cliutil.print_summary("nodes", f"{total} node(s) and facts place(s) updated", len(files),
+                              "file(s)", args.dry_run)
     return 0

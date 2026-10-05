@@ -125,6 +125,11 @@ interface HikeMeta {
 	height: number;
 	checkpoints: Array<[number, number]>;
 	nodes?: MapNode[];
+	/**
+	 * Route-level defaults for the post's facts layer, merged under each post's
+	 * own `facts`. Raw: validated by `readHikeFacts` (`facts.server.ts`).
+	 */
+	facts?: unknown;
 }
 
 interface Map {

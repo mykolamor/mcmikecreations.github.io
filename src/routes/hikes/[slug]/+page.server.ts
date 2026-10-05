@@ -1,4 +1,5 @@
 import { error, isHttpError } from '@sveltejs/kit';
+import { existsSync, readFileSync } from 'node:fs';
 import { hikes } from '$lib/hikes/hikes.server';
 import { readingTime } from 'reading-time-estimator';
 import resume from '$lib/data/resume.json';
@@ -7,8 +8,11 @@ import { defaultPageSize, getAllPosts } from '$lib/hikes/hikes-info.server';
 import type { EntryGenerator, PageServerLoad } from './$types';
 import type { Map, MapDate, MapProperties } from '$lib/data/map-info';
 import { mergeMetrics } from '$lib/hikes/hike-metrics';
-import { applyPostOverrides, readHikeFrontmatter } from '$lib/hikes/frontmatter.server';
-import { defaultGpxPath } from '$lib/data/hikes-db';
+import { applyPostOverrides, readHikeFrontmatter, readMetaPathOverride } from '$lib/hikes/frontmatter.server';
+import { defaultGpxPath, defaultMetaPath, getHikeMeta } from '$lib/data/hikes-db';
+import { readHikeFacts } from '$lib/hikes/facts.server';
+import { placeDocsForPost } from '$lib/hikes/places.server';
+import type { PlaceDocRef, RenderedPlaceDoc } from '$lib/hikes/place-docs';
 import { readHikeContacts } from '$lib/hikes/frontmatter';
 import { buildHikeContacts } from '$lib/hikes/contacts';
 import contactsBook from '$lib/data/contacts.json';
@@ -72,7 +76,10 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 		const page = postIndex !== -1 ? Math.floor(postIndex / defaultPageSize) + 1 : 1;
 
 		const nodes = mergedProperties.nodes;
-		const parsed = await parseMarkdown(postRaw, mergedDate.tags, { nodes });
+		// The post's place docs (`places:`): linked from the prose, shown at the bottom.
+		const placeDocs = placeDocsForPost(frontmatter, date.path);
+		const placeRefs: PlaceDocRef[] = placeDocs.map(({ slug, title, names }) => ({ slug, title, names }));
+		const parsed = await parseMarkdown(postRaw, mergedDate.tags, { nodes, placeDocs: placeRefs });
 		const media = parsed.media;
 		let postHtml = parsed.html;
 
@@ -117,9 +124,47 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 			readTimedTrack(gpxFile)
 		);
 		if (photoStops.size > 0) {
-			postHtml = (await parseMarkdown(postRaw, mergedDate.tags, { stops: photoStops, nodes })).html;
+			postHtml = (await parseMarkdown(postRaw, mergedDate.tags, { stops: photoStops, nodes, placeDocs: placeRefs })).html;
 		}
 		locals.postContent = postHtml;
+
+		// Each doc rendered like a post body, without the map boxes; its media
+		// indices continue after the post's, so all photos share one gallery.
+		// Sent as HTML (unlike the post's body, which the browser re-parses):
+		// docs are short, and this keeps the browser free of their front matter.
+		const places: RenderedPlaceDoc[] = [];
+		let mediaOffset = media.length;
+		for (const doc of placeDocs) {
+			const rendered = await parseMarkdown(doc.raw, [], { nodes, mediaOffset, widgets: false, styles: false });
+			places.push({ slug: doc.slug, title: doc.title, description: doc.description, tags: doc.tags, ...rendered });
+			mediaOffset += rendered.media.length;
+		}
+
+		// The hand-written facts layer: the sidecar's route defaults with the
+		// post's own facts merged on top, places resolved on the route.
+		const metaPath = readMetaPathOverride(frontmatter, date) ?? mapProperties.metaPath ?? defaultMetaPath(routeStr);
+		const { facts: authored, warnings: factWarnings } = readHikeFacts({
+			post: frontmatter.facts,
+			sidecar: getHikeMeta(metaPath)?.facts,
+			postSource: date.path,
+			sidecarSource: metaPath,
+			nodes,
+			coords: coordinates,
+			distanceFactor: coordinates ? computeMetricScales(coordinates, mapProperties).distanceFactor : 1,
+			// Bailout routes are served files under static/, like the hike's own GPX.
+			readGpx: (servedPath) => (existsSync(`static${servedPath}`) ? readFileSync(`static${servedPath}`, 'utf-8') : null)
+		});
+		for (const warning of factWarnings) console.warn(warning);
+		// Titles for the posts the facts link to (alternatives, variants).
+		const linkedSlugs = new Set([
+			...(authored?.plan?.alternatives?.easier ?? []),
+			...(authored?.plan?.alternatives?.harder ?? []),
+			...(authored?.plan?.alternatives?.similar ?? []),
+			...(authored?.plan?.variants ?? []).flatMap((v) => (v.link ? [v.link] : []))
+		]);
+		const linkedPosts = Object.fromEntries(
+			allPosts.filter((p) => linkedSlugs.has(p.anchor)).map((p) => [p.anchor, p.title])
+		);
 		facts.elapsed = readHikeElapsed(frontmatter.elapsed, gpxFile);
 		// Front-matter durations are mine: computed from a recorded GPX by
 		// scripts/moving_time.py, or entered by hand. Without one, the duration
@@ -146,6 +191,10 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 			},
 			map: { ...mergedHike, properties: mapProperties },
 			facts,
+			authoredFacts: authored,
+			linkedPosts,
+			places,
+			placeRefs,
 			durationSource,
 			contacts,
 			display: {

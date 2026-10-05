@@ -111,32 +111,16 @@ class ImmichClient:
         self._record_filename(asset)
         return asset
 
-    def search_assets(
-        self,
-        album_ids: list[str] | None = None,
-        taken_after: datetime | None = None,
-        taken_before: datetime | None = None,
-    ) -> list[Asset]:
-        """All IMAGE assets matching the filters, following pagination."""
+    def _paged_search(self, endpoint: str, body: dict, limit: int | None = None) -> list[Asset]:
+        """IMAGE assets from `/api/search/<endpoint>`, following `nextPage`
+        to the end - or, given a `limit`, until that many are in hand or a
+        page comes back empty."""
         assets: list[Asset] = []
         page = 1
-        while True:
-            body: dict = {
-                "size": config.SEARCH_PAGE_SIZE,
-                "page": page,
-                "withExif": True,
-                "type": "IMAGE",
-            }
-            if album_ids:
-                body["albumIds"] = list(album_ids)
-            if taken_after:
-                body["takenAfter"] = _iso(taken_after)
-            if taken_before:
-                body["takenBefore"] = _iso(taken_before)
-
+        while limit is None or len(assets) < limit:
             r = self.session.post(
-                f"{self.base}/api/search/metadata",
-                json=body,
+                f"{self.base}/api/search/{endpoint}",
+                json={**body, "page": page, "withExif": True, "type": "IMAGE"},
                 timeout=self.settings.timeout,
             )
             r.raise_for_status()
@@ -146,9 +130,36 @@ class ImmichClient:
                 self._record_filename(a)
             assets.extend(new_assets)
             nxt = block.get("nextPage")
-            if not nxt:
-                return assets
+            if not nxt or (limit is not None and not new_assets):
+                break
             page = int(nxt)
+        return assets if limit is None else assets[:limit]
+
+    def search_assets(
+        self,
+        album_ids: list[str] | None = None,
+        taken_after: datetime | None = None,
+        taken_before: datetime | None = None,
+    ) -> list[Asset]:
+        """All IMAGE assets matching the filters, following pagination."""
+        body: dict = {"size": config.SEARCH_PAGE_SIZE}
+        if album_ids:
+            body["albumIds"] = list(album_ids)
+        if taken_after:
+            body["takenAfter"] = _iso(taken_after)
+        if taken_before:
+            body["takenBefore"] = _iso(taken_before)
+        return self._paged_search("metadata", body)
+
+    def smart_search(self, query: str, limit: int = config.SMART_SEARCH_LIMIT) -> list[Asset]:
+        """IMAGE assets for a free-text query, best first, at most `limit`.
+
+        Immich's CLIP search ("Knorrhütte", "hut in fog"): for place docs,
+        which have no date to search a window around. Results are ranked, so
+        paging stops at `limit` rather than at the end.
+        """
+        return self._paged_search(
+            "smart", {"query": query, "size": min(limit, config.SEARCH_PAGE_SIZE)}, limit)
 
     # --- images -------------------------------------------------------------
 

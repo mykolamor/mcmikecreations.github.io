@@ -1,6 +1,7 @@
 import { select, pointer, scaleLinear, line as d3Line, area as d3Area, curveMonotoneX, axisBottom, axisLeft, bisectLeft } from 'd3';
 import { primaryGeometryColor, secondaryIndicatorColor } from '$lib/hikes/build-geometry';
-import { computeMetricScales, haversineKm, type HikeMetrics } from '$lib/hikes/hike-metrics';
+import { computeMetricScales, cumulativeKm, type HikeMetrics } from '$lib/hikes/hike-metrics';
+import { pinColor, pinEmojis, pinKinds, pinText, type FactsBand, type FactsPin } from '$lib/hikes/facts-overlay';
 
 interface ElevationPoint {
     dist: number; // km (already scaled to the authoritative distance)
@@ -17,6 +18,21 @@ export interface ElevationPhotoTick {
 }
 
 const PHOTO_TICK_SIZE = 7;
+/** Height of the SAC-grade band row and the hazard row above the plot. */
+const GRADE_BAND_H = 10;
+const HAZARD_BAND_H = 3;
+const BAND_GAP = 1;
+/** Facts pins: a pill of emojis standing on a stem above the profile line. */
+const PIN_STEM = 9;
+const PIN_H = 14;
+const PIN_EMOJI_W = 11;
+
+/** The facts layer's marks on the chart: see `facts-overlay.ts`. */
+export interface ElevationFacts {
+    bands: FactsBand[];
+    pins: FactsPin[];
+    onPinClick?: (pin: FactsPin) => void;
+}
 
 export function initElevationChart(
     container: HTMLElement,
@@ -25,7 +41,8 @@ export function initElevationChart(
     onLeave?: () => void,
     metrics?: Partial<HikeMetrics> | null,
     photoTicks?: ElevationPhotoTick[],
-    onPhotoClick?: (mediaIndex: number) => void
+    onPhotoClick?: (mediaIndex: number) => void,
+    facts?: ElevationFacts
 ): { setIndicator: (lat: number, lon: number, preferredDist?: number) => void; hideIndicator: () => void } {
     let internalPoints: ElevationPoint[] = [];
     const coords: number[][] = geojson?.features?.[0]?.geometry?.coordinates;
@@ -35,15 +52,13 @@ export function initElevationChart(
     // elevations are the track's own (see computeMetricScales).
     const { distanceFactor } = computeMetricScales(coords, metrics);
 
-    const points: ElevationPoint[] = [];
-    let cumDist = 0;
-    for (let i = 0; i < coords.length; i++) {
-        if (i > 0) cumDist += haversineKm(coords[i - 1], coords[i]) * distanceFactor;
-        points.push({ dist: cumDist, ele: coords[i][2] ?? 0, lat: coords[i][1], lon: coords[i][0] });
-    }
+    const cum = cumulativeKm(coords, distanceFactor);
+    const points: ElevationPoint[] = coords.map((c, i) => ({ dist: cum[i], ele: c[2] ?? 0, lat: c[1], lon: c[0] }));
     const distArray = points.map(p => p.dist);
 
-    const margin = { top: 14, right: 16, bottom: 38, left: 56 };
+    // Room above the plot for the grade and hazard bands, when there are any.
+    const bandRows = facts?.bands.length ? GRADE_BAND_H + BAND_GAP + HAZARD_BAND_H + 4 : 0;
+    const margin = { top: 14 + bandRows, right: 16, bottom: 38, left: 56 };
     const VW = 600;
     const VH = 190;
     const iW = VW - margin.left - margin.right; // inner width
@@ -180,6 +195,22 @@ export function initElevationChart(
             onLeave?.();
         });
 
+    /** The profile point nearest `km`. */
+    const nearestPoint = (km: number): ElevationPoint =>
+        points[Math.max(0, Math.min(bisectLeft(distArray, km), points.length - 1))];
+    /** A marker's group: hovering it moves the cursor (and the maps) to `pt`, clicking calls `onClick`. */
+    const hoverGroup = (parent: any, pt: ElevationPoint, onClick?: () => void) => parent.append('g')
+        .style('cursor', onClick ? 'pointer' : 'default')
+        .on('pointerenter', () => {
+            updateCursor(pt);
+            onHover?.(pt.lat, pt.lon, pt.ele, pt.dist);
+        })
+        .on('pointerleave', () => {
+            cursor.attr('visibility', 'hidden');
+            onLeave?.();
+        })
+        .on('click', () => onClick?.());
+
     // Photo ticks: small markers standing on the x axis, drawn above the
     // overlay so they take their own hover and click. Keyboard users reach the
     // same photos through the caption lines, so the ticks stay out of the tab order.
@@ -189,19 +220,7 @@ export function initElevationChart(
         for (const tick of photoTicks) {
             if (!(tick.km >= 0 && tick.km <= distMax)) continue;
             const x = xScale(tick.km);
-            const i = Math.max(0, Math.min(bisectLeft(distArray, tick.km), points.length - 1));
-            const pt = points[i];
-            const tickG = ticksG.append('g')
-                .style('cursor', onPhotoClick ? 'pointer' : 'default')
-                .on('pointerenter', () => {
-                    updateCursor(pt);
-                    onHover?.(pt.lat, pt.lon, pt.ele, pt.dist);
-                })
-                .on('pointerleave', () => {
-                    cursor.attr('visibility', 'hidden');
-                    onLeave?.();
-                })
-                .on('click', () => onPhotoClick?.(tick.mediaIndex));
+            const tickG = hoverGroup(ticksG, nearestPoint(tick.km), onPhotoClick && (() => onPhotoClick(tick.mediaIndex)));
             if (tick.alt) tickG.append('title').text(tick.alt);
             // A wider transparent hit area than the visible marker.
             tickG.append('rect')
@@ -213,6 +232,81 @@ export function initElevationChart(
                 .attr('fill', secondaryIndicatorColor)
                 .attr('stroke', 'white')
                 .attr('stroke-width', 1);
+        }
+    }
+
+    if (facts?.bands.length) {
+        // Row 0: SAC grade per section; row 1: hazards along a stretch. Above
+        // the plot, so the profile stays readable underneath.
+        const bandsG = g.append('g').attr('aria-hidden', 'true');
+        for (const band of facts.bands) {
+            const x0 = xScale(Math.max(0, band.from));
+            const x1 = xScale(Math.min(distMax, band.to));
+            if (!(x1 > x0)) continue;
+            const y = band.row === 0 ? -(GRADE_BAND_H + BAND_GAP + HAZARD_BAND_H + 2) : -(HAZARD_BAND_H + 2);
+            const h = band.row === 0 ? GRADE_BAND_H : HAZARD_BAND_H;
+            const bandG = bandsG.append('g');
+            bandG.append('title').text(band.title);
+            bandG.append('rect')
+                .attr('x', x0).attr('y', y).attr('width', x1 - x0).attr('height', h)
+                .attr('rx', 1.5)
+                .attr('fill', band.color)
+                .attr('fill-opacity', band.row === 0 ? 0.85 : 0.6)
+                .attr('stroke', 'white').attr('stroke-width', 0.5);
+            if (band.row === 0 && band.text && x1 - x0 > band.text.length * 5 + 4) {
+                bandG.append('text')
+                    .attr('x', (x0 + x1) / 2).attr('y', y + h / 2)
+                    .attr('text-anchor', 'middle').attr('dominant-baseline', 'central')
+                    .attr('font-size', '8px').attr('font-weight', 600).attr('fill', 'white')
+                    .attr('pointer-events', 'none')
+                    .text(band.text);
+            }
+        }
+    }
+
+    // Facts pins: hazards, bailout points and water, standing on the profile
+    // line. Like the photo ticks, out of the tab order: the facts block lists
+    // the same places as links.
+    if (facts?.pins.length) {
+        const pinsG = g.append('g').attr('aria-hidden', 'true');
+        // Boxes of the pins drawn so far; a pin that would overlap one is stacked above it.
+        const placed: { x0: number; x1: number; top: number }[] = [];
+        for (const pin of facts.pins) {
+            if (pin.km == null || !(pin.km >= 0 && pin.km <= distMax)) continue;
+            const pt = nearestPoint(pin.km);
+            const x = xScale(pin.km);
+            const y = yScale(pt.ele);
+            const emojis = pinEmojis(pin);
+            const w = pinKinds(pin).length * PIN_EMOJI_W + 6;
+            let top = Math.max(-bandRows, y - PIN_STEM - PIN_H);
+            const x0 = x - w / 2 - 1;
+            const x1 = x + w / 2 + 1;
+            for (let hit = true; hit; ) {
+                hit = false;
+                for (const b of placed) {
+                    if (x0 < b.x1 && x1 > b.x0 && top < b.top + PIN_H + 1 && top + PIN_H + 1 > b.top) {
+                        top = b.top - PIN_H - 2;
+                        hit = true;
+                    }
+                }
+            }
+            placed.push({ x0, x1, top });
+            const onPinClick = facts.onPinClick;
+            const pinG = hoverGroup(pinsG, pt, onPinClick && (() => onPinClick(pin)));
+            pinG.append('title').text(pinText(pin));
+            pinG.append('line')
+                .attr('x1', x).attr('x2', x).attr('y1', top + PIN_H).attr('y2', y)
+                .attr('stroke', pinColor(pin)).attr('stroke-width', 1.5);
+            pinG.append('rect')
+                .attr('x', x - w / 2).attr('y', top).attr('width', w).attr('height', PIN_H)
+                .attr('rx', PIN_H / 2)
+                .attr('fill', 'white')
+                .attr('stroke', pinColor(pin)).attr('stroke-width', 1.5);
+            pinG.append('text')
+                .attr('x', x).attr('y', top + PIN_H / 2 + 0.5)
+                .attr('text-anchor', 'middle').attr('dominant-baseline', 'central')
+                .attr('font-size', '9px')
+                .text(emojis);
         }
     }
 

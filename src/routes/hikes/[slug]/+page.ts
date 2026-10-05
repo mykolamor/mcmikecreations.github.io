@@ -30,7 +30,8 @@ export const load: PageLoad = async ({ data, fetch, params }) => {
 					const postRaw = await res.text();
 					clientHtml = (await parseMarkdown(postRaw, data.post.tags, {
 						stops: photoStopsFromRecord(data.post.photoStops),
-						nodes: data.map.properties.nodes
+						nodes: data.map.properties.nodes,
+						placeDocs: data.placeRefs
 					})).html;
 				}
 			} else {
@@ -42,6 +43,10 @@ export const load: PageLoad = async ({ data, fetch, params }) => {
 			post: data.post,
 			map: data.map,
 			facts: data.facts,
+			authoredFacts: data.authoredFacts,
+			linkedPosts: data.linkedPosts,
+			places: data.places,
+			placeRefs: data.placeRefs,
 			durationSource: data.durationSource,
 			display: data.display,
 			contacts: data.contacts,

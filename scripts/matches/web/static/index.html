@@ -17,10 +17,11 @@
 <main>
   <aside id="hikes-panel">
     <div class="panel-head">
-      <strong>Hikes</strong>
-      <button id="refresh-btn" title="Re-scan the posts directory">Refresh</button>
+      <strong>Hikes &amp; places</strong>
+      <button id="new-place-btn" title="Create a place doc: reference text shown in every hike that lists it">New place…</button>
+      <button id="refresh-btn" title="Re-scan the posts and places directories">Refresh</button>
     </div>
-    <input id="hike-filter" type="search" placeholder="Filter hikes…">
+    <input id="hike-filter" type="search" placeholder="Filter hikes and places…">
     <ul id="hikes" class="list"></ul>
   </aside>
 
@@ -43,6 +44,7 @@
     <div class="toolbar">
       <button id="add-btn" disabled>Add media…</button>
       <button id="rerun-btn" disabled>Re-run match for this hike</button>
+      <button id="edit-place-btn" hidden title="Edit this place doc's title, description, tags, aliases and text">Edit text…</button>
       <a id="open-site" class="btn-link" target="_blank" rel="noopener noreferrer"
          title="Open this hike on the deployed site">Open on site ↗</a>
       <button id="remove-btn" class="danger" disabled
@@ -128,9 +130,48 @@
   </form>
 </dialog>
 
+<dialog id="place-dlg">
+  <form method="dialog">
+    <h2 id="place-dlg-title">Place doc</h2>
+    <div id="place-slug-row">
+      <label>Slug (file name, used in a post's <code>places:</code>)</label>
+      <input id="place-slug" type="text" spellcheck="false" placeholder="knorrhuette">
+    </div>
+    <label>Title</label>
+    <input id="place-title" type="text">
+    <label>Description (one sentence)</label>
+    <input id="place-description" type="text">
+    <div class="row">
+      <div class="grow">
+        <label>Tags (comma-separated)</label>
+        <input id="place-tags" type="text" placeholder="Hut, DAV">
+      </div>
+      <div class="grow">
+        <label>Aliases: names in hike text that link here (comma-separated; title if empty)</label>
+        <input id="place-aliases" type="text" placeholder="Knorrhütte, Knorr hut">
+      </div>
+    </div>
+    <label>Text (markdown; images as <code>![caption](/images/projects/data-viz/hikes/places/&lt;slug&gt;/…)</code>)</label>
+    <textarea id="place-body" rows="16" spellcheck="true"></textarea>
+    <p class="muted" id="place-hint"></p>
+    <menu>
+      <button id="place-insert" type="button" title="Append the selected media item to the text">Insert selected image</button>
+      <div class="spacer"></div>
+      <button value="cancel">Cancel</button>
+      <button id="place-save" value="save" class="primary">Save</button>
+    </menu>
+  </form>
+</dialog>
+
 <dialog id="pick-dlg">
   <form method="dialog">
     <h2>Select Immich asset</h2>
+    <div id="pick-search" class="row" hidden>
+      <input id="pick-query" type="search" placeholder="Search Immich: text (e.g. Knorrhütte)">
+      <input id="pick-from" type="date" title="Taken on or after">
+      <input id="pick-to" type="date" title="Taken on or before">
+      <button id="pick-go" type="button">Search</button>
+    </div>
     <input id="pick-filter" type="search" placeholder="Filter by filename…">
     <ul id="pick-list" class="list picker"></ul>
     <menu><button value="cancel">Close</button></menu>

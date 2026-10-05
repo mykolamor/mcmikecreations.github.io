@@ -41,3 +41,12 @@
 }
 
 @plugin "@tailwindcss/typography";
+
+/* Facts-layer tooltips on the 2D map (hazard stretches, bailout routes): Leaflet
+   keeps tooltips on one line, which runs a long route title past the map's
+   edge. Wrap them, and keep their own line breaks. */
+.leaflet-tooltip.facts-tooltip {
+    white-space: pre-line;
+    width: max-content;
+    max-width: min(16rem, 60vw);
+}

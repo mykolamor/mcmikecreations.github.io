@@ -1,20 +1,11 @@
 """Offline tests for Remote.find_asset's filename/id/URL resolution."""
 
+from types import SimpleNamespace
+
 import pytest
 import requests
 
-from matches import config
-from matches.immich import Asset
-from matches.review.remote import Remote
-
-ASSET = Asset(
-    id="953e18b3-3d1e-4e21-9e31-1f64a6015c14",
-    original_path="/originals/IMG_1234.jpg",
-    original_file_name="IMG_1234.jpg",
-    file_created_at="2024-08-31T00:00:00Z",
-    local_date_time="2024-08-31T00:00:00",
-    width=100, height=100, latitude=None, longitude=None,
-)
+from matches.tests.conftest import ASSET, make_asset, make_remote
 
 
 class _MissingAssetClient:
@@ -27,11 +18,9 @@ class _MissingAssetClient:
 
 
 @pytest.fixture
-def remote(monkeypatch):
-    r = Remote(config.Settings(api_key="k", immich_url="https://immich.example"))
-    r._client = _MissingAssetClient()
-    monkeypatch.setattr(r, "candidates_for", lambda post: [ASSET])
-    return r
+def remote(remote):
+    remote._client = _MissingAssetClient()
+    return remote
 
 
 def test_finds_by_bare_id(remote):
@@ -68,7 +57,6 @@ class _FakeSearchClient:
 
 
 def _post(album_id: str):
-    from types import SimpleNamespace
     return SimpleNamespace(
         name="p.md",
         report={"album": {"id": album_id},
@@ -77,7 +65,7 @@ def _post(album_id: str):
 
 
 def test_candidates_for_caches_by_post_and_album():
-    r = Remote(config.Settings(api_key="k", immich_url="https://immich.example"))
+    r = make_remote()
     fake = _FakeSearchClient()
     r._client = fake
     post = _post("alpha")
@@ -90,7 +78,7 @@ def test_candidates_for_requeries_when_the_reports_album_changes():
     """A report rewritten on disk since the last lookup (a CLI rerun, a
     manual album fix) must trigger a fresh Immich query rather than replay
     whatever the previous album search happened to find."""
-    r = Remote(config.Settings(api_key="k", immich_url="https://immich.example"))
+    r = make_remote()
     fake = _FakeSearchClient()
     r._client = fake
     post = _post("alpha")
@@ -100,13 +88,12 @@ def test_candidates_for_requeries_when_the_reports_album_changes():
     assert fake.calls == ["alpha", "beta"]
 
 
-UPLOADED = Asset(
+UPLOADED = make_asset(
     id="67a32af0-0198-4a6c-9e0c-9b0e5621480b",
     original_path="/originals/Topo.jpg",
     original_file_name="Topo.jpg",
     file_created_at="2025-01-05T00:00:00Z",
     local_date_time="2025-01-05T00:00:00",
-    width=100, height=100, latitude=None, longitude=None,
 )
 
 
@@ -114,7 +101,7 @@ def test_finds_an_asset_uploaded_after_the_candidates_were_cached():
     """The candidate list is cached per post, so a photo added to Immich
     while the app runs must still resolve instead of replaying the stale
     list."""
-    r = Remote(config.Settings(api_key="k", immich_url="https://immich.example"))
+    r = make_remote()
     fake = _FakeSearchClient()
     r._client = fake
     post = _post("alpha")
@@ -132,7 +119,7 @@ class _ByIdClient(_FakeSearchClient):
 def test_explicit_id_outside_the_album_and_window_is_fetched_directly():
     """A scan or a screenshot carries its upload date, not the hike's, so an
     id the user pasted resolves even when no candidate search returns it."""
-    r = Remote(config.Settings(api_key="k", immich_url="https://immich.example"))
+    r = make_remote()
     r._client = _ByIdClient()
     url = ("https://immich.example/albums/"
            "d449afe2-277a-4462-8953-f44b1d8dd111/photos/" + UPLOADED.id)

@@ -8,7 +8,7 @@ import json
 import re
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, unquote, urlparse
 
 from .. import config
 from . import api
@@ -19,6 +19,51 @@ STATIC_DIR = Path(__file__).resolve().parent / "static"
 CONTENT_TYPES = {".html": "text/html; charset=utf-8",
                  ".js": "text/javascript; charset=utf-8",
                  ".css": "text/css; charset=utf-8"}
+
+
+def _job(jobs: JobRegistry, job_id: str) -> dict:
+    job = jobs.get(job_id)
+    if job is None:
+        raise api.ApiError("No such job", 404)
+    return jobs.payload(job)
+
+
+def _refresh(state: AppState, jobs: JobRegistry, body: dict) -> dict:
+    state.refresh()
+    return api.list_hikes(state)
+
+
+# GET routes answered with JSON: (path pattern, handler(state, jobs, match, query)).
+GET_ROUTES = [
+    (re.compile(p), fn) for p, fn in (
+        (r"/api/hikes", lambda s, j, m, q: api.list_hikes(s)),
+        (r"/api/hikes/(.+)", lambda s, j, m, q: api.hike_detail(s, unquote(m[1]))),
+        (r"/api/assets/(.+)", lambda s, j, m, q: api.candidate_assets(s, unquote(m[1]), q)),
+        (r"/api/places/(.+)", lambda s, j, m, q: api.get_place(s, unquote(m[1]))),
+        (r"/api/settings", lambda s, j, m, q: api.get_settings(s)),
+        (r"/api/jobs/([0-9a-f]+)", lambda s, j, m, q: _job(j, m[1])),
+    )
+]
+# GET routes answered with a file's bytes: handler(...) -> (body, content type).
+FILE_ROUTES = [
+    (re.compile(p), fn) for p, fn in (
+        (r"/api/media", lambda s, j, m, q: api.local_file(s, (q.get("path") or [""])[0])),
+        (r"/api/preview/([0-9a-fA-F-]+)", lambda s, j, m, q: api.preview_file(s, m[1])),
+    )
+]
+# POST routes, all JSON: path -> handler(state, jobs, body).
+POST_ROUTES = {
+    "/api/refresh": _refresh,
+    "/api/entry/local": lambda s, j, b: api.set_local_path(s, b),
+    "/api/entry/remote": lambda s, j, b: api.set_remote_match(s, b),
+    "/api/entry/remove": lambda s, j, b: api.remove_entry(s, b),
+    "/api/entry/suggest_name": lambda s, j, b: api.suggest_out_name(s, b),
+    "/api/add": api.start_add,
+    "/api/places/save": lambda s, j, b: api.save_place(s, b),
+    "/api/rerun": api.start_rerun,
+    "/api/settings": lambda s, j, b: api.put_settings(s, b),
+    "/api/settings/test": lambda s, j, b: api.check_connection(s),
+}
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -88,55 +133,25 @@ class Handler(BaseHTTPRequestHandler):
                 return self._static("index.html")
             if path.startswith("/static/"):
                 return self._static(path[len("/static/"):])
-
-            if path == "/api/hikes":
-                self._json(api.list_hikes(state)); return True
-            m = re.fullmatch(r"/api/hikes/(.+)", path)
-            if m:
-                self._json(api.hike_detail(state, _unquote(m.group(1)))); return True
-            m = re.fullmatch(r"/api/assets/(.+)", path)
-            if m:
-                self._json(api.candidate_assets(state, _unquote(m.group(1)))); return True
-            if path == "/api/media":
-                web = (query.get("path") or [""])[0]
-                body, ctype = api.local_file(state, web)
-                self._send(200, body, ctype); return True
-            m = re.fullmatch(r"/api/preview/([0-9a-fA-F-]+)", path)
-            if m:
-                body, ctype = api.preview_file(state, m.group(1))
-                self._send(200, body, ctype); return True
-            if path == "/api/settings":
-                self._json(api.get_settings(state)); return True
-            m = re.fullmatch(r"/api/jobs/([0-9a-f]+)", path)
-            if m:
-                job = jobs.get(m.group(1))
-                if job is None:
-                    raise api.ApiError("No such job", 404)
-                self._json(jobs.payload(job)); return True
+            for pattern, fn in GET_ROUTES:
+                m = pattern.fullmatch(path)
+                if m:
+                    self._json(fn(state, jobs, m, query))
+                    return True
+            for pattern, fn in FILE_ROUTES:
+                m = pattern.fullmatch(path)
+                if m:
+                    self._send(200, *fn(state, jobs, m, query))
+                    return True
             return False
 
         if method == "POST":
             body = self._body()
-            if path == "/api/refresh":
-                state.refresh()
-                self._json(api.list_hikes(state)); return True
-            if path == "/api/entry/local":
-                self._json(api.set_local_path(state, body)); return True
-            if path == "/api/entry/remote":
-                self._json(api.set_remote_match(state, body)); return True
-            if path == "/api/entry/remove":
-                self._json(api.remove_entry(state, body)); return True
-            if path == "/api/entry/suggest_name":
-                self._json(api.suggest_out_name(state, body)); return True
-            if path == "/api/add":
-                self._json(api.start_add(state, jobs, body)); return True
-            if path == "/api/rerun":
-                self._json(api.start_rerun(state, jobs, body)); return True
-            if path == "/api/settings":
-                self._json(api.put_settings(state, body)); return True
-            if path == "/api/settings/test":
-                self._json(api.check_connection(state)); return True
-            return False
+            fn = POST_ROUTES.get(path)
+            if fn is None:
+                return False
+            self._json(fn(state, jobs, body))
+            return True
         return False
 
     def _static(self, name: str) -> bool:
@@ -148,12 +163,6 @@ class Handler(BaseHTTPRequestHandler):
         return True
 
 
-def _unquote(text: str) -> str:
-    from urllib.parse import unquote
-
-    return unquote(text)
-
-
 def serve(settings: config.Settings, host: str = "127.0.0.1",
           port: int = 8765) -> None:
     Handler.state = AppState(settings)
@@ -162,7 +171,7 @@ def serve(settings: config.Settings, host: str = "127.0.0.1",
     posts = len(Handler.state.posts())
     key = "set" if settings.api_key else "NOT set - enter it in Settings"
     print(f"Hike image matcher: http://{host}:{port}")
-    print(f"  {posts} posts from {settings.posts_dir}")
+    print(f"  {posts} posts and place docs from {settings.posts_dir} and {settings.places_root}")
     print(f"  reports in {settings.out_dir}")
     print(f"  Immich key: {key}")
     print("  Ctrl-C to stop")

@@ -30,11 +30,19 @@
 	import AppBreadcrumbs from '$lib/components/AppBreadcrumbs.svelte';
 	import { parseMarkdown } from '$lib/hikes/hikes-info';
 	import HikeContacts from '../components/HikeContacts.svelte';
+	import HikeFactsTiles from '../components/HikeFactsTiles.svelte';
+	import StatTile from '../components/StatTile.svelte';
+	import HikeFactsSafety from '../components/HikeFactsSafety.svelte';
+	import HikeFactsGuide from '../components/HikeFactsGuide.svelte';
+	import HikePlaces from '../components/HikePlaces.svelte';
+	import { placeDocAnchor } from '$lib/hikes/place-docs';
 	import { initMap2d, type Map2dHandle } from '$lib/hikes/map-2d';
 	import type { MapPhoto } from '$lib/hikes/map-utils';
 	import { initElevationChart, type ElevationPhotoTick } from '$lib/hikes/map-elevation';
 	import { photoStopsFromRecord } from '$lib/hikes/photo-stops';
 	import { initMap3d, type Map3dHandle } from '$lib/hikes/map-3d';
+	import { buildFactsOverlay, chartPins } from '$lib/hikes/facts-overlay';
+	import { computeMetricScales } from '$lib/hikes/hike-metrics';
 
 	interface Props {
 		data: PageData;
@@ -78,8 +86,11 @@
 	const galleryItems = $derived(buildGalleryItems());
 
 	function buildGalleryItems(): GalleryItem[] {
+		// The place docs' photos follow the post's own: their `data-media-index`
+		// values continue where the post's stop (see the server load).
+		const media = [...data.post.media, ...(data.places ?? []).flatMap((p) => p.media)];
 		const full = data.post.imageFull;
-		if (!full) return data.post.media;
+		if (!full) return media;
 		const header: GalleryItem = {
 			kind: 'image',
 			src: full,
@@ -87,7 +98,7 @@
 			placeholder: data.post.image !== full ? data.post.image : undefined,
 			alt: data.post.title
 		};
-		return [header, ...data.post.media];
+		return [header, ...media];
 	}
 
 	function openGallery(slide: number) {
@@ -126,8 +137,17 @@
 	// reader has already navigated away from can tell it's been superseded and
 	// back off instead of racing the current one.
 	let contentRunId = 0;
+	// Listeners on elements Svelte keeps across navigations (the facts layer's
+	// place links), dropped with the maps they point at.
+	let listenerAbort: AbortController | undefined;
+	// The same for the place docs' links and photos, wired before the maps load.
+	let placesAbort: AbortController | undefined;
 
 	function teardownContent() {
+		listenerAbort?.abort();
+		listenerAbort = undefined;
+		placesAbort?.abort();
+		placesAbort = undefined;
 		map3dHandle?.destroy?.();
 		map2dHandle?.destroy?.();
 		map3dHandle = undefined;
@@ -187,7 +207,8 @@
 						// @ts-ignore
 						data.clientHtml = (await parseMarkdown(postRaw, data.post.tags, {
 							stops: photoStopsFromRecord(data.post.photoStops),
-							nodes: data.map.properties.nodes
+							nodes: data.map.properties.nodes,
+							placeDocs: data.placeRefs
 						})).html;
 					}
 				}
@@ -205,6 +226,31 @@
 				if (Number.isInteger(mediaIndex)) openGallery(mediaIndex + headerOffset);
 			});
 		});
+
+		// Place docs: Svelte renders (and may keep) their section, so its
+		// listeners go with `placesAbort`. Their photos join the gallery; a link
+		// to a doc (the ⓘ after its name, or `place:` links) opens it first.
+		placesAbort = new AbortController();
+		const placesSignal = placesAbort.signal;
+		document.querySelectorAll<HTMLImageElement>('[data-place-docs] img[data-media-index]').forEach((img) => {
+			img.addEventListener('click', () => {
+				const mediaIndex = Number(img.dataset.mediaIndex);
+				if (Number.isInteger(mediaIndex)) openGallery(mediaIndex + headerOffset);
+			}, { signal: placesSignal });
+		});
+		const openPlaceDoc = (slug: string | undefined) => {
+			const details = slug ? document.getElementById(placeDocAnchor(slug)) : null;
+			if (details instanceof HTMLDetailsElement) details.open = true;
+			return details;
+		};
+		document.addEventListener('click', (event) => {
+			const link = (event.target as Element | null)?.closest?.<HTMLAnchorElement>('a[data-place-doc]');
+			if (link) openPlaceDoc(link.dataset.placeDoc);
+		}, { signal: placesSignal });
+		// Arriving at `#place-<slug>`: open that doc and bring it into view.
+		if (location.hash.startsWith('#place-')) {
+			openPlaceDoc(decodeURIComponent(location.hash.slice('#place-'.length)))?.scrollIntoView();
+		}
 
 		const geojsonRes = await fetch(data.map.properties.filePath);
 		if (runId !== contentRunId || !geojsonRes.ok) return;
@@ -232,8 +278,16 @@
 			}
 		});
 		const onPhotoClick = (mediaIndex: number) => openGallery(mediaIndex + headerOffset);
-		const newMap3dHandle = initMap3d(map3dEl, geojson, data.map, data.map.properties.nodes, photos, onPhotoClick);
-		const newMap2dHandle = await initMap2d(map2dEl, geojson, data.map.properties.nodes, photos, onPhotoClick);
+		// Hazards, bailout points and water from the facts layer, on the charts and the 2D map.
+		const routeCoords: number[][] = geojson?.features?.[0]?.geometry?.coordinates ?? [];
+		const factsOverlay = buildFactsOverlay(
+			data.authoredFacts,
+			'en',
+			routeCoords,
+			routeCoords.length ? computeMetricScales(routeCoords, data.map.properties).distanceFactor : 1
+		);
+		const newMap3dHandle = initMap3d(map3dEl, geojson, data.map, data.map.properties.nodes, photos, onPhotoClick, undefined, factsOverlay);
+		const newMap2dHandle = await initMap2d(map2dEl, geojson, data.map.properties.nodes, photos, onPhotoClick, factsOverlay);
 
 		if (runId !== contentRunId) {
 			// A newer navigation started while these were being created: they were
@@ -261,17 +315,23 @@
 			stop.km != null ? [{ km: stop.km, mediaIndex: Number(index), alt: data.post.media[Number(index)]?.alt }] : []
 		);
 
+		const chartFacts = {
+			bands: factsOverlay.bands,
+			pins: chartPins(factsOverlay.pins),
+			onPinClick: (pin: { lat: number; lon: number }) => showOnMap(pin.lat, pin.lon)
+		};
+
 		// Each chart updates the maps and the OTHER chart.
 		elev3dHandle = initElevationChart(map3dElevWrapper, geojson, (lat, lon, ele, dist) => {
 			newMap2dHandle.setIndicator(lat, lon);
 			newMap3dHandle.setIndicator(lat, lon, ele);
 			elev2dHandle?.setIndicator(lat, lon, dist);
-		}, hideAllIndicators, data.map.properties, photoTicks, onPhotoClick);
+		}, hideAllIndicators, data.map.properties, photoTicks, onPhotoClick, chartFacts);
 		elev2dHandle = initElevationChart(elevWrapper, geojson, (lat, lon, ele, dist) => {
 			newMap2dHandle.setIndicator(lat, lon);
 			newMap3dHandle.setIndicator(lat, lon, ele);
 			elev3dHandle?.setIndicator(lat, lon, dist);
-		}, hideAllIndicators, data.map.properties, photoTicks, onPhotoClick);
+		}, hideAllIndicators, data.map.properties, photoTicks, onPhotoClick, chartFacts);
 
 		// A photo's caption line, or a place name that is one of the hike's
 		// nodes, brings the 2D map into view, centered on it.
@@ -287,7 +347,10 @@
 				if (stop?.lat != null && stop.lon != null) showOnMap(stop.lat, stop.lon);
 			});
 		});
-		contentEl.querySelectorAll<HTMLAnchorElement>('a.mk-place').forEach((link) => {
+		// Place links in the prose and in the facts layer around it alike.
+		listenerAbort = new AbortController();
+		const { signal } = listenerAbort;
+		document.querySelectorAll<HTMLAnchorElement>('article a.mk-place').forEach((link) => {
 			link.addEventListener('click', (event) => {
 				const lat = Number(link.dataset.placeLat);
 				const lon = Number(link.dataset.placeLon);
@@ -295,22 +358,10 @@
 				// Scroll smoothly ourselves instead of jumping to #hike-map.
 				event.preventDefault();
 				showOnMap(lat, lon);
-			});
+			}, { signal });
 		});
 	});
 </script>
-
-{#snippet statTile(Icon: typeof ClockOutline, label: string, value: string)}
-	<div class="flex items-center gap-3 basis-[140px] grow">
-		<div class="text-primary-600 dark:text-primary-500 bg-primary-100 dark:bg-primary-900 rounded-lg p-2 shrink-0">
-			<Icon class="w-6 h-6" />
-		</div>
-		<div>
-			<div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">{label}</div>
-			<div class="font-semibold whitespace-nowrap" translate="no">{value}</div>
-		</div>
-	</div>
-{/snippet}
 
 <AppMeta
 	title={hikePostTitle(data.post.title)}
@@ -342,6 +393,9 @@
 	ascent={data.map.properties.ascent}
 	descent={data.map.properties.descent}
 	duration={data.map.properties.duration}
+	facts={data.authoredFacts}
+	routeType={data.authoredFacts?.route?.type ?? data.facts.routeType}
+	highPoint={data.facts.highPoint}
 />
 
 <div class="container mx-auto">
@@ -397,28 +451,31 @@
 								</div>
 							{/if}
 							<div class="flex flex-row flex-wrap md:flex-col md:justify-center gap-4 w-full md:[&>*]:basis-auto md:[&>*]:grow-0">
-								{@render statTile(ClockOutline, data.durationSource === 'planner' ? 'Planner estimate*' : 'Moving time*', getTime(data.map.properties.duration ?? 0))}
-								{@render statTile(MapPinOutline, 'Distance', getDistance(data.map.properties.distance ?? 0))}
-								{@render statTile(ArrowUpOutline, 'Ascent', getDistance(data.map.properties.ascent ?? 0))}
-								{@render statTile(ArrowDownOutline, 'Descent', getDistance(data.map.properties.descent ?? 0))}
+								<StatTile icon={ClockOutline} label={data.durationSource === 'planner' ? 'Planner estimate*' : 'Moving time*'} value={getTime(data.map.properties.duration ?? 0)} />
+								<StatTile icon={MapPinOutline} label="Distance" value={getDistance(data.map.properties.distance ?? 0)} />
+								<StatTile icon={ArrowUpOutline} label="Ascent" value={getDistance(data.map.properties.ascent ?? 0)} />
+								<StatTile icon={ArrowDownOutline} label="Descent" value={getDistance(data.map.properties.descent ?? 0)} />
 							</div>
 						</div>
 						<div class="flex flex-col">
 							<div class="flex flex-row flex-wrap gap-4 md:gap-6">
 								{#if showElapsed && data.facts.elapsed}
-									{@render statTile(HourglassOutline, 'Elapsed**', (data.facts.elapsed.source === 'photos' ? '≥ ' : '') + getTime(data.facts.elapsed.minutes))}
+									<StatTile icon={HourglassOutline} label="Elapsed**" value={(data.facts.elapsed.source === 'photos' ? '≥ ' : '') + getTime(data.facts.elapsed.minutes)} />
 								{/if}
 								{#if data.facts.typicalDuration != null}
-									{@render statTile(UsersGroupOutline, 'Typical time***', '≈ ' + getTime(Math.round(data.facts.typicalDuration / 15) * 15))}
+									<StatTile icon={UsersGroupOutline} label="Typical time***" value={'≈ ' + getTime(Math.round(data.facts.typicalDuration / 15) * 15)} />
 								{/if}
 								{#if data.facts.highPoint != null}
-									{@render statTile(ChartLineUpOutline, 'Highest point', `${data.facts.highPoint} m`)}
+									<StatTile icon={ChartLineUpOutline} label="Highest point" value={`${data.facts.highPoint} m`} />
 								{/if}
 								{#if data.facts.lowPoint != null}
-									{@render statTile(ChartLineDownOutline, 'Lowest point', `${data.facts.lowPoint} m`)}
+									<StatTile icon={ChartLineDownOutline} label="Lowest point" value={`${data.facts.lowPoint} m`} />
 								{/if}
 								{#if data.facts.routeType}
-									{@render statTile(ROUTE_TYPES[data.facts.routeType].icon, 'Route type', ROUTE_TYPES[data.facts.routeType].label)}
+									<StatTile icon={ROUTE_TYPES[data.facts.routeType].icon} label="Route type" value={ROUTE_TYPES[data.facts.routeType].label} />
+								{/if}
+								{#if data.authoredFacts}
+									<HikeFactsTiles facts={data.authoredFacts} lang="en" />
 								{/if}
 							</div>
 							<div class="text-sm text-gray-500 dark:text-gray-400 mt-2 flex flex-col gap-1">
@@ -447,9 +504,18 @@
 							{/if}
 						</div>
 					</div>
+					{#if data.authoredFacts}
+						<HikeFactsSafety facts={data.authoredFacts} lang="en" />
+					{/if}
 					<div id="content">
 						{@html data.clientHtml ?? '%%SSR_POST_CONTENT%%'}
 					</div>
+					{#if data.authoredFacts}
+						<HikeFactsGuide facts={data.authoredFacts} lang="en" linkedPosts={data.linkedPosts} />
+					{/if}
+					{#if data.places?.length}
+						<HikePlaces places={data.places} />
+					{/if}
 					<HikeContacts contacts={data.contacts} />
 				</div>
 			</div>

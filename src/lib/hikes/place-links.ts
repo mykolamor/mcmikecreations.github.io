@@ -51,8 +51,23 @@ export function normalizePlaceName(name: string): string {
 }
 
 /** `normalizePlaceName` without any spaces: "Auer Berg", "Auer-Berg" and "Auerberg" are one name. */
-function compactPlaceName(name: string): string {
+export function compactPlaceName(name: string): string {
 	return normalizePlaceName(name).replace(/ /g, '');
+}
+
+/** Adds `name` (compacted) to `byName` unless an earlier entry has it: the first name wins. */
+export function addPlaceName<T>(byName: Map<string, T>, name: string, value: T): void {
+	const key = compactPlaceName(name);
+	if (key && !byName.has(key)) byName.set(key, value);
+}
+
+/** The entry the words end with, longest trailing run first, and the index of its first word. */
+export function matchTrailingWords<T>(words: string[], byName: Map<string, T>): { start: number; value: T } | null {
+	for (let start = 0; start < words.length; start++) {
+		const value = byName.get(compactPlaceName(words.slice(start).join(' ')));
+		if (value) return { start, value };
+	}
+	return null;
 }
 
 function nodeNames(node: PlaceNode): string[] {
@@ -61,7 +76,7 @@ function nodeNames(node: PlaceNode): string[] {
 }
 
 /** The node's `ele` tag in metres ("1706", "1706 m", "1706.5"), or null. */
-function nodeEle(node: PlaceNode): number | null {
+export function nodeEle(node: PlaceNode): number | null {
 	const raw = node.tags?.ele;
 	const value = typeof raw === 'number' ? raw : typeof raw === 'string' ? parseFloat(raw.replace(',', '.')) : NaN;
 	return Number.isFinite(value) ? value : null;
@@ -77,8 +92,7 @@ export function buildPlaceIndex(nodes: PlaceNode[] | null | undefined): PlaceInd
 		if (typeof node?.lat !== 'number' || typeof node?.lon !== 'number') continue;
 		const ele = nodeEle(node);
 		for (const name of nodeNames(node)) {
-			const key = compactPlaceName(name);
-			if (!exact.has(key)) exact.set(key, node);
+			addPlaceName(exact, name, node);
 			if (ele == null) continue;
 			const nameWords = normalizePlaceName(name).split(' ');
 			for (let i = 1; i < nameWords.length; i++) partial.push({ tail: nameWords.slice(i).join(''), ele, node });
@@ -89,10 +103,8 @@ export function buildPlaceIndex(nodes: PlaceNode[] | null | undefined): PlaceInd
 	return {
 		match(words, ele) {
 			// Longest trailing run of words first, so "Hoher Kalmberg" beats "Kalmberg".
-			for (let start = 0; start < words.length; start++) {
-				const node = exact.get(compactPlaceName(words.slice(start).join(' ')));
-				if (node) return { start, node };
-			}
+			const named = matchTrailingWords(words, exact);
+			if (named) return { start: named.start, node: named.value };
 			for (let start = 0; start < words.length; start++) {
 				const key = compactPlaceName(words.slice(start).join(' '));
 				const hit = partial.find((p) => p.tail === key && Math.abs(p.ele - ele) <= ELE_TOLERANCE_M);

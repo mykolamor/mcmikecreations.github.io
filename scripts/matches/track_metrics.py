@@ -34,6 +34,9 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 
+from . import config
+from .markdown import post_slug
+
 WINDOW_S = 60
 MIN_SPEED_KMH = 0.5
 MAX_INTERVAL_S = 600
@@ -41,8 +44,7 @@ CLIMB_THRESHOLD_M = 2.0
 
 KEYS = ("distance", "ascent", "descent", "duration")
 
-REPO = Path(__file__).resolve().parents[2]
-MARKDOWN = REPO / "static/_projects/data-viz/hikes/markdown"
+MARKDOWN = config.repo_root() / config.POSTS_SUBDIR
 
 COMMENT = "# Computed from the recorded GPX by scripts/track_metrics.py.\n"
 _OLD_COMMENTS = re.compile(r'^# (Computed from the recorded GPX|Moving time from the GPX):.*\n|'
@@ -60,10 +62,15 @@ class Point:
     time: float  # unix seconds
 
 
-def _haversine_m(a: Point, b: Point) -> float:
-    la1, lo1, la2, lo2 = map(math.radians, (a.lat, a.lon, b.lat, b.lon))
+def haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    """Great-circle distance in metres between two coordinates."""
+    la1, lo1, la2, lo2 = map(math.radians, (lat1, lon1, lat2, lon2))
     h = math.sin((la2 - la1) / 2) ** 2 + math.cos(la1) * math.cos(la2) * math.sin((lo2 - lo1) / 2) ** 2
     return 2 * 6371000 * math.asin(math.sqrt(h))
+
+
+def _haversine_m(a: Point, b: Point) -> float:
+    return haversine_m(a.lat, a.lon, b.lat, b.lon)
 
 
 def read_track(gpx: str) -> list[Point]:
@@ -168,11 +175,14 @@ def set_metrics(markdown: str, metrics: dict[str, int]) -> str:
     return f"---\n{front}---\n" + markdown[m.end():]
 
 
-def gpx_for_post(markdown: str, slug: str) -> Path:
+def gpx_for_post(markdown: str, stem: str, static_root: Path | None = None) -> Path:
+    """The post's recorded track: its front matter's `gpx`, else `<slug>.gpx`,
+    under `static_root` (the repository's `static/` by default)."""
+    root = Path(static_root) if static_root else config.repo_root() / config.STATIC_SUBDIR
     m = re.search(r'^gpx:\s*(\S+)', markdown, re.M)
     if m:
-        return REPO / "static" / m.group(1).lstrip("/")
-    return REPO / "static/_projects/data-viz/hikes/gpx" / f"{slug[11:]}.gpx"
+        return root / m.group(1).lstrip("/")
+    return root / config.GPX_SUBDIR / f"{post_slug(stem)}.gpx"
 
 
 def main(argv: list[str] | None = None) -> int:

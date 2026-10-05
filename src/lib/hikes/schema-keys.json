@@ -1,0 +1,9 @@
+{
+	"$comment": "Shared by the site (place-docs.server.ts, facts.server.ts) and scripts/matches (placedoc.py, backfill_terrain.py). Change both readers' behaviour by editing here.",
+	"placeDoc": {
+		"slug": "^[a-z0-9]+(?:[_-][a-z0-9]+)*$",
+		"knownKeys": ["title", "description", "tags", "aliases", "images"],
+		"requiredKeys": ["title", "description"]
+	},
+	"factsPlaceKeys": ["lat", "lon", "name", "ele", "demEle"]
+}

@@ -1,13 +1,13 @@
 """Command-line interface for generating AVIF/LQIP from Immich matches."""
 
 import argparse
-import os
 import sys
 
-from . import config
-from .cli import resolve_posts  # posts positional resolution is identical to image_match.py
+from . import cliutil, config
+from .cliutil import resolve_posts
 from .immich import ImmichClient
 from .optimize import optimize_post
+from .backfill_time import refresh_post
 from .postwriter import merge_images_front_matter
 
 
@@ -21,10 +21,9 @@ def build_parser() -> argparse.ArgumentParser:
         ),
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
-    p.add_argument(
-        "posts", nargs="*", metavar="POST", default=[],
-        help="Post filenames without a path, e.g. 2024-08-31-aiplspitz.md "
-             "(the .md is optional). Omit to process every post that has a match report.",
+    cliutil.add_posts(
+        p, help="Post filenames without a path, e.g. 2024-08-31-aiplspitz.md "
+                "(the .md is optional). Omit to process every post that has a match report.",
     )
 
     src = p.add_argument_group("sources")
@@ -32,9 +31,11 @@ def build_parser() -> argparse.ArgumentParser:
                      help=f"Base URL of the Immich instance. Defaults to ${config.IMMICH_URL_ENV}.")
     src.add_argument("--api-key", default=None,
                      help=f"Immich API key. Defaults to ${config.API_KEY_ENV}.")
-    src.add_argument("--posts-dir", default=None, help="Directory holding the hike markdown posts.")
+    cliutil.add_posts_dir(src)
+    src.add_argument("--places-dir", default=None,
+                     help="Directory holding the place docs. Defaults to `places` next to --posts-dir.")
     src.add_argument("--static-root", default=None, help="Directory that /images/... paths resolve against.")
-    src.add_argument("--out-dir", default=None, help="Directory holding image_match.py's per-post JSON reports.")
+    cliutil.add_out_dir(src, help="Directory holding image_match.py's per-post JSON reports.")
     src.add_argument("--cache-dir", default=None, help="Download cache. Defaults to a dot-directory inside --out-dir.")
     src.add_argument("--no-cache", action="store_true", help="Re-download originals instead of reusing the cache.")
 
@@ -49,8 +50,7 @@ def build_parser() -> argparse.ArgumentParser:
     run = p.add_argument_group("execution")
     run.add_argument("--force", action="store_true",
                      help="Re-process a post even if its front matter already has an images map.")
-    run.add_argument("--dry-run", action="store_true",
-                     help="Report what would be generated without writing any file.")
+    cliutil.add_dry_run(run, help="Report what would be generated without writing any file.")
     run.add_argument("--workers", type=int, default=config.DEFAULT_WORKERS, help="Concurrent downloads.")
     run.add_argument("--timeout", type=int, default=config.DEFAULT_TIMEOUT, help="HTTP timeout in seconds.")
     run.add_argument("-v", "--verbose", action="store_true", help="Print a line per image instead of a line per post.")
@@ -68,13 +68,7 @@ def settings_from_args(args) -> config.Settings:
         force=args.force,
         verbose=args.verbose,
     )
-    kwargs["immich_url"] = args.immich_url or os.environ.get(config.IMMICH_URL_ENV, "")
-    kwargs["api_key"] = args.api_key or os.environ.get(config.API_KEY_ENV, "")
-    for name in ("posts_dir", "static_root", "out_dir", "cache_dir"):
-        value = getattr(args, name, None)
-        if value:
-            kwargs[name] = value
-    return config.Settings(**kwargs)
+    return cliutil.settings_from_dirs(args, **kwargs, **cliutil.immich_credentials(args))
 
 
 def _already_processed(post_path) -> bool:
@@ -114,5 +108,7 @@ def main(argv=None) -> int:
 
         if not args.dry_run:
             merge_images_front_matter(path, images)
+            # The map above is rebuilt from scratch: restore `taken` and track locations.
+            refresh_post(path, settings)
 
     return 0

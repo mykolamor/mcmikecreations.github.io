@@ -1,6 +1,7 @@
 import pytest
 
-from matches.cli import build_parser, resolve_posts, settings_from_args
+from matches.cli import build_parser, settings_from_args
+from matches.cliutil import resolve_posts
 
 
 def test_zero_posts_and_albums_is_valid():

@@ -4,6 +4,7 @@ import pytest
 
 from matches import config
 from matches.immich import Album, Asset, ImmichClient
+from matches.tests.conftest import BASE, StubSession
 
 ASSET_JSON = {
     "id": "8b1b2166",
@@ -16,40 +17,6 @@ ASSET_JSON = {
     "height": 3472,
     "exifInfo": {"latitude": 47.661086, "longitude": 11.885, "fileSizeInByte": 7654321},
 }
-
-
-class StubSession:
-    """Records calls and replays canned responses."""
-
-    def __init__(self, pages):
-        self.pages = list(pages)
-        self.posted = []
-        self.headers = {}
-
-    class _R:
-        def __init__(self, payload=None, content=b"", content_type="image/webp"):
-            self._payload = payload
-            self.content = content
-            self.headers = {"Content-Type": content_type}
-
-        def raise_for_status(self):
-            return None
-
-        def json(self):
-            return self._payload
-
-    def get(self, url, timeout=None):
-        if url.endswith("/api/albums"):
-            return self._R([{"id": "a1", "albumName": "Germany_Spitzingsee_Aiplspitz",
-                             "assetCount": 236}])
-        return self._R(content=b"BINARYIMAGE")
-
-    def post(self, url, json=None, timeout=None):
-        self.posted.append(json)
-        return self._R(self.pages.pop(0))
-
-
-BASE = "https://immich.example"
 
 
 def _client(tmp_path, session):

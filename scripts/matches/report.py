@@ -107,9 +107,27 @@ def read_report(out_dir: Path, post_name: str) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def dump_report(report: dict, path: Path) -> Path:
+    """Write `report` to `path` in the one JSON layout every report uses."""
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n",
+                    encoding="utf-8")
+    return path
+
+
 def write_report(report: dict, out_dir: Path, post_name: str) -> Path:
-    out = report_path(out_dir, post_name)
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n",
-                   encoding="utf-8")
-    return out
+    return dump_report(report, report_path(out_dir, post_name))
+
+
+def matched_by_filename(report: dict, fn) -> dict:
+    """filename -> fn(match) for every matched entry, leaving out the ones
+    `fn` finds nothing in (a falsy result)."""
+    found: dict = {}
+    for entry in report.get("entries", []):
+        if entry.get("status") != "matched":
+            continue
+        value = fn(entry.get("match"))
+        if value:
+            found[entry["web_path"].rsplit("/", 1)[-1]] = value
+    return found

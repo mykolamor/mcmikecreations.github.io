@@ -18,29 +18,19 @@ const latLonSet = new Map();
 const nameSet = new Map();
 const wikidataSet = new Map();
 
-for (const node of nodes) {
-    const latLonKey = `${node.lat},${node.lon}`;
-    if (latLonSet.has(latLonKey)) {
-        console.warn('Duplicate lat/lon:', node.id, latLonSet.get(latLonKey).id);
+/** Remember `node` under `key`, or warn if another node already claimed it. */
+function warnDup(map, key, node, label) {
+    if (map.has(key)) {
+        console.warn(`Duplicate ${label}:`, key, 'for ids:', node.id, map.get(key).id);
     } else {
-        latLonSet.set(latLonKey, node);
+        map.set(key, node);
     }
+}
 
-    if (node.tags?.name) {
-        if (nameSet.has(node.tags.name)) {
-            console.warn('Duplicate name:', node.tags.name, 'for ids:', node.id, nameSet.get(node.tags.name).id);
-        } else {
-            nameSet.set(node.tags.name, node);
-        }
-    }
-
-    if (node.tags?.wikidata) {
-        if (wikidataSet.has(node.tags.wikidata)) {
-            console.warn('Duplicate wikidata:', node.tags.wikidata, 'for ids:', node.id, wikidataSet.get(node.tags.wikidata).id);
-        } else {
-            wikidataSet.set(node.tags.wikidata, node);
-        }
-    }
+for (const node of nodes) {
+    warnDup(latLonSet, `${node.lat},${node.lon}`, node, 'lat/lon');
+    if (node.tags?.name) warnDup(nameSet, node.tags.name, node, 'name');
+    if (node.tags?.wikidata) warnDup(wikidataSet, node.tags.wikidata, node, 'wikidata');
 }
 
 console.log('Finished checking nodes.');

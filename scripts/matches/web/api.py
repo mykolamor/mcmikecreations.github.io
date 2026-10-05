@@ -1,12 +1,15 @@
 """JSON endpoints. Each returns (status, payload) and raises ApiError to fail."""
 
 import mimetypes
+from contextlib import contextmanager
 from pathlib import Path
 
-from .. import config
+from ..backfill_time import refresh_post
+from .. import placedoc
+from ..markdown import on_disk
 from ..review import actions
-from ..review.model import site_url_for, status_color
-from ..review.remote import RemoteUnavailable, asset_to_dict
+from ..review.model import match_from_asset, site_url_for, status_color
+from ..review.remote import RemoteUnavailable
 
 
 class ApiError(Exception):
@@ -30,6 +33,31 @@ def _post(state, name: str):
     return post.load()
 
 
+def _save(state, post) -> None:
+    """Write the post's report, then bring its front matter's `taken` (and
+    track locations) up to date with the matches in it."""
+    post.save()
+    refresh_post(post.path, state.settings)
+
+
+@contextmanager
+def _remote():
+    """Answer a missing or unreachable Immich with a 409, for the UI to show."""
+    try:
+        yield
+    except RemoteUnavailable as exc:
+        raise ApiError(str(exc), 409)
+
+
+def _find_asset(state, post, text: str):
+    """The asset `text` names among the post's candidates, else a 404."""
+    with _remote():
+        asset = state.remote.find_asset(post, text)
+    if asset is None:
+        raise ApiError(f"No asset named {text!r} among this hike's candidates", 404)
+    return asset
+
+
 def _entry(post, web_path: str) -> dict:
     for e in (post.report or {}).get("entries", []):
         if e["web_path"] == web_path:
@@ -39,37 +67,21 @@ def _entry(post, web_path: str) -> dict:
 
 # --- reads ------------------------------------------------------------------
 
+def _summary(p) -> dict:
+    """What both the hike list and a hike's detail say about it."""
+    return {"name": p.name, "slug": p.slug, "kind": p.kind, "stats": p.stats, "counts": p.counts}
+
+
 def list_hikes(state) -> dict:
     return {"hikes": [
-        {
-            "name": p.name,
-            "slug": p.slug,
-            "stats": p.stats,
-            "counts": p.counts,
-            "has_report": p.report is not None,
-        }
+        {**_summary(p), "has_report": p.report is not None}
         for p in state.posts()
     ]}
 
 
-def _on_disk(local_path: Path | None) -> Path | None:
-    """The file to show/serve for `local_path`: itself if present, else the
-    largest AVIF tier `image_optimize.py` generated in its place - it deletes
-    the original once conversion succeeds (see `optimize.optimize_post`)."""
-    if local_path is None:
-        return None
-    if local_path.is_file():
-        return local_path
-    for target in sorted(config.AVIF_TIERS, reverse=True):
-        candidate = local_path.with_name(f"{local_path.stem}-{target}.avif")
-        if candidate.is_file():
-            return candidate
-    return None
-
-
 def _media_row(m) -> dict:
     local_path = Path(m.local_path) if m.local_path else None
-    on_disk = _on_disk(local_path)
+    found = on_disk(local_path)
     return {
         "order": m.order,
         "label": m.label,
@@ -78,8 +90,8 @@ def _media_row(m) -> dict:
         "status": m.status,
         "color": status_color(m.status),
         "matched_name": m.matched_name,
-        "has_local": on_disk is not None,
-        "local_size": on_disk.stat().st_size if on_disk else None,
+        "has_local": found is not None,
+        "local_size": found.stat().st_size if found else None,
         "match": (m.entry or {}).get("match"),
         "confidence": (m.entry or {}).get("confidence"),
         "resolved_by": (m.entry or {}).get("resolved_by"),
@@ -92,10 +104,7 @@ def hike_detail(state, name: str) -> dict:
     post = _post(state, name)
     report = post.report or {}
     return {
-        "name": post.name,
-        "slug": post.slug,
-        "stats": post.stats,
-        "counts": post.counts,
+        **_summary(post),
         "site_url": site_url_for(post.name, state.settings.site_url),
         "album": report.get("album"),
         "date_window": report.get("date_window"),
@@ -104,12 +113,20 @@ def hike_detail(state, name: str) -> dict:
     }
 
 
-def candidate_assets(state, name: str) -> dict:
+def candidate_assets(state, name: str, query: dict | None = None) -> dict:
+    """The asset picker's list. For a place doc, `q` (text) and/or `from`/`to`
+    (dates) run a new search first, which then stays its candidates."""
     post = _post(state, name)
-    try:
-        assets = state.remote.candidates_for(post)
-    except RemoteUnavailable as exc:
-        raise ApiError(str(exc), 409)
+    query = query or {}
+    first = lambda key: ((query.get(key) or [""])[0] or "").strip()  # noqa: E731
+    with _remote():
+        if post.kind == "place" and (first("q") or first("from") or first("to")):
+            try:
+                assets = state.remote.search_place(post, first("q"), first("from"), first("to"))
+            except ValueError as exc:
+                raise ApiError(str(exc))
+        else:
+            assets = state.remote.candidates_for(post)
     return {"assets": [
         {
             "id": a.id,
@@ -129,18 +146,16 @@ def local_file(state, web_path: str) -> tuple[bytes, str]:
     target = (root / web_path.lstrip("/")).resolve()
     if not target.is_relative_to(root):
         raise ApiError("Path escapes the static root", 403)
-    on_disk = _on_disk(target)
-    if on_disk is None:
+    found = on_disk(target)
+    if found is None:
         raise ApiError(f"Not found: {web_path}", 404)
-    ctype = mimetypes.guess_type(on_disk.name)[0] or "application/octet-stream"
-    return on_disk.read_bytes(), ctype
+    ctype = mimetypes.guess_type(found.name)[0] or "application/octet-stream"
+    return found.read_bytes(), ctype
 
 
 def preview_file(state, asset_id: str) -> tuple[bytes, str]:
-    try:
+    with _remote():
         path = state.remote.preview_path(asset_id)
-    except RemoteUnavailable as exc:
-        raise ApiError(str(exc), 409)
     ctype = mimetypes.guess_type(path.name)[0] or "image/jpeg"
     return Path(path).read_bytes(), ctype
 
@@ -162,7 +177,7 @@ def set_local_path(state, body: dict) -> dict:
     elif entry["status"] == "missing_local":
         entry["status"] = "matched" if entry.get("match") else "unmatched"
     post.recount()
-    post.save()
+    _save(state, post)
     return {"ok": True, "web_path": web, "detail": hike_detail(state, post.name)}
 
 
@@ -177,21 +192,12 @@ def set_remote_match(state, body: dict) -> dict:
         entry["confidence"] = None
         entry["resolved_by"] = None
     else:
-        try:
-            asset = state.remote.find_asset(post, text)
-        except RemoteUnavailable as exc:
-            raise ApiError(str(exc), 409)
-        if asset is None:
-            raise ApiError(f"No asset named {text!r} among this hike's candidates", 404)
-        match = asset_to_dict(asset)
-        match["scores"] = {"phash": None, "blockmean": None, "mae": None,
-                           "ncc": None, "inliers": None, "coverage": None}
-        entry["match"] = match
+        entry["match"] = match_from_asset(_find_asset(state, post, text))
         entry["status"] = "matched"
         entry["confidence"] = "manual"
         entry["resolved_by"] = "manual"
     post.recount()
-    post.save()
+    _save(state, post)
     return {"ok": True, "detail": hike_detail(state, post.name)}
 
 
@@ -216,16 +222,11 @@ def suggest_out_name(state, body: dict) -> dict:
     text = (body.get("asset") or "").strip()
     if not text:
         raise ApiError("No asset given")
-    try:
-        asset = state.remote.find_asset(post, text)
-    except RemoteUnavailable as exc:
-        raise ApiError(str(exc), 409)
-    if asset is None:
-        raise ApiError(f"No asset named {text!r} among this hike's candidates", 404)
+    asset = _find_asset(state, post, text)
     date = (asset.local_date_time or asset.file_created_at or "")[:10]
     if not date:
         raise ApiError("Asset has no capture date")
-    return {"name": actions.next_out_name(state.settings, post.slug, date)}
+    return {"name": actions.next_out_name(state.settings, post.slug, date, kind=post.kind)}
 
 
 def start_add(state, jobs, body: dict) -> dict:
@@ -245,7 +246,7 @@ def start_add(state, jobs, body: dict) -> dict:
         entry = actions.apply_add_spec(state.settings, state.remote, post, spec)
         with state.lock:
             post.upsert_entry(entry)
-            post.save()
+            _save(state, post)
             post.load()
         return {"web_path": entry["web_path"], "status": entry["status"]}
 
@@ -254,7 +255,7 @@ def start_add(state, jobs, body: dict) -> dict:
 
 def start_rerun(state, jobs, body: dict) -> dict:
     post = _post(state, body["post"])
-    if not (state.settings.api_key and state.settings.immich_url):
+    if not state.remote.available:
         raise ApiError("Set the Immich URL and API key first", 409)
 
     def run():
@@ -265,6 +266,41 @@ def start_rerun(state, jobs, body: dict) -> dict:
         return {"output": output}
 
     return {"job": jobs.payload(jobs.start(f"rerun:{post.name}", run))}
+
+
+# --- place docs ---------------------------------------------------------------
+
+def _place(state, name: str):
+    post = _post(state, name)
+    if post.kind != "place":
+        raise ApiError(f"{name} is a hike post, not a place doc")
+    return post
+
+
+def get_place(state, name: str) -> dict:
+    """A place doc's text and front matter, for the editor."""
+    return placedoc.read_place(_place(state, name).path)
+
+
+def save_place(state, body: dict) -> dict:
+    """Create a place doc (`create`: true, from `slug`) or edit one (`name`)."""
+    fields = {k: body.get(k) for k in placedoc.TEXT_KEYS}
+    text = body.get("body") or ""
+    try:
+        with state.lock:
+            if body.get("create"):
+                path = placedoc.place_path(state.settings, (body.get("slug") or "").strip())
+                place = placedoc.write_place(path, fields, text, create=True)
+                state.refresh()
+            else:
+                post = _place(state, body.get("name") or "")
+                place = placedoc.write_place(post.path, fields, text)
+                post.load()
+    except ValueError as exc:
+        raise ApiError(str(exc))
+    name = f"{place['slug']}.md"
+    return {"ok": True, "place": place, "detail": hike_detail(state, name),
+            "hikes": list_hikes(state)["hikes"]}
 
 
 def get_settings(state) -> dict:

@@ -2,7 +2,7 @@
 import { geoMercator } from 'd3-geo';
 import { tile } from 'd3-tile';
 // noinspection ES6PreferShortImport
-import { loadHikes } from './load-hikes.js';
+import { loadHikes, resolveHikeForPost } from './load-hikes.js';
 import { existsSync, statSync } from 'fs';
 import { mkdir, readFile, unlink, writeFile } from 'fs/promises';
 import { resolve } from 'path';
@@ -11,6 +11,8 @@ import { createHash } from 'crypto';
 import { providers, providerFolder, providerFile } from '../src/lib/data/map-providers.js';
 // noinspection ES6PreferShortImport
 import { getMapFeatures } from '../src/lib/data/map-get-features.js';
+// noinspection ES6PreferShortImport
+import { hikeSlug } from '../src/lib/data/hikes-core.js';
 
 const maps = loadHikes();
 
@@ -174,12 +176,26 @@ const tokenMapboxDEM = process.env.mapboxDEMAccess;
 const skuMapboxSatellite = process.env.mapboxSatelliteSKU;
 const tokenMapboxSatellite = process.env.mapboxSatelliteAccess;
 const tokenNextzen = process.env.nextzenAccess;
-const metas = slug === undefined
-	? Object.values(maps)
-	: [maps.find((x) => x.route.split('/').pop() === slug)];
+const selected = slug === undefined ? maps : maps.filter((x) => hikeSlug(x.route) === slug);
 
-if (!metas || metas.at(0) === undefined) {
+if (selected.length === 0) {
 	console.error(`Failed to fetch /maps/${slug} metadata.`);
+}
+
+// The map page renders a hike as-is, but each post page renders it with that
+// post's front matter applied, which may move the origin or resize the map.
+// Fetch tiles for every distinct origin/height once.
+const metas = [];
+const seenViews = new Set();
+for (const hike of selected) {
+	const posts = hike.properties.dates.filter((d) => d.path).map((d) => resolveHikeForPost(hike, d).hike);
+	for (const view of [hike, ...posts]) {
+		const { lat, lon } = view.standardFeatures.origin;
+		const key = `${lat},${lon},${view.height}`;
+		if (seenViews.has(key)) continue;
+		seenViews.add(key);
+		metas.push(view);
+	}
 }
 
 for (const meta of metas) {

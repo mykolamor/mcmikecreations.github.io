@@ -1,4 +1,5 @@
 import { loadHikes, resolveHikeForDate } from './load-hikes.js';
+import { hikeSlug } from '../src/lib/data/hikes-core.js';
 import resume from '../src/lib/data/resume.json' with { type: "json" };
 import { writeFile } from 'fs';
 
@@ -7,6 +8,16 @@ const hikes = loadHikes();
 const rssFilePath = '../static/hikes/feed.xml';
 const atomFilePath = '../static/hikes/atom.xml';
 const now = new Date();
+
+function writeOutput(filePath, content) {
+	writeFile(filePath, content, err => {
+		if (err) {
+			console.error(err);
+		} else {
+			console.log('Wrote content to ' + filePath);
+		}
+	});
+}
 
 function escapeXml(unsafe) {
 	return unsafe.replace(/[<>&'"]/g, function (c) {
@@ -25,7 +36,7 @@ let posts = hikes.flatMap(h => h.properties.dates
 	.map(d => {
 		const date = new Date(d.date);
 		date.setHours(16);
-		const slug = h.route.substring(h.route.lastIndexOf('/') + 1);
+		const slug = hikeSlug(h.route);
 		const hike = resolveHikeForDate(h, d);
 		return {
 			year: date.getFullYear(),
@@ -80,13 +91,7 @@ function generateRSS() {
     <author>${resume.basics.email} (${resume.basics.name})</author>
   </item>`).join('') + footer;
 
-	writeFile(rssFilePath, content, err => {
-		if (err) {
-			console.error(err);
-		} else {
-			console.log('Wrote content to ' + rssFilePath);
-		}
-	});
+	writeOutput(rssFilePath, content);
 }
 
 function generateAtom() {
@@ -126,13 +131,7 @@ function generateAtom() {
 		</rights>
   </entry>`).join('') + footer;
 
-	writeFile(atomFilePath, content, err => {
-		if (err) {
-			console.error(err);
-		} else {
-			console.log('Wrote content to ' + atomFilePath);
-		}
-	});
+	writeOutput(atomFilePath, content);
 }
 
 generateRSS();

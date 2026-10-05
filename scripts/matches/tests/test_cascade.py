@@ -114,13 +114,7 @@ def test_prefers_the_full_resolution_original_over_a_compressed_duplicate():
     compressed_dup = recompress(a)                     # a second lossy re-export
     large_original = a.resize((4800, 3600), PILImage.Resampling.LANCZOS)
     client = FakeClient({"small": compressed_dup, "large": large_original})
-    small_asset = Asset("small", "/lib/small.jpg", "small.jpg",
-                         "2024-08-31T09:00:00Z", "2024-08-31T11:00:00Z",
-                         compressed_dup.width, compressed_dup.height, None, None)
-    large_asset = Asset("large", "/lib/large.jpg", "large.jpg",
-                         "2024-08-31T09:00:00Z", "2024-08-31T11:00:00Z",
-                         large_original.width, large_original.height, None, None)
-    assets = [small_asset, large_asset]                # small listed first
+    assets = [_asset("small", compressed_dup), _asset("large", large_original)]  # small listed first
     d = match_image(query, _ref(), assets, client, config.Settings())
     assert d.status == "matched"
     assert d.best.asset.id == "large"

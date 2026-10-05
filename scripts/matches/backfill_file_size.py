@@ -11,12 +11,11 @@ Run `scripts/.venv/bin/python scripts/backfill_file_size.py --help` for options.
 
 import argparse
 import json
-import os
 import sys
-from pathlib import Path
 
-from . import config
+from . import cliutil, config
 from .immich import ImmichClient
+from .report import dump_report
 from .web.state import load_saved
 
 
@@ -31,24 +30,13 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--api-key", default=None,
                    help=f"Immich API key. Defaults to ${config.API_KEY_ENV}, "
                         f"then to whatever the review GUI has remembered.")
-    p.add_argument("--out-dir", default=None,
-                   help="Directory holding the per-post JSON reports.")
-    p.add_argument("--dry-run", action="store_true",
-                   help="Report what would change without writing any file.")
+    cliutil.add_out_dir(p)
+    cliutil.add_dry_run(p)
     return p
 
 
 def settings_from_args(args) -> config.Settings:
-    saved = load_saved()
-    kwargs = {
-        "immich_url": (args.immich_url or os.environ.get(config.IMMICH_URL_ENV)
-                       or saved.get("immich_url") or ""),
-        "api_key": (args.api_key or os.environ.get(config.API_KEY_ENV)
-                   or saved.get("api_key") or ""),
-    }
-    if args.out_dir:
-        kwargs["out_dir"] = Path(args.out_dir)
-    return config.Settings(**kwargs)
+    return cliutil.settings_from_dirs(args, **cliutil.immich_credentials(args, load_saved()))
 
 
 def backfill_report(report: dict, client, cache: dict[str, int]) -> int:
@@ -97,13 +85,8 @@ def main(argv=None) -> int:
             total_updated += updated
             print(f"{path.name}: filled in {updated} file size(s)")
             if not args.dry_run:
-                path.write_text(
-                    json.dumps(report, indent=2, ensure_ascii=False) + "\n",
-                    encoding="utf-8",
-                )
+                dump_report(report, path)
 
-    print(
-        f"\ntotal: {total_updated} file size(s) filled in across {len(reports)} report(s)"
-        + (" (dry run, nothing written)" if args.dry_run else "")
-    )
+    cliutil.print_summary("\ntotal", f"{total_updated} file size(s) filled in", len(reports),
+                          "report(s)", args.dry_run)
     return 0

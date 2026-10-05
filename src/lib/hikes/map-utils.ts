@@ -101,6 +101,16 @@ export interface MapPhoto {
 export const PHOTO_MARKER_SIZE = 30;
 export const NODE_MARKER_SIZE = 24;
 
+/** How far (px) a facts pin on a POI node stands above it, clear of the node's own marker. */
+export function factsPinLift(pin: { onNode: boolean }): number {
+    return pin.onNode ? NODE_MARKER_SIZE / 2 : 0;
+}
+
+/** The `i`th of several parallel lines' offset: `step`, `-step`, `2·step`, `-2·step`, … */
+export function alternatingOffset(i: number, step: number): number {
+    return step * (1 + Math.floor(i / 2)) * (i % 2 === 0 ? 1 : -1);
+}
+
 /**
  * Keep the items whose projected point doesn't sit within `minPixelDistance`
  * of an earlier kept one - earlier items win, so callers control priority by
@@ -149,34 +159,46 @@ export function nodePopupHtml(tags: any): string {
         + (tagsList ? `<div style="max-height:150px;overflow-y:auto;"><table style="min-width:100%;border-spacing:0;">${tagsList}</table></div>` : '');
 }
 
-// --- "Photos" layer preference ---------------------------------------------
-// One setting for both maps, remembered across hikes like the `color-theme`
-// choice. On by default; storage may be unavailable (private mode, blocked
-// site data), in which case it lasts for the page's lifetime only.
-const PHOTOS_PREF_KEY = 'map-photos';
-const PHOTOS_PREF_EVENT = 'map-photos-change';
-let photosPrefFallback = true;
+// --- Layer preferences ("Photos", "Route facts") ---------------------------
+// One setting per layer for both maps, remembered across hikes like the
+// `color-theme` choice. On by default; storage may be unavailable (private
+// mode, blocked site data), in which case it lasts for the page's lifetime only.
+export interface LayerPref {
+    get: () => boolean;
+    set: (on: boolean) => void;
+    on: (listener: (on: boolean) => void) => () => void;
+}
+
+function layerPref(key: string): LayerPref {
+    const event = `${key}-change`;
+    let fallback = true;
+    const get = (): boolean => {
+        try {
+            const stored = localStorage.getItem(key);
+            if (stored !== null) return stored !== 'off';
+        } catch { /* storage unavailable */ }
+        return fallback;
+    };
+    return {
+        get,
+        /** Remember the choice and tell every map on the page. */
+        set: (on: boolean) => {
+            if (get() === on) return;
+            fallback = on;
+            try { localStorage.setItem(key, on ? 'on' : 'off'); } catch { /* storage unavailable */ }
+            window.dispatchEvent(new CustomEvent<boolean>(event, { detail: on }));
+        },
+        /** Call `listener` whenever the preference changes; returns the unsubscribe. */
+        on: (listener: (on: boolean) => void): (() => void) => {
+            const handler = (e: Event) => listener((e as CustomEvent<boolean>).detail);
+            window.addEventListener(event, handler);
+            return () => window.removeEventListener(event, handler);
+        },
+    };
+}
 
 /** Whether map photo markers are shown. */
-export function getMapPhotosPref(): boolean {
-    try {
-        const stored = localStorage.getItem(PHOTOS_PREF_KEY);
-        if (stored !== null) return stored !== 'off';
-    } catch { /* storage unavailable */ }
-    return photosPrefFallback;
-}
+export const mapPhotosPref = layerPref('map-photos');
 
-/** Remember the choice and tell every map on the page. */
-export function setMapPhotosPref(on: boolean) {
-    if (getMapPhotosPref() === on) return;
-    photosPrefFallback = on;
-    try { localStorage.setItem(PHOTOS_PREF_KEY, on ? 'on' : 'off'); } catch { /* storage unavailable */ }
-    window.dispatchEvent(new CustomEvent<boolean>(PHOTOS_PREF_EVENT, { detail: on }));
-}
-
-/** Call `listener` whenever the preference changes; returns the unsubscribe. */
-export function onMapPhotosPref(listener: (on: boolean) => void): () => void {
-    const handler = (e: Event) => listener((e as CustomEvent<boolean>).detail);
-    window.addEventListener(PHOTOS_PREF_EVENT, handler);
-    return () => window.removeEventListener(PHOTOS_PREF_EVENT, handler);
-}
+/** Whether the facts layer (hazards, bailouts, water, bailout routes) is shown on the maps. */
+export const mapFactsPref = layerPref('map-facts');

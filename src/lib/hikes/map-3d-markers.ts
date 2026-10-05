@@ -3,10 +3,14 @@ import { CSS2DObject, CSS2DRenderer } from 'three/addons/renderers/CSS2DRenderer
 import { MeshLineGeometry } from '$lib/hikes/meshline/MeshLineGeometry';
 import { MeshLineMaterial } from '$lib/hikes/meshline/MeshLineMaterial';
 import {
-    declutterBy, nodeIconHtml, nodePopupHtml, nodeTitle, photoIconHtml,
-    getMapPhotosPref, onMapPhotosPref, setMapPhotosPref,
-    NODE_MARKER_SIZE, PHOTO_MARKER_SIZE, type MapPhoto
+    declutterBy, factsPinLift, nodeIconHtml, nodePopupHtml, nodeTitle, photoIconHtml,
+    mapFactsPref, mapPhotosPref,
+    NODE_MARKER_SIZE, PHOTO_MARKER_SIZE, type LayerPref, type MapPhoto
 } from '$lib/hikes/map-utils';
+import {
+    factsPinIconHtml, factsPinWidth, pinPopupHtml, pinText,
+    FACTS_PIN_H, FACTS_PIN_POINTER, type FactsPin
+} from '$lib/hikes/facts-overlay';
 
 /** Side of the square terrain-depth target markers are occlusion-tested against. */
 const DEPTH_TARGET_SIZE = 256;
@@ -53,6 +57,12 @@ export interface Map3dMarkersOptions {
     terrainPoint: (lat: number, lon: number, ele: number) => THREE.Vector3 | null;
     nodes: Map3dNode[];
     photos: MapPhoto[];
+    /** The facts layer's pins (hazards, bailouts, water); only those with a `demEle` are placed. */
+    factsPins?: FactsPin[];
+    /** Whether the map also draws facts lines, so the "Route facts" toggle is offered even without pins. */
+    hasFactsLines?: boolean;
+    /** Show or hide the facts lines with the "Route facts" toggle. */
+    onFactsToggle?: (on: boolean) => void;
     onPhotoClick?: (mediaIndex: number) => void;
     /** Nodes to raise on a vertical stem above their ground position (e.g. peaks and saddles). */
     elevateNode?: (node: Map3dNode) => boolean;
@@ -76,7 +86,7 @@ export interface Map3dMarkers {
 }
 
 interface Marker {
-    kind: 'photo' | 'node';
+    kind: 'photo' | 'node' | 'facts';
     object: CSS2DObject;
     /** `group`-local occlusion probe: slightly above the anchor, or the top of the stem. */
     probe: THREE.Vector3;
@@ -125,11 +135,20 @@ export function createMap3dMarkers(opts: Map3dMarkersOptions): Map3dMarkers | un
         typeof p.demEle === 'number' && terrainPoint(p.lat, p.lon, p.demEle) !== null;
     const photos = opts.photos.filter(onMap);
     const nodes = opts.nodes.filter(onMap);
-    if (!photos.length && !nodes.length) return undefined;
+    const factsPins = (opts.factsPins ?? []).filter(onMap);
+    if (!photos.length && !nodes.length && !factsPins.length && !opts.hasFactsLines) return undefined;
 
     const css = new CSS2DRenderer();
     Object.assign(css.domElement.style, { position: 'absolute', top: '0', left: '0', pointerEvents: 'none' });
     container.appendChild(css.domElement);
+    // The markers sit over the canvas, so a wheel over one never reaches the
+    // orbit controls listening on the canvas, and the page scrolls instead.
+    // Hand it on, as if it had landed on the map under the marker. (The node
+    // popup stops its own wheel events, so its contents can still scroll.)
+    css.domElement.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        renderer.domElement.dispatchEvent(new WheelEvent('wheel', e));
+    }, { passive: false });
 
     const markers: Marker[] = [];
     let flipTimer: ReturnType<typeof setTimeout> | undefined;
@@ -188,8 +207,10 @@ export function createMap3dMarkers(opts: Map3dMarkersOptions): Map3dMarkers | un
         popup.visible = false;
         opts.requestRender();
     };
-    const openPopup = (marker: Marker, tags: Map3dNode['tags']) => {
-        popupBox.innerHTML = nodePopupHtml(tags)
+    /** `lift`: how far above the anchor (px) the popup's pointer should sit, clear of the marker. */
+    const openPopup = (marker: Marker, html: string, lift = NODE_MARKER_SIZE / 2) => {
+        popupBox.style.marginBottom = `${lift + 8}px`;
+        popupBox.innerHTML = html
             + '<button type="button" aria-label="Close popup" style="position:absolute;top:4px;right:6px;border:0;background:none;font-size:16px;line-height:1;color:#6b7280;cursor:pointer;">×</button>';
         popupBox.querySelector('button')?.addEventListener('click', closePopup);
         popup.position.copy(marker.object.position);
@@ -242,34 +263,75 @@ export function createMap3dMarkers(opts: Map3dMarkersOptions): Map3dMarkers | un
         }
         group.add(object);
         const marker: Marker = { kind: 'node', object, probe, size: NODE_MARKER_SIZE, stem, occluded: true, shown: false, changedAt: -Infinity };
-        interactive(el, nodeTitle(node.tags), () => (popupOwner === marker ? closePopup() : openPopup(marker, node.tags)));
+        interactive(el, nodeTitle(node.tags), () => (popupOwner === marker ? closePopup() : openPopup(marker, nodePopupHtml(node.tags))));
         prepare(el);
         markers.push(marker);
     }
 
-    // --- Photos layer toggle (the 2D map's "Photos" overlay) ---------------
-    let photosEnabled = getMapPhotosPref();
-    let toggle: HTMLLabelElement | undefined;
-    let unsubscribePhotos: (() => void) | undefined;
-    if (photos.length) {
-        toggle = document.createElement('label');
-        Object.assign(toggle.style, {
-            position: 'absolute', top: '10px', right: '10px', display: 'flex', alignItems: 'center', gap: '6px',
+    // Facts pins: the pointer's tip on the ground, lifted clear of the node's
+    // own marker when the pin sits on a node, like on the 2D map.
+    for (const pin of factsPins) {
+        const width = factsPinWidth(pin);
+        const height = FACTS_PIN_H + FACTS_PIN_POINTER;
+        const raise = factsPinLift(pin);
+        const el = document.createElement('div');
+        Object.assign(el.style, { width: `${width}px`, height: `${height}px` });
+        el.innerHTML = factsPinIconHtml(pin, width);
+        const object = new CSS2DObject(el);
+        object.center.set(0.5, 1 + raise / height);
+        object.position.copy(at(pin.lat, pin.lon, pin.demEle!));
+        group.add(object);
+        const marker: Marker = {
+            kind: 'facts', object, probe: lift(pin.lat, pin.lon, pin.demEle!), size: width,
+            occluded: true, shown: false, changedAt: -Infinity,
+        };
+        interactive(el, pinText(pin), () => (popupOwner === marker ? closePopup() : openPopup(marker, pinPopupHtml(pin), height + raise)));
+        prepare(el);
+        markers.push(marker);
+    }
+
+    // --- Layer toggles (the 2D map's "Photos" and "Route facts" overlays) ---
+    let photosEnabled = mapPhotosPref.get();
+    let factsEnabled = mapFactsPref.get();
+    let toggles: HTMLDivElement | undefined;
+    const unsubscribers: (() => void)[] = [];
+    const addToggle = (text: string, pref: LayerPref, apply: (v: boolean) => void) => {
+        if (!toggles) {
+            toggles = document.createElement('div');
+            Object.assign(toggles.style, {
+                position: 'absolute', top: '10px', right: '10px', display: 'flex', flexDirection: 'column', gap: '4px',
+                alignItems: 'flex-end', zIndex: '1',
+            });
+            toggles.addEventListener('pointerdown', (e) => e.stopPropagation());
+            container.appendChild(toggles);
+        }
+        const label = document.createElement('label');
+        Object.assign(label.style, {
+            display: 'flex', alignItems: 'center', gap: '6px',
             padding: '4px 8px', background: 'white', color: '#111827', borderRadius: '5px',
-            boxShadow: '0 1px 5px rgba(0,0,0,.4)', fontSize: '12px', cursor: 'pointer', zIndex: '1',
+            boxShadow: '0 1px 5px rgba(0,0,0,.4)', fontSize: '12px', cursor: 'pointer',
         });
-        toggle.innerHTML = '<input type="checkbox" style="margin:0;" /> Photos';
-        toggle.addEventListener('pointerdown', (e) => e.stopPropagation());
-        const checkbox = toggle.querySelector('input')!;
-        checkbox.checked = photosEnabled;
-        checkbox.addEventListener('change', () => setMapPhotosPref(checkbox.checked));
-        // Also follows the 2D map's "Photos" overlay on the same page.
-        unsubscribePhotos = onMapPhotosPref((on) => {
-            photosEnabled = on;
-            checkbox.checked = on;
+        label.innerHTML = '<input type="checkbox" style="margin:0;" /> ';
+        label.append(text);
+        const checkbox = label.querySelector('input')!;
+        checkbox.checked = pref.get();
+        checkbox.addEventListener('change', () => pref.set(checkbox.checked));
+        // Also follows the 2D map's overlay of the same name on the page.
+        unsubscribers.push(pref.on((value) => {
+            checkbox.checked = value;
+            apply(value);
             opts.requestRender();
+        }));
+        toggles.appendChild(label);
+    };
+    if (photos.length) {
+        addToggle('Photos', mapPhotosPref, (v) => { photosEnabled = v; });
+    }
+    if (factsPins.length || opts.hasFactsLines) {
+        addToggle('Route facts', mapFactsPref, (v) => {
+            factsEnabled = v;
+            opts.onFactsToggle?.(v);
         });
-        container.appendChild(toggle);
     }
 
     // --- Occlusion --------------------------------------------------------
@@ -353,6 +415,7 @@ export function createMap3dMarkers(opts: Map3dMarkersOptions): Map3dMarkers | un
                 // Photos first, then nodes, each decluttered among its own kind like the 2D map's layers.
                 ...declutterBy(stickyOrder(markers.filter((m) => m.kind === 'photo' && photosEnabled)), visible, PHOTO_MARKER_SIZE),
                 ...declutterBy(stickyOrder(markers.filter((m) => m.kind === 'node')), visible, NODE_MARKER_SIZE),
+                ...declutterBy(stickyOrder(markers.filter((m) => m.kind === 'facts' && factsEnabled)), visible, FACTS_PIN_H),
             ]);
             // Apply, but hold back flips of markers that changed state too recently -
             // except hiding photos the Photos toggle just turned off, which is instant.
@@ -362,7 +425,7 @@ export function createMap3dMarkers(opts: Map3dMarkersOptions): Map3dMarkers | un
                 const want = shown.has(marker);
                 if (want === marker.shown) continue;
                 const wait = marker.changedAt + MIN_STATE_MS - now;
-                const forced = marker.kind === 'photo' && !photosEnabled;
+                const forced = (marker.kind === 'photo' && !photosEnabled) || (marker.kind === 'facts' && !factsEnabled);
                 if (wait > 0 && !forced) nextFlipIn = Math.min(nextFlipIn, wait);
                 else setShown(marker, want);
             }
@@ -402,8 +465,8 @@ export function createMap3dMarkers(opts: Map3dMarkersOptions): Map3dMarkers | un
             stemMaterial.dispose();
             group.remove(popup);
             css.domElement.remove();
-            toggle?.remove();
-            unsubscribePhotos?.();
+            toggles?.remove();
+            for (const unsubscribe of unsubscribers) unsubscribe();
         },
     };
 }

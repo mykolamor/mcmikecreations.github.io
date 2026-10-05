@@ -12,7 +12,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .. import config
-from ..markdown import find_media_refs, post_slug
+from ..cliutil import all_posts
+from ..immich import Asset
+from ..markdown import find_media_refs, images_prefix, is_place_doc, post_slug
+from .remote import asset_to_dict
 
 # Statuses the report emits, plus one the GUI adds for a reference the report
 # has never seen.
@@ -78,6 +81,11 @@ class HikePost:
     @property
     def slug(self) -> str:
         return post_slug(self.path)
+
+    @property
+    def kind(self) -> str:
+        """"post" for a dated hike post, "place" for a place doc."""
+        return "place" if is_place_doc(self.path) else "post"
 
     @property
     def stats(self) -> dict:
@@ -188,56 +196,60 @@ class HikePost:
     def save(self) -> Path:
         """Write the report back, keeping a single .bak of the previous state."""
         report = self.ensure_report()
-        from ..report import report_path as _rp
+        from ..report import dump_report, report_path as _rp
 
         out = self.report_path or _rp(self.settings.out_dir, self.name)
-        out.parent.mkdir(parents=True, exist_ok=True)
         if out.is_file():
             shutil.copy2(out, out.with_suffix(".json.bak"))
         report["generated_at"] = _now()
-        out.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n",
-                       encoding="utf-8")
+        dump_report(report, out)
         self.report_path = out
         return out
 
 
 class HikeIndex:
-    """All posts in the configured directory."""
+    """All posts in the configured directory, then all place docs."""
 
     def __init__(self, settings: config.Settings):
         self.settings = settings
         self.posts: list[HikePost] = []
 
     def refresh(self) -> list[HikePost]:
-        self.posts = [
-            HikePost(p, self.settings).load()
-            for p in sorted(self.settings.posts_dir.glob("*.md"))
-        ]
+        self.posts = [HikePost(p, self.settings).load() for p in all_posts(self.settings)]
         return self.posts
+
+
+def _match_block(asset: dict) -> dict:
+    """A report entry's `match`, from an `asset_to_dict`-shaped asset. One
+    without `scores` (picked by hand, not by the cascade) gets empty ones."""
+    return {
+        "asset_id": asset.get("asset_id") or asset.get("id"),
+        "original_path": asset.get("original_path", ""),
+        "original_file_name": asset.get("original_file_name", ""),
+        "file_created_at": asset.get("file_created_at", ""),
+        "local_date_time": asset.get("local_date_time", ""),
+        "width": asset.get("width", 0),
+        "height": asset.get("height", 0),
+        "latitude": asset.get("latitude"),
+        "longitude": asset.get("longitude"),
+        "file_size": asset.get("file_size", 0),
+        "scores": asset.get("scores") or {
+            "phash": None, "blockmean": None, "mae": None,
+            "ncc": None, "inliers": None, "coverage": None,
+        },
+    }
+
+
+def match_from_asset(asset: Asset) -> dict:
+    """The `match` recording a hand-picked Immich asset."""
+    return _match_block(asset_to_dict(asset))
 
 
 def build_entry(web_path: str, local_path: Path, asset: dict | None,
                 status: str, resolved_by: str | None = "manual",
                 confidence: str | None = None) -> dict:
     """A report entry in the same shape `matches.report` emits."""
-    match = None
-    if asset:
-        match = {
-            "asset_id": asset.get("asset_id") or asset.get("id"),
-            "original_path": asset.get("original_path", ""),
-            "original_file_name": asset.get("original_file_name", ""),
-            "file_created_at": asset.get("file_created_at", ""),
-            "local_date_time": asset.get("local_date_time", ""),
-            "width": asset.get("width", 0),
-            "height": asset.get("height", 0),
-            "latitude": asset.get("latitude"),
-            "longitude": asset.get("longitude"),
-            "file_size": asset.get("file_size", 0),
-            "scores": asset.get("scores") or {
-                "phash": None, "blockmean": None, "mae": None,
-                "ncc": None, "inliers": None, "coverage": None,
-            },
-        }
+    match = _match_block(asset) if asset else None
     return {
         "index": -1,
         "web_path": web_path,
@@ -250,18 +262,31 @@ def build_entry(web_path: str, local_path: Path, asset: dict | None,
     }
 
 
-def site_url_for(post_name: str, site_url: str = config.DEFAULT_SITE_URL) -> str:
+def manual_entry(web_path: str, local_path: Path, asset: Asset | None) -> dict:
+    """The entry for a media item mapped by hand: matched to `asset`, or
+    unmatched without one."""
+    return build_entry(web_path, local_path, asset_to_dict(asset) if asset else None,
+                       "matched" if asset else "unmatched", "manual", "manual")
+
+
+def site_url_for(post_name: str, site_url: str = config.DEFAULT_SITE_URL) -> str | None:
     """Public URL of a published hike post, e.g.
 
         2025-05-18-breitenstein_wendelstein.md
         -> https://mykolamor.com/hikes/2025-05-18-breitenstein_wendelstein/
+
+    None for a place doc: it has no page of its own, only a section in every
+    post that lists it.
     """
+    if is_place_doc(Path(post_name)):
+        return None
     stem = Path(post_name).stem
     return f"{site_url.rstrip('/')}{config.SITE_HIKE_PATH}/{stem}/"
 
 
-def web_path_for(slug: str, filename: str) -> str:
-    return f"/images/projects/data-viz/hikes/stories/{slug}/{filename}"
+def web_path_for(slug: str, filename: str, kind: str = "post") -> str:
+    """Served path of an image in a post's story folder, or a place doc's folder."""
+    return f"{images_prefix(kind)}{slug}/{filename}"
 
 
 def _now() -> str:

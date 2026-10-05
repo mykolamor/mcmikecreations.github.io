@@ -4,8 +4,10 @@ Every magic number in this package lives here. Each has a CLI override in
 `matches.cli`; nothing else in the package should hardcode a threshold.
 """
 
+import json
 import os
 from dataclasses import dataclass, field
+from functools import lru_cache
 from pathlib import Path
 
 # --- Immich -----------------------------------------------------------------
@@ -17,12 +19,21 @@ API_KEY_ENV = "IMMICH_API_KEY"
 DEFAULT_TIMEOUT = 120
 DEFAULT_WORKERS = 8
 SEARCH_PAGE_SIZE = 1000
+# Free-text (CLIP) search results kept for a place doc's candidate list.
+SMART_SEARCH_LIMIT = 250
 
 # --- Repository layout ------------------------------------------------------
 POSTS_SUBDIR = "static/_projects/data-viz/hikes/markdown"
+# Place docs: reference text for a hut, peak or town, shown in every post that
+# lists the place in its front matter (`places:`). They sit beside the posts'
+# folder, `<slug>.md` with no date, and their images under PLACES_IMAGE_PREFIX.
+PLACES_DIRNAME = "places"
 STATIC_SUBDIR = "static"
+GPX_SUBDIR = "_projects/data-viz/hikes/gpx"  # recorded tracks, under STATIC_SUBDIR
 OUT_SUBDIR = "scripts/matches/hikes"
 CACHE_DIRNAME = ".image-match-cache"
+# Place-doc and facts-place keys, read by both the site and these scripts.
+SCHEMA_KEYS_FILE = "src/lib/hikes/schema-keys.json"
 
 # --- Deployed site ----------------------------------------------------------
 # Posts are published at <site>/hikes/<markdown stem>/. The stem doubles as the
@@ -133,6 +144,13 @@ def repo_root() -> Path:
     return Path(__file__).resolve().parents[2]
 
 
+@lru_cache(maxsize=1)
+def schema_keys() -> dict:
+    """SCHEMA_KEYS_FILE: the front-matter and sidecar keys the site accepts,
+    shared with its TypeScript readers so both sides agree on them."""
+    return json.loads((repo_root() / SCHEMA_KEYS_FILE).read_text(encoding="utf-8"))
+
+
 @dataclass
 class Settings:
     """Fully resolved runtime configuration."""
@@ -142,6 +160,8 @@ class Settings:
     site_url: str = DEFAULT_SITE_URL
     api_key: str = field(default_factory=lambda: os.environ.get(API_KEY_ENV, ""))
     posts_dir: Path = field(default_factory=lambda: repo_root() / POSTS_SUBDIR)
+    # None: the `places` folder next to `posts_dir`; read it through `places_root`.
+    places_dir: Path | None = None
     static_root: Path = field(default_factory=lambda: repo_root() / STATIC_SUBDIR)
     out_dir: Path = field(default_factory=lambda: repo_root() / OUT_SUBDIR)
     cache_dir: Path | None = None
@@ -169,8 +189,20 @@ class Settings:
 
     def __post_init__(self) -> None:
         self.posts_dir = Path(self.posts_dir).resolve()
+        if self.places_dir is not None:
+            self.places_dir = Path(self.places_dir).resolve()
         self.static_root = Path(self.static_root).resolve()
         self.out_dir = Path(self.out_dir).resolve()
         if self.cache_dir is None:
             self.cache_dir = self.out_dir / CACHE_DIRNAME
         self.cache_dir = Path(self.cache_dir).resolve()
+
+    @property
+    def places_root(self) -> Path:
+        """Where the place docs live: `places_dir` when set, else the `places`
+        folder next to `posts_dir`. Derived from `posts_dir` at the time of
+        asking, so a test or `--posts-dir` override (even one assigned after
+        construction) never picks up the real place docs by accident."""
+        if self.places_dir is not None:
+            return self.places_dir
+        return (self.posts_dir.parent / PLACES_DIRNAME).resolve()

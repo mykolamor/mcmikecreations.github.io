@@ -22,7 +22,7 @@ import pillow_heif
 pillow_heif.register_heif_opener()  # Immich originals are frequently HEIC
 
 from . import config, rawimage
-from .markdown import _on_disk, find_media_refs
+from .markdown import find_media_refs, on_disk
 from .report import read_report
 from .terrain import Terrain
 
@@ -168,7 +168,7 @@ def optimize_post(
             if wa_sibling.exists():
                 wa_sibling.unlink()
         elif ref.exists:
-            w, h = probe_dimensions(_on_disk(ref.local_path))
+            w, h = probe_dimensions(on_disk(ref.local_path))
             images[filename] = {"w": w, "h": h}
         # else: unmatched/ambiguous with no local file (missing_local) — nothing to record.
 

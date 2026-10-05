@@ -1,10 +1,25 @@
 import { providerFolder, providers } from '$lib/data/map-providers';
 import { primaryGeometryColor, secondaryIndicatorColor } from '$lib/hikes/build-geometry';
 import {
-    declutterBy, nodeIconHtml, nodePopupHtml, photoIconHtml,
-    getMapPhotosPref, onMapPhotosPref, setMapPhotosPref,
-    NODE_MARKER_SIZE, PHOTO_MARKER_SIZE, type MapPhoto
+    alternatingOffset, declutterBy, factsPinLift, nodeIconHtml, nodePopupHtml, photoIconHtml,
+    mapFactsPref, mapPhotosPref,
+    NODE_MARKER_SIZE, PHOTO_MARKER_SIZE, type LayerPref, type MapPhoto
 } from '$lib/hikes/map-utils';
+import {
+    factsPinIconHtml, factsPinWidth, offsetNearRoute, pinPopupHtml, pinText,
+    FACTS_PIN_H, FACTS_PIN_POINTER,
+    type FactsMarks
+} from '$lib/hikes/facts-overlay';
+
+/**
+ * How far a bailout route is pushed off the main route where they run
+ * together (px): just clear of the main line's white casing. Further
+ * routes alternate sides and step outwards.
+ */
+const ROUTE_OFFSET_PX = 7;
+/** Within this of the main route (px) a point gets the full offset, fading out by `ROUTE_OFFSET_FAR_PX`. */
+const ROUTE_OFFSET_NEAR_PX = 6;
+const ROUTE_OFFSET_FAR_PX = 12;
 
 export interface Map2dHandle {
     setIndicator: (lat: number, lon: number) => void;
@@ -24,6 +39,21 @@ function declutter<T extends { lat: number; lon: number }>(map: any, items: T[],
     return declutterBy(items, (item) => map.project([item.lat, item.lon], zoom), minPixelDistance);
 }
 
+/**
+ * Shows `layer` per the remembered preference, shared with the 3D map's
+ * toggle: the layer control's overlay sets it, and a change made elsewhere on
+ * the page adds or removes the layer. Returns the unsubscribe.
+ */
+function bindLayerPref(map: any, layer: any, pref: LayerPref): () => void {
+    if (pref.get()) layer.addTo(map);
+    map.on('overlayadd', (e: any) => { if (e.layer === layer) pref.set(true); });
+    map.on('overlayremove', (e: any) => { if (e.layer === layer) pref.set(false); });
+    return pref.on((on) => {
+        if (on && !map.hasLayer(layer)) layer.addTo(map);
+        else if (!on && map.hasLayer(layer)) map.removeLayer(layer);
+    });
+}
+
 function getRouteCenter(geojson: any): [number, number] {
     const coords = geojson?.features?.[0]?.geometry?.coordinates;
     if (!coords?.length) return [0, 0];
@@ -36,7 +66,8 @@ export async function initMap2d(
     geojson: any,
     nodes?: any[] | null,
     photos?: MapPhoto[],
-    onPhotoClick?: (mediaIndex: number) => void
+    onPhotoClick?: (mediaIndex: number) => void,
+    facts?: FactsMarks
 ): Promise<Map2dHandle> {
     const noop: Map2dHandle = { setIndicator: () => {} };
     const { L } = await import('$lib/components/leaflet.almostover.js');
@@ -82,24 +113,21 @@ export async function initMap2d(
     // Created up front so the layer control can list it as a toggleable overlay;
     // filled once the route has set the initial zoom (see renderPhotos below).
     const photosLayer = photos?.length ? L.layerGroup() : undefined;
-    let unsubscribePhotos: (() => void) | undefined;
-    if (photosLayer) {
-        // Shown per the remembered preference, shared with the 3D map's toggle.
-        if (getMapPhotosPref()) photosLayer.addTo(map);
-        map.on('overlayadd', (e: any) => { if (e.layer === photosLayer) setMapPhotosPref(true); });
-        map.on('overlayremove', (e: any) => { if (e.layer === photosLayer) setMapPhotosPref(false); });
-        unsubscribePhotos = onMapPhotosPref((on) => {
-            if (on && !map.hasLayer(photosLayer)) photosLayer.addTo(map);
-            else if (!on && map.hasLayer(photosLayer)) map.removeLayer(photosLayer);
-        });
-    }
+    const unsubscribePhotos = photosLayer && bindLayerPref(map, photosLayer, mapPhotosPref);
 
+    // Hazards, bailout points, water and bailout routes from the post's facts.
+    const factsLayer = facts && (facts.pins.length || facts.lines.length || facts.routes.length) ? L.layerGroup() : undefined;
+    const unsubscribeFacts = factsLayer && bindLayerPref(map, factsLayer, mapFactsPref);
+
+    const overlays: Record<string, any> = {};
+    if (photosLayer) overlays['Photos'] = photosLayer;
+    if (factsLayer) overlays['Route facts'] = factsLayer;
     const layerControl = L.control.layers({
         'OSM Mirror': mapOsmLocal,
         'Mapy.cz Outdoor': mapMapyczLocal,
         'Mapbox Satellite': mapSatelliteLocal,
         'OpenStreetMap': mapOsm,
-    }, photosLayer ? { 'Photos': photosLayer } : undefined).addTo(map);
+    }, Object.keys(overlays).length ? overlays : undefined).addTo(map);
 
     const controlsContainer = layerControl.getContainer();
     if (controlsContainer) {
@@ -173,6 +201,62 @@ export async function initMap2d(
         map.on('zoomend', renderNodes);
     }
 
+    if (factsLayer && facts) {
+        // Hazard stretches over the route line, then the pins on top.
+        for (const line of facts.lines) {
+            L.polyline(line.coords, { color: line.color, weight: 7, opacity: 0.55, lineCap: 'butt' })
+                .bindTooltip(line.title, { sticky: true, className: 'facts-tooltip' })
+                .addTo(factsLayer);
+        }
+        // Bailout routes: dashed on a white casing, pushed beside the main
+        // route where they share it. The offset is in pixels, so it's redone
+        // on every zoom.
+        const mainCoords: number[][] = routeFeature.geometry?.coordinates ?? [];
+        const routeLines = facts.routes.map((route) => {
+            const casing = L.polyline(route.coords, { color: '#ffffff', weight: 5, opacity: 0.85, interactive: false }).addTo(factsLayer);
+            const dashed = L.polyline(route.coords, { color: route.color, weight: 3, opacity: 1, dashArray: '7 6' })
+                .bindTooltip(route.title, { sticky: true, className: 'facts-tooltip' })
+                .addTo(factsLayer);
+            return { route, casing, dashed };
+        });
+        const placeRoutes = () => {
+            const zoom = map.getZoom();
+            const main = mainCoords.map((c) => map.project([c[1], c[0]], zoom));
+            routeLines.forEach(({ route, casing, dashed }, i) => {
+                const offset = alternatingOffset(i, ROUTE_OFFSET_PX);
+                const shifted = offsetNearRoute(
+                    route.coords.map((c) => map.project(c, zoom)),
+                    main,
+                    offset,
+                    ROUTE_OFFSET_NEAR_PX,
+                    ROUTE_OFFSET_FAR_PX
+                ).map((p) => map.unproject(L.point(p.x, p.y), zoom));
+                casing.setLatLngs(shifted);
+                dashed.setLatLngs(shifted);
+            });
+        };
+        if (routeLines.length) {
+            placeRoutes();
+            map.on('zoomend', placeRoutes);
+        }
+
+        for (const pin of facts.pins) {
+            const width = factsPinWidth(pin);
+            // A pin on a POI node stands above the node's own marker instead of covering it.
+            const lift = factsPinLift(pin);
+            const icon = L.divIcon({
+                html: factsPinIconHtml(pin, width),
+                className: '',
+                iconSize: [width, FACTS_PIN_H + FACTS_PIN_POINTER],
+                iconAnchor: [width / 2, FACTS_PIN_H + FACTS_PIN_POINTER + lift],
+                popupAnchor: [0, -(FACTS_PIN_H + FACTS_PIN_POINTER + lift)]
+            });
+            L.marker([pin.lat, pin.lon], { icon, title: pinText(pin), alt: pin.name, riseOnHover: true, zIndexOffset: 500 })
+                .bindPopup(pinPopupHtml(pin))
+                .addTo(factsLayer);
+        }
+    }
+
     // Elevation-chart hover indicator
     const indicator = new L.CircleMarker([lat, lon], {
         radius: 6,
@@ -213,6 +297,7 @@ export async function initMap2d(
         // map.remove() is what tears those down.
         destroy: () => {
             unsubscribePhotos?.();
+            unsubscribeFacts?.();
             clearTimeout(focusTimer);
             map.remove();
         },

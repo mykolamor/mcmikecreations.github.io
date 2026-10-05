@@ -16,6 +16,12 @@ from ..immich import Asset, ImmichClient
 _UUID = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
 
 
+def _window(lo: str, hi: str) -> dict:
+    """`search_assets` bounds for the whole days `lo`..`hi` (YYYY-MM-DD, inclusive)."""
+    return {"taken_after": datetime.fromisoformat(f"{lo}T00:00:00"),
+            "taken_before": datetime.fromisoformat(f"{hi}T23:59:59")}
+
+
 class RemoteUnavailable(RuntimeError):
     """No API key, or the instance could not be reached."""
 
@@ -28,6 +34,10 @@ class Remote:
         self._client: ImmichClient | None = None
         self._albums = None
         self._asset_cache: dict[tuple, list[Asset]] = {}
+        # A place doc's last search (text and/or dates), by doc name. Place
+        # docs have no date of their own, so their candidates are whatever
+        # was last searched for them; see `search_place`.
+        self._place_results: dict[str, list[Asset]] = {}
 
     @property
     def available(self) -> bool:
@@ -73,8 +83,12 @@ class Remote:
         """Assets in the album and date window a report recorded for a post.
 
         Falls back to the window alone when the report named no album, and to
-        the post's own date when there is no report at all.
+        the post's own date when there is no report at all. A place doc's are
+        its last search, when there was one (`search_place`); otherwise the
+        window around the capture dates in its image filenames, like a post's.
         """
+        if getattr(post, "kind", "post") == "place" and post.name in self._place_results:
+            return self._place_results[post.name]
         report = post.report or {}
         window = report.get("date_window") or {}
         lo, hi = window.get("from"), window.get("to")
@@ -91,11 +105,27 @@ class Remote:
             return self._asset_cache[key]
 
         assets = self.client.search_assets(
-            album_ids=[album_id] if album_id else None,
-            taken_after=datetime.fromisoformat(f"{lo}T00:00:00"),
-            taken_before=datetime.fromisoformat(f"{hi}T23:59:59"),
-        )
+            album_ids=[album_id] if album_id else None, **_window(lo, hi))
         self._asset_cache[key] = assets
+        return assets
+
+    def search_place(self, post, query: str = "", date_from: str = "",
+                     date_to: str = "") -> list[Asset]:
+        """Search Immich for a place doc's photos and remember the result as
+        its candidates. A text query uses Immich's smart (CLIP) search, then
+        keeps only the assets inside the dates, when given; dates alone search
+        that window. Dates are `YYYY-MM-DD`, inclusive."""
+        query = (query or "").strip()
+        if not query and not (date_from and date_to):
+            raise ValueError("Give a search text, or both dates")
+        if query:
+            assets = self.client.smart_search(query)
+            if date_from or date_to:
+                lo, hi = date_from or "0000-00-00", date_to or "9999-99-99"
+                assets = [a for a in assets if lo <= (a.local_date_time or "")[:10] <= hi]
+        else:
+            assets = self.client.search_assets(**_window(date_from, date_to))
+        self._place_results[post.name] = assets
         return assets
 
     def _window_from_post(self, post) -> tuple[str, str]:

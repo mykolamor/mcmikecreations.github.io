@@ -2,6 +2,8 @@
 	import { page } from '$app/state';
 	import type { ProcessedPost } from '$lib/hikes/hikes-info';
 	import resume from '$lib/data/resume.json';
+	import type { HikeAuthoredFacts } from '$lib/hikes/facts-schema';
+	import { formatMonths, hardestFerrata, seasonMonths } from '$lib/hikes/facts-format';
 	import {
 		HIKES_BLOG_TITLE,
 		HIKES_BLOG_DESCRIPTION,
@@ -28,6 +30,9 @@
 		ascent?: number | null;
 		descent?: number | null;
 		duration?: number | null;
+		facts?: HikeAuthoredFacts | null;
+		routeType?: string | null;
+		highPoint?: number | null;
 	};
 
 	type BlogProps = {
@@ -77,6 +82,24 @@
 			datePublished: post.date.toISOString(),
 			...(post.image ? { image: absUrl(post.image) } : {})
 		};
+	}
+
+	/** Difficulty, route type, highest point, season and car-free access, when known. */
+	function factsProperties(post: PostProps) {
+		const d = post.facts?.difficulty;
+		const prop = (name: string, value: string | number, extra: object = {}) => ({ '@type': 'PropertyValue', name, value, ...extra });
+		const ferrata = hardestFerrata(d?.viaFerrata);
+		const season = seasonMonths(post.facts?.season);
+		return [
+			d?.sac && prop('Difficulty (SAC)', d.sac),
+			ferrata && prop('Via ferrata grade', ferrata.grade, { description: `${ferrata.scale ?? 'schall'} scale` }),
+			d?.climbing && prop(`Climbing grade (${(d.climbing.scale ?? 'uiaa').toUpperCase()})`, d.climbing.grade),
+			d?.exposure && prop('Exposure', d.exposure.level),
+			post.routeType && prop('Route type', post.routeType),
+			post.highPoint != null && prop('Highest point', post.highPoint, { unitText: 'm', unitCode: 'MTR' }),
+			season?.length && prop('Season', formatMonths('en', season)),
+			post.facts?.access?.carFree && prop('Car-free access', post.facts.access.carFree)
+		];
 	}
 
 	const schema = $derived.by(() => {
@@ -132,8 +155,16 @@
 					value: Math.round(props.duration),
 					unitText: 'min',
 					unitCode: 'MIN'
-				}
+				},
+				...factsProperties(props)
 			].filter(Boolean);
+			const peaks = (props.facts?.route?.peaks ?? []).map((peak) => ({
+				'@type': 'Mountain',
+				name: peak.name.en,
+				...(peak.lat != null && peak.lon != null
+					? { geo: { '@type': 'GeoCoordinates', latitude: peak.lat, longitude: peak.lon, ...(peak.ele != null ? { elevation: peak.ele } : {}) } }
+					: {})
+			}));
 			return graph(blogNode, {
 				'@type': 'BlogPosting',
 				inLanguage: 'en',
@@ -148,6 +179,7 @@
 				url: postUrl,
 				mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
 				isPartOf: blogRef,
+				...(peaks.length > 0 ? { about: peaks } : {}),
 				...(additionalProperty.length > 0 ? { additionalProperty } : {})
 			});
 		}

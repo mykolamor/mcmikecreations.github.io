@@ -12,6 +12,7 @@ import type { GalleryItem } from '$lib/renderers/gallery-item';
 import { photoStopText, type PhotoStop } from '$lib/hikes/photo-stops';
 import { buildPlaceIndex, type PlaceIndex, type PlaceNode } from '$lib/hikes/place-links';
 import { avifTiers, buildAvifSrcset, avifVariantHref, type HikeImageMeta } from '$lib/renderers/responsive-image';
+import { buildPlaceDocIndex, placeDocAnchor, placeDocMarkerHtml, type PlaceDocIndex, type PlaceDocRef } from '$lib/hikes/place-docs';
 
 export interface ProcessedPost {
     year: number;
@@ -145,8 +146,16 @@ function unescapeHtml(text: string): string {
  * map, where the page's click handler centers it on the node. A link rather
  * than a button: it wraps with the text around it, and without JavaScript it
  * still jumps to the map.
+ *
+ * With `docMarker`, a reference naming one of the post's place docs is also
+ * followed by a small link to that doc's section (see `placeDocMarkerHtml`);
+ * `docMarker` decides, so it can link each doc only once.
  */
-function markToponyms(html: string, places: PlaceIndex | null): string {
+function markToponyms(
+    html: string,
+    places: PlaceIndex | null,
+    docMarker?: (nameWords: string[]) => string
+): string {
     return html.replace(TOPONYM, (match: string) => {
         // Words and the whitespace between them alternate: even indices are words.
         // The elevation's own space is non-breaking, so a line never splits `(2024 m)`.
@@ -160,7 +169,8 @@ function markToponyms(html: string, places: PlaceIndex | null): string {
         const nameWords = words.slice(start, elevationAt).filter((_, i) => i % 2 === 0).map(unescapeHtml);
         const ele = Number(/\d+/.exec(words[elevationAt])?.[0]);
         const place = places?.match(nameWords, ele);
-        if (!place) return lead + `<span translate="no">${words.slice(start).join('')}</span>`;
+        const marker = docMarker?.(nameWords) ?? '';
+        if (!place) return lead + `<span translate="no">${words.slice(start).join('')}</span>` + marker;
 
         // The node's name says exactly where the place name starts, so words
         // before it ("Approaching") stay translatable.
@@ -168,7 +178,7 @@ function markToponyms(html: string, places: PlaceIndex | null): string {
         const { lat, lon } = place.node;
         return words.slice(0, linkAt).join('') + '<span translate="no">' +
             `<a class="mk-place" href="#hike-map" data-place-lat="${lat}" data-place-lon="${lon}" title="Show on the map">` +
-            `${words.slice(linkAt).join('')}</a></span>`;
+            `${words.slice(linkAt).join('')}</a></span>` + marker;
     });
 }
 
@@ -198,12 +208,29 @@ export interface ParseMarkdownOptions {
     stops?: Map<number, PhotoStop>;
     /** The hike's POI nodes; place references naming one link to it on the map. */
     nodes?: PlaceNode[] | null;
+    /**
+     * The post's place docs (front matter `places:`). The first reference to
+     * each in the prose gets a link to its section, and `[text](place:<slug>)`
+     * links there explicitly. The server load sends the same list to the
+     * browser, so a client-side re-parse links exactly the same.
+     */
+    placeDocs?: PlaceDocRef[] | null;
+    /**
+     * Where this document's `data-media-index` values start. A place doc
+     * rendered under a post continues after the post's own media, so both
+     * share one gallery.
+     */
+    mediaOffset?: number;
+    /** Reserve the map and chart boxes (a post's body). Off for a place doc. */
+    widgets?: boolean;
+    /** Append the renderer's `<style>` block. A place doc's rides on the post's. */
+    styles?: boolean;
 }
 
 export async function parseMarkdown(
     postRaw: string,
     tags: string[] = [],
-    { stops, nodes }: ParseMarkdownOptions = {}
+    { stops, nodes, placeDocs, mediaOffset = 0, widgets = true, styles: withStyles = true }: ParseMarkdownOptions = {}
 ): Promise<ParsedPost> {
     // Drop any leading YAML front matter before rendering. Uses the
     // dependency-free stripper so this stays safe in the client bundle, which
@@ -211,6 +238,17 @@ export async function parseMarkdown(
     const post = stripFrontmatter(postRaw);
     const { Marked, Renderer } = await import('marked');
     const places = buildPlaceIndex(nodes);
+    const docs: PlaceDocIndex | null = buildPlaceDocIndex(placeDocs);
+    // Each doc's marker goes on its first reference only: one pointer per
+    // place, not one per mention. Renderers run in document order, so the
+    // server and a client re-parse mark the same reference.
+    const markedDocs = new Set<string>();
+    const docMarker = (nameWords: string[]): string => {
+        const hit = docs?.match(nameWords);
+        if (!hit || markedDocs.has(hit.doc.slug)) return '';
+        markedDocs.add(hit.doc.slug);
+        return placeDocMarkerHtml(hit.doc);
+    };
     // Above zero while rendering a heading, a link or a figure caption: no
     // place links there. Links can't nest, and captions are
     // reused in the gallery, where the photo line already links to the map.
@@ -270,6 +308,15 @@ export async function parseMarkdown(
                 // readers and crawlers to a dead end, so it renders as plain text;
                 // the markdown keeps the link, and writing that post later only
                 // means changing its URL.
+                // `place:<slug>` points at one of the post's place docs, further
+                // down the page. A slug the post doesn't list renders as text.
+                const placeSlug = /^place:([a-z0-9_-]+)$/.exec((token.href ?? '').trim())?.[1];
+                if (placeSlug) {
+                    const inner = withoutPlaceLinks(() => (this as any).parser.parseInline(token.tokens));
+                    const doc = docs?.get(placeSlug);
+                    if (!doc) return `<span>${inner}</span>`;
+                    return `<a class="mk-place-doc-link" href="#${placeDocAnchor(doc.slug)}" data-place-doc="${doc.slug}">${inner}</a>`;
+                }
                 if (!isPlaceholderHref(token.href)) {
                     return withoutPlaceLinks(() => Renderer.prototype.link.call(this as any, token));
                 }
@@ -278,7 +325,7 @@ export async function parseMarkdown(
             text(token: any) {
                 if (token.tokens) return false;
                 const html = token.escaped ? token.text : escapeHtml(token.text);
-                return markToponyms(html, placeLinksOff === 0 ? places : null);
+                return placeLinksOff === 0 ? markToponyms(html, places, docMarker) : markToponyms(html, null);
             },
             heading(token: any) {
                 return withoutPlaceLinks(() => Renderer.prototype.heading.call(this as any, token));
@@ -305,7 +352,7 @@ export async function parseMarkdown(
                     } catch (e) {
                         // ignore invalid url
                     }
-                    const mediaIndex = media.length;
+                    const mediaIndex = mediaOffset + media.length;
                     media.push({
                         kind: 'youtube',
                         videoId,
@@ -332,7 +379,7 @@ export async function parseMarkdown(
                     const { flags, title: mediaTitle } = parseMediaFlags(title);
                     const autoplayAttrs = flags.has('autoplay') ? ' autoplay muted' : '';
                     const safeMediaTitle = mediaTitle.replace(/"/g, '&quot;');
-                    const mediaIndex = media.length;
+                    const mediaIndex = mediaOffset + media.length;
                     media.push({
                         kind: 'video',
                         src: href.trim(),
@@ -349,7 +396,7 @@ export async function parseMarkdown(
     <figcaption class="mk-figcaption">${renderedText}</figcaption>
 </figure>`;
                 } else {
-                    const mediaIndex = media.length;
+                    const mediaIndex = mediaOffset + media.length;
                     const meta = images[href.trim().split('/').pop() ?? ''];
 
                     if (meta?.blur) {
@@ -431,8 +478,10 @@ a.mk-place.mk-place:hover, a.mk-place.mk-place:focus-visible { text-decoration-s
 .mk-play-badge { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; width: 4rem; height: 4rem; border-radius: 9999px; background-color: rgb(17 24 39 / 0.5); color: rgb(255 255 255 / 0.85); pointer-events: none; transition: background-color 150ms ease, transform 150ms ease; }
 .mk-play-badge svg { width: 1.75rem; height: 1.75rem; }
 .mk-video-link:hover .mk-play-badge, .mk-video-link:focus-visible .mk-play-badge { background-color: rgb(17 24 39 / 0.75); transform: translate(-50%, -50%) scale(1.08); }
+a.mk-place-doc.mk-place-doc { display: inline-block; margin-left: 0.15em; font-size: 0.75em; line-height: 1; vertical-align: super; text-decoration: none !important; font-weight: inherit !important; }
+a.mk-place-doc-link.mk-place-doc-link { text-decoration: underline dotted !important; text-underline-offset: 3px; }
 </style>`;
     const withoutEmptyParagraphs = result.replace(/<p>\s*<\/p>/g, '');
-    const withWidgets = insertHikeWidgetPlaceholders(withoutEmptyParagraphs, tags);
-    return { html: withWidgets + styles, media };
+    const withWidgets = widgets ? insertHikeWidgetPlaceholders(withoutEmptyParagraphs, tags) : withoutEmptyParagraphs;
+    return { html: withWidgets + (withStyles ? styles : ''), media };
 }

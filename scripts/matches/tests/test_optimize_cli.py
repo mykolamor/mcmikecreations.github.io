@@ -25,5 +25,5 @@ def test_posts_argument_reaches_resolve_posts(tmp_path):
     args = build_parser().parse_args(["2024-08-31-aiplspitz"])
     s = settings_from_args(args)
     s.posts_dir = posts
-    from matches.cli import resolve_posts
+    from matches.cliutil import resolve_posts
     assert [p.name for p in resolve_posts(args, s)] == ["2024-08-31-aiplspitz.md"]
