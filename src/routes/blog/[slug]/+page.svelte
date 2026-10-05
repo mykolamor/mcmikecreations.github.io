@@ -9,6 +9,7 @@
 	import AppBreadcrumbs from '$lib/components/AppBreadcrumbs.svelte';
 	import AppJsonLd from '$lib/components/AppJsonLd.svelte';
 	import { page } from '$app/state';
+	import { A } from 'flowbite-svelte';
 
 	interface Props {
 		data: PageData;
@@ -52,7 +53,7 @@
 				<div class="flex flex-row justify-end gap-2" aria-details="tags">
 					<span aria-label="tags" class="sr-only"></span>
 					{#each data.post.tags as t}
-						<a href={`/blog/tag/${encodeURIComponent(t)}/`} class="hover:underline text-primary-600 dark:text-primary-500">{t}</a>
+						<A href={`/blog/tag/${encodeURIComponent(t)}/`}>{t}</A>
 					{/each}
 				</div>
 			{/if}

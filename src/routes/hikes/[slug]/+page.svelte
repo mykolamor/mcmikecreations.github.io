@@ -419,7 +419,7 @@
 					·
 					<span>{data.post.time}</span>
 					·
-					<a class="no-underline hover:underline" href="/hikes/year/{new Date(data.post.date).getFullYear()}/">{new Date(data.post.date).toLocaleDateString('en-us', { year:"numeric", month:"short", day:"numeric"})}</a>
+					<a class="underline underline-offset-2 hover:decoration-2 cursor-pointer" href="/hikes/year/{new Date(data.post.date).getFullYear()}/">{new Date(data.post.date).toLocaleDateString('en-us', { year:"numeric", month:"short", day:"numeric"})}</a>
 					{#if data.post.tags?.length}
 						·
 						<div class="flex flex-row flex-wrap justify-end gap-2 items-center" aria-details="tags">

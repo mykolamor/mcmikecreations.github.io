@@ -5,6 +5,14 @@
 	import DarkModeHandler from '$lib/components/DarkModeHandler.svelte';
     import AppNavbar from "$lib/components/AppNavbar.svelte";
 	import AppFooter from '$lib/components/AppFooter.svelte';
+	import { ThemeProvider } from 'flowbite-svelte';
+	import type { ThemeConfig } from 'flowbite-svelte';
+
+	// Flowbite's <A> only underlines on hover, so highlighted links read as plain
+	// coloured text. Underline every <A> app-wide so it's obviously clickable.
+	const theme: ThemeConfig = {
+		anchor: 'underline underline-offset-2 hover:decoration-2 cursor-pointer'
+	};
 
 	interface Props {
 		shouldShowNavbar?: 'true' | 'false' | undefined;
@@ -21,6 +29,7 @@
 
 <DarkModeHandler />
 
+<ThemeProvider {theme}>
 <div class="flex flex-col min-h-[100dvh]">
 	{#if showNavbar}
 		<AppNavbar {fixedNavbar} />
@@ -32,3 +41,4 @@
 
 	<AppFooter />
 </div>
+</ThemeProvider>
