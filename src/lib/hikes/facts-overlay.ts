@@ -378,11 +378,11 @@ const NODE_BADGE_LEFT = 14;
 /**
  * The badge a node's marker wears for the facts about it: the pin's emojis in a
  * small pill at the marker's top right, outlined in the pin's colour. Water at
- * a node already drawn as water (💧) adds nothing; '' when nothing is left.
+ * a node already drawn as water (💧, 🚰) adds nothing; '' when nothing is left.
  */
 export function nodeFactsBadgeHtml(pin: FactsPin, nodeEmoji: string): string {
 	const emojis = pinKinds(pin)
-		.filter((k) => !(k === 'water' && nodeEmoji === '💧'))
+		.filter((k) => !(k === 'water' && (nodeEmoji === '💧' || nodeEmoji === '🚰')))
 		.map((k) => pin.items.find((i) => i.kind === k)!.emoji)
 		.join('');
 	if (!emojis) return '';

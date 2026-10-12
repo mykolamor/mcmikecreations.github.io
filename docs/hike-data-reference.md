@@ -238,7 +238,7 @@ the planned `/de/` pages; today the page shows English.
 - **One marker per node.** Hazards, bailouts and water at a node (by name or
   `{node}`) don't get a pin of their own on the 2D and 3D maps. The node's marker
   wears a small badge with their emojis instead, and its popup lists them. Water on
-  a node already drawn as water (💧) adds no badge. A `{lat, lon}` or `km` place
+  a node already drawn as water (💧, 🚰) adds no badge. A `{lat, lon}` or `km` place
   keeps its own pin, however close to a node. The elevation charts still show pins.
 
 **Span:** `from` and/or `to` (places). An open end runs to the route's start or end.
@@ -265,7 +265,7 @@ story, **G** = guide below the story, **C** = elevation charts, **M** = 2D and 3
 | `difficulty.climbing` | `grade`, `scale` (uiaa/french/yds), `note` | T G | |
 | `difficulty.exposure` | `level`: none/low/moderate/high, `note` | T G | |
 | `difficulty.fitness` | 1–5 | T G | Stamina the hike takes, the German guides' *Kondition*; shown as "N of 5". Technique goes in `sac`, not here. See [Fitness levels](#fitness-levels). |
-| `difficulty.winter` | `snowshoe` WT1–6, `skiTour`, `avalanche` 1–5, `note` | G | Only if it's done in winter. |
+| `difficulty.winter` | `snowshoe` WT1–6, `skiTour`, `avalanche` 1–5, `note` | G | Only if it's done in winter. See [Winter grades](#winter-grades). |
 | `season` | `best`, `possible` (months 1–12), `window {from: "06-20", to: "10-10"}`, `note` | T G | The tile shows `best`. |
 | `route.start`, `route.end` | place, or `{name, at?}` | G | A named trailhead needn't be a node. |
 | `route.type` | loop/out-and-back/point-to-point/lollipop/traverse | G | Overrides the computed one. |
@@ -276,23 +276,23 @@ story, **G** = guide below the story, **C** = elevation charts, **M** = 2D and 3
 | `route.trails` | list | G | Waymarked route numbers ("801"). |
 | `route.peaks` | list of places | G, JSON-LD | Become `Mountain` entities for search engines. See [`route` in detail](#route-in-detail). |
 | `navigation` | `marking` good/partial/poor/none, `spans[]`, `note`, `offline` | G | Details in [`navigation` in detail](#navigation-in-detail). |
-| `hazards[]` | `kind`, `label?`, `at` or span, `severity` low/medium/high, `season`, `note` | S C M | ~40 kinds (rockfall, snowfield, cattle, lightning, …). An unknown kind needs a `label`. With a span, the stretch is drawn on the charts and maps. |
+| `hazards[]` | `kind`, `label?`, `at` or span, `severity` low/medium/high, `season`, `note` | S C M | ~40 kinds (rockfall, snowfield, cattle, lightning, …). An unknown kind needs a `label`. With a span, the stretch is drawn on the charts and maps. See [Hazards](#hazards). |
 | `bailouts[]` | `at`, `to`, `via` trail/lift/road/bus/taxi/hut, `time`, `last`, `route`, `note` | S C M | `route`: a served GPX path, drawn dashed beside the main route. `last: true` marks the point of no return. |
-| `water[]` | `at`, `kind` tap/fountain/spring/stream/lake/hut/shop, `reliable`, `treat`, `note` | G C M | |
+| `water[]` | `at`, `kind` tap/fountain/spring/stream/lake/hut/shop, `reliable`, `treat`, `note` | G C M | See [Water](#water). |
 | `signal[]` | span + `quality` none/patchy/good, `network`, `note` | G | |
-| `stops[]` | `at`, `kind`, `open` (window / all-year / closed), `days`, `overnight`, `food`, `water`, `cash`, `price[]`, `booking`, `phone`, `note`, `checked` | G | `phone` and `booking` fall back to the node's OSM tags. |
+| `stops[]` | `at`, `kind`, `open` (window / all-year / closed), `days`, `overnight`, `food`, `water`, `cash`, `price[]`, `booking`, `phone`, `note`, `checked` | G | `phone` and `booking` fall back to the node's OSM tags. See [Stops](#stops). |
 | `access.carFree` | yes/partial/no | T G | The tile shows only this, linking to "Getting there". |
 | `access.transport[]` | `mode`, `from`, `to`, `direction` there/back/both, `duration`, `changes`, `line`, `operator`, `first`, `last`, `frequency`, `price[]`, `ticket`, `url`, `note`, `checked` | G | One entry per leg or alternative. Quote times: `"06:32"`. |
-| `access.parking[]` | `name`, `at`, `price[]`, `size`, `fills`, `freeWith`, `url`, `note`, `checked` | G | |
+| `access.parking[]` | `name`, `at`, `price[]`, `size`, `fills`, `freeWith`, `url`, `note`, `checked` | G | See [Parking](#parking). |
 | `access.lifts[]` | `name`, `kind`, span, `direction`, `open`, `first`, `last`, `price[]`, `url`, `note`, `checked` | G | |
 | `access.tickets[]` | `name`, `includes[]`, `price[]`, `validity`, `url`, `note`, `checked` | G | |
 | `access.borders[]` | `at`, `from`, `to` (country codes), `note` | G | |
 | `permits[]` | `name`, `required`, `where`, `price[]`, `url`, `note`, `checked` | G | |
 | `protectedAreas` | text | G | Naturschutzgebiet and similar zones, in your words. |
 | `drones` | text | G | Where drones are forbidden and why. |
-| `rules[]` | `kind` (protected-area, no-camping, no-drones, dogs-on-leash, …), `label?`, span, `season`, `note` | G | Short, place-bound rules. |
+| `rules[]` | `kind` (protected-area, no-camping, no-drones, dogs-on-leash, …), `label?`, span, `season`, `note` | G | Short, place-bound rules. See [Rules](#rules). |
 | `suitability` | `kids`, `dogs`, `stroller`, `bike`, `winter`, `night`, `solo`, `note` | G | Fixed values: `kids` yes / older / no; `dogs` yes / leash / no; `stroller` true / false; `bike` yes / partial / no; `winter` yes / with-gear / no; `night` and `solo` yes / experienced ("experienced only") / no. `note` is free text. |
-| `legs[]` | `to`, `terrain[]`, `sac`, `viaFerrata`, `marking`, `optional`, `note` | G | A leg runs from the previous `to`. Optional legs don't count towards the SAC grade. |
+| `legs[]` | `to`, `terrain[]`, `sac`, `viaFerrata`, `marking`, `optional`, `note` | G | A leg runs from the previous `to`. Optional legs don't count towards the SAC grade. See [`legs` in detail](#legs-in-detail). |
 | `conditions` | `weather[]`, `temp {min, max}`, `visibility`, `snowLine`, `traction`, `trail[]`, `crowding`, `start`, `why`, `note` | S | **Post only.** |
 | `deviations[]` | `kind` (solo, night, unroped, off-trail, …), `at`, `note` | S | **Post only.** "Don't copy this." |
 | `plan.gear[]` | `item` (~55 kinds), `label?`, `need` essential/conditional/optional, `when`, `amount` | G | Checklist with tick boxes. |
@@ -320,6 +320,317 @@ Go down one when a lift takes most of the climb. Say why in `difficulty.note`.
 | 3 | 4–6 h | 700–1100 m | Regular hikers. |
 | 4 | 6–8 h | 1100–1500 m | Fit hikers used to long days. |
 | 5 | over 8 h | over 1500 m | Very fit; a full mountain day or more. |
+
+#### Winter grades
+
+`difficulty.winter` grades the route under snow. The summer fields (`sac`,
+`fitness`, …) still describe the snow-free route. Every field is optional. Fill in
+only the ways the route is really done in winter. The guide shows them on one line
+under a "Winter" heading, for example "Snowshoe grade WT4 · Ski tour grade ZS ·
+Avalanche danger 3 — note".
+
+| Field | Values | What it says |
+|---|---|---|
+| `snowshoe` | `WT1`–`WT6` | The SAC snowshoe scale. Anything else fails the build. |
+| `skiTour` | text, usually the SAC ski scale: `L`, `WS`, `ZS`, `S`, `SS`, `AS`, `EX`, optional `+`/`-` | Ski touring grade. Not checked against a list, so a typo goes through. |
+| `avalanche` | 1–5 | European avalanche danger level the route is graded for. Anything else fails the build. |
+| `note` | text | Why these grades. Say how the winter route differs from the summer one, too: a different start, or a part that isn't doable on foot. |
+
+**`snowshoe`**: SAC snowshoe scale.
+
+| Grade | Meaning |
+|---|---|
+| WT1 | Easy. Gentle slopes under ~25°, no avalanche terrain nearby. |
+| WT2 | Moderate. Slopes under ~25°, avalanche terrain close by. |
+| WT3 | Demanding. Slopes up to ~30°, short steeper steps. Avalanche judgement needed. |
+| WT4 | Snowshoe tour. Steep slopes and ridges, short exposed bits. Possibly icy. |
+| WT5 | Alpine snowshoe tour. Steep, exposed, possibly glaciated. Crampons may be needed. |
+| WT6 | Difficult alpine snowshoe tour. Very steep and exposed, climbing in places. |
+
+**`skiTour`**: SAC ski scale, from `L` (*leicht*, easy: open slopes under ~30°) to
+`EX` (extreme). `WS` and `ZS` are typical day tours. From `S` up, you're on steep
+slopes or in couloirs, and a fall can be dangerous.
+
+**`avalanche`**: the European danger scale, so readers can check it against
+today's forecast (see [Facts](#facts-by-hand-good-sources)). The forecast changes
+daily, so use the highest level at which the route is still a reasonable choice,
+and say so in `note`.
+
+| Level | Name |
+|---|---|
+| 1 | Low |
+| 2 | Moderate |
+| 3 | Considerable |
+| 4 | High |
+| 5 | Very high |
+
+#### Hazards
+
+Each entry in `hazards[]` is one danger on the route. They're listed in the safety
+box above the story, most severe first. In the sidecar, list the route's lasting
+hazards. In a post, add what was different that day, like a late snowfield or a
+closure.
+
+| Field | Values | What it does |
+|---|---|---|
+| `kind` | one of the kinds below | **Required.** Picks the label in the safety box. Any other value fails the build unless the entry has a `label`. |
+| `label` | text | Custom label for a kind not on the list, like `kind: dragons, label: Dragons`. It also overrides a known kind's label. |
+| `at` | place | One spot. A ⚠️ pin on the 2D and 3D maps and the elevation charts, coloured by severity. At a node, it becomes a badge on the node's marker instead. |
+| `from`, `to` | places | A stretch. A band in the hazard row above the charts and a coloured line along the route on the maps. An open end runs to the route's start or end. Use `at` *or* a span, not both. |
+| `severity` | `low` / `medium` / `high` | Default `medium`. Sorts the safety box and sets the colour: grey, amber, red. |
+| `season` | months 1–12, like `[11, 12, 1, 2, 3, 4]` | When it applies. Shown in brackets after the label. Leave it out if it applies all year. |
+| `note` | text | What to do about it: "Spikes before 10:00", "Keep dogs on a leash". Shown under the label. |
+
+Without `at` or a span, a hazard applies to the whole route (`cold`, `lightning`,
+`long-day`). It's listed in the safety box only, with no pin or band.
+
+When to use each severity:
+
+- **`high`**: a mistake here can kill or seriously injure you, or end the hike.
+- **`medium`**: needs care or the right gear.
+- **`low`**: worth knowing about.
+
+To change a sidecar hazard from a post, repeat its `kind` and `at` (or `from` and
+`to`) and give only the fields that differ. See
+[Facts: sidecar defaults](#2b-facts-sidecar-defaults-deep-merged-with-the-post).
+
+**Kinds**, with the label they show as:
+
+| Group | `kind` → label |
+|---|---|
+| Terrain and falls | `exposure` Exposure · `unsecured-ridge` Unsecured ridge · `fall-risk` Fall risk · `rockfall` Rockfall · `loose-rock` Loose rock · `scree` Scree |
+| Snow and ice | `snowfield` Snowfields · `ice` Ice · `glacier` Glacier · `crevasses` Crevasses · `avalanche` Avalanches · `cornice` Cornices |
+| Water and ground | `river-crossing` River crossing · `flooding` Flooding · `slippery` Slippery ground · `mud` Mud |
+| Weather | `lightning` Lightning · `heat` Heat · `cold` Cold · `wind` Wind · `fog` Fog · `sun` Strong sun |
+| The day itself | `altitude` Altitude · `remoteness` Remoteness · `darkness` Darkness · `long-day` Long day |
+| Finding the way | `navigation` Navigation · `poor-marking` Poor waymarking · `overgrown` Overgrown trail |
+| Animals and people | `cattle` Cattle · `guard-dogs` Guard dogs · `wildlife` Wildlife · `ticks` Ticks · `hunting` Hunting |
+| Access and other | `traffic` Traffic · `crowding` Crowds · `closure` Closures · `construction` Construction · `no-water` No water · `no-signal` No phone signal |
+
+Some kinds overlap with other fields. Use the hazard only when the issue is a
+safety matter, and keep the details in the other field:
+
+- `poor-marking` and `navigation`: [`navigation`](#navigation-in-detail).
+- `no-water`: `water[]`.
+- `no-signal`: `signal[]`.
+- `exposure`: `difficulty.exposure`.
+
+#### Water
+
+Each entry in `water[]` is one place to fill up along the route. The guide lists
+them under "Water" in route order, sorted by km. Places with no km come last.
+
+| Field | Values | What it does |
+|---|---|---|
+| `at` | place | **Required.** Where the water is. The guide shows its name and km. On the maps and elevation charts it gets a 💧 pin. At a node, the node's marker gets a 💧 badge instead, unless the node already shows 💧 or 🚰. |
+| `kind` | `tap` / `fountain` / `spring` / `stream` / `lake` / `hut` / `shop` | What the source is. See below. |
+| `reliable` | `yes` / `seasonal` / `no` / `unknown` | Whether you can count on it, shown as "reliable", "seasonal", "unreliable" or "reliability unknown". |
+| `treat` | true / false | `true` adds "treat before drinking": filter, boil or tablets. Leave it out for tested drinking water. |
+| `note` | text | Opening months, the exact spot, the taste, "the trough, not the pipe". Shown under the entry. |
+
+The guide shows `kind`, `reliable` and `treat` comma-separated after the place,
+like "Falkenhütte … hut, seasonal". The map pin's tooltip says the same.
+
+**Kinds:**
+
+| `kind` | Label | Use for |
+|---|---|---|
+| `tap` | tap | A tap or drinking-water post (OSM `amenity=drinking_water`). |
+| `fountain` | fountain | A village fountain or trough (*Brunnen*) with running water. |
+| `spring` | spring | A natural spring (*Quelle*). Usually add `treat`. |
+| `stream` | stream | A stream or creek. Add `treat: true`. |
+| `lake` | lake | A lake or tarn. Add `treat: true`. |
+| `hut` | hut | Water from a hut: bought or asked for. Mostly `seasonal`, open when the hut is. |
+| `shop` | shop | A shop, kiosk or restaurant where you buy it. |
+
+`reliable` in practice:
+
+- **`yes`**: there all year, or whenever the route is done.
+- **`seasonal`**: only part of the year, like huts open June–October or springs that
+  dry up in late summer. Say when in `note`.
+- **`no`**: often dry or closed. Don't plan on it.
+- **`unknown`**: you saw it but can't say.
+
+Water at a hut that's also in `stops[]`: the stop's `water: true` shows only in the
+guide's stops list. Add a `water[]` entry too if it matters for planning, so it
+shows on the maps and charts.
+
+If there's no water for a long stretch, add a `no-water` hazard with a span as well
+(see [Hazards](#hazards)). That one goes in the safety box.
+
+#### Stops
+
+Each entry in `stops[]` is a hut, restaurant, shop or other place on the route
+where you can eat, drink, sleep or shelter. They're listed under "Huts and stops"
+in the guide's "Getting there" part, **in the order you write them**. Unlike
+`water[]` and `bailouts[]`, they aren't sorted by km, so write them in route order.
+Stops aren't drawn on the maps or charts. The node's own marker already shows the
+hut. Put a `water[]` or `bailouts[]` entry at the same place to get a pin or badge.
+
+Each stop renders as up to four lines:
+
+1. The place name, height, km and kind: "Knorrhütte (2051 m) · km 9.4 (alpine
+   hut)".
+2. The details, joined with " · ": opening window, `days`, "overnight stays",
+   "food", "water", "cash only", then the prices.
+3. `note`.
+4. A booking link, a tap-to-call phone number and the "checked" date.
+
+| Field | Values | What it does |
+|---|---|---|
+| `at` | place | **Required.** Where the stop is. Also its identity: a post entry with the same `at` merges into the sidecar's. |
+| `kind` | see below | Shown in brackets after the name. |
+| `open` | `{from, to}` window, `all-year`, or `closed` | The season it's open, shown as "Open: 15 May – 31 Oct", "Open: all year" or "Open: closed". Window ends are `"MM-DD"`, `"MM"` or a month number. Use `closed` for a stop that's shut for good or for a season (say why in `note`). |
+| `days` | text | Weekly pattern or hours within the season: "Daily in season", "Closed Mondays", "Weekends only until June". Free text, shown as written. |
+| `overnight` | true / false | `true` adds "overnight stays". |
+| `food` | true / false | `true` adds "food": warm meals or at least snacks. |
+| `water` | true / false | `true` adds "water": you can fill bottles or buy drinks here. It doesn't add a map pin, so add a `water[]` entry too if it matters. |
+| `cash` | true / false | `true` adds "cash only". Leave it out or set `false` when cards work. |
+| `price[]` | prices | Overnight rates, menu prices, entry fees. See **Price** under [Shared building blocks](#shared-building-blocks). Use `per: night` for beds, and `note` for the room type or member rate. |
+| `booking` | URL, or `{url, label}` | Booking link, labelled "Book" unless you give a `label`. Falls back to the node's OSM `website` / `contact:website`. |
+| `phone` | text | Shown as a tap-to-call link; spaces are stripped from the dialled number. Falls back to the node's OSM `phone` / `contact:phone`. Write it with the country code: `"+49 8821 2905"`. |
+| `note` | text | Anything else: who runs it, the winter room, "bring a sleeping-bag liner". |
+| `checked` | date | When you last checked hours and prices. Falls back to `facts.checked`. |
+
+The fallbacks apply only when `at` resolves to a node (by name or `{node}`), and
+only when you leave the field out. Set it yourself to override OSM.
+
+**Kinds:**
+
+| `kind` | Label | Use for |
+|---|---|---|
+| `alpine-hut` | alpine hut | A staffed mountain hut (*Alpenvereinshütte*, *Berghütte*) with beds. |
+| `wilderness-hut` | bivouac hut | An unstaffed hut, bivouac box or winter room. |
+| `restaurant` | restaurant | A valley or mountain inn (*Gasthaus*, *Alm* with a kitchen) without the hut's role. |
+| `cafe` | café | A café. |
+| `kiosk` | kiosk | A kiosk or snack stand, often at a lift station. |
+| `shelter` | shelter | A roofed shelter with no service. |
+| `teahouse` | teahouse | A Himalayan teahouse or lodge. |
+| `hotel` | hotel | A hotel or guest house. |
+| `camping` | campsite | A campsite. |
+| `shop` | shop | A shop where you can restock. |
+
+Example (sidecar):
+
+```json
+{
+  "at": "Knorrhütte",
+  "kind": "alpine-hut",
+  "open": { "from": "05-25", "to": "10-05" },
+  "days": { "en": "Daily in season", "de": "Täglich in der Saison" },
+  "overnight": true,
+  "food": true,
+  "water": true,
+  "price": [
+    { "amount": 28, "per": "night", "note": { "en": "dorm, DAV members" } },
+    { "amount": 42, "per": "night", "note": { "en": "dorm, non-members" } }
+  ],
+  "checked": "2026-07-01"
+}
+```
+
+To change a sidecar stop from a post, repeat its `at` and give only the fields that
+differ. A post written when the hut was shut could set `open: closed` and a `note`.
+
+#### Parking
+
+Each entry in `access.parking[]` is one car park for the hike. They're listed under
+"Parking" in the guide's "Getting there" part, in the order you write them. Put the
+one you'd recommend first. Parking isn't drawn on the maps or charts. A car park
+that's an OSM node already shows as 🅿️ on the maps.
+
+Each car park renders as:
+
+1. Its `name`, then the `at` place (with height, if known), then size, how full it
+   gets and prices, joined with " · ":
+   "Parkplatz Hinterriß (930 m) small · full on weekends · €5 per day".
+2. "Free with: …", from `freeWith`.
+3. `note`.
+4. The `url` link and the "checked" date.
+
+| Field | Values | What it does |
+|---|---|---|
+| `name` | text | The car park's name. Shown first, in bold. Give a `name` or an `at`, or both. |
+| `at` | place | Where it is: a node, `{lat, lon, name}` or `km 0`. A node name links to the map. With no `name`, the place's name is the only label. |
+| `price[]` | prices | What it costs. Usually `per: day`, or `per: car` for a flat fee. `amount: 0` shows as "free". See **Price** under [Shared building blocks](#shared-building-blocks). Use `note` on a price for time limits, like "first 2 h". |
+| `size` | `small` / `medium` / `large` | Rough capacity. As a guide: `small` up to ~20 cars, `medium` ~20–100, `large` more. |
+| `fills` | `never` / `weekends` / `summer` / `always` | How often it's full by mid-morning, shown as "rarely full", "full on weekends", "full in summer", "often full". |
+| `freeWith` | text | What makes it free or cheaper: a guest card (*Gästekarte*), a hut stay, a lift ticket. Shown as "Free with: …". |
+| `url` | URL, or `{url, label}` | The operator's page or a payment app. Shown as its `label`, or else the bare URL. |
+| `note` | text | Payment (coins, app, ticket machine), height limits, winter clearing, whether you need to arrive by a certain time. |
+| `checked` | date | When you last checked prices. Falls back to `access.checked`, then `facts.checked`. |
+
+A post entry merges into the sidecar's entry with the same `name`, or the same `at`
+if neither has a name. To update the price for a post, repeat the name and give the
+new `price` and `checked`.
+
+Example (sidecar):
+
+```json
+"access": {
+  "parking": [
+    {
+      "name": "Wanderparkplatz Eng",
+      "at": "km 0",
+      "size": "large",
+      "fills": "weekends",
+      "price": [{ "amount": 8, "per": "day" }],
+      "freeWith": "Hut overnight at Binsalm",
+      "note": "Toll road to the car park; pay at the barrier.",
+      "checked": "2026-07-01"
+    }
+  ]
+}
+```
+
+#### Rules
+
+Each entry in `rules[]` is a regulation that applies on the route or part of it.
+It's something you're told to do or not do, unlike a hazard, which is a danger.
+They're listed under "Rules" in the guide's "Getting there" part, in the order you
+write them. Rules aren't drawn on the maps or charts, and they don't appear in the
+safety box.
+
+Each rule renders as one line: label, span in brackets, months, then the note.
+For example: "Dogs on a leash (→ Falkenhütte) May–Sep — Grazing cattle."
+
+| Field | Values | What it does |
+|---|---|---|
+| `kind` | one of the kinds below | **Required.** Picks the label. Any other value fails the build unless the entry has a `label`. |
+| `label` | text | Custom label for a rule not on the list, like `kind: no-swimming, label: No swimming`. It also overrides a known kind's label. |
+| `from`, `to` | places | Where it applies. Both ends show "A – B". Only `from` shows "A →" (from A to the end), only `to` shows "→ B" (from the start to B). Leave both out for the whole route. There's no `at`. For one spot, use the same place for both ends or say where in `note`. |
+| `season` | months 1–12 | When it applies, like `[3, 4, 5, 6]` for a nesting closure. Leave it out if it applies all year. |
+| `note` | text | The reason, the fine, or the exact rule: "Grazing cattle", "Wild camping fined up to €2,500", "Closed 1 Mar – 30 Jun for capercaillie". |
+
+**Kinds:**
+
+| `kind` | Label | Use for |
+|---|---|---|
+| `protected-area` | Protected area | Passing through a nature reserve or national park with its own rules. Give the details in `protectedAreas`; this just marks where. |
+| `no-camping` | No camping | Wild camping or bivouacking banned. |
+| `no-fires` | No fires | Open fires or stoves banned, often seasonally. |
+| `no-drones` | No drones | Drone ban on a stretch. Give the reasons in `drones`. |
+| `no-dogs` | No dogs | Dogs not allowed at all. |
+| `dogs-on-leash` | Dogs on a leash | Leash required: pastures, reserves, game areas. |
+| `no-bikes` | No bikes | Cycling banned on a path. |
+| `private-land` | Private land | Crossing private ground on sufferance. Stay on the path, close gates. |
+| `seasonal-closure` | Seasonal closure | A path closed for part of the year: breeding, hunting, logging. Set `season`. |
+| `wildlife-zone` | Wildlife zone | A *Wildschutzgebiet* or quiet zone: stay on the path, no off-trail, often winter-only. |
+| `military` | Military area | A firing range or training area with access rules. Say where to check the firing times in `note`. |
+| `fee` | Fee | A fee to walk through, like a gorge or reserve entry. Put the price in `note`, or use `permits[]` if it needs a ticket. |
+
+**Rules or something else?**
+
+- A danger, not a regulation (cattle, a temporary closure for rockfall): use a
+  hazard. It goes in the safety box and on the maps.
+- A whole-area summary (which reserve, what's protected): use `protectedAreas`.
+  Where drones are forbidden and why: use `drones`. Both are free text, shown
+  under their own headings. `rules[]` is for the short, place-bound version.
+- Something you have to buy or apply for: use `permits[]`.
+- Whether the hike suits dogs at all: use `suitability.dogs`. A `dogs-on-leash`
+  rule says where the leash is required.
+
+A post entry merges into the sidecar's entry with the same `kind`, `from` and `to`.
 
 ### `route` in detail
 
@@ -666,6 +977,72 @@ convention, so grades stay comparable between posts:
 | Waymarked route numbers ("801") | `route.trails` |
 
 ---
+
+### `legs` in detail
+
+`legs[]` splits the route into stretches between named points and describes each
+one: what's underfoot, how hard it is and how well it's marked. It renders as the
+**Leg by leg** table in the guide's Route section. Legs aren't drawn on the
+elevation charts or maps. For a coloured grade band on the charts, use
+`difficulty.sections`.
+
+**How legs chain.** A leg has only an end, `to`. It runs from the previous leg's
+`to`; the first leg runs from the route's start. Legs aren't sorted, so write them
+in walking order. The last leg's `to` is usually the route's end.
+
+The table has four columns:
+
+| Column | From | Shown as |
+|---|---|---|
+| Leg | `to`, `optional`, `note` | "→ Falkenhütte (1846 m) · km 6.1". The note goes under it. An optional leg adds "(optional)" and the whole row is greyed and italic. |
+| Terrain | `terrain` | Labels joined with commas: "road, forest road". |
+| Grade | `sac`, `viaFerrata` | Joined with " · ": "T3 · C (Hüsler)". A Schall grade shows without the scale name. |
+| Waymarking | `marking` | good / partial / poor / none. |
+
+| Field | Values | What it does |
+|---|---|---|
+| `to` | place | **Required.** Where the leg ends. A node name links to the map and gives the km. It's also the leg's identity, so a post entry with the same `to` merges into the sidecar's. |
+| `terrain` | list of terrain values | Surfaces underfoot on this leg, in the order you meet them. Same values as `route.terrain`, including `road`; see [`terrain`, `shade`, `trails`, `peaks`](#terrain-shade-trails-peaks) for the full list and meanings. Anything else fails the build. |
+| `sac` | `T1`–`T6`, optional `+`/`-`, or a range like `T2-T3` | The leg's SAC grade. Every non-optional leg's grade feeds the computed overall grade. See below. |
+| `viaFerrata` | `{grade, scale?}` | The ferrata grade if the leg includes one. `scale` is `schall` (default), `huesler`, `french` or `italian`. For the ferrata's name, length and time, use `difficulty.viaFerrata[]`; this field only shows the grade in the table. |
+| `marking` | `good` / `partial` / `poor` / `none` | Waymarking on the leg. Same meanings as `navigation.marking`; see [`navigation` in detail](#navigation-in-detail). Don't repeat the same stretch in `navigation.spans`. |
+| `optional` | true / false | A side trip or summit detour that isn't part of the main route. Shown greyed and labelled "(optional)", and left out of the computed SAC grade. |
+| `note` | text | What the table can't say: "steep switchbacks after the bridge", "cable section near the top". |
+
+**The overall SAC grade.** Without a hand-written `difficulty.sac`, the overall
+grade is the hardest of all `difficulty.sections[].sac` and all non-optional
+`legs[].sac`. A range counts as its upper end. It's shown as "computed". With a
+hand-written `difficulty.sac` that's easier than this, the build warns. So grade an
+optional summit's leg honestly; it can't push the overall grade up.
+
+**Optional legs and chaining.** The table only shows where each leg ends, so an
+optional out-and-back detour reads naturally between two main legs:
+
+```json
+"legs": [
+  { "to": "Falkenhütte", "terrain": ["road", "forest-road"], "sac": "T1", "marking": "good" },
+  { "to": "Mahnkopf", "terrain": ["path"], "sac": "T2", "marking": "partial", "optional": true },
+  { "to": "Rasthütte Engalm", "terrain": ["path"], "sac": "T2", "marking": "good" },
+  { "to": "Alpencafe Eng", "terrain": ["road"], "sac": "T1", "marking": "none" }
+]
+```
+
+Strictly, the Engalm leg "runs from" Mahnkopf, the previous `to`. Nothing checks
+this; readers take an optional detour as there and back. If the route really goes
+on from the detour's end, or the way back isn't obvious, say so in the next leg's
+`note`.
+
+**Legs, sections or route-level fields?**
+
+| You want | Use |
+|---|---|
+| A table of the route stretch by stretch | `legs[]` |
+| A coloured SAC band on the elevation charts | `difficulty.sections[]` (span + `sac`) |
+| One terrain list for the whole route | `route.terrain`. With legs, keep it to the main surfaces. |
+| One marking value for the whole route | `navigation.marking` |
+| A ferrata's name, length, gain and time | `difficulty.viaFerrata[]` |
+
+Legs and sections can coexist. Both feed the computed SAC grade.
 
 ## 6. Place docs
 

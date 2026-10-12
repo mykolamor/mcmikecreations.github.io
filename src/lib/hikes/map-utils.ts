@@ -16,6 +16,7 @@ export const getNodeIconDetails = (tags: any) => {
     if (tags.shop === 'convenience') return { emoji: '🛒', color: '#16a34a' };
     if (tags.tourism === 'viewpoint') return { emoji: '🔭', color: '#0284c7' };
     if (tags.waterway === 'waterfall') return { emoji: '🌊', color: '#0ea5e9' };
+    if (tags.amenity === 'drinking_water') return { emoji: '🚰', color: '#0284c7' };
     if (tags.natural === 'water' || tags.natural === 'spring') return { emoji: '💧', color: '#38bdf8' };
     if (tags.natural === 'cave_entrance') return { emoji: '🕳️', color: '#57534e' };
     if (tags.historic === 'ruins' || tags.historic === 'castle') return { emoji: '🏰', color: '#525252' };

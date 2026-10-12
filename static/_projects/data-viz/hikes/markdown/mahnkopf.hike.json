@@ -1,0 +1,701 @@
+{
+  "name": "Mahnkopf",
+  "description": "Hike from Laliderertal to Eng via Falkenhütte, Ladizköpfl (1920 m), and Mahnkopf (2094 m).",
+  "image": "/images/projects/data-viz/hikes/mahnkopf.jpg",
+  "origin": {
+    "lat": 47.42239651042624,
+    "lon": 11.531352996826172
+  },
+  "height": 512,
+  "checkpoints": [
+    [10.9135899, 47.4095595],
+    [10.9385542, 47.3874899],
+    [10.9674631, 47.3848692],
+    [10.9842118, 47.3874108],
+    [11.0165212, 47.396354],
+    [11.012732, 47.4100105],
+    [10.9797742, 47.4131261],
+    [10.970039, 47.4138898],
+    [10.9684542, 47.4118778],
+    [10.9699595, 47.4095968]
+  ],
+  "nodes": [
+    {
+      "id": 128443556,
+      "lat": 47.4481373,
+      "lon": 11.5497452,
+      "demEle": 1023.7,
+      "tags": {
+        "name": "P6 Laliderertal",
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "parking": "surface"
+      }
+    },
+    {
+      "id": 9883893791,
+      "lat": 47.4001648,
+      "lon": 11.5138933,
+      "demEle": 1527.7,
+      "tags": {
+        "amenity": "drinking_water"
+      }
+    },
+    {
+      "id": 26960869,
+      "lat": 47.3996605,
+      "lon": 11.4989124,
+      "demEle": 1842.1,
+      "tags": {
+        "name": "Falkenhütte",
+        "ele": "1846",
+        "building": "yes",
+        "cuisine": "regional",
+        "internet_access": "no",
+        "operator": "DAV Sektion Oberland",
+        "fax": "+435245245",
+        "phone": "+435245245",
+        "power_supply": "yes",
+        "shower": "yes",
+        "winter_room": "yes",
+        "tourism": "alpine_hut",
+        "website": "http://www.falkenhuette.at",
+        "wikidata": "Q1394246",
+        "wikipedia": "de:Falkenhütte"
+      }
+    },
+    {
+      "id": 448886687,
+      "lat": 47.4021255,
+      "lon": 11.5020406,
+      "demEle": 1904.9,
+      "tags": {
+        "name": "Ladizköpfl",
+        "ele": "1920",
+        "natural": "peak",
+        "summit:cross": "no",
+        "summit:register": "no"
+      }
+    },
+    {
+      "id": 448886673,
+      "lat": 47.4068622,
+      "lon": 11.5048660,
+      "demEle": 1819.9,
+      "tags": {
+        "name": "Ladizjöchl",
+        "ele": "1825",
+        "mountain_pass": "yes",
+        "natural": "saddle"
+      }
+    },
+    {
+      "id": 490410746,
+      "lat": 47.4123538,
+      "lon": 11.5078912,
+      "demEle": 2059.4,
+      "tags": {
+        "name": "Mahnkopf",
+        "ele": "2093",
+        "natural": "peak",
+        "summit:cross": "yes",
+        "summit:register": "yes",
+        "wikidata": "Q15119244",
+        "wikipedia": "de:Mahnkopf (Karwendel)"
+      }
+    },
+    {
+      "id": 2461227223,
+      "lat": 47.3950926,
+      "lon": 11.5236742,
+      "demEle": 1791.2,
+      "tags": {
+        "name": "Hohljoch",
+        "ele": "1794",
+        "mountain_pass": "yes",
+        "natural": "saddle",
+        "wikidata": "Q21868060",
+        "wikipedia": "de:Hohljoch"
+      }
+    },
+    {
+      "id": 1950350430,
+      "lat": 47.3941838,
+      "lon": 11.5286201,
+      "demEle": 1730.7,
+      "tags": {
+        "natural": "spring"
+      }
+    },
+    {
+      "id": 5860388407,
+      "lat": 47.3964984,
+      "lon": 11.5473682,
+      "demEle": 1393.7,
+      "tags": {
+        "amenity": "drinking_water"
+      }
+    },
+    {
+      "id": 29313903,
+      "lat": 47.3987945,
+      "lon": 11.5579425,
+      "demEle": 1225.3,
+      "tags": {
+        "name": "Rasthütte Engalm",
+        "amenity": "restaurant",
+        "building": "retail",
+        "website": "https://www.engalm.at/engalm/rasthuette/"
+      }
+    },
+    {
+      "id": 1950351332,
+      "lat": 47.3989876,
+      "lon": 11.5580425,
+      "demEle": 1225.2,
+      "tags": {
+        "amenity": "drinking_water",
+        "fountain": "drinking"
+      }
+    },
+    {
+      "id": 1364156812,
+      "lat": 47.3995813,
+      "lon": 11.5598594,
+      "demEle": 1218.9,
+      "tags": {
+        "amenity": "drinking_water",
+        "fountain": "drinking"
+      }
+    },
+    {
+      "id": 143918895,
+      "lat": 47.4021600,
+      "lon": 11.5671166,
+      "demEle": 1206.4,
+      "tags": {
+        "access": "customers",
+        "amenity": "parking",
+        "fee": "no",
+        "parking": "surface"
+      }
+    },
+    {
+      "id": 2173906237,
+      "lat": 47.4025440,
+      "lon": 11.5677568,
+      "demEle": 1208.9,
+      "tags": {
+        "name": "Alpencafe Eng",
+        "amenity": "cafe",
+        "website": "https://www.eng.at/index.php?id=249&L=0"
+      }
+    }
+  ],
+  "facts": {
+    "summary": {
+      "en": "A long point-to-point from Laliderertal over Falkenhütte to Eng with a detour to visit Mahnkopf (2093 m).",
+      "de": "Eine lange Punkt-zu-Punkt-Tour vom Laliderertal über die Falkenhütte nach Eng mit Abstecher zum Mahnkopf (2093 m)."
+    },
+    "difficulty": {
+      "note": {
+        "en": "T2 mountain trail with a T1 gravel road at the beginning.",
+        "de": "T2 Bergweg mit T1 Schotterstraße am Anfang."
+      },
+      "sections": [
+        {
+          "to": {
+            "node": 9883893791,
+            "name": {
+              "en": "Drinking water",
+              "de": "Trinkwasser"
+            }
+          },
+          "sac": "T1",
+          "note": {
+            "en": "Gravel road across meadows.",
+            "de": "Schotterstraße über Wiesen."
+          }
+        },
+        {
+          "from": {
+            "node": 9883893791,
+            "name": {
+              "en": "Drinking water",
+              "de": "Trinkwasser"
+            }
+          },
+          "to": "Mahnkopf",
+          "sac": "T2",
+          "note": {
+            "en": "Narrow dirt trail on the slope.",
+            "de": "Schmaler Pfad am Hang."
+          }
+        },
+        {
+          "from": "Mahnkopf",
+          "to": "Rasthütte Engalm",
+          "sac": "T2",
+          "note": {
+            "en": "Mountain trail across gravel, stone, and dirt slopes.",
+            "de": "Bergweg über Schotter-, Stein- und Erdhang."
+          }
+        },
+        {
+          "from": "Rasthütte Engalm",
+          "sac": "T1",
+          "note": {
+            "en": "Asphalt road across the settlement.",
+            "de": "Teerstraße durch die Siedlung."
+          }
+        }
+      ],
+      "exposure": {
+        "level": "moderate",
+        "note": {
+          "en": "Exposed sections on some parts of the slope and near Mahnkopf (2093 m).",
+          "de": "Ausgesetzte Stellen an einigen Hangpartien und in der Nähe des Mahnkopfs (2093 m)."
+        }
+      },
+      "fitness": 4
+    },
+    "season": {
+      "best": [5, 6, 7, 8, 9],
+      "possible": [4, 10],
+      "window": {
+        "from": "05-01",
+        "to": "09-30"
+      },
+      "note": {
+        "en": "Muddy ascent to Mahnkopf (2093 m) in colder seasons. Falkenhütte opens June to September.",
+        "de": "Matschiger Aufstieg zum Mahnkopf (2093 m) in kälteren Jahreszeiten. Falkenhütte öffnet von Juni bis September."
+      }
+    },
+    "route": {
+      "start": {
+        "name": {
+          "en": "Bus stop Laliderertal",
+          "de": "Hinterriß Einstieg Laliderertal"
+        },
+        "at": {
+          "lat": 47.4479950,
+          "lon": 11.5492282,
+          "demEle": 1029.2,
+          "name": {
+            "en": "Bus stop Laliderertal",
+            "de": "Hinterriß Einstieg Laliderertal"
+          }
+        }
+      },
+      "end": {
+        "lat": 47.4024863,
+        "lon": 11.5670479,
+        "demEle": 1201.3,
+        "name": "Alpengasthof Eng"
+      },
+      "type": "point-to-point",
+      "official": {
+        "en": "The usual route goes across Falkenhütte and Hohljoch, then down to Eng.",
+        "de": "Die übliche Route führt über die Falkenhütte und das Hohljoch, dann hinab nach Eng."
+      },
+      "optional": [
+        {
+          "name": {
+            "en": "Mahnkopf",
+            "de": "Mahnkopf"
+          },
+          "from": "Falkenhütte",
+          "to": "Mahnkopf",
+          "note": {
+            "en": "Mountain trail across Ladizköpfl (1920 m) to the Mahnkopf (2093 m) summit; views of the valley at the top.",
+            "de": "Bergweg über das Ladizköpfl (1920 m) zum Gipfel des Mahnkopfs (2093 m); Aussicht ins Tal am Gipfel."
+          }
+        }
+      ],
+      "terrain": ["forest-road", "meadow", "path", "mud"],
+      "shade": "low",
+      "trails": ["232", "R42"],
+      "peaks": ["Ladizköpfl", "Mahnkopf"]
+    },
+    "navigation": {
+      "marking": "good",
+      "offline": false,
+      "spans": [
+        {
+          "from": "Falkenhütte",
+          "to": "Ladizjöchl",
+          "marking": "poor",
+          "note": {
+            "en": "Short straightforward section with faded markings.",
+            "de": "Kurzer, geradliniger Abschnitt mit verblassten Markierungen."
+          }
+        }
+      ]
+    },
+    "hazards": [
+      {
+        "kind": "slippery",
+        "from": "Falkenhütte",
+        "to": "Mahnkopf",
+        "severity": "medium",
+        "note": {
+          "en": "Slippery dirt with mud in wet weather.",
+          "de": "Rutschiger Erdweg mit Matsch bei Nässe."
+        }
+      }
+    ],
+    "bailouts": [
+      {
+        "at": "Falkenhütte",
+        "to": {
+          "en": "Johannestal",
+          "de": "Johannestal"
+        },
+        "via": "trail",
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/falkenhuette-johannestal.gpx",
+        "time": 188,
+        "note": {
+          "en": "West towards Ladiz-Alpe and through the valley. Path exits on the same road as the main route.",
+          "de": "Westlich Richtung Ladiz-Alpe und durchs Tal. Der Weg mündet auf derselben Straße wie die Hauptroute."
+        }
+      }
+    ],
+    "water": [
+      {
+        "at": "Falkenhütte",
+        "kind": "hut",
+        "reliable": "seasonal"
+      },
+      {
+        "at": "Alpencafe Eng",
+        "kind": "hut",
+        "reliable": "seasonal"
+      },
+      {
+        "at": {
+          "lat": 47.4001648,
+          "lon": 11.5138933,
+          "demEle": 1527.7,
+          "name": "Drinking water"
+        },
+        "kind": "tap",
+        "reliable": "yes"
+      },
+      {
+        "at": {
+          "lat": 47.3941838,
+          "lon": 11.5286201,
+          "demEle": 1730.7,
+          "name": "Spring"
+        },
+        "kind": "spring",
+        "reliable": "seasonal"
+      },
+      {
+        "at": {
+          "lat": 47.3964984,
+          "lon": 11.5473682,
+          "demEle": 1393.7,
+          "name": "Drinking water"
+        },
+        "kind": "tap",
+        "reliable": "yes"
+      },
+      {
+        "at": {
+          "lat": 47.3989876,
+          "lon": 11.5580425,
+          "demEle": 1225.2,
+          "name": "Fountain"
+        },
+        "kind": "fountain",
+        "reliable": "yes"
+      },
+      {
+        "at": {
+          "lat": 47.3995813,
+          "lon": 11.5598594,
+          "demEle": 1218.9,
+          "name": "Fountain"
+        },
+        "kind": "fountain",
+        "reliable": "yes"
+      }
+    ],
+    "signal": [
+      {
+        "to": "Falkenhütte",
+        "quality": "patchy"
+      },
+      {
+        "from": "Falkenhütte",
+        "to": "Hohljoch",
+        "quality": "none"
+      },
+      {
+        "from": "Hohljoch",
+        "quality": "good"
+      }
+    ],
+    "stops": [
+      {
+        "at": "Falkenhütte",
+        "kind": "alpine-hut",
+        "open": {
+          "from": "06-12",
+          "to": "10-03"
+        },
+        "food": true,
+        "water": true,
+        "overnight": true,
+        "cash": true,
+        "checked": "2026-10-12"
+      }
+    ],
+    "access": {
+      "carFree": "yes",
+      "note": {
+        "en": "Arrive by train and bus.",
+        "de": "Anreise mit Bahn und Bus."
+      },
+      "checked": "2026-10-11",
+      "transport": [
+        {
+          "mode": "train",
+          "from": {
+            "en": "Munich Central Station",
+            "de": "München Hbf"
+          },
+          "to": {
+            "name": {
+              "en": "Lenggries",
+              "de": "Lenggries"
+            }
+          },
+          "direction": "there",
+          "line": "RB 56",
+          "operator": "DB Regio",
+          "duration": 69,
+          "changes": 0,
+          "first": "07:02",
+          "last": "16:02",
+          "frequency": {
+            "en": "hourly",
+            "de": "stündlich"
+          },
+          "price": [
+            {
+              "amount": 0,
+              "note": {
+                "en": "with Deutschlandticket",
+                "de": "mit Deutschlandticket"
+              }
+            }
+          ],
+          "ticket": {
+            "en": "Deutschlandticket valid to Eng",
+            "de": "Deutschlandticket bis Eng gültig"
+          },
+          "url": "https://www.bahn.de/",
+          "note": {
+            "en": "Change in Lenggries.",
+            "de": "Umstieg in Lenggries."
+          }
+        },
+        {
+          "mode": "bus",
+          "from": {
+            "en": "Lenggries",
+            "de": "Lenggries"
+          },
+          "to": {
+            "name": {
+              "en": "Hinterriß Einstieg Laliderertal",
+              "de": "Hinterriß Einstieg Laliderertal"
+            }
+          },
+          "direction": "there",
+          "line": "Bergbus",
+          "operator": "MVV",
+          "duration": 50,
+          "changes": 0,
+          "first": "08:18",
+          "last": "17:28",
+          "price": [
+            {
+              "amount": 0,
+              "note": {
+                "en": "with Deutschlandticket",
+                "de": "mit Deutschlandticket"
+              }
+            }
+          ]
+        }
+      ],
+      "parking": [
+        {
+          "name": {
+            "en": "P6 Laliderertal",
+            "de": "P6 Laliderertal"
+          },
+          "at": "P6 Laliderertal",
+          "size": "small",
+          "fills": "weekends",
+          "checked": "2026-10-11"
+        }
+      ]
+    },
+    "permits": [
+      {
+        "name": {
+          "en": "No permit needed",
+          "de": "Keine Genehmigung nötig"
+        },
+        "required": false,
+        "where": {
+          "en": "Karwendel mountains",
+          "de": "Karwendelgebirge"
+        },
+        "price": [
+          {
+            "amount": 0
+          }
+        ],
+        "url": "https://www.alpenverein.de/",
+        "checked": "2026-10-12",
+        "note": {
+          "en": "Overnight stays outside huts are not allowed.",
+          "de": "Übernachten außerhalb der Hütten ist nicht erlaubt."
+        }
+      }
+    ],
+    "rules": [
+      {
+        "kind": "dogs-on-leash",
+        "to": "Falkenhütte",
+        "season": [5, 6, 7, 8, 9],
+        "note": {
+          "en": "Grazing cattle.",
+          "de": "Weidevieh."
+        }
+      },
+      {
+        "kind": "no-bikes",
+        "from": "Falkenhütte",
+        "to": "Hohljoch",
+        "note": {
+          "en": "Bikes are forbidden on the mountain trail section.",
+          "de": "Fahrräder sind auf dem Bergwegabschnitt verboten."
+        }
+      }
+    ],
+    "suitability": {
+      "kids": "no",
+      "dogs": "yes",
+      "stroller": false,
+      "bike": "partial",
+      "winter": "yes",
+      "night": "experienced",
+      "solo": "yes"
+    },
+    "legs": [
+      {
+        "to": "Falkenhütte",
+        "terrain": ["road", "forest-road"],
+        "sac": "T1",
+        "marking": "good"
+      },
+      {
+        "to": "Mahnkopf",
+        "terrain": ["path"],
+        "sac": "T2",
+        "marking": "partial",
+        "optional": true
+      },
+      {
+        "to": "Rasthütte Engalm",
+        "terrain": ["path"],
+        "sac": "T2",
+        "marking": "good",
+        "note": {
+          "en": "From Falkenhütte, after returning from Mahnkopf.",
+          "de": "Ab der Falkenhütte, nach der Rückkehr vom Mahnkopf."
+        }
+      },
+      {
+        "to": "Alpencafe Eng",
+        "terrain": ["road"],
+        "sac": "T1",
+        "marking": "none"
+      }
+    ],
+    "plan": {
+      "for": [
+        {
+          "en": "Fit hikers comfortable with long-distance hikes over 1000 m of ascent",
+          "de": "Fitten Wanderern, die lange Touren mit über 1000 m Aufstieg gewohnt sind"
+        },
+        {
+          "en": "Anyone wanting to experience Laliderer Wände without climbing it",
+          "de": "Allen, die die Laliderer Wände erleben wollen, ohne sie zu besteigen"
+        }
+      ],
+      "notFor": [
+        {
+          "en": "People struggling with elevation",
+          "de": "Nicht schwindelfreie"
+        },
+        {
+          "en": "Anyone without proper hiking shoes",
+          "de": "Nicht mit geeigneten Wanderschuhen"
+        }
+      ],
+      "variants": [
+        {
+          "name": {
+            "en": "Long loop over Johannestal",
+            "de": "Lange Runde über Johannestal"
+          },
+          "recommended": false,
+          "summary": {
+            "en": "Leave the bus at Einstieg Johannestal, hike up to Falkenhütte, and descend via Hohljoch.",
+            "de": "Bus an der Haltestelle Einstieg Johannestal verlassen, zur Falkenhütte aufsteigen und über das Hohljoch absteigen."
+          },
+          "distance": 17200,
+          "ascent": 1262,
+          "descent": 1013,
+          "sac": "T2"
+        }
+      ],
+      "timing": {
+        "start": "09:15",
+        "turnaround": "15:00",
+        "note": {
+          "en": "Peaks covered in fog on cloudy days.",
+          "de": "Gipfel bei bewölktem Wetter in Nebel gehüllt."
+        }
+      },
+      "alternatives": {
+        "easier": ["2025-06-01-blauberge"],
+        "harder": ["2026-08-02-baumgartenjoch"],
+        "similar": ["2026-07-12-drachenkopf", "2026-06-21-drachensee"]
+      },
+      "note": {
+        "en": "Overnight stay at Falkenhütte allows to take on higher nearby mountains.",
+        "de": "Übernachtung in der Falkenhütte ermöglicht die Besteigung höherer Berge in der Nähe."
+      }
+    },
+    "sources": [
+      {
+        "title": {
+          "en": "Falkenhütte information on the DAV website",
+          "de": "Falkenhütte Informationen auf der DAV-Website"
+        },
+        "url": "https://www.alpenverein-muenchen-oberland.de/huetten/alpenvereinshuetten/falkenhuette",
+        "kind": "website",
+        "lang": "de"
+      }
+    ]
+  }
+}
