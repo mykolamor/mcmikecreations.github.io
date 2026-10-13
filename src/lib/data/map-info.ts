@@ -1,4 +1,5 @@
 import { getMapFeatures } from '$lib/data/map-get-features';
+import type { Bailout } from '$lib/hikes/facts-schema';
 
 const Mode2d = '2d';
 const Mode3d = '3d';
@@ -85,6 +86,12 @@ interface MapDate {
 	duration?: number | undefined | null;
 	ascent?: number | undefined | null;
 	descent?: number | undefined | null;
+	/**
+	 * The date's bailouts, resolved as its post page shows them: sidecar and
+	 * post facts merged, places on the route, GPX routes summarised. Only in
+	 * `/hikes/index.json`; see `bailouts.server`.
+	 */
+	bailouts?: Bailout[] | undefined;
 }
 
 interface MapProperties {
