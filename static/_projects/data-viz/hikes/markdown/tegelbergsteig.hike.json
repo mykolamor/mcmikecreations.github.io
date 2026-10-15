@@ -65,6 +65,543 @@
         "wikidata": "Q1524386",
         "wikipedia": "en:Tegelberg Cable Car"
       }
+    },
+    {
+      "id": 26516059,
+      "lat": 47.5596223,
+      "lon": 10.7789855,
+      "tags": {
+        "name": "Tegelbergbahn (Bergstation)",
+        "operator": "Tegelbergbahn",
+        "aerialway": "station",
+        "building": "yes",
+        "email": "info@tegelbergbahn.de",
+        "phone": "+49836298360",
+        "public_transport": "station",
+        "tourism": "yes",
+        "website": "https://www.tegelbergbahn.de/"
+      }
+    },
+    {
+      "id": 26515725,
+      "lat": 47.5686078,
+      "lon": 10.7570536,
+      "tags": {
+        "name": "Talstation Tegelbergbahn",
+        "fee": "yes",
+        "access": "yes",
+        "amenity": "parking",
+        "opening_hours": "Mo-Su 06:00-22:00",
+        "operator": "Tegelbergbahn",
+        "operator:type": "private",
+        "parking": "surface",
+        "surface": "asphalt"
+      }
     }
-  ]
+  ],
+  "facts": {
+    "summary": {
+      "en": "A difficult via ferrata point-to-point from the Tegelbergbahn valley station to the top, following until Neuschwanstein.",
+      "de": "Eine schwierige Klettersteig-Route von der Talstation der Tegelbergbahn bis zum Gipfel, weiter bis Neuschwanstein."
+    },
+    "difficulty": {
+      "note": {
+        "en": "T3 for the walkable via ferrata sections, T2 for the rest. Via ferrata grade C.",
+        "de": "T3 für die begehbaren Klettersteig-Abschnitte, T2 für den Rest. Klettersteig C."
+      },
+      "sections": [
+        {
+          "from": {
+            "lat": 47.5672339,
+            "lon": 10.7684725,
+            "name": "Schutzengelweg"
+          },
+          "to": {
+            "lat": 47.5654291,
+            "lon": 10.7722042,
+            "name": "Rautbach"
+          },
+          "sac": "T2",
+          "note": {
+            "en": "Steep open trail.",
+            "de": "Steiler, offener Weg."
+          }
+        },
+        {
+          "from": {
+            "lat": 47.5654291,
+            "lon": 10.7722042,
+            "name": "Rautbach"
+          },
+          "to": {
+            "lat": 47.5631531,
+            "lon": 10.7722037,
+            "name": "Wasserfall"
+          },
+          "sac": "T3",
+          "note": {
+            "en": "Rocky forest trail.",
+            "de": "Felsiger Waldweg."
+          }
+        },
+        {
+          "from": {
+            "lat": 47.5631531,
+            "lon": 10.7722037,
+            "name": "Wasserfall"
+          },
+          "to": {
+            "lat": 47.5611685,
+            "lon": 10.7777632,
+            "name": "Scheideweg"
+          },
+          "sac": "T3",
+          "viaFerrata": {
+            "grade": "C"
+          },
+          "note": {
+            "en": "Via ferrata with short trail sections.",
+            "de": "Klettersteig mit kurzen Gehpassagen."
+          }
+        }
+      ],
+      "viaFerrata": [
+        {
+          "name": {
+            "en": "Tegelbergsteig",
+            "de": "Tegelbergsteig"
+          },
+          "grade": "C",
+          "scale": "schall",
+          "from": {
+            "lat": 47.5631531,
+            "lon": 10.7722037,
+            "name": "Wasserfall"
+          },
+          "to": {
+            "lat": 47.5611685,
+            "lon": 10.7777632,
+            "name": "Scheideweg"
+          },
+          "length": 350,
+          "gain": 350,
+          "time": 60,
+          "note": {
+            "en": "Difficult route with occasional horizontal and vertical sections without foot holds.",
+            "de": "Schwierige Route mit gelegentlichen horizontalen und vertikalen Abschnitten ohne Tritte."
+          }
+        }
+      ],
+      "exposure": {
+        "level": "high",
+        "note": {
+          "en": "Vertical cliffside secured by cable.",
+          "de": "Vertikale Felswand, gesichert durch Drahtseil."
+        }
+      },
+      "fitness": 5
+    },
+    "season": {
+      "best": [7, 8, 9],
+      "possible": [6, 10],
+      "note": {
+        "en": "The route and cable need to be dry; in summer the path is exposed to the sun.",
+        "de": "Die Route und das Drahtseil müssen trocken sein; im Sommer ist der Weg der Sonne ausgesetzt."
+      }
+    },
+    "route": {
+      "start": {
+        "name": {
+          "en": "Tegelbergbahn (Lower station)",
+          "de": "Tegelbergbahn (Talstation)"
+        },
+        "at": {
+          "lat": 47.5681888,
+          "lon": 10.7562201,
+          "name": {
+            "en": "Tegelbergbahn (Lower station)",
+            "de": "Tegelbergbahn (Talstation)"
+          }
+        }
+      },
+      "end": {
+        "lat": 47.5550050,
+        "lon": 10.7494664,
+        "name": "Pöllatfall"
+      },
+      "type": "point-to-point",
+      "official": {
+        "en": "The usual route also visits Tegelberghaus (1707 m) after the via ferrata.",
+        "de": "Die übliche Route besucht auch das Tegelberghaus (1707 m) nach dem Klettersteig."
+      },
+      "terrain": ["road","forest-road", "path", "rocky", "secured"],
+      "shade": "low",
+      "trails": ["Schutzengelweg", "Maximiliansweg", "Gelbe-Wand-Steig", "Tegelbergsteig"],
+      "peaks": []
+    },
+    "navigation": {
+      "marking": "partial",
+      "offline": false,
+      "note": {
+        "en": "Full marking with signs along the way.",
+        "de": "Vollständig markiert mit Schildern entlang des Weges."
+      }
+    },
+    "hazards": [
+      {
+        "kind": "crowding",
+        "from": {
+          "lat": 47.5631531,
+          "lon": 10.7722037,
+          "name": "Wasserfall"
+        },
+        "to": {
+          "lat": 47.5611685,
+          "lon": 10.7777632,
+          "name": "Scheideweg"
+        },
+        "severity": "high",
+        "note": {
+          "en": "Big groups of slow-moving climbers; rests and overtake spots far apart.",
+          "de": "Große Gruppen langsamer Kletterer; Pausen- und Überholmöglichkeiten weit auseinander."
+        }
+      }
+    ],
+    "bailouts": [
+      {
+        "at": {
+          "lat": 47.5629386,
+          "lon": 10.7732414,
+          "name": "Tegelbergsteig (Einstieg)"
+        },
+        "to": {
+          "en": "Tegelbergbahn (Mountain station)",
+          "de": "Tegelbergbahn (Bergstation)"
+        },
+        "via": "trail",
+        "last": false,
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/tegelbergsteig-gelbe_wand_steig.gpx",
+        "note": {
+          "en": "Walk past te start of Tegelbergsteig and continue on the Gelbe-Wand-Steig, then hike to the cable car station.",
+          "de": "Am Einstieg des Tegelbergsteigs vorbei auf dem Gelbe-Wand-Steig weiter, dann zur Bergstation der Seilbahn wandern."
+        }
+      },
+      {
+        "at": {
+          "lat": 47.5611685,
+          "lon": 10.7777632,
+          "name": "Scheideweg"
+        },
+        "to": {
+          "en": "Tegelbergbahn (Lower station)",
+          "de": "Tegelbergbahn (Talstation)"
+        },
+        "via": "trail",
+        "last": true,
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/tegelbergsteig-tegelbergbahn.gpx",
+        "note": {
+          "en": "On the crossroads towards Neuschwanstein, turn the other way and walk back down to the starting point.",
+          "de": "Am Scheideweg Richtung Neuschwanstein den anderen Weg nehmen und zurück zum Ausgangspunkt wandern."
+        }
+      }
+    ],
+    "signal": [
+      {
+        "to": {
+          "lat": 47.5611685,
+          "lon": 10.7777632,
+          "name": "Scheideweg"
+        },
+        "quality": "patchy",
+        "network": "Telekom"
+      },
+      {
+        "from": {
+          "lat": 47.5611685,
+          "lon": 10.7777632,
+          "name": "Scheideweg"
+        },
+        "quality": "good",
+        "network": "Telekom"
+      }
+    ],
+    "stops": [
+      {
+        "at": "Schloss Neuschwanstein",
+        "kind": "shop",
+        "food": true,
+        "water": true,
+        "checked": "2026-09-27"
+      }
+    ],
+    "access": {
+      "carFree": "yes",
+      "note": {
+        "en": "Arrive and leave by bus.",
+        "de": "Anreise und Abreise mit dem Bus."
+      },
+      "checked": "2026-09-27",
+      "transport": [
+        {
+          "mode": "bus",
+          "from": {
+            "en": "Munich Pasing",
+            "de": "München Pasing"
+          },
+          "to": {
+            "name": {
+              "en": "Tegelbergbahn, Schwangau",
+              "de": "Tegelbergbahn, Schwangau"
+            }
+          },
+          "direction": "there",
+          "line": "Bus 996",
+          "operator": "MVV",
+          "duration": 120,
+          "changes": 0,
+          "first": "06:45",
+          "last": "08:15",
+          "ticket": {
+            "en": "Deutschlandticket valid to Neuschwanstein",
+            "de": "Deutschlandticket bis Neuschwanstein gültig"
+          },
+          "url": "https://www.bahn.de/"
+        }
+      ],
+      "parking": [
+        {
+          "name": {
+            "en": "Lower station Tegelbergbahn",
+            "de": "Talstation Tegelbergbahn"
+          },
+          "at": "Talstation Tegelbergbahn",
+          "price": [
+            {
+              "amount": 5,
+              "per": "day"
+            }
+          ],
+          "size": "large",
+          "fills": "weekends",
+          "url": "https://www.tegelbergbahn.de/de/sommer/info-preise",
+          "checked": "2026-10-15"
+        }
+      ],
+      "lifts": [
+        {
+          "name": {
+            "en": "Tegelbergbahn",
+            "de": "Tegelbergbahn"
+          },
+          "kind": "gondola",
+          "from": "Tegelbergbahn (Talstation)",
+          "to": "Tegelbergbahn (Bergstation)",
+          "direction": "both",
+          "open": {
+            "from": "03-28",
+            "to": "11-08"
+          },
+          "first": "09:00",
+          "last": "16:30",
+          "note": {
+            "en": "In summer operates until 17:00. Parking paid separately.",
+            "de": "Im Sommer bis 17:00 Uhr. Parken separat bezahlen."
+          },
+          "price": [
+            {
+              "amount": 21.50,
+              "per": "adult"
+            },
+            {
+              "amount": 8.50,
+              "per": "child"
+            }
+          ],
+          "url": "https://www.tegelbergbahn.de/"
+        }
+      ]
+    },
+    "drones": {
+      "en": "No drones around Neuschwanstein.",
+      "de": "Keine Drohnen rund um Neuschwanstein."
+    },
+    "suitability": {
+      "kids": "no",
+      "dogs": "no",
+      "stroller": false,
+      "bike": "no",
+      "winter": "no",
+      "night": "no",
+      "solo": "experienced",
+      "note": {
+        "en": "Highly-trained equipped kids on the route.",
+        "de": "Gut ausgerüstete, hochtrainierte Kinder auf der Route."
+      }
+    },
+    "legs": [
+      {
+        "to": {
+          "lat": 47.5672339,
+          "lon": 10.7684725,
+          "name": "Schutzengelweg"
+        },
+        "terrain": ["road", "forest-road"],
+        "sac": "T1",
+        "marking": "good"
+      },
+      {
+        "to": {
+          "lat": 47.5654291,
+          "lon": 10.7722042,
+          "name": "Rautbach"
+        },
+        "terrain": ["path"],
+        "sac": "T2",
+        "marking": "good"
+      },
+      {
+        "to": {
+          "lat": 47.5631531,
+          "lon": 10.7722037,
+          "name": "Wasserfall"
+        },
+        "terrain": ["path"],
+        "sac": "T3",
+        "marking": "good"
+      },
+      {
+        "to": {
+          "lat": 47.5611685,
+          "lon": 10.7777632,
+          "name": "Scheideweg"
+        },
+        "terrain": ["secured"],
+        "sac": "T3",
+        "viaFerrata": {
+          "grade": "C"
+        },
+        "marking": "good"
+      },
+      {
+        "to": {
+          "lat": 47.5550050,
+          "lon": 10.7494664,
+          "name": "Pöllatfall"
+        },
+        "terrain": ["path"],
+        "sac": "T2",
+        "marking": "good"
+      }
+    ],
+    "plan": {
+      "gear": [
+        {
+          "item": "boots"
+        },
+        {
+          "item": "water",
+          "amount": {
+            "en": "2–3 L",
+            "de": "2–3 L"
+          }
+        },
+        {
+          "item": "helmet"
+        },
+        {
+          "item": "gloves-ferrata"
+        },
+        {
+          "item": "via-ferrata-set"
+        },
+        {
+          "item": "poles",
+          "need": "optional"
+        },
+        {
+          "item": "cash",
+          "need": "optional",
+          "amount": {
+            "en": "for the Tegelberghaus",
+            "de": "für das Tegelberghaus"
+          }
+        },
+        {
+          "item": "id"
+        }
+      ],
+      "for": [
+        {
+          "en": "Fit climbers ready for a grade C via ferrata",
+          "de": "Gut trainierte Kletterer, die bereit für einen Klettersteig der Schwierigkeit C sind"
+        },
+        {
+          "en": "People who want to avoid even bigger crowds on other via ferrata routes",
+          "de": "Leute, die noch größere Menschenmassen auf anderen Klettersteigen vermeiden wollen"
+        }
+      ],
+      "notFor": [
+        {
+          "en": "A first via ferrata",
+          "de": "Erster Klettersteig"
+        },
+        {
+          "en": "Anyone without a via ferrata set",
+          "de": "Alle ohne Klettersteigset"
+        },
+        {
+          "en": "Afraid of heights",
+          "de": "Nicht schwindelfreie"
+        }
+      ],
+      "variants": [
+        {
+          "name": {
+            "en": "Daytime ending at Tegelberghaus",
+            "de": "Tagsüber bis Tegelberghaus"
+          },
+          "recommended": true,
+          "summary": {
+            "en": "Take the via ferrata up, return back to the station.",
+            "de": "Nimm den Klettersteig nach oben, kehre zurück zur Station."
+          },
+          "distance": 7400,
+          "ascent": 830,
+          "descent": 830,
+          "sac": "T3",
+          "viaFerrata": {
+            "grade": "C"
+          }
+        }
+      ],
+      "timing": {
+        "start": "09:00",
+        "turnaround": "14:30",
+        "note": {
+          "en": "The shops around Neuschwanstein close by 4 PM.",
+          "de": "Die Geschäfte rund um Neuschwanstein schließen um 16 Uhr."
+        }
+      },
+      "alternatives": {
+        "easier": ["2025-07-06-bruennstein"],
+        "harder": ["2026-07-19-schneefernerkopf"],
+        "similar": ["2025-08-03-hoehengluecksteig"]
+      },
+      "note": {
+        "en": "Most people prefer the grade A/B via ferrata.",
+        "de": "Die meisten Leute bevorzugen den Klettersteig der Schwierigkeit A/B."
+      }
+    },
+    "sources": [
+      {
+        "title": {
+          "en": "Tegelbergsteig route on bergsteigen.com",
+          "de": "Tegelbergsteig-Route auf bergsteigen.com"
+        },
+        "url": "https://www.bergsteigen.com/touren/klettersteig/tegelbergsteig-klettersteig-tegelberg/",
+        "kind": "website",
+        "lang": "de"
+      }
+    ]
+  }
 }
