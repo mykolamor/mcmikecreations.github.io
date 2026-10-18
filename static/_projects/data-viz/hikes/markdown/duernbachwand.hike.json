@@ -170,6 +170,520 @@
         "phone": "+4980266068201",
         "website": "https://www.alte-wurzhuette.de/"
       }
+    },
+    {
+      "id": 378630219,
+      "lat": 47.7057860,
+      "lon": 11.8748864,
+      "tags": {
+        "name": "Neuhaus Bahnhof - P&R",
+        "capacity": "50",
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "yes",
+        "park_ride": "yes",
+        "parking": "surface"
+      }
     }
-  ]
+  ],
+  "facts": {
+    "summary": {
+      "en": "An unpopular point-to-point from Neuhaus to Spitzingsee across the Dürnbachwand ridge.",
+      "de": "Eine wenig begangene Punkt-zu-Punkt-Tour von Neuhaus nach Spitzingsee über den Dürnbachwand-Grat."
+    },
+    "difficulty": {
+      "note": {
+        "en": "T5 on the unpopular ridge, T4 leading to it; T2 on most of the route.",
+        "de": "T5 auf dem wenig begangenen Grat, T4 auf dem Zustieg; T2 auf den meisten Abschnitten."
+      },
+      "sections": [
+        {
+          "from": "Anklspitz",
+          "to": "Schlierseespitz",
+          "sac": "T4",
+          "note": {
+            "en": "Steep narrow ridge with pebbles.",
+            "de": "Steiler schmaler Grat mit Kieselsteinen."
+          }
+        },
+        {
+          "from": "Schlierseespitz",
+          "to": {
+            "lat": 47.6824780,
+            "lon": 11.8614146,
+            "name": {
+              "en": "Detour to Ankel-Alm",
+              "de": "Abstecher zur Ankel-Alm"
+            }
+          },
+          "sac": "T5",
+          "note": {
+            "en": "Narrow rocky ridge occasionally covered in tree roots.",
+            "de": "Schmaler Felsgrat, gelegentlich mit Baumwurzeln bedeckt."
+          }
+        },
+        {
+          "from": {
+            "lat": 47.6824780,
+            "lon": 11.8614146,
+            "name": {
+              "en": "Detour to Ankel-Alm",
+              "de": "Abstecher zur Ankel-Alm"
+            }
+          },
+          "to": "Brecherspitz Vorgipfel",
+          "sac": "T3",
+          "note": {
+            "en": "Trail on a wide ridge covered in bushes.",
+            "de": "Weg auf einem breiten, buschbewachsenen Grat."
+          }
+        }
+      ],
+      "exposure": {
+        "level": "high",
+        "note": {
+          "en": "Highly exposed T4/T5 sections with high drop-offs.",
+          "de": "Stark ausgesetzte T4/T5-Abschnitte mit hohen Abstürzen."
+        }
+      },
+      "fitness": 4
+    },
+    "season": {
+      "best": [6, 7, 8, 9],
+      "possible": [5, 10],
+      "note": {
+        "en": "The T5 section is dangerous in slippery or snowy weather.",
+        "de": "Der T5-Abschnitt ist bei rutschigem oder verschneitem Wetter gefährlich."
+      }
+    },
+    "route": {
+      "start": {
+        "name": {
+          "en": "Neuhaus train station",
+          "de": "Bahnhof Neuhaus"
+        },
+        "at": {
+          "lat": 47.7062602,
+          "lon": 11.8733766,
+          "name": {
+            "en": "Fischhausen-Neuhaus",
+            "de": "Fischhausen-Neuhaus"
+          }
+        }
+      },
+      "end": {
+        "lat": 47.6618854,
+        "lon": 11.8880556,
+        "name": {
+          "en": "Spitzingsee, Kirche",
+          "de": "Spitzingsee, Kirche"
+        }
+      },
+      "type": "point-to-point",
+      "official": {
+        "en": "The route takes the straight path to Anklspitz and follows the ridge to Brecherspitz Vorgipfel, afterwards going down to Spitzingsee.",
+        "de": "Die Route nimmt den direkten Weg zum Anklspitz und folgt dem Grat bis zum Brecherspitz-Vorgipfel, danach geht es hinab zum Spitzingsee."
+      },
+      "terrain": ["forest-road", "road", "meadow", "path", "ridge"],
+      "shade": "low",
+      "trails": ["625a", "625", "637a", "Bockerlbahn-Weg"],
+      "peaks": ["Anklspitz", "Dürnbachwand", "Schlierseespitz", "Brecherspitz Vorgipfel"]
+    },
+    "navigation": {
+      "marking": "poor",
+      "offline": true,
+      "spans": [
+        {
+          "from": "Anklspitz",
+          "to": {
+            "lat": 47.6842313,
+            "lon": 11.8617174,
+            "name": {
+              "en": "Unnamed peak between Schlierseespitz and Freudenreichkapelle",
+              "de": "Unbenannter Gipfel zwischen Schlierseespitz und Freudenreichkapelle"
+            }
+          },
+          "marking": "none",
+          "note": {
+            "en": "Many people were rescued from the T4/T5 sections; follow GPS.",
+            "de": "Viele Menschen wurden von den T4/T5-Abschnitten gerettet; GPS folgen."
+          }
+        }
+      ],
+      "note": {
+        "en": "Good markings start near Freudenreichkapelle.",
+        "de": "Gute Markierungen beginnen in der Nähe der Freudenreichkapelle."
+      }
+    },
+    "hazards": [
+      {
+        "kind": "unsecured-ridge",
+        "from": "Anklspitz",
+        "to": {
+          "lat": 47.6908221,
+          "lon": 11.8629108,
+          "name": {
+            "en": "Unnamed small peak near Schlierseespitz",
+            "de": "Unbenannter kleiner Gipfel in der Nähe des Schlierseespitzes"
+          }
+        },
+        "severity": "high",
+        "note": {
+          "en": "The path has no holds or cables; use your hands.",
+          "de": "Der Weg hat keine Griffe oder Seile; Hände benutzen."
+        }
+      },
+      {
+        "kind": "poor-marking",
+        "from": "Anklspitz",
+        "to": {
+          "lat": 47.6842313,
+          "lon": 11.8617174,
+          "name": {
+            "en": "Unnamed peak between Schlierseespitz and Freudenreichkapelle",
+            "de": "Unbenannter Gipfel zwischen Schlierseespitz und Freudenreichkapelle"
+          }
+        },
+        "severity": "medium",
+        "note": {
+          "en": "Few to no markings on the section; a single trail following the ridge.",
+          "de": "Wenig bis keine Markierungen auf dem Abschnitt; ein einzelner Weg folgt dem Grat."
+        }
+      }
+    ],
+    "bailouts": [
+      {
+        "at": "Schlierseespitz",
+        "to": {
+          "en": "Neuhaus train station",
+          "de": "Bahnhof Neuhaus"
+        },
+        "via": "trail",
+        "time": 88,
+        "last": false,
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/schlierseespitz-neuhaus.gpx",
+        "note": {
+          "en": "Down Ankelsteig to Ankel-Alm, then following the gravel road to Neuhaus.",
+          "de": "Abstieg über Ankelsteig zur Ankel-Alm, dann der Schotterstraße nach Neuhaus folgen."
+        }
+      },
+      {
+        "at": {
+          "lat": 47.6824780,
+          "lon": 11.8614146,
+          "name": {
+            "en": "Detour to trail 625a",
+            "de": "Abstecher zum Weg 625a"
+          }
+        },
+        "to": {
+          "en": "Neuhaus train station",
+          "de": "Bahnhof Neuhaus"
+        },
+        "via": "trail",
+        "time": 72,
+        "last": true,
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/brecherspitz_vorgipfel-neuhaus.gpx",
+        "note": {
+          "en": "Down trail 625a to Ankel-Alm, then following the gravel road to Neuhaus.",
+          "de": "Abstieg über Weg 625a zur Ankel-Alm, dann der Schotterstraße nach Neuhaus folgen."
+        }
+      }
+    ],
+    "water": [
+      {
+        "at": "Obere Firstalm",
+        "kind": "hut",
+        "reliable": "yes"
+      },
+      {
+        "at": "Untere Firstalm",
+        "kind": "hut",
+        "reliable": "yes"
+      }
+    ],
+    "signal": [
+      {
+        "from": "Anklspitz",
+        "to": "Untere Firstalm",
+        "quality": "patchy",
+        "network": "Telekom"
+      }
+    ],
+    "stops": [
+      {
+        "at": "Obere Firstalm",
+        "kind": "restaurant",
+        "days": {
+          "en": "Daily 08:00-20:00",
+          "de": "Täglich 08:00-20:00"
+        },
+        "booking": {
+          "url": "https://firstalm.de/",
+          "label": {
+            "en": "Obere Firstalm website",
+            "de": "Obere Firstalm Website"
+          }
+        },
+        "food": true,
+        "water": true,
+        "overnight": true,
+        "cash": false,
+        "phone": "+49 (0)8026 – 7302",
+        "checked": "2026-10-18",
+        "note": {
+          "en": "Rents sledges out in winter.",
+          "de": "Vermietet im Winter Schlitten."
+        }
+      },
+      {
+        "at": "Untere Firstalm",
+        "kind": "restaurant",
+        "days": {
+          "en": "Daily 10:00-17:00",
+          "de": "Täglich 10:00-17:00"
+        },
+        "booking": {
+          "url": "https://unterefirstalm.de/",
+          "label": {
+            "en": "Untere Firstalm website",
+            "de": "Untere Firstalm Website"
+          }
+        },
+        "overnight": true,
+        "food": true,
+        "water": true,
+        "cash": false,
+        "phone": "+49(0)8026/7676",
+        "checked": "2026-10-18"
+      },
+      {
+        "at": "Alte Wurzhütte",
+        "kind": "hotel",
+        "days": {
+          "en": "Daily 08:00-23:30",
+          "de": "Täglich 08:00-23:30"
+        },
+        "booking": {
+          "url": "https://www.alte-wurzhuette.de/",
+          "label": {
+            "en": "Hotel am Spitzingsee website",
+            "de": "Hotel am Spitzingsee Website"
+          }
+        },
+        "food": true,
+        "water": true,
+        "cash": false,
+        "phone": "+49 0802 660680",
+        "checked": "2026-10-18"
+      }
+    ],
+    "access": {
+      "carFree": "yes",
+      "note": {
+        "en": "Arrive by train, leave by bus.",
+        "de": "Anreise mit dem Zug und Abreise mit dem Bus."
+      },
+      "checked": "2026-10-18",
+      "transport": [
+        {
+          "mode": "train",
+          "from": {
+            "en": "Munich Central Station",
+            "de": "München Hbf"
+          },
+          "to": {
+            "name": {
+              "en": "Fischhausen-Neuhaus",
+              "de": "Fischhausen-Neuhaus"
+            }
+          },
+          "direction": "there",
+          "line": "RB 55",
+          "operator": "DB Regio",
+          "duration": 75,
+          "changes": 0,
+          "first": "05:29",
+          "last": "22:02",
+          "frequency": {
+            "en": "hourly",
+            "de": "stündlich"
+          },
+          "price": [
+            {
+              "amount": 0,
+              "note": {
+                "en": "with Deutschlandticket",
+                "de": "mit Deutschlandticket"
+              }
+            },
+            {
+              "amount": 23.90,
+              "per": "day"
+            }
+          ],
+          "ticket": {
+            "en": "Deutschlandticket valid to Spitzingsee",
+            "de": "Deutschlandticket bis Spitzingsee gültig"
+          },
+          "url": "https://www.bahn.de/"
+        },
+        {
+          "mode": "bus",
+          "from": {
+            "en": "Spitzingsee Kirche, Schliersee",
+            "de": "Spitzingsee Kirche, Schliersee"
+          },
+          "to": {
+            "name": {
+              "en": "Fischhausen-Neuhaus",
+              "de": "Fischhausen-Neuhaus"
+            }
+          },
+          "direction": "back",
+          "line": "Bus 362",
+          "operator": "MVV",
+          "duration": 13,
+          "changes": 0,
+          "first": "08:00",
+          "last": "18:00"
+        }
+      ],
+      "parking": [
+        {
+          "name": {
+            "en": "Neuhaus station parking",
+            "de": "Neuhaus Bahnhof - P&R"
+          },
+          "at": "Neuhaus Bahnhof - P&R",
+          "size": "medium",
+          "fills": "weekends",
+          "checked": "2026-10-18"
+        }
+      ]
+    },
+    "suitability": {
+      "kids": "no",
+      "dogs": "no",
+      "stroller": false,
+      "bike": "no",
+      "winter": "no",
+      "night": "experienced",
+      "solo": "experienced",
+      "note": {
+        "en": "Later sections of the route are accessible to dogs.",
+        "de": "Spätere Abschnitte der Route sind für Hunde zugänglich."
+      }
+    },
+    "legs": [
+      {
+        "to": "Anklspitz",
+        "terrain": ["path"],
+        "sac": "T3",
+        "marking": "poor"
+      },
+      {
+        "to": "Schlierseespitz",
+        "terrain": ["ridge"],
+        "sac": "T4",
+        "marking": "none"
+      },
+      {
+        "to": {
+          "lat": 47.6824780,
+          "lon": 11.8614146,
+          "name": {
+            "en": "Detour to Ankel-Alm",
+            "de": "Abstecher zur Ankel-Alm"
+          }
+        },
+        "terrain": ["ridge"],
+        "sac": "T5",
+        "marking": "none"
+      },
+      {
+        "to": "Brecherspitz Vorgipfel",
+        "terrain": ["path"],
+        "sac": "T3",
+        "marking": "good"
+      },
+      {
+        "to": "Untere Firstalm",
+        "terrain": ["path"],
+        "sac": "T2",
+        "marking": "good"
+      },
+      {
+        "to": "Alte Wurzhütte",
+        "terrain": ["forest-road"],
+        "sac": "T1",
+        "marking": "good"
+      }
+    ],
+    "plan": {
+      "gear": [
+        {
+          "item": "boots"
+        },
+        {
+          "item": "water",
+          "amount": {
+            "en": "2–3 L",
+            "de": "2–3 L"
+          }
+        },
+        {
+          "item": "helmet"
+        },
+        {
+          "item": "offline-map"
+        },
+        {
+          "item": "cash",
+          "need": "optional",
+          "amount": {
+            "en": "for the huts",
+            "de": "für die Hütten"
+          }
+        }
+      ],
+      "for": [
+        {
+          "en": "Fit interested in a wilder ridge hike",
+          "de": "Fit, die an einer wilden Gratwanderung interessiert sind"
+        },
+        {
+          "en": "Anyone wanting to explore less popular peaks near Spitzingsee",
+          "de": "Alle, die weniger bekannte Gipfel in der Nähe des Spitzingsees erkunden möchten"
+        }
+      ],
+      "notFor": [
+        {
+          "en": "A hike fresh after rain",
+          "de": "Eine Wanderung nach Regen"
+        },
+        {
+          "en": "Extreme cliff climbers",
+          "de": "Extreme Kletterer"
+        },
+        {
+          "en": "Afraid of heights",
+          "de": "Nicht schwindelfreie"
+        }
+      ],
+      "timing": {
+        "start": "09:00",
+        "turnaround": "13:00",
+        "note": {
+          "en": "The difficult section is at the start; the rest of the path is easier.",
+          "de": "Der schwierige Abschnitt befindet sich am Anfang; der Rest des Weges ist einfacher."
+        }
+      },
+      "alternatives": {
+        "easier": ["2024-09-21-rosskopf"],
+        "harder": ["2025-11-01-bodenschneid"],
+        "similar": ["2025-08-31-brecherspitz", "2025-09-07-wasserspitz"]
+      }
+    }
+  }
 }
