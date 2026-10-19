@@ -175,6 +175,7 @@
       "id": 378630219,
       "lat": 47.7057860,
       "lon": 11.8748864,
+      "demEle": 809.0,
       "tags": {
         "name": "Neuhaus Bahnhof - P&R",
         "capacity": "50",
@@ -211,6 +212,7 @@
           "to": {
             "lat": 47.6824780,
             "lon": 11.8614146,
+            "demEle": 1480.8,
             "name": {
               "en": "Detour to Ankel-Alm",
               "de": "Abstecher zur Ankel-Alm"
@@ -226,6 +228,7 @@
           "from": {
             "lat": 47.6824780,
             "lon": 11.8614146,
+            "demEle": 1480.8,
             "name": {
               "en": "Detour to Ankel-Alm",
               "de": "Abstecher zur Ankel-Alm"
@@ -265,6 +268,7 @@
         "at": {
           "lat": 47.7062602,
           "lon": 11.8733766,
+          "demEle": 805.2,
           "name": {
             "en": "Fischhausen-Neuhaus",
             "de": "Fischhausen-Neuhaus"
@@ -274,6 +278,7 @@
       "end": {
         "lat": 47.6618854,
         "lon": 11.8880556,
+        "demEle": 1092.9,
         "name": {
           "en": "Spitzingsee, Kirche",
           "de": "Spitzingsee, Kirche"
@@ -298,6 +303,7 @@
           "to": {
             "lat": 47.6842313,
             "lon": 11.8617174,
+            "demEle": 1503.3,
             "name": {
               "en": "Unnamed peak between Schlierseespitz and Freudenreichkapelle",
               "de": "Unbenannter Gipfel zwischen Schlierseespitz und Freudenreichkapelle"
@@ -322,6 +328,7 @@
         "to": {
           "lat": 47.6908221,
           "lon": 11.8629108,
+          "demEle": 1409.0,
           "name": {
             "en": "Unnamed small peak near Schlierseespitz",
             "de": "Unbenannter kleiner Gipfel in der Nähe des Schlierseespitzes"
@@ -339,6 +346,7 @@
         "to": {
           "lat": 47.6842313,
           "lon": 11.8617174,
+          "demEle": 1503.3,
           "name": {
             "en": "Unnamed peak between Schlierseespitz and Freudenreichkapelle",
             "de": "Unbenannter Gipfel zwischen Schlierseespitz und Freudenreichkapelle"
@@ -371,6 +379,7 @@
         "at": {
           "lat": 47.6824780,
           "lon": 11.8614146,
+          "demEle": 1480.8,
           "name": {
             "en": "Detour to trail 625a",
             "de": "Abstecher zum Weg 625a"
@@ -592,6 +601,7 @@
         "to": {
           "lat": 47.6824780,
           "lon": 11.8614146,
+          "demEle": 1480.8,
           "name": {
             "en": "Detour to Ankel-Alm",
             "de": "Abstecher zur Ankel-Alm"

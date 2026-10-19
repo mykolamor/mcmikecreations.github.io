@@ -71,6 +71,7 @@
       "id": 26516059,
       "lat": 47.5596223,
       "lon": 10.7789855,
+      "demEle": 1707.8,
       "tags": {
         "name": "Tegelbergbahn (Bergstation)",
         "operator": "Tegelbergbahn",
@@ -87,6 +88,7 @@
       "id": 26515725,
       "lat": 47.5686078,
       "lon": 10.7570536,
+      "demEle": 825.1,
       "tags": {
         "name": "Talstation Tegelbergbahn",
         "fee": "yes",
@@ -115,11 +117,13 @@
           "from": {
             "lat": 47.5672339,
             "lon": 10.7684725,
+            "demEle": 991.3,
             "name": "Schutzengelweg"
           },
           "to": {
             "lat": 47.5654291,
             "lon": 10.7722042,
+            "demEle": 1089.2,
             "name": "Rautbach"
           },
           "sac": "T2",
@@ -132,11 +136,13 @@
           "from": {
             "lat": 47.5654291,
             "lon": 10.7722042,
+            "demEle": 1089.2,
             "name": "Rautbach"
           },
           "to": {
             "lat": 47.5631531,
             "lon": 10.7722037,
+            "demEle": 1226.2,
             "name": "Wasserfall"
           },
           "sac": "T3",
@@ -149,11 +155,13 @@
           "from": {
             "lat": 47.5631531,
             "lon": 10.7722037,
+            "demEle": 1226.2,
             "name": "Wasserfall"
           },
           "to": {
             "lat": 47.5611685,
             "lon": 10.7777632,
+            "demEle": 1582.1,
             "name": "Scheideweg"
           },
           "sac": "T3",
@@ -177,11 +185,13 @@
           "from": {
             "lat": 47.5631531,
             "lon": 10.7722037,
+            "demEle": 1226.2,
             "name": "Wasserfall"
           },
           "to": {
             "lat": 47.5611685,
             "lon": 10.7777632,
+            "demEle": 1582.1,
             "name": "Scheideweg"
           },
           "length": 350,
@@ -219,6 +229,7 @@
         "at": {
           "lat": 47.5681888,
           "lon": 10.7562201,
+          "demEle": 824.8,
           "name": {
             "en": "Tegelbergbahn (Lower station)",
             "de": "Tegelbergbahn (Talstation)"
@@ -228,6 +239,7 @@
       "end": {
         "lat": 47.5550050,
         "lon": 10.7494664,
+        "demEle": 989.6,
         "name": "Pöllatfall"
       },
       "type": "point-to-point",
@@ -235,7 +247,7 @@
         "en": "The usual route also visits Tegelberghaus (1707 m) after the via ferrata.",
         "de": "Die übliche Route besucht auch das Tegelberghaus (1707 m) nach dem Klettersteig."
       },
-      "terrain": ["road","forest-road", "path", "rocky", "secured"],
+      "terrain": ["road", "forest-road", "path", "rocky", "secured"],
       "shade": "low",
       "trails": ["Schutzengelweg", "Maximiliansweg", "Gelbe-Wand-Steig", "Tegelbergsteig"],
       "peaks": []
@@ -254,11 +266,13 @@
         "from": {
           "lat": 47.5631531,
           "lon": 10.7722037,
+          "demEle": 1226.2,
           "name": "Wasserfall"
         },
         "to": {
           "lat": 47.5611685,
           "lon": 10.7777632,
+          "demEle": 1582.1,
           "name": "Scheideweg"
         },
         "severity": "high",
@@ -273,6 +287,7 @@
         "at": {
           "lat": 47.5629386,
           "lon": 10.7732414,
+          "demEle": 1332.1,
           "name": "Tegelbergsteig (Einstieg)"
         },
         "to": {
@@ -291,6 +306,7 @@
         "at": {
           "lat": 47.5611685,
           "lon": 10.7777632,
+          "demEle": 1582.1,
           "name": "Scheideweg"
         },
         "to": {
@@ -311,6 +327,7 @@
         "to": {
           "lat": 47.5611685,
           "lon": 10.7777632,
+          "demEle": 1582.1,
           "name": "Scheideweg"
         },
         "quality": "patchy",
@@ -320,6 +337,7 @@
         "from": {
           "lat": 47.5611685,
           "lon": 10.7777632,
+          "demEle": 1582.1,
           "name": "Scheideweg"
         },
         "quality": "good",
@@ -444,6 +462,7 @@
         "to": {
           "lat": 47.5672339,
           "lon": 10.7684725,
+          "demEle": 991.3,
           "name": "Schutzengelweg"
         },
         "terrain": ["road", "forest-road"],
@@ -454,6 +473,7 @@
         "to": {
           "lat": 47.5654291,
           "lon": 10.7722042,
+          "demEle": 1089.2,
           "name": "Rautbach"
         },
         "terrain": ["path"],
@@ -464,6 +484,7 @@
         "to": {
           "lat": 47.5631531,
           "lon": 10.7722037,
+          "demEle": 1226.2,
           "name": "Wasserfall"
         },
         "terrain": ["path"],
@@ -474,6 +495,7 @@
         "to": {
           "lat": 47.5611685,
           "lon": 10.7777632,
+          "demEle": 1582.1,
           "name": "Scheideweg"
         },
         "terrain": ["secured"],
@@ -487,6 +509,7 @@
         "to": {
           "lat": 47.5550050,
           "lon": 10.7494664,
+          "demEle": 989.6,
           "name": "Pöllatfall"
         },
         "terrain": ["path"],

@@ -6,6 +6,8 @@
 	const syncStrength = 0.95;
 
 	onMount(() => {
+		// Browsers with scroll-driven animations run the parallax in CSS (see the styles), off the main thread.
+		if (CSS.supports('animation-timeline: scroll()')) return;
 		const root = document.getElementById('hero')!;
 		const text = root.querySelector<HTMLDivElement>('.parallax-text')!;
 		const layer2 = document.querySelector<HTMLDivElement>('.hero-layer2')!
@@ -58,11 +60,11 @@
 <div class="w-full h-[100vh] absolute top-0 left-0">
 	<div id="hero" class="max-w-full max-h-full h-[100vh] relative overflow-hidden">
 		<div class="parallax-layer hero-layer1"></div>
-		<div class="parallax-layer hero-layer2"></div>
-		<div class="parallax-layer hero-layer3"></div>
-		<div class="parallax-layer hero-layer4"></div>
-		<div class="parallax-layer hero-layer5"></div>
-		<div class="parallax-layer hero-layer6"></div>
+		<div class="parallax-layer hero-layer2" style="--layer: 0"></div>
+		<div class="parallax-layer hero-layer3" style="--layer: 1"></div>
+		<div class="parallax-layer hero-layer4" style="--layer: 2"></div>
+		<div class="parallax-layer hero-layer5" style="--layer: 3"></div>
+		<div class="parallax-layer hero-layer6" style="--layer: 4"></div>
 		<h1 class="absolute z-10 text-white drop-shadow-xl text-[8rem] left-10 top-[1rem] pointer-events-none parallax-text">Hikes</h1>
 	</div>
 </div>
@@ -81,6 +83,31 @@
 
     .parallax-text {
         transition: transform 0.1s linear;
+    }
+
+    /* Mirrors the anime.js fallback: over the first 150vh of scroll, out(2) easing,
+       the text moves down 100vh and each layer 10vh more than the one below it. */
+    @supports (animation-timeline: scroll()) {
+        .parallax-text,
+        .hero-layer2, .hero-layer3, .hero-layer4, .hero-layer5, .hero-layer6 {
+            animation: hero-parallax cubic-bezier(0.333, 0.667, 0.667, 1) both;
+            animation-timeline: scroll(root);
+            animation-range: 0 150vh;
+        }
+
+        .parallax-text {
+            --parallax-to: 100vh;
+            transition: none;
+        }
+
+        .hero-layer2, .hero-layer3, .hero-layer4, .hero-layer5, .hero-layer6 {
+            --parallax-to: calc(var(--layer) * 10vh);
+        }
+
+        @keyframes hero-parallax {
+            from { transform: translateY(0); }
+            to { transform: translateY(var(--parallax-to)); }
+        }
     }
 
     .hero-layer1 {

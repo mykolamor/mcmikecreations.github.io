@@ -121,7 +121,7 @@
   "publications": [
     {
       "url": "https://doi.org/10.1145/3789237.3809127",
-      "mirror": "/cv/Evaluating_Apple_Silicon_for_Data_Processing.pdf",
+      "mirror": "/cv/beischl2026evaluatingapplesilicon.pdf",
       "name": "A. Beischl*, M. Morozov*, M. Jungmair, L. Haussmann, T. Neumann, \"Evaluating Apple Silicon for Data Processing,\"",
       "publisher": "22nd International Workshop on Data Management on New Hardware",
       "releaseDate": "2026-06-01",
@@ -129,14 +129,14 @@
     },
     {
       "url": "https://dx.doi.org/10.1109/CSIT61576.2023.10324223",
-      "mirror": "https://drive.google.com/file/d/1sQb3jcutiUQqYuzFUFYk4vZL4g_PHFyp/view?usp=sharing",
+      "mirror": "/cv/levus2023cloudbaseddistributedapproach.pdf",
       "name": "Y. Levus, P. Pustelnyk, R. Moravskyi and M. Morozov, \"Cloud-Based Distributed Approach for Procedural Terrain Generation with Enhanced Performance,\"",
       "publisher": "IEEE 18th International Conference on Computer Science and Information Technologies",
       "releaseDate": "2023-11-27",
       "summary": "ISSN: 2766-3639"
     },
     {
-      "mirror": "https://drive.google.com/file/d/19WDvhoB8icaOTJj-Ub05z6Rjbi8V90LF/view?usp=sharing",
+      "mirror": "/cv/morozov2023interactivestorytelling3d.pdf",
       "name": "M. Morozov, A. Kitamoto, \"Interactive Storytelling with 3D Visualization for Illuminating the Impact of War in Ukraine,\"",
       "publisher": "Proceedings of the 12th Conference of the Japanese Association for Digital Humanities",
       "releaseDate": "2023-09-20",
@@ -144,7 +144,7 @@
     },
     {
       "url": "https://doi.org/10.23939/ujit2023.01.001",
-      "mirror": "https://drive.google.com/file/d/1Z895CQhaJPHYFmSzzYYtUMtotIxBs81H/view?usp=sharing",
+      "mirror": "/cv/levus2023architecturedistributedsoftware.pdf",
       "name": "Y. Levus, P. Pustelnyk, R. Moravskyi and M. Morozov, \"Architecture of a Distributed Software System for Procedural Planetoid Terrain Generation,\"",
       "publisher": "Ukrainian Journal of Information Technology",
       "releaseDate": "2023-05-02",
@@ -152,7 +152,7 @@
     },
     {
       "url": "https://doi.org/10.1109/CSIT56902.2022.10000868",
-      "mirror": "https://drive.google.com/file/d/1X746VUNPGKqtlrc1iI_IFX2257iFtc5n/view?usp=sharing",
+      "mirror": "/cv/levus2022usingsoftwareagents.pdf",
       "name": "Y. Levus, R. Westermann, M. Morozov, R. Moravskyi and P. Pustelnyk, \"Using Software Agents in a Distributed Computing System for Procedural Planetoid Terrain Generation,\"",
       "publisher": "2022 IEEE 17th International Conference on Computer Sciences and Information Technologies (CSIT)",
       "releaseDate": "2023-01-02",
@@ -160,7 +160,7 @@
     },
     {
       "url": "https://doi.org/10.15588/1607-3274-2022-2-15",
-      "mirror": "https://drive.google.com/file/d/1lbyuLpafWFP28Lljx32d3xxpLEofb15h/view?usp=sharing",
+      "mirror": "/cv/morozov2022algorithmsarchitecturesoftware.pdf",
       "name": "M. Y. Morozov, R. O. Moravskyi, P. Y. Pustelnyk, and Y. V. Levus, \"Algorithms and Architecture of the Software System of Automated Natural and Anthropogenic Landscape Generation,\"",
       "publisher": "Radio Electronics, Computer Science, Control",
       "releaseDate": "2022-07-01",
@@ -168,7 +168,7 @@
     },
     {
       "url": "https://doi.org/10.23939/acps2022.01.038",
-      "mirror": "https://drive.google.com/file/d/145fBTwtehyZVhE2p7-kM4bXIGNpMGYgA/view?usp=sharing",
+      "mirror": "/cv/kundys2022softwaresystemmonitoring.pdf",
       "name": "S. Kundys, B. Havano, M. Morozov, \"Software System for Monitoring the Situation in the Settlement,\"",
       "publisher": "Advances in Cyber-Physical Systems",
       "releaseDate": "2022-06-30",
@@ -176,7 +176,7 @@
     },
     {
       "url": "https://doi.org/10.23939/acps2021.02.112",
-      "mirror": "https://drive.google.com/file/d/1ZemEGqAcMrr9Xlpvaih3QO1pRIBV5YC_/view?usp=sharing",
+      "mirror": "/cv/havano2021assessinghumancondition.pdf",
       "name": "B. Havano, M.Y. Morozov, \"Assessing the Human Condition in Medical Cyber-Physical System Based on Microservices Architecture,\"",
       "publisher": "Advances in Cyber-Physical Systems",
       "releaseDate": "2021-12-30",
@@ -184,7 +184,7 @@
     },
     {
       "url": "https://doi.org/10.23939/acps2021.02.083",
-      "mirror": "https://drive.google.com/file/d/14HFUHZPx1DL3vmF3kW8GdLOWWcMXfAxC/view?usp=sharing",
+      "mirror": "/cv/bielik2021sensorscyberphysicalsystems.pdf",
       "name": "V. Bielik, Y.V. Morozov, M.Y. Morozov, \"Sensors in Cyber-Physical Systems Based on Android Operating System,\"",
       "publisher": "Advances in Cyber-Physical Systems",
       "releaseDate": "2021-12-30",
@@ -192,7 +192,7 @@
     },
     {
       "url": "https://doi.org/10.36930/40310514",
-      "mirror": "https://drive.google.com/file/d/12PbyZvg5zoHhTJ4J3p0FIBX_0OdtyHxE/view?usp=sharing",
+      "mirror": "/cv/morozov2021containerizationmethodvisualization.pdf",
       "name": "M. Y. Morozov, R. O. Moravskyi, P. Y. Pustelnyk, and Y. V. Levus, \"Containerization method for visualization of natural and anthropogenic landscapes,\"",
       "publisher": "Scientific Bulletin of UNFU",
       "releaseDate": "2021-11-25",
@@ -200,28 +200,28 @@
     },
     {
       "url": "https://doi.org/10.36930/40300124",
-      "mirror": "https://drive.google.com/file/d/1xQuIdMZ_MY8sCX3RC4R3TKgisLhkXdc6/view?usp=sharing",
+      "mirror": "/cv/morozov2020landscapegenerationspherical.pdf",
       "name": "M. Y. Morozov, R. O. Moravskyi, P. Y. Pustelnyk, and Y. V. Levus, \"Landscape Generation for Spherical Surfaces: Problem Analysis and Solution,\"",
       "publisher": "Scientific Bulletin of UNFU",
       "releaseDate": "2020-02-27",
       "summary": "vol. 30, no. 1, pp. 136–141, ISSN: 1994-7836"
     },
     {
-      "mirror": "https://drive.google.com/open?id=1faA2TsLMxeOa-nSN0-z1pgH54bZDN5Ni",
+      "mirror": "/cv/morozov2019foreignwordsukrainian.pdf",
       "name": "M. Y. Morozov, \"Чужомовні слова в українській комп’ютерній термінології: проблема походження\" [Foreign words in Ukrainian computer terminology: the problem of origin],",
       "publisher": "Proceedings of the All-Ukrainian student scientific-practical conference \"Українська мова в просторі й часі\" [Ukrainian language in space and time]",
       "releaseDate": "2019-04-19",
       "summary": "pp. 118–121, ISBN: 978-966-941-324-6"
     },
     {
-      "mirror": "https://drive.google.com/open?id=1m-YbJSZyWnz2jBhtTd29ezo8TVN1qjTQ",
+      "mirror": "/cv/morozov2018possiblescenariosdevelopment.pdf",
       "name": "M. Y. Morozov, \"Можливі сценарії розвитку співпраці між групою 5+1 та Іраном в контексті виходу США з ядерної угоди\" [Possible scenarios for the development of cooperation between the 5+1 Group and Iran in the context of the US withdrawal from the nuclear agreement],",
       "publisher": "roceedings of the international scientific-practical conference \"Суспільні науки: проблеми та досягнення сучасних наукових досліджень\" [Social sciences: problems and achievements of modern scientific research]",
       "releaseDate": "2018-12-01",
       "summary": "pp. 102–106, UDC 30:001.8(063)"
     },
     {
-      "mirror": "https://drive.google.com/open?id=1XUDnZUhfqzSJsFfTT7-nVmixbHB6pAxx",
+      "mirror": "/cv/morozov2018neotribalismeraglobalization.pdf",
       "name": "M. Y. Morozov, \"Неотрайбалізм в епоху глобалізації\" [Neo-tribalism in the era of globalization],",
       "publisher": "76th Student Scientific and Technical Conference: a collection of abstracts",
       "releaseDate": "2018-11-28",

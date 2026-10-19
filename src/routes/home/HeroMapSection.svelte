@@ -21,7 +21,12 @@
 	const dots: SVGCircleElement[] = [];
 	let ready = $state(false);
 	let shown = $state<HeroCandidate>(); // the hike on the map, once it's drawn
-	let shift = 0; // px the text block is currently moved down by
+	let reducedMotion = false;
+
+	/** Px the text block is moved down by at this scroll position, whether CSS or the scroll handler moves it. */
+	function drift(box: DOMRect): number {
+		return reducedMotion ? 0 : Math.min(Math.max(0, -box.top), box.height) * PARALLAX;
+	}
 
 	// Picked before first paint by the inline script below, so the hike's files
 	// download while the app and three.js are still loading.
@@ -41,6 +46,7 @@
 		// Measured as if unscrolled: the scene adds the scroll shift itself, so the
 		// camera fit (which depends on textBottom) doesn't change while scrolling.
 		const box = section.getBoundingClientRect();
+		const shift = drift(box);
 		return {
 			width: box.width,
 			height: box.height,
@@ -53,7 +59,14 @@
 	}
 
 	onMount(() => {
-		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		// Browsers with scroll-driven animations move the text block in CSS (see the styles), off the
+		// main thread; the handler then only keeps the connector lines' label ends following it.
+		const cssDrift = CSS.supports('animation-timeline: view()');
+		const sizeObserver = new ResizeObserver(() => {
+			section.style.setProperty('--hero-height', `${section.offsetHeight}px`);
+		});
+		sizeObserver.observe(section);
 		let handle: HeroMapHandle | undefined;
 		let destroyed = false;
 
@@ -65,8 +78,8 @@
 				const box = section.getBoundingClientRect();
 				pastHero = box.bottom <= 0;
 				if (reducedMotion) return;
-				shift = Math.min(Math.max(0, -box.top), box.height) * PARALLAX;
-				textBlock.style.transform = shift ? `translate3d(0, ${shift}px, 0)` : '';
+				const shift = drift(box);
+				if (!cssDrift) textBlock.style.transform = shift ? `translate3d(0, ${shift}px, 0)` : '';
 				handle?.setAnchorShift(shift);
 			});
 		};
@@ -87,7 +100,7 @@
 				if (!h) return;
 				if (destroyed) return h.destroy();
 				handle = h;
-				h.setAnchorShift(shift);
+				h.setAnchorShift(drift(section.getBoundingClientRect()));
 				shown = candidate;
 				ready = true;
 			})
@@ -98,6 +111,7 @@
 		return () => {
 			destroyed = true;
 			window.removeEventListener('scroll', onScroll);
+			sizeObserver.disconnect();
 			cancelAnimationFrame(scrollFrame);
 			handle?.destroy();
 		};
@@ -109,7 +123,7 @@
 	{@html bootScript}
 </svelte:head>
 
-<section bind:this={section} class="relative isolate min-h-[100svh] overflow-hidden">
+<section bind:this={section} class="hero-map relative isolate min-h-[100svh] overflow-hidden">
 	<div
 		bind:this={canvasHost}
 		class="absolute inset-0 -z-10 transition-opacity duration-700 {ready ? 'opacity-100' : 'opacity-0'}"
@@ -138,7 +152,7 @@
 		</a>
 	{/if}
 
-	<div bind:this={textBlock} class="will-change-transform container mx-auto px-4 pt-16 md:px-24 md:pt-24">
+	<div bind:this={textBlock} class="hero-text will-change-transform container mx-auto px-4 pt-16 md:px-24 md:pt-24">
 		<h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-white">{resume.basics.name}</h1>
 		<p class="mt-4 max-w-2xl text-lg text-gray-700 dark:text-gray-300">{resume.basics.quote}</p>
 		<nav aria-label="Site sections" class="mt-8">
@@ -159,3 +173,31 @@
 		</nav>
 	</div>
 </section>
+
+<style>
+	/* The text block drifts down by PARALLAX of the section's height while the section scrolls out
+	   of view: 0 when its top leaves the viewport's top, the full drift when its bottom does. */
+	@supports (animation-timeline: view()) {
+		@media (prefers-reduced-motion: no-preference) {
+			.hero-map {
+				view-timeline: --hero-map block;
+			}
+
+			.hero-text {
+				animation: hero-text-drift linear both;
+				animation-timeline: --hero-map;
+				animation-range: exit-crossing 0% exit-crossing 100%;
+			}
+		}
+	}
+
+	@keyframes hero-text-drift {
+		from {
+			transform: translate3d(0, 0, 0);
+		}
+		to {
+			/* Keep in step with PARALLAX. */
+			transform: translate3d(0, calc(var(--hero-height, 100svh) * 0.9), 0);
+		}
+	}
+</style>
