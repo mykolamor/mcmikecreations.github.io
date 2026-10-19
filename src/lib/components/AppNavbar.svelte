@@ -2,6 +2,7 @@
     import {Navbar, NavBrand, NavHamburger, NavLi, NavUl} from "flowbite-svelte";
     import DarkModeButton from "$lib/components/DarkModeButton.svelte";
     import HikesSearchBar from "$lib/hikes/HikesSearchBar.svelte";
+    import { navItems } from "$lib/data/nav";
     import { page } from '$app/state';
     import { afterNavigate } from '$app/navigation';
     import { twMerge } from "tailwind-merge";
@@ -34,6 +35,12 @@
     // preventing the black flash on initial page load (NavLi prefers the prop over context).
     const activeNavClass = "text-white bg-primary-700 dark:bg-primary-600 md:bg-transparent md:text-primary-700 md:dark:text-white md:dark:bg-transparent";
     const nonActiveNavClass = "hover:text-primary-500 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:hover:bg-transparent md:border-0 md:hover:text-primary-700 dark:md:text-gray-400 md:dark:hover:text-white md:dark:hover:bg-transparent";
+
+    // flowbite's Navbar renders the <nav> itself and hands attributes to an inner div,
+    // so name the landmark from inside: it sits beside other navs (the home hero's).
+    const labelNav = (node: HTMLElement) => {
+        node.closest('nav')?.setAttribute('aria-label', 'Main');
+    };
 
     // Track state to close navbar after navigation
     let closeDropdownAction: (() => void) | undefined = $state();
@@ -85,7 +92,7 @@
         </div>
 
         <!-- invisible tracker specifically for connecting the auto-close state -->
-        <span class="hidden" use:bindCloseAction={{ hidden, toggle }}></span>
+        <span class="hidden" use:bindCloseAction={{ hidden, toggle }} use:labelNav></span>
 
         <NavUl
             {activeUrl}
@@ -93,11 +100,9 @@
             class={alwaysBurger ? 'nav-ul-always-burger' : undefined}
             classes={{ ul: `md:space-x-8 md:mt-0 md:text-sm ${fillNarrow ? bgClassUl : ''} ${alwaysBurger ? 'md:!flex-col md:!rounded-lg' : ''}` }}
         >
-            <NavLi class="md:p-0 rounded-sm" href="/" activeClass={activeNavClass} nonActiveClass={nonActiveNavClass}>Home</NavLi>
-            <NavLi class="md:p-0 rounded-sm" href="/resume/" activeClass={activeNavClass} nonActiveClass={nonActiveNavClass}>Résumé</NavLi>
-            <NavLi class="md:p-0 rounded-sm" href="/projects/" activeClass={activeNavClass} nonActiveClass={nonActiveNavClass}>Projects</NavLi>
-            <NavLi class="md:p-0 rounded-sm" href="/blog/" activeClass={activeNavClass} nonActiveClass={nonActiveNavClass}>Blog</NavLi>
-            <NavLi class="md:p-0 rounded-sm" href="/#contact" nonActiveClass={nonActiveNavClass}>Contact</NavLi>
+            {#each navItems as item (item.href)}
+                <NavLi class="md:p-0 rounded-sm" href={item.href} activeClass={item.href.includes('#') ? undefined : activeNavClass} nonActiveClass={nonActiveNavClass}>{item.label}</NavLi>
+            {/each}
         </NavUl>
     {/snippet}
 </Navbar>

@@ -102,6 +102,14 @@ class Terrain:
         path = self.dem_dir / f"{self.zoom}_{tx}_{ty}.png"
         return DemTile(path) if path.exists() else None
 
+    def sample(self, x: float, y: float) -> float | None:
+        """Raw bilinear DEM height at fractional tile coordinates (x, y) at
+        this zoom - the DEM itself, not the rendered mesh `height` follows.
+        None when the tile isn't downloaded."""
+        tx, ty = math.floor(x), math.floor(y)
+        tile = self._tile(tx, ty)
+        return None if tile is None else tile.sample(x - tx, y - ty)
+
     def height(self, lat: float, lon: float) -> float | None:
         """Rendered terrain height in metres, rounded to 0.1 m, or None when
         the tile isn't downloaded (then the point is off the 3D map anyway)."""
