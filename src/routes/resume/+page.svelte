@@ -9,12 +9,17 @@
 	import { PrinterSolid, ProfileCardSolid } from 'flowbite-svelte-icons';
 	import { Button } from 'flowbite-svelte';
 	import resume from '$lib/data/resume.json';
-	const description = `Professional Resume of ${resume.basics.name}. Experienced ${resume.basics.label} specializing in Databases and Computer Graphics. View my full work history, technical proficiencies, and career highlights here.`;
+
+	let { data } = $props();
+
+	// Search snippets cut off around 160 characters, so the terms that matter go first.
+	const title = `${resume.basics.name} – Résumé, PhD Researcher at TUM`;
+	const description = `${resume.basics.name}: PhD researcher in database systems at TUM, ex Senior Software Engineer at Group107. Databases, GPU, geospatial computing, computer graphics.`;
 </script>
 
-<AppMeta title="Résumé" {description} type="website" />
+<AppMeta {title} hasBaseTitle={false} {description} type="website" />
 <AppBreadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Résumé', href: '/resume/' }]} />
-<AppJsonLd variant="profile" {description} />
+<AppJsonLd variant="profile" {description} dateModified={data.dateModified} />
 
 <section class="container mx-auto md:px-24">
 	<ResumeHeader />

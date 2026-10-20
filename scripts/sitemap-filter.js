@@ -12,7 +12,8 @@
  *    commit that changed its body), falling back to the date in its URL. A
  *    listing page (index, tag, year, route pages, home) uses the newest
  *    `lastmod` among the dated posts it links to, since it changes when they
- *    do. Pages with neither get none, rather than a fabricated build timestamp.
+ *    do. Any other page with its own JSON-LD `dateModified` uses that. Pages
+ *    with none of these get none, rather than a fabricated build timestamp.
  */
 
 import { readFileSync, writeFileSync } from 'fs';
@@ -53,6 +54,9 @@ for (const { path, html } of entries) {
 function lastmodFor(path, html) {
 	if (postLastmod.has(path)) return postLastmod.get(path);
 	if (!html) return null;
+	// A standalone page (the résumé) that dates itself.
+	const own = html.match(DATE_MODIFIED)?.[1];
+	if (own) return own;
 	let newest = null;
 	for (const [, link] of html.matchAll(POST_LINK)) {
 		const date = postLastmod.get(decodeURIComponent(link));

@@ -3,7 +3,7 @@
 	import resume from '$lib/data/resume.json';
 
 	type WebsiteProps = { variant: 'website' };
-	type ProfileProps = { variant: 'profile', description?: string | null };
+	type ProfileProps = { variant: 'profile', description?: string | null, dateModified?: string | null };
 
 	type BlogListPost = { title: string; url: string; date: Date; image?: string | null };
 	type BlogListProps = { variant: 'blog'; posts?: BlogListPost[] };
@@ -67,13 +67,28 @@
 			.map(p => p.url)
 			.filter(u => u.startsWith('http'));
 
+		// The open-ended work entry is the current job; the résumé label is a
+		// headline, not a title.
+		const currentJob = resume.work.find(w => !w.endDate);
+
+		// One entry per institution, in résumé order.
+		const alumniOf = [...new Map(resume.education.map(e => [e.institution, {
+			'@type': 'EducationalOrganization',
+			name: e.institution,
+			url: e.url
+		}])).values()];
+
 		const personNode = {
 			'@type': 'Person',
 			'@id': resume.basics.url + '#person',
 			name: resume.basics.name,
+			alternateName: 'Микола Морозов',
 			url: resume.basics.url,
 			image: absUrl(resume.basics.image),
-			jobTitle: resume.basics.label,
+			jobTitle: currentJob?.position ?? resume.basics.label,
+			...(currentJob ? { worksFor: { '@type': 'Organization', name: currentJob.name, url: currentJob.url } } : {}),
+			alumniOf,
+			knowsAbout: ['Databases', 'GPU Computing', 'Computer Graphics', 'Geospatial Computing', 'Software Architecture'],
 			email: resume.basics.email,
 			sameAs
 		};
@@ -100,6 +115,7 @@
 					'@id': absUrl(page.url.pathname) + '#profilepage',
 					url: absUrl(page.url.pathname),
 					...(props.description ? { description: props.description } : {}),
+					...(props.dateModified ? { dateModified: props.dateModified + 'T16:00:00+00:00' } : {}),
 					inLanguage: 'en',
 					mainEntity: { '@type': 'Person', '@id': personNode['@id'] }
 				},
