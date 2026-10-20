@@ -20,7 +20,8 @@ import {
 	OrcidSolid,
 	ResearchGateSolid,
 	StravaSolid,
-	TelegramSolid
+	TelegramSolid,
+	TumblrSolid
 } from '$lib/icons';
 
 // Svelte component constructors are hard to type precisely across versions;
@@ -51,6 +52,7 @@ const NETWORK_ICONS: Record<string, IconComponent> = {
 	instagram: InstagramSolid,
 	x: XSolid,
 	bluesky: BlueSkySolid,
+	tumblr: TumblrSolid,
 	bereal: BeRealSolid,
 	strava: StravaSolid,
 	komoot: KomootSolid,

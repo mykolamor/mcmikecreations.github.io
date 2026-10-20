@@ -31,6 +31,7 @@
 		'Instagram',
 		'X',
 		'BlueSky',
+		'Tumblr',
 		'BeReal',
 		'Strava',
 		'Komoot'

@@ -80,6 +80,11 @@
         "url": "https://bsky.app/profile/mykolamor.bsky.social"
       },
       {
+        "network": "Tumblr",
+        "username": "mykolamor",
+        "url": "https://www.tumblr.com/mykolamor"
+      },
+      {
         "network": "BeReal",
         "username": "mykolamor",
         "url": "https://bere.al/mykolamor"

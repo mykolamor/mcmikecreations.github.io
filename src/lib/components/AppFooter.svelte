@@ -32,6 +32,7 @@ const socials: Array<{ network: string; ariaLabel: string; footerAriaLabel?: str
 	{ network: 'Instagram', ariaLabel: 'instagram' },
 	{ network: 'X', ariaLabel: 'x' },
 	{ network: 'BlueSky', ariaLabel: 'bluesky' },
+	{ network: 'Tumblr', ariaLabel: 'tumblr' },
 	{ network: 'BeReal', ariaLabel: 'bereal' },
 	{ network: 'Strava', ariaLabel: 'strava' },
 	{ network: 'Komoot', ariaLabel: 'komoot' }

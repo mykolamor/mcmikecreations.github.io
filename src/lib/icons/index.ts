@@ -8,6 +8,7 @@ import BlueSkySolid from '$lib/icons/BlueSkySolid.svelte';
 import BeRealSolid from '$lib/icons/BeRealSolid.svelte';
 import StravaSolid from '$lib/icons/StravaSolid.svelte';
 import KomootSolid from '$lib/icons/KomootSolid.svelte';
+import TumblrSolid from '$lib/icons/TumblrSolid.svelte';
 
 export {
 	InstagramSolid,
@@ -19,5 +20,6 @@ export {
 	BlueSkySolid,
 	BeRealSolid,
 	StravaSolid,
-	KomootSolid
+	KomootSolid,
+	TumblrSolid
 };
