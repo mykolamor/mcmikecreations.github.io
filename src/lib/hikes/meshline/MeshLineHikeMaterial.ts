@@ -64,7 +64,10 @@ const vertexShader = /* glsl */ `
     else {
       vec2 dir1 = normalize(currentP - prevP);
       vec2 dir2 = normalize(nextP - currentP);
-      dir = normalize(dir1 + dir2);
+      // Where the line doubles back on screen, dir1 + dir2 is near zero and its
+      // direction is noise that changes every frame: fall back to the incoming segment.
+      vec2 sum = dir1 + dir2;
+      dir = dot(sum, sum) < 1e-4 ? dir1 : normalize(sum);
   
       vec2 perp = vec2(-dir1.y, dir1.x);
       vec2 miter = vec2(-dir.y, dir.x);
@@ -188,6 +191,10 @@ export class MeshLineHikeMaterial extends THREE.ShaderMaterial implements MeshLi
 		super({
 			depthTest: parameters.depthTest,
 			depthWrite: false,
+			// The ribbon is rebuilt facing the camera each frame; where it folds over
+			// (sharp turns, switchbacks seen edge-on) its triangles flip winding, and
+			// culling them makes the line flicker as the view moves.
+			side: THREE.DoubleSide,
 			uniforms: {
 				...{
 					...THREE.UniformsLib.fog,

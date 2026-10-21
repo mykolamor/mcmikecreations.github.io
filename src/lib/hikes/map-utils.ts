@@ -12,6 +12,7 @@ export const getNodeIconDetails = (tags: any) => {
     if (tags.natural === 'saddle') return { emoji: '〰️', color: '#16a34a' };
     if (tags.tourism === 'alpine_hut' || tags.tourism === 'wilderness_hut' || tags.building === 'hut') return { emoji: '🛖', color: '#b45309' };
     if (tags.tourism === 'hotel' || tags.tourism === 'guest_house') return { emoji: '🏨', color: '#b45309' };
+    if (tags.amenity === 'biergarten') return { emoji: '🍺', color: '#ea580c' };
     if (tags.amenity === 'restaurant' || tags.amenity === 'cafe' || tags.amenity === 'fast_food' || tags.amenity === 'pub') return { emoji: '🍽️', color: '#ea580c' };
     if (tags.shop === 'convenience') return { emoji: '🛒', color: '#16a34a' };
     if (tags.tourism === 'viewpoint') return { emoji: '🔭', color: '#0284c7' };

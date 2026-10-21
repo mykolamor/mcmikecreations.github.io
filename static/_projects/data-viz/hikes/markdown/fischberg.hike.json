@@ -34,8 +34,396 @@
       "tags": {
         "name": "Waldschänke Niedernach",
         "amenity": "restaurant",
-        "cuisine": "bavarian"
+        "cuisine": "bavarian",
+        "email": "info@waldschaenke-niedernach.de",
+        "phone": "+4980431021",
+        "website": "https://waldschaenke-niedernach.de/"
+      }
+    },
+    {
+      "id": 259090434,
+      "lat": 47.6078457,
+      "lon": 11.3700208,
+      "demEle": 806.9,
+      "tags": {
+        "name": "Kiosk Sachenbach",
+        "amenity": "biergarten",
+        "phone": "+498851359",
+        "website": "https://www.sachenbacher-walchensee.de/"
+      }
+    },
+    {
+      "id": 1030463554,
+      "lat": 47.6174734,
+      "lon": 11.3453655,
+      "demEle": 806.9,
+      "tags": {
+        "name": "Parkplatz Urfeld",
+        "access": "yes",
+        "amenity": "parking",
+        "capacity": "10",
+        "fee": "no",
+        "parking": "surface",
+        "surface": "asphalt"
       }
     }
-  ]
+  ],
+  "facts": {
+    "summary": {
+      "en": "A medium-length point-to-point around Walchensee, making an optional detour to Fischberg.",
+      "de": "Eine mittelschwere Rundtour um den Walchensee, mit optionalem Abstecher zum Fischberg."
+    },
+    "difficulty": {
+      "note": {
+        "en": "T1 around the lake and up Fischberg.",
+        "de": "T1 um den See und hinauf zum Fischberg."
+      },
+      "fitness": 2
+    },
+    "season": {
+      "best": [4, 5, 6, 7, 8, 9, 10],
+      "possible": [1, 2, 3, 11, 12]
+    },
+    "route": {
+      "start": {
+        "name": {
+          "en": "Bus stop Urfeld",
+          "de": "Bushaltestelle Urfeld"
+        },
+        "at": {
+          "lat": 47.6177291,
+          "lon": 11.3458048,
+          "demEle": 808.7,
+          "name": {
+            "en": "Bus stop Urfeld",
+            "de": "Bushaltestelle Urfeld"
+          }
+        }
+      },
+      "end": {
+        "lat": 47.5710232,
+        "lon": 11.3047868,
+        "demEle": 809.9,
+        "name": "Einsiedl"
+      },
+      "type": "point-to-point",
+      "official": {
+        "en": "The usual route takes a round trip around Walchensee.",
+        "de": "Der übliche Weg führt um den Walchensee herum."
+      },
+      "optional": [
+        {
+          "name": {
+            "en": "Fischberg",
+            "de": "Fischberg"
+          },
+          "from": "Fischberg",
+          "to": "Waldschänke Niedernach",
+          "note": {
+            "en": "A small hill with no views; only for peak baggers.",
+            "de": "Ein kleiner Hügel ohne Aussicht; nur für Gipfelsammler."
+          }
+        }
+      ],
+      "terrain": ["forest-road", "road"],
+      "shade": "moderate",
+      "peaks": ["Fischberg"]
+    },
+    "navigation": {
+      "marking": "good",
+      "offline": false,
+      "spans": [
+        {
+          "from": "Fischberg",
+          "to": "Waldschänke Niedernach",
+          "marking": "poor",
+          "note": {
+            "en": "The Fischberg hill has private areas and close to no marking.",
+            "de": "Der Fischberg hat Privatgrund und kaum Markierungen."
+          }
+        }
+      ],
+      "note": {
+        "en": "Good markings all along the lake.",
+        "de": "Gute Markierungen entlang des Sees."
+      }
+    },
+    "bailouts": [
+      {
+        "at": "Waldschänke Niedernach",
+        "to": {
+          "en": "Einsiedl",
+          "de": "Einsiedl"
+        },
+        "last": true,
+        "via": "road",
+        "note": {
+          "en": "A bus stop and parking along the road, taking you to Einsiedl.",
+          "de": "Bushaltestelle und Parkplatz an der Straße, die nach Einsiedl führen."
+        }
+      }
+    ],
+    "water": [
+      {
+        "at": "Kiosk Sachenbach",
+        "kind": "shop",
+        "reliable": "seasonal"
+      },
+      {
+        "at": "Waldschänke Niedernach",
+        "kind": "hut",
+        "reliable": "yes"
+      }
+    ],
+    "signal": [
+      {
+        "quality": "good",
+        "network": "Telekom"
+      }
+    ],
+    "stops": [
+      {
+        "at": "Kiosk Sachenbach",
+        "kind": "kiosk",
+        "food": true,
+        "water": true,
+        "checked": "2026-10-21"
+      },
+      {
+        "at": "Waldschänke Niedernach",
+        "kind": "hotel",
+        "days": {
+          "en": "Daily",
+          "de": "Täglich"
+        },
+        "overnight": true,
+        "food": true,
+        "water": true,
+        "cash": false,
+        "checked": "2026-10-21"
+      }
+    ],
+    "access": {
+      "carFree": "yes",
+      "note": {
+        "en": "Arrive by train and bus; leave the same way.",
+        "de": "Anreise mit Bahn und Bus; Abreise auf demselben Weg."
+      },
+      "checked": "2026-10-21",
+      "transport": [
+        {
+          "mode": "train",
+          "from": {
+            "en": "Munich Central Station",
+            "de": "München Hbf"
+          },
+          "to": {
+            "name": {
+              "en": "Kochel",
+              "de": "Kochel"
+            }
+          },
+          "direction": "there",
+          "line": "RB 66",
+          "operator": "DB Regio",
+          "duration": 108,
+          "changes": 1,
+          "first": "06:20",
+          "last": "18:22",
+          "frequency": {
+            "en": "hourly",
+            "de": "stündlich"
+          },
+          "price": [
+            {
+              "amount": 0,
+              "note": {
+                "en": "with Deutschlandticket",
+                "de": "mit Deutschlandticket"
+              }
+            },
+            {
+              "amount": 25,
+              "per": "day"
+            }
+          ],
+          "ticket": {
+            "en": "Deutschlandticket valid to Urfeld",
+            "de": "Deutschlandticket bis Urfeld gültig"
+          },
+          "url": "https://www.bahn.de/",
+          "note": {
+            "en": "Change in Starnberg.",
+            "de": "Umstieg in Starnberg."
+          }
+        },
+        {
+          "mode": "bus",
+          "from": {
+            "en": "Kochel",
+            "de": "Kochel"
+          },
+          "to": {
+            "name": {
+              "en": "Urfeld, Kochel am See",
+              "de": "Urfeld, Kochel am See"
+            }
+          },
+          "direction": "there",
+          "line": "328",
+          "operator": "MVV",
+          "duration": 18,
+          "changes": 0,
+          "first": "08:18",
+          "last": "20:28"
+        }
+      ],
+      "parking": [
+        {
+          "name": {
+            "en": "Urfeld Parking",
+            "de": "Parkplatz Urfeld"
+          },
+          "at": "Parkplatz Urfeld",
+          "size": "small",
+          "fills": "weekends",
+          "checked": "2026-10-21"
+        }
+      ]
+    },
+    "suitability": {
+      "kids": "yes",
+      "dogs": "yes",
+      "stroller": true,
+      "bike": "yes",
+      "winter": "yes",
+      "night": "yes",
+      "solo": "yes",
+      "note": {
+        "en": "Bikes and strollers won't reach the top of Fischberg.",
+        "de": "Mit dem Fahrrad oder Kinderwagen kommt man nicht auf den Gipfel des Fischbergs."
+      }
+    },
+    "legs": [
+      {
+        "to": "Kiosk Sachenbach",
+        "terrain": ["road"],
+        "sac": "T1",
+        "marking": "good"
+      },
+      {
+        "to": "Fischberg",
+        "terrain": ["forest-road"],
+        "sac": "T1",
+        "marking": "poor"
+      },
+      {
+        "to": "Waldschänke Niedernach",
+        "terrain": ["forest-road"],
+        "sac": "T1",
+        "marking": "good"
+      },
+      {
+        "to": {
+          "lat": 47.5710232,
+          "lon": 11.3047868,
+          "demEle": 809.9,
+          "name": "Einsiedl"
+        },
+        "terrain": ["road"],
+        "sac": "T1",
+        "marking": "good"
+      }
+    ],
+    "plan": {
+      "gear": [
+        {
+          "item": "water",
+          "amount": {
+            "en": "2–3 L",
+            "de": "2–3 L"
+          }
+        },
+        {
+          "item": "poles",
+          "need": "optional"
+        },
+        {
+          "item": "cash",
+          "need": "optional",
+          "amount": {
+            "en": "for the food",
+            "de": "für die Verpflegung"
+          }
+        }
+      ],
+      "for": [
+        {
+          "en": "Hikers of all levels wanting to explore Walchensee",
+          "de": "Wanderer aller Niveaus, die den Walchensee erkunden möchten"
+        },
+        {
+          "en": "Trekkers tired of climbing mountains",
+          "de": "Wanderer, die genug vom Bergsteigen haben"
+        }
+      ],
+      "notFor": [
+        {
+          "en": "People looking for an elevation challenge",
+          "de": "Leute, die eine Höhenherausforderung suchen"
+        },
+        {
+          "en": "Beginners uncomfortable with long walks",
+          "de": "Anfänger, die sich mit langen Spaziergängen unwohl fühlen"
+        }
+      ],
+      "variants": [
+        {
+          "name": {
+            "en": "Lake round trip",
+            "de": "Rund um den See"
+          },
+          "recommended": true,
+          "summary": {
+            "en": "Skip the detour up Fischberg; optionally, close the loop.",
+            "de": "Ohne Abstecher auf den Fischberg; optional die Runde schließen."
+          },
+          "distance": 15200,
+          "ascent": 59,
+          "descent": 59,
+          "duration": 237,
+          "sac": "T1"
+        }
+      ],
+      "timing": {
+        "start": "09:00",
+        "turnaround": "16:00"
+      },
+      "alternatives": {
+        "easier": ["2024-10-03-bockerlbahnweg"],
+        "harder": [],
+        "similar": []
+      }
+    },
+    "sources": [
+      {
+        "title": {
+          "en": "The website of Sachenbach Kiosk",
+          "de": "Die Website des Kiosks Sachenbach"
+        },
+        "url": "https://www.sachenbacher-walchensee.de/",
+        "kind": "official",
+        "lang": "de"
+      },
+      {
+        "title": {
+          "en": "The website of Waldschänke Niedernach",
+          "de": "Die Website der Waldschänke Niedernach"
+        },
+        "url": "https://waldschaenke-niedernach.de/",
+        "kind": "official",
+        "lang": "de"
+      }
+    ]
+  }
 }

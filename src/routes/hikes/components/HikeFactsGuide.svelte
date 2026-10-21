@@ -190,7 +190,7 @@
 				<ul class="flex flex-col gap-1">
 					{#each facts.signal as sg}
 						<li>
-							<FactsSpan {lang} from={sg.from} to={sg.to} />: <span class="font-medium">{enumLabel(lang, 'signal', sg.quality)}</span>{#if sg.network}{' '}<span class={meta} translate="no">({sg.network})</span>{/if}{#if sg.note}{' — '}{t(sg.note)}{/if}
+							{#if sg.from || sg.to}<FactsSpan {lang} from={sg.from} to={sg.to} />:{' '}{/if}<span class="font-medium">{enumLabel(lang, 'signal', sg.quality)}</span>{#if sg.network}{' '}<span class={meta} translate="no">({sg.network})</span>{/if}{#if sg.note}{' — '}{t(sg.note)}{/if}
 						</li>
 					{/each}
 				</ul>

@@ -168,7 +168,7 @@ experience behind them. I would say the glacier is the part where the equipment
 is most necessary, while the via ferrata sections are the most challenging
 parts.
 
-![Full first via ferrata climb](/404/)
+![Full 360° first via ferrata climb](https://www.youtube.com/watch?v=PtfEVg0Qk0o)
 
 If you're not time-limited, I would recommend either staying overnight at
 Höllentalangerhütte or going down to Knorrhütte and spending the next night
@@ -176,7 +176,7 @@ there. This way, you can split the hike into two days, take your time and
 enjoy the scenery more. Just make sure to book your stay in advance, as these
 huts can get quite busy during the hiking season.
 
-![Full main via ferrata climb](/404/)
+![Full 360° main via ferrata climb](/404/)
 
 P.S. Feels amazing to have finally completed the Zugspitze (2962 m) ascent via both main
 routes! Looking forward to Jubiläumsgrat and the Wiener-Neustädter hut
