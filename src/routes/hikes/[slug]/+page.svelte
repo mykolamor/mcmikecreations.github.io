@@ -397,6 +397,9 @@
 	facts={data.authoredFacts}
 	routeType={data.authoredFacts?.route?.type ?? data.facts.routeType}
 	highPoint={data.facts.highPoint}
+	media={data.post.media}
+	bounds={data.post.bounds}
+	placeName={data.map.name}
 />
 
 <div class="container mx-auto">

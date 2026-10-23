@@ -11,7 +11,7 @@ import { parseMediaFlags } from '$lib/renderers/media-flags';
 import type { GalleryItem } from '$lib/renderers/gallery-item';
 import { photoStopText, type PhotoStop } from '$lib/hikes/photo-stops';
 import { buildPlaceIndex, type PlaceIndex, type PlaceNode } from '$lib/hikes/place-links';
-import { avifTiers, buildAvifSrcset, avifVariantHref, type HikeImageMeta } from '$lib/renderers/responsive-image';
+import { avifTiers, buildAvifSrcset, avifVariantHref, videoPosterHref, type HikeImageMeta, type HikeVideoMeta } from '$lib/renderers/responsive-image';
 import { buildPlaceDocIndex, placeDocAnchor, placeDocMarkerHtml, type PlaceDocIndex, type PlaceDocRef } from '$lib/hikes/place-docs';
 
 export interface ProcessedPost {
@@ -307,6 +307,8 @@ export async function parseMarkdown(
     // underneath it) has no such dependency, so it's loaded directly against
     // just the extracted front-matter text.
     let images: Record<string, HikeImageMeta> = {};
+    // `videos:`, by YouTube id (scripts/video_meta.py): poster dims/blur and upload date.
+    let videos: Record<string, HikeVideoMeta> = {};
     const frontMatterBlock = extractFrontMatterBlock(postRaw);
     if (frontMatterBlock) {
         try {
@@ -314,6 +316,9 @@ export async function parseMarkdown(
             const parsed = load(frontMatterBlock);
             if (isPlainObject(parsed) && isPlainObject(parsed.images)) {
                 images = parsed.images as Record<string, HikeImageMeta>;
+            }
+            if (isPlainObject(parsed) && isPlainObject(parsed.videos)) {
+                videos = parsed.videos as Record<string, HikeVideoMeta>;
             }
         } catch (ex) {
             // Malformed front matter shouldn't take down the whole post body -
@@ -392,18 +397,37 @@ export async function parseMarkdown(
                         // ignore invalid url
                     }
                     const mediaIndex = mediaOffset + media.length;
+                    const meta = videoId ? videos[videoId] : undefined;
+                    // The self-hosted poster when scripts/video_meta.py made one, else YouTube's.
+                    const tiers = meta?.blur && meta.w && meta.h ? avifTiers(meta.w, meta.h) : [];
+                    const posterHref = videoPosterHref(videoId);
+                    const poster = tiers.length > 0 ? avifVariantHref(posterHref, tiers[tiers.length - 1].target) : undefined;
                     media.push({
                         kind: 'youtube',
                         videoId,
                         href: href.trim(),
                         alt: text,
                         title: title || undefined,
-                        captionHtml: renderedText
+                        captionHtml: renderedText,
+                        ...(poster ? { poster, thumb: avifVariantHref(posterHref, tiers[0].target), placeholder: meta!.blur } : {}),
+                        ...(meta?.uploadDate ? { uploadDate: meta.uploadDate } : {}),
+                        ...(meta?.duration ? { duration: meta.duration } : {}),
+                        ...(meta?.description?.en ? { description: meta.description.en } : {}),
+                        ...(meta?.unavailable ? { unavailable: true } : {})
                     });
+                    const posterHtml = poster
+                        ? `<span class="mk-img-shell" style="aspect-ratio:${meta!.w}/${meta!.h}">
+            <img src="${meta!.blur}" alt="" aria-hidden="true" class="mk-blur-placeholder" />
+            <picture>
+                <source type="image/avif" srcset="${buildAvifSrcset(posterHref, tiers)}" sizes="(min-width: 1280px) 75vw, 100vw" />
+                <img src="${poster}" ${safeTitle ? `title="${safeTitle}"` : ''} alt="${safeText}" width="${tiers[tiers.length - 1].width}" height="${tiers[tiers.length - 1].height}" loading="lazy" decoding="async" class="mk-img-no-pointer mk-fade-in" onload="this.classList.add('mk-loaded')" />
+            </picture>
+        </span>`
+                        : `<img src="https://i.ytimg.com/vi/${videoId}/hqdefault.jpg" ${safeTitle ? `title="${safeTitle}"` : ''} alt="${safeText}" width="480" height="360" loading="lazy" decoding="async" class="mk-img-no-pointer" />`;
                     return `
 <figure class="mk-figure">
     <a class="mk-video-link" href="${safeHref}" target="_blank" rel="noopener noreferrer" data-media-index="${mediaIndex}">
-        <img src="https://img.youtube.com/vi/${videoId}/0.jpg" ${safeTitle ? `title="${safeTitle}"` : ''} alt="${safeText}" class="mk-img-no-pointer" />
+        ${posterHtml}
         <span class="mk-play-badge" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.5 4.5v15L18.5 12 5.5 4.5Z"/></svg>
         </span>

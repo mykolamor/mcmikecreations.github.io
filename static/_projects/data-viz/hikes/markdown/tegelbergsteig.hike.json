@@ -250,7 +250,10 @@
       "terrain": ["road", "forest-road", "path", "rocky", "secured"],
       "shade": "low",
       "trails": ["Schutzengelweg", "Maximiliansweg", "Gelbe-Wand-Steig", "Tegelbergsteig"],
-      "peaks": []
+      "peaks": [],
+      "regions": ["ammergau-alps", "schwangau"],
+      "categories": ["via-ferrata", "castle"],
+      "countries": ["DE"]
     },
     "navigation": {
       "marking": "partial",

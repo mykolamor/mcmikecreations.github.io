@@ -112,6 +112,14 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 		}
 
 		const facts = computeHikeFacts(coordinates, mapProperties);
+		// South-west and north-east corners of the route, `[minLat, minLon, maxLat, maxLon]`,
+		// for the structured data's `spatialCoverage`.
+		const bounds = coordinates?.length
+			? coordinates.reduce(
+				(b, [lon, lat]) => [Math.min(b[0], lat), Math.min(b[1], lon), Math.max(b[2], lat), Math.max(b[3], lon)],
+				[Infinity, Infinity, -Infinity, -Infinity]
+			)
+			: null;
 		const gpxFile = showFileGpx ? `static${showFileGpx}` : null;
 
 		// Where along the route each photo was taken, for the line under its
@@ -188,6 +196,7 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 				anchor: slug ?? '',
 				page,
 				media,
+				bounds,
 				photoStops: Object.fromEntries(photoStops),
 			},
 			map: { ...mergedHike, properties: mapProperties },

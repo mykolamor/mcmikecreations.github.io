@@ -29,6 +29,35 @@ export interface HikeImageMeta {
 	blur?: string;
 }
 
+/**
+ * One embedded YouTube video's entry in a post's `videos` front matter,
+ * keyed by video id. Written by scripts/video_meta.py; the poster lives at
+ * `videoPosterHref(id)` with AVIF tiers beside it.
+ */
+export interface HikeVideoMeta {
+	/** YouTube's title by language (`en`, `de`, `uk`): the uploader's translations. */
+	title?: Record<string, string>;
+	/** ISO 8601 with offset, `2025-08-03T07:30:07-07:00`. */
+	uploadDate?: string;
+	/** ISO 8601 duration, `PT36M42S`. */
+	duration?: string;
+	/** First paragraph of YouTube's description by language; hand edits are kept. */
+	description?: Record<string, string>;
+	/** Poster dimensions; present with `blur` once the poster is on disk. */
+	w?: number;
+	h?: number;
+	blur?: string;
+	/** Not public (private or removed): no poster, no structured data. */
+	unavailable?: boolean;
+}
+
+export const VIDEO_POSTERS_PREFIX = '/images/projects/data-viz/hikes/videos/';
+
+/** The self-hosted poster JPEG of a YouTube video. */
+export function videoPosterHref(videoId: string): string {
+	return `${VIDEO_POSTERS_PREFIX}${videoId}.jpg`;
+}
+
 /** One AVIF tier's actual generated dimensions. */
 export interface AvifTier {
 	/** The long-edge target this tier was generated at (640/1280/2560) — also the number in its filename. */

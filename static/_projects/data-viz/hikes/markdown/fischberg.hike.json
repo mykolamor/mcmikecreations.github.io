@@ -127,7 +127,10 @@
       ],
       "terrain": ["forest-road", "road"],
       "shade": "moderate",
-      "peaks": ["Fischberg"]
+      "peaks": ["Fischberg"],
+      "regions": ["walchensee-mountains", "walchensee"],
+      "categories": ["lake"],
+      "countries": ["DE"]
     },
     "navigation": {
       "marking": "good",

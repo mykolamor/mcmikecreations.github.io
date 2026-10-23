@@ -3,7 +3,9 @@
 	import type { ProcessedPost } from '$lib/hikes/hikes-info';
 	import resume from '$lib/data/resume.json';
 	import type { HikeAuthoredFacts } from '$lib/hikes/facts-schema';
-	import { formatMonths, hardestFerrata, seasonMonths } from '$lib/hikes/facts-format';
+	import { countryName, formatMonths, hardestFerrata, seasonMonths } from '$lib/hikes/facts-format';
+	import type { GalleryItem } from '$lib/renderers/gallery-item';
+	import { videoPosterHref } from '$lib/renderers/responsive-image';
 	import {
 		HIKES_BLOG_TITLE,
 		HIKES_BLOG_DESCRIPTION,
@@ -33,6 +35,12 @@
 		facts?: HikeAuthoredFacts | null;
 		routeType?: string | null;
 		highPoint?: number | null;
+		/** The post's gallery: photos for `image`, YouTube embeds for `video`. */
+		media?: GalleryItem[];
+		/** `[minLat, minLon, maxLat, maxLon]` of the route, for `spatialCoverage`. */
+		bounds?: number[] | null;
+		/** The route's name, for the `spatialCoverage` place. */
+		placeName?: string;
 	};
 
 	type BlogProps = {
@@ -102,6 +110,52 @@
 		];
 	}
 
+	/** Alt text without markdown links: `by [David](…)` -> `by David`. */
+	function plainAlt(alt: string): string {
+		return alt.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').trim();
+	}
+
+	/** Google's limit is loose; ten photos say enough. */
+	const MAX_IMAGES = 10;
+
+	/** The thumbnail first, then the post's photos. */
+	function postImages(post: PostProps): string[] {
+		const photos = (post.media ?? []).flatMap((m) => (m.kind === 'image' ? [m.src] : []));
+		const all = [...(post.image ? [post.image] : []), ...photos].map(absUrl);
+		return [...new Set(all)].slice(0, MAX_IMAGES);
+	}
+
+	/** One VideoObject per public YouTube embed whose upload date scripts/video_meta.py recorded. */
+	function postVideos(post: PostProps) {
+		return (post.media ?? []).flatMap((m) => {
+			if (m.kind !== 'youtube' || !m.videoId || m.unavailable || !m.uploadDate) return [];
+			const name = plainAlt(m.alt) || post.title;
+			return [{
+				'@type': 'VideoObject',
+				name,
+				description: m.description ?? name,
+				thumbnailUrl: m.poster ? absUrl(videoPosterHref(m.videoId)) : `https://i.ytimg.com/vi/${m.videoId}/hqdefault.jpg`,
+				uploadDate: m.uploadDate,
+				...(m.duration ? { duration: m.duration } : {}),
+				embedUrl: `https://www.youtube.com/embed/${m.videoId}`
+			}];
+		});
+	}
+
+	/** The route's bounding box, in the countries it enters. */
+	function postCoverage(post: PostProps) {
+		if (!post.bounds || post.bounds.length !== 4 || !post.bounds.every(Number.isFinite)) return null;
+		const countries = post.facts?.route?.countries ?? [];
+		return {
+			'@type': 'Place',
+			...(post.placeName ? { name: post.placeName } : {}),
+			geo: { '@type': 'GeoShape', box: post.bounds.map((x) => x.toFixed(5)).join(' ') },
+			...(countries.length > 0
+				? { containedInPlace: countries.map((c) => ({ '@type': 'Country', name: countryName('en', c) })) }
+				: {})
+		};
+	}
+
 	const schema = $derived.by(() => {
 		const origin = page.url.origin;
 		const blogId = origin + '/hikes/';
@@ -158,6 +212,9 @@
 				},
 				...factsProperties(props)
 			].filter(Boolean);
+			const images = postImages(props);
+			const videos = postVideos(props);
+			const coverage = postCoverage(props);
 			const peaks = (props.facts?.route?.peaks ?? []).map((peak) => ({
 				'@type': 'Mountain',
 				name: peak.name.en,
@@ -170,7 +227,9 @@
 				inLanguage: 'en',
 				headline: props.title,
 				description: props.description,
-				...(props.image ? { image: absUrl(props.image) } : {}),
+				...(images.length > 0 ? { image: images.length === 1 ? images[0] : images } : {}),
+				...(videos.length > 0 ? { video: videos } : {}),
+				...(coverage ? { spatialCoverage: coverage } : {}),
 				datePublished: props.date + 'T16:00:00+00:00',
 				...(props.dateModified ? { dateModified: props.dateModified + 'T16:00:00+00:00' } : {}),
 				author: { '@type': 'Person', name: props.author },

@@ -292,7 +292,10 @@
       "terrain": ["forest-road", "road", "meadow", "path", "ridge"],
       "shade": "low",
       "trails": ["625a", "625", "637a", "Bockerlbahn-Weg"],
-      "peaks": ["Anklspitz", "Dürnbachwand", "Schlierseespitz", "Brecherspitz Vorgipfel"]
+      "peaks": ["Anklspitz", "Dürnbachwand", "Schlierseespitz", "Brecherspitz Vorgipfel"],
+      "regions": ["mangfall-mountains", "schliersee"],
+      "categories": ["ridge", "peak-bagging"],
+      "countries": ["DE"]
     },
     "navigation": {
       "marking": "poor",

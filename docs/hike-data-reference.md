@@ -73,7 +73,7 @@ them, recursively:
 | Plain value (string, number, true/false, a choice like `high`) | Post wins. |
 | Translated text `{en, de}` | Merged per language. A post can add only `de` to the sidecar's English, or replace only `en`. A plain string counts as `{en}`. |
 | Object (`difficulty`, `access`, `plan`, `season`, …) | Merged field by field, all the way down. |
-| List of plain values (`season.best`, `route.trails`, `route.terrain`, `route.peaks`, `plan.for`, `plan.notFor`, `alternatives.*`, `tickets[].includes`, `conditions.weather`, `conditions.trail`) | Post's list **replaces** the sidecar's. `best: [8]` means August, not August plus the sidecar's months. |
+| List of plain values (`season.best`, `route.trails`, `route.terrain`, `route.peaks`, `route.regions`, `route.categories`, `route.countries`, `route.huts`, `plan.for`, `plan.notFor`, `alternatives.*`, `tickets[].includes`, `conditions.weather`, `conditions.trail`) | Post's list **replaces** the sidecar's. `best: [8]` means August, not August plus the sidecar's months. |
 | Price lists (`price: [...]`) | Replaced as a whole. |
 | List of entries (`hazards`, `bailouts`, `gear`, `stops`, …) | **Matched by an identity key** (table below). A matching post entry is merged into the sidecar's entry. Unmatched post entries are **appended** after the sidecar's. |
 | `null` in the post | **Deletes** the sidecar's value for that key. This is the opposite of 2a. |
@@ -197,6 +197,7 @@ All keys are optional. The date and route come from the file name; there's no `d
 | `places` | list of slugs | Place docs shown at the bottom (§6). Replaces the sidecar's list; `[]` shows none. |
 | `facts` | object | The facts layer (§5). `facts: {hidden: true}` switches it off for this post. |
 | `images` | map | **Don't write by hand.** Filename → `{w, h, lat?, lon?, demEle?, taken?, located?, blur}`, maintained by the image tools (§8). |
+| `videos` | map | YouTube id → `{title, uploadDate, duration, description, w, h, blur}` or `{unavailable: true}`, written by `video_meta.py` (§8). `title` and `description` are `{en, de, uk}`: your YouTube translations (a language without one is left out). Feeds the self-hosted poster and the post's `VideoObject`, which uses `description.en`. The description is YouTube's first paragraph; rewrite any language by hand if you like (the script keeps it). |
 | `filePath`, `metaPath` | path | Another GeoJSON or sidecar for this date (a different route variant). |
 
 ### Overriding the hike (rare)
@@ -275,6 +276,10 @@ story, **G** = guide below the story, **C** = elevation charts, **M** = 2D and 3
 | `route.shade` | none/low/moderate/high | G | |
 | `route.trails` | list | G | Waymarked route numbers ("801"). |
 | `route.peaks` | list of places | G, JSON-LD | Become `Mountain` entities for search engines. See [`route` in detail](#route-in-detail). |
+| `route.regions` | list of region slugs | G | Hub membership; the first one is the primary region. See [Hub taxonomy](#hub-taxonomy-regions-categories-countries-huts). |
+| `route.categories` | list of category slugs | G | via-ferrata, ridge, lake, … |
+| `route.countries` | list of ISO codes | G | `["AT", "DE"]`. |
+| `route.huts` | list of places | G | Huts on the route. |
 | `navigation` | `marking` good/partial/poor/none, `spans[]`, `note`, `offline` | G | Details in [`navigation` in detail](#navigation-in-detail). |
 | `hazards[]` | `kind`, `label?`, `at` or span, `severity` low/medium/high, `season`, `note` | S C M | ~40 kinds (rockfall, snowfield, cattle, lightning, …). An unknown kind needs a `label`. With a span, the stretch is drawn on the charts and maps. See [Hazards](#hazards). |
 | `bailouts[]` | `at`, `to`, `via` trail/lift/road/bus/taxi/hut, `time`, `last`, `route`, `note` | S C M | `route`: a served GPX path, drawn dashed beside the main route. `last: true` marks the point of no return. |
@@ -676,9 +681,13 @@ entry.
 | `shade` | `none` / `low` / `moderate` / `high` | How much of the route is shaded. It matters on summer days. |
 | `trails` | list of strings | Waymarked route numbers or names exactly as signposted (`"801"`, `"E5"`). Shown untranslated. |
 | `peaks` | list of places | Summits reached on the main route. They go in the guide and in the JSON-LD (below). |
+| `regions` | list of region slugs | Mountain range first, then the town, lake or valley the hike is known by. See [Hub taxonomy](#hub-taxonomy-regions-categories-countries-huts). |
+| `categories` | list of category slugs | What kind of hike it is. |
+| `countries` | list of ISO 3166-1 alpha-2 codes | Every country the route enters, `["AT", "DE"]`. |
+| `huts` | list of places | Mountain huts on the route (Alpenverein huts and similar), not every restaurant. |
 
-Any other key fails the build. So does a `type`, `terrain` or `shade` value that isn't
-on its list.
+Any other key fails the build. So does a `type`, `terrain`, `shade`, `regions` or
+`categories` value that isn't on its list, and a `countries` entry that isn't an ISO code.
 
 **Spots: `start` and `end`.** These two take any place form, plus one more:
 `{name, at?}`, for a trailhead or town that isn't a node.
@@ -840,8 +849,8 @@ post's `BlogPosting.about`:
 **Merging (sidecar + post).** All four are replaced whole, never merged entry by entry:
 
 - `shade`: the post's value wins; `shade: null` removes it.
-- `terrain`, `trails`, `peaks`: the post's list replaces the sidecar's list. To add
-  one entry, repeat the whole list. To remove the field, write `null`. An empty list
+- `terrain`, `trails`, `peaks`, `regions`, `categories`, `countries`, `huts`: the
+  post's list replaces the sidecar's list. To add one entry, repeat the whole list. To remove the field, write `null`. An empty list
   `[]` also renders nothing.
 - Typical post-level use: a walk that skipped a summit writes its own `peaks`; a
   winter walk writes `terrain` with `snow`.
@@ -856,6 +865,10 @@ post's `BlogPosting.about`:
 | `shade` | **Shade** row ("Schatten"). |
 | `trails` | **Waymarked trails** row, comma-separated. |
 | `peaks` | **Summits** row, comma-separated place links. |
+| `huts` | **Huts** row ("Hütten"), comma-separated place links. |
+| `regions` | **Regions** row ("Regionen"), names from `facts-strings.ts`, untranslated by the browser. |
+| `countries` | **Countries** row ("Länder"), names from `Intl.DisplayNames`. |
+| `categories` | **Categories** row ("Kategorien"). |
 | `official` | A paragraph under the rows: "**Standard route:** …" ("Normalweg"). |
 | `optional[]` | Its own heading, **Optional detours** ("Optionale Abstecher"). One line per entry: **name** (from – to) — note. |
 
@@ -866,12 +879,66 @@ an unmatched name doesn't. Detour summits belong in `optional`, not `peaks`, unl
 you want search engines to list them too (Schneefernerkopf does this for
 Issentalköpfl).
 
+#### Hub taxonomy: `regions`, `categories`, `countries`, `huts`
+
+Route-level, so they go in the sidecar. They're what the future hub pages
+(`/hikes/region/<slug>/`, …) will be built from; for now they only show in the guide.
+
+- **`regions`**: slugs from `REGIONS` in `src/lib/hikes/facts-schema.ts`. Write the
+  mountain range first, then the town, lake or valley the hike is known by. The first
+  entry is the primary region, which will drive the breadcrumb. Use the most specific
+  range you can source (Mangfall Mountains rather than Bavarian Prealps).
+
+  | Slug | English | German | Kind |
+  |---|---|---|---|
+  | `ammergau-alps` | Ammergau Alps | Ammergauer Alpen | range |
+  | `bavarian-prealps` | Bavarian Prealps | Bayerische Voralpen | range (umbrella) |
+  | `ester-mountains` | Ester Mountains | Estergebirge | range |
+  | `karwendel` | Karwendel | Karwendel | range |
+  | `mangfall-mountains` | Mangfall Mountains | Mangfallgebirge | range |
+  | `walchensee-mountains` | Walchensee Mountains | Walchenseeberge | range |
+  | `wetterstein` | Wetterstein | Wetterstein | range |
+  | `ehrwald` | Ehrwald | Ehrwald | area |
+  | `risstal` | Riss Valley | Rißtal | area |
+  | `schliersee` | Schliersee and Spitzingsee | Schliersee und Spitzingsee | area |
+  | `schwangau` | Schwangau | Schwangau | area |
+  | `tegernsee` | Tegernsee | Tegernsee | area |
+  | `walchensee` | Walchensee | Walchensee | area |
+
+  Each region also has an outline, `static/_projects/data-viz/hikes/regions/<slug>.json`
+  (GeoJSON, from OpenStreetMap), built by `scripts/region_shapes.py`; `deploy.sh` builds
+  any that are missing. The sources are in `SOURCES` in `scripts/matches/regions.py`:
+  OSM mountain-area relations for the ranges, municipality boundaries for most areas,
+  a buffered lake or valley line for `walchensee` and `risstal`, and, since OSM has no
+  outline for them, `mangfall-mountains` and `walchensee-mountains` as the Bavarian
+  Prealps east and west of the Isar (west without `ester-mountains`). A new region
+  needs an entry there too, or the script fails. `src/lib/hikes/region-overlay.ts`
+  draws them on a Leaflet map (`regionLayer(L, {slugs, kind})`); the Web map offers
+  them as optional layers.
+
+  An entry not in the table fails the build. A new region is a new slug in `REGIONS` plus its English and
+  German names in `facts-strings.ts` (a test checks both exist).
+- **`categories`**: slugs from `CATEGORIES`: `summit` (a summit is the goal),
+  `peak-bagging` (several minor tops), `ridge`, `via-ferrata`, `scramble`,
+  `high-alpine`, `glacier`, `hut` (a hut is a main waypoint), `lake`, `gorge`,
+  `waterfall`, `castle`, `multi-day`, `night`, `sunrise`. Don't repeat what's computed
+  or graded elsewhere (route type, SAC grade, car-free access).
+- **`countries`**: ISO 3166-1 alpha-2 codes in capitals; an unknown code fails the build.
+- **`huts`**: places, like `peaks`. Only mountain huts, not every Alm restaurant.
+
+```json
+"regions": ["wetterstein", "ehrwald"],
+"categories": ["summit", "via-ferrata", "high-alpine", "night", "sunrise"],
+"countries": ["AT", "DE"],
+"huts": ["Knorrhütte"]
+```
+
 **Merging (sidecar + post, §2b).**
 
 - `start`, `end`, `type`, `shade`: the post's value wins.
 - `official`: merged per language.
-- `terrain`, `trails`, `peaks`: the post's list **replaces** the sidecar's. To add one
-  summit, repeat the whole list.
+- `terrain`, `trails`, `peaks`, `regions`, `categories`, `countries`, `huts`: the
+  post's list **replaces** the sidecar's. To add one summit, repeat the whole list.
 - `optional[]`: entries are matched on `name` (its English text), or on `from` + `to`
   when there's no name. A matching post entry merges into the sidecar's; anything else
   is appended. `remove: true` drops a sidecar entry.
@@ -1136,6 +1203,7 @@ the post only for what differs on that day.
 | `images:` (`w`, `h`, `blur`, AVIF tiers) | `scripts/image_match.py` (or the web UI `image_match_web.py`), then `scripts/image_optimize.py`. |
 | `images[].lat/lon` | `image_optimize.py`, from Immich (`backfill_gps.py` for older posts). |
 | `images[].taken`, `located: track` | `backfill_time.py` (`deploy.sh` runs it). |
+| `videos:` (upload date, duration, poster) | `scripts/video_meta.py`, for every `![caption](https://www.youtube.com/watch?v=…)` embed (`deploy.sh` runs it). |
 | `demEle` (photos, nodes, sidecar facts places) | `scripts/backfill_terrain.py`. Run it after adding nodes or `{lat, lon}` facts places to a sidecar. |
 | Nodes | [Overpass turbo](https://overpass-turbo.eu/) around the route; keep the OSM shape. Then `node scripts/check-nodes.js`. |
 | Node `visited` | Your own comparison with Komoot's peak list. |
@@ -1181,6 +1249,12 @@ scripts/.venv/bin/python scripts/track_metrics.py 2026-07-19-schneefernerkopf.md
 #    photo still missing it. Re-run whenever you add nodes or facts places.
 #    Nodes are done for every *.hike.json regardless of the POST argument.
 scripts/.venv/bin/python scripts/backfill_terrain.py 2026-07-19-schneefernerkopf.md
+
+# 8. Embedded YouTube videos: upload date and duration from the watch page, title and
+#    description in English, German and Ukrainian (your YouTube translations), and the poster saved to static/images/projects/data-viz/hikes/videos/<id>.jpg
+#    with AVIF tiers. Only fills what's missing; --refresh re-fetches everything
+#    (and overwrites a hand-written description). deploy.sh runs it for every post.
+scripts/.venv/bin/python scripts/video_meta.py 2026-07-19-schneefernerkopf.md
 ```
 
 `backfill_gps.py` (photo `lat`/`lon`) and `backfill_file_size.py` were one-time

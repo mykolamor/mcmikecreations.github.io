@@ -22,6 +22,20 @@ export const CLIMB_SCALES = ['uiaa', 'french', 'yds'] as const;
 export const SNOWSHOE_GRADES = ['WT1', 'WT2', 'WT3', 'WT4', 'WT5', 'WT6'] as const;
 export const SKI_GRADES = ['L', 'WS', 'ZS', 'S', 'SS', 'AS', 'EX'] as const;
 export const ROUTE_TYPES = ['loop', 'out-and-back', 'point-to-point', 'lollipop', 'traverse'] as const;
+/**
+ * Hub taxonomy (`route.regions`, `route.categories`). A slug is a future hub
+ * URL, so a new one is added here, with its names in `facts-strings.ts`.
+ * Regions are mountain ranges and the towns or lakes hikes start from.
+ */
+export const REGIONS = [
+	'ammergau-alps', 'bavarian-prealps', 'ester-mountains', 'karwendel', 'mangfall-mountains',
+	'walchensee-mountains', 'wetterstein',
+	'ehrwald', 'risstal', 'schliersee', 'schwangau', 'tegernsee', 'walchensee'
+] as const;
+export const CATEGORIES = [
+	'summit', 'peak-bagging', 'ridge', 'via-ferrata', 'scramble', 'high-alpine', 'glacier',
+	'hut', 'lake', 'gorge', 'waterfall', 'castle', 'multi-day', 'night', 'sunrise'
+] as const;
 export const TERRAINS = [
 	'road', 'forest-road', 'path', 'meadow', 'forest', 'ski-slope',
 	'rocky', 'scree', 'boulders', 'scramble', 'ridge', 'secured',
@@ -95,7 +109,7 @@ export const SOURCE_KINDS = ['video', 'guidebook', 'website', 'map', 'forum', 'o
 /** Every enum the string table has to translate, by group name. */
 export const ENUMS = {
 	level4: LEVEL4, severity: SEVERITIES, marking: MARKINGS, ferrataScale: FERRATA_SCALES,
-	climbScale: CLIMB_SCALES, routeType: ROUTE_TYPES, terrain: TERRAINS, hazard: HAZARD_KINDS,
+	climbScale: CLIMB_SCALES, routeType: ROUTE_TYPES, region: REGIONS, category: CATEGORIES, terrain: TERRAINS, hazard: HAZARD_KINDS,
 	bailoutVia: BAILOUT_VIA, water: WATER_KINDS, reliability: RELIABILITY, signal: SIGNAL_QUALITY,
 	stop: STOP_KINDS, carFree: CAR_FREE, transport: TRANSPORT_MODES, direction: DIRECTIONS,
 	parkingSize: PARKING_SIZES, parkingFills: PARKING_FILLS, lift: LIFT_KINDS,
@@ -185,6 +199,13 @@ export interface RouteInfo {
 	shade?: Of<typeof LEVEL4>;
 	trails?: string[];
 	peaks?: Place[];
+	/** Hub membership; the first region is the primary one (the breadcrumb's). */
+	regions?: Array<Of<typeof REGIONS>>;
+	categories?: Array<Of<typeof CATEGORIES>>;
+	/** ISO 3166-1 alpha-2 codes, like `access.borders`. */
+	countries?: string[];
+	/** Huts on the route, for hut hubs. */
+	huts?: Place[];
 }
 
 export interface Navigation {

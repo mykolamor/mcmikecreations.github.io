@@ -289,7 +289,11 @@ def test_no_hardcoded_instance_address_in_the_package():
     from pathlib import Path
 
     allowed = re.compile(r"^https?://(immich\.example|localhost|127\.0\.0\.1"
-                         r"|mykolamor\.com)")
+                         r"|mykolamor\.com"
+                         # Public YouTube endpoints video_meta.py scrapes.
+                         r"|www\.youtube\.com|i\.ytimg\.com"
+                         # Nominatim, for region_shapes.py's outlines.
+                         r"|nominatim\.openstreetmap\.org)")
     url = re.compile(r"https?://[a-z0-9.-]+\.[a-z]{2,}", re.I)
     root = Path(config.__file__).resolve().parent
     offenders = []

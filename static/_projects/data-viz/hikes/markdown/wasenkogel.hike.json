@@ -302,7 +302,10 @@
       "terrain": ["forest-road", "path", "road", "forest", "overgrown"],
       "shade": "moderate",
       "trails": ["697", "699", "602", "532", "BK", "D7"],
-      "peaks": ["Wasenkogel", "Nesselscheibe", "Gefällberg", "Platten", "Hainzenhöhe", "Kaltenbrunner Eck"]
+      "peaks": ["Wasenkogel", "Nesselscheibe", "Gefällberg", "Platten", "Hainzenhöhe", "Kaltenbrunner Eck"],
+      "regions": ["mangfall-mountains", "tegernsee"],
+      "categories": ["peak-bagging"],
+      "countries": ["DE"]
     },
     "navigation": {
       "marking": "good",

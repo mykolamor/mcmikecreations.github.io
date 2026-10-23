@@ -36,6 +36,17 @@ export interface GalleryYoutube extends GalleryItemBase {
 	videoId: string;
 	/** Original watch URL, kept so a slide can still link out. */
 	href: string;
+	/** Self-hosted poster (largest AVIF tier), when scripts/video_meta.py made one; else YouTube's. */
+	poster?: string;
+	/** Smallest poster tier, for the thumbnail strip. */
+	thumb?: string;
+	placeholder?: string;
+	/** From the post's `videos` front matter, for the VideoObject structured data; `description` is the English one. */
+	uploadDate?: string;
+	duration?: string;
+	description?: string;
+	/** Not public; the link still renders, but no structured data. */
+	unavailable?: boolean;
 }
 
 export type GalleryItem = GalleryImage | GalleryVideo | GalleryYoutube;

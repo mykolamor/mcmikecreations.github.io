@@ -316,7 +316,11 @@
       "terrain": ["forest-road", "meadow", "path", "mud"],
       "shade": "low",
       "trails": ["232", "R42"],
-      "peaks": ["Ladizköpfl", "Mahnkopf"]
+      "peaks": ["Ladizköpfl", "Mahnkopf"],
+      "regions": ["karwendel", "risstal"],
+      "categories": ["summit", "hut"],
+      "countries": ["AT"],
+      "huts": ["Falkenhütte"]
     },
     "navigation": {
       "marking": "good",

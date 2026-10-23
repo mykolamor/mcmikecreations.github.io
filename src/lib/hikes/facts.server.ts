@@ -37,6 +37,8 @@ type Spec =
 	| { t: 'month' }
 	| { t: 'enum'; of: readonly (string | number)[]; labelled?: boolean }
 	| { t: 'sac' }
+	/** An ISO 3166-1 alpha-2 country code, `DE`. */
+	| { t: 'country' }
 	| { t: 'text' }
 	/** A Place: a node name, `km 7.5`, `{node}`, `{km}` or `{lat, lon}`. Warns when unresolved. */
 	| { t: 'place' }
@@ -110,7 +112,11 @@ const FACTS = obj({
 		terrain: list(e('terrain')),
 		shade: e('level4'),
 		trails: list(str),
-		peaks: list(place)
+		peaks: list(place),
+		regions: list(e('region')),
+		categories: list(e('category')),
+		countries: list({ t: 'country' }),
+		huts: list(place)
 	}),
 	navigation: obj({
 		marking: e('marking'),
@@ -255,6 +261,9 @@ type RawPlace =
 
 class FactsError extends Error {}
 
+/** Echoes an unknown code back, which is how `country` spots one. */
+const REGION_NAMES = new Intl.DisplayNames(['en'], { type: 'region', fallback: 'code' });
+
 function fail(ctx: Ctx, path: string, problem: string): never {
 	throw new FactsError(`Hike facts in ${ctx.source}: ${path}: ${problem}`);
 }
@@ -373,6 +382,11 @@ function validate(ctx: Ctx, spec: Spec, v: unknown, path: string): unknown {
 				fail(ctx, path, 'expected an SAC grade, T1–T6 with an optional + or -, or an easier–harder range like T1-T2');
 			}
 			return normaliseSac(v);
+		case 'country':
+			if (typeof v !== 'string' || !/^[A-Z]{2}$/.test(v) || REGION_NAMES.of(v) === v) {
+				fail(ctx, path, 'expected an ISO 3166-1 alpha-2 country code, like "DE"');
+			}
+			return v;
 		case 'text':
 			return readText(ctx, v, path);
 		case 'place':

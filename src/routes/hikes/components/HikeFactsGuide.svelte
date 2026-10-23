@@ -7,7 +7,7 @@
 	} from 'flowbite-svelte-icons';
 	import { textIn, GEAR_NEED, type HikeAuthoredFacts, type Lang, type Text } from '$lib/hikes/facts-schema';
 	import {
-		enumLabel, formatChecked, formatClimb, formatFerrata, formatGrades, formatMinutes, formatMonths,
+		countryName, enumLabel, formatChecked, formatClimb, formatFerrata, formatGrades, formatMinutes, formatMonths,
 		formatPrices, formatWater, formatWindow, label
 	} from '$lib/hikes/facts-format';
 	import { getDistance } from '$lib/hikes/build-statistics';
@@ -90,6 +90,13 @@
 					<dt class={dt}>{label(lang, 'peaks')}</dt>
 					<dd>{#each r.peaks as peak, i}{i > 0 ? ', ' : ''}<FactsPlace place={peak} {lang} />{/each}</dd>
 				{/if}
+				{#if r?.huts?.length}
+					<dt class={dt}>{label(lang, 'huts')}</dt>
+					<dd>{#each r.huts as hut, i}{i > 0 ? ', ' : ''}<FactsPlace place={hut} {lang} />{/each}</dd>
+				{/if}
+				{#if r?.regions?.length}<dt class={dt}>{label(lang, 'regions')}</dt><dd translate="no">{r.regions.map((x) => enumLabel(lang, 'region', x)).join(', ')}</dd>{/if}
+				{#if r?.countries?.length}<dt class={dt}>{label(lang, 'countries')}</dt><dd>{r.countries.map((x) => countryName(lang, x)).join(', ')}</dd>{/if}
+				{#if r?.categories?.length}<dt class={dt}>{label(lang, 'categories')}</dt><dd>{r.categories.map((x) => enumLabel(lang, 'category', x)).join(', ')}</dd>{/if}
 				{#if facts.navigation?.marking || facts.navigation?.note || facts.navigation?.offline}
 					<dt class={dt}>{label(lang, 'marking')}</dt>
 					<dd>

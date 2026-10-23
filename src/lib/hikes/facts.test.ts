@@ -177,6 +177,18 @@ test('drones and protected areas are free text', () => {
 	assert.deepEqual(facts!.protectedAreas, { en: 'NSG Reintal' });
 });
 
+test('hub taxonomy: regions and categories are enums, countries ISO codes, huts places; a post list replaces', () => {
+	const side = { route: { regions: ['wetterstein', 'ehrwald'], categories: ['summit'], countries: ['AT', 'DE'], huts: ['Knorrhütte'] } };
+	const { facts } = read({ route: { categories: ['via-ferrata'] } }, side);
+	assert.deepEqual(facts!.route!.regions, ['wetterstein', 'ehrwald']);
+	assert.deepEqual(facts!.route!.categories, ['via-ferrata']);
+	assert.deepEqual(facts!.route!.countries, ['AT', 'DE']);
+	assert.equal(facts!.route!.huts![0].node, 1);
+	assert.throws(() => read({ route: { regions: ['atlantis'] } }), /route\.regions\[0\].*unknown value/);
+	assert.throws(() => read({ route: { countries: ['de'] } }), /route\.countries\[0\].*ISO/);
+	assert.throws(() => read({ route: { countries: ['XX'] } }), /route\.countries\[0\].*ISO/);
+});
+
 test('a bailout route is read from its GPX and summarised', () => {
 	const { facts } = read({ bailouts: [{ at: 'Knorrhütte', route: '/gpx/out.gpx' }] });
 	const r = facts!.bailouts![0].route!;

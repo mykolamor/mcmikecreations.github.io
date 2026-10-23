@@ -9,6 +9,7 @@ import HikesTimeline from './HikesTimeline.svelte';
 import { primaryGeometryColor } from '$lib/hikes/build-geometry';
 import { type MapDate } from '$lib/data/map-info';
 import { getNodeIconDetails, formatTags } from '$lib/hikes/map-utils';
+import { addRegionPane, regionLayer, type RegionKind } from '$lib/hikes/region-overlay';
 import { onMount } from 'svelte';
 
 type WeekHike = { name: string; route: string; hasBlog: boolean };
@@ -389,6 +390,27 @@ async function startLoading() {
     };
 
     info.addTo(map);
+
+    // Optional region outlines, off until switched on; each kind is fetched the first time.
+    const regionPane = addRegionPane(map);
+    const regionGroups: Record<RegionKind, any> = { range: L.layerGroup(), area: L.layerGroup() };
+    const regionsLoaded = new Set<RegionKind>();
+    L.control.layers(undefined, {
+        'Mountain ranges': regionGroups.range,
+        'Hike areas': regionGroups.area,
+    }, { position: 'topright' }).addTo(map);
+    map.on('overlayadd', async (e: any) => {
+        const kind = (Object.keys(regionGroups) as RegionKind[]).find((k) => regionGroups[k] === e.layer);
+        if (!kind || regionsLoaded.has(kind)) return;
+        regionsLoaded.add(kind);
+        try {
+            regionGroups[kind].addLayer(await regionLayer(L, { kind, pane: regionPane }));
+        } catch (ex) {
+            regionsLoaded.delete(kind);
+            console.warn('Region outlines failed to load', ex);
+        }
+    });
+
     isLoading = false;
 }
 

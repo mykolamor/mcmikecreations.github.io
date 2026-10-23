@@ -256,7 +256,7 @@
 								aria-label={`Watch ${item.alt || 'video'} on YouTube (opens in a new tab)`}
 							>
 								<img
-									src={`https://img.youtube.com/vi/${item.videoId}/maxresdefault.jpg`}
+									src={item.poster ?? `https://img.youtube.com/vi/${item.videoId}/maxresdefault.jpg`}
 									alt=""
 									class="mg-media"
 									loading="lazy"
@@ -297,7 +297,7 @@
 									<svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.5 4.5v15L18.5 12 5.5 4.5Z" /></svg>
 								</span>
 							{:else}
-								<img src={`https://img.youtube.com/vi/${item.videoId}/mqdefault.jpg`} alt="" loading="lazy" />
+								<img src={item.thumb ?? `https://img.youtube.com/vi/${item.videoId}/mqdefault.jpg`} alt="" loading="lazy" />
 								<span class="mg-thumb-badge" aria-hidden="true">
 									<svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.5 4.5v15L18.5 12 5.5 4.5Z" /></svg>
 								</span>

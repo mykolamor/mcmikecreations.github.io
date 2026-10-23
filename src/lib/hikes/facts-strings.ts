@@ -57,6 +57,10 @@ const en = {
 		shade: 'Shade',
 		trails: 'Waymarked trails',
 		peaks: 'Summits',
+		regions: 'Regions',
+		categories: 'Categories',
+		countries: 'Countries',
+		huts: 'Huts',
 		navigation: 'Navigation',
 		marking: 'Waymarking',
 		offline: 'Carry an offline map.',
@@ -139,6 +143,19 @@ const en = {
 		routeType: {
 			loop: 'Loop', 'out-and-back': 'Out and back', 'point-to-point': 'Point to point',
 			lollipop: 'Lollipop', traverse: 'Traverse'
+		},
+		region: {
+			'ammergau-alps': 'Ammergau Alps', 'bavarian-prealps': 'Bavarian Prealps', 'ester-mountains': 'Ester Mountains',
+			karwendel: 'Karwendel', 'walchensee-mountains': 'Walchensee Mountains',
+			'mangfall-mountains': 'Mangfall Mountains', wetterstein: 'Wetterstein',
+			ehrwald: 'Ehrwald', risstal: 'Riss Valley', schliersee: 'Schliersee and Spitzingsee',
+			schwangau: 'Schwangau', tegernsee: 'Tegernsee', walchensee: 'Walchensee'
+		},
+		category: {
+			summit: 'Summit', 'peak-bagging': 'Peak bagging', ridge: 'Ridge', 'via-ferrata': 'Via ferrata',
+			scramble: 'Scramble', 'high-alpine': 'High alpine', glacier: 'Glacier', hut: 'Hut hike',
+			lake: 'Lake', gorge: 'Gorge', waterfall: 'Waterfall', castle: 'Castle', 'multi-day': 'Multi-day',
+			night: 'Night hike', sunrise: 'Sunrise'
 		},
 		terrain: {
 			road: 'road', 'forest-road': 'forest road', path: 'path', meadow: 'meadow', forest: 'forest',
@@ -285,6 +302,10 @@ const de: Strings = {
 		shade: 'Schatten',
 		trails: 'Markierte Wege',
 		peaks: 'Gipfel',
+		regions: 'Regionen',
+		categories: 'Kategorien',
+		countries: 'Länder',
+		huts: 'Hütten',
 		navigation: 'Orientierung',
 		marking: 'Markierung',
 		offline: 'Eine Offline-Karte mitnehmen.',
@@ -367,6 +388,19 @@ const de: Strings = {
 		routeType: {
 			loop: 'Rundtour', 'out-and-back': 'Hin und zurück', 'point-to-point': 'Streckentour',
 			lollipop: 'Lasso-Tour', traverse: 'Überschreitung'
+		},
+		region: {
+			'ammergau-alps': 'Ammergauer Alpen', 'bavarian-prealps': 'Bayerische Voralpen', 'ester-mountains': 'Estergebirge',
+			karwendel: 'Karwendel', 'walchensee-mountains': 'Walchenseeberge',
+			'mangfall-mountains': 'Mangfallgebirge', wetterstein: 'Wetterstein',
+			ehrwald: 'Ehrwald', risstal: 'Rißtal', schliersee: 'Schliersee und Spitzingsee',
+			schwangau: 'Schwangau', tegernsee: 'Tegernsee', walchensee: 'Walchensee'
+		},
+		category: {
+			summit: 'Gipfeltour', 'peak-bagging': 'Gipfelsammeln', ridge: 'Grat', 'via-ferrata': 'Klettersteig',
+			scramble: 'Kraxelei', 'high-alpine': 'Hochalpin', glacier: 'Gletscher', hut: 'Hüttentour',
+			lake: 'See', gorge: 'Schlucht', waterfall: 'Wasserfall', castle: 'Schloss', 'multi-day': 'Mehrtagestour',
+			night: 'Nachtwanderung', sunrise: 'Sonnenaufgang'
 		},
 		terrain: {
 			road: 'Straße', 'forest-road': 'Forststraße', path: 'Pfad', meadow: 'Wiese', forest: 'Wald',

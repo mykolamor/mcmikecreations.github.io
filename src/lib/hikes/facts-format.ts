@@ -23,6 +23,11 @@ export function enumLabel(lang: Lang, group: EnumGroup, value: string | number, 
 	return names?.[String(value)] ?? String(value);
 }
 
+/** An ISO country code's name, `DE` -> `Germany`. */
+export function countryName(lang: Lang, code: string): string {
+	return new Intl.DisplayNames([lang], { type: 'region', fallback: 'code' }).of(code) ?? code;
+}
+
 export function monthName(lang: Lang, month: number): string {
 	return FACTS_STRINGS[lang].months[month - 1] ?? String(month);
 }

@@ -119,6 +119,9 @@ RAW_EXTENSIONS = frozenset({
 # to match against Immich. They get their own kind and status rather than being
 # lumped in with local videos.
 YOUTUBE_HOSTS = ("youtube.com", "youtu.be")
+# Self-hosted YouTube posters, `<video id>.jpg` plus AVIF tiers, under the
+# static root. Shared by every post embedding the video (see video_meta.py).
+VIDEO_POSTERS_SUBDIR = "images/projects/data-viz/hikes/videos"
 
 # --- AVIF/LQIP generation ---------------------------------------------------
 # Target long edge (larger of width/height) per tier, not target width — a
