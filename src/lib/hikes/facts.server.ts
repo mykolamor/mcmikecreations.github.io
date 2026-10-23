@@ -784,6 +784,13 @@ export function readHikeFacts(input: ReadFactsInput): ReadFactsResult {
 		b.route = route;
 	}
 
+	// Mirrors are my own uploads on other platforms; every one of them serves https.
+	for (const [i, src] of (merged.sources ?? []).entries()) {
+		if (src.kind === 'mirror' && !/^https:\/\//.test(src.url)) {
+			throw new FactsError(`Hike facts: sources[${i}].url: a mirror needs an https URL, got "${src.url}"`);
+		}
+	}
+
 	merged.bailouts = byKm(merged.bailouts);
 	merged.water = byKm(merged.water);
 	if (!merged.bailouts) delete merged.bailouts;

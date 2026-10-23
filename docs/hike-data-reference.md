@@ -305,7 +305,7 @@ story, **G** = guide below the story, **C** = elevation charts, **M** = 2D and 3
 | `plan.variants[]` | `name`, `summary`, `distance`, `ascent`, `descent`, `duration`, `sac`, `viaFerrata`, `link`, `recommended`, `note` | G | `link`: a post slug or URL. |
 | `plan.timing` | `start`, `turnaround`, `sunrise {start, note}`, `note` | G | Quoted `"HH:MM"` times. `start`: latest sensible start. `turnaround`: the time to give up and head back if you haven't reached the top, wherever you are (shown as "Turn around by" / "Umkehrzeit"). Set it so you're off exposed ground before afternoon storms or dark; say why in `note`. |
 | `plan.alternatives` | `easier`, `harder`, `similar`: lists of post slugs | G | Shown with the posts' titles. |
-| `sources[]` | `title`, `url`, `kind`, `lang`, `note` | G | |
+| `sources[]` | `title`, `url`, `kind`, `lang`, `note` | G | `kind: mirror` marks my own copy of the hike on another platform (a Komoot tour, a Strava activity). Mirrors need an `https` URL and show in an "Also on" row instead of the Sources list, named and iconed by URL host, so `title` can just be the platform ("Komoot"). Mirrors are uploads of one day's recording, so they go in the post; its sources merge with the sidecar's by `url`. |
 | `hidden` | true/false | none | **Post only.** `true` switches the whole layer off, sidecar included, unread. |
 
 The full enum lists (every hazard kind, gear item and so on) are in
@@ -898,6 +898,7 @@ Route-level, so they go in the sidecar. They're what the future hub pages
   | `mangfall-mountains` | Mangfall Mountains | Mangfallgebirge | range |
   | `walchensee-mountains` | Walchensee Mountains | Walchenseeberge | range |
   | `wetterstein` | Wetterstein | Wetterstein | range |
+  | `ammertal` | Ammer Valley | Ammertal | area |
   | `ehrwald` | Ehrwald | Ehrwald | area |
   | `risstal` | Riss Valley | Rißtal | area |
   | `schliersee` | Schliersee and Spitzingsee | Schliersee und Spitzingsee | area |

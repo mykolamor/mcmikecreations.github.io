@@ -33,6 +33,10 @@ images:
   2026-09-20-20.jpg: {w: 8160, h: 6120, lat: 47.669854, lon: 11.855539, demEle: 1351.5, taken: '2026-09-20T15:17:00+02:00', blur: 'data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAADwBACdASoYABIAPtFcqE4oJSQiKAqpABoJQBXDgUeq1yuHTteCeMV8j8wzwzW3BJAA/lP+9bbxVT9WrehSSvKJaAObGuctuEZwji1vLqi3Ts+nTVMJW1MPHSuziZrRtqbgYCG5b4osr1kItZDyTi0QUWSuwYNGqc6K3a+g1mfOvDrda/hi+1wGfRKeF3paCnkvdtJYkJn3VjONZL3gT8QYwgAAAA=='}
   2026-09-20-21.jpg: {w: 4080, h: 3060, lat: 47.667736, lon: 11.850699, demEle: 1317.5, taken: '2026-09-20T15:40:23+02:00', blur: 'data:image/webp;base64,UklGRtgAAABXRUJQVlA4IMwAAAAQBQCdASoYABIAPtFap04oJKOiKAqpABoJQBf9sYEOF1bnCXcCkjoPek1AyTBLjIAAAM2d7+tKZOH1LtwIUN+owjzDo3uouVT3xyXfqUERYq5FOxKx1nPnyI0yIymLzl/16esnGC6Ziy1ZPnMVgBNhD314AvXTKY5+a8gAlaEa0LnqIg5VsWIOI7zgZ0QZAM+Ssqz6+htElk1jZTWWBY6MYGuSs6zpwyxQ18qH72DgaKZMkoC498Qt5ks6zF354zBX3kqE48KZiChMgAA='}
   2026-09-20-22.jpg: {w: 4080, h: 3060, lat: 47.661034, lon: 11.88619, demEle: 1086.9, taken: '2026-09-20T17:19:22+02:00', blur: 'data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAACwBACdASoYABIAPtFYo0uoJSMhsAgBABoJZwC06CHero+SaBUrfPbZ5Z2yse+AAP7tTbpdD9+AcPsgn04O4G2hRtpWcGNSmh4qgUH5zPgkqFPh1bEyPnyHHf6/3wRYkKq7ECY1YGy3Ens5MKjZdgb7AAA='}
+facts:
+  sources:
+    - {title: Komoot, url: 'https://www.komoot.com/tour/3296818242', kind: mirror}
+    - {title: Strava, url: 'https://www.strava.com/activities/20256197170', kind: mirror}
 ---
 With my tooth feeling a bit better after the surgery, and having the
 [Walchensee round trip](/hikes/2026-09-13-fischberg/) under my belt, I was

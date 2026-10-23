@@ -26,6 +26,10 @@ images:
   2026-09-06-11.jpg: {w: 4080, h: 3060, lat: 47.571166, lon: 11.09979, demEle: 915.6, taken: '2026-09-06T17:41:07+02:00', blur: 'data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAAAQBQCdASoYABIAPtFWo0uoJKMhsAgBABoJQBdgBAqZlReMIX5y1lpxMZaIJzej/segAP6ChMxSgkjCAsZt7Kd6AyhSbQxY5wFjT3Owo1Nk/HUe1TLXKrFkro3BCuLu0E1QtTnC6nP58MEp+NTN2NQUqcdGOZ7Xrvw2P+eyRB0x1iwapf6RQROJoAAAAA=='}
   2026-09-06-12.jpg: {w: 4080, h: 3060, lat: 47.568427, lon: 11.094109, demEle: 877.0, taken: '2026-09-06T18:03:54+02:00', blur: 'data:image/webp;base64,UklGRtwAAABXRUJQVlA4INAAAABQBQCdASoYABIAPtFcpk4oJSOiKAqpABoJZACdL9ZJhAvVJ7nXG9oQJyEBc2x+SuMbqYAA/b4ALAeGfggTuLZuRtyzRlpldSDQrx/jZFtpJ/qsAQQTCbS65CkKszZQNFtBuoJV0tuZvVIdpi28wbkeF5VBlC84Hqnd4gWYzHD8hteUpFOIPt08SabQ6ah/R/Cn7BC3x8svpV9Wniv9Avc8yE8qJJxJzg3/3ihy4Ju1Yw0ZtZxzzH+twP0owmF5im7lk8JK1cl0eZNLlN4qAAAA'}
   2026-09-06-13.jpg: {w: 3072, h: 1728, taken: '2026-09-06T18:45:38+02:00', blur: 'data:image/webp;base64,UklGRqYAAABXRUJQVlA4IJoAAADQAwCdASoYAA4APtFUo0uoJKMhsAgBABoJQBOkGxBY4TEg/RCSUdAA/uoXOFYUHebD1nh6YXKhP1UVFtTTUDMkY4DMyL1yH562OGoOCWxYJcV49RHaxgXgfEhKNbYAr76NgOyFFrjR1J1zLyPsLU9tveHJdh0xFzdNnsrf83VYoiROsfly7RRRV2M6SjxcioWoJCYjnhZL1gAA'}
+facts:
+  sources:
+    - {title: Komoot, url: 'https://www.komoot.com/tour/3263464799', kind: mirror}
+    - {title: Strava, url: 'https://www.strava.com/activities/20064365847', kind: mirror}
 ---
 After a short discussion with David from my [Laubeneck (1758 m) hike](/hikes/2026-07-26-laubeneck/),
 we decided to go for a chill hike with some nice views and around

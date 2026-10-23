@@ -119,6 +119,7 @@ const en = {
 		harder: 'Harder',
 		similar: 'Similar',
 		sources: 'Sources',
+		alsoOn: 'Also on',
 		checked: 'checked',
 		free: 'free',
 		change: 'change',
@@ -148,7 +149,7 @@ const en = {
 			'ammergau-alps': 'Ammergau Alps', 'bavarian-prealps': 'Bavarian Prealps', 'ester-mountains': 'Ester Mountains',
 			karwendel: 'Karwendel', 'walchensee-mountains': 'Walchensee Mountains',
 			'mangfall-mountains': 'Mangfall Mountains', wetterstein: 'Wetterstein',
-			ehrwald: 'Ehrwald', risstal: 'Riss Valley', schliersee: 'Schliersee and Spitzingsee',
+			ammertal: 'Ammer Valley', ehrwald: 'Ehrwald', risstal: 'Riss Valley', schliersee: 'Schliersee and Spitzingsee',
 			schwangau: 'Schwangau', tegernsee: 'Tegernsee', walchensee: 'Walchensee'
 		},
 		category: {
@@ -245,7 +246,7 @@ const en = {
 		},
 		source: {
 			video: 'video', guidebook: 'guidebook', website: 'website', map: 'map', forum: 'forum',
-			official: 'official', weather: 'weather'
+			official: 'official', weather: 'weather', mirror: 'mirror'
 		}
 	}
 };
@@ -364,6 +365,7 @@ const de: Strings = {
 		harder: 'Schwerer',
 		similar: 'Ähnlich',
 		sources: 'Quellen',
+		alsoOn: 'Auch auf',
 		checked: 'Stand',
 		free: 'kostenlos',
 		change: 'Umstieg',
@@ -393,7 +395,7 @@ const de: Strings = {
 			'ammergau-alps': 'Ammergauer Alpen', 'bavarian-prealps': 'Bayerische Voralpen', 'ester-mountains': 'Estergebirge',
 			karwendel: 'Karwendel', 'walchensee-mountains': 'Walchenseeberge',
 			'mangfall-mountains': 'Mangfallgebirge', wetterstein: 'Wetterstein',
-			ehrwald: 'Ehrwald', risstal: 'Rißtal', schliersee: 'Schliersee und Spitzingsee',
+			ammertal: 'Ammertal', ehrwald: 'Ehrwald', risstal: 'Rißtal', schliersee: 'Schliersee und Spitzingsee',
 			schwangau: 'Schwangau', tegernsee: 'Tegernsee', walchensee: 'Walchensee'
 		},
 		category: {
@@ -491,7 +493,7 @@ const de: Strings = {
 		},
 		source: {
 			video: 'Video', guidebook: 'Führer', website: 'Website', map: 'Karte', forum: 'Forum',
-			official: 'offiziell', weather: 'Wetter'
+			official: 'offiziell', weather: 'Wetter', mirror: 'Kopie'
 		}
 	}
 };

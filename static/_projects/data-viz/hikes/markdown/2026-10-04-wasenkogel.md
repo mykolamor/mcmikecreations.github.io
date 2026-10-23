@@ -38,6 +38,10 @@ images:
   2026-10-04-25.jpg: {w: 8160, h: 6120, lat: 47.745145, lon: 11.713855, demEle: 843.1, taken: '2026-10-04T18:47:18+02:00', blur: 'data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAQBACdASoYABIAPtFYpk0oJKOiMBgIAQAaCWUAtOgOmg1AqfHcpsLugAD+m30/H6mIHFY1P57sTke2enmuXay3xkjbI4UiLFs48WKb350FtDi6i3sfkHf/1+zyRATDEyS4/vspYaCpTCUaXFLdE0Z+UpaHIAW0AAA='}
   2026-10-04-26.jpg: {w: 8160, h: 6120, lat: 47.750188, lon: 11.719324, demEle: 822.3, taken: '2026-10-04T18:58:58+02:00', blur: 'data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAwBQCdASoYABIAPtFcpU0oJSOiMBgIAQAaCWcAz2QQ3eS8PiSIEXDmNZoKn//xa+50AAD+9CnCtpcuER2YcIE63cAIJzBkkeaSVxczbHjYUdHj4KR/CBKExhYCynAAh2OSb5uHu2OainDfJBYcKlioU4AAAA=='}
   2026-10-04-27.jpg: {w: 8160, h: 6120, lat: 47.747854, lon: 11.717783, demEle: 854.0, taken: '2026-10-04T18:55:14+02:00', blur: 'data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAADQBACdASoYABIAPtFgqE+oJSOiKAgBABoJZwDHNagA0F8XR9TtuUVTHtmaPkxMAAD+7Md958its+PifoX4MdXLOw6r1h8+SVWiIM7QWkDm7w/2oPgtoNbixwe/YlKjjDFxvwWqe1pB7QZpv3yM/cpGrKppVTs1v+HsrI5VwuvvZKI13ecY2Fk7uOoooAAA'}
+facts:
+  sources:
+    - {title: Komoot, url: 'https://www.komoot.com/tour/3329931281', kind: mirror}
+    - {title: Strava, url: 'https://www.strava.com/activities/20451495844', kind: mirror}
 ---
 After coming to the office for a normal 9-5 after our hike to the
 [Tegelbergsteig via ferrata](/hikes/2026-09-27-tegelbergsteig/), David fell

@@ -142,3 +142,30 @@ export function formatBailoutWhere(lang: Lang, b: Bailout): string[] {
 export function formatWater(lang: Lang, w: WaterSource): string[] {
 	return [w.kind ? enumLabel(lang, 'water', w.kind) : '', w.reliable ? enumLabel(lang, 'reliability', w.reliable) : '', w.treat ? label(lang, 'treat') : ''].filter(Boolean);
 }
+
+/** Hosts of the platforms a `mirror` source can point to, by registrable domain. */
+const MIRROR_PLATFORMS: Record<string, string> = {
+	'komoot.com': 'Komoot', 'komoot.de': 'Komoot',
+	'strava.com': 'Strava',
+	'alltrails.com': 'AllTrails',
+	'outdooractive.com': 'Outdooractive',
+	'bergfex.at': 'Bergfex', 'bergfex.com': 'Bergfex', 'bergfex.de': 'Bergfex',
+	'garmin.com': 'Garmin Connect',
+	'wikiloc.com': 'Wikiloc'
+};
+
+/** A mirror URL's platform name, `https://www.komoot.com/tour/1` -> `Komoot`; undefined for unknown hosts. */
+export function mirrorPlatform(url: string): string | undefined {
+	let host: string;
+	try {
+		host = new URL(url).hostname.toLowerCase();
+	} catch {
+		return undefined;
+	}
+	const parts = host.split('.');
+	for (let i = 0; i < parts.length - 1; i++) {
+		const name = MIRROR_PLATFORMS[parts.slice(i).join('.')];
+		if (name) return name;
+	}
+	return undefined;
+}

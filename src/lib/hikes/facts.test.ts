@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { parseGpxPoints, readHikeFacts, summariseGpxRoute, type ReadFactsInput } from './facts.server';
 import { ENUMS, LANGS, sacRank } from './facts-schema';
 import { FACTS_STRINGS } from './facts-strings';
+import { mirrorPlatform } from './facts-format';
 
 // A straight route north along lon 11.0: 11 points ~1.11 km apart, climbing 100 m each.
 const COORDS = Array.from({ length: 11 }, (_, i) => [11.0, 47.0 + i * 0.01, 1000 + i * 100]);
@@ -242,4 +243,47 @@ test('every enum value has a label in every language', () => {
 			assert.ok((FACTS_STRINGS[lang].labels as Record<string, string>)[key], `${lang}: labels.${key}`);
 		}
 	}
+});
+
+test('a mirror source needs an https URL', () => {
+	const ok = read({ sources: [{ title: 'Komoot', url: 'https://www.komoot.com/tour/1', kind: 'mirror' }] });
+	assert.equal(ok.facts!.sources![0].kind, 'mirror');
+	assert.throws(
+		() => read({ sources: [{ title: 'Komoot', url: 'http://www.komoot.com/tour/1', kind: 'mirror' }] }),
+		/sources\[0\]\.url: a mirror needs an https URL/
+	);
+	// Other kinds keep accepting plain http.
+	assert.doesNotThrow(() => read({ sources: [{ title: 'Hut', url: 'http://hut.example', kind: 'official' }] }));
+});
+
+test('mirror platforms come from the URL host', () => {
+	assert.equal(mirrorPlatform('https://www.komoot.com/tour/3342722659'), 'Komoot');
+	assert.equal(mirrorPlatform('https://komoot.de/tour/1'), 'Komoot');
+	assert.equal(mirrorPlatform('https://www.strava.com/activities/1'), 'Strava');
+	assert.equal(mirrorPlatform('https://example.org/route'), undefined);
+	assert.equal(mirrorPlatform('not a url'), undefined);
+});
+
+test('post sources merge into the sidecar sources by url', () => {
+	const { facts } = read(
+		{
+			sources: [
+				{ title: 'Strava', url: 'https://www.strava.com/activities/1', kind: 'mirror' },
+				{ title: 'Hut', url: 'https://hut.example', note: 'Closed Mondays.' }
+			]
+		},
+		{
+			sources: [
+				{ title: 'Hut', url: 'https://hut.example', kind: 'official' },
+				{ title: 'Guide', url: 'https://guide.example', kind: 'guidebook' }
+			]
+		}
+	);
+	assert.deepEqual(
+		facts!.sources!.map((s) => s.url),
+		['https://hut.example', 'https://guide.example', 'https://www.strava.com/activities/1']
+	);
+	// A matching url merges field by field instead of replacing the sidecar's entry.
+	assert.equal(facts!.sources![0].kind, 'official');
+	assert.deepEqual(facts!.sources![0].note, { en: 'Closed Mondays.' });
 });

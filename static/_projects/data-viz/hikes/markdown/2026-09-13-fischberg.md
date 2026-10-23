@@ -27,6 +27,10 @@ images:
   2026-09-13-14.jpg: {w: 8160, h: 6120, lat: 47.584836, lon: 11.393924, demEle: 809.7, taken: '2026-09-13T15:29:52+02:00', blur: 'data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAABQBQCdASoYABIAPtFgqE+oJSOiKAgBABoJYwC/a1XBA44+PEpwzeVVPLnBCLe0cMH4l0AA/toSah0r74iHOAilp4UdX5U+OeEhMGi5wHXx6N/vFc32/XI2qY1w3GmzIcG1oAzpAz4pDPeo19kkzaHeIAExwC1ATPUXTfKAmgVVl459gJ872yrTqH1LndtIsgq8Ut5/cKf1aJxwb6e39NhxHHNgnxA+AAA='}
   2026-09-13-15.jpg: {w: 4080, h: 3060, lat: 47.584166, lon: 11.392957, demEle: 805.4, taken: '2026-09-13T15:31:58+02:00', blur: 'data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAADwBACdASoYABIAPtFgqU+oJSOiKAgBABoJQBbdF6ApuuOVazkXOivMpEjkFeNDFgAA/PuFACfVyiURfg37jgDD3L66GCG9Y8A1k8F83FLwpr0hrh0OFdigVSskZfRPMKys5yNNbczkmqUsVqA36uZFCluv7kyf2jSO6Jj0GpLfAqtRu9ItjEAy82qxGTPALNcYvKVebttCDwe0Qy8CBt7VoM6jgwA2wKyBBCM6AAA='}
   2026-09-13-16.jpg: {w: 4476, h: 3356, lat: 47.570199, lon: 11.318043, demEle: 819.7, taken: '2026-09-13T17:30:13+02:00', blur: 'data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAABQBACdASoYABIAPtFWpk0oJCOiMBgIAQAaCWcAv+wR/8Hhe1q5atP8E98AAP7tfU6k9nZie3XSZYsZ84Z2MJXiNfmCkfvMQSQPEyFq2y9l++KW5e30EfvSNC2bFKWxsVYH9yuN40XahePPNekCoU9BdWf5QMBUAAA='}
+facts:
+  sources:
+    - {title: Komoot, url: 'https://www.komoot.com/tour/3280669808', kind: mirror}
+    - {title: Strava, url: 'https://www.strava.com/activities/20161460381', kind: mirror}
 ---
 After my blackberry-rich hike with David, he messaged me for a new trip.
 In-between, I had a tooth removed for an implant, so I couldn't do proper

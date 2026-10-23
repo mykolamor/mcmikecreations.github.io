@@ -10,6 +10,16 @@
 		]
 	},
 	{
+		"slug": "ammertal",
+		"kind": "area",
+		"bbox": [
+			10.95195,
+			47.55928,
+			11.12475,
+			47.64336
+		]
+	},
+	{
 		"slug": "bavarian-prealps",
 		"kind": "range",
 		"bbox": [

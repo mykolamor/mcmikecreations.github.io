@@ -52,6 +52,469 @@
         "summit:register": "yes",
         "wikidata": "Q31543959"
       }
+    },
+    {
+      "id": 56072725,
+      "lat": 47.5592776,
+      "lon": 11.1388804,
+      "demEle": 653.9,
+      "tags": {
+        "access": "yes",
+        "amenity": "parking",
+        "fee": "no",
+        "parking": "surface"
+      }
+    },
+    {
+      "id": 5037526152,
+      "lat": 47.5799654,
+      "lon": 11.1150155,
+      "demEle": 1329.6,
+      "tags": {
+        "drinking_water": "yes",
+        "amenity": "drinking_water"
+      }
     }
-  ]
+  ],
+  "facts": {
+    "summary": {
+      "en": "A medium point-to-point from Oberau to Ettal across the lesser-known Laber sub-peaks.",
+      "de": "Eine mittelschwere Punkt-zu-Punkt-Tour von Oberau nach Ettal über die weniger bekannten Laber-Nebenberge."
+    },
+    "difficulty": {
+      "note": {
+        "en": "T4 for the steep descent from Großer Laber; everything else is T2.",
+        "de": "T4 für den steilen Abstieg vom Großen Laber; alles andere ist T2."
+      },
+      "sections": [
+        {
+          "from": "Großer Laber",
+          "to": {
+            "lat": 47.5802789,
+            "lon": 11.1168166,
+            "demEle": 1350.9,
+            "name": {
+              "en": "Meadow",
+              "de": "Wiese"
+            }
+          },
+          "sac": "T4",
+          "note": {
+            "en": "The trail on the steep slope is barely visible, but the descent is laregely safe.",
+            "de": "Der Weg am steilen Hang ist kaum sichtbar, aber der Abstieg ist weitgehend ungefährlich."
+          }
+        }
+      ],
+      "exposure": {
+        "level": "low",
+        "note": {
+          "en": "Most of the hike happens in the forest.",
+          "de": "Die meiste Zeit der Wanderung verläuft im Wald."
+        }
+      },
+      "fitness": 3
+    },
+    "season": {
+      "best": [5, 6, 7, 8, 9],
+      "possible": [4, 10],
+      "note": {
+        "en": "The T4 section gets slippery in colder seasons.",
+        "de": "Der T4-Abschnitt wird in kälteren Jahreszeiten rutschig."
+      }
+    },
+    "route": {
+      "start": {
+        "name": {
+          "en": "Oberau train station",
+          "de": "Bahnhof Oberau"
+        },
+        "at": {
+          "lat": 47.5596144,
+          "lon": 11.1393003,
+          "demEle": 653.7,
+          "name": {
+            "en": "Oberau train station",
+            "de": "Bahnhof Oberau"
+          }
+        }
+      },
+      "end": {
+        "lat": 47.5686928,
+        "lon": 11.0932308,
+        "demEle": 876.1,
+        "name": "Ettal, Klostergasthof"
+      },
+      "type": "point-to-point",
+      "official": {
+        "en": "The usual route skips Großer Laber and follows the slope either to Ettaler Manndl or down to Ettal.",
+        "de": "Die übliche Route umgeht den Großen Laber und folgt dem Hang entweder zum Ettaler Manndl oder hinab nach Ettal."
+      },
+      "optional": [
+        {
+          "name": {
+            "en": "Großer Laber",
+            "de": "Großer Laber"
+          },
+          "from": "Mühlberg",
+          "to": "Großer Laber",
+          "note": {
+            "en": "Slightly overgrown, but regularly visited detour.",
+            "de": "Leicht zugewachsen, aber regelmäßig begangener Abstecher."
+          }
+        }
+      ],
+      "terrain": ["forest-road", "meadow", "path"],
+      "shade": "high",
+      "trails": ["Grüner Fleck", "BT 10 Ettaler Mandl"],
+      "peaks": ["Kleiner Laber", "Mühlberg", "Großer Laber"],
+      "regions": ["ammergau-alps", "ammertal"],
+      "categories": ["peak-bagging"],
+      "countries": ["DE"],
+      "huts": []
+    },
+    "navigation": {
+      "marking": "partial",
+      "offline": false,
+      "spans": [
+        {
+          "from": "Großer Laber",
+          "to": {
+            "lat": 47.5802789,
+            "lon": 11.1168166,
+            "demEle": 1350.9,
+            "name": {
+              "en": "Meadow",
+              "de": "Wiese"
+            }
+          },
+          "marking": "none",
+          "note": {
+            "en": "Faded trail covered in fallen trees, leaves, and moss; no markings.",
+            "de": "Verblasster Weg, bedeckt mit umgestürzten Bäumen, Laub und Moos; keine Markierungen."
+          }
+        }
+      ],
+      "note": {
+        "en": "Occasional red markings on trees; clear trails and forest roads otherwise.",
+        "de": "Gelegentliche rote Markierungen auf Bäumen; ansonsten klare Wege und Forststraßen."
+      }
+    },
+    "hazards": [
+      {
+        "kind": "poor-marking",
+        "from": "Mühlberg",
+        "to": "Großer Laber",
+        "severity": "medium"
+      }
+    ],
+    "bailouts": [
+      {
+        "at": {
+          "lat": 47.5742107,
+          "lon": 11.1268542,
+          "demEle": 1198.2,
+          "name": {
+            "en": "Hunting stand",
+            "de": "Hochsitz"
+          }
+        },
+        "to": {
+          "en": "Oberau",
+          "de": "Oberau"
+        },
+        "via": "trail",
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/kleiner_laber-oberau.gpx",
+        "time": 104,
+        "note": {
+          "en": "South on the crossroads back to Oberau.",
+          "de": "Südlich auf dem Kreuzweg zurück nach Oberau."
+        }
+      },
+      {
+        "at": "Mühlberg",
+        "to": {
+          "en": "Ettal",
+          "de": "Ettal"
+        },
+        "via": "trail",
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/muehlberg-ettal.gpx",
+        "time": 74,
+        "note": {
+          "en": "South-west following the Mühlberg trail down the ridge.",
+          "de": "Südwestlich dem Mühlberg-Weg folgend den Grat hinunter."
+        }
+      }
+    ],
+    "water": [
+      {
+        "at": {
+          "lat": 47.5799654,
+          "lon": 11.1150155,
+          "demEle": 1329.6,
+          "name": {
+            "en": "Drinking water tap",
+            "de": "Trinkwasserhahn"
+          }
+        },
+        "kind": "tap",
+        "reliable": "seasonal"
+      }
+    ],
+    "signal": [
+      {
+        "to": "Großer Laber",
+        "quality": "patchy",
+        "network": "Telekom"
+      },
+      {
+        "from": "Großer Laber",
+        "quality": "good",
+        "network": "Telekom"
+      }
+    ],
+    "access": {
+      "carFree": "yes",
+      "note": {
+        "en": "Arrive by train, leave by bus.",
+        "de": "Anreise mit dem Zug, Abreise mit dem Bus."
+      },
+      "checked": "2026-10-23",
+      "transport": [
+        {
+          "mode": "train",
+          "from": {
+            "en": "Munich Central Station",
+            "de": "München Hbf"
+          },
+          "to": {
+            "name": {
+              "en": "Oberau",
+              "de": "Oberau"
+            }
+          },
+          "direction": "there",
+          "line": "RB 6",
+          "operator": "DB Regio",
+          "duration": 109,
+          "changes": 1,
+          "first": "04:55",
+          "last": "22:55",
+          "frequency": {
+            "en": "hourly",
+            "de": "stündlich"
+          },
+          "price": [
+            {
+              "amount": 0,
+              "note": {
+                "en": "with Deutschlandticket",
+                "de": "mit Deutschlandticket"
+              }
+            },
+            {
+              "amount": 26.80,
+              "per": "day"
+            }
+          ],
+          "ticket": {
+            "en": "Deutschlandticket valid to Oberau",
+            "de": "Deutschlandticket bis Oberau gültig"
+          },
+          "url": "https://www.bahn.de/",
+          "note": {
+            "en": "Change in Starnberg.",
+            "de": "Umstieg in Starnberg."
+          }
+        },
+        {
+          "mode": "bus",
+          "from": {
+            "en": "Klostergasthof, Ettal",
+            "de": "Klostergasthof, Ettal"
+          },
+          "to": {
+            "name": {
+              "en": "Oberau",
+              "de": "Oberau"
+            }
+          },
+          "direction": "back",
+          "line": "326",
+          "operator": "MVV",
+          "duration": 10,
+          "changes": 0,
+          "first": "07:55",
+          "last": "18:55",
+          "frequency": {
+            "en": "hourly",
+            "de": "stündlich"
+          }
+        },
+        {
+          "mode": "train",
+          "from": {
+            "en": "Oberau",
+            "de": "Oberau"
+          },
+          "to": {
+            "name": {
+              "en": "Munich Central Station",
+              "de": "München Hbf"
+            }
+          },
+          "direction": "back",
+          "line": "RB 6",
+          "operator": "DB Regio",
+          "duration": 110,
+          "changes": 1,
+          "first": "08:12",
+          "last": "20:15",
+          "frequency": {
+            "en": "hourly",
+            "de": "stündlich"
+          },
+          "url": "https://www.bahn.de/",
+          "note": {
+            "en": "Change in Starnberg.",
+            "de": "Umstieg in Starnberg."
+          }
+        }
+      ],
+      "parking": [
+        {
+          "name": {
+            "en": "Oberau train station",
+            "de": "Bahnhof Oberau"
+          },
+          "at": {
+            "lat": 47.5592776,
+            "lon": 11.1388804,
+            "demEle": 653.9,
+            "name": {
+              "en": "Oberau train station parking",
+              "de": "Parkplatz Bahnhof Oberau"
+            }
+          },
+          "size": "small",
+          "fills": "weekends",
+          "checked": "2026-09-06"
+        }
+      ]
+    },
+    "suitability": {
+      "kids": "no",
+      "dogs": "yes",
+      "stroller": false,
+      "bike": "no",
+      "winter": "no",
+      "night": "experienced",
+      "solo": "yes",
+      "note": {
+        "en": "Dogs need to be careful on the T4 section.",
+        "de": "Hunde müssen auf dem T4-Abschnitt vorsichtig sein."
+      }
+    },
+    "legs": [
+      {
+        "to": "Kleiner Laber",
+        "terrain": ["path", "forest-road"],
+        "sac": "T1-T2",
+        "marking": "good"
+      },
+      {
+        "to": "Mühlberg",
+        "terrain": ["forest-road", "path"],
+        "sac": "T2",
+        "marking": "good"
+      },
+      {
+        "to": "Großer Laber",
+        "terrain": ["path"],
+        "sac": "T3",
+        "marking": "poor",
+        "optional": true
+      },
+      {
+        "to": {
+          "lat": 47.5802789,
+          "lon": 11.1168166,
+          "demEle": 1350.9,
+          "name": {
+            "en": "Meadow",
+            "de": "Wiese"
+          }
+        },
+        "terrain": ["path", "overgrown"],
+        "sac": "T4",
+        "marking": "none"
+      },
+      {
+        "to": {
+          "lat": 47.5686928,
+          "lon": 11.0932308,
+          "demEle": 876.1,
+          "name": "Ettal, Klostergasthof"
+        },
+        "terrain": ["forest-road"],
+        "sac": "T2",
+        "marking": "good"
+      }
+    ],
+    "plan": {
+      "gear": [
+        {
+          "item": "boots"
+        },
+        {
+          "item": "water",
+          "amount": {
+            "en": "2–3 L",
+            "de": "2–3 L"
+          }
+        },
+        {
+          "item": "offline-map",
+          "need": "optional"
+        },
+        {
+          "item": "poles",
+          "need": "optional"
+        }
+      ],
+      "for": [
+        {
+          "en": "Enjoyers of Laber",
+          "de": "Genießer des Laber"
+        },
+        {
+          "en": "People exploring forestry slopes",
+          "de": "Menschen, die Forsthänge erkunden"
+        }
+      ],
+      "notFor": [
+        {
+          "en": "Casual hikers",
+          "de": "Gelegenheitswanderer"
+        },
+        {
+          "en": "People cautious of steep descents",
+          "de": "Menschen, die vorsichtig bei steilen Abstiegen sind"
+        },
+        {
+          "en": "People with meadow flower allergies",
+          "de": "Menschen mit Allergien gegen Wiesenblumen"
+        }
+      ],
+      "timing": {
+        "start": "08:00",
+        "turnaround": "16:00"
+      },
+      "alternatives": {
+        "easier": ["2024-09-21-rosskopf"],
+        "harder": ["2026-05-10-teufelstaettkopf"],
+        "similar": ["2025-12-14-lainbachfall_jochberg", "2025-09-07-wasserspitz"]
+      }
+    },
+    "sources": []
+  }
 }

@@ -60,6 +60,8 @@ SOURCES: dict[str, dict] = {
     "walchensee-mountains": {"kind": "range", "split": {
         "of": "bavarian-prealps", "river": "R273028", "side": "west", "minus": ["ester-mountains"]}},
     "ehrwald": {"kind": "area", "osm": ["R37838"]},
+    # Oberammergau, Unterammergau and Ettal, Graswang and Linderhof included.
+    "ammertal": {"kind": "area", "osm": ["R937907", "R937895", "R939317"]},
     "schwangau": {"kind": "area", "osm": ["R448297"]},
     # The municipality holds both lakes and Neuhaus.
     "schliersee": {"kind": "area", "osm": ["R935959"]},

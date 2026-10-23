@@ -30,7 +30,7 @@ export const ROUTE_TYPES = ['loop', 'out-and-back', 'point-to-point', 'lollipop'
 export const REGIONS = [
 	'ammergau-alps', 'bavarian-prealps', 'ester-mountains', 'karwendel', 'mangfall-mountains',
 	'walchensee-mountains', 'wetterstein',
-	'ehrwald', 'risstal', 'schliersee', 'schwangau', 'tegernsee', 'walchensee'
+	'ammertal', 'ehrwald', 'risstal', 'schliersee', 'schwangau', 'tegernsee', 'walchensee'
 ] as const;
 export const CATEGORIES = [
 	'summit', 'peak-bagging', 'ridge', 'via-ferrata', 'scramble', 'high-alpine', 'glacier',
@@ -104,7 +104,8 @@ export const GEAR_KINDS = [
 	'sleeping-bag', 'hut-sleeping-bag', 'tent', 'mat', 'stove',
 	'cash', 'id', 'permit', 'swimwear', 'towel'
 ] as const;
-export const SOURCE_KINDS = ['video', 'guidebook', 'website', 'map', 'forum', 'official', 'weather'] as const;
+/** `mirror`: my own copy of the hike on another platform (a Komoot tour, a Strava activity). */
+export const SOURCE_KINDS = ['video', 'guidebook', 'website', 'map', 'forum', 'official', 'weather', 'mirror'] as const;
 
 /** Every enum the string table has to translate, by group name. */
 export const ENUMS = {

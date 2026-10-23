@@ -8,8 +8,9 @@
 	import { textIn, GEAR_NEED, type HikeAuthoredFacts, type Lang, type Text } from '$lib/hikes/facts-schema';
 	import {
 		countryName, enumLabel, formatChecked, formatClimb, formatFerrata, formatGrades, formatMinutes, formatMonths,
-		formatPrices, formatWater, formatWindow, label
+		formatPrices, formatWater, formatWindow, label, mirrorPlatform
 	} from '$lib/hikes/facts-format';
+	import { networkIcon } from '$lib/icons/network-icons';
 	import { getDistance } from '$lib/hikes/build-statistics';
 	import FactsPlace from './FactsPlace.svelte';
 	import FactsSpan from './FactsSpan.svelte';
@@ -45,6 +46,17 @@
 			(g) => g.items.length > 0
 		)
 	);
+
+	// Mirrors (my copies of the hike on Komoot, Strava, …) get their own row instead of the Sources list.
+	const mirrors = $derived(
+		(facts.sources ?? [])
+			.filter((src) => src.kind === 'mirror')
+			.map((src) => {
+				const platform = mirrorPlatform(src.url);
+				return { url: src.url, name: platform ?? t(src.title), Icon: networkIcon(platform) };
+			})
+	);
+	const sources = $derived((facts.sources ?? []).filter((src) => src.kind !== 'mirror'));
 
 	const h2 = 'flex items-center gap-2 text-xl font-semibold text-gray-900 dark:text-white mb-3';
 	const h3 = 'font-semibold mt-4 mb-2';
@@ -469,11 +481,29 @@
 		</section>
 	{/if}
 
-	{#if facts.sources?.length}
+	{#if mirrors.length}
+		<section aria-labelledby="facts-mirrors" class="flex flex-wrap items-center gap-x-4 gap-y-2">
+			<h2 id="facts-mirrors" class="font-semibold text-gray-900 dark:text-white">{label(lang, 'alsoOn')}</h2>
+			<ul class="flex flex-wrap gap-2">
+				{#each mirrors as m (m.url)}
+					<li>
+						<a
+							class="inline-flex items-center gap-1.5 rounded-full border border-gray-300 dark:border-gray-600 px-3 py-1 hover:bg-gray-100 dark:hover:bg-gray-800"
+							href={m.url}
+							target="_blank"
+							rel="noopener"
+						><m.Icon class="w-4 h-4" aria-hidden="true" /><span translate="no">{m.name}</span></a>
+					</li>
+				{/each}
+			</ul>
+		</section>
+	{/if}
+
+	{#if sources.length}
 		<section aria-labelledby="facts-sources">
 			<h2 id="facts-sources" class={h2}><BookOpenOutline class="w-6 h-6 text-primary-600" />{label(lang, 'sources')}</h2>
 			<ul class="flex flex-col gap-1">
-				{#each facts.sources as src}
+				{#each sources as src}
 					<li>
 						<a class="underline" href={src.url} rel="noopener" hreflang={src.lang}>{t(src.title)}</a>
 						{#if src.kind || src.lang}<span class={meta}>({[src.kind ? enumLabel(lang, 'source', src.kind) : '', src.lang ?? ''].filter(Boolean).join(', ')})</span>{/if}
