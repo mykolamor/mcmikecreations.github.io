@@ -75,6 +75,361 @@
         "natural": "peak",
         "wikidata": "Q18334815"
       }
+    },
+    {
+      "id": 34601514,
+      "lat": 47.7481070,
+      "lon": 11.7371459,
+      "demEle": 732.5,
+      "tags": {
+        "name": "Parkplatz Volksfestplatz",
+        "alt_name": "Parkplatz am See",
+        "ele": "735",
+        "access": "yes",
+        "amenity": "parking",
+        "charge": "0.5 EUR/0.5 hour",
+        "fee": "no",
+        "fee:conditional": "yes @ (stay > 2 hours) AND (08:00-18:00)",
+        "maxstay": "72 hours",
+        "parking": "surface",
+        "surface": "paved",
+        "website": "https://www.tegernsee.com/a-parkplatz-am-see"
+      }
     }
-  ]
+  ],
+  "facts": {
+    "summary": {
+      "en": "A long point-to-point between Gmund and Hausham covering the lowest wild peaks in-between.",
+      "de": "Eine lange Punkt-zu-Punkt-Wanderung zwischen Gmund und Hausham, die die niedrigsten wilden Gipfel dazwischen abdeckt."
+    },
+    "difficulty": {
+      "note": {
+        "en": "T3 on most wild parts; T1-T2 on the forest roads.",
+        "de": "T3 auf den meisten wilden Abschnitten; T1-T2 auf den Forststraßen."
+      },
+      "sections": [
+        {
+          "from": "Buchberg",
+          "to": "Schußkogel",
+          "sac": "T3",
+          "note": {
+            "en": "Overgrown areas, river crossings, slope climbs.",
+            "de": "Überwachsene Abschnitte, Bachquerungen, Steigungen."
+          }
+        }
+      ],
+      "exposure": {
+        "level": "low",
+        "note": {
+          "en": "The ridges are wide and have trees.",
+          "de": "Die Grate sind breit und bewaldet."
+        }
+      },
+      "fitness": 3
+    },
+    "season": {
+      "best": [6, 7, 8, 9],
+      "possible": [5, 10],
+      "note": {
+        "en": "Muddy sections become unwalkable in winter and spring.",
+        "de": "Schlammige Abschnitte werden im Winter und Frühjahr unpassierbar."
+      }
+    },
+    "route": {
+      "start": {
+        "name": {
+          "en": "Gmund train station",
+          "de": "Bahnhof Gmund"
+        },
+        "at": {
+          "lat": 47.7496082,
+          "lon": 11.7349962,
+          "demEle": 735.9,
+          "name": {
+            "en": "Gmund train station",
+            "de": "Bahnhof Gmund"
+          }
+        }
+      },
+      "end": {
+        "lat": 47.7505216,
+        "lon": 11.8401733,
+        "demEle": 761.6,
+        "name": {
+          "en": "Hausham train station",
+          "de": "Hausham Bahnhof"
+        }
+      },
+      "type": "point-to-point",
+      "terrain": ["forest-road", "meadow", "path", "road", "mud"],
+      "shade": "high",
+      "trails": ["515"],
+      "peaks": ["Buchberg", "Gassler Berg", "Oeder Kogel", "Schußkogel", "Wallenburger Kogel"],
+      "regions": ["mangfall-mountains", "tegernsee", "schliersee"],
+      "categories": ["peak-bagging"],
+      "countries": ["DE"]
+    },
+    "navigation": {
+      "marking": "poor",
+      "offline": true,
+      "spans": [
+        {
+          "from": "Wallenburger Kogel",
+          "to": {
+            "lat": 47.7505216,
+            "lon": 11.8401733,
+            "demEle": 761.6,
+            "name": {
+              "en": "Hausham train station",
+              "de": "Hausham Bahnhof"
+            }
+          },
+          "marking": "good"
+        }
+      ],
+      "note": {
+        "en": "Barely any markings besides small sections of popular trails.",
+        "de": "Kaum Markierungen außer auf kleinen Abschnitten beliebter Wege."
+      }
+    },
+    "hazards": [
+      {
+        "kind": "river-crossing",
+        "from": "Gassler Berg",
+        "to": "Oeder Kogel",
+        "severity": "medium",
+        "note": {
+          "en": "Several small mountain streams.",
+          "de": "Mehrere kleine Bergbäche."
+        }
+      },
+      {
+        "kind": "mud",
+        "from": "Oeder Kogel",
+        "to": "Schußkogel",
+        "severity": "medium",
+        "season": [3, 4, 5],
+        "note": {
+          "en": "Bogs and marshes during wet seasons.",
+          "de": "Sumpfige Wiesen und Moor während nasser Jahreszeiten."
+        }
+      }
+    ],
+    "bailouts": [
+      {
+        "at": "Gassler Berg",
+        "to": {
+          "en": "Gmund",
+          "de": "Gmund"
+        },
+        "via": "trail",
+        "time": 64,
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/gassler_berg-gmund.gpx"
+      },
+      {
+        "at": "Oeder Kogel",
+        "to": {
+          "en": "Gmund",
+          "de": "Gmund"
+        },
+        "via": "trail",
+        "time": 65,
+        "last": true,
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/oeder_kogel-gmund.gpx"
+      }
+    ],
+    "signal": [
+      {
+        "to": "Buchberg",
+        "quality": "good",
+        "network": "Telekom"
+      },
+      {
+        "from": "Buchberg",
+        "to": "Wallenburger Kogel",
+        "quality": "patchy",
+        "network": "Telekom"
+      },
+      {
+        "from": "Wallenburger Kogel",
+        "quality": "good",
+        "network": "Telekom"
+      }
+    ],
+    "access": {
+      "carFree": "yes",
+      "checked": "2026-10-04",
+      "transport": [
+        {
+          "mode": "train",
+          "from": {
+            "en": "Munich Central Station",
+            "de": "München Hbf"
+          },
+          "to": {
+            "name": {
+              "en": "Gmund",
+              "de": "Gmund"
+            }
+          },
+          "direction": "there",
+          "line": "RB 57",
+          "operator": "Bayerische Regiobahn",
+          "duration": 61,
+          "changes": 0,
+          "first": "07:02",
+          "last": "20:02",
+          "frequency": {
+            "en": "hourly",
+            "de": "stündlich"
+          },
+          "ticket": {
+            "en": "Deutschlandticket valid to Gmund",
+            "de": "Deutschlandticket bis Gmund gültig"
+          },
+          "url": "https://www.bahn.de/"
+        }
+      ],
+      "parking": [
+        {
+          "name": {
+            "en": "Parking lot Volksfestplatz",
+            "de": "Parkplatz Volksfestplatz"
+          },
+          "at": "Parkplatz Volksfestplatz",
+          "price": [
+            {
+              "amount": 1,
+              "per": "hour"
+            }
+          ],
+          "size": "medium",
+          "fills": "weekends",
+          "url": "https://www.tegernsee.com/a-parkplatz-am-see",
+          "checked": "2026-10-25"
+        }
+      ]
+    },
+    "rules": [
+      {
+        "kind": "dogs-on-leash",
+        "from": "Gassler Berg",
+        "to": "Oeder Kogel",
+        "note": {
+          "en": "Grazing cattle.",
+          "de": "Weidevieh."
+        }
+      },
+      {
+        "kind": "no-bikes",
+        "from": "Gassler Berg",
+        "to": "Oeder Kogel"
+      }
+    ],
+    "suitability": {
+      "kids": "no",
+      "dogs": "yes",
+      "stroller": false,
+      "bike": "partial",
+      "winter": "with-gear",
+      "night": "experienced",
+      "solo": "yes",
+      "note": {
+        "en": "Snow shoes or crampons needed in winter.",
+        "de": "Im Winter Schneeschuhe oder Steigeisen nötig."
+      }
+    },
+    "legs": [
+      {
+        "to": "Buchberg",
+        "terrain": ["road", "forest-road"],
+        "sac": "T1-T3",
+        "marking": "none"
+      },
+      {
+        "to": "Gassler Berg",
+        "terrain": ["path"],
+        "sac": "T2",
+        "marking": "poor"
+      },
+      {
+        "to": "Oeder Kogel",
+        "terrain": ["path", "forest-road"],
+        "sac": "T3",
+        "marking": "partial"
+      },
+      {
+        "to": "Schußkogel",
+        "terrain": ["path", "forest-road", "mud", "meadow"],
+        "sac": "T3",
+        "marking": "poor"
+      },
+      {
+        "to": "Wallenburger Kogel",
+        "terrain": ["forest-road"],
+        "sac": "T2",
+        "marking": "partial"
+      },
+      {
+        "to": {
+          "lat": 47.7505216,
+          "lon": 11.8401733,
+          "demEle": 761.6,
+          "name": {
+            "en": "Hausham train station",
+            "de": "Hausham Bahnhof"
+          }
+        },
+        "terrain": ["forest-road", "road"],
+        "sac": "T1",
+        "marking": "good"
+      }
+    ],
+    "plan": {
+      "gear": [
+        {
+          "item": "boots"
+        },
+        {
+          "item": "water",
+          "amount": {
+            "en": "2–3 L",
+            "de": "2–3 L"
+          }
+        },
+        {
+          "item": "rain-shell",
+          "when": {
+            "en": "for crossing streams and bogs",
+            "de": "für das Überqueren von Bächen und Mooren"
+          }
+        },
+        {
+          "item": "poles",
+          "need": "optional"
+        }
+      ],
+      "for": [
+        {
+          "en": "Hikers visiting the very edge of the Prealps",
+          "de": "Wanderer, die den äußersten Rand der Voralpen besuchen"
+        }
+      ],
+      "notFor": [
+        {
+          "en": "Hikers looking for views or challenge",
+          "de": "Wanderer, die Aussicht oder Herausforderung suchen"
+        }
+      ],
+      "timing": {
+        "start": "09:00",
+        "turnaround": "17:00"
+      },
+      "alternatives": {
+        "easier": ["2025-10-26-auer_berg", "2024-09-21-rosskopf"],
+        "harder": ["2026-10-04-wasenkogel", "2026-04-05-fockenstein_geierstein"],
+        "similar": ["2025-07-06-bruennstein", "2025-02-09-rampoldplatte"]
+      }
+    }
+  }
 }

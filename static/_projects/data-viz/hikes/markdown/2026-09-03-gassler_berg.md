@@ -29,6 +29,10 @@ images:
   2026-09-03-16.jpg: {w: 4000, h: 3000, lat: 47.742778, lon: 11.797773, demEle: 886.9, taken: '2026-09-03T18:04:04+02:00', blur: 'data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAAAwBQCdASoYABIAPtFcqE4oJSQiKAqpABoJQBdgAjWivUfNSi1alAGADSqPKLXt9zI6CADMGyucFWywafbfNRdUQj3XBxPPZpGfj7XH4eoP4hYOCmo5/GXhwJBri+wzNf1InSSA+qno2Ml53evRlVuJx312DnZFScqwCzQJ2MAkNTH9FWE7EAwd/VNTGM3lSOvoy/67yp6PCY7TRMkttVcjlg9DSntywOBUaIJhDNtCFv14cdB16NGdI86H2AZ2BjKeu8AA'}
   2026-09-03-17.jpg: {w: 8160, h: 6120, lat: 47.747093, lon: 11.810776, demEle: 788.3, taken: '2026-09-03T18:25:05+02:00', blur: 'data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAADQBACdASoYABIAPtFapE0oJSMiKA1RABoJYwDM0A+Bj/984mWZfo/lq3tkU5wMAAD+6fhOkhJnesL+kRFS8jN4FqVnx7gjwzmt3WteM6rN2WQ1eJxYjK5fl7AyHAgBXTAqEQ17IlTHzR3joAq+HK80fTeZbHMlJWn/8AAA'}
   2026-09-03-18.jpg: {w: 8160, h: 6120, lat: 47.753093, lon: 11.826366, demEle: 752.3, taken: '2026-09-03T18:44:27+02:00', blur: 'data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAABQBACdASoYABIAPtFYpEuoJSOhsAgBABoJYwCzgB09YgBcZefoyNxnitQAAP6Xa4puU1gLw5+/H0XFK4HR0DWQ0XSI+KyNXprPVp8j8WLn1P2PNr4stnlOq0/bcmMSdORdb4fMCukrOP4C87O7Y/ifpRTH4AAA'}
+facts:
+  sources:
+    - {title: Komoot, url: 'https://www.komoot.com/tour/3254706228', kind: mirror}
+    - {title: Strava, url: 'https://www.strava.com/activities/20022491860', kind: mirror}
 ---
 After my questionable adventures in the dense forests near [Hochalm (1427 m)](/hikes/2026-08-23-hochalm/),
 I wanted to take it easy and enjoy a more relaxed hike. I dug into my backlog

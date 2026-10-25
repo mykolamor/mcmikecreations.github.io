@@ -547,7 +547,15 @@
         "marking": "none"
       },
       {
-        "to": "Schliersee",
+        "to": {
+          "lat": 47.7355828,
+          "lon": 11.8597632,
+          "demEle": 786.2,
+          "name": {
+            "en": "Schliersee train station",
+            "de": "Schliersee Bahnhof"
+          }
+        },
         "terrain": ["forest-road", "road"],
         "sac": "T1",
         "marking": "good"

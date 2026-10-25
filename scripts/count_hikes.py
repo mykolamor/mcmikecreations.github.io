@@ -176,9 +176,10 @@ def main():
         if has_facts:
             total_facts_not_hidden += 1
 
-    print(total_hike_dates)
-    print(total_hike_posts_md)
-    print(total_facts_not_hidden)
+    print('Website statistics for hikes...')
+    print('Total dates:', total_hike_dates)
+    print('Total posts:', total_hike_posts_md)
+    print('Total facts:', total_facts_not_hidden)
 
 
 if __name__ == "__main__":

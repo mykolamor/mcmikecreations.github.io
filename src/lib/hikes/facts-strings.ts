@@ -198,7 +198,7 @@ const en = {
 		},
 		liftDirection: { up: 'up', down: 'down', both: 'up and down' },
 		pricePer: {
-			person: 'per person', adult: 'adult', child: 'child', car: 'per car', day: 'per day', night: 'per night',
+			person: 'per person', adult: 'adult', child: 'child', car: 'per car', hour: 'per hour', day: 'per day', night: 'per night',
 			trip: 'one way', return: 'return'
 		},
 		rule: {
@@ -444,7 +444,7 @@ const de: Strings = {
 		},
 		liftDirection: { up: 'Bergfahrt', down: 'Talfahrt', both: 'Berg- und Talfahrt' },
 		pricePer: {
-			person: 'pro Person', adult: 'Erwachsene', child: 'Kinder', car: 'pro Auto', day: 'pro Tag', night: 'pro Nacht',
+			person: 'pro Person', adult: 'Erwachsene', child: 'Kinder', car: 'pro Auto', hour: 'pro Stunde', day: 'pro Tag', night: 'pro Nacht',
 			trip: 'einfach', return: 'hin und zurück'
 		},
 		rule: {

@@ -5,7 +5,8 @@
 	import { page } from '$app/state';
 	import AppNavbar from "$lib/components/AppNavbar.svelte";
 	import { Heading } from 'flowbite-svelte';
-	import ShowcaseCard from "./components/ShowcaseCard.svelte";
+	import ShowcaseGrid from "./components/ShowcaseGrid.svelte";
+	import ShowcaseTile from "./components/ShowcaseTile.svelte";
 	import { A, P, ImagePlaceholder, CardPlaceholder, Progressbar } from 'flowbite-svelte';
 	import AppMeta from '$lib/components/AppMeta.svelte';
 	import Footsteps from './components/Footsteps.svelte';
@@ -117,39 +118,29 @@
 <section id="projects" class="container mx-auto my-8 scroll-my-20">
     <div class="mx-4 2xl:mx-0 md:px-24 mb-8">
         <Heading tag="h2">Projects</Heading>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-8">
-            <ShowcaseCard x={2} y={1} class="lg:col-span-2" href="/hikes/tag/Web/" img="/images/hikes/hero/web.jpg">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white pb-4">
-                    Hiking Web
-                </h5>
-                <p class="leading-tight text-justify font-normal text-gray-700 dark:text-gray-400 pb-4">
-                    An attempt to connect all visited hiking paths into a single network.
-                </p>
-                <p class="leading-tight text-justify font-normal text-gray-700 dark:text-gray-400 pb-4">
-                    All of the simplified hiking routes on the page are fully explorable,
-                    some even contain event descriptions and photos from the hike.
-										Additional statistics are available regarding the frequency and length of hikes.
-                </p>
-                <p class="leading-tight text-justify font-normal text-gray-700 dark:text-gray-400 pb-4">
-                    The simplified routes are based on the approximate origins and destinations
-                    of the hikes and include intersection points with other simplified routes.
-                </p>
-                <p class="leading-tight text-justify font-normal text-gray-700 dark:text-gray-400">
-                    Currently, most of the South Bavarian hikes have been connected.
-                </p>
-            </ShowcaseCard>
-            <ShowcaseCard x={1} y={1} href="/hikes/tag/Climb/" img="/images/hikes/hero/viaferrata.jpg">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white pb-4">
-                    Via Ferrata
-                </h5>
-                <p class="leading-tight text-justify font-normal text-gray-700 dark:text-gray-400 pb-4">
-                    A set of full-length recordings of via ferrata climbs, with or without gear.
-                </p>
-                <p class="leading-tight text-justify font-normal text-gray-700 dark:text-gray-400 pb-4">
-                    Any attempts to follow these climbs should be done with all necessary gear and
-                    utilizing all safety rules, regulations, and equipment.
-                </p>
-            </ShowcaseCard>
+        <div class="mt-8">
+            <ShowcaseGrid>
+                <ShowcaseTile x={2} y={1} href="/hikes/tag/Web/" img="/images/hikes/hero/web.jpg" alt="Hiking Web preview" title="Hiking Web">
+                    <p>An attempt to connect all visited hiking paths into a single network.</p>
+                    <p>
+                        All of the simplified hiking routes on the page are fully explorable,
+                        some even contain event descriptions and photos from the hike.
+                        Additional statistics are available regarding the frequency and length of hikes.
+                    </p>
+                    <p>
+                        The simplified routes are based on the approximate origins and destinations
+                        of the hikes and include intersection points with other simplified routes.
+                    </p>
+                    <p>Currently, most of the South Bavarian hikes have been connected.</p>
+                </ShowcaseTile>
+                <ShowcaseTile href="/hikes/tag/Climb/" img="/images/hikes/hero/viaferrata.jpg" alt="Via ferrata climb preview" title="Via Ferrata">
+                    <p>A set of full-length recordings of via ferrata climbs, with or without gear.</p>
+                    <p>
+                        Any attempts to follow these climbs should be done with all necessary gear and
+                        utilizing all safety rules, regulations, and equipment.
+                    </p>
+                </ShowcaseTile>
+            </ShowcaseGrid>
         </div>
     </div>
 </section>

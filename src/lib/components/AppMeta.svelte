@@ -12,6 +12,7 @@
 		type?: string | 'website' | 'article';
 		tags?: string[];
 		canonical?: string;
+		[key: `article-${string}`]: string | undefined;
 	}
 
 	let {
@@ -76,7 +77,7 @@
 		<meta name="twitter:image" content={fullImageUrl}>
 	{/if}
 
-	{#each Object.keys(otherProps) as key}
-		<meta name={key.toString().replaceAll('-',':')} content={otherProps[key]}>
+	{#each Object.entries(otherProps) as [key, value] (key)}
+		<meta property={key.replaceAll('-', ':')} content={value}>
 	{/each}
 </svelte:head>

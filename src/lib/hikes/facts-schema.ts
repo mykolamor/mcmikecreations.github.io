@@ -70,7 +70,7 @@ export const LIFT_KINDS = [
 	'gondola', 'cable-car', 'chairlift', 'drag-lift', 'rack-railway', 'funicular', 'elevator'
 ] as const;
 export const LIFT_DIRECTIONS = ['up', 'down', 'both'] as const;
-export const PRICE_PER = ['person', 'adult', 'child', 'car', 'day', 'night', 'trip', 'return'] as const;
+export const PRICE_PER = ['person', 'adult', 'child', 'car', 'day', 'hour', 'night', 'trip', 'return'] as const;
 export const RULE_KINDS = [
 	'protected-area', 'no-camping', 'no-fires', 'no-drones', 'no-dogs', 'dogs-on-leash',
 	'no-bikes', 'private-land', 'seasonal-closure', 'wildlife-zone', 'military', 'fee'
