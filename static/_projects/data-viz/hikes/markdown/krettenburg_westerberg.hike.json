@@ -1,0 +1,641 @@
+{
+  "name": "Krettenburg - Westerberg",
+  "description": "Hike from Spitzingsattel to Schliersee via Krettenburg (1494 m), Eckspitz (1386 m), Westerberg (1328 m), and Brunstkogel (1251 m).",
+  "image": "/images/projects/data-viz/hikes/krettenburg_westerberg.jpg",
+  "origin": {
+    "lat": 47.70485219503704,
+    "lon": 11.85853958129883
+  },
+  "height": 768,
+  "checkpoints": [
+    [11.8860019, 47.6722099],
+    [11.8538258, 47.6702560],
+    [11.8499007, 47.6711962],
+    [11.8390339, 47.6777660],
+    [11.8446746, 47.6795493],
+    [11.8448536, 47.6830911],
+    [11.8485708, 47.7017861],
+    [11.8417871, 47.7109550],
+    [11.8453456, 47.7320691],
+    [11.8597632, 47.7355828]
+  ],
+  "places": ["obere_firstalm", "bodenschneidhaus"],
+  "nodes": [
+    {
+      "id": 60310929,
+      "lat": 47.677766,
+      "lon": 11.8390339,
+      "demEle": 1351.1,
+      "tags": {
+        "name": "Bodenschneidhaus",
+        "tourism": "alpine_hut",
+        "ele": "1365",
+        "building": "yes",
+        "contact:email": "info@bodenschneidhaus.de",
+        "contact:mobile": "+491723735798",
+        "contact:phone": "+4980264692",
+        "contact:website": "https://bodenschneidhaus.de/",
+        "wikidata": "Q889655",
+        "wikipedia": "de:Bodenschneidhaus"
+      }
+    },
+    {
+      "id": 60315210,
+      "lat": 47.6701495,
+      "lon": 11.8542289,
+      "demEle": 1367.1,
+      "tags": {
+        "name": "Obere Firstalm",
+        "tourism": "alpine_hut",
+        "ele": "1369",
+        "building": "yes",
+        "amenity": "restaurant",
+        "email": "info@firstalm.de",
+        "phone": "+4980267302",
+        "website": "https://firstalm.de/",
+        "wikidata": "Q27926449",
+        "wikipedia": "de:Firstalm"
+      }
+    },
+    {
+      "id": 928061460,
+      "lat": 47.6711962,
+      "lon": 11.8499007,
+      "demEle": 1445.3,
+      "tags": {
+        "name": "Krettenburg",
+        "natural": "peak",
+        "ele": "1494"
+      }
+    },
+    {
+      "id": 3229978767,
+      "lat": 47.6795493,
+      "lon": 11.8446746,
+      "demEle": 1349.4,
+      "tags": {
+        "name": "Eckspitz",
+        "natural": "peak",
+        "ele": "1386"
+      }
+    },
+    {
+      "id": 1574152592,
+      "lat": 47.7017861,
+      "lon": 11.8485708,
+      "demEle": 1318.2,
+      "tags": {
+        "name": "Westerberg",
+        "natural": "peak",
+        "ele": "1328"
+      }
+    },
+    {
+      "id": 1574152579,
+      "lat": 47.7109550,
+      "lon": 11.8417871,
+      "demEle": 1242.5,
+      "tags": {
+        "name": "Brunstkogel",
+        "natural": "peak",
+        "ele": "1251",
+        "wikidata": "Q31550831"
+      }
+    },
+    {
+      "id": 122002876,
+      "lat": 47.6719473,
+      "lon": 11.8864109,
+      "demEle": 1131.9,
+      "tags": {
+        "name": "Parkplatz Spitzingsattel",
+        "access": "yes",
+        "amenity": "parking",
+        "cost": "5€ per day",
+        "ele": "1127",
+        "fee": "yes",
+        "parking": "surface"
+      }
+    }
+  ],
+  "facts": {
+    "summary": {
+      "en": "A suboptimal point-to-point between Spitzingsee and Schliersee taking Bodenschneid Sommerweg and Wanderwegenetz Landkreis Miesbach and visiting lesser-known peaks along the way.",
+      "de": "Eine suboptimale Punkt-zu-Punkt-Tour zwischen Spitzingsee und Schliersee über den Bodenschneid-Sommerweg und das Wanderwegenetz Landkreis Miesbach, die dabei weniger bekannte Gipfel besucht."
+    },
+    "difficulty": {
+      "note": {
+        "en": "T3 towards the summits and on Bodenschneid Sommerweg; T1-T2 for the rest.",
+        "de": "T3 zu den Gipfeln und auf dem Bodenschneid-Sommerweg; T1-T2 für den Rest."
+      },
+      "sections": [
+        {
+          "from": {
+            "lat": 47.6712492,
+            "lon": 11.8541953,
+            "demEle": 1384.3,
+            "name": {
+              "en": "Obere Firstalm barrier",
+              "de": "Obere Firstalm Schranke"
+            }
+          },
+          "to": "Bodenschneidhaus",
+          "sac": "T3",
+          "note": {
+            "en": "Wild overgrown steep slope followed by a slippery trail.",
+            "de": "Wild zugewachsener steiler Hang gefolgt von einem rutschigen Weg."
+          }
+        },
+        {
+          "from": "Westerberg",
+          "to": "Brunstkogel",
+          "sac": "T3",
+          "note": {
+            "en": "Overgrown ridge with fallen trees and branches.",
+            "de": "Zugewachsener Grat mit umgestürzten Bäumen und Ästen."
+          }
+        }
+      ],
+      "exposure": {
+        "level": "low",
+        "note": {
+          "en": "Most of the route goes through the forest.",
+          "de": "Der Großteil der Route verläuft durch den Wald."
+        }
+      },
+      "fitness": 3
+    },
+    "season": {
+      "best": [7, 8, 9],
+      "possible": [6, 10],
+      "note": {
+        "en": "Snow on Krettenburg during winter; mud and bogs between Westerberg and Brunstkogel in spring.",
+        "de": "Schnee auf der Krettenburg im Winter; Matsch und Moor zwischen Westerberg und Brunstkogel im Frühjahr."
+      }
+    },
+    "route": {
+      "start": {
+        "name": {
+          "en": "Spitzingsattel bus stop",
+          "de": "Bushaltestelle Spitzingsattel"
+        },
+        "at": {
+          "lat": 47.6722099,
+          "lon": 11.8860019,
+          "demEle": 1139.2,
+          "name": {
+            "en": "Spitzingsattel bus stop",
+            "de": "Bushaltestelle Spitzingsattel"
+          }
+        }
+      },
+      "end": {
+        "lat": 47.7355828,
+        "lon": 11.8597632,
+        "demEle": 786.2,
+        "name": "Schliersee"
+      },
+      "type": "point-to-point",
+      "official": {
+        "en": "The usual route follows the road to Obere Firstalm, the summer way to Bodenschneidhaus, and the forest road down to Schliersee.",
+        "de": "Die übliche Route folgt der Straße zur Oberen Firstalm, dem Sommerweg zum Bodenschneidhaus und der Waldstraße hinab nach Schliersee."
+      },
+      "optional": [
+        {
+          "name": {
+            "en": "Krettenburg",
+            "de": "Krettenburg"
+          },
+          "from": {
+            "lat": 47.6712492,
+            "lon": 11.8541953,
+            "demEle": 1384.3,
+            "name": {
+              "en": "Obere Firstalm barrier",
+              "de": "Obere Firstalm Schranke"
+            }
+          },
+          "to": "Bodenschneidhaus",
+          "note": {
+            "en": "Overgrown steep Krettenburg slope followed by the slippery Bodenschneid Sommerweg trail; only for peak baggers.",
+            "de": "Zugewachsener steiler Krettenburg-Hang gefolgt vom rutschigen Bodenschneid-Sommerweg; nur für Gipfeljäger."
+          }
+        }
+      ],
+      "terrain": ["forest-road", "meadow", "path", "ridge"],
+      "shade": "high",
+      "trails": ["Trautweinweg", "627", "Bodenschneid Sommerweg", "626", "Wanderwegenetz Landkreis Miesbach"],
+      "peaks": ["Krettenburg", "Eckspitz", "Westerberg", "Brunstkogel"],
+      "regions": ["mangfall-mountains", "schliersee"],
+      "categories": ["peak-bagging", "ridge"],
+      "countries": ["DE"],
+      "huts": ["Obere Firstalm", "Bodenschneidhaus"]
+    },
+    "navigation": {
+      "marking": "partial",
+      "offline": true,
+      "spans": [
+        {
+          "from": {
+            "lat": 47.6712492,
+            "lon": 11.8541953,
+            "demEle": 1384.3,
+            "name": {
+              "en": "Obere Firstalm barrier",
+              "de": "Obere Firstalm Schranke"
+            }
+          },
+          "to": "Krettenburg",
+          "marking": "none",
+          "note": {
+            "en": "Wild overgrown slope with no trails or markers.",
+            "de": "Wild zugewachsener Hang ohne Wege oder Markierungen."
+          }
+        },
+        {
+          "from": "Westerberg",
+          "to": "Brunstkogel",
+          "marking": "none",
+          "note": {
+            "en": "Old overgrown forestry tracks and animal trails.",
+            "de": "Alte zugewachsene Forstwege und Wildpfade."
+          }
+        }
+      ],
+      "note": {
+        "en": "Good markings on forest roads; absent markings on the peaks.",
+        "de": "Gute Markierungen auf Waldstraßen; keine Markierungen auf den Gipfeln."
+      }
+    },
+    "hazards": [
+      {
+        "kind": "fall-risk",
+        "from": {
+          "lat": 47.6712492,
+          "lon": 11.8541953,
+          "demEle": 1384.3,
+          "name": {
+            "en": "Obere Firstalm barrier",
+            "de": "Obere Firstalm Schranke"
+          }
+        },
+        "to": "Krettenburg",
+        "severity": "high",
+        "note": {
+          "en": "Steep wild cliff slope overgrown with pine shrubs.",
+          "de": "Steiler, wild bewachsener Felsabbruch mit Latschen."
+        }
+      },
+      {
+        "kind": "overgrown",
+        "from": "Westerberg",
+        "to": "Brunstkogel",
+        "severity": "medium",
+        "note": {
+          "en": "Overgrown area with fallen trees, branches, and slippery leaves.",
+          "de": "Zugewachsener Bereich mit umgestürzten Bäumen, Ästen und rutschigen Blättern."
+        }
+      }
+    ],
+    "bailouts": [
+      {
+        "at": {
+          "lat": 47.6712492,
+          "lon": 11.8541953,
+          "demEle": 1384.3,
+          "name": {
+            "en": "Obere Firstalm barrier",
+            "de": "Obere Firstalm Schranke"
+          }
+        },
+        "to": {
+          "en": "Neuhaus train station via Freudenreich-Alm",
+          "de": "Bahnhof Neuhaus über Freudenreich-Alm"
+        },
+        "via": "trail",
+        "time": 77,
+        "last": false,
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/krettenburg-neuhaus.gpx",
+        "note": {
+          "en": "Down the wide T1 path/road; detour also possible after Eckspitz.",
+          "de": "Über den breiten T1-Weg/Waldstraße; Abzweig auch nach dem Eckspitz möglich."
+        }
+      }
+    ],
+    "water": [
+      {
+        "at": "Obere Firstalm",
+        "kind": "shop",
+        "reliable": "yes"
+      },
+      {
+        "at": "Bodenschneidhaus",
+        "kind": "hut",
+        "reliable": "yes"
+      }
+    ],
+    "signal": [
+      {
+        "to": "Obere Firstalm",
+        "quality": "good",
+        "network": "Telekom"
+      },
+      {
+        "from": "Obere Firstalm",
+        "quality": "patchy",
+        "network": "Telekom"
+      }
+    ],
+    "stops": [
+      {
+        "at": "Obere Firstalm",
+        "kind": "restaurant",
+        "days": {
+          "en": "Daily 08:00-20:00",
+          "de": "Täglich 08:00-20:00"
+        },
+        "booking": {
+          "url": "https://firstalm.de/",
+          "label": {
+            "en": "Obere Firstalm website",
+            "de": "Obere Firstalm Website"
+          }
+        },
+        "food": true,
+        "water": true,
+        "overnight": true,
+        "cash": false,
+        "phone": "+49 (0)8026 – 7302",
+        "checked": "2026-10-18",
+        "note": {
+          "en": "Rents sledges out in winter.",
+          "de": "Vermietet im Winter Schlitten."
+        }
+      },
+      {
+        "at": "Bodenschneidhaus",
+        "kind": "alpine-hut",
+        "days": {
+          "en": "Daily 09:00-22:00",
+          "de": "Täglich 09:00-22:00"
+        },
+        "booking": {
+          "url": "https://www.bodenschneidhaus.de/",
+          "label": {
+            "en": "Bodenschneidhaus website",
+            "de": "Bodenschneidhaus Website"
+          }
+        },
+        "food": true,
+        "water": true,
+        "overnight": true,
+        "cash": false,
+        "phone": "+49 172 3735798",
+        "checked": "2026-10-25",
+        "note": {
+          "en": "Overnight stay possible.",
+          "de": "Übernachtung möglich."
+        }
+      }
+    ],
+    "access": {
+      "carFree": "yes",
+      "note": {
+        "en": "Arrive by train and bus, leave by the same train.",
+        "de": "Mit Zug und Bus anreisen, mit demselben Zug wieder abreisen."
+      },
+      "checked": "2026-10-25",
+      "transport": [
+        {
+          "mode": "train",
+          "from": {
+            "en": "Munich Central Station",
+            "de": "München Hbf"
+          },
+          "to": {
+            "name": {
+              "en": "Schliersee",
+              "de": "Schliersee"
+            }
+          },
+          "direction": "there",
+          "line": "RB 55",
+          "operator": "DB Regio",
+          "duration": 57,
+          "changes": 0,
+          "first": "06:29",
+          "last": "16:29",
+          "frequency": {
+            "en": "hourly",
+            "de": "stündlich"
+          },
+          "price": [
+            {
+              "amount": 0,
+              "note": {
+                "en": "with Deutschlandticket",
+                "de": "mit Deutschlandticket"
+              }
+            },
+            {
+              "amount": 25,
+              "per": "day"
+            }
+          ],
+          "ticket": {
+            "en": "Deutschlandticket valid to Spitzingsee",
+            "de": "Deutschlandticket bis Spitzingsee gültig"
+          },
+          "url": "https://www.bahn.de/"
+        },
+        {
+          "mode": "bus",
+          "from": {
+            "en": "Schliersee",
+            "de": "Schliersee"
+          },
+          "to": {
+            "name": {
+              "en": "Spitzingsee Spitzingsattel, Schliersee",
+              "de": "Spitzingsee Spitzingsattel, Schliersee"
+            }
+          },
+          "direction": "there",
+          "line": "362",
+          "operator": "MVV",
+          "duration": 14,
+          "changes": 0,
+          "first": "07:31",
+          "last": "17:31"
+        }
+      ],
+      "parking": [
+        {
+          "name": {
+            "en": "Spitzingsattel parking lot",
+            "de": "Parkplatz Spitzingsattel"
+          },
+          "at": "Parkplatz Spitzingsattel",
+          "price": [
+            {
+              "amount": 5,
+              "per": "day"
+            }
+          ],
+          "size": "small",
+          "fills": "weekends",
+          "checked": "2026-10-25"
+        }
+      ]
+    },
+    "suitability": {
+      "kids": "no",
+      "dogs": "yes",
+      "stroller": false,
+      "bike": "no",
+      "winter": "no",
+      "night": "no",
+      "solo": "experienced",
+      "note": {
+        "en": "Dogs will have a hard time navigating overgrown areas.",
+        "de": "Hunde haben es schwer, sich durch zugewachsene Bereiche zu navigieren."
+      }
+    },
+    "legs": [
+      {
+        "to": "Obere Firstalm",
+        "terrain": ["road", "forest-road"],
+        "sac": "T2",
+        "marking": "good",
+        "note": {
+          "en": "Forest road with occasional cars in summer or sledges in winter.",
+          "de": "Waldstraße mit gelegentlichem Autoverkehr im Sommer oder Schlitten im Winter."
+        }
+      },
+      {
+        "to": "Krettenburg",
+        "terrain": ["ridge"],
+        "sac": "T3",
+        "marking": "none"
+      },
+      {
+        "to": "Bodenschneidhaus",
+        "terrain": ["path"],
+        "sac": "T3",
+        "marking": "good"
+      },
+      {
+        "to": "Eckspitz",
+        "terrain": ["meadow", "path"],
+        "sac": "T2",
+        "marking": "none"
+      },
+      {
+        "to": "Westerberg",
+        "terrain": ["forest-road", "path"],
+        "sac": "T1-T3",
+        "marking": "good",
+        "note": {
+          "en": "Forest road abruptly ends; unmarked T3 slope to the top.",
+          "de": "Waldstraße endet abrupt; unmarkierter T3-Hang zum Gipfel."
+        }
+      },
+      {
+        "to": "Brunstkogel",
+        "terrain": ["ridge", "meadow"],
+        "sac": "T3",
+        "marking": "none"
+      },
+      {
+        "to": "Schliersee",
+        "terrain": ["forest-road", "road"],
+        "sac": "T1",
+        "marking": "good"
+      }
+    ],
+    "plan": {
+      "gear": [
+        {
+          "item": "boots"
+        },
+        {
+          "item": "water",
+          "amount": {
+            "en": "2–3 L",
+            "de": "2–3 L"
+          }
+        },
+        {
+          "item": "insulation",
+          "when": {
+            "en": "in case of falling into mud or snow",
+            "de": "falls man in Matsch oder Schnee fällt"
+          }
+        },
+        {
+          "item": "poles",
+          "need": "optional"
+        }
+      ],
+      "for": [
+        {
+          "en": "Fit hikers exploring easily accessible but unknown peaks",
+          "de": "Fitten Wanderern, die leicht erreichbare, aber unbekannte Gipfel erkunden"
+        }
+      ],
+      "notFor": [
+        {
+          "en": "Normal hikers on a day trip",
+          "de": "Normalen Wanderern auf Tagestour"
+        }
+      ],
+      "variants": [
+        {
+          "name": {
+            "en": "No-peak summer tour",
+            "de": "Gipfelfreie Sommertour"
+          },
+          "recommended": true,
+          "summary": {
+            "en": "Take the road to Obere Firstalm, the summer way to Bodenschneidhaus, and the forest road down to Schliersee.",
+            "de": "Über die Straße zur Oberen Firstalm, den Sommerweg zum Bodenschneidhaus und die Waldstraße hinab nach Schliersee."
+          },
+          "distance": 13700,
+          "ascent": 535,
+          "descent": 882,
+          "duration": 192,
+          "sac": "T2"
+        }
+      ],
+      "timing": {
+        "start": "09:00",
+        "turnaround": "16:00"
+      },
+      "alternatives": {
+        "easier": ["2025-08-31-brecherspitz", "2025-11-01-bodenschneid"],
+        "harder": ["2024-10-12-auerspitz"],
+        "similar": ["2025-09-07-wasserspitz", "2025-12-23-rainerkopf"]
+      }
+    },
+    "sources": [
+      {
+        "title": {
+          "en": "Westerberg description on hikr.org",
+          "de": "Westerberg-Beschreibung auf hikr.org"
+        },
+        "url": "https://www.hikr.org/tour/post34161.html",
+        "kind": "website",
+        "lang": "de"
+      },
+      {
+        "title": {
+          "en": "Bodenschneidhaus website",
+          "de": "Bodenschneidhaus-Website"
+        },
+        "url": "https://www.bodenschneidhaus.de/",
+        "kind": "website",
+        "lang": "de"
+      }
+    ]
+  }
+}

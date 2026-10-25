@@ -483,13 +483,13 @@ onMount(() => {
             <HikesTimeline weeks={webData.weeks} />
         </div>
     </article>
-    <div class="flex flex-col md:flex-row gap-4">
-        <aside class="w-full md:w-72 lg:w-80 shrink-0 order-last md:order-none relative bg-gray-50 rounded-lg dark:bg-gray-800">
-            <div class="md:absolute md:inset-0 flex flex-col p-4 transition-opacity duration-500 {isLoading ? 'opacity-0 pointer-events-none' : 'opacity-100'}">
+    <div class="flex flex-col lg:flex-row gap-4">
+        <aside class="w-full lg:w-72 xl:w-80 shrink-0 order-last lg:order-none relative bg-gray-50 rounded-lg dark:bg-gray-800">
+            <div class="lg:absolute lg:inset-0 flex flex-col p-4 transition-opacity duration-500 {isLoading ? 'opacity-0 pointer-events-none' : 'opacity-100'}">
                 <div class="shrink-0 mb-3 text-xl font-semibold text-gray-900 dark:text-white">
                     {peaks.length} bagged peaks
                 </div>
-                <ul class="overflow-y-auto max-h-72 md:max-h-none md:flex-1 md:min-h-0 -mx-1 px-1">
+                <ul class="overflow-y-auto max-h-72 lg:max-h-none lg:flex-1 lg:min-h-0 -mx-1 px-1">
                     {#each peaks as peak (peak.node.id)}
                         <li>
                             <button
@@ -518,7 +518,7 @@ onMount(() => {
                 </ul>
             </div>
         </aside>
-        <div class="w-full min-w-0 md:flex-1 bg-gray-50 rounded-lg overflow-hidden dark:bg-gray-800 relative z-0 aspect-[4/3] md:aspect-[21/9]">
+        <div class="w-full min-w-0 lg:flex-1 bg-gray-50 rounded-lg overflow-hidden dark:bg-gray-800 relative z-0 aspect-[4/3] lg:aspect-[21/9]">
             <div class="w-full h-full transition-opacity duration-500 {isLoading ? 'opacity-0' : 'opacity-100'}">
                 <div id="map" class="w-full h-full relative z-0"></div>
             </div>

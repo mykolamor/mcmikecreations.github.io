@@ -57,9 +57,9 @@
 	};
 
 	const DURATION_NOTES = {
-		gpx: 'Moving time from my recorded track, breaks excluded: any minute I covered at least 0.5 km/h.',
+		gpx: 'Moving time from my recorded track, breaks excluded.',
 		manual: 'My moving time, breaks excluded.',
-		planner: "This hike wasn't recorded, so this is the route planner's (openrouteservice) walking estimate."
+		planner: "The route planner's (openrouteservice) walking estimate."
 	};
 
 	const ELAPSED_NOTES = {
