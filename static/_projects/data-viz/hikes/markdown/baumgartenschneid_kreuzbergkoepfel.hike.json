@@ -1,0 +1,575 @@
+{
+  "name": {
+    "en": "Baumgartenschneid - Kreuzbergköpfel",
+    "de": "Baumgartenschneid - Kreuzbergköpfel"
+  },
+  "height": 768,
+  "description": {
+    "en": "Hike from Tegernsee to Schliersee via Pfliegeleck (1065 m), Kleintegernseer Berg (1106 m), Riederstein (1207 m), Rohrkopf (1316 m), Baumgartenschneid (1448 m), Lahnenkopf (1416 m), and Kreuzbergköpfel (1273 m).",
+    "de": "Wanderung vom Tegernsee zum Schliersee über das Pfliegeleck (1065 m), den Kleintegernseer Berg (1106 m), Riederstein (1207 m), Rohrkopf (1316 m), Baumgartenschneid (1448 m), Lahnenkopf (1416 m) und Kreuzbergköpfel (1273 m)."
+  },
+  "image": "/images/projects/data-viz/hikes/baumgartenschneid_kreuzbergkoepfel.jpg",
+  "origin": {
+    "lat": 47.718501,
+    "lon": 11.808071
+  },
+  "checkpoints": [
+    [11.7569037, 47.7143662],
+    [11.7706673, 47.7070306],
+    [11.7782249, 47.707434],
+    [11.7923115, 47.704189],
+    [11.7977397, 47.7009765],
+    [11.8111754, 47.702226],
+    [11.8242707, 47.6990797],
+    [11.8111754, 47.702226],
+    [11.8113574, 47.7114347],
+    [11.8453456, 47.7320691],
+    [11.8597632, 47.7355828]
+  ],
+  "nodes": ["node/2213748620", "node/1738763687", "node/289759260", "node/357274338", "node/266572730", "node/1574152590", "node/1574152589", "way/110298010", "node/4106176432", "way/31899700", "node/3750690666", "node/2291559247", "node/2213732689", "way/1056323650"],
+  "facts": {
+    "checked": "2026-11-02",
+    "summary": {
+      "en": "A medium-difficulty point-to-point route on the 686 trail between Tegernsee and Schliersee, visiting Baumgartenschneid (1448 m)."
+    },
+    "difficulty": {
+      "sac": "T3+",
+      "note": {
+        "en": "T3+ on the Kreuzbergköpfel cliff; T2 otherwise."
+      },
+      "exposure": {
+        "level": "low",
+        "note": {
+          "en": "Most of the track goes through a wide road; Kreuzbergköpfel requires a few meters of cliff traversal."
+        }
+      },
+      "fitness": 3
+    },
+    "season": {
+      "best": [4, 5, 6, 7, 8, 9, 10],
+      "possible": [3, 11],
+      "note": {
+        "en": "The track is accessible in any season; Kreuzbergköpfel may be difficult to descend from in winter."
+      }
+    },
+    "route": {
+      "start": {
+        "ref": "node/4512205693"
+      },
+      "end": {
+        "ref": "node/3779246592"
+      },
+      "type": "point-to-point",
+      "official": {
+        "en": "The official route follows the track, skipping Lahnenkopf and Kreuzbergköpfel."
+      },
+      "optional": [
+        {
+          "from": {
+            "ref": "node/266572730"
+          },
+          "to": {
+            "ref": "node/1574152590"
+          },
+          "name": {
+            "en": "Lahnenkopf wild detour"
+          },
+          "note": {
+            "en": "Requires hiking up a hill with no trail."
+          }
+        },
+        {
+          "from": {
+            "ref": "node/2213732689"
+          },
+          "to": {
+            "ref": "node/1574152589"
+          },
+          "name": {
+            "en": "Kreuzbergköpfel cliff climb"
+          },
+          "note": {
+            "en": "Traverse a steep hill up and down to a cliff with views towards Gindelalmschneid."
+          }
+        }
+      ],
+      "shade": "high",
+      "huts": [
+        {
+          "ref": "way/110298010"
+        },
+        {
+          "ref": "way/31899700"
+        }
+      ],
+      "regions": ["mangfall-mountains", "tegernsee", "schliersee"],
+      "categories": ["peak-bagging", "ridge"],
+      "countries": [
+        "DE"
+      ],
+      "peaks": [
+        {
+          "ref": "node/2213748620"
+        },
+        {
+          "ref": "node/1738763687"
+        },
+        {
+          "ref": "node/289759260"
+        },
+        {
+          "ref": "node/357274338"
+        },
+        {
+          "ref": "node/266572730"
+        },
+        {
+          "ref": "node/1574152590"
+        },
+        {
+          "ref": "node/1574152589"
+        }
+      ],
+      "trails": ["686", "MTB Alpbach über Gindel Alm", "Prinzenweg"],
+      "terrain": ["road", "forest-road", "path", "meadow", "forest", "overgrown"]
+    },
+    "navigation": {
+      "marking": "good",
+      "spans": [
+        {
+          "from": {
+            "ref": "node/266572730"
+          },
+          "to": {
+            "ref": "node/1574152590"
+          },
+          "marking": "none",
+          "note": {
+            "en": "The section is missing any marking on the trail, let alone off-trail."
+          }
+        }
+      ],
+      "note": {
+        "en": "This is a popular and well-marked path, although there are a few unmapped shortcuts up the slope."
+      },
+      "offline": false
+    },
+    "hazards": [
+      {
+        "from": {
+          "lat": 47.712191,
+          "lon": 11.809517,
+          "name": {
+            "en": "Path down from Kreuzbergköpfel"
+          },
+          "demEle": 1185.7
+        },
+        "to": {
+          "ref": "node/2213732689"
+        },
+        "kind": "fall-risk",
+        "severity": "medium",
+        "note": {
+          "en": "Very narrow muddy trail on a steep slope with fallen trees."
+        },
+        "label": {
+          "en": "Kreuzbergköpfel detour"
+        }
+      }
+    ],
+    "bailouts": [
+      {
+        "at": {
+          "ref": "node/2213748614"
+        },
+        "to": {
+          "en": "Bus stop Tegernsee, Leeberg"
+        },
+        "via": "trail",
+        "note": {
+          "en": "Take a narrow trail through the forest down to the closest Tegernsee bus stop."
+        },
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/kleintegernseer_berg-tegernsee.gpx"
+      },
+      {
+        "at": {
+          "ref": "way/110298010"
+        },
+        "to": {
+          "en": "Bus stop Schwaighof"
+        },
+        "via": "road",
+        "note": {
+          "en": "Take the gravel road from the hut down to Rottach-Egern."
+        },
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/riederstein-rottach_egern.gpx"
+      },
+      {
+        "at": {
+          "lat": 47.7019727,
+          "lon": 11.8059348,
+          "name": {
+            "en": "Crossing near Baumgartenschneid"
+          },
+          "demEle": 1365.9
+        },
+        "to": {
+          "en": "Bus stop Schwaighof"
+        },
+        "via": "trail",
+        "note": {
+          "en": "Take the steep trail from Baumgartenschneid south down to Rottach-Egern."
+        },
+        "last": true,
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/baumgartenschneid-rottach_egern.gpx"
+      }
+    ],
+    "water": [
+      {
+        "at": {
+          "ref": "node/4106176432"
+        },
+        "kind": "tap",
+        "reliable": "seasonal",
+        "treat": false
+      }
+    ],
+    "signal": [
+      {
+        "to": {
+          "ref": "node/266572730"
+        },
+        "quality": "good"
+      },
+      {
+        "from": {
+          "ref": "node/266572730"
+        },
+        "to": {
+          "ref": "node/1574152589"
+        },
+        "quality": "patchy"
+      },
+      {
+        "from": {
+          "ref": "node/1574152589"
+        },
+        "quality": "good"
+      }
+    ],
+    "stops": [
+      {
+        "at": {
+          "ref": "way/110298010"
+        },
+        "kind": "alpine-hut",
+        "open": "all-year",
+        "booking": "https://www.berggasthaus-riederstein-am-galaun.de/",
+        "phone": "+498022273022",
+        "water": true,
+        "food": true,
+        "checked": "2026-11-02"
+      }
+    ],
+    "access": {
+      "carFree": "yes",
+      "transport": [
+        {
+          "mode": "train",
+          "from": {
+            "en": "Munich Central Station",
+            "de": "München Hbf"
+          },
+          "to": {
+            "name": {
+              "en": "Tegernsee",
+              "de": "Tegernsee"
+            }
+          },
+          "direction": "there",
+          "line": "RB 57",
+          "operator": "DB Regio",
+          "duration": 70,
+          "changes": 0,
+          "first": "06:02",
+          "last": "23:10",
+          "frequency": {
+            "en": "hourly",
+            "de": "stündlich"
+          },
+          "price": [
+            {
+              "amount": 0,
+              "note": {
+                "en": "with Deutschlandticket",
+                "de": "mit Deutschlandticket"
+              }
+            },
+            {
+              "amount": 20.5,
+              "per": "day",
+              "checked": "2026-11-02"
+            }
+          ],
+          "ticket": {
+            "en": "Deutschlandticket valid to Tegernsee",
+            "de": "Deutschlandticket bis Tegernsee gültig"
+          },
+          "url": "https://www.bahn.de/",
+          "checked": "2026-11-02"
+        },
+        {
+          "mode": "train",
+          "from": {
+            "en": "Schliersee",
+            "de": "Schliersee"
+          },
+          "to": {
+            "name": {
+              "en": "Munich Central Station",
+              "de": "München Hbf"
+            }
+          },
+          "direction": "there",
+          "line": "RB 55",
+          "operator": "DB Regio",
+          "duration": 62,
+          "changes": 0,
+          "first": "05:30",
+          "last": "22:59",
+          "frequency": {
+            "en": "hourly",
+            "de": "stündlich"
+          },
+          "price": [
+            {
+              "amount": 0,
+              "note": {
+                "en": "with Deutschlandticket",
+                "de": "mit Deutschlandticket"
+              }
+            },
+            {
+              "amount": 20.5,
+              "per": "day",
+              "checked": "2026-11-02"
+            }
+          ],
+          "ticket": {
+            "en": "Deutschlandticket valid to Schliersee",
+            "de": "Deutschlandticket bis Schliersee gültig"
+          },
+          "url": "https://www.bahn.de/",
+          "checked": "2026-11-02"
+        }
+      ],
+      "parking": [
+        {
+          "at": {
+            "ref": "way/1056323650"
+          },
+          "name": {
+            "en": "Parking lot Schießstätte",
+            "de": "Wander-Parkplatz Schießstätte Tegernsee"
+          },
+          "size": "small",
+          "price": [
+            {
+              "currency": "Euro",
+              "per": "day",
+              "note": {
+                "en": "Or 1 Euro per hour."
+              },
+              "checked": "2026-11-02",
+              "amount": 5
+            }
+          ],
+          "fills": "summer",
+          "checked": "2026-11-02"
+        }
+      ],
+      "checked": "2026-11-02"
+    },
+    "rules": [
+      {
+        "from": {
+          "ref": "node/266572730"
+        },
+        "to": {
+          "ref": "node/1574152590"
+        },
+        "kind": "protected-area",
+        "label": {
+          "en": "A warning for Wald-Wild-Schöngebiet"
+        },
+        "season": [1, 2, 12]
+      }
+    ],
+    "suitability": {
+      "kids": "older",
+      "dogs": "leash",
+      "stroller": true,
+      "bike": "yes",
+      "winter": "yes",
+      "night": "experienced",
+      "solo": "yes",
+      "note": {
+        "en": "Detours are not accessible for strollers or bikes."
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.hikr.org/tour/post130424.html",
+        "title": {
+          "en": "Tour to Lahnenkopf"
+        },
+        "kind": "guidebook",
+        "lang": "de",
+        "note": {
+          "en": "A small guide for getting to Lahnenkopf."
+        }
+      },
+      {
+        "url": "https://www.hikr.org/tour/post39675.html",
+        "kind": "guidebook",
+        "title": {
+          "en": "Tour to Kreuzbergköpfel"
+        },
+        "lang": "de",
+        "note": {
+          "en": "A guide to climbing Kreuzbergköpfel."
+        }
+      },
+      {
+        "url": "https://www.alpenverein-muenchen-oberland.de/seniorenkreis/2021-tourenberichte/12.08.2021-kreuzbergkoepfel",
+        "kind": "guidebook",
+        "title": {
+          "en": "DAV visit to Kreuzbergköpfel"
+        },
+        "lang": "de"
+      }
+    ],
+    "protectedAreas": {
+      "en": "The route near Lahnenkopf is part of Wald-Wild-Schöngebiet."
+    },
+    "plan": {
+      "gear": [
+        {
+          "item": "boots"
+        },
+        {
+          "item": "poles"
+        },
+        {
+          "item": "water",
+          "amount": {
+            "en": "2–3 L",
+            "de": "2–3 L"
+          }
+        }
+      ],
+      "for": [{
+          "en": "Adventurous hikers chasing Tegernsee views"
+        }, {
+          "en": "Completionists looking for easy wild peaks"
+        }],
+      "notFor": [{
+          "en": "Casual hikers following the full route"
+        }, {
+          "en": "People with weak stamina"
+        }],
+      "timing": {
+        "start": "08:00",
+        "turnaround": "15:00"
+      },
+      "alternatives": {
+        "easier": ["2025-10-26-auer_berg"],
+        "similar": ["2026-09-03-gassler_berg", "2026-09-20-duernbachwand"],
+        "harder": ["2026-10-22-krettenburg_westerberg"]
+      }
+    },
+    "legs": [
+      {
+        "to": {
+          "ref": "way/110298010"
+        },
+        "sac": "T1",
+        "terrain": ["road", "forest-road", "path"],
+        "marking": "good"
+      },
+      {
+        "to": {
+          "ref": "node/266572730"
+        },
+        "terrain": ["path"],
+        "marking": "good",
+        "sac": "T2"
+      },
+      {
+        "to": {
+          "ref": "node/1574152590"
+        },
+        "sac": "T2+",
+        "terrain": ["meadow", "forest"],
+        "optional": true,
+        "marking": "none",
+        "note": {
+          "en": "A vaguely visible trail up a shallow slope."
+        },
+        "onProfile": true
+      },
+      {
+        "to": {
+          "ref": "node/266572730"
+        },
+        "sac": "T2+",
+        "terrain": ["forest", "meadow"],
+        "marking": "none",
+        "optional": true,
+        "onProfile": true
+      },
+      {
+        "to": {
+          "ref": "node/2213732689"
+        },
+        "sac": "T2",
+        "terrain": ["path"],
+        "marking": "good"
+      },
+      {
+        "to": {
+          "ref": "node/1574152589"
+        },
+        "sac": "T3+",
+        "terrain": ["overgrown", "forest"],
+        "marking": "none",
+        "optional": true,
+        "note": {
+          "en": "No trail upwards; steep overgrown slope."
+        },
+        "onProfile": true
+      },
+      {
+        "to": {
+          "ref": "node/2213732689"
+        },
+        "sac": "T3+",
+        "onProfile": true,
+        "marking": "none",
+        "terrain": ["forest", "path"],
+        "optional": true,
+        "note": {
+          "en": "Steep slope covered in leaves; partial trail sections visible."
+        }
+      },
+      {
+        "to": {
+          "ref": "node/3779246592"
+        },
+        "sac": "T1",
+        "terrain": ["forest-road", "road"],
+        "marking": "good"
+      }
+    ]
+  }
+}

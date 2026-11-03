@@ -506,6 +506,22 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/266572730": {
+    "lat": 47.702226,
+    "lon": 11.8111754,
+    "demEle": 1431.6,
+    "tags": {
+      "ele": "1448",
+      "name": "Baumgartenschneid",
+      "natural": "peak",
+      "summit:cross": "no",
+      "summit:register": "no",
+      "wikidata": "Q811560",
+      "wikimedia_commons": "Category:Baumgartenschneid",
+      "wikipedia": "de:Baumgartenschneid"
+    },
+    "fetched": "2026-11-02"
+  },
   "node/266993268": {
     "lat": 47.6584811,
     "lon": 11.9211109,
@@ -772,6 +788,21 @@
       "wikidata": "Q21870957"
     },
     "fetched": "2026-10-26"
+  },
+  "node/289759260": {
+    "lat": 47.704189,
+    "lon": 11.7923115,
+    "demEle": 1162.8,
+    "tags": {
+      "ele": "1207",
+      "name": "Riederstein",
+      "natural": "peak",
+      "summit:cross": "no",
+      "summit:register": "yes",
+      "wikidata": "Q30335869",
+      "wikipedia": "de:Riederstein"
+    },
+    "fetched": "2026-11-02"
   },
   "node/289923681": {
     "lat": 28.5958063,
@@ -1099,6 +1130,19 @@
       "wikipedia": "de:Marienstein (Waakirchen)"
     },
     "fetched": "2026-10-26"
+  },
+  "node/357274338": {
+    "lat": 47.7009765,
+    "lon": 11.7977397,
+    "demEle": 1309.8,
+    "tags": {
+      "ele": "1316",
+      "name": "Rohrkopf",
+      "natural": "peak",
+      "summit:cross": "no",
+      "summit:register": "no"
+    },
+    "fetched": "2026-11-02"
   },
   "node/357482706": {
     "lat": 47.4483891,
@@ -2389,6 +2433,30 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/1574152589": {
+    "lat": 47.7114347,
+    "lon": 11.8113574,
+    "demEle": 1262.1,
+    "tags": {
+      "alt_name": "Kreuzbergköpfl;Kreuzberg-Köpfl",
+      "ele": "1273",
+      "name": "Kreuzbergköpfel",
+      "natural": "peak"
+    },
+    "fetched": "2026-11-02"
+  },
+  "node/1574152590": {
+    "lat": 47.6990797,
+    "lon": 11.8242707,
+    "demEle": 1413.7,
+    "tags": {
+      "ele": "1416",
+      "name": "Lahnenkopf",
+      "natural": "peak",
+      "wikidata": "Q31532641"
+    },
+    "fetched": "2026-11-02"
+  },
   "node/1574152591": {
     "lat": 47.6857619,
     "lon": 11.8423468,
@@ -2538,6 +2606,19 @@
       "tourism": "hotel"
     },
     "fetched": "2026-10-26"
+  },
+  "node/1738763687": {
+    "lat": 47.707434,
+    "lon": 11.7782249,
+    "demEle": 1111.3,
+    "tags": {
+      "ele": "1106",
+      "name": "Kleintegernseer Berg",
+      "natural": "peak",
+      "summit:cross": "no",
+      "summit:register": "no"
+    },
+    "fetched": "2026-11-02"
   },
   "node/1743681602": {
     "lat": 47.7338721,
@@ -2810,6 +2891,53 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/2213732689": {
+    "lat": 47.7091167,
+    "lon": 11.8115181,
+    "demEle": 1167.7,
+    "tags": {
+      "amenity": "shelter",
+      "bench": "yes",
+      "ele": "1154",
+      "ele:de": "1154",
+      "ele:NN": "1154",
+      "shelter_type": "lean_to"
+    },
+    "fetched": "2026-11-02"
+  },
+  "node/2213748614": {
+    "lat": 47.706853,
+    "lon": 11.7810927,
+    "demEle": 1091.2,
+    "tags": {
+      "direction_northwest": "[blue] Tegernsee (über Pfliegeleck) 1:00",
+      "direction_southeast": "[blue] Galaun 0:20; [blue] Riederstein 1207m (über Galaun) 0:50; [red] Baumgartenschneid 1444m (über Riederstein) 1:45 (686a,686)",
+      "direction_southwest": "[blue] Tegernsee (über Leeberg oder Sonnleitenweg) 1:00 (686a)",
+      "ele": "1075",
+      "ele:de": "1075",
+      "ele:NN": "1075",
+      "hiking": "yes",
+      "information": "guidepost",
+      "operator": "Stadt Tegernsee",
+      "tourism": "information"
+    },
+    "fetched": "2026-11-02"
+  },
+  "node/2213748620": {
+    "lat": 47.7070306,
+    "lon": 11.7706673,
+    "demEle": 1068.9,
+    "tags": {
+      "ele": "1065",
+      "man_made": "cross",
+      "material": "wood",
+      "name": "Pfliegeleck",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "no"
+    },
+    "fetched": "2026-11-02"
+  },
   "node/2273005201": {
     "lat": 48.8378723,
     "lon": 12.183366,
@@ -2826,6 +2954,27 @@
       "ref:BLfD": "D-3-75-196-29"
     },
     "fetched": "2026-10-26"
+  },
+  "node/2291559247": {
+    "lat": 47.7341065,
+    "lon": 11.8577257,
+    "demEle": 780.8,
+    "tags": {
+      "amenity": "cafe",
+      "breakfast": "10:00-11:30",
+      "check_date": "2026-07-30",
+      "check_date:opening_hours": "2026-07-30",
+      "cuisine": "german",
+      "indoor_seating": "yes",
+      "lunch": "11:30-14:00",
+      "name": "Café Milchhäusl",
+      "opening_hours": "Fr-Tu 10:00-18:00",
+      "outdoor_seating": "yes",
+      "phone": "+49 8026 4676",
+      "smoking": "outside",
+      "website": "https://www.milchhaeusl-schliersee.de"
+    },
+    "fetched": "2026-11-02"
   },
   "node/2319315497": {
     "lat": 32.77445,
@@ -3303,6 +3452,37 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/3750690666": {
+    "lat": 47.7116892,
+    "lon": 11.8105712,
+    "demEle": 1246.9,
+    "tags": {
+      "description": "Gipfelkreuz Kreuzbergköpfel",
+      "ele": "1268",
+      "ele:source": "gps",
+      "man_made": "cross"
+    },
+    "fetched": "2026-11-02"
+  },
+  "node/3779246592": {
+    "lat": 47.7355828,
+    "lon": 11.8597632,
+    "demEle": 786.2,
+    "tags": {
+      "name": "Schliersee",
+      "operator": "DB Netz AG",
+      "platform": "3",
+      "public_transport": "station",
+      "railway": "station",
+      "railway:ref": "MSCS",
+      "railway:station_category": "6",
+      "uic_name": "Schliersee",
+      "uic_ref": "8005367",
+      "wheelchair": "yes",
+      "wikidata": "Q801409"
+    },
+    "fetched": "2026-11-02"
+  },
   "node/3859294830": {
     "lat": 47.6494437,
     "lon": 11.9313898,
@@ -3388,6 +3568,15 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/4106176432": {
+    "lat": 47.6978807,
+    "lon": 11.8063085,
+    "demEle": 1145.0,
+    "tags": {
+      "amenity": "drinking_water"
+    },
+    "fetched": "2026-11-02"
+  },
   "node/4193344090": {
     "lat": 28.52673,
     "lon": 83.9075282,
@@ -3464,6 +3653,23 @@
       "natural": "peak"
     },
     "fetched": "2026-10-26"
+  },
+  "node/4512205693": {
+    "lat": 47.7143662,
+    "lon": 11.7569037,
+    "demEle": 763.0,
+    "tags": {
+      "name": "Tegernsee",
+      "operator": "Tegernsee-Bahn Betriebsgesellschaft mbH",
+      "public_transport": "station",
+      "railway": "station",
+      "railway:ref": "MTE",
+      "train": "yes",
+      "uic_ref": "8007632",
+      "wheelchair": "yes",
+      "wikidata": "Q27478934"
+    },
+    "fetched": "2026-11-02"
   },
   "node/4647797222": {
     "lat": 47.7012898,
@@ -4486,6 +4692,22 @@
       "wikimedia_commons": "Category:Bahnhof Zugspitzplatt"
     },
     "fetched": "2026-10-26"
+  },
+  "way/31899700": {
+    "lat": 47.70453655,
+    "lon": 11.8075531,
+    "demEle": 1358.2,
+    "tags": {
+      "building": "yes",
+      "building:levels": "1",
+      "building:material": "wood",
+      "ele": "1368",
+      "name": "Baumgartenalm",
+      "roof:levels": "0",
+      "roof:shape": "gabled",
+      "tourism": "hut"
+    },
+    "fetched": "2026-11-02"
   },
   "way/34601514": {
     "lat": 47.74817175,
@@ -5592,6 +5814,45 @@
     },
     "fetched": "2026-10-26"
   },
+  "way/110298010": {
+    "lat": 47.703729249999995,
+    "lon": 11.7884687,
+    "demEle": 1080.6,
+    "tags": {
+      "addr:city": "Tegernsee",
+      "addr:country": "DE",
+      "addr:housenumber": "1",
+      "addr:place": "Galaun",
+      "addr:postcode": "83684",
+      "air_conditioning": "no",
+      "amenity": "restaurant",
+      "brewery": "Tegernseer",
+      "building": "yes",
+      "check_date": "2026-05-23",
+      "check_date:opening_hours": "2026-05-23",
+      "cuisine": "bavarian",
+      "diet:halal": "no",
+      "diet:kosher": "no",
+      "diet:vegan": "no",
+      "diet:vegetarian": "yes",
+      "ele": "1080",
+      "indoor_seating": "yes",
+      "long_name": "Berggasthaus Riederstein am Galaun",
+      "name": "Berggasthaus Riederstein",
+      "opening_hours": "Apr-Oct: Th-Mo,PH 09:00-18:00; Nov-Mar: Th-Mo,PH 10:00-17:00",
+      "outdoor_seating": "yes",
+      "payment:credit_cards": "no",
+      "payment:debit_cards": "no",
+      "phone": "+49 8022 273022",
+      "smoking": "outside",
+      "source:ele": "sign",
+      "tourism": "apartment",
+      "website": "https://berggasthaus-riederstein-am-galaun.de/",
+      "wheelchair": "no",
+      "wikimedia_commons": "File:Berggasthaus Riederstein am Galaun Bild 2 2024-05-20.jpg"
+    },
+    "fetched": "2026-11-02"
+  },
   "way/110343520": {
     "lat": 47.67601825,
     "lon": 11.5541521,
@@ -6631,6 +6892,25 @@
       "surface": "asphalt"
     },
     "fetched": "2026-10-26"
+  },
+  "way/1056323650": {
+    "lat": 47.712204,
+    "lon": 11.7660683,
+    "demEle": 811.7,
+    "tags": {
+      "access": "yes",
+      "amenity": "parking",
+      "capacity": "40",
+      "capacity:disabled": "no",
+      "charge": "1€/h, 5€/day",
+      "fee": "yes",
+      "name": "Wander-Parkplatz Schießstätte Tegernsee",
+      "parking": "surface",
+      "payment:cash": "yes",
+      "payment:parknow": "yes",
+      "surface": "gravel"
+    },
+    "fetched": "2026-11-02"
   },
   "way/1147768588": {
     "lat": 47.481977099999995,
