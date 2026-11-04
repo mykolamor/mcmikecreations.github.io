@@ -10,6 +10,8 @@ import {
     FACTS_PIN_H, FACTS_PIN_POINTER,
     type FactsMarks
 } from '$lib/hikes/facts-overlay';
+import { tHtml } from '$lib/i18n/strings';
+import type { Lang } from '$lib/i18n/languages';
 
 /**
  * How far a bailout route is pushed off the main route where they run
@@ -70,7 +72,9 @@ export async function initMap2d(
     nodes?: any[] | null,
     photos?: MapPhoto[],
     onPhotoClick?: (mediaIndex: number) => void,
-    facts?: FactsMarks
+    facts?: FactsMarks,
+    /** The language of the map's own text: layer names, popups. */
+    lang: Lang = 'en'
 ): Promise<Map2dHandle> {
     const noop: Map2dHandle = { setIndicator: () => {} };
     const { L } = await import('$lib/components/leaflet.almostover.js');
@@ -122,14 +126,15 @@ export async function initMap2d(
     const factsLayer = facts && (facts.pins.length || facts.lines.length || facts.routes.length) ? L.layerGroup() : undefined;
     const unsubscribeFacts = factsLayer && bindLayerPref(map, factsLayer, mapFactsPref);
     // Facts about a POI node go on its marker, not on a pin of their own.
-    const { onNodes: nodePins, loose: loosePins } = pinsByNode(factsLayer ? facts!.pins : [], (nodes ?? []).map((n) => n.id));
+    const { onNodes: nodePins, loose: loosePins } = pinsByNode(factsLayer ? facts!.pins : [], (nodes ?? []).map((n) => n.ref));
     let unsubscribeNodeFacts: (() => void) | undefined;
 
     const overlays: Record<string, any> = {};
-    if (photosLayer) overlays['Photos'] = photosLayer;
-    if (factsLayer) overlays['Route facts'] = factsLayer;
+    // Leaflet shows the layer names as HTML.
+    if (photosLayer) overlays[tHtml(lang, 'map.photos')] = photosLayer;
+    if (factsLayer) overlays[tHtml(lang, 'map.facts')] = factsLayer;
     const layerControl = L.control.layers({
-        'OSM Mirror': mapOsmLocal,
+        [tHtml(lang, 'map.osmMirror')]: mapOsmLocal,
         'Mapy.cz Outdoor': mapMapyczLocal,
         'Mapbox Satellite': mapSatelliteLocal,
         'OpenStreetMap': mapOsm,
@@ -194,7 +199,7 @@ export async function initMap2d(
             const factsOn = !!factsLayer && map.hasLayer(factsLayer);
             for (const node of declutter(map, nodes, NODE_MARKER_SIZE)) {
                 const half = NODE_MARKER_SIZE / 2;
-                const pin = factsOn ? nodePins.get(node.id) : undefined;
+                const pin = factsOn ? nodePins.get(node.ref) : undefined;
                 const icon = L.divIcon({
                     html: nodeIconHtml(node.tags, pin ? nodeFactsBadgeHtml(pin, getNodeIconDetails(node.tags ?? {}).emoji) : ''),
                     className: '',
@@ -202,7 +207,7 @@ export async function initMap2d(
                     iconAnchor: [half, half],
                     popupAnchor: [0, -half]
                 });
-                L.marker([node.lat, node.lon], { icon }).bindPopup(nodePopupHtml(node.tags, pin ? nodeFactsPopupHtml(pin) : '')).addTo(nodesLayer);
+                L.marker([node.lat, node.lon], { icon }).bindPopup(nodePopupHtml(node.tags, pin ? nodeFactsPopupHtml(pin) : '', lang)).addTo(nodesLayer);
             }
         };
 
@@ -269,7 +274,7 @@ export async function initMap2d(
                 popupAnchor: [0, -(FACTS_PIN_H + FACTS_PIN_POINTER + lift)]
             });
             L.marker([pin.lat, pin.lon], { icon, title: pinText(pin), alt: pin.name, riseOnHover: true, zIndexOffset: 500 })
-                .bindPopup(pinPopupHtml(pin))
+                .bindPopup(pinPopupHtml(pin, lang))
                 .addTo(factsLayer);
         }
     }

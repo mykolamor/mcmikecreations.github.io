@@ -18,9 +18,16 @@
 
 import routes from '$lib/data/hikes.json';
 import { getHikeMeta, hasGpxFile, hikeSlugs } from '$lib/data/hikes-db';
-import { assembleHikes, resolveHikeForPost as resolveWith } from '$lib/data/hikes-core';
+import { assembleHikes, metaFolder, resolveHikeForPost as resolveWith } from '$lib/data/hikes-core';
 import type { Map, MapDate, MapProperties } from '$lib/data/map-info';
 import { readHikeFrontmatter } from '$lib/hikes/frontmatter.server';
+import { placeTranslations } from '$lib/hikes/places.server';
+import {
+	collectTranslations,
+	mergeTranslations,
+	splitTranslations,
+	type TranslationsBySource
+} from '$lib/hikes/translations.server';
 
 type Dict = Record<string, unknown>;
 
@@ -34,11 +41,21 @@ const rawFiles = import.meta.glob('/static/_projects/data-viz/hikes/markdown/*.m
 	import: 'default'
 }) as Record<string, string>;
 
-const posts = Object.entries(rawFiles).map(([key, raw]) => ({
-	file: key.substring(key.lastIndexOf('/') + 1),
-	path: key.replace(/^\/static/, ''),
+// The folder's translations (`<date>-<slug>.<lang>.md`) are split off: they are not posts.
+const { docs: postFiles, translations: postTranslationFiles } = splitTranslations(
+	Object.fromEntries(Object.entries(rawFiles).map(([key, raw]) => [key.substring(key.lastIndexOf('/') + 1), raw]))
+);
+
+const posts = Object.entries(postFiles).map(([file, raw]) => ({
+	file,
+	path: `${metaFolder}/${file}`,
 	frontmatter: readHikeFrontmatter(raw).data
 }));
+
+const translations = mergeTranslations({
+	posts: collectTranslations('post', postTranslationFiles, new Set(Object.keys(postFiles))),
+	places: placeTranslations
+});
 
 const frontmatterByPath: Record<string, Dict> = Object.fromEntries(
 	posts.map((p) => [p.path, p.frontmatter])
@@ -74,4 +91,14 @@ export function getPostFrontmatter(path: string | null | undefined): Dict | unde
  */
 export function resolveHikeForPost(hike: Map, date: MapDate): { hike: Map; properties: MapProperties } {
 	return resolveWith(hike, date, getPostFrontmatter(date.path), getHikeMeta);
+}
+
+/**
+ * Every translation, the posts' and the place docs', by the English file it
+ * translates, then language: a post's by its file name (`2026-07-19-x.md`), a
+ * place doc's by folder and file name (`places/knorrhuette.md`). Checked at
+ * build: each has its source, and the media its body shows exist.
+ */
+export function allTranslations(): TranslationsBySource {
+	return translations;
 }

@@ -4,7 +4,7 @@ description: Doing a cliffside climb of the Kampen ridge after heavy snowfall.
 people:
   - Bohdan Pryshchenko
 gpx: /_projects/data-viz/hikes/gpx/lenggries_auerkamp.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 20930
 ascent: 939
 descent: 1098

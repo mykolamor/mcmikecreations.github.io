@@ -11,6 +11,8 @@ import {
     factsPinIconHtml, factsPinWidth, nodeFactsBadgeHtml, nodeFactsPopupHtml, pinPopupHtml, pinsByNode, pinText,
     FACTS_PIN_H, FACTS_PIN_POINTER, type FactsPin
 } from '$lib/hikes/facts-overlay';
+import { t, tHtml } from '$lib/i18n/strings';
+import type { Lang } from '$lib/i18n/languages';
 
 /** Side of the square terrain-depth target markers are occlusion-tested against. */
 const DEPTH_TARGET_SIZE = 256;
@@ -39,7 +41,8 @@ const STEM_COLOR = '#ffffff';
 const STEM_WIDTH = 1;
 
 export interface Map3dNode {
-    id?: number;
+    /** Typed OSM id, `node/123`: matches the facts pins on it. */
+    ref?: string;
     lat: number;
     lon: number;
     demEle?: number;
@@ -71,6 +74,8 @@ export interface Map3dMarkersOptions {
     elevatedStemHeight?: number;
     /** Ask the map for a re-render (marker visibility changed without the camera moving). */
     requestRender: () => void;
+    /** The language of the markers' own text: toggles, labels, popups. */
+    lang?: Lang;
 }
 
 export interface Map3dMarkers {
@@ -131,7 +136,7 @@ function interactive(el: HTMLElement, label: string, activate: () => void) {
  * (a depth-tested WebGL line) and are occlusion-tested at that raised point.
  */
 export function createMap3dMarkers(opts: Map3dMarkersOptions): Map3dMarkers | undefined {
-    const { container, renderer, camera, group, depthScene, terrainPoint } = opts;
+    const { container, renderer, camera, group, depthScene, terrainPoint, lang = 'en' } = opts;
     const onMap = (p: { lat: number; lon: number; demEle?: number }) =>
         typeof p.demEle === 'number' && terrainPoint(p.lat, p.lon, p.demEle) !== null;
     const photos = opts.photos.filter(onMap);
@@ -139,7 +144,7 @@ export function createMap3dMarkers(opts: Map3dMarkersOptions): Map3dMarkers | un
     const allFactsPins = (opts.factsPins ?? []).filter(onMap);
     if (!photos.length && !nodes.length && !allFactsPins.length && !opts.hasFactsLines) return undefined;
     // Facts about a POI node on the map go on its marker, not on a pin of their own.
-    const { onNodes: nodePins, loose: factsPins } = pinsByNode(allFactsPins, nodes.map((n) => n.id));
+    const { onNodes: nodePins, loose: factsPins } = pinsByNode(allFactsPins, nodes.map((n) => n.ref));
 
     const css = new CSS2DRenderer();
     Object.assign(css.domElement.style, { position: 'absolute', top: '0', left: '0', pointerEvents: 'none' });
@@ -214,7 +219,7 @@ export function createMap3dMarkers(opts: Map3dMarkersOptions): Map3dMarkers | un
     const openPopup = (marker: Marker, html: string, lift = NODE_MARKER_SIZE / 2) => {
         popupBox.style.marginBottom = `${lift + 8}px`;
         popupBox.innerHTML = html
-            + '<button type="button" aria-label="Close popup" style="position:absolute;top:4px;right:6px;border:0;background:none;font-size:16px;line-height:1;color:#6b7280;cursor:pointer;">×</button>';
+            + `<button type="button" aria-label="${tHtml(lang, 'map.closePopup')}" style="position:absolute;top:4px;right:6px;border:0;background:none;font-size:16px;line-height:1;color:#6b7280;cursor:pointer;">×</button>`;
         popupBox.querySelector('button')?.addEventListener('click', closePopup);
         popup.position.copy(marker.object.position);
         popup.visible = true;
@@ -227,7 +232,7 @@ export function createMap3dMarkers(opts: Map3dMarkersOptions): Map3dMarkers | un
         const el = document.createElement('div');
         Object.assign(el.style, { width: `${PHOTO_MARKER_SIZE}px`, height: `${PHOTO_MARKER_SIZE}px` });
         el.innerHTML = photoIconHtml(photo);
-        interactive(el, photo.alt || 'Photo', () => opts.onPhotoClick?.(photo.mediaIndex));
+        interactive(el, photo.alt || t(lang, 'map.photo'), () => opts.onPhotoClick?.(photo.mediaIndex));
         prepare(el);
         const object = new CSS2DObject(el);
         object.position.copy(at(photo.lat, photo.lon, photo.demEle!));
@@ -251,7 +256,7 @@ export function createMap3dMarkers(opts: Map3dMarkersOptions): Map3dMarkers | un
     const nodeBadges: (() => void)[] = [];
     for (const node of nodes) {
         const el = document.createElement('div');
-        const pin = node.id != null ? nodePins.get(node.id) : undefined;
+        const pin = node.ref != null ? nodePins.get(node.ref) : undefined;
         const badge = pin ? nodeFactsBadgeHtml(pin, getNodeIconDetails(node.tags ?? {}).emoji) : '';
         el.innerHTML = nodeIconHtml(node.tags, factsEnabled ? badge : '');
         if (badge) nodeBadges.push(() => { el.innerHTML = nodeIconHtml(node.tags, factsEnabled ? badge : ''); });
@@ -272,9 +277,9 @@ export function createMap3dMarkers(opts: Map3dMarkersOptions): Map3dMarkers | un
         }
         group.add(object);
         const marker: Marker = { kind: 'node', object, probe, size: NODE_MARKER_SIZE, stem, occluded: true, shown: false, changedAt: -Infinity };
-        interactive(el, nodeTitle(node.tags), () => (popupOwner === marker
+        interactive(el, nodeTitle(node.tags, lang), () => (popupOwner === marker
             ? closePopup()
-            : openPopup(marker, nodePopupHtml(node.tags, pin && factsEnabled ? nodeFactsPopupHtml(pin) : ''))));
+            : openPopup(marker, nodePopupHtml(node.tags, pin && factsEnabled ? nodeFactsPopupHtml(pin) : '', lang))));
         prepare(el);
         markers.push(marker);
     }
@@ -296,7 +301,7 @@ export function createMap3dMarkers(opts: Map3dMarkersOptions): Map3dMarkers | un
             kind: 'facts', object, probe: lift(pin.lat, pin.lon, pin.demEle!), size: width,
             occluded: true, shown: false, changedAt: -Infinity,
         };
-        interactive(el, pinText(pin), () => (popupOwner === marker ? closePopup() : openPopup(marker, pinPopupHtml(pin), height + raise)));
+        interactive(el, pinText(pin), () => (popupOwner === marker ? closePopup() : openPopup(marker, pinPopupHtml(pin, lang), height + raise)));
         prepare(el);
         markers.push(marker);
     }
@@ -335,10 +340,10 @@ export function createMap3dMarkers(opts: Map3dMarkersOptions): Map3dMarkers | un
         toggles.appendChild(label);
     };
     if (photos.length) {
-        addToggle('Photos', mapPhotosPref, (v) => { photosEnabled = v; });
+        addToggle(t(lang, 'map.photos'), mapPhotosPref, (v) => { photosEnabled = v; });
     }
     if (allFactsPins.length || opts.hasFactsLines) {
-        addToggle('Route facts', mapFactsPref, (v) => {
+        addToggle(t(lang, 'map.facts'), mapFactsPref, (v) => {
             factsEnabled = v;
             for (const redraw of nodeBadges) redraw();
             // A node's open popup lists its facts only while they're on.

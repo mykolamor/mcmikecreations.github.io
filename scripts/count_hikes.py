@@ -3,10 +3,15 @@
 
 import os
 import json
+import re
 
 BASE_DIR = "/home/mcmike/Projects/mcmikecreations.github.io/static/_projects/data-viz/hikes"
 MARKDOWN_DIR = os.path.join(BASE_DIR, "markdown")
 GPX_DIR = os.path.join(BASE_DIR, "gpx")
+
+# A translation beside a post (`<date>-<slug>.<lang>.md`) is not a post. The same
+# shape as TRANSLATION_FILE in src/lib/i18n/translation-name.js.
+TRANSLATION_FILE = re.compile(r"^(.+)\.([A-Za-z]{2})\.md$")
 
 
 def extract_slug_md(md_filename):
@@ -83,7 +88,7 @@ def has_facts_in_sidecar(sidecar_path):
 
 def main():
     # === Get all markdown files ===
-    md_files = sorted([f for f in os.listdir(MARKDOWN_DIR) if f.endswith(".md")])
+    md_files = sorted([f for f in os.listdir(MARKDOWN_DIR) if f.endswith(".md") and not TRANSLATION_FILE.match(f)])
 
     # === Get all HJ sidecar files ===
     hj_files = [f for f in os.listdir(MARKDOWN_DIR) if f.endswith(".hike.json")]

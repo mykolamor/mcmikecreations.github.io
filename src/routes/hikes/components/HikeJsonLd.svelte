@@ -17,6 +17,7 @@
 		hikesYearTitle,
 		hikesYearDescription
 	} from '$lib/hikes/hikes-meta';
+	import { t } from '$lib/i18n/strings';
 
 	type PostProps = {
 		variant: 'post';
@@ -78,6 +79,9 @@
 
 	let props: Props = $props();
 
+	/** The structured data's language, `inLanguage`. */
+	const lang = 'en';
+
 	function absUrl(path: string): string {
 		return path.startsWith('http') ? path : page.url.origin + path;
 	}
@@ -99,14 +103,14 @@
 		const ferrata = hardestFerrata(d?.viaFerrata);
 		const season = seasonMonths(post.facts?.season);
 		return [
-			d?.sac && prop('Difficulty (SAC)', d.sac),
-			ferrata && prop('Via ferrata grade', ferrata.grade, { description: `${ferrata.scale ?? 'schall'} scale` }),
-			d?.climbing && prop(`Climbing grade (${(d.climbing.scale ?? 'uiaa').toUpperCase()})`, d.climbing.grade),
-			d?.exposure && prop('Exposure', d.exposure.level),
-			post.routeType && prop('Route type', post.routeType),
-			post.highPoint != null && prop('Highest point', post.highPoint, { unitText: 'm', unitCode: 'MTR' }),
-			season?.length && prop('Season', formatMonths('en', season)),
-			post.facts?.access?.carFree && prop('Car-free access', post.facts.access.carFree)
+			d?.sac && prop(t(lang, 'jsonLd.difficulty'), d.sac),
+			ferrata && prop(t(lang, 'jsonLd.ferrataGrade'), ferrata.grade, { description: t(lang, 'jsonLd.ferrataScale', { scale: ferrata.scale ?? 'schall' }) }),
+			d?.climbing && prop(t(lang, 'jsonLd.climbingGrade', { scale: (d.climbing.scale ?? 'uiaa').toUpperCase() }), d.climbing.grade),
+			d?.exposure && prop(t(lang, 'jsonLd.exposure'), d.exposure.level),
+			post.routeType && prop(t(lang, 'jsonLd.routeType'), post.routeType),
+			post.highPoint != null && prop(t(lang, 'jsonLd.highPoint'), post.highPoint, { unitText: 'm', unitCode: 'MTR' }),
+			season?.length && prop(t(lang, 'jsonLd.season'), formatMonths(lang, season)),
+			post.facts?.access?.carFree && prop(t(lang, 'jsonLd.carFree'), post.facts.access.carFree)
 		];
 	}
 
@@ -125,7 +129,7 @@
 		return [...new Set(all)].slice(0, MAX_IMAGES);
 	}
 
-	/** One VideoObject per public YouTube embed whose upload date scripts/video_meta.py recorded. */
+	/** One VideoObject per public YouTube embed whose upload date `pnpm crm video-meta` recorded. */
 	function postVideos(post: PostProps) {
 		return (post.media ?? []).flatMap((m) => {
 			if (m.kind !== 'youtube' || !m.videoId || m.unavailable || !m.uploadDate) return [];
@@ -151,7 +155,7 @@
 			...(post.placeName ? { name: post.placeName } : {}),
 			geo: { '@type': 'GeoShape', box: post.bounds.map((x) => x.toFixed(5)).join(' ') },
 			...(countries.length > 0
-				? { containedInPlace: countries.map((c) => ({ '@type': 'Country', name: countryName('en', c) })) }
+				? { containedInPlace: countries.map((c) => ({ '@type': 'Country', name: countryName(lang, c) })) }
 				: {})
 		};
 	}
@@ -165,7 +169,7 @@
 		const blogNode = {
 			'@type': 'Blog',
 			'@id': blogId,
-			inLanguage: 'en',
+			inLanguage: lang,
 			name: HIKES_BLOG_TITLE,
 			description: HIKES_BLOG_DESCRIPTION,
 			url: blogId,
@@ -184,28 +188,28 @@
 			const additionalProperty = [
 				props.distance != null && {
 					'@type': 'PropertyValue',
-					name: 'Distance',
+					name: t(lang, 'jsonLd.distance'),
 					value: Math.round((props.distance / 1000) * 10) / 10,
 					unitText: 'km',
 					unitCode: 'KMT'
 				},
 				props.ascent != null && {
 					'@type': 'PropertyValue',
-					name: 'Ascent',
+					name: t(lang, 'jsonLd.ascent'),
 					value: Math.round(props.ascent),
 					unitText: 'm',
 					unitCode: 'MTR'
 				},
 				props.descent != null && {
 					'@type': 'PropertyValue',
-					name: 'Descent',
+					name: t(lang, 'jsonLd.descent'),
 					value: Math.round(props.descent),
 					unitText: 'm',
 					unitCode: 'MTR'
 				},
 				props.duration != null && {
 					'@type': 'PropertyValue',
-					name: 'Duration',
+					name: t(lang, 'jsonLd.duration'),
 					value: Math.round(props.duration),
 					unitText: 'min',
 					unitCode: 'MIN'
@@ -224,7 +228,7 @@
 			}));
 			return graph(blogNode, {
 				'@type': 'BlogPosting',
-				inLanguage: 'en',
+				inLanguage: lang,
 				headline: props.title,
 				description: props.description,
 				...(images.length > 0 ? { image: images.length === 1 ? images[0] : images } : {}),
@@ -273,7 +277,7 @@
 		if (props.variant === 'list') {
 			return graph(blogNode, {
 				'@type': 'ItemList',
-				inLanguage: 'en',
+				inLanguage: lang,
 				name: hikesListTitle(props.currentPage),
 				description: hikesListDescription(props.currentPage),
 				url: origin + `/hikes/page/${props.currentPage}/`,
@@ -304,7 +308,7 @@
 				}));
 			return graph(blogNode, {
 				'@type': 'CollectionPage',
-				inLanguage: 'en',
+				inLanguage: lang,
 				name: props.name ?? hikesTagTitle(props.tag, props.currentPage),
 				description: props.description ?? hikesTagDescription(props.tag, props.currentPage),
 				url:
@@ -330,7 +334,7 @@
 			}));
 		return graph(blogNode, {
 			'@type': 'CollectionPage',
-			inLanguage: 'en',
+			inLanguage: lang,
 			name: hikesYearTitle(props.year, props.currentPage),
 			description: hikesYearDescription(props.year, props.currentPage),
 			url:

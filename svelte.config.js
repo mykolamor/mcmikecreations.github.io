@@ -1,5 +1,6 @@
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import { handlePrerenderHttpError } from './src/lib/prerender-errors.js';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -15,9 +16,7 @@ const config = {
 		}),
 		prerender: {
 			origin: 'https://mykolamor.com',
-			handleHttpError: ({ path, referrer, message }) => {
-				console.warn(message);
-			}
+			handleHttpError: handlePrerenderHttpError
 		}
 	}
 };

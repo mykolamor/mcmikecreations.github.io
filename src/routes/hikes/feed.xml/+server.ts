@@ -1,5 +1,6 @@
 import { getAllPosts } from '$lib/hikes/hikes-info.server';
 import resume from '$lib/data/resume.json';
+import { t } from '$lib/i18n/strings';
 
 export const prerender = true;
 
@@ -11,13 +12,14 @@ export function GET({ url }) {
 	const now = new Date();
 	const posts = getAllPosts().slice(0, 20);
 	const { name, email } = resume.basics;
+	const title = escapeXml(t('en', 'meta.blogTitle'));
 
 	const xml = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
 <channel>
-  <title>Hiking, Climbing, Via Ferrata &amp; Trail Maps | Personal Hike Experiences | ${escapeXml(name)}</title>
+  <title>${title} | ${escapeXml(name)}</title>
   <link>${url.origin}/hikes/</link>
-  <description>The most thorough hike reviews on the web</description>
+  <description>${escapeXml(t('en', 'meta.blogDescription'))}</description>
   <atom:link href="${url.origin}/hikes/feed.xml" rel="self" type="application/rss+xml" />
   <language>en-us</language>
   <copyright>&amp;copy; ${now.getFullYear()} ${escapeXml(name)}</copyright>
@@ -25,12 +27,12 @@ export function GET({ url }) {
   <webMaster>${escapeXml(email)} (${escapeXml(name)})</webMaster>
   <pubDate>${now.toUTCString()}</pubDate>
   <lastBuildDate>${now.toUTCString()}</lastBuildDate>
-  <category>Sports</category>
+  <category>${escapeXml(t('en', 'feeds.category'))}</category>
   <docs>https://www.rssboard.org/rss-specification</docs>
   <ttl>1440</ttl>
   <image>
     <url>${url.origin}/favicon.png</url>
-    <title>Hiking, Climbing, Via Ferrata &amp; Trail Maps | Personal Hike Experiences</title>
+    <title>${title}</title>
     <link>${url.origin}/hikes/</link>
   </image>
 ${posts.map(p => `  <item>

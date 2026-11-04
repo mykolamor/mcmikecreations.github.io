@@ -2,17 +2,20 @@
 	import { UserSolid } from 'flowbite-svelte-icons';
 	import { networkIcon } from '$lib/icons/network-icons';
 	import type { HikeContact } from '$lib/hikes/frontmatter';
+	import type { Lang } from '$lib/i18n/languages';
+	import { t } from '$lib/i18n/strings';
 
 	interface Props {
 		contacts: HikeContact[];
+		lang: Lang;
 	}
 
-	let { contacts }: Props = $props();
+	let { contacts, lang }: Props = $props();
 </script>
 
 {#if contacts.length}
 	<section class="not-prose mt-10 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 p-6">
-		<h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Along for the hike</h2>
+		<h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">{t(lang, 'post.contacts.heading')}</h2>
 		<ul class="flex flex-col gap-4">
 			{#each contacts as person}
 				<li class="flex items-center gap-4">
@@ -28,7 +31,7 @@
 						{#if person.links.length}
 							<div class="mt-1 flex flex-row flex-wrap items-center gap-3">
 								{#each person.links as link}
-									{@const label = link.network ?? link.label ?? 'link'}
+									{@const label = link.network ?? link.label ?? t(lang, 'post.contacts.link')}
 									{@const Icon = networkIcon(link.network)}
 									<a
 										href={link.url}

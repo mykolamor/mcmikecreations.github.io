@@ -4,7 +4,7 @@ description: Visiting cool castles and ruins between Moosburg and Landshut.
 tags:
   - Web
 gpx: /_projects/data-viz/hikes/gpx/moosburg_landshut.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 31997
 ascent: 510
 descent: 532

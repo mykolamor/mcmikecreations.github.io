@@ -1,0 +1,32 @@
+{
+	"stops": {
+		"way/60315210": {
+			"kind": "restaurant",
+			"days": {
+				"en": "Daily 08:00-20:00",
+				"de": "Täglich 08:00-20:00"
+			},
+			"overnight": true,
+			"booking": {
+				"url": "https://firstalm.de/",
+				"label": {
+					"en": "Obere Firstalm website",
+					"de": "Obere Firstalm Website"
+				}
+			},
+			"phone": "+49 (0)8026 – 7302",
+			"water": true,
+			"food": true,
+			"cash": false,
+			"note": {
+				"en": "Rents sledges out in winter.",
+				"de": "Vermietet im Winter Schlitten."
+			},
+			"checked": "2026-10-18"
+		}
+	},
+	"transport": {},
+	"lifts": {},
+	"parking": {},
+	"tickets": {}
+}

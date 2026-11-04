@@ -8,7 +8,7 @@ people:
   - Myroslava Shkilniuk
   - Julia Krat
 gpx: /_projects/data-viz/hikes/gpx/drachenkopf.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 19579
 ascent: 1570
 descent: 1551
@@ -33,6 +33,8 @@ images:
   2026-07-12-16.jpg: {w: 4000, h: 3000, lat: 47.359933, lon: 10.933675, demEle: 1906.5, taken: '2026-07-12T14:32:14+02:00', blur: 'data:image/webp;base64,UklGRu4AAABXRUJQVlA4IOIAAACwBQCdASoYABIAPtFaqE4oJKQiKAqpABoJbACsMzQ/d2ABqq8BGqxzgtZlekLhEcbD2cGwkpwA/pSM9h1MCOtA8HrgoqlvPQ5pucnyAhFHT9/fakUOOEpKn7dtEW57KLLwCJxN3eVOJC/QYmLfd3lA8n6qcUwEPLLmaDungVu25UzG2opoEI2K0kOyNFkP6x/wz3/I8cqO7uUl2eH2WGCEFi05UAQ38t+bmmKUA6cfAhOy47AyqzKjYVhY5mK250xwtoJ4CsVZwSMPNNfJ6atb6REZn1g5SCcoI8ot4CanAAAA'}
   2026-07-12-17.jpg: {w: 5712, h: 3213, lat: 47.369847, lon: 10.936289, demEle: 1657.5, blur: 'data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAwBACdASoYAA4APtFUpEuoJKOhsAgBABoJQBOgBA2SgpsAraBvuqiDyLAA4klowQ4zPqkqVN8rnW8fAeM5Y0HH6knlOET2xX8XhTbsoXXK2mJ7VOVEw85d0grOUSsfQZ+rDnxLPpjiUKzFyKl0MNXaLwLPqbZukAA93nPotiS5qrAAAAA='}
   2026-07-12-18.jpg: {w: 3213, h: 5712, lat: 47.368064, lon: 10.935786, demEle: 1662.9, taken: '2026-07-12T15:51:18+02:00', blur: 'data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAABQBACdASoOABgAPtFUo0uoJKMhsAgBABoJbACdAYvW3zpmS2mmDEoICLsAAP644AJYzqmoiObLW1PIFofafg7ZnAFP366od1LYC5Ab0zM8vPsqwtRKOhTlGCPu/F21gAAh4q8sjAhJpzedhjdgqc4xBlKmQ7shgTFGbkZLfcxAzzfZW+glibmEcZOaLgbsBNfk0FAiQZa0vRY5+V6bzL88AAA='}
+  hoher_gang.jpg: {w: 1200, h: 900}
+  /images/hikes/topo/hoher_gang.jpg: {w: 1200, h: 900, blur: 'data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAADQBACdASoYABIAPtFYpUyoJSOiKA1RABoJYwC7ABEDlE4pAqw3CKDBKpzsdrxO0AD+8gOPJw+wPYM6zn1hFpJgj66CJ71RVW62M+41RvtPrCO/fy/YFo4DtDFAVTtKkc2KTn2GXb2rufJxNe7xdciCUewJ5b9slqqCqC3BcrXVW+eOto0JCsm2TEWpz5FDS+3V0OCrAnJDCRx52YgjRekAAAA='}
 ---
 During the [outing to Drachensee](/hikes/2026-06-21-drachensee/)
 I've been to recently, the original plan was to gather a small group with

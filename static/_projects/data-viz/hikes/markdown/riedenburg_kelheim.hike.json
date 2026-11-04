@@ -19,57 +19,5 @@
     [11.870183, 48.9163868],
     [11.9335261, 48.9023789]
   ],
-  "nodes": [
-    {
-      "id": 312593240,
-      "lat": 48.9504566,
-      "lon": 11.7398785,
-      "demEle": 422.1,
-      "tags": {
-        "name": "Burg Prunn",
-        "historic": "castle",
-        "historic:civilization": "medieval",
-        "tourism": "attraction",
-        "website": "https://www.burg-prunn.de/",
-        "castle_type": "defensive",
-        "wikidata": "Q1013521",
-        "wikipedia": "de:Burg Prunn"
-      }
-    },
-    {
-      "id": 919557438,
-      "lat": 48.9184881,
-      "lon": 11.859725,
-      "demEle": 465.6,
-      "tags": {
-        "name": "Michelsberg",
-        "natural": "peak",
-        "ele": "448",
-        "wikidata": "Q1931200",
-        "wikipedia": "de:Michelsberg (Kelheim)"
-      }
-    },
-    {
-      "id": 3722861040,
-      "lat": 48.9542413,
-      "lon": 11.7323485,
-      "demEle": 388.2,
-      "tags": {
-        "name": "Prunner Wand",
-        "natural": "peak",
-        "visited": "yes"
-      }
-    },
-    {
-      "id": 3722861051,
-      "lat": 48.9544219,
-      "lon": 11.7318403,
-      "demEle": 381.9,
-      "tags": {
-        "name": "Prunner Turm",
-        "natural": "peak",
-        "visited": "yes"
-      }
-    }
-  ]
+  "nodes": ["node/312593240", "node/919557438", "way/368450369", "way/368450363"]
 }

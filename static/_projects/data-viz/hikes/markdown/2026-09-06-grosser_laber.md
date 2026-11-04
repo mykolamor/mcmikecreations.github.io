@@ -6,7 +6,7 @@ tags:
 people:
   - David Bilan
 gpx: /_projects/data-viz/hikes/gpx/grosser_laber.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 13674
 ascent: 1096
 descent: 864

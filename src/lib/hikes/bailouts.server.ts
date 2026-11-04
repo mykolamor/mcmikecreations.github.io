@@ -9,7 +9,7 @@
 
 import { existsSync, readFileSync } from 'node:fs';
 import type { Map as Hike, MapDate } from '$lib/data/map-info';
-import { defaultMetaPath, getHikeMeta } from '$lib/data/hikes-db';
+import { defaultMetaPath, factsLibrary, getHikeMeta } from '$lib/data/hikes-db';
 import { readHikeFacts } from '$lib/hikes/facts.server';
 import type { Bailout } from '$lib/hikes/facts-schema';
 import { applyPostOverrides, readMetaPathOverride } from '$lib/hikes/frontmatter.server';
@@ -54,6 +54,7 @@ export function readDateBailouts(hike: Hike, date: MapDate): Bailout[] | undefin
 		postSource: date.path ?? `${slug} ${date.date}`,
 		sidecarSource: metaPath,
 		nodes: properties.nodes,
+		library: factsLibrary(),
 		coords,
 		distanceFactor: coords ? computeMetricScales(coords, metrics).distanceFactor : 1,
 		readGpx

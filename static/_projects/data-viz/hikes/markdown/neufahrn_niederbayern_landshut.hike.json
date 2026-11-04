@@ -15,31 +15,5 @@
     [12.1726803, 48.5774783],
     [12.1360812, 48.5475468]
   ],
-  "nodes": [
-    {
-      "id": 6956416906,
-      "lat": 48.691649,
-      "lon": 12.2087026,
-      "demEle": 465.1,
-      "tags": {
-        "name": "Kapellenberg/Lourdes-Kapelle",
-        "natural": "peak",
-        "ele": "462"
-      }
-    },
-    {
-      "id": 185528411,
-      "lat": 48.6123931,
-      "lon": 12.1961825,
-      "demEle": 406.0,
-      "tags": {
-        "name": "Schloss Mirskofen",
-        "building": "yes",
-        "historic": "castle",
-        "tourism": "attraction",
-        "wikidata": "Q18630555",
-        "wikipedia": "de:Schloss Mirskofen"
-      }
-    }
-  ]
+  "nodes": ["node/6956416906", "way/185528411"]
 }

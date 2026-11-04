@@ -27,6 +27,8 @@
 	import resume from '$lib/data/resume.json';
 	import HikeJsonLd from '../components/HikeJsonLd.svelte';
 	import { hikePostTitle } from '$lib/hikes/hikes-meta';
+	import { t, tSplit } from '$lib/i18n/strings';
+	import { enumLabel } from '$lib/hikes/facts-format';
 	import AppBreadcrumbs from '$lib/components/AppBreadcrumbs.svelte';
 	import { parseMarkdown } from '$lib/hikes/hikes-info';
 	import HikeContacts from '../components/HikeContacts.svelte';
@@ -43,6 +45,7 @@
 	import { initMap3d, type Map3dHandle } from '$lib/hikes/map-3d';
 	import { buildFactsOverlay, chartPins } from '$lib/hikes/facts-overlay';
 	import { computeMetricScales } from '$lib/hikes/hike-metrics';
+	import { attachPhotoPins } from '$lib/hikes/photo-pins-view';
 
 	interface Props {
 		data: PageData;
@@ -50,23 +53,28 @@
 
 	let { data }: Props = $props();
 
-	const ROUTE_TYPES = {
-		'loop': { label: 'Loop', icon: ArrowsRepeatOutline },
-		'out-and-back': { label: 'Out and back', icon: SortHorizontalOutline },
-		'point-to-point': { label: 'Point to point', icon: FlagOutline }
+	const lang = 'en';
+
+	const ROUTE_TYPE_ICONS = {
+		'loop': ArrowsRepeatOutline,
+		'out-and-back': SortHorizontalOutline,
+		'point-to-point': FlagOutline
 	};
 
 	const DURATION_NOTES = {
-		gpx: 'Moving time from my recorded track, breaks excluded.',
-		manual: 'My moving time, breaks excluded.',
-		planner: "The route planner's (openrouteservice) walking estimate."
+		gpx: t(lang, 'post.notes.duration.gpx'),
+		manual: t(lang, 'post.notes.duration.manual'),
+		planner: t(lang, 'post.notes.duration.planner')
 	};
 
 	const ELAPSED_NOTES = {
-		gpx: 'Elapsed is the full time from start to finish of the recorded track, breaks included.',
-		photos: 'Elapsed is the time between my first and last photo on the route, so the real time was longer.',
-		manual: 'Elapsed is the full time from start to finish, breaks included.'
+		gpx: t(lang, 'post.notes.elapsed.gpx'),
+		photos: t(lang, 'post.notes.elapsed.photos'),
+		manual: t(lang, 'post.notes.elapsed.manual')
 	};
+
+	// The download line: "Grab the <GPX> or <GeoJSON> file and …", links in between.
+	const [grabBefore, grabAfter] = tSplit(lang, 'post.files.grab', 'files');
 
 	// A moving time equal to the elapsed time to the minute means no breaks were
 	// detected; showing the same number twice would only confuse.
@@ -121,11 +129,11 @@
 	}
 	const filePrimary: File = $derived({
 		path: data.display.filePrimary,
-		type: 'GeoJSON'
+		type: t(lang, 'post.files.geojson')
 	});
 	const fileGpx: File = $derived({
 		path: data.display.fileGpx,
-		type: 'GPX'
+		type: t(lang, 'post.files.gpx')
 	});
 
 	// Handles to the currently-mounted 3D/2D maps, so a later navigation (or the
@@ -140,12 +148,16 @@
 	// Listeners on elements Svelte keeps across navigations (the facts layer's
 	// place links), dropped with the maps they point at.
 	let listenerAbort: AbortController | undefined;
+	/** A photo pin's "Show on map"; set once the maps exist, a no-op until then. */
+	let showPinOnMap: ((lat: number, lon: number) => void) | undefined;
 	// The same for the place docs' links and photos, wired before the maps load.
 	let placesAbort: AbortController | undefined;
 
 	function teardownContent() {
 		listenerAbort?.abort();
 		listenerAbort = undefined;
+		// The old post's map is going away; the next one sets this again.
+		showPinOnMap = undefined;
 		placesAbort?.abort();
 		placesAbort = undefined;
 		map3dHandle?.destroy?.();
@@ -207,8 +219,13 @@
 						// @ts-ignore
 						data.clientHtml = (await parseMarkdown(postRaw, data.post.tags, {
 							stops: photoStopsFromRecord(data.post.photoStops),
-							nodes: data.map.properties.nodes,
-							placeDocs: data.placeRefs
+							nodes: data.placeNodes,
+							pinNodes: data.pinNodes,
+							origin: data.origin,
+							height: data.height,
+							ownRefs: data.ownRefs,
+							placeDocs: data.placeRefs,
+							lang
 						})).html;
 					}
 				}
@@ -252,6 +269,12 @@
 		if (location.hash.startsWith('#place-')) {
 			openPlaceDoc(decodeURIComponent(location.hash.slice('#place-'.length)))?.scrollIntoView();
 		}
+		// Pins on the post's and the place docs' photos. They don't need the
+		// maps, so they come before them; only "Show on map" waits for those.
+		const article = document.querySelector<HTMLElement>('article');
+		if (article && data.pinNodes) {
+			attachPhotoPins(article, data.pinNodes, { onShowOnMap: (lat, lon) => showPinOnMap?.(lat, lon), signal: placesSignal, lang });
+		}
 
 		const geojsonRes = await fetch(data.map.properties.filePath);
 		if (runId !== contentRunId || !geojsonRes.ok) return;
@@ -283,12 +306,13 @@
 		const routeCoords: number[][] = geojson?.features?.[0]?.geometry?.coordinates ?? [];
 		const factsOverlay = buildFactsOverlay(
 			data.authoredFacts,
-			'en',
+			lang,
 			routeCoords,
-			routeCoords.length ? computeMetricScales(routeCoords, data.map.properties).distanceFactor : 1
+			routeCoords.length ? computeMetricScales(routeCoords, data.map.properties).distanceFactor : 1,
+			(data.map.properties.nodes ?? []).map((n) => n.ref)
 		);
-		const newMap3dHandle = initMap3d(map3dEl, geojson, data.map, data.map.properties.nodes, photos, onPhotoClick, undefined, factsOverlay);
-		const newMap2dHandle = await initMap2d(map2dEl, geojson, data.map.properties.nodes, photos, onPhotoClick, factsOverlay);
+		const newMap3dHandle = initMap3d(map3dEl, geojson, data.map, data.map.properties.nodes, photos, onPhotoClick, undefined, factsOverlay, lang);
+		const newMap2dHandle = await initMap2d(map2dEl, geojson, data.map.properties.nodes, photos, onPhotoClick, factsOverlay, lang);
 
 		if (runId !== contentRunId) {
 			// A newer navigation started while these were being created: they were
@@ -327,12 +351,12 @@
 			newMap2dHandle.setIndicator(lat, lon);
 			newMap3dHandle.setIndicator(lat, lon, ele);
 			elev2dHandle?.setIndicator(lat, lon, dist);
-		}, hideAllIndicators, data.map.properties, photoTicks, onPhotoClick, chartFacts);
+		}, hideAllIndicators, data.map.properties, photoTicks, onPhotoClick, chartFacts, lang);
 		elev2dHandle = initElevationChart(elevWrapper, geojson, (lat, lon, ele, dist) => {
 			newMap2dHandle.setIndicator(lat, lon);
 			newMap3dHandle.setIndicator(lat, lon, ele);
 			elev3dHandle?.setIndicator(lat, lon, dist);
-		}, hideAllIndicators, data.map.properties, photoTicks, onPhotoClick, chartFacts);
+		}, hideAllIndicators, data.map.properties, photoTicks, onPhotoClick, chartFacts, lang);
 
 		// A photo's caption line, or a place name that is one of the hike's
 		// nodes, brings the 2D map into view, centered on it.
@@ -361,6 +385,7 @@
 				showOnMap(lat, lon);
 			}, { signal });
 		});
+		showPinOnMap = showOnMap;
 	});
 </script>
 
@@ -373,11 +398,11 @@
 	article-published_time="{data.post.date}T16:00:00+00:00"
 	article-modified_time="{data.post.dateModified}T16:00:00+00:00"
 	article-author={resume.basics.name}
-	article-section="Hikes"
+	article-section={t(lang, 'meta.section')}
 />
 <AppBreadcrumbs items={[
-	{ name: 'Home', href: '/' },
-	{ name: 'Hikes', href: '/hikes/' },
+	{ name: t(lang, 'nav.home'), href: '/' },
+	{ name: t(lang, 'nav.hikes'), href: '/hikes/' },
 	{ name: data.post.title, href: `/hikes/${data.post.anchor}/` }
 ]} />
 <HikeJsonLd
@@ -409,12 +434,12 @@
 				<div class="mt-2 flex md:hidden">
 					<A href={allHikesLink} class="inline-flex items-center">
 						<ArrowLeftOutline class="w-5 h-5 me-2" />
-						Back to All Hikes
+						{t(lang, 'nav.backToAll')}
 					</A>
 				</div>
-				<Breadcrumb aria-label="Page path" class="mt-4 not-prose hidden md:flex">
-					<BreadcrumbItem href="/" home>Home</BreadcrumbItem>
-					<BreadcrumbItem href={allHikesLink}>Hikes</BreadcrumbItem>
+				<Breadcrumb aria-label={t(lang, 'post.pagePath')} class="mt-4 not-prose hidden md:flex">
+					<BreadcrumbItem href="/" home>{t(lang, 'nav.home')}</BreadcrumbItem>
+					<BreadcrumbItem href={allHikesLink}>{t(lang, 'nav.hikes')}</BreadcrumbItem>
 					<BreadcrumbItem>{data.post.title}</BreadcrumbItem>
 				</Breadcrumb>
 				<Heading tag="h1" class="!mb-0 !mt-2">{data.post.title}</Heading>
@@ -427,9 +452,9 @@
 					{#if data.post.tags?.length}
 						·
 						<div class="flex flex-row flex-wrap justify-end gap-2 items-center" aria-details="tags">
-							<span aria-label="tags" class="sr-only"></span>
-							{#each data.post.tags as t}
-								<a class="bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-300 px-2.5 py-0.5 rounded-sm no-underline hover:bg-primary-200 dark:hover:bg-primary-800" href="/hikes/tag/{encodeURIComponent(t)}/">{t}</a>
+							<span aria-label={t(lang, 'list.tagsLabel')} class="sr-only"></span>
+							{#each data.post.tags as tag}
+								<a class="bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-300 px-2.5 py-0.5 rounded-sm no-underline hover:bg-primary-200 dark:hover:bg-primary-800" href="/hikes/tag/{encodeURIComponent(tag)}/">{tag}</a>
 							{/each}
 						</div>
 					{/if}
@@ -448,38 +473,38 @@
 									{/if}
 									<button
 										type="button"
-										aria-label="Expand image"
+										aria-label={t(lang, 'post.expandImage')}
 										onclick={openHeaderImage}
 										class="absolute inset-0 w-full h-full cursor-pointer bg-transparent border-0 p-0 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-500 focus-visible:outline-hidden"
 									></button>
 								</div>
 							{/if}
 							<div class="flex flex-row flex-wrap md:flex-col md:justify-center gap-4 w-full md:[&>*]:basis-auto md:[&>*]:grow-0">
-								<StatTile icon={ClockOutline} label={data.durationSource === 'planner' ? 'Planner estimate*' : 'Moving time*'} value={getTime(data.map.properties.duration ?? 0)} />
-								<StatTile icon={MapPinOutline} label="Distance" value={getDistance(data.map.properties.distance ?? 0)} />
-								<StatTile icon={ArrowUpOutline} label="Ascent" value={getDistance(data.map.properties.ascent ?? 0)} />
-								<StatTile icon={ArrowDownOutline} label="Descent" value={getDistance(data.map.properties.descent ?? 0)} />
+								<StatTile icon={ClockOutline} label={t(lang, data.durationSource === 'planner' ? 'post.stats.plannerEstimate' : 'post.stats.movingTime') + '*'} value={getTime(data.map.properties.duration ?? 0)} />
+								<StatTile icon={MapPinOutline} label={t(lang, 'post.stats.distance')} value={getDistance(data.map.properties.distance ?? 0)} />
+								<StatTile icon={ArrowUpOutline} label={t(lang, 'post.stats.ascent')} value={getDistance(data.map.properties.ascent ?? 0)} />
+								<StatTile icon={ArrowDownOutline} label={t(lang, 'post.stats.descent')} value={getDistance(data.map.properties.descent ?? 0)} />
 							</div>
 						</div>
 						<div class="flex flex-col">
 							<div class="flex flex-row flex-wrap gap-4 md:gap-6">
 								{#if showElapsed && data.facts.elapsed}
-									<StatTile icon={HourglassOutline} label="Elapsed**" value={(data.facts.elapsed.source === 'photos' ? '≥ ' : '') + getTime(data.facts.elapsed.minutes)} />
+									<StatTile icon={HourglassOutline} label={t(lang, 'post.stats.elapsed') + '**'} value={(data.facts.elapsed.source === 'photos' ? '≥ ' : '') + getTime(data.facts.elapsed.minutes)} />
 								{/if}
 								{#if data.facts.typicalDuration != null}
-									<StatTile icon={UsersGroupOutline} label="Typical time***" value={'≈ ' + getTime(Math.round(data.facts.typicalDuration / 15) * 15)} />
+									<StatTile icon={UsersGroupOutline} label={t(lang, 'post.stats.typical') + '***'} value={'≈ ' + getTime(Math.round(data.facts.typicalDuration / 15) * 15)} />
 								{/if}
 								{#if data.facts.highPoint != null}
-									<StatTile icon={ChartLineUpOutline} label="Highest point" value={`${data.facts.highPoint} m`} />
+									<StatTile icon={ChartLineUpOutline} label={t(lang, 'post.stats.highPoint')} value={t(lang, 'units.m', { value: data.facts.highPoint })} />
 								{/if}
 								{#if data.facts.lowPoint != null}
-									<StatTile icon={ChartLineDownOutline} label="Lowest point" value={`${data.facts.lowPoint} m`} />
+									<StatTile icon={ChartLineDownOutline} label={t(lang, 'post.stats.lowPoint')} value={t(lang, 'units.m', { value: data.facts.lowPoint })} />
 								{/if}
 								{#if data.facts.routeType}
-									<StatTile icon={ROUTE_TYPES[data.facts.routeType].icon} label="Route type" value={ROUTE_TYPES[data.facts.routeType].label} />
+									<StatTile icon={ROUTE_TYPE_ICONS[data.facts.routeType]} label={t(lang, 'post.stats.routeType')} value={enumLabel(lang, 'routeType', data.facts.routeType)} />
 								{/if}
 								{#if data.authoredFacts}
-									<HikeFactsTiles facts={data.authoredFacts} lang="en" />
+									<HikeFactsTiles facts={data.authoredFacts} {lang} />
 								{/if}
 							</div>
 							<div class="text-sm text-gray-500 dark:text-gray-400 mt-2 flex flex-col gap-1">
@@ -488,45 +513,53 @@
 									<span>** {ELAPSED_NOTES[data.facts.elapsed.source]}</span>
 								{/if}
 								{#if data.facts.typicalDuration != null}
-									<span>*** Standard DAV walking time without breaks: 300 m up or 500 m down per hour, 4 km per hour on the flat.</span>
+									<span>*** {t(lang, 'post.notes.typical')}</span>
 								{/if}
 							</div>
 							{#if data.display.filePrimary || data.display.fileGpx}
 								<blockquote class="!mb-0 mt-4 border-l-4 border-gray-300 dark:border-gray-600 pl-4 py-1 italic text-gray-600 dark:text-gray-400">
-									Grab the
-									{#if data.display.fileGpx && data.display.filePrimary}
+									{grabBefore}{#if data.display.fileGpx && data.display.filePrimary}
 										<A href={fileGpx.path} download={fileGpx.path.substring(fileGpx.path.lastIndexOf('/') + 1)}>{fileGpx.type}</A>
-										or
+										{t(lang, 'post.files.or')}
 									{:else if data.display.fileGpx}
 										<A href={fileGpx.path} download={fileGpx.path.substring(fileGpx.path.lastIndexOf('/') + 1)}>{fileGpx.type}</A>
 									{/if}
 									{#if data.display.filePrimary}
 										<A href={filePrimary.path} download={filePrimary.path.substring(filePrimary.path.lastIndexOf('/') + 1)}>{filePrimary.type}</A>
-									{/if}
-									file and embark on your own adventure!
+									{/if}{grabAfter}
 								</blockquote>
 							{/if}
 						</div>
 					</div>
 					{#if data.authoredFacts}
-						<HikeFactsSafety facts={data.authoredFacts} lang="en" />
+						<HikeFactsSafety facts={data.authoredFacts} {lang} />
 					{/if}
 					<div id="content">
 						{@html data.clientHtml ?? '%%SSR_POST_CONTENT%%'}
 					</div>
 					{#if data.places?.length}
-						<HikePlaces places={data.places} />
+						<HikePlaces places={data.places} {lang} />
 					{/if}
 					{#if data.authoredFacts}
-						<HikeFactsGuide facts={data.authoredFacts} lang="en" linkedPosts={data.linkedPosts} />
+						<HikeFactsGuide facts={data.authoredFacts} {lang} linkedPosts={data.linkedPosts} />
 					{/if}
-					<HikeContacts contacts={data.contacts} />
+					<HikeContacts contacts={data.contacts} {lang} />
 				</div>
 			</div>
 		</article>
 	</div>
 </div>
 
-<MediaGallery items={galleryItems} bind:open={galleryOpen} index={galleryIndex} />
+<MediaGallery
+	items={galleryItems}
+	bind:open={galleryOpen}
+	index={galleryIndex}
+	pinNodes={data.pinNodes}
+	{lang}
+	onShowOnMap={(lat, lon) => {
+		// The gallery has closed by now, but the page only scrolls again once its cleanup has run.
+		void tick().then(() => showPinOnMap?.(lat, lon));
+	}}
+/>
 
 <ToTopButton />

@@ -1,0 +1,278 @@
+{
+	"annapurna_bc_1.gpx": {
+		"distance": 4162,
+		"ascent": 658,
+		"descent": 125,
+		"duration": 104
+	},
+	"annapurna_bc_2.gpx": {
+		"distance": 13415,
+		"ascent": 1327,
+		"descent": 668,
+		"duration": 292
+	},
+	"annapurna_bc_3.gpx": {
+		"distance": 9808,
+		"ascent": 1298,
+		"descent": 107,
+		"duration": 264
+	},
+	"annapurna_bc_4.gpx": {
+		"distance": 21791,
+		"ascent": 616,
+		"descent": 2541,
+		"duration": 318
+	},
+	"annapurna_bc_5.gpx": {
+		"distance": 17280,
+		"ascent": 5894,
+		"descent": 6386,
+		"duration": 136
+	},
+	"baumgartenjoch.gpx": {
+		"distance": 28712,
+		"ascent": 2056,
+		"descent": 2053,
+		"duration": 468
+	},
+	"bichl_blomberg.gpx": {
+		"distance": 27701,
+		"ascent": 1637,
+		"descent": 1567,
+		"duration": 467
+	},
+	"bolsterlanger_horn_only.gpx": {
+		"distance": 14595,
+		"ascent": 693,
+		"descent": 811,
+		"duration": 261
+	},
+	"brauneck_only.gpx": {
+		"distance": 7923,
+		"ascent": 904,
+		"descent": 89,
+		"duration": 145
+	},
+	"drachenkopf.gpx": {
+		"distance": 19579,
+		"ascent": 1570,
+		"descent": 1551,
+		"duration": 371
+	},
+	"drachensee.gpx": {
+		"distance": 15215,
+		"ascent": 1028,
+		"descent": 1002,
+		"duration": 241
+	},
+	"duernbachwand.gpx": {
+		"distance": 13463,
+		"ascent": 1028,
+		"descent": 727,
+		"duration": 264
+	},
+	"eggmuehl_koefering.gpx": {
+		"distance": 17627,
+		"ascent": 218,
+		"descent": 248,
+		"duration": 206
+	},
+	"fischberg.gpx": {
+		"distance": 25123,
+		"ascent": 441,
+		"descent": 437,
+		"duration": 404
+	},
+	"fockenstein_geierstein.gpx": {
+		"distance": 22120,
+		"ascent": 1376,
+		"descent": 1452,
+		"duration": 389
+	},
+	"gassler_berg.gpx": {
+		"distance": 18648,
+		"ascent": 880,
+		"descent": 857,
+		"duration": 296
+	},
+	"geisswand.gpx": {
+		"distance": 5679,
+		"ascent": 460,
+		"descent": 477,
+		"duration": 123
+	},
+	"grosser_laber.gpx": {
+		"distance": 13674,
+		"ascent": 1096,
+		"descent": 864,
+		"duration": 272
+	},
+	"hochalm.gpx": {
+		"distance": 27674,
+		"ascent": 1377,
+		"descent": 1457,
+		"duration": 502
+	},
+	"hoher_kalmberg.gpx": {
+		"distance": 19276,
+		"ascent": 1108,
+		"descent": 1379,
+		"duration": 431
+	},
+	"kofel.gpx": {
+		"distance": 9303,
+		"ascent": 567,
+		"descent": 567,
+		"duration": 193
+	},
+	"krettenburg_westerberg.gpx": {
+		"distance": 21586,
+		"ascent": 824,
+		"descent": 1161,
+		"duration": 316
+	},
+	"krottenkopf_bischof.gpx": {
+		"distance": 26871,
+		"ascent": 1849,
+		"descent": 1860,
+		"duration": 468
+	},
+	"laubeneck.gpx": {
+		"distance": 20139,
+		"ascent": 1198,
+		"descent": 1305,
+		"duration": 358
+	},
+	"lenggries_auerkamp.gpx": {
+		"distance": 20930,
+		"ascent": 939,
+		"descent": 1098,
+		"duration": 344
+	},
+	"mahnkopf.gpx": {
+		"distance": 22761,
+		"ascent": 1397,
+		"descent": 1216,
+		"duration": 374
+	},
+	"moosburg_landshut.gpx": {
+		"distance": 31997,
+		"ascent": 510,
+		"descent": 532,
+		"duration": 344
+	},
+	"muenchen_starnberg.gpx": {
+		"distance": 25698,
+		"ascent": 251,
+		"descent": 168,
+		"duration": 242
+	},
+	"nebelhorn_2026.gpx": {
+		"distance": 14413,
+		"ascent": 1273,
+		"descent": 157,
+		"duration": 255
+	},
+	"neufahrn_niederbayern_eggmuehl.gpx": {
+		"distance": 19302,
+		"ascent": 254,
+		"descent": 277,
+		"duration": 235
+	},
+	"neufahrn_niederbayern_landshut.gpx": {
+		"distance": 27597,
+		"ascent": 281,
+		"descent": 288,
+		"duration": 309
+	},
+	"oberammergau_sonnenberg.gpx": {
+		"distance": 10732,
+		"ascent": 1174,
+		"descent": 455,
+		"duration": 281
+	},
+	"omis_celine.gpx": {
+		"distance": 8662,
+		"ascent": 596,
+		"descent": 593,
+		"duration": 170
+	},
+	"omis_duce.gpx": {
+		"distance": 10724,
+		"ascent": 448,
+		"descent": 451,
+		"duration": 169
+	},
+	"rechelkopf_semmelberg.gpx": {
+		"distance": 35434,
+		"ascent": 1773,
+		"descent": 1684,
+		"duration": 559
+	},
+	"risserkogel.gpx": {
+		"distance": 17628,
+		"ascent": 1249,
+		"descent": 1232,
+		"duration": 330
+	},
+	"schneefernerkopf.gpx": {
+		"distance": 25356,
+		"ascent": 2466,
+		"descent": 866,
+		"duration": 570
+	},
+	"setzberg.gpx": {
+		"distance": 17721,
+		"ascent": 968,
+		"descent": 1015,
+		"duration": 335
+	},
+	"snezka_krakonos.gpx": {
+		"distance": 26478,
+		"ascent": 1014,
+		"descent": 1068,
+		"duration": 369
+	},
+	"tegelbergsteig.gpx": {
+		"distance": 15195,
+		"ascent": 916,
+		"descent": 951,
+		"duration": 271
+	},
+	"teufelstaettkopf.gpx": {
+		"distance": 17591,
+		"ascent": 1245,
+		"descent": 1240,
+		"duration": 275
+	},
+	"thierberg.gpx": {
+		"distance": 10642,
+		"ascent": 369,
+		"descent": 235,
+		"duration": 183
+	},
+	"trainsjoch.gpx": {
+		"distance": 29273,
+		"ascent": 1290,
+		"descent": 969,
+		"duration": 421
+	},
+	"unterammergau_sonnenberg.gpx": {
+		"distance": 17962,
+		"ascent": 980,
+		"descent": 980,
+		"duration": 335
+	},
+	"vordere_kesselschneid.gpx": {
+		"distance": 27391,
+		"ascent": 1989,
+		"descent": 1944,
+		"duration": 476
+	},
+	"wasenkogel.gpx": {
+		"distance": 22596,
+		"ascent": 860,
+		"descent": 871,
+		"duration": 344
+	}
+}

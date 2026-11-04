@@ -7,7 +7,7 @@ tags:
 people:
   - Mikuláš Netík
 gpx: /_projects/data-viz/hikes/gpx/snezka_krakonos.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 26478
 ascent: 1014
 descent: 1068

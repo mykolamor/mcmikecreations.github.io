@@ -4,7 +4,7 @@ description: Checking off all easy hikes in the area at once.
 tags:
   - Web
 gpx: /_projects/data-viz/hikes/gpx/bichl_blomberg.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 27701
 ascent: 1637
 descent: 1567

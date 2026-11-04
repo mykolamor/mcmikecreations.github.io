@@ -13,47 +13,5 @@
     [11.9876722, 47.7110389],
     [11.9637481, 47.7133234]
   ],
-  "nodes": [
-    {
-      "id": 9895387909,
-      "lat": 47.7053102,
-      "lon": 11.9992281,
-      "demEle": 1480.1,
-      "tags": {
-        "name": "Türkenköpfl",
-        "natural": "peak",
-        "ele": "1512"
-      }
-    },
-    {
-      "id": 413585849,
-      "lat": 47.7110389,
-      "lon": 11.9876722,
-      "demEle": 1489.2,
-      "tags": {
-        "name": "Schweinsberg",
-        "natural": "peak",
-        "ele": "1514",
-        "summit:cross": "yes",
-        "summit:register": "no",
-        "wikidata": "Q31804517"
-      }
-    },
-    {
-      "id": 84097007,
-      "lat": 47.7141954,
-      "lon": 11.9799002,
-      "demEle": 1270.4,
-      "tags": {
-        "name": "Kesselalm",
-        "tourism": "alpine_hut",
-        "ele": "1278",
-        "amenity": "restaurant",
-        "building": "yes",
-        "mobile": "+491708493855",
-        "phone": "+4980282602",
-        "website": "https://kesselalm.com/"
-      }
-    }
-  ]
+  "nodes": ["node/9895387909", "node/413585849", "way/84097007"]
 }

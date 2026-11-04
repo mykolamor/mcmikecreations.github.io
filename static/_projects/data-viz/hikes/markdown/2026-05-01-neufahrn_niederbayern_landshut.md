@@ -4,7 +4,7 @@ description: Taking a casual stroll after getting my wisdom teeth removed.
 tags:
   - Web
 gpx: /_projects/data-viz/hikes/gpx/neufahrn_niederbayern_landshut.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 27597
 ascent: 281
 descent: 288

@@ -30,7 +30,7 @@ test('selectPeaks returns all when there are no more than needed, and is determi
 
 const META: HeroMeta = { west: 10.9, south: 47.35, east: 11.0, north: 47.45, minEle: 900, maxEle: 2900 };
 const node = (id: number, lat: number, lon: number, extra: Partial<MapNode> = {}): MapNode =>
-	({ id, lat, lon, demEle: 1000 + id, tags: { natural: 'peak', name: `P${id}` }, ...extra });
+	({ ref: `node/${id}`, lat, lon, demEle: 1000 + id, tags: { natural: 'peak', name: `P${id}` }, ...extra });
 const hike = (slug: string, nodes: MapNode[], props: Record<string, unknown> = {}) =>
 	({
 		name: `Hike ${slug}`,

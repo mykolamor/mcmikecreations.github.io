@@ -18,5 +18,7 @@ __pycache__/
 /.deploy-assets.hash
 .venv
 
-# Immich image-match output and thumbnail cache (scripts/matches is tracked)
-/scripts/matches/hikes/
+# Hike CRM local data (settings, caches, test fixtures from Immich)
+scripts/crm/data/
+# half-received CRM video uploads (removed when the upload ends)
+.upload-*.part

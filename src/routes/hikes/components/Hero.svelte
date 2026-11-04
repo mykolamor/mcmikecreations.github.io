@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { animate, createScope, onScroll, stagger } from 'animejs';
+	import { t } from '$lib/i18n/strings';
 
 	const parallaxStrength = 0.1;
 	const syncStrength = 0.95;
@@ -65,7 +66,7 @@
 		<div class="parallax-layer hero-layer4" style="--layer: 2"></div>
 		<div class="parallax-layer hero-layer5" style="--layer: 3"></div>
 		<div class="parallax-layer hero-layer6" style="--layer: 4"></div>
-		<h1 class="absolute z-10 text-white drop-shadow-xl text-[8rem] left-10 top-[1rem] pointer-events-none parallax-text">Hikes</h1>
+		<h1 class="absolute z-10 text-white drop-shadow-xl text-[8rem] left-10 top-[1rem] pointer-events-none parallax-text">{t('en', 'home.title')}</h1>
 	</div>
 </div>
 <div class="h-[100vh] w-full"></div>

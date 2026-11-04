@@ -1,15 +1,73 @@
 ---
-title: Sleepless Hike for the Scheefernerkopf Sunrise
+title: Sleepless Hike for the Schneefernerkopf Sunrise
 description: Fighting insomnia by ascending the second highest German peak.
 tags:
   - Climb
   - Work
 gpx: /_projects/data-viz/hikes/gpx/schneefernerkopf.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 25356
 ascent: 2466
 descent: 866
 duration: 570
+# Facts layer (docs/superpowers/specs/2026-10-04-hike-facts-schema-design.md).
+# Route-level defaults live in schneefernerkopf.hike.json; this merges on top.
+# Many values below and in the sidecar are placeholders to verify by hand:
+# prices, timetables, opening dates, trail numbers, signal, winter grades,
+# and the drone and protected-area texts in the sidecar.
+facts:
+  # true switches the whole facts layer off for this post, sidecar defaults included.
+  hidden: true
+  checked: 2026-07-19
+  difficulty:
+    sac: T4
+  hazards:
+    # Merges into the sidecar's snowfield entry: same kind and place.
+    - {kind: snowfield, at: Schneefernerscharte, severity: high, note: {en: "Hard ice at 05:00; spikes were essential.", de: "Um 05:00 hartes Eis; Grödel waren unverzichtbar."}}
+    # Nobody on the Platt at night.
+    - {kind: crowding, at: Zugspitzplatt, remove: true}
+    - {kind: darkness, severity: high, note: {en: "Most of the route in the dark, in fog from Am Brand.", de: "Großteil der Route im Dunkeln, ab Am Brand im Nebel."}}
+    - {kind: wildlife, at: Feldernjöchl, severity: low, note: {en: "A fox on the trail at night.", de: "Nachts ein Fuchs auf dem Weg."}}
+  conditions:
+    weather: [clear, fog]
+    temp: {min: 2, max: 14}
+    visibility: poor
+    snowLine: 2600
+    traction: microspikes
+    trail: [wet, overgrown, snow]
+    crowding: alone
+    start: "20:30"
+    why: {en: "To reach the summit for sunrise.", de: "Um zum Sonnenaufgang am Gipfel zu sein."}
+    note: {en: "Alone with the cows until Knorrhütte; fog cut visibility to a few metres near Am Brand.", de: "Bis zur Knorrhütte allein mit den Kühen; bei Am Brand Sicht von wenigen Metern im Nebel."}
+  deviations:
+    - {kind: unroped, at: Gatterl, note: {en: "Did the via ferrata unclipped because my gear was at the bottom of the pack. Clip in.", de: "Den Klettersteig ungesichert gemacht, weil die Ausrüstung ganz unten im Rucksack war. Hängt euch ein."}}
+    - {kind: solo, note: {en: "Solo on a high alpine route with nobody knowing my exact plan.", de: "Allein auf einer hochalpinen Route, ohne dass jemand meinen genauen Plan kannte."}}
+    - {kind: night, note: {en: "Walked through the night without sleep.", de: "Die ganze Nacht ohne Schlaf gegangen."}}
+    - {kind: off-trail, at: Issentalköpfl, note: {en: "Bushwhacked through spruce to an unmarked summit in the dark.", de: "Im Dunkeln durch Fichten zu einem unmarkierten Gipfel gekämpft."}}
+  plan:
+    gear:
+      - {item: food, amount: {en: "snacks for 12 hours", de: "Proviant für 12 Stunden"}}
+      - {item: power-bank, need: optional}
+      # Merges into the sidecar's microspikes: essential on this date.
+      - {item: microspikes, need: essential}
+    variants:
+      - name: {en: "Overnight for the sunrise (what I did)", de: "Über Nacht zum Sonnenaufgang (was ich gemacht habe)"}
+        summary: {en: "Start at 20:30 from Ehrwald and walk through the night.", de: "Start um 20:30 in Ehrwald und durch die Nacht gehen."}
+        distance: 25356
+        ascent: 2466
+        descent: 866
+        duration: 570
+        sac: T4
+        viaFerrata: {grade: B}
+        note: {en: "Not recommended.", de: "Nicht empfohlen."}
+    timing:
+      sunrise: {start: "20:30", note: {en: "The evening before, for a 05:30 sunrise on the summit.", de: "Am Vorabend, für den Sonnenaufgang um 05:30 am Gipfel."}}
+  sources:
+    - title: {en: "Schneefernerkopf climbs on YouTube", de: "Schneefernerkopf-Besteigungen auf YouTube"}
+      url: https://www.youtube.com/results?search_query=Schneefernerkopf+Klettersteig
+      kind: video
+      note: {en: "What I watched before going.", de: "Was ich mir vorher angeschaut habe."}
+# Place docs shown at the bottom (static/_projects/data-viz/hikes/places/<slug>.md).
 places: [knorrhuette]
 images:
   2026-07-19-00.jpg: {w: 4080, h: 3060, lat: 47.408313, lon: 10.915174, demEle: 975.6, taken: '2026-07-19T20:34:59+02:00', blur: 'data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAQBQCdASoYABIAPtFUpEuoJKOhsBgMAQAaCWUAygAPR/e/H7IA14WUnbrphQ9jhwAAAP7UtyDRQQx4tQvYY7MSYD5qzntM50KjA3awvs5fUdf+4ir/T8HUEkyi/avBLf+AVWfWz9/e4G7POEShvxnsONmoAAAA'}
@@ -43,6 +101,8 @@ images:
   2026-07-19-28.jpg: {w: 1200, h: 1600, lat: 47.416394, lon: 10.979219, demEle: 2650.7, blur: 'data:image/webp;base64,UklGRrwAAABXRUJQVlA4ILAAAADQBACdASoSABgAPtFepU6oJSMiKAqpABoJagCdMyGBqdU8HQvK98YL1hYesyu2LAD+5tv0OQSNGCDZYTDWqdFCFjaVFi12opOYKI77rFFRxQgqWpp/m8xhMjbCHM9xfOJ6gy0hCW5oF4IBK5NFat3p3qqnCItz16lmrMxRTeZi3iPfYzF0Sdxkj7NSVJ9f1TvmbymjpVnxnXmBecephZ6OzZq/9Vz88KAXj5gkxsAAAA=='}
   2026-07-19-29.jpg: {w: 8160, h: 6120, lat: 47.421313, lon: 10.985888, demEle: 2931.8, blur: 'data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAABQBQCdASoYABIAPr1QnkunJSKht/qoAOAXiWcAwoAh0zzHqarhi90CNxI7B0FyqoAwFgAA/q8GVANb+CdnCHTnVqGNdwH0IYb6DqOgXRBb3CZPZOoX8JmQPwBoDHE2gAA='}
   2026-07-19-30.jpg: {w: 6120, h: 8160, lat: 47.448365, lon: 10.99067, demEle: 1218.2, blur: 'data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAAAQBQCdASoSABgAPtFgqE+oJSOiKAgBABoJZQC+SA43H9vs8R3gcvzZXpSvQ5u2/NboAP7I3VvjeluUOh0IFaajvI3oV2LhLQNq5HKvsQh0fCScmMUk4O7GMAQjV/NCk+uIFlBXo9I+HaefJKjNIV6Fr7tCrwcOUeUIn2n0eW8cR21ULgAAAA=='}
+  schneefernerkopf.jpg: {w: 2250, h: 1688}
+  /images/hikes/topo/schneefernerkopf.jpg: {w: 2250, h: 1688, blur: 'data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAADQBACdASoYABIAPtFcqE4oJSQiKAqpABoJZQDKAA+2gjCKkfqzUc7qVpALO1Y0lgD45Ow99JzybpR2ltwMzayJTYUT263Bwm3AME9yIlXpWalPruRAZ8RC1K7nHfi2EyZ2XRXCWuT/ZYP9qU7wmpxcQucbw6MIuxDJH7UYzawH8b4WVMPGrRT1v+IDmt3x29FxAAAA'}
 videos:
   o9kwIkZfx1E: {title: {en: SUNRISE on top of SCHNEEFERNERKOPF, de: SONNENAUFGANG auf dem SCHNEEFERNERKOPF, uk: СХІД СОНЦЯ на вершині ШНЕЕФЕРНЕРКОПФ}, uploadDate: '2026-07-25T05:02:04-07:00', duration: PT73M10S, description: {en: 'July 20, 2026. Having a scientific retreat on the slope of Zugspitze, I decided to commute there on foot from Ehrwald. I set off at 9 PM on Sunday, walking through the darkness, climbing Gatterl, and arriving at Sonnalpin at 5 AM. Along the way I saw cows, foxes, mice, and mountain goats. Despite the active night animals, I got through the route without issues and started the Schneefernerkopf soon after. The view at the top was breathtaking, with sunrise shining over the Zugspitzplatt, clouds…', de: '20. Juli 2026. Da ich an einem wissenschaftlichen Seminar am Hang der Zugspitze teilnahm, beschloss ich, von Ehrwald aus zu Fuß dorthin zu gehen. Ich machte mich am Sonntag um 21 Uhr auf den Weg, wanderte durch die Dunkelheit, stieg das Gatterl hinauf und kam um 5 Uhr morgens in Sonnalpin an. Unterwegs sah ich Kühe, Füchse, Mäuse und Bergziegen. Trotz der aktiven Nachttiere kam ich ohne Probleme durch die Strecke und machte mich kurz darauf auf den Weg zum Schneefernerkopf. Die Aussicht vom…', uk: '20 липня 2026 року. Під час наукового семінару на схилі Цугшпіце я вирішив дістатися туди пішки з Ервальда. Я вирушив о 21:00 у неділю, йшов у темряві, піднімався на Гаттерль і прибув до Соннальпіна о 5:00 ранку. По дорозі я бачив корів, лисиць, мишей і гірських козлів. Незважаючи на активних нічних тварин, я без проблем подолав маршрут і незабаром почав сходження на Шнефернеркопф. Вид з вершини був захоплюючий: сонце сходило над Цугшпіцплаттом, хмари вкривали Австрію, а ранкова імла огортала…'}, w: 1280, h: 720, blur: 'data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAADQAwCdASoYAA4APtFUo0uoJKMhsAgBABoJZgCdABQSblNasfAyjpgA/eG1pMSe/mRke3DW4vBeiakfz1iOssjhAE9jBkagqa6PpE/KhY6/vEI10DIMpw9PaZGgPrFHkO6I7pDNKX9BZlqnKcHj/7D679/g2x/cfT2zM/vqMd6AAA=='}
 ---
@@ -66,7 +126,7 @@ far from my destination, so the plan changed. I've never seen the sunrise on a
 high mountain, so I took this obligatory trip as a chance to fulfill a
 long-standing dream of mine.
 
-![The 360° sunrise climb of Schneefernerkopf (2874 m)](https://www.youtube.com/watch?v=B5yRsnelCsw)
+![The 360° sunrise climb of Schneefernerkopf (2874 m)](https://www.youtube.com/watch?v=o9kwIkZfx1E)
 
 I set off from Ehrwald at 20:30, arriving by a surprisingly punctual train. At
 first, I kept meeting other hikers on the road, returning from their trips.

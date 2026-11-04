@@ -8,7 +8,7 @@ facts:
   sources:
     - {title: Komoot, url: 'https://www.komoot.com/tour/3361325892', kind: mirror}
     - {title: Strava, url: 'https://www.strava.com/activities/20690452736', kind: mirror}
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 21586
 ascent: 824
 descent: 1161

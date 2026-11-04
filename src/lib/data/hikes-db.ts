@@ -20,8 +20,12 @@
  * the Node scripts; this module only supplies the globbed files.
  */
 
-import type { HikeMeta, Map, MapDate } from './map-info';
+import type { HikeMeta, Map, MapDate, MapNode, OsmEntry, RawHikeMeta } from './map-info';
 import { resolveHikeForDate as resolveWith } from './hikes-core';
+import { resolveRef, resolveSidecar } from './osm-store';
+import { formatPhoneTags } from './osm-phone';
+import { readSidecarTexts } from '../hikes/facts.server';
+import { readFactsLibrary, type FactsLibrary } from '../hikes/facts-library.server';
 
 export {
 	applyDateOverrides,
@@ -36,7 +40,50 @@ export {
 const sidecars = import.meta.glob('/static/_projects/data-viz/hikes/markdown/*.hike.json', {
 	eager: true,
 	import: 'default'
-}) as Record<string, HikeMeta>;
+}) as Record<string, RawHikeMeta>;
+
+const osmFiles = import.meta.glob('/static/_projects/data-viz/hikes/osm.json', {
+	eager: true,
+	import: 'default'
+}) as Record<string, Record<string, OsmEntry>>;
+
+/**
+ * The shared OSM store: every element a sidecar or photo pin references, by
+ * typed id (`node/123`). Server-only, like this module; pages get just the
+ * elements they use.
+ */
+export const osmStore: Record<string, OsmEntry> = osmFiles['/static/_projects/data-viz/hikes/osm.json'] ?? {};
+
+let allNodes: MapNode[] | undefined;
+
+/**
+ * Every element of the OSM store, resolved like a sidecar's nodes (author tags
+ * merged, phones formatted), in store order. What a post's place mentions are
+ * matched against; server-only — a page gets just the nodes it links to.
+ */
+export function storeNodes(): MapNode[] {
+	return (allNodes ??= Object.keys(osmStore).map((ref) =>
+		resolveRef(ref, osmStore, 'osm.json', { formatTags: formatPhoneTags })
+	));
+}
+
+const libraryFiles = import.meta.glob('/static/_projects/data-viz/hikes/facts-library.json', {
+	eager: true,
+	import: 'default'
+}) as Record<string, unknown>;
+
+let library: FactsLibrary | undefined;
+
+/**
+ * The shared facts library, checked once per build: the records hikes' facts
+ * `use` and their stops attach to. Server-only, like the OSM store.
+ */
+export function factsLibrary(): FactsLibrary {
+	return (library ??= readFactsLibrary(libraryFiles['/static/_projects/data-viz/hikes/facts-library.json'] ?? {}, 'facts-library.json'));
+}
+
+/** Sidecars with their `nodes` resolved, by served path; filled on first use. */
+const resolved: Record<string, HikeMeta> = {};
 
 // Only the paths matter here, not the contents, so this stays lazy — Vite still
 // resolves the key set at build time without inlining every GPX file.
@@ -56,10 +103,13 @@ export const hikeSlugs: string[] = Object.keys(sidecars)
 /**
  * The sidecar at a served path such as
  * `/_projects/data-viz/hikes/markdown/laubeneck.hike.json`, or undefined if no
- * such file was globbed.
+ * such file was globbed. A malformed translated `name` or `description` throws.
  */
 export function getHikeMeta(metaPath: string): HikeMeta | undefined {
-	return sidecars[`/static${metaPath}`];
+	const key = `/static${metaPath}`;
+	const raw = sidecars[key];
+	if (!raw) return undefined;
+	return (resolved[key] ??= resolveSidecar(readSidecarTexts(raw, metaPath), osmStore, metaPath, { formatTags: formatPhoneTags }));
 }
 
 /**

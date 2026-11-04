@@ -32,6 +32,26 @@ Markdown text, with images like a post's:
 - Images live in `static/images/projects/data-viz/hikes/places/<slug>/`, named and
   optimised like a post's story images (`<capture-date>-<NN>`, AVIF tiers, blur).
 
+## Translating it
+
+A translation is a second file beside the doc, `<slug>.<lang>.md` (`knorrhuette.de.md`),
+with `<lang>` any language in `LANGS` (`src/lib/i18n/translation-name.js`) but `en`.
+Its front matter takes only `title`, `description` and `aliases`, all optional, and its
+body is the whole translated text:
+
+```markdown
+---
+title: Knorrhütte
+description: DAV-Hütte unter dem Zugspitzplatt.
+aliases: [Knorr-Hütte]
+---
+Der übersetzte Text, mit denselben Fotos.
+```
+
+The English file must exist, an unknown language or any other key fails the build, and
+a translation is never listed as a place doc of its own. Photos it uses count as used.
+Details: [hike-data-reference.md](hike-data-reference.md#6b-localization).
+
 ## Showing it in posts
 
 List the slug in the route's sidecar, `<slug>.hike.json`, so every post on that route
@@ -62,23 +82,20 @@ The story links to it in two ways:
 
 Either link opens the doc. A URL ending in `#place-<slug>` opens it on arrival too.
 
-## Images: the matcher
+## Images: the CRM
 
-The image tools treat place docs like posts:
+The hike CRM (`pnpm crm`, see `scripts/crm/README.md`) treats place docs like posts:
 
-- **`scripts/image_match.py knorrhuette`** matches a doc's images against Immich. With
-  no names, every post and then every place doc is processed.
-- **`scripts/image_optimize.py`**, **`backfill_gps.py`** and **`backfill_terrain.py`**
-  work the same way. **`backfill_time.py`** skips place docs: they have no date or track.
-- **The web UI** (`scripts/image_match_web.py`) lists place docs under **Places** in the
-  sidebar:
-  - **New place…** creates a doc (slug, title, description, tags, aliases, text).
-  - **Edit text…** edits a selected doc's text and front matter. `images` is left alone.
-  - **Add media…** works as for posts and writes into the doc's image folder.
-  - **Insert selected image** in the editor appends the selected item to the text.
-  - In **Pick…**, a place doc has no date to search around, so search Immich by text
-    (CLIP smart search, e.g. the place's name) and/or a date range. The last search
-    stays the doc's candidates for Apply and matching. Without a search, the candidates
-    are the window around the capture dates in its image filenames, as for posts.
-- Match reports go to `scripts/matches/hikes/<slug>.json`, beside the posts'. A post's
-  name always starts with its date and a place doc's never does, so they can't collide.
+- **`pnpm crm images`** and **`pnpm crm terrain`** cover place docs as well as posts
+  (AVIF tiers, `w`/`h`/`blur`, and `demEle` on located photos). **`pnpm crm photo-times`**
+  skips place docs: they have no date or track.
+- **The UI** lists place docs on the Open screen:
+  - **+ New place doc** creates a doc (slug, then its front matter in **Details**).
+  - **Details** edits the front matter, **Write** the text. `images` is left alone.
+  - **Photos** works as for posts and writes into the doc's image folder. A place doc
+    has no date to search around, so its source bar searches Immich by text (smart
+    search, prefilled with the doc's title), optionally narrowed by a date range.
+  - In **Write**, **Photo** inserts one of the doc's photos into the text.
+- Immich links are kept under `places/<slug>.md` in `scripts/crm/data/immich-links.json`,
+  beside the posts'. A post's name always starts with its date and a place doc's never
+  does, so they can't collide.

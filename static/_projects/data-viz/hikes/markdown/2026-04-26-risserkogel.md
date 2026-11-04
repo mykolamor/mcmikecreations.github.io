@@ -2,7 +2,7 @@
 title: Revenge Against Risserkogel
 description: Returning to reach the goal of my failed winter hike.
 gpx: /_projects/data-viz/hikes/gpx/risserkogel.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 17628
 ascent: 1249
 descent: 1232

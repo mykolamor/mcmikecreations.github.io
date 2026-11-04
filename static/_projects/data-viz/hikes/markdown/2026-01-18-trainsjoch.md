@@ -5,7 +5,7 @@ people:
   - Bohdan Pryshchenko
   - Stanislav Kidalau
 gpx: /_projects/data-viz/hikes/gpx/trainsjoch.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 29273
 ascent: 1290
 descent: 969

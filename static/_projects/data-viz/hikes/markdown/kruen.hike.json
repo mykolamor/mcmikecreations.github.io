@@ -16,51 +16,5 @@
     [11.2415215, 47.4915837],
     [11.2684429, 47.5081606]
   ],
-  "nodes": [
-    {
-      "id": 313172002,
-      "lat": 47.4913807,
-      "lon": 11.2139174,
-      "demEle": 923.8,
-      "tags": {
-        "name": "Kapelle Gerold",
-        "amenity": "place_of_worship",
-        "building": "chapel",
-        "religion": "christian",
-        "roof:shape": "gabled"
-      }
-    },
-    {
-      "id": 1147768588,
-      "lat": 47.4819651,
-      "lon": 11.2387374,
-      "demEle": 938.7,
-      "tags": {
-        "name": "Klaiser Kapelle",
-        "amenity": "place_of_worship",
-        "building": "chapel",
-        "denomination": "roman_catholic",
-        "historic": "chapel",
-        "religion": "christian",
-        "wikidata": "Q41218008",
-        "wikipedia": "de:Kapelle Klais"
-      }
-    },
-    {
-      "id": 339247249,
-      "lat": 47.4962891,
-      "lon": 11.2531423,
-      "demEle": 898.3,
-      "tags": {
-        "name": "Alpengasthof Barmsee",
-        "amenity": "restaurant",
-        "contact:email": "hotel@barmsee.de",
-        "cuisine": "local",
-        "internet_access": "yes",
-        "internet_access:fee": "no",
-        "phone": "+4988252034",
-        "website": "https://www.barmsee.de"
-      }
-    }
-  ]
+  "nodes": ["way/313172002", "way/1147768588", "node/339247249"]
 }

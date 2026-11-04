@@ -2,6 +2,7 @@
   import { ArrowLeftOutline, ArrowRightOutline } from 'flowbite-svelte-icons';
   import { page } from '$app/state';
   import { getPageUrl as pageUrl } from '$lib/pagination';
+  import { t } from '$lib/i18n/strings';
 
   interface Props {
     currentPage: number;
@@ -37,17 +38,17 @@
 </svelte:head>
 
 <div class="flex justify-center mt-8">
-  <nav aria-label="Page navigation" data-sveltekit-replacestate data-sveltekit-keepfocus>
+  <nav aria-label={t('en', 'nav.pagination')} data-sveltekit-replacestate data-sveltekit-keepfocus>
     <ul class="inline-flex -space-x-px rtl:space-x-reverse items-center">
       <li>
         {#if prevUrl}
           <a href={prevUrl} class="{btnInactive} rounded-none rounded-s-lg">
-            <span class="sr-only">Previous</span>
+            <span class="sr-only">{t('en', 'nav.previous')}</span>
             <ArrowLeftOutline class="h-5 w-5" />
           </a>
         {:else}
           <span class="{btnDisabled} rounded-none rounded-s-lg" aria-disabled="true">
-            <span class="sr-only">Previous</span>
+            <span class="sr-only">{t('en', 'nav.previous')}</span>
             <ArrowLeftOutline class="h-5 w-5" />
           </span>
         {/if}
@@ -64,12 +65,12 @@
       <li>
         {#if nextUrl}
           <a href={nextUrl} class="{btnInactive} rounded-none rounded-e-lg">
-            <span class="sr-only">Next</span>
+            <span class="sr-only">{t('en', 'nav.next')}</span>
             <ArrowRightOutline class="h-5 w-5" />
           </a>
         {:else}
           <span class="{btnDisabled} rounded-none rounded-e-lg" aria-disabled="true">
-            <span class="sr-only">Next</span>
+            <span class="sr-only">{t('en', 'nav.next')}</span>
             <ArrowRightOutline class="h-5 w-5" />
           </span>
         {/if}

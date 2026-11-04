@@ -4,7 +4,7 @@ description: Completing my route from Freising to Tutzing.
 tags:
   - Web
 gpx: /_projects/data-viz/hikes/gpx/muenchen_starnberg.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 25698
 ascent: 251
 descent: 168

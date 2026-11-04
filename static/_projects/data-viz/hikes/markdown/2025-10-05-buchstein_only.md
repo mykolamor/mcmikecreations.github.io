@@ -21,6 +21,8 @@ images:
   2025-10-05-12.jpg: {w: 4328, h: 3248, lat: 47.642129, lon: 11.705281, demEle: 1097.7, taken: '2025-10-05T14:13:56+02:00', blur: 'data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAADwBACdASoYABIAPtFWoEwoJKMiMBgMAQAaCUAXYAHodHTLWIUiZ10RbZaDmJhFCwAA/s2P5fQN/gnffs8ecbDUOhcCs8SKSyZQCMp4PAnXUfcL8sPTcrMcwn7ohz5XpviA8BUNqGmeN6eMEeFWV0oAW2GAT4DK7dHoNgsKYJ9AXw5JzRPWDaEVEoXsMRultuEEKovUWK5VqJ2xMf4kNAAA'}
   2025-10-05-13.jpg: {w: 3560, h: 4744, lat: 47.640534, lon: 11.707548, demEle: 1132.3, taken: '2025-10-05T14:17:50+02:00', blur: 'data:image/webp;base64,UklGRtYAAABXRUJQVlA4IMoAAAAwBQCdASoSABgAPtFgqU+oJSOiKAgBABoJYgCsBa9R+wOoo3KBnjNWgZAB8c3lXsmeAADuvCpWRi/kwQc2G9lW0lX7iVG49pSeNOw8zZV3yxA52QXqQpiBhCv+rSa5DKkJOnkHo/wzKnihsLpmYDhApGpbzLYHo3Ad0IGxgARNjrwW6ZQYDtnIYaqeAv9JUOsLx86I37FmfZZAnLhJFPMCmS1rdj/CpurSRD2TrQhtDU9QHVyXPOHMx2aTsTVNWlX9WjOPWaZIwAAA'}
   2025-10-05-14.jpg: {w: 8160, h: 6120, lat: 47.641867, lon: 11.734861, demEle: 842.8, taken: '2025-10-05T15:04:25+02:00', blur: 'data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAABQBQCdASoYABIAPtFUpk2oJCOiMBgIAQAaCUAXYAIeFn6B9Dq/cQ6T/ClbCdJr7MsdK4AA/uGTB5yK6QwQnoSMK3x/8eyfui8otc+EaRYgG0K3WVFoNohy3chu5JqdiWvhxUjEQxvuR32FpVTkGChNJLmevrzdW5Yl6Xnr7T49nt16rVu92E2sSbj8IUrt0yFOgCeugsVe/85YKp19QCtFPbkK2WP18xXhYlkD5ZMVZEmdPVdOSIYiLBuAAA=='}
+  buchstein.jpg: {w: 1240, h: 1754}
+  /images/hikes/topo/buchstein.jpg: {w: 1240, h: 1754, blur: 'data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAACwAwCdASoRABgAPtFgqU+oJaOiKAgBABoJaQAALtAsH+cBXZkqgAD+9OwzjNkFNasVXX3IvjCbDxy1ctx22rxR9BWbmX5k3Dy+dpavdwLxQM5Klu89t+YikEGmvKHo4vg8AAAA'}
 ---
 Topo from [bergsteigen.com](https://www.bergsteigen.com/touren/klettern/sahnestueckchen-buchstein/):
 ![Topo of the climb](/images/hikes/topo/buchstein.jpg)

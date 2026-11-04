@@ -6,7 +6,7 @@ tags:
 people:
   - Natalia Kushch
 gpx: /_projects/data-viz/hikes/gpx/bolsterlanger_horn_only.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 14595
 ascent: 693
 descent: 811

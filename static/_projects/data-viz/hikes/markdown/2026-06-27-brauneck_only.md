@@ -4,7 +4,7 @@ description: Enjoying a fire show with rock music on a peak at sunset.
 people:
   - David Bilan
 gpx: /_projects/data-viz/hikes/gpx/brauneck_only.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 7923
 ascent: 904
 descent: 89

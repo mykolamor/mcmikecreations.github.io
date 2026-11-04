@@ -11,30 +11,5 @@
     [-16.9368891, 32.7391717],
     [-16.9285859, 32.7350716]
   ],
-  "nodes": [
-    {
-      "id": 1832777816,
-      "lat": 32.7355733,
-      "lon": -16.9286501,
-      "demEle": 1800.1,
-      "tags": {
-        "name": "Arieiro",
-        "natural": "peak",
-        "ele": "1818",
-        "wikidata": "Q1192102",
-        "wikipedia": "pt:Pico do Areeiro (Madeira)"
-      }
-    },
-    {
-      "id": 3995319667,
-      "lat": 32.7352344,
-      "lon": -16.9248409,
-      "demEle": 1703.3,
-      "tags": {
-        "name": "Juncal",
-        "natural": "peak",
-        "ele": "1718"
-      }
-    }
-  ]
+  "nodes": ["node/1832777816", "node/3995319667"]
 }

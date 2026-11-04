@@ -1,6 +1,4 @@
 // noinspection JSUnusedLocalSymbols
-import { geoMercator } from 'd3-geo';
-import { tile } from 'd3-tile';
 // noinspection ES6PreferShortImport
 import { loadHikes, resolveHikeForPost } from './load-hikes.js';
 import { existsSync, statSync } from 'fs';
@@ -8,17 +6,15 @@ import { mkdir, readFile, unlink, writeFile } from 'fs/promises';
 import { resolve } from 'path';
 import { createHash } from 'crypto';
 // noinspection ES6PreferShortImport
-import { providers, providerFolder, providerFile } from '../src/lib/data/map-providers.js';
-// noinspection ES6PreferShortImport
-import { getMapFeatures } from '../src/lib/data/map-get-features.js';
+import { providers, providerFile } from '../src/lib/data/map-providers.js';
 // noinspection ES6PreferShortImport
 import { hikeSlug } from '../src/lib/data/hikes-core.js';
+import { mapFolder, tilesForView, viewsFor } from './map-tiles.js';
+import { getMapyCookie } from './mapy-cookies.js';
 
 const maps = loadHikes();
 
 // Load map based on name and mapbox key. E.g. node map-download.js seekarkreuz pk.eya79cwhrfa9we
-
-const mapFolder = `../static/${providerFolder}/maps`;
 
 const verifyFolder = async (path) => {
 	if (!existsSync(path)) {
@@ -109,68 +105,11 @@ const downloadFile = async (address, fileName, requestInit = undefined) => {
 
 const slug = process.argv.at(2);
 
-// mapy.com serves tiles from a CloudFront distribution guarded by signed cookies.
-// The browser obtains them by (1) loading the site to get a `User-Id` session cookie,
-// then (2) calling `/refreshCookies`, which returns the CloudFront-* cookies (valid ~1h).
-// We replicate that handshake so no manual cookie copying is needed. The result is
-// cached and transparently refreshed shortly before it expires.
-const mapyUserAgent = "Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0";
-
 // OSM's tile usage policy requires a User-Agent that identifies the application; requests
 // sent with a generic library UA (Node's default is `node`) are answered with the
 // "403 Access blocked" placeholder image instead of a tile, and the one-second delay above
 // keeps us inside the policy's limits. https://operations.osmfoundation.org/policies/tiles/
 const osmUserAgent = "ligmapper-tile-prefetch/1.0 (https://github.com/Evenfall-Tech/LigMapper)";
-let mapyCookie = null;
-let mapyCookieExpiry = 0;
-
-const parseSetCookies = (setCookies, jar) => {
-	for (const header of setCookies) {
-		const pair = header.split(';', 1)[0];
-		const eq = pair.indexOf('=');
-		if (eq < 0) continue;
-		jar[pair.slice(0, eq).trim()] = pair.slice(eq + 1).trim();
-	}
-};
-
-const getMapyCookie = async () => {
-	const now = Math.floor(Date.now() / 1000);
-	// Refresh a bit early (5 min) so long download runs never hit an expired cookie.
-	if (mapyCookie && now < mapyCookieExpiry - 300) return mapyCookie;
-
-	const jar = {};
-
-	// 1. Bootstrap a session to receive the `User-Id` cookie.
-	const home = await fetch("https://mapy.com/en/", {
-		headers: { "User-Agent": mapyUserAgent },
-	});
-	if (!home.ok) {
-		throw new Error(`mapy.com session bootstrap failed: ${home.status} ${home.statusText}`);
-	}
-	parseSetCookies(home.headers.getSetCookie(), jar);
-
-	// 2. Exchange the session for CloudFront signed cookies.
-	const cookieHeader = Object.entries(jar).map(([k, v]) => `${k}=${v}`).join('; ');
-	const refresh = await fetch("https://mapy.com/refreshCookies", {
-		headers: {
-			"User-Agent": mapyUserAgent,
-			"Cookie": cookieHeader,
-			"Referer": "https://mapy.com/en/turisticka",
-		},
-	});
-	if (!refresh.ok) {
-		throw new Error(`mapy.com refreshCookies failed: ${refresh.status} ${refresh.statusText}`);
-	}
-	const data = await refresh.json();
-	for (const { cname, value } of data.cookies ?? []) {
-		jar[cname] = value;
-	}
-
-	mapyCookieExpiry = data.expiration ?? (now + (data.lifetime ?? 3600));
-	mapyCookie = Object.entries(jar).map(([k, v]) => `${k}=${v}`).join('; ');
-	console.log(`Fetched mapy.com cookies (valid until ${new Date(mapyCookieExpiry * 1000).toLocaleString('en-US', { timeZone: 'CET' })}).`);
-	return mapyCookie;
-};
 const skuMapboxDEM = process.env.mapboxDEMSKU;
 const tokenMapboxDEM = process.env.mapboxDEMAccess;
 const skuMapboxSatellite = process.env.mapboxSatelliteSKU;
@@ -185,42 +124,14 @@ if (selected.length === 0) {
 // The map page renders a hike as-is, but each post page renders it with that
 // post's front matter applied, which may move the origin or resize the map.
 // Fetch tiles for every distinct origin/height once.
-const metas = [];
-const seenViews = new Set();
-for (const hike of selected) {
-	const posts = hike.properties.dates.filter((d) => d.path).map((d) => resolveHikeForPost(hike, d).hike);
-	for (const view of [hike, ...posts]) {
-		const { lat, lon } = view.standardFeatures.origin;
-		const key = `${lat},${lon},${view.height}`;
-		if (seenViews.has(key)) continue;
-		seenViews.add(key);
-		metas.push(view);
-	}
-}
+const metas = viewsFor(selected, (hike, date) => resolveHikeForPost(hike, date).hike);
 
 for (const meta of metas) {
 	await downloadMeta(meta);
 }
 
 async function downloadMeta(meta) {
-	const features = getMapFeatures(meta);
-	const origin = features.find((x) => x.type === 'Origin');
-
-	if (!origin) {
-		console.error(`Failed to find origin for /maps/${slug}.`);
-	}
-
-	const height = meta.height;
-	const projection = geoMercator()
-		.center([origin.data.lon, origin.data.lat])
-		.scale(Math.pow(2, 21) / (2 * Math.PI))
-		.translate([height / 2, height / 2]);
-
-	const tileFunc = tile()
-		.size([height, height])
-		.scale(projection.scale() * 2 * Math.PI)
-		.translate(projection([0, 0]));
-	const tiles = tileFunc();
+	const tiles = tilesForView(meta);
 
 	await verifyFolder(resolve(mapFolder, `${providers.mapboxDEM.tileset}/`));
 	await verifyFolder(resolve(mapFolder, `${providers.mapboxSatellite.tileset}/`));

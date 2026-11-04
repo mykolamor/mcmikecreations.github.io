@@ -4,7 +4,7 @@ description: Doing a Pürschling loop across all the fancy cliffs nearby.
 people:
   - Bohdan Pryshchenko
 gpx: /_projects/data-viz/hikes/gpx/teufelstaettkopf.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 17591
 ascent: 1245
 descent: 1240
@@ -83,7 +83,7 @@ supports. While Bohdan climbed it and got down pretty fast, I decided to save
 my nerves and stayed on the easier section of the east peak.
 
 ![Looking down onto the August-Schuster-Haus](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-08.jpg)
-![Multiple mountain flowers at Laubeneck (1520 m)](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-09.jpg)
+![Multiple mountain flowers at Laubeneck (1758 m)](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-09.jpg)
 
 Afterwards, we didn't linger near the August-Schuster-Haus for too long and
 kept going further up. I got to see the snowmobile that took me down after
@@ -91,16 +91,16 @@ my fall though. The route towards Teufelstättkopf (1758 m) was pretty nice,
 with some steeper sections in the shade of spruce trees and some shallow
 sections with wooden bridges across muddy spots.
 
-![Gentiana orbicularis near Laubeneck (1520 m)](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-11.jpg)
+![Gentiana orbicularis near Laubeneck (1758 m)](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-11.jpg)
 
-We again did a detour to Latschenkopf (1634 m) for completeness sake, spending
+We again did a detour to Latschenkopf (1740 m) for completeness sake, spending
 some time looking for the spot that counted as a summit. Once we were satisfied
 with our location, we counted the peak as visited and turned around. This peak
-offers a great view of Laubeneck (1520 m) right beside it, but we weren't
+offers a great view of Laubeneck (1758 m) right beside it, but we weren't
 planning to visit it this time around.
 
-![Laubeneck (1520 m) with Bohdan on top](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-10.jpg)
-![View from Laubeneck (1520 m) towards Laubeneck (1520 m)](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-12.jpg)
+![Laubeneck (1758 m) with Bohdan on top](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-10.jpg)
+![View from Laubeneck (1758 m) towards Laubeneck (1758 m)](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-12.jpg)
 
 The route to Teufelstättkopf (1758 m) was also cool, with a tiny cable-secured
 section towards the top. Although the polished rocks were slippery, the route
@@ -117,7 +117,7 @@ If I'm not mistaken, from Teufelstättkopf (1758 m) you can even see
 [Große Klammspitze (1924 m)](/404/), which is a great high summit to visit for
 experienced hikers wishing to see Castle Linderhof!
 
-![View from Teufelstättkopf (1758 m) towards Latschenkopf (1634 m)](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-15.jpg)
+![View from Teufelstättkopf (1758 m) towards Latschenkopf (1740 m)](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-15.jpg)
 ![A sharp turn of the ridge between Teufelstättkopf (1758 m) and Auf dem Stein (1579 m)](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-16.jpg)
 
 We got down, had a drink and some snacks, and started our way down to
@@ -146,15 +146,15 @@ was the likely source of it.
 ![Primula balbisii also known as Petergstamm near the rock](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-20.jpg)
 ![A snail on the way down](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-21.jpg)
 
-Bremeneck (1354 m), the next summit, was a pretty simple flat mountaintop with
+Bremeneck (1405 m), the next summit, was a pretty simple flat mountaintop with
 a bunch of hikers taking respite in the middle of their journey. Despite the
 snake warnings, people were making shortcuts across the tall grass all over the
 place, while Bohdan led me through the official trail. Still, I managed to
 catch a tick somewhere here, which made for a fun time at home extracting it
 from my skin.
 
-![The snake warning on the way to Bremeneck (1354 m)](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-22.jpg)
-![Mykola near the cross at Bremeneck (1354 m)](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-23.jpg)
+![The snake warning on the way to Bremeneck (1405 m)](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-22.jpg)
+![Mykola near the cross at Bremeneck (1405 m)](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-23.jpg)
 
 We kept going to Rosengarten (1425 m), the low summit with a great view of
 Sonnenberg (1622 m). Bohdan took a few photos while I was trying to catch up,
@@ -180,11 +180,11 @@ so at certain spots we just guessed the direction and made shortcuts.
 ![The cross at Schartenköpfl (1372 m)](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-27.jpg)
 
 Closer to the next summit near Scharten-Kapelle, we entered a wider gravel road
-used in forestry. It took us just a few more minutes to reach Köpfel (1194 m)
+used in forestry. It took us just a few more minutes to reach Köpfel (1202 m)
 to complete our challenge. There wasn't even a stick in the ground to denote
 the formal peak, but we were satisfied with being in the general area.
 
-![The emptiness of Köpfel (1194 m)](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-28.jpg)
+![The emptiness of Köpfel (1202 m)](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-28.jpg)
 
 Bohdan wanted to do another quick section going north, since we had 50 minutes
 left. I wasn't so confident in myself, so he suggested taking the shorter route

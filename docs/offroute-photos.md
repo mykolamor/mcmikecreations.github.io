@@ -34,19 +34,21 @@ None are `located: track`; those are placed on the track by construction.
 
 Notes on making the edits stick:
 
-- `deploy.sh` runs `scripts/backfill_time.py` on every deploy. On a **recorded**
+- `deploy.sh` runs `pnpm crm photo-times` (through `pnpm crm prebuild`) on every deploy. On a **recorded**
   hike, a photo with no `lat`/`lon` but a believable `taken` gets placed on
   the track at that time (`located: track`). Dropping wrong GPS there usually
   puts the photo back on the route automatically. On a **planned** hike it
   just leaves the maps.
-- The original `lat`/`lon` come from Immich via the match reports
-  (`scripts/matches/hikes/*.json`). `scripts/matches/optimize.py` rebuilds a
-  post's whole `images:` map from its match report, so re-running the
-  optimizer on a post brings the wrong GPS back. Fix the location in Immich, or
-  don't re-run the optimizer on a post you've already curated.
+- The original `lat`/`lon` come from Immich when a photo is added in the CRM's
+  Photos tab. Nothing rebuilds `images:` from Immich afterwards (`pnpm crm images`
+  only adds missing fields), so a front-matter fix sticks. **Fix location** in the
+  Photos tab also writes a position you set on the map back to a linked Immich asset;
+  a position from the track is not written back, and neither is dropping one, since
+  Immich can't clear one.
 
 Columns: **Off** is the distance from the photo to the nearest point on the route.
-**Taken** is the vetted `taken` timestamp (blank when `backfill_time.py` rejected or found none).
+**Taken** is the photo's `taken` timestamp (blank when it has none). `pnpm crm photo-times` never blanks one: a
+`taken` it doesn't believe is reported and left as is.
 
 ## Photos by post
 

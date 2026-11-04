@@ -5,7 +5,7 @@
 		MapPinAltOutline, TruckOutline, ClipboardListOutline, BookOpenOutline,
 		GlassWaterDropletOutline, MobilePhoneOutline, HomeOutline, TicketOutline
 	} from 'flowbite-svelte-icons';
-	import { textIn, GEAR_NEED, type HikeAuthoredFacts, type Lang, type Text } from '$lib/hikes/facts-schema';
+	import { profileLegs, tableLegs, textIn, GEAR_NEED, type HikeAuthoredFacts, type Lang, type Text } from '$lib/hikes/facts-schema';
 	import {
 		countryName, enumLabel, formatChecked, formatClimb, formatFerrata, formatGrades, formatMinutes, formatMonths,
 		formatPrices, formatWater, formatWindow, label, mirrorPlatform
@@ -34,10 +34,12 @@
 	const a = $derived(facts.access);
 	const p = $derived(facts.plan);
 	const s = $derived(facts.suitability);
+	const legs = $derived(tableLegs(facts));
+	const sections = $derived(profileLegs(facts));
 
 	const hasRoute = $derived(
-		!!(d?.note || d?.sections?.length || d?.viaFerrata?.length || d?.climbing || d?.winter || r || facts.season ||
-			facts.navigation || facts.legs?.length || facts.water?.length || facts.signal?.length)
+		!!(d?.note || sections.length || d?.viaFerrata?.length || d?.climbing || d?.winter || r || facts.season ||
+			facts.navigation || legs.length || facts.water?.length || facts.signal?.length)
 	);
 	const hasAccess = $derived(!!(a || facts.permits?.length || facts.rules?.length || facts.stops?.length || facts.drones || facts.protectedAreas));
 	const hasPlan = $derived(!!(p || s));
@@ -142,10 +144,10 @@
 				</ul>
 			{/if}
 
-			{#if d?.sections?.length}
+			{#if sections.length}
 				<h3 class={h3}>{label(lang, 'sections')}</h3>
 				<ul class="flex flex-col gap-1">
-					{#each d.sections as sec}
+					{#each sections as sec}
 						<li>
 							<span class="font-semibold" translate="no">{formatGrades(lang, sec)}</span>
 							<FactsSpan {lang} from={sec.from} to={sec.to} />{#if sec.note}{' — '}{t(sec.note)}{/if}
@@ -170,7 +172,7 @@
 				</p>
 			{/if}
 
-			{#if facts.legs?.length}
+			{#if legs.length}
 				<h3 class={h3}>{label(lang, 'legs')}</h3>
 				<div class="overflow-x-auto">
 					<table class="w-full text-left text-sm">
@@ -178,9 +180,10 @@
 							<tr><th class="py-1 pr-3">{label(lang, 'leg')}</th><th class="py-1 pr-3">{label(lang, 'terrain')}</th><th class="py-1 pr-3">{label(lang, 'grade')}</th><th class="py-1 pr-3">{label(lang, 'marking')}</th></tr>
 						</thead>
 						<tbody>
-							{#each facts.legs as leg}
+							{#each legs as leg}
 								<tr class="border-b border-gray-100 dark:border-gray-800 align-top {leg.optional ? 'italic text-gray-500 dark:text-gray-400' : ''}">
-									<td class="py-1 pr-3">→ <FactsPlace place={leg.to} {lang} km />{#if leg.optional}{' '}({label(lang, 'optionalLeg')}){/if}{#if leg.note}<div class={muted}>{t(leg.note)}</div>{/if}</td>
+									<!-- checkLegs guarantees `to` on table entries. -->
+									<td class="py-1 pr-3">→ <FactsPlace place={leg.to!} {lang} km />{#if leg.optional}{' '}({label(lang, 'optionalLeg')}){/if}{#if leg.note}<div class={muted}>{t(leg.note)}</div>{/if}</td>
 									<td class="py-1 pr-3">{(leg.terrain ?? []).map((x) => enumLabel(lang, 'terrain', x)).join(', ')}</td>
 									<td class="py-1 pr-3" translate="no">{formatGrades(lang, leg)}</td>
 									<td class="py-1 pr-3">{leg.marking ? enumLabel(lang, 'marking', leg.marking) : ''}</td>

@@ -2,6 +2,8 @@
  * One entry in the fullscreen media gallery.
  */
 
+import type { PhotoPin } from '$lib/hikes/photo-pins';
+
 interface GalleryItemBase {
 	/** Plain text alternative. */
 	alt: string;
@@ -22,6 +24,8 @@ export interface GalleryImage extends GalleryItemBase {
 	location?: { lat: number; lon: number; demEle?: number };
 	/** When it was taken (see `HikeImageMeta.taken`); places it along the route. */
 	taken?: string;
+	/** Places marked on the photo; drawn over it in the gallery too. */
+	pins?: PhotoPin[];
 }
 
 export interface GalleryVideo extends GalleryItemBase {
@@ -36,7 +40,7 @@ export interface GalleryYoutube extends GalleryItemBase {
 	videoId: string;
 	/** Original watch URL, kept so a slide can still link out. */
 	href: string;
-	/** Self-hosted poster (largest AVIF tier), when scripts/video_meta.py made one; else YouTube's. */
+	/** Self-hosted poster (largest AVIF tier), when `pnpm crm video-meta` made one; else YouTube's. */
 	poster?: string;
 	/** Smallest poster tier, for the thumbnail strip. */
 	thumb?: string;

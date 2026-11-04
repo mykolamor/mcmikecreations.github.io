@@ -10,9 +10,14 @@ import { stripFrontmatter, extractFrontMatterBlock, isPlainObject } from '$lib/h
 import { parseMediaFlags } from '$lib/renderers/media-flags';
 import type { GalleryItem } from '$lib/renderers/gallery-item';
 import { photoStopText, type PhotoStop } from '$lib/hikes/photo-stops';
-import { buildPlaceIndex, type PlaceIndex, type PlaceNode } from '$lib/hikes/place-links';
+import { buildPlaceIndex, type PlaceIndex, type PlaceMatch, type PlaceNode } from '$lib/hikes/place-links';
+import { imageMetaFor } from '$lib/renderers/image-meta';
 import { avifTiers, buildAvifSrcset, avifVariantHref, videoPosterHref, type HikeImageMeta, type HikeVideoMeta } from '$lib/renderers/responsive-image';
 import { buildPlaceDocIndex, placeDocAnchor, placeDocMarkerHtml, type PlaceDocIndex, type PlaceDocRef } from '$lib/hikes/place-docs';
+import type { PinNode } from '$lib/hikes/photo-pins';
+import { photoPinsCss, photoPinsHtml } from '$lib/hikes/photo-pins-view';
+import { tHtml } from '$lib/i18n/strings';
+import type { Lang } from '$lib/i18n/languages';
 
 export interface ProcessedPost {
     year: number;
@@ -33,6 +38,12 @@ export interface ParsedPost {
     html: string;
     /** Gallery entries in document order; the index matches `data-media-index`. */
     media: GalleryItem[];
+    /**
+     * The distinct nodes the place links point to, in first-link order. A
+     * re-parse given just these (and the same `origin`) links the same places,
+     * so the browser never needs the whole OSM store.
+     */
+    placeNodes: PlaceNode[];
 }
 
 // Must stay in lockstep with map-elevation.ts's SVG viewBox (VW/VH) — this
@@ -124,12 +135,12 @@ function escapeHtml(text: string): string {
 // turns names like Gatterl or Feldernjöchl into nonsense, so these are marked
 // `translate="no"`. Lowercase words end the name, so "View towards Wendelstein
 // (1838 m)" only protects "Wendelstein (1838 m)".
-const TOPONYM = /(?<![\p{L}\p{N}])((?:\p{Lu}[\p{L}.'’-]*\s){0,3}\p{Lu}[\p{L}.'’-]*\s\(\d{2,4}\s?m\))/gu;
+export const TOPONYM = /(?<![\p{L}\p{N}])((?:\p{Lu}[\p{L}.'’-]*\s){0,3}\p{Lu}[\p{L}.'’-]*\s\(\d{2,4}(?:[.,]\d+)?\s?m\))/gu;
 
 // Capitalised English words that start a sentence ("The Nebelhorn (2224 m)",
 // "After Reintalangerhütte (1366 m)") and so get caught by TOPONYM, but are not
 // part of the name and should still be translated.
-const LEADING_ENGLISH = new Set([
+export const LEADING_ENGLISH = new Set([
     'A', 'An', 'The', 'At', 'After', 'Before', 'Near', 'From', 'To', 'Towards', 'Toward',
     'On', 'In', 'Into', 'Over', 'Under', 'Past', 'Behind', 'Above', 'Below', 'Beyond',
     'Via', 'Of', 'And', 'Then', 'Back', 'Up', 'Down', 'View', 'Views', 'Around', 'Along',
@@ -152,21 +163,30 @@ function unescapeHtml(text: string): string {
  * `docMarker` decides, so it can link each doc only once. With `docs`, plain
  * mentions of a doc's names in the text between references ("through
  * Marienstein") are marked the same way, just without an elevation.
+ *
+ * `onLink` hears of each node a link is made to.
  */
 function markToponyms(
     html: string,
     places: PlaceIndex | null,
     docMarker?: (nameWords: string[]) => string,
-    docs?: PlaceDocIndex | null
+    docs?: PlaceDocIndex | null,
+    onLink?: (node: PlaceNode) => void,
+    lang: Lang = 'en'
 ): string {
-    if (!docs) return markReferences(html, places, docMarker);
+    if (!docs) return markReferences(html, places, docMarker, onLink, lang);
     let out = '';
     let last = 0;
     for (const m of html.matchAll(TOPONYM)) {
-        out += markMentions(html.slice(last, m.index), docs, places, docMarker) + markReferences(m[0], places, docMarker);
+        out += markMentions(html.slice(last, m.index), docs, places, docMarker, onLink, lang) + markReferences(m[0], places, docMarker, onLink, lang);
         last = m.index! + m[0].length;
     }
-    return out + markMentions(html.slice(last), docs, places, docMarker);
+    return out + markMentions(html.slice(last), docs, places, docMarker, onLink, lang);
+}
+
+/** The opening tag of a place's link to the 2D map. */
+function placeLinkTag(node: PlaceNode, lang: Lang): string {
+    return `<a class="mk-place" href="#hike-map" data-place-lat="${node.lat}" data-place-lon="${node.lon}" title="${tHtml(lang, 'render.showOnMap')}">`;
 }
 
 /** A place doc's name without an elevation, marked like a `Name (1234 m)` reference. */
@@ -174,7 +194,9 @@ function markMentions(
     html: string,
     docs: PlaceDocIndex,
     places: PlaceIndex | null,
-    docMarker?: (nameWords: string[]) => string
+    docMarker?: (nameWords: string[]) => string,
+    onLink?: (node: PlaceNode) => void,
+    lang: Lang = 'en'
 ): string {
     return docs.markMentions(html, (text) => {
         const nameWords = unescapeHtml(text.replace(/&nbsp;/g, ' ')).split(/\s+/);
@@ -182,40 +204,90 @@ function markMentions(
         const place = places?.match(nameWords, NaN);
         const marker = docMarker?.(nameWords) ?? '';
         if (!place || place.start !== 0) return `<span translate="no">${text}</span>` + marker;
-        const { lat, lon } = place.node;
-        return '<span translate="no">' +
-            `<a class="mk-place" href="#hike-map" data-place-lat="${lat}" data-place-lon="${lon}" title="Show on the map">` +
-            `${text}</a></span>` + marker;
+        onLink?.(place.node);
+        return '<span translate="no">' + placeLinkTag(place.node, lang) + `${text}</a></span>` + marker;
     });
+}
+
+/** A `Name (1234 m)` reference as TOPONYM matched it in escaped HTML, and the place it names. */
+interface Reference {
+    /** The match split into words and the whitespace between them: even indices are words. */
+    words: string[];
+    /** Index in `words` of the first name word; the ones before it are LEADING_ENGLISH. */
+    start: number;
+    nameWords: string[];
+    place: PlaceMatch | null;
+    /** Index in `words` where the link starts, when there is one. */
+    linkAt: number;
+}
+
+function readReference(match: string, places: PlaceIndex | null): Reference {
+    // Words and the whitespace between them alternate: even indices are words.
+    // The elevation's own space is non-breaking, so a line never splits `(2024 m)`.
+    const words = match.replace(/\((\d{2,4}(?:[.,]\d+)?)\s(m\))$/, '($1&nbsp;$2').split(/(\s)/);
+    // Always keep at least one name word before the `(1234 m)` part.
+    const elevationAt = words.findIndex((w) => w.startsWith('('));
+    let start = 0;
+    while (start + 2 < elevationAt && LEADING_ENGLISH.has(words[start])) start += 2;
+
+    const nameWords = words.slice(start, elevationAt).filter((_, i) => i % 2 === 0).map(unescapeHtml);
+    // `(1603.3 m)` and `(1603,3 m)` alike.
+    const ele = Number(/\d+(?:[.,]\d+)?/.exec(words[elevationAt])?.[0].replace(',', '.'));
+    const place = places?.match(nameWords, ele) ?? null;
+    // The node's name says exactly where the place name starts, so words
+    // before it ("Approaching") stay translatable.
+    return { words, start, nameWords, place, linkAt: start + (place?.start ?? 0) * 2 };
+}
+
+export interface PlaceMention {
+    /** Offsets into the text: the linked part of the reference, `(1234 m)` included. */
+    from: number;
+    to: number;
+    node: PlaceNode;
+}
+
+/**
+ * The `Name (1234 m)` references in a run of plain text that the renderer
+ * links to the map, with the node each one links to. The renderer matches
+ * escaped HTML, so the text is escaped the same way and the offsets mapped
+ * back. Mentions of a place doc's names without an elevation are not included.
+ */
+export function findPlaceMentions(text: string, index: PlaceIndex | null): PlaceMention[] {
+    if (!index) return [];
+    let html = '';
+    // Offset in `text` of each char of `html`, and of its end.
+    const at: number[] = [];
+    for (let i = 0; i < text.length; i++) {
+        const escaped = escapeHtml(text[i]);
+        html += escaped;
+        for (let k = 0; k < escaped.length; k++) at.push(i);
+    }
+    at.push(text.length);
+    const mentions: PlaceMention[] = [];
+    for (const m of html.matchAll(TOPONYM)) {
+        const { words, place, linkAt } = readReference(m[0], index);
+        if (!place) continue;
+        const from = m.index! + words.slice(0, linkAt).join('').length;
+        mentions.push({ from: at[from], to: at[m.index! + m[0].length], node: place.node });
+    }
+    return mentions;
 }
 
 function markReferences(
     html: string,
     places: PlaceIndex | null,
-    docMarker?: (nameWords: string[]) => string
+    docMarker?: (nameWords: string[]) => string,
+    onLink?: (node: PlaceNode) => void,
+    lang: Lang = 'en'
 ): string {
     return html.replace(TOPONYM, (match: string) => {
-        // Words and the whitespace between them alternate: even indices are words.
-        // The elevation's own space is non-breaking, so a line never splits `(2024 m)`.
-        const words = match.replace(/\((\d{2,4})\s(m\))$/, '($1&nbsp;$2').split(/(\s)/);
-        // Always keep at least one name word before the `(1234 m)` part.
-        const elevationAt = words.findIndex((w) => w.startsWith('('));
-        let start = 0;
-        while (start + 2 < elevationAt && LEADING_ENGLISH.has(words[start])) start += 2;
+        const { words, start, nameWords, place, linkAt } = readReference(match, places);
         const lead = words.slice(0, start).join('');
-
-        const nameWords = words.slice(start, elevationAt).filter((_, i) => i % 2 === 0).map(unescapeHtml);
-        const ele = Number(/\d+/.exec(words[elevationAt])?.[0]);
-        const place = places?.match(nameWords, ele);
         const marker = docMarker?.(nameWords) ?? '';
         if (!place) return lead + `<span translate="no">${words.slice(start).join('')}</span>` + marker;
 
-        // The node's name says exactly where the place name starts, so words
-        // before it ("Approaching") stay translatable.
-        const linkAt = start + place.start * 2;
-        const { lat, lon } = place.node;
-        return words.slice(0, linkAt).join('') + '<span translate="no">' +
-            `<a class="mk-place" href="#hike-map" data-place-lat="${lat}" data-place-lon="${lon}" title="Show on the map">` +
+        onLink?.(place.node);
+        return words.slice(0, linkAt).join('') + '<span translate="no">' + placeLinkTag(place.node, lang) +
             `${words.slice(linkAt).join('')}</a></span>` + marker;
     });
 }
@@ -224,14 +296,14 @@ function markReferences(
  * The `km 13.4 · 2052 m · 11:18` line under a photo's caption. A button when
  * the photo is on the maps, so clicking it can center them on the photo.
  */
-function photoStopHtml(stop: PhotoStop | undefined, mediaIndex: number): string {
-    const text = stop ? photoStopText(stop) : '';
+function photoStopHtml(stop: PhotoStop | undefined, mediaIndex: number, lang: Lang): string {
+    const text = stop ? escapeHtml(photoStopText(stop, lang)) : '';
     if (!text) return '';
     const title = stop!.timeSource === 'track'
-        ? ' title="Time from my recorded track, where it passed this spot"'
-        : stop!.timeSource === 'photo' ? ' title="Time the photo was taken"' : '';
+        ? ` title="${tHtml(lang, 'render.stop.trackTime')}"`
+        : stop!.timeSource === 'photo' ? ` title="${tHtml(lang, 'render.stop.photoTime')}"` : '';
     if (stop!.lat != null && stop!.lon != null) {
-        return `<button type="button" class="mk-photo-stop mk-photo-stop-link" translate="no" data-photo-stop="${mediaIndex}"${title} aria-label="${text}, show on the map">${text}</button>`;
+        return `<button type="button" class="mk-photo-stop mk-photo-stop-link" translate="no" data-photo-stop="${mediaIndex}"${title} aria-label="${tHtml(lang, 'render.stop.showOnMap', { stop: text })}">${text}</button>`;
     }
     return `<span class="mk-photo-stop" translate="no"${title}>${text}</span>`;
 }
@@ -244,8 +316,18 @@ export interface ParseMarkdownOptions {
      * lines are left out.
      */
     stops?: Map<number, PhotoStop>;
-    /** The hike's POI nodes; place references naming one link to it on the map. */
+    /**
+     * The nodes place references may link to on the map: on the server, every
+     * element of the OSM store (`storeNodes`); in the browser, the
+     * `placeNodes` the server's parse returned.
+     */
     nodes?: PlaceNode[] | null;
+    /** The hike's map centre: of several nodes with one name, the nearest wins. */
+    origin?: { lat: number; lon: number } | null;
+    /** The hike's map height in px: with `origin`, only nodes inside the map's tile square can link. */
+    height?: number | null;
+    /** Refs of the hike's own nodes: they link even outside the tile square. */
+    ownRefs?: string[] | null;
     /**
      * The post's place docs (front matter `places:`). The first reference to
      * each in the prose gets a link to its section, plain mentions of its
@@ -264,19 +346,30 @@ export interface ParseMarkdownOptions {
     widgets?: boolean;
     /** Append the renderer's `<style>` block. A place doc's rides on the post's. */
     styles?: boolean;
+    /**
+     * What the photo pins in `images:` point to, by ref (`photo-pins.server`).
+     * The server load sends it to the browser, so a client re-parse draws the same pins.
+     */
+    pinNodes?: Record<string, PinNode> | null;
+    /** The language of the renderer's own text (link titles, the photo line); the post's text is as given. */
+    lang?: Lang;
 }
 
 export async function parseMarkdown(
     postRaw: string,
     tags: string[] = [],
-    { stops, nodes, placeDocs, mediaOffset = 0, widgets = true, styles: withStyles = true }: ParseMarkdownOptions = {}
+    { stops, nodes, origin, height, ownRefs, placeDocs, mediaOffset = 0, widgets = true, styles: withStyles = true, pinNodes, lang = 'en' }: ParseMarkdownOptions = {}
 ): Promise<ParsedPost> {
     // Drop any leading YAML front matter before rendering. Uses the
     // dependency-free stripper so this stays safe in the client bundle, which
     // re-renders the body on navigation. Files without front matter are unchanged.
     const post = stripFrontmatter(postRaw);
     const { Marked, Renderer } = await import('marked');
-    const places = buildPlaceIndex(nodes);
+    const places = buildPlaceIndex(nodes, { origin, height, keepRefs: ownRefs });
+    const placeNodes: PlaceNode[] = [];
+    const onLink = (node: PlaceNode) => {
+        if (!placeNodes.includes(node)) placeNodes.push(node);
+    };
     const docs: PlaceDocIndex | null = buildPlaceDocIndex(placeDocs);
     // Each doc's marker goes on its first reference only: one pointer per
     // place, not one per mention. Renderers run in document order, so the
@@ -286,7 +379,7 @@ export async function parseMarkdown(
         const hit = docs?.match(nameWords);
         if (!hit || markedDocs.has(hit.doc.slug)) return '';
         markedDocs.add(hit.doc.slug);
-        return placeDocMarkerHtml(hit.doc);
+        return placeDocMarkerHtml(hit.doc, lang);
     };
     // Above zero while rendering a heading, a link or a figure caption: no
     // place links there. Links can't nest, and captions are
@@ -307,7 +400,7 @@ export async function parseMarkdown(
     // underneath it) has no such dependency, so it's loaded directly against
     // just the extracted front-matter text.
     let images: Record<string, HikeImageMeta> = {};
-    // `videos:`, by YouTube id (scripts/video_meta.py): poster dims/blur and upload date.
+    // `videos:`, by YouTube id (`pnpm crm video-meta`): poster dims/blur and upload date.
     let videos: Record<string, HikeVideoMeta> = {};
     const frontMatterBlock = extractFrontMatterBlock(postRaw);
     if (frontMatterBlock) {
@@ -369,7 +462,7 @@ export async function parseMarkdown(
             text(token: any) {
                 if (token.tokens) return false;
                 const html = token.escaped ? token.text : escapeHtml(token.text);
-                return placeLinksOff === 0 ? markToponyms(html, places, docMarker, docs) : markToponyms(html, null);
+                return placeLinksOff === 0 ? markToponyms(html, places, docMarker, docs, onLink, lang) : markToponyms(html, null);
             },
             heading(token: any) {
                 return withoutPlaceLinks(() => Renderer.prototype.heading.call(this as any, token));
@@ -398,7 +491,7 @@ export async function parseMarkdown(
                     }
                     const mediaIndex = mediaOffset + media.length;
                     const meta = videoId ? videos[videoId] : undefined;
-                    // The self-hosted poster when scripts/video_meta.py made one, else YouTube's.
+                    // The self-hosted poster when `pnpm crm video-meta` made one, else YouTube's.
                     const tiers = meta?.blur && meta.w && meta.h ? avifTiers(meta.w, meta.h) : [];
                     const posterHref = videoPosterHref(videoId);
                     const poster = tiers.length > 0 ? avifVariantHref(posterHref, tiers[tiers.length - 1].target) : undefined;
@@ -460,7 +553,10 @@ export async function parseMarkdown(
 </figure>`;
                 } else {
                     const mediaIndex = mediaOffset + media.length;
-                    const meta = images[href.trim().split('/').pop() ?? ''];
+                    const meta = imageMetaFor(images, href);
+                    // `images.<key>.alt` (set in the CRM) is the alt attribute; the caption stays the figcaption.
+                    const altText = typeof meta?.alt === 'string' && meta.alt.trim() ? meta.alt.trim() : text;
+                    const safeAlt = altText.replace(/"/g, '&quot;');
 
                     if (meta?.blur) {
                         const tiers = avifTiers(meta.w, meta.h);
@@ -478,7 +574,8 @@ export async function parseMarkdown(
                                 placeholder: meta.blur,
                                 location: readLocation(meta),
                                 taken: readTaken(meta),
-                                alt: text,
+                                ...(meta.pins?.length ? { pins: meta.pins } : {}),
+                                alt: altText,
                                 title: title || undefined,
                                 captionHtml: renderedText
                             });
@@ -490,27 +587,34 @@ export async function parseMarkdown(
         <img src="${meta.blur}" alt="" aria-hidden="true" class="mk-blur-placeholder" />
         <picture>
             <source type="image/avif" srcset="${safeSrcset}" sizes="(min-width: 1280px) 75vw, 100vw" />
-            <img src="${safeFallbackSrc}" ${safeTitle ? `title="${safeTitle}"` : ''} alt="${safeText}" width="${largest.width}" height="${largest.height}" loading="lazy" decoding="async" class="mk-img-pointer marked-image mk-fade-in" data-media-index="${mediaIndex}" onload="this.classList.add('mk-loaded')" />
+            <img src="${safeFallbackSrc}" ${safeTitle ? `title="${safeTitle}"` : ''} alt="${safeAlt}" width="${largest.width}" height="${largest.height}" loading="lazy" decoding="async" class="mk-img-pointer marked-image mk-fade-in" data-media-index="${mediaIndex}" onload="this.classList.add('mk-loaded')" />
         </picture>
+        ${photoPinsHtml(meta.pins, pinNodes ?? undefined, lang)}
     </span>
-    <figcaption class="mk-figcaption">${renderedText}${photoStopHtml(stops?.get(mediaIndex), mediaIndex)}</figcaption>
+    <figcaption class="mk-figcaption">${renderedText}${photoStopHtml(stops?.get(mediaIndex), mediaIndex, lang)}</figcaption>
 </figure>`;
                         }
                     }
 
+                    // No AVIF tiers (a topo, a screenshot): the image as it is. Its pins
+                    // need a box exactly the image's size to sit in, so only then
+                    // does it get a frame; other images render as they always have.
+                    const pinsHtml = meta?.w && meta?.h ? photoPinsHtml(meta.pins, pinNodes ?? undefined, lang) : '';
                     media.push({
                         kind: 'image',
                         src: href.trim(),
                         taken: meta ? readTaken(meta) : undefined,
-                        alt: text,
+                        ...(pinsHtml ? { pins: meta!.pins } : {}),
+                        alt: altText,
                         title: title || undefined,
                         captionHtml: renderedText
                     });
                     const dims = meta ? ` width="${meta.w}" height="${meta.h}"` : '';
+                    const imgHtml = `<img src="${safeHref}" ${safeTitle ? `title="${safeTitle}"` : ''} alt="${safeAlt}"${dims} loading="lazy" decoding="async" class="mk-img-pointer marked-image" data-media-index="${mediaIndex}" />`;
                     return `
 <figure class="mk-figure">
-    <img src="${safeHref}" ${safeTitle ? `title="${safeTitle}"` : ''} alt="${safeText}"${dims} loading="lazy" decoding="async" class="mk-img-pointer marked-image" data-media-index="${mediaIndex}" />
-    <figcaption class="mk-figcaption">${renderedText}${photoStopHtml(stops?.get(mediaIndex), mediaIndex)}</figcaption>
+    ${pinsHtml ? `<span class="mk-img-frame">\n        ${imgHtml}\n        ${pinsHtml}\n    </span>` : imgHtml}
+    <figcaption class="mk-figcaption">${renderedText}${photoStopHtml(stops?.get(mediaIndex), mediaIndex, lang)}</figcaption>
 </figure>`;
                 }
             }
@@ -534,6 +638,9 @@ a.mk-place.mk-place:hover, a.mk-place.mk-place:focus-visible { text-decoration-s
 .mk-img-pointer { cursor: pointer; margin-top: 0 !important; margin-bottom: 0 !important; }
 .mk-img-shell { position: relative; display: block; width: 100%; overflow: hidden; cursor: pointer; }
 .mk-img-shell picture { display: block; margin: 0 !important; }
+.mk-img-frame { position: relative; display: block; width: fit-content; max-width: 100%; line-height: 0; }
+.mk-img-frame > img { display: block; max-width: 100%; height: auto; margin: 0 !important; }
+${photoPinsCss}
 .mk-blur-placeholder { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(12px); transform: scale(1.05); margin: 0 !important; }
 .mk-fade-in { position: relative; display: block; width: 100%; height: auto; opacity: 0; transition: opacity 400ms ease; margin: 0 !important; }
 .mk-fade-in.mk-loaded { opacity: 1; }
@@ -546,5 +653,5 @@ a.mk-place-doc-link.mk-place-doc-link { text-decoration: underline dotted !impor
 </style>`;
     const withoutEmptyParagraphs = result.replace(/<p>\s*<\/p>/g, '');
     const withWidgets = widgets ? insertHikeWidgetPlaceholders(withoutEmptyParagraphs, tags) : withoutEmptyParagraphs;
-    return { html: withWidgets + (withStyles ? styles : ''), media };
+    return { html: withWidgets + (withStyles ? styles : ''), media, placeNodes };
 }

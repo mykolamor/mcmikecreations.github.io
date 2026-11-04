@@ -11,6 +11,11 @@
 	 */
 	import { untrack } from 'svelte';
 	import type { GalleryItem } from '$lib/renderers/gallery-item';
+	import type { PinNode } from '$lib/hikes/photo-pins';
+	import { containedBox } from '$lib/hikes/photo-pins';
+	import { attachPhotoPins, photoPinsCss, photoPinsHtml } from '$lib/hikes/photo-pins-view';
+	import type { Lang } from '$lib/i18n/languages';
+	import { t } from '$lib/i18n/strings';
 	import type { Swiper as SwiperInstance } from 'swiper';
 	import 'swiper/css';
 	import 'swiper/css/navigation';
@@ -23,9 +28,37 @@
 		open: boolean;
 		/** Slide to show when opening. Read once per open, never written back. */
 		index?: number;
+		/** What the images' photo pins point to, by ref; without it no pins are drawn. */
+		pinNodes?: Record<string, PinNode>;
+		/** A pin's "Show on map"; the gallery closes first. */
+		onShowOnMap?: (lat: number, lon: number) => void;
+		/** The language of the gallery's own labels. */
+		lang?: Lang;
 	}
 
-	let { items, open = $bindable(false), index = 0 }: Props = $props();
+	let { items, open = $bindable(false), index = 0, pinNodes, onShowOnMap, lang = 'en' }: Props = $props();
+
+	/** Each pinned slide's zoom container and image, for placing its pin layer. */
+	const zoomEls: (HTMLElement | null)[] = $state([]);
+	const mediaEls: (HTMLImageElement | null)[] = $state([]);
+	/** Where each slide's photo is drawn, as the pin layer's inline style. */
+	let pinBoxes = $state<Record<number, string>>({});
+	/** Pins are hidden while zoomed in: they would no longer sit on their spots. */
+	let zoomed = $state(false);
+
+	function placePins(i: number) {
+		const zoom = zoomEls[i];
+		const img = mediaEls[i];
+		if (!zoom || !img || !img.naturalWidth) return;
+		const box = containedBox(zoom.clientWidth, zoom.clientHeight, img.naturalWidth, img.naturalHeight);
+		pinBoxes[i] = `left:${zoom.offsetLeft + box.left}px;top:${zoom.offsetTop + box.top}px;width:${box.width}px;height:${box.height}px`;
+	}
+
+	function placeAllPins() {
+		items.forEach((item, i) => {
+			if (item.kind === 'image' && item.pins?.length) placePins(i);
+		});
+	}
 
 	let mainEl = $state<HTMLDivElement | null>(null);
 	let thumbsEl = $state<HTMLDivElement | null>(null);
@@ -111,6 +144,11 @@
 		closeEl?.focus();
 
 		let cancelled = false;
+		// The pins' own styles: the post page has them too, other pages may not.
+		const pinStyles = pinNodes ? document.head.appendChild(document.createElement('style')) : null;
+		if (pinStyles) pinStyles.textContent = photoPinsCss;
+		let resizeObserver: ResizeObserver | undefined;
+		const pinsAbort = new AbortController();
 		let main: SwiperInstance | undefined;
 		let thumbs: SwiperInstance | undefined;
 
@@ -128,7 +166,7 @@
 					spaceBetween: 8,
 					freeMode: true,
 					watchSlidesProgress: true,
-					a11y: { enabled: true, containerMessage: 'Gallery thumbnails' }
+					a11y: { enabled: true, containerMessage: t(lang, 'gallery.thumbnails') }
 				});
 			}
 
@@ -153,8 +191,8 @@
 				thumbs: thumbs ? { swiper: thumbs } : undefined,
 				a11y: {
 					enabled: true,
-					prevSlideMessage: 'Previous item',
-					nextSlideMessage: 'Next item'
+					prevSlideMessage: t(lang, 'gallery.previous'),
+					nextSlideMessage: t(lang, 'gallery.next')
 				},
 				on: {
 					slideChange: (swiper) => {
@@ -165,18 +203,37 @@
 					zoomChange: (swiper, scale) => {
 						if (scale > 1) swiper.mousewheel?.disable();
 						else swiper.mousewheel?.enable();
+						zoomed = scale > 1;
 					}
 				}
 			});
 
 			current = main.realIndex;
 			syncPlayback(main.realIndex);
+			placeAllPins();
+			resizeObserver = new ResizeObserver(placeAllPins);
+			resizeObserver.observe(mainNode);
+			if (pinNodes) {
+				attachPhotoPins(mainNode, pinNodes, {
+					onShowOnMap: (lat, lon) => {
+						close();
+						onShowOnMap?.(lat, lon);
+					},
+					signal: pinsAbort.signal,
+					lang
+				});
+			}
 			// The deck is on the right slide now, so it is safe to show.
 			ready = true;
 		})();
 
 		return () => {
 			cancelled = true;
+			resizeObserver?.disconnect();
+			pinsAbort.abort();
+			pinStyles?.remove();
+			pinBoxes = {};
+			zoomed = false;
 			// `cleanStyles: false` - Svelte is about to drop this DOM anyway.
 			main?.destroy(true, false);
 			thumbs?.destroy(true, false);
@@ -196,7 +253,7 @@
 		class:mg-ready={ready}
 		role="dialog"
 		aria-modal="true"
-		aria-label="Media gallery"
+		aria-label={t(lang, 'gallery.label')}
 	>
 		<div class="mg-topbar">
 			{#if items.length > 1}
@@ -206,7 +263,7 @@
 				bind:this={closeEl}
 				type="button"
 				class="mg-icon-button"
-				aria-label="Close gallery"
+				aria-label={t(lang, 'gallery.close')}
 				onclick={close}
 			>
 				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -224,16 +281,25 @@
 								<!-- Blurred thumb holds the frame until the full image arrives. -->
 								<img src={item.placeholder} alt="" aria-hidden="true" class="mg-placeholder" />
 							{/if}
-							<div class="swiper-zoom-container">
+							<div class="swiper-zoom-container" bind:this={zoomEls[i]}>
 								<img
+									bind:this={mediaEls[i]}
 									src={item.src}
 									alt={item.alt}
 									title={item.title}
 									class="mg-media"
 									loading="lazy"
-									onload={() => (imageLoaded[i] = true)}
+									onload={() => {
+										imageLoaded[i] = true;
+										placePins(i);
+									}}
 								/>
 							</div>
+							{#if pinNodes && item.pins?.length && pinBoxes[i]}
+								<div class="mg-pins mk-photo-pins-ready" class:mg-pins-hidden={zoomed} style={pinBoxes[i]}>
+									{@html photoPinsHtml(item.pins, pinNodes, lang)}
+								</div>
+							{/if}
 							<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
 						{:else if item.kind === 'video'}
 							<!-- svelte-ignore a11y_media_has_caption -->
@@ -253,7 +319,7 @@
 								href={item.href}
 								target="_blank"
 								rel="noopener noreferrer"
-								aria-label={`Watch ${item.alt || 'video'} on YouTube (opens in a new tab)`}
+								aria-label={t(lang, 'gallery.watch', { name: item.alt || t(lang, 'gallery.video') })}
 							>
 								<img
 									src={item.poster ?? `https://img.youtube.com/vi/${item.videoId}/maxresdefault.jpg`}
@@ -274,8 +340,8 @@
 			{#if !ready}
 				<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
 			{/if}
-			<button bind:this={prevEl} type="button" class="swiper-button-prev mg-nav" aria-label="Previous item"></button>
-			<button bind:this={nextEl} type="button" class="swiper-button-next mg-nav" aria-label="Next item"></button>
+			<button bind:this={prevEl} type="button" class="swiper-button-prev mg-nav" aria-label={t(lang, 'gallery.previous')}></button>
+			<button bind:this={nextEl} type="button" class="swiper-button-next mg-nav" aria-label={t(lang, 'gallery.next')}></button>
 		</div>
 
 		{#if caption}
@@ -397,6 +463,17 @@
 	.mg-slide video.mg-media {
 		width: 100%;
 		height: 100%;
+	}
+
+	/* Sits exactly on the drawn photo (see `placePins`), under the controls. */
+	.mg-pins {
+		position: absolute;
+		z-index: 1;
+		pointer-events: none;
+	}
+
+	.mg-pins-hidden {
+		display: none;
 	}
 
 	.mg-placeholder {

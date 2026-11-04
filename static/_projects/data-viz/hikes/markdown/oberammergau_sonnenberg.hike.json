@@ -14,52 +14,5 @@
     [11.0058173, 47.5859025],
     [10.9924142, 47.5835506]
   ],
-  "nodes": [
-    {
-      "id": 3662166614,
-      "lat": 47.5840874,
-      "lon": 11.0267772,
-      "demEle": 1549.4,
-      "tags": {
-        "name": "Am Zahn",
-        "natural": "peak",
-        "ele": "1615",
-        "wikidata": "Q31557182",
-        "summit:cross": "yes"
-      }
-    },
-    {
-      "id": 344347709,
-      "lat": 47.5841989,
-      "lon": 11.016306,
-      "demEle": 1562.7,
-      "tags": {
-        "name": "Sonnenberg",
-        "natural": "peak",
-        "ele": "1622",
-        "wikidata": "Q86751135",
-        "wikipedia": "en:Sonnenspitze",
-        "summit:cross": "yes",
-        "summit:register": "yes"
-      }
-    },
-    {
-      "id": 13197350872,
-      "lat": 47.5837771,
-      "lon": 10.9924948,
-      "demEle": 1542.4,
-      "tags": {
-        "name": "August-Schuster-Haus",
-        "alt_name": "Pürschlinghaus",
-        "tourism": "alpine_hut",
-        "ele": "1564",
-        "wikidata": "Q760644",
-        "amenity": "restaurant",
-        "building": "yes",
-        "email": "mail@august-schuster-haus.de",
-        "phone": "+4988223567",
-        "website": "https://august-schuster-haus.de"
-      }
-    }
-  ]
+  "nodes": ["node/3662166614", "node/344347709", "way/116240805"]
 }

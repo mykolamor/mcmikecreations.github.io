@@ -2,6 +2,8 @@ import { select, pointer, scaleLinear, line as d3Line, area as d3Area, curveMono
 import { primaryGeometryColor, secondaryIndicatorColor } from '$lib/hikes/build-geometry';
 import { computeMetricScales, cumulativeKm, type HikeMetrics } from '$lib/hikes/hike-metrics';
 import { pinColor, pinEmojis, pinKinds, pinText, type FactsBand, type FactsPin } from '$lib/hikes/facts-overlay';
+import { t } from '$lib/i18n/strings';
+import type { Lang } from '$lib/i18n/languages';
 
 interface ElevationPoint {
     dist: number; // km (already scaled to the authoritative distance)
@@ -42,7 +44,9 @@ export function initElevationChart(
     metrics?: Partial<HikeMetrics> | null,
     photoTicks?: ElevationPhotoTick[],
     onPhotoClick?: (mediaIndex: number) => void,
-    facts?: ElevationFacts
+    facts?: ElevationFacts,
+    /** The language of the axis and cursor labels. */
+    lang: Lang = 'en'
 ): { setIndicator: (lat: number, lon: number, preferredDist?: number) => void; hideIndicator: () => void } {
     let internalPoints: ElevationPoint[] = [];
     const coords: number[][] = geojson?.features?.[0]?.geometry?.coordinates;
@@ -109,7 +113,7 @@ export function initElevationChart(
 
     // X axis
     const xAxisG = g.append('g').attr('transform', `translate(0,${iH})`).call(
-        axisBottom(xScale).ticks(6).tickFormat((d: any) => `${(d as number).toFixed(1)} km`)
+        axisBottom(xScale).ticks(6).tickFormat((d: any) => t(lang, 'units.km', { value: (d as number).toFixed(1) }))
     );
     xAxisG.select('.domain').attr('stroke', '#9ca3af');
     xAxisG.selectAll('.tick line').attr('stroke', '#9ca3af');
@@ -117,7 +121,7 @@ export function initElevationChart(
 
     // Y axis (labels scaled to the authoritative vertical range; curve shape unchanged)
     const yAxisG = g.append('g').call(
-        axisLeft(yScale).ticks(5).tickFormat((d: any) => `${Math.round(d as number)} m`)
+        axisLeft(yScale).ticks(5).tickFormat((d: any) => t(lang, 'units.m', { value: Math.round(d as number) }))
     );
     yAxisG.select('.domain').attr('stroke', '#9ca3af');
     yAxisG.selectAll('.tick line').attr('stroke', '#9ca3af');
@@ -325,7 +329,7 @@ export function initElevationChart(
         // Elevation label positioning
         const labelPad = 5;
         const labelH = 18;
-        const labelText = `${pt.ele.toFixed(0)} m`;
+        const labelText = t(lang, 'units.m', { value: pt.ele.toFixed(0) });
         const textEl = cursor.select<SVGTextElement>('.ele-label-text').text(labelText);
         const textW = (textEl.node()?.getBBox().width ?? 40) + labelPad * 2 + 4;
         const labelX = cx > iW / 2 ? cx - textW - labelPad : cx + labelPad;
@@ -334,7 +338,7 @@ export function initElevationChart(
         cursor.select('.ele-label-bg').attr('x', labelX).attr('y', labelY).attr('width', textW);
         textEl.attr('x', labelX + labelPad + 2).attr('y', labelY + labelH / 2);
 
-        cursor.select('.dist-label').attr('x', cx).text(`${pt.dist.toFixed(2)} km`);
+        cursor.select('.dist-label').attr('x', cx).text(t(lang, 'units.km', { value: pt.dist.toFixed(2) }));
     }
 
     setIndicatorFn = (lat: number, lon: number, preferredDist?: number) => {

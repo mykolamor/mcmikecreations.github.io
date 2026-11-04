@@ -16,37 +16,5 @@
     [11.3941984, 47.2656731],
     [11.4010207, 47.2632966]
   ],
-  "nodes": [
-    {
-      "id": 99318407,
-      "lat": 47.3374513,
-      "lon": 11.3428627,
-      "demEle": 1268.8,
-      "tags": {
-        "name": "Möslalm",
-        "alt_name": "Arzler Kristenalm",
-        "tourism": "alpine_hut",
-        "ele": "1262",
-        "building": "yes",
-        "email": "info@moeslalm.tirol",
-        "phone": "+43512275783",
-        "website": "https://www.moeslalm.tirol/",
-        "wikidata": "Q1763579",
-        "wikipedia": "de:Möslalm"
-      }
-    },
-    {
-      "id": 1627270003,
-      "lat": 47.3051777,
-      "lon": 11.3504655,
-      "demEle": 2230.6,
-      "tags": {
-        "name": "Frau Hitt",
-        "natural": "peak",
-        "ele": "2270",
-        "wikidata": "Q877602",
-        "wikipedia": "de:Frau Hitt"
-      }
-    }
-  ]
+  "nodes": ["way/99318407", "node/1627270003"]
 }

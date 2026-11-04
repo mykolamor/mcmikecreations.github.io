@@ -8,8 +8,8 @@ import type { HikeAuthoredFacts, Place } from './facts-schema';
 const COORDS = Array.from({ length: 11 }, (_, i) => [11.0, 47.0 + i * 0.01, 1000 + i * 100]);
 const STEP = 1.112;
 
-const at = (name: string, km: number, node?: number): Place => ({
-	name: { en: name }, lat: 47.0 + km / STEP / 100, lon: 11.0, km, ele: 1000, resolved: true, ...(node != null ? { node } : {})
+const at = (name: string, km: number, ref?: string): Place => ({
+	name: { en: name }, lat: 47.0 + km / STEP / 100, lon: 11.0, km, ele: 1000, resolved: true, ...(ref != null ? { ref } : {})
 });
 
 test('routeSlice cuts the route between two distances, ends interpolated', () => {
@@ -25,15 +25,19 @@ test('pins group by place; spans become bands and map lines', () => {
 	const facts: HikeAuthoredFacts = {
 		hazards: [
 			{ kind: 'rockfall', from: at('A', 2), to: at('B', 4), severity: 'high' },
-			{ kind: 'cattle', at: at('Hut', 5, 7), severity: 'low' },
+			{ kind: 'cattle', at: at('Hut', 5, 'node/7'), severity: 'low' },
 			{ kind: 'cold' },
 			{ kind: 'mud', from: { name: { en: 'Nowhere' }, resolved: false } }
 		],
-		bailouts: [{ at: at('Hut', 5, 7), via: 'hut' }],
-		water: [{ at: at('Hut', 5, 7), kind: 'hut' }, { at: at('Spring', 8) }],
-		difficulty: { sections: [{ to: at('B', 4), sac: 'T2' }, { from: at('B', 4), sac: 'T4+' }] }
+		bailouts: [{ at: at('Hut', 5, 'node/7'), via: 'hut' }],
+		water: [{ at: at('Hut', 5, 'node/7'), kind: 'hut' }, { at: at('Spring', 8) }],
+		legs: [
+			{ to: at('A', 2), sac: 'T6', inTable: true, onProfile: false },
+			{ to: at('B', 4), sac: 'T2', inTable: false, onProfile: true },
+			{ from: at('B', 4), sac: 'T4+', inTable: false, onProfile: true }
+		]
 	};
-	const o = buildFactsOverlay(facts, 'en', COORDS, 1);
+	const o = buildFactsOverlay(facts, 'en', COORDS, 1, ['node/7']);
 	assert.equal(o.pins.length, 2);
 	const hut = o.pins[0];
 	assert.equal(hut.onNode, true);
@@ -54,18 +58,23 @@ test('pins group by place; spans become bands and map lines', () => {
 	assert.ok(o.lines[0].coords.length >= 2);
 });
 
+test('a pin on a store element that is none of the hike\'s nodes is no POI pin', () => {
+	const o = buildFactsOverlay({ water: [{ at: at('Hut', 5, 'node/7') }, { at: at('Spring', 8, 'way/9') }] }, 'en', COORDS, 1, ['node/7', undefined]);
+	assert.deepEqual(o.pins.map((p) => [p.name, p.onNode, p.ref]), [['Hut', true, 'node/7'], ['Spring', false, 'way/9']]);
+});
+
 test('pins on a drawn POI node fold into its marker; water on a water node adds no badge', () => {
 	const o = buildFactsOverlay(
-		{ bailouts: [{ at: at('Peak', 2, 7) }], water: [{ at: at('Spring', 4, 9) }, { at: at('Near peak', 2.01) }, { at: at('Undrawn', 6, 11) }] },
+		{ bailouts: [{ at: at('Peak', 2, 'node/7') }], water: [{ at: at('Spring', 4, 'node/9') }, { at: at('Near peak', 2.01) }, { at: at('Undrawn', 6, 'node/11') }] },
 		'en', COORDS, 1
 	);
-	const { onNodes, loose } = pinsByNode(o.pins, [7, 9, undefined]);
-	assert.deepEqual([...onNodes.keys()], [7, 9]);
+	const { onNodes, loose } = pinsByNode(o.pins, ['node/7', 'node/9', undefined]);
+	assert.deepEqual([...onNodes.keys()], ['node/7', 'node/9']);
 	// Close to a node isn't on it, and a node that isn't drawn keeps its pin.
 	assert.deepEqual(loose.map((p) => p.name), ['Near peak', 'Undrawn']);
-	assert.match(nodeFactsBadgeHtml(onNodes.get(7)!, '⛰️'), />🛟<\/div>$/);
-	assert.equal(nodeFactsBadgeHtml(onNodes.get(9)!, '💧'), '');
-	assert.match(nodeFactsBadgeHtml(onNodes.get(9)!, '📍'), />💧<\/div>$/);
+	assert.match(nodeFactsBadgeHtml(onNodes.get('node/7')!, '⛰️'), />🛟<\/div>$/);
+	assert.equal(nodeFactsBadgeHtml(onNodes.get('node/9')!, '💧'), '');
+	assert.match(nodeFactsBadgeHtml(onNodes.get('node/9')!, '📍'), />💧<\/div>$/);
 });
 
 test('chartPins merges pins that would overlap on the chart', () => {
@@ -85,7 +94,7 @@ test('no facts, no overlay', () => {
 
 test('bailout routes become dashed-line routes', () => {
 	const route = { url: '/b.gpx', coords: [[47, 11], [47.01, 11]] as [number, number][], distance: 1112, descent: 300, ascent: 0, duration: 36 };
-	const o = buildFactsOverlay({ bailouts: [{ at: at('Hut', 5, 7), to: { en: 'Valley' }, route, last: true }] }, 'en', COORDS, 1);
+	const o = buildFactsOverlay({ bailouts: [{ at: at('Hut', 5, 'node/7'), to: { en: 'Valley' }, route, last: true }] }, 'en', COORDS, 1);
 	assert.equal(o.routes.length, 1);
 	assert.equal(o.routes[0].color, '#dc2626');
 	assert.equal(o.routes[0].title.replace(/\u00a0/g, ' '), 'Planned route: Hut → Valley\n1.1 km · ↑ 0 m · ↓ 300 m · ≈ 30 min');

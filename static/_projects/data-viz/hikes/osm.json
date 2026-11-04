@@ -1,0 +1,6796 @@
+{
+  "node/26862546": {
+    "lat": 47.6531721,
+    "lon": 11.4655437,
+    "demEle": 1773.4,
+    "tags": {
+      "ele": "1800",
+      "ele:NN": "1800",
+      "name": "Benediktenwand",
+      "natural": "peak",
+      "note": "Bitte nicht nach Bing ausrichten. Bingbilder sind im Bereich der Benewand sehr schlecht ausgerichtet. Die Bayerische Vermessungsverwaltung gibt die Höhe inzwischen mit 1800 statt wie früher mit 1801 an.",
+      "source": "GPS",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q456783",
+      "wikipedia": "de:Benediktenwand"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/26862641": {
+    "lat": 47.63307,
+    "lon": 11.6793681,
+    "demEle": 1577.0,
+    "tags": {
+      "ele": "1701",
+      "name": "Buchstein",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "wikidata": "Q31557989",
+      "wikimedia_commons": "Category:Roß- und Buchstein"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/26863440": {
+    "lat": 47.5443752,
+    "lon": 11.1914281,
+    "demEle": 2051.0,
+    "tags": {
+      "ele": "2086",
+      "name": "Krottenkopf",
+      "natural": "peak",
+      "prominence": "1156",
+      "summit:cross": "yes",
+      "wikidata": "Q565442"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/26864452": {
+    "lat": 47.6368812,
+    "lon": 11.8035474,
+    "demEle": 1779.6,
+    "tags": {
+      "ele": "1826",
+      "name": "Risserkogel",
+      "natural": "peak",
+      "source:ele": "guidepost",
+      "summit:cross": "yes",
+      "wikidata": "Q315932",
+      "wikimedia_commons": "File:Gipfelkreuz Risserkogel.jpg",
+      "wikipedia": "de:Risserkogel"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/26864487": {
+    "lat": 47.6502104,
+    "lon": 11.9344203,
+    "demEle": 1844.4,
+    "tags": {
+      "alt_name:en": "Red Wall",
+      "alt_name:pl": "Czerwona Ściana",
+      "ele": "1884",
+      "name": "Rotwand",
+      "natural": "peak",
+      "source:ele": "guidepost",
+      "summit:cross": "yes",
+      "summit:register": "no",
+      "wikidata": "Q458097",
+      "wikipedia": "de:Rotwand (Bayern)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/26865134": {
+    "lat": 47.7034761,
+    "lon": 12.0120518,
+    "demEle": 1801.8,
+    "tags": {
+      "ele": "1838",
+      "inscription": "Im schönen Tempel der Natur siehst du des großen Gottes Spur, doch willst du ihn noch größer seh, so bleib bei seinem Kreuze stehn. Das erste geweihte Gipfelkreuz wurde 1876 von 65 Bayrischzeller Bürger aufgestellt.",
+      "name": "Wendelstein",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "no",
+      "wikidata": "Q819671",
+      "wikipedia": "de:Wendelstein (Berg)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/27384190": {
+    "lat": 47.421215,
+    "lon": 10.986297,
+    "demEle": 2924.2,
+    "tags": {
+      "alt_name": "Zugspitze (Ostgipfel)",
+      "ele": "2962",
+      "importance": "national",
+      "name": "Zugspitze",
+      "name:de": "Zugspitze",
+      "name:ja": "ツークシュピッツェ",
+      "natural": "peak",
+      "prominence": "1746",
+      "source:prominence": "2962-1216 (Fernpass)",
+      "summit:cross": "yes",
+      "wikidata": "Q3375",
+      "wikimedia_commons": "Category:Zugspitze",
+      "wikipedia": "de:Zugspitze"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/67233894": {
+    "lat": 47.4815666,
+    "lon": 11.3571077,
+    "demEle": 2235.1,
+    "tags": {
+      "ele": "2253",
+      "man_made": "cross",
+      "name": "Soiernspitze",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "wikidata": "Q316066",
+      "wikipedia": "de:Soiernspitze"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/96874625": {
+    "lat": 47.6607583,
+    "lon": 11.6961076,
+    "demEle": 1656.9,
+    "tags": {
+      "ele": "1670",
+      "man_made": "cross",
+      "name": "Hirschberg",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q1620367",
+      "wikimedia_commons": "Category:Hirschberg_(Mangfallgebirge)",
+      "wikipedia": "de:Hirschberg (Kreuth)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/97173084": {
+    "lat": 47.6641902,
+    "lon": 11.5247915,
+    "demEle": 1538.5,
+    "tags": {
+      "ele": "1555",
+      "name": "Brauneck",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "wikidata": "Q180647",
+      "wikipedia": "de:Brauneck"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/191018794": {
+    "lat": 47.6655995,
+    "lon": 11.7053909,
+    "demEle": 1520.4,
+    "tags": {
+      "ele": "1545",
+      "name": "Kratzer",
+      "natural": "peak",
+      "summit:cross": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/256041880": {
+    "lat": 47.606892,
+    "lon": 12.2778148,
+    "demEle": 1967.2,
+    "tags": {
+      "communication:amateur_radio:sota": "OE/TL-020",
+      "communication:amateur_radio:sota:points": "8",
+      "ele": "2002",
+      "name": "Vordere Kesselschneid",
+      "natural": "peak",
+      "prominence": "603",
+      "summit:cross": "no",
+      "wikidata": "Q872754",
+      "wikipedia": "de:Vordere Kesselschneid"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/256041995": {
+    "lat": 47.6089803,
+    "lon": 12.2463971,
+    "demEle": 1730.6,
+    "tags": {
+      "cross": "yes",
+      "ele": "1745",
+      "name": "Petersköpfl",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q784154",
+      "wikipedia": "de:Petersköpfl"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/256042768": {
+    "lat": 47.4095968,
+    "lon": 10.9699595,
+    "demEle": 2827.4,
+    "tags": {
+      "ele": "2874",
+      "name": "Schneefernerkopf",
+      "natural": "peak",
+      "wikidata": "Q679080",
+      "wikimedia_commons": "Category:Schneefernerkopf",
+      "wikipedia": "de:Schneefernerkopf"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/256042833": {
+    "lat": 47.6003181,
+    "lon": 12.1647833,
+    "demEle": 701.5,
+    "tags": {
+      "ele": "721",
+      "name": "Thierberg",
+      "natural": "peak",
+      "wikidata": "Q872013",
+      "wikipedia": "de:Thierberg (Tirol)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/259090434": {
+    "lat": 47.6078457,
+    "lon": 11.3700208,
+    "demEle": 806.9,
+    "tags": {
+      "amenity": "biergarten",
+      "name": "Kiosk Sachenbach",
+      "note": "Eigentlich nur Brotzeithütte, nur in der Hochsaison offen",
+      "phone": "+49 8851 359",
+      "toilets:wheelchair": "no",
+      "website": "https://www.sachenbacher-walchensee.de/",
+      "wheelchair": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/260692620": {
+    "lat": 47.6512206,
+    "lon": 11.7846084,
+    "demEle": 1684.7,
+    "tags": {
+      "ele": "1706",
+      "name": "Setzberg",
+      "natural": "peak",
+      "note": "Andere Quellen geben 1712 an.",
+      "source:ele": "guidepost",
+      "summit:cross": "yes",
+      "summit:register": "no",
+      "wikidata": "Q15059993"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/260826433": {
+    "lat": 47.673511,
+    "lon": 11.9060494,
+    "demEle": 1720.8,
+    "tags": {
+      "ele": "1746",
+      "inscription": "Zum Gedenken der gefallenen Helden des Aurachtales gewidmet vom G.T.E.V. Jagerkamm - 1939 - 1945",
+      "name": "Jägerkamp",
+      "natural": "peak",
+      "source:ele": "guidepost",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q1714867",
+      "wikipedia": "de:Jägerkamp"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/260826436": {
+    "lat": 47.6731724,
+    "lon": 11.923695,
+    "demEle": 1711.2,
+    "tags": {
+      "ele": "1759",
+      "name": "Aiplspitz",
+      "natural": "peak",
+      "source:ele": "guidepost",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q316319",
+      "wikipedia": "de:Aiplspitz"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/260858296": {
+    "lat": 47.6437639,
+    "lon": 11.9452834,
+    "demEle": 1785.1,
+    "tags": {
+      "ele": "1811",
+      "ele:NN": "1811",
+      "ele:source": "sign",
+      "name": "Auerspitz",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "wikidata": "Q759286"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/260979669": {
+    "lat": 47.7210941,
+    "lon": 11.9877728,
+    "demEle": 1576.2,
+    "tags": {
+      "ele": "1622",
+      "ele:source": "guideposts",
+      "name": "Breitenstein",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q879983",
+      "wikipedia": "de:Breitenstein (Bayerische Voralpen)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/261020752": {
+    "lat": 47.7235737,
+    "lon": 11.4884518,
+    "demEle": 1333.4,
+    "tags": {
+      "check_date": "2025-03-22",
+      "ele": "1348",
+      "name": "Zwiesel",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "no",
+      "wikidata": "Q14850767",
+      "wikipedia": "de:Zwiesel (Kocheler Berge)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/264035398": {
+    "lat": 47.615268,
+    "lon": 12.0543473,
+    "demEle": 1674.1,
+    "tags": {
+      "ele": "1707",
+      "name": "Trainsjoch",
+      "natural": "peak",
+      "source:ele": "summit:cross",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q15132489",
+      "wikipedia": "de:Trainsjoch"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/264037688": {
+    "lat": 47.6465626,
+    "lon": 12.0376336,
+    "demEle": 1824.1,
+    "tags": {
+      "ele": "1852",
+      "name": "Großer Traithen",
+      "natural": "peak",
+      "prominence": "1007",
+      "source": "survey",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q320745",
+      "wikipedia": "de:Großer Traithen"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/264055806": {
+    "lat": 47.6796515,
+    "lon": 11.6190828,
+    "demEle": 1457.2,
+    "tags": {
+      "alt_name": "Geigerstein",
+      "ele": "1491",
+      "man_made": "cross",
+      "name": "Geierstein",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q1498712",
+      "wikipedia": "de:Geierstein"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/264055809": {
+    "lat": 47.6611778,
+    "lon": 11.6598621,
+    "demEle": 1588.4,
+    "tags": {
+      "ele": "1607",
+      "name": "Auerkamp",
+      "natural": "peak",
+      "summit:cross": "no",
+      "summit:register": "no",
+      "wikidata": "Q367455",
+      "wikipedia": "de:Kampen (Berg)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/264055810": {
+    "lat": 47.658927,
+    "lon": 11.6545785,
+    "demEle": 1566.9,
+    "tags": {
+      "ele": "1604",
+      "name": "Spitzkamp",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q367455",
+      "wikipedia": "de:Kampen (Berg)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/264056090": {
+    "lat": 47.6661218,
+    "lon": 11.6660249,
+    "demEle": 1571.9,
+    "tags": {
+      "ele": "1594",
+      "name": "Ochsenkamp",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q367455",
+      "wikipedia": "de:Kampen (Berg)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/264056175": {
+    "lat": 47.6521541,
+    "lon": 11.6431635,
+    "demEle": 1575.5,
+    "tags": {
+      "alias": "Silberkopf",
+      "ele": "1601",
+      "name": "Seekarkreuz",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q2265064",
+      "wikipedia": "de:Seekarkreuz"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/264056178": {
+    "lat": 47.6716794,
+    "lon": 11.6610511,
+    "demEle": 1229.9,
+    "tags": {
+      "ele": "1227",
+      "mountain_pass": "yes",
+      "name": "Hirschtalsattel",
+      "natural": "saddle",
+      "wikidata": "Q108700114",
+      "wikipedia": "de:Hirschtalsattel"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/266412097": {
+    "lat": 47.609407,
+    "lon": 12.2426926,
+    "demEle": 1576.1,
+    "local": {
+      "visited": "yes"
+    },
+    "tags": {
+      "ele": "1633",
+      "inscription": "Naunspitze 1633 M Ü.D.M. Kreuzerrichtung im Jahre 1989 von der tiroler Bergwacht Ebbs und Umgebung...",
+      "name": "Naunspitze",
+      "natural": "peak",
+      "source:ele": "inscription",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q875491",
+      "wikipedia": "de:Naunspitze"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/266412290": {
+    "lat": 47.6100527,
+    "lon": 12.2767442,
+    "demEle": 1948.8,
+    "tags": {
+      "ele": "1997",
+      "name": "Pyramidenspitze",
+      "natural": "peak",
+      "source:ele": "Gipfelbuch",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q873582",
+      "wikipedia": "de:Pyramidenspitze"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/266993268": {
+    "lat": 47.6584811,
+    "lon": 11.9211109,
+    "demEle": 1657.3,
+    "local": {
+      "visited": "yes"
+    },
+    "tags": {
+      "ele": "1693",
+      "name": "Taubenstein",
+      "natural": "peak",
+      "source:ele": "Label",
+      "summit:cross": "yes",
+      "summit:register": "no",
+      "wikidata": "Q15060298",
+      "wikimedia_commons": "File:Summit cross Taubenstein.jpg",
+      "wikipedia": "de:Taubenstein"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/266995158": {
+    "lat": 47.5681888,
+    "lon": 10.7562201,
+    "demEle": 824.8,
+    "tags": {
+      "aerialway": "station",
+      "email": "info@tegelbergbahn.de",
+      "name": "Tegelbergbahn (Talstation)",
+      "name:zh": "tegelbergbahn纜車站",
+      "phone": "+49 8362 98360",
+      "public_transport": "station",
+      "tourism": "yes",
+      "website": "https://www.tegelbergbahn.de/",
+      "wheelchair": "yes",
+      "wikidata": "Q1524386",
+      "wikipedia": "en:Tegelberg Cable Car"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/268949226": {
+    "lat": 47.5665209,
+    "lon": 11.2537283,
+    "demEle": 1816.2,
+    "tags": {
+      "ele": "1840",
+      "name": "Simetsberg",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "wikidata": "Q315741",
+      "wikipedia": "de:Simetsberg (Estergebirge)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/268964586": {
+    "lat": 47.6090032,
+    "lon": 11.6041553,
+    "demEle": 1414.0,
+    "tags": {
+      "check_date": "2025-06-09",
+      "check_date:summit:register": "2025-06-09",
+      "ele": "1427",
+      "name": "Hochalm",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q22675136",
+      "wikimedia_commons": "Category:Hochalm (Lenggries)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/268972719": {
+    "lat": 47.5901574,
+    "lon": 11.7672996,
+    "demEle": 1759.3,
+    "tags": {
+      "ele": "1787",
+      "name": "Blaubergkopf",
+      "natural": "peak",
+      "wikidata": "Q21876511",
+      "wikipedia": "de:Blaubergkopf"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/268973925": {
+    "lat": 47.5891188,
+    "lon": 11.7532551,
+    "demEle": 1753.3,
+    "tags": {
+      "ele": "1787",
+      "name": "Blaubergschneid",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/268974034": {
+    "lat": 47.5911671,
+    "lon": 11.7810799,
+    "demEle": 1832.7,
+    "tags": {
+      "alt_name": "Halserspitze",
+      "ele": "1862",
+      "name": "Halserspitz",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q21871544"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/269132073": {
+    "lat": 47.6554914,
+    "lon": 11.4948924,
+    "demEle": 1628.9,
+    "tags": {
+      "ele": "1628",
+      "ele:source": "label",
+      "mountain_pass": "yes",
+      "name": "Probstalmsattel",
+      "natural": "saddle"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/269134696": {
+    "lat": 47.6565948,
+    "lon": 11.4990327,
+    "demEle": 1669.6,
+    "tags": {
+      "ele": "1712",
+      "man_made": "cross",
+      "name": "Latschenkopf",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "no",
+      "wikidata": "Q1399069",
+      "wikipedia": "de:Latschenkopf (Benediktenwand)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/272070518": {
+    "lat": 47.474771,
+    "lon": 11.3628685,
+    "demEle": 1786.7,
+    "tags": {
+      "ele": "1787",
+      "ele:NN": "1787",
+      "mountain_pass": "yes",
+      "name": "Jöchel",
+      "natural": "saddle"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/274823204": {
+    "lat": 47.4092371,
+    "lon": 10.3476872,
+    "demEle": 1907.1,
+    "tags": {
+      "ele": "1922",
+      "mountain_pass": "yes",
+      "name": "Zeigersattel",
+      "natural": "saddle",
+      "ref:avf": "1308",
+      "wikidata": "Q130483487"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/275515277": {
+    "lat": 49.5509361,
+    "lon": 11.5366231,
+    "demEle": 493.2,
+    "tags": {
+      "ele": "496",
+      "name": "Schmiedberg",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/276270971": {
+    "lat": 47.4218727,
+    "lon": 10.3423461,
+    "demEle": 2192.0,
+    "tags": {
+      "ele": "2224",
+      "name": "Nebelhorn",
+      "natural": "peak",
+      "prominence": "44",
+      "ref:avf": "1262",
+      "summit:cross": "yes",
+      "summit:register": "no",
+      "wikidata": "Q696067",
+      "wikipedia": "de:Nebelhorn (Allgäuer Alpen)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/281349904": {
+    "lat": 47.45927,
+    "lon": 10.20833,
+    "demEle": 1557.8,
+    "tags": {
+      "ele": "1586",
+      "name": "Bolsterlanger Horn",
+      "natural": "peak",
+      "prominence": "61",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q891604",
+      "wikipedia": "de:Bolsterlanger Horn"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/281499400": {
+    "lat": 47.7222953,
+    "lon": 11.6247509,
+    "demEle": 1324.9,
+    "tags": {
+      "ele": "1330",
+      "ele:source": "Wikipedia",
+      "name": "Rechelkopf",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q2135213",
+      "wikipedia": "de:Rechelkopf"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/283733455": {
+    "lat": 47.7211575,
+    "lon": 11.9828363,
+    "demEle": 1541.8,
+    "tags": {
+      "ele": "1575",
+      "name": "Breitenstein Westgipfel",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q31551984"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/286565100": {
+    "lat": 47.3896073,
+    "lon": 11.0089761,
+    "demEle": 2108.7,
+    "tags": {
+      "ele": "2116",
+      "mountain_pass": "yes",
+      "name": "Am Brand",
+      "natural": "saddle",
+      "source": "survey(2008-07,garmin)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/286574960": {
+    "lat": 47.396354,
+    "lon": 11.0165212,
+    "demEle": 2012.5,
+    "tags": {
+      "barrier": "gate",
+      "direction": "170",
+      "ele": "2024",
+      "foot": "yes",
+      "name": "Gatterl",
+      "natural": "saddle",
+      "wikidata": "Q21870957"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/289923681": {
+    "lat": 28.5958063,
+    "lon": 83.8199199,
+    "local": {
+      "visited": "no"
+    },
+    "tags": {
+      "ele": "8091",
+      "int_name": "Annapurna I",
+      "name": "अन्नपूर्ण",
+      "name:cs": "Annapurna",
+      "name:de": "Annapurna I",
+      "name:en": "Annapurna I",
+      "name:fa": "آناپورنا",
+      "name:it": "Annapurna I",
+      "name:ja": "アンナプルナⅠ",
+      "name:ml": "അന്നപൂർണ I",
+      "name:ne": "अन्नपूर्णा I",
+      "name:pt": "Annapurna I",
+      "name:ru": "Аннапурна I",
+      "name:zh": "安娜普納I峰",
+      "natural": "peak",
+      "note": "This is Annapurna's Main summit according to recent discussion. https://explorersweb.com/annapurna-shishapangma-trackers/",
+      "prominence": "2984",
+      "source": "GEOnet_Names_Server",
+      "source:prominence": "8091-5107 (saddle close to Yakrushong La)",
+      "wikidata": "Q159621",
+      "wikipedia": "en:Annapurna"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/290506923": {
+    "lat": 47.5873731,
+    "lon": 10.9863449,
+    "demEle": 1718.9,
+    "tags": {
+      "ele": "1758",
+      "name": "Teufelstättkopf",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "wikidata": "Q2407307"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/292352453": {
+    "lat": 47.6764385,
+    "lon": 11.8710533,
+    "demEle": 1643.1,
+    "tags": {
+      "ele": "1685",
+      "name": "Brecherspitz",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q904144"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/294649757": {
+    "lat": 47.5884175,
+    "lon": 11.7496419,
+    "demEle": 1762.3,
+    "tags": {
+      "ele": "1765",
+      "name": "Wichtlplatte",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/296034076": {
+    "lat": 47.5868607,
+    "lon": 11.0595271,
+    "demEle": 1193.3,
+    "tags": {
+      "ele": "1342",
+      "name": "Kofel",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q1641755",
+      "wikipedia": "de:Kofel"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/297136278": {
+    "lat": 47.6776378,
+    "lon": 11.9635431,
+    "demEle": 814.6,
+    "tags": {
+      "aeroway": "aerodrome",
+      "name": "Segelflugplatz LSC Schliersee",
+      "website": "https://lsc-schliersee.de/"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/297564020": {
+    "lat": 48.9017822,
+    "lon": 12.1827045,
+    "demEle": 384.2,
+    "tags": {
+      "denotation": "natural_monument",
+      "leaf_cycle": "deciduous",
+      "leaf_type": "broadleaved",
+      "name": "Wolfgangseiche",
+      "natural": "tree",
+      "species": "Quercus robur",
+      "wikidata": "Q2222131",
+      "wikipedia": "de:Sankt-Wolfgangs-Eiche"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/301642754": {
+    "lat": 47.6326069,
+    "lon": 11.676304,
+    "demEle": 1635.6,
+    "tags": {
+      "ele": "1698",
+      "ele:source": "Wikipedia",
+      "name": "Roßstein",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q31524990",
+      "wikimedia_commons": "Category:Roß- und Buchstein"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/304168699": {
+    "lat": 47.5008212,
+    "lon": 11.4958072,
+    "demEle": 1909.7,
+    "tags": {
+      "ele": "1945",
+      "name": "Delpsjoch",
+      "natural": "peak",
+      "wikidata": "Q15055797",
+      "wikipedia": "de:Delpsjoch"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/304238134": {
+    "lat": 47.7549634,
+    "lon": 12.8487577,
+    "demEle": 1732.3,
+    "tags": {
+      "ele": "1771",
+      "man_made": "cross",
+      "name": "Hochstaufen",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "no",
+      "wikidata": "Q571702",
+      "wikipedia": "de:Hochstaufen"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/304317008": {
+    "lat": 47.6473418,
+    "lon": 12.0971096,
+    "demEle": 1586.4,
+    "tags": {
+      "ele": "1619",
+      "inscription": "Zum Gedenken der Toten u. Gefallenen des H.u.V.TV. Brünnstoana Stamm München 1992",
+      "name": "Brünnstein",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q882165",
+      "wikipedia": "de:Brünnstein"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/309985323": {
+    "lat": 47.6426762,
+    "lon": 11.8724862,
+    "demEle": 1591.9,
+    "tags": {
+      "ele": "1609",
+      "name": "Stolzenberg",
+      "natural": "peak",
+      "wikidata": "Q13466177"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/310287862": {
+    "lat": 47.3577088,
+    "lon": 10.9265357,
+    "demEle": 2224.3,
+    "tags": {
+      "alt_name": "Vorderer Drachenkopf",
+      "ele": "2303",
+      "isolation": "400",
+      "name": "Drachenkopf",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "wikidata": "Q14912302",
+      "wikipedia": "de:Vorderer Drachenkopf"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/312593240": {
+    "lat": 48.9504566,
+    "lon": 11.7398785,
+    "demEle": 422.1,
+    "tags": {
+      "access": "yes",
+      "castle_type": "defensive",
+      "fee": "yes",
+      "heritage": "4",
+      "heritage:operator": "BLfD",
+      "historic": "castle",
+      "historic:civilization": "medieval",
+      "name": "Burg Prunn",
+      "ref:BLfD": "D-2-73-164-132",
+      "tourism": "attraction",
+      "website": "https://www.burg-prunn.de/",
+      "wheelchair": "no",
+      "wikidata": "Q1013521",
+      "wikimedia_commons": "Category:Burg Prunn",
+      "wikipedia": "de:Burg Prunn"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/313207153": {
+    "lat": 47.6712498,
+    "lon": 12.0818433,
+    "demEle": 809.5,
+    "tags": {
+      "height": "30",
+      "intermittent": "no",
+      "name": "Oberer Tatzelwurmwasserfall",
+      "waterway": "waterfall"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/332441941": {
+    "lat": 47.6595256,
+    "lon": 11.7032747,
+    "demEle": 1641.3,
+    "tags": {
+      "ele": "1653",
+      "name": "Hirschberg Vorgipfel",
+      "natural": "peak",
+      "wikidata": "Q1620367",
+      "wikipedia": "de:Hirschberg (Kreuth)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/339247249": {
+    "lat": 47.4962891,
+    "lon": 11.2531423,
+    "demEle": 898.3,
+    "tags": {
+      "addr:housenumber": "9",
+      "addr:street": "Am Barmsee",
+      "amenity": "restaurant",
+      "check_date": "2025-09-09",
+      "contact:email": "hotel@barmsee.de",
+      "cuisine": "local",
+      "description": "Warme Küche 12 bis 14 und 18 bis 20 Uhr",
+      "internet_access": "yes",
+      "internet_access:fee": "no",
+      "name": "Alpengasthof Barmsee",
+      "opening_hours": "Mo,Th-Su 10:30-21:00; Tu-We off",
+      "outdoor_seating": "yes",
+      "phone": "+49 8825 2034",
+      "website": "https://www.barmsee.de"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/342301041": {
+    "lat": 47.6736675,
+    "lon": 12.0118233,
+    "demEle": 799.3,
+    "tags": {
+      "addr:city": "Bayrischzell",
+      "addr:country": "DE",
+      "addr:housenumber": "2",
+      "addr:postcode": "83735",
+      "addr:street": "Krapfen",
+      "amenity": "cafe",
+      "name": "Café Konditorei Huber",
+      "opening_hours": "We-Su 10:00-22:00",
+      "shop": "bakery",
+      "website": "https://www.cafe-huber-bayrischzell.de/"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/344347709": {
+    "lat": 47.5842002,
+    "lon": 11.0162519,
+    "demEle": 1563.6,
+    "tags": {
+      "ele": "1622",
+      "name": "Sonnenberg",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q86751135",
+      "wikipedia": "en:Sonnenspitze"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/345807520": {
+    "lat": 47.5906428,
+    "lon": 11.7760479,
+    "demEle": 1766.8,
+    "tags": {
+      "ele": "1801",
+      "name": "Karspitz",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/356022809": {
+    "lat": 47.7498374,
+    "lon": 11.6839371,
+    "demEle": 808.5,
+    "tags": {
+      "ele": "807",
+      "name": "Marienstein",
+      "place": "hamlet",
+      "wikidata": "Q956430",
+      "wikipedia": "de:Marienstein (Waakirchen)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/357482706": {
+    "lat": 47.4483891,
+    "lon": 11.0444884,
+    "demEle": 1131.1,
+    "tags": {
+      "amenity": "restaurant",
+      "ele": "1045",
+      "name": "Höllentaleingangshütte",
+      "operator": "DAV Sektion Garmisch-Partenkirchen",
+      "operator:tenant": "Florian Jäger",
+      "phone": "+4988218895",
+      "smoking": "no",
+      "tourism": "alpine_hut",
+      "website": "http://www.hoellentalklamm.de/"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/389806116": {
+    "lat": 47.7273048,
+    "lon": 11.4602762,
+    "demEle": 1202.8,
+    "tags": {
+      "ele": "1205",
+      "name": "Enzenauer Kopf",
+      "natural": "peak",
+      "wikidata": "Q31548008"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/389806117": {
+    "lat": 47.7224724,
+    "lon": 11.4674014,
+    "demEle": 1258.9,
+    "tags": {
+      "ele": "1249",
+      "name": "Angerlkopf",
+      "natural": "peak",
+      "summit:cross": "no",
+      "summit:register": "no",
+      "wikidata": "Q31558935"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/389806118": {
+    "lat": 47.7246598,
+    "lon": 11.4816115,
+    "demEle": 1317.9,
+    "tags": {
+      "ele": "1322",
+      "name": "Stallauer Kopf",
+      "natural": "peak",
+      "summit:cross": "no",
+      "summit:register": "no",
+      "wikidata": "Q31519722"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/389806119": {
+    "lat": 47.7337525,
+    "lon": 11.4786369,
+    "demEle": 1212.9,
+    "tags": {
+      "ele": "1213",
+      "name": "Stallauer Eck",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "wikidata": "Q15848876",
+      "wikipedia": "de:Stallauer Eck"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/399492387": {
+    "lat": 47.6561236,
+    "lon": 11.6528113,
+    "demEle": 1556.3,
+    "tags": {
+      "ele": "1569",
+      "name": "Brandkopf",
+      "natural": "peak",
+      "wikidata": "Q31551561"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/401706780": {
+    "lat": 47.7295347,
+    "lon": 11.620906,
+    "demEle": 1274.4,
+    "tags": {
+      "ele": "1279",
+      "name": "Sulzkopf",
+      "natural": "peak",
+      "summit:cross": "no",
+      "wikidata": "Q16857355",
+      "wikipedia": "de:Sulzkopf"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/403080335": {
+    "lat": 49.5505647,
+    "lon": 11.5277691,
+    "demEle": 445.5,
+    "tags": {
+      "ele": "450",
+      "name": "Mittelbergwand",
+      "natural": "peak",
+      "source:ele": "gps",
+      "summit:cross": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/413585849": {
+    "lat": 47.7110389,
+    "lon": 11.9876722,
+    "demEle": 1489.2,
+    "tags": {
+      "ele": "1514",
+      "name": "Schweinsberg",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "no",
+      "wikidata": "Q31804517"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/414147605": {
+    "lat": 49.5445946,
+    "lon": 11.5315434,
+    "demEle": 535.4,
+    "tags": {
+      "name": "Kastell",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/414607685": {
+    "lat": 47.727705,
+    "lon": 11.5133539,
+    "demEle": 1203.4,
+    "tags": {
+      "alt_name": "Heiglkopf",
+      "ele": "1218",
+      "name": "Heigelkopf",
+      "natural": "peak",
+      "old_name:1934-1945": "Hitler-Berg",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q869872",
+      "wikipedia": "de:Heigelkopf"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/414607694": {
+    "lat": 47.7333461,
+    "lon": 11.4921002,
+    "demEle": 1242.1,
+    "local": {
+      "visited": "no"
+    },
+    "tags": {
+      "ele": "1248",
+      "name": "Blomberg Westgipfel",
+      "natural": "peak",
+      "wikidata": "Q244660",
+      "wikipedia": "de:Blomberg (Bayerische Voralpen)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/418778317": {
+    "lat": 47.5863533,
+    "lon": 10.9603882,
+    "demEle": 1726.6,
+    "tags": {
+      "ele": "1768",
+      "name": "Hennenkopf",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q31541365"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/426955494": {
+    "lat": 49.5440503,
+    "lon": 11.5432897,
+    "demEle": 581.2,
+    "tags": {
+      "ele": "588",
+      "name": "Mittagfels",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/427087093": {
+    "lat": 49.5486791,
+    "lon": 11.5433907,
+    "demEle": 532.0,
+    "tags": {
+      "ele": "544",
+      "ele:source": "gps",
+      "name": "Prellstein",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/429259298": {
+    "lat": 47.5238658,
+    "lon": 11.1485315,
+    "demEle": 1657.9,
+    "tags": {
+      "ele": "1694",
+      "name": "Ochsenberg",
+      "natural": "peak",
+      "wikidata": "Q31529062"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/435173020": {
+    "lat": 47.6124692,
+    "lon": 13.5675514,
+    "demEle": 1785.2,
+    "tags": {
+      "ele": "1833",
+      "name": "Hoher Kalmberg",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/440346596": {
+    "lat": 47.5897362,
+    "lon": 11.7347352,
+    "demEle": 1537.2,
+    "tags": {
+      "ele": "1562",
+      "name": "Predigtstuhl",
+      "natural": "peak",
+      "wikidata": "Q130365161",
+      "wikipedia": "de:Predigtstuhl (Blauberge)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/440940577": {
+    "lat": 47.7190337,
+    "lon": 11.6744,
+    "demEle": 1327.0,
+    "tags": {
+      "ele": "1324",
+      "name": "Kogelkopf",
+      "natural": "peak",
+      "wikidata": "Q19843401",
+      "wikipedia": "de:Kogelkopf"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/440940579": {
+    "lat": 47.7146342,
+    "lon": 11.6647047,
+    "demEle": 1378.5,
+    "tags": {
+      "ele": "1370",
+      "name": "Luckenkopf",
+      "natural": "peak",
+      "summit:cross": "no",
+      "wikidata": "Q22692887",
+      "wikipedia": "de:Luckenkopf"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/440940585": {
+    "lat": 47.7155768,
+    "lon": 11.6496965,
+    "demEle": 1288.2,
+    "tags": {
+      "alt_name": "Grainharts Eck",
+      "ele": "1278",
+      "name": "Gronetseck",
+      "natural": "peak",
+      "summit:cross": "no",
+      "wikidata": "Q26271340",
+      "wikipedia": "de:Gronetseck"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/440952232": {
+    "lat": 47.6988794,
+    "lon": 11.7045932,
+    "demEle": 1117.9,
+    "tags": {
+      "ele": "1113",
+      "name": "Zwergelberg",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/442345031": {
+    "lat": 47.6180237,
+    "lon": 11.6332571,
+    "demEle": 1340.7,
+    "tags": {
+      "ele": "1347",
+      "name": "Breitenkopf",
+      "natural": "peak",
+      "wikidata": "Q31551357"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/442710825": {
+    "lat": 47.6047848,
+    "lon": 11.6005233,
+    "demEle": 1403.1,
+    "tags": {
+      "ele": "1421",
+      "name": "Gerstenrieder Kopf",
+      "natural": "peak",
+      "wikidata": "Q31545414"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/442710826": {
+    "lat": 47.6013397,
+    "lon": 11.5956652,
+    "demEle": 1332.7,
+    "tags": {
+      "ele": "1352",
+      "name": "Geißkopf",
+      "natural": "peak",
+      "wikidata": "Q31545762"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/443883206": {
+    "lat": 47.6556941,
+    "lon": 11.8618557,
+    "demEle": 1566.3,
+    "tags": {
+      "alt_name": "Rosskopf",
+      "ele": "1579",
+      "name": "Roßkopf",
+      "natural": "peak",
+      "source:ele": "guidepost",
+      "source:name": "guidepost",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "tourism": "viewpoint",
+      "wheelchair": "no",
+      "wikidata": "Q2171355",
+      "wikipedia": "de:Roßkopf (Mangfallgebirge)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/446758934": {
+    "lat": 47.5831408,
+    "lon": 11.0975734,
+    "demEle": 1625.8,
+    "tags": {
+      "ele": "1636",
+      "name": "Schartenkopf",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/448824397": {
+    "lat": 47.6457112,
+    "lon": 12.054693,
+    "demEle": 1718.0,
+    "tags": {
+      "alt_name": "Steintraithen; Steilner Joch",
+      "description": "Aluminiumkreuz vom 1976 (Anläßlich 25 Jahrfeier der Agfa Hütte bei Grafenherberg)",
+      "ele": "1747",
+      "name": "Steilnerjoch",
+      "natural": "peak",
+      "source": "survey",
+      "summit:cross": "yes",
+      "summit:register": "no",
+      "wikidata": "Q31519343"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/448886673": {
+    "lat": 47.4068622,
+    "lon": 11.504866,
+    "demEle": 1819.9,
+    "tags": {
+      "ele": "1825",
+      "mountain_pass": "yes",
+      "name": "Ladizjöchl",
+      "natural": "saddle",
+      "source": "estimated from NASA elevation data (probably very inexact)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/448886687": {
+    "lat": 47.4021255,
+    "lon": 11.5020406,
+    "demEle": 1904.9,
+    "tags": {
+      "ele": "1920",
+      "name": "Ladizköpfl",
+      "natural": "peak",
+      "summit:cross": "no",
+      "summit:register": "no"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/449238477": {
+    "lat": 47.6597349,
+    "lon": 11.501544,
+    "demEle": 1622.8,
+    "tags": {
+      "ele": "1670",
+      "man_made": "cross",
+      "name": "Vorderer Kirchstein",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "wikidata": "Q31516270"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/449491364": {
+    "lat": 47.5404528,
+    "lon": 11.1757851,
+    "demEle": 2011.7,
+    "tags": {
+      "ele": "2033",
+      "name": "Bischof",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q866104"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/452941377": {
+    "lat": 47.5858442,
+    "lon": 11.102169,
+    "demEle": 1632.2,
+    "tags": {
+      "ele": "1682",
+      "name": "Laber",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q1799411"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/476498599": {
+    "lat": 47.4100105,
+    "lon": 11.012732,
+    "demEle": 2054.7,
+    "tags": {
+      "addr:city": "Garmisch-Partenkirchen",
+      "addr:country": "DE",
+      "addr:housenumber": "1",
+      "addr:postcode": "82467",
+      "addr:street": "Zugspitzplatt",
+      "amenity": "restaurant",
+      "cuisine": "regional",
+      "ele": "2052",
+      "indoor_seating": "yes",
+      "name": "Knorrhütte",
+      "operator": "DAV Sektion München",
+      "operator:tenant": "Jörg Pfeifer",
+      "outdoor_seating": "yes",
+      "phone": "+4988212905",
+      "shower": "no",
+      "source": "survey",
+      "tourism": "alpine_hut",
+      "url:official": "http://www.knorrhuette.de/",
+      "website": "http://www.knorrhuette.de/",
+      "website:booking": "https://www.alpsonline.org/reservation/calendar?hut_id=149",
+      "wikidata": "Q1777433",
+      "wikipedia": "de:Knorrhütte"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/490410746": {
+    "lat": 47.4123538,
+    "lon": 11.5078912,
+    "demEle": 2059.4,
+    "tags": {
+      "check_date:summit:register": "2025-08-17",
+      "ele": "2093",
+      "name": "Mahnkopf",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q15119244",
+      "wikipedia": "de:Mahnkopf (Karwendel)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/519688895": {
+    "lat": 47.5313452,
+    "lon": 11.1531653,
+    "demEle": 1906.6,
+    "tags": {
+      "ele": "1940",
+      "name": "Hoher Fricken",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q315767",
+      "wikipedia": "de:Hoher Fricken"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/522603014": {
+    "lat": 47.5851125,
+    "lon": 10.9440361,
+    "demEle": 1612.2,
+    "tags": {
+      "ele": "1629",
+      "name": "Dreisäuler Kopf",
+      "natural": "peak",
+      "wikidata": "Q31549130"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/522603016": {
+    "lat": 47.5867478,
+    "lon": 10.9793405,
+    "demEle": 1687.2,
+    "tags": {
+      "ele": "1758",
+      "name": "Laubeneck",
+      "natural": "peak",
+      "wikidata": "Q31557266"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/522603018": {
+    "lat": 47.5857524,
+    "lon": 10.9848614,
+    "demEle": 1712.6,
+    "tags": {
+      "ele": "1740",
+      "name": "Latschenkopf",
+      "natural": "peak",
+      "wikidata": "Q31557250"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/616751711": {
+    "lat": 47.5015183,
+    "lon": 11.5134143,
+    "demEle": 1883.8,
+    "tags": {
+      "ele": "1939",
+      "name": "Baumgartenjoch",
+      "natural": "peak",
+      "wikidata": "Q21876558"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/650746778": {
+    "lat": 47.3848455,
+    "lon": 10.9524273,
+    "demEle": 1279.7,
+    "tags": {
+      "aerialway": "station",
+      "aerialway:station": "bottom",
+      "name": "Ganghofer Blitz",
+      "operator": "Ehrwalder Almbahn",
+      "public_transport": "station"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/702260997": {
+    "lat": 47.5778643,
+    "lon": 11.1185921,
+    "demEle": 1456.6,
+    "tags": {
+      "ele": "1466",
+      "name": "Großer Laber",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q31543959"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/703354390": {
+    "lat": 47.57161,
+    "lon": 11.1173541,
+    "demEle": 1296.9,
+    "tags": {
+      "ele": "1305",
+      "name": "Mühlberg",
+      "natural": "peak",
+      "wikidata": "Q31530111"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/703834455": {
+    "lat": 47.5752543,
+    "lon": 11.1292092,
+    "demEle": 1204.2,
+    "tags": {
+      "ele": "1205",
+      "name": "Kleiner Laber",
+      "natural": "peak",
+      "wikidata": "Q31534471"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/727090665": {
+    "lat": 28.5183959,
+    "lon": 83.8063433,
+    "demEle": 7170.2,
+    "local": {
+      "visited": "no"
+    },
+    "tags": {
+      "alt_name": "Moditse, Annapurna Dakshin",
+      "ele": "7219",
+      "name": "Annapurna South",
+      "name:zh": "安娜普納南峰",
+      "natural": "peak",
+      "source": "Wikipedia",
+      "wikidata": "Q20190791"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/727108156": {
+    "lat": 28.4979796,
+    "lon": 83.9458756,
+    "demEle": 6856.0,
+    "local": {
+      "visited": "no"
+    },
+    "tags": {
+      "ele": "6993",
+      "name": "Machapuchare",
+      "name:cs": "Mačapučare",
+      "name:ne": "माछापुच्छ्रे",
+      "name:zh": "鱼尾峰",
+      "natural": "peak",
+      "prominence": "1293",
+      "source:prominence": "6993-5700 (NE col)",
+      "wikidata": "Q1051394",
+      "wikimedia_commons": "File:Peak of Mount Machhapuchhre of Nepal.jpg",
+      "wikipedia": "en:Machapuchare"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/748804706": {
+    "lat": 47.6393841,
+    "lon": 11.3760576,
+    "demEle": 1234.7,
+    "tags": {
+      "ele": "1269",
+      "name": "Sonnenspitz",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:cross:height": "0.8",
+      "wikidata": "Q109019807",
+      "wikipedia": "de:Sonnenspitz (Kochel)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/765097941": {
+    "lat": 47.7239382,
+    "lon": 12.0435958,
+    "demEle": 1394.1,
+    "tags": {
+      "ele": "1422",
+      "name": "Rampoldplatte",
+      "natural": "peak",
+      "source:ele": "guidepost",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q980656"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/778231935": {
+    "lat": 47.6540337,
+    "lon": 11.4776478,
+    "demEle": 1678.4,
+    "tags": {
+      "mountain_pass": "yes",
+      "name": "Rotöhrsattel",
+      "natural": "saddle"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/797643804": {
+    "lat": 47.6745316,
+    "lon": 11.8339866,
+    "demEle": 1562.0,
+    "tags": {
+      "ele": "1611",
+      "name": "Rinnerspitz",
+      "natural": "peak",
+      "old_name": "Peißenberg",
+      "wikidata": "Q2154222",
+      "wikipedia": "de:Rinnerspitz"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/829067169": {
+    "lat": 49.5473328,
+    "lon": 11.5405763,
+    "demEle": 550.3,
+    "tags": {
+      "ele": "572",
+      "ele:source": "gps",
+      "name": "Luginsland",
+      "natural": "peak",
+      "noexit": "yes",
+      "summit:cross": "yes",
+      "tourism": "viewpoint"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/881809317": {
+    "lat": 28.4155369,
+    "lon": 83.828381,
+    "demEle": 1612.0,
+    "tags": {
+      "fee": "yes",
+      "name": "Jhinu Hot Springs",
+      "natural": "hot_spring"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/885182782": {
+    "lat": 47.6482196,
+    "lon": 12.1489342,
+    "demEle": 804.4,
+    "local": {
+      "visited": "yes"
+    },
+    "tags": {
+      "ele": "824",
+      "name": "Gletscherblick",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "no"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/889074205": {
+    "lat": 47.7196296,
+    "lon": 12.061521,
+    "demEle": 1111.5,
+    "local": {
+      "visited": "yes"
+    },
+    "tags": {
+      "ele": "1113",
+      "name": "Zugberg",
+      "natural": "peak",
+      "wikidata": "Q31513961"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/901156954": {
+    "lat": 47.6621125,
+    "lon": 11.6322388,
+    "demEle": 1019.1,
+    "tags": {
+      "waterway": "waterfall"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/919557438": {
+    "lat": 48.9184881,
+    "lon": 11.859725,
+    "demEle": 465.6,
+    "tags": {
+      "ele": "448",
+      "name": "Michelsberg",
+      "natural": "peak",
+      "wikidata": "Q1931200",
+      "wikipedia": "de:Michelsberg (Kelheim)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/928061460": {
+    "lat": 47.6711962,
+    "lon": 11.8499007,
+    "demEle": 1445.3,
+    "tags": {
+      "ele": "1494",
+      "name": "Krettenburg",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/942283724": {
+    "lat": 47.7532079,
+    "lon": 12.8636617,
+    "demEle": 1272.2,
+    "local": {
+      "visited": "yes"
+    },
+    "tags": {
+      "alt_name": "Steinerne Jager",
+      "name": "Steinerne Jäger",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/942667605": {
+    "lat": 47.7223741,
+    "lon": 11.6007828,
+    "demEle": 1092.1,
+    "tags": {
+      "ele": "1096",
+      "name": "Schürfenkopf",
+      "natural": "peak",
+      "wikidata": "Q31521735",
+      "wikipedia": "de:Schürfenkopf"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/966046966": {
+    "lat": 47.6118412,
+    "lon": 12.2705058,
+    "demEle": 1907.5,
+    "tags": {
+      "ele": "1916",
+      "name": "Elferkogel",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/966046973": {
+    "lat": 47.6121415,
+    "lon": 12.2628159,
+    "demEle": 1894.0,
+    "tags": {
+      "ele": "1924",
+      "name": "Einserkogel",
+      "natural": "peak",
+      "summit:cross": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1023521644": {
+    "lat": 47.7331856,
+    "lon": 11.7541109,
+    "demEle": 991.1,
+    "tags": {
+      "ele": "995.5",
+      "name": "Buchberg",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1129365627": {
+    "lat": 47.6717531,
+    "lon": 11.8381005,
+    "demEle": 1625.3,
+    "tags": {
+      "ele": "1669",
+      "name": "Bodenschneid",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q889652",
+      "wikipedia": "de:Bodenschneid"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1141059170": {
+    "lat": 47.7537784,
+    "lon": 12.8761479,
+    "demEle": 1279.3,
+    "tags": {
+      "alt_name": "Fuderheuberg",
+      "ele": "1321",
+      "name": "Fuderheustein",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1142708301": {
+    "lat": 47.753517,
+    "lon": 12.8709902,
+    "demEle": 1340.2,
+    "local": {
+      "visited": "yes"
+    },
+    "tags": {
+      "ele": "1350",
+      "name": "Fuderheuberg",
+      "natural": "peak",
+      "wikidata": "Q879480",
+      "wikipedia": "de:Fuderheuberg"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1200501391": {
+    "lat": 47.7478702,
+    "lon": 11.7178535,
+    "demEle": 854.0,
+    "tags": {
+      "ele": "842",
+      "name": "Kaltenbrunner Eck",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1214651798": {
+    "lat": 43.445937,
+    "lon": 16.6779666,
+    "demEle": 244.6,
+    "tags": {
+      "ele": "334.5",
+      "name": "Babnjača",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1223715722": {
+    "lat": 47.7445866,
+    "lon": 11.7131921,
+    "demEle": 833.5,
+    "tags": {
+      "ele": "833",
+      "name": "Hainzenhöhe",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1254353419": {
+    "lat": 47.6606163,
+    "lon": 11.5086377,
+    "demEle": 1627.0,
+    "tags": {
+      "ele": "1646",
+      "name": "Stangeneck",
+      "natural": "peak",
+      "wikidata": "Q31558358"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1261026316": {
+    "lat": 47.6656433,
+    "lon": 11.5110664,
+    "demEle": 1436.7,
+    "local": {
+      "visited": "no"
+    },
+    "tags": {
+      "ele": "1473",
+      "name": "Kirchel",
+      "natural": "peak",
+      "wikidata": "Q91133656",
+      "wikipedia": "de:Kirchel"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1271398990": {
+    "lat": 47.720185,
+    "lon": 11.6167245,
+    "demEle": 1170.4,
+    "tags": {
+      "ele": "1182",
+      "name": "Rechelköpfel",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1271399144": {
+    "lat": 47.7273579,
+    "lon": 11.6080162,
+    "demEle": 1143.4,
+    "tags": {
+      "ele": "1140",
+      "name": "Schwarzköpfel",
+      "natural": "peak",
+      "summit:cross": "no",
+      "wikidata": "Q92192050",
+      "wikipedia": "de:Schwarzköpfel"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1272500634": {
+    "lat": 47.7214992,
+    "lon": 11.6369916,
+    "demEle": 1278.3,
+    "tags": {
+      "ele": "1280",
+      "name": "Mitterberg",
+      "natural": "peak",
+      "wikidata": "Q31530597"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1272834691": {
+    "lat": 47.7313486,
+    "lon": 11.657078,
+    "demEle": 1078.4,
+    "tags": {
+      "ele": "1070",
+      "name": "Gefällberg",
+      "natural": "peak",
+      "summit:cross": "no",
+      "wikidata": "Q31545349",
+      "wikipedia": "de:Gefällberg"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1272834694": {
+    "lat": 47.7490516,
+    "lon": 11.6502786,
+    "demEle": 890.2,
+    "tags": {
+      "ele": "879",
+      "name": "Platten",
+      "natural": "peak",
+      "summit:cross": "no",
+      "wikidata": "Q236127",
+      "wikipedia": "de:Platten"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1276074774": {
+    "lat": 47.6843889,
+    "lon": 11.6522131,
+    "demEle": 1542.7,
+    "tags": {
+      "ele": "1564",
+      "ele:source": "Wikipedia",
+      "man_made": "cross",
+      "name": "Fockenstein",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q880217",
+      "wikipedia": "de:Fockenstein"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1278327978": {
+    "lat": 49.5438546,
+    "lon": 11.5416089,
+    "demEle": 557.7,
+    "local": {
+      "visited": "no"
+    },
+    "tags": {
+      "name": "Weiße Wand",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1279756154": {
+    "lat": 47.61385,
+    "lon": 11.610056,
+    "demEle": 1392.3,
+    "tags": {
+      "ele": "1403",
+      "name": "Rosskopf",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1279756195": {
+    "lat": 47.6162849,
+    "lon": 11.6244428,
+    "demEle": 1222.2,
+    "local": {
+      "visited": "missing"
+    },
+    "tags": {
+      "ele": "1212",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1279756210": {
+    "lat": 47.6413769,
+    "lon": 11.6109811,
+    "demEle": 853.9,
+    "tags": {
+      "ele": "861",
+      "name": "Schmickerstein",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1279771713": {
+    "lat": 47.5947188,
+    "lon": 11.5795593,
+    "demEle": 1259.0,
+    "tags": {
+      "ele": "1258",
+      "name": "Brandkopf",
+      "natural": "peak",
+      "wikidata": "Q25393050"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1279771735": {
+    "lat": 47.6225673,
+    "lon": 11.6511951,
+    "demEle": 1360.6,
+    "tags": {
+      "ele": "1364",
+      "name": "Saurüsselkopf",
+      "natural": "peak",
+      "wikidata": "Q30539486",
+      "wikipedia": "de:Saurüsselkopf (Tegernseer Berge)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1354679430": {
+    "lat": 50.732746,
+    "lon": 15.7333884,
+    "demEle": 1237.8,
+    "tags": {
+      "historic": "technical_monument",
+      "image": "http://www.kctkoprivnice.cz/fotogalerie/albums/0159_krkonose/IMG_1670.JPG",
+      "man_made": "water_works",
+      "name": "Vodárna pro Sněžku",
+      "start_date": "1912",
+      "website": "https://www.turistika.cz/mista/vodarna-pro-snezku-v-obrim-dole"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1364156812": {
+    "lat": 47.3995813,
+    "lon": 11.5598594,
+    "demEle": 1218.9,
+    "tags": {
+      "amenity": "drinking_water",
+      "check_date": "2022-05-26",
+      "fountain": "drinking",
+      "source": "GPS, geoimage.at"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1382932111": {
+    "lat": 28.493107,
+    "lon": 83.8927034,
+    "demEle": 3129.4,
+    "tags": {
+      "name": "Hinku Cave",
+      "natural": "cave_entrance",
+      "tourism": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1411465448": {
+    "lat": 47.6531047,
+    "lon": 11.4862838,
+    "demEle": 1638.9,
+    "tags": {
+      "ele": "1710",
+      "name": "Achselköpfe",
+      "natural": "peak",
+      "wikidata": "Q15050743",
+      "wikipedia": "de:Achselköpfe"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1427134777": {
+    "lat": 47.6765339,
+    "lon": 11.6358042,
+    "demEle": 1327.3,
+    "tags": {
+      "ele": "1330",
+      "name": "Schlagkopf",
+      "natural": "peak",
+      "wikidata": "Q31522896"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1431131352": {
+    "lat": 47.6000678,
+    "lon": 11.3914884,
+    "demEle": 1157.1,
+    "tags": {
+      "ele": "1164",
+      "name": "Fischberg",
+      "natural": "peak",
+      "wikidata": "Q31546939"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1469811232": {
+    "lat": 47.6387482,
+    "lon": 11.7850676,
+    "demEle": 1655.0,
+    "tags": {
+      "ele": "1664",
+      "name": "Grubereck",
+      "natural": "peak",
+      "wikidata": "Q31543432"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1470722107": {
+    "lat": 47.6424542,
+    "lon": 11.7806027,
+    "demEle": 1492.1,
+    "tags": {
+      "ele": "1546",
+      "name": "Daffenstein",
+      "natural": "peak",
+      "sport": "climbing",
+      "summit:cross": "yes",
+      "wikidata": "Q31558128"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1472279573": {
+    "lat": 47.6952837,
+    "lon": 11.8708218,
+    "demEle": 1079.0,
+    "tags": {
+      "alt_name": "Ankelspitz",
+      "ele": "1112",
+      "name": "Anklspitz",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "no"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1482567406": {
+    "lat": 47.4939897,
+    "lon": 11.5070241,
+    "demEle": 1554.9,
+    "tags": {
+      "ele": "1554",
+      "mountain_pass": "yes",
+      "name": "Baumgartensattel",
+      "natural": "saddle"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1487711769": {
+    "lat": 47.6442319,
+    "lon": 12.0435734,
+    "demEle": 1806.4,
+    "tags": {
+      "ele": "1813",
+      "name": "Unterbergerjoch",
+      "natural": "peak",
+      "source": "survey",
+      "summit:cross": "no",
+      "wikidata": "Q31558167"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1488838379": {
+    "lat": 47.610584,
+    "lon": 12.2650454,
+    "demEle": 1862.6,
+    "tags": {
+      "ele": "1912",
+      "name": "Zwölferkogel",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1511563857": {
+    "lat": 47.71849,
+    "lon": 11.4645391,
+    "demEle": 1198.9,
+    "tags": {
+      "ele": "1203",
+      "name": "Fahrtkopf",
+      "natural": "peak",
+      "wikidata": "Q31547603"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1574152579": {
+    "lat": 47.710955,
+    "lon": 11.8417871,
+    "demEle": 1242.5,
+    "tags": {
+      "ele": "1251",
+      "name": "Brunstkogel",
+      "natural": "peak",
+      "wikidata": "Q31550831"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1574152591": {
+    "lat": 47.6857619,
+    "lon": 11.8423468,
+    "demEle": 1436.9,
+    "tags": {
+      "ele": "1463",
+      "name": "Rainerkopf",
+      "natural": "peak",
+      "wikidata": "Q31527212"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1574152592": {
+    "lat": 47.7017861,
+    "lon": 11.8485708,
+    "demEle": 1318.2,
+    "tags": {
+      "ele": "1328",
+      "name": "Westerberg",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1579437934": {
+    "lat": 47.6803875,
+    "lon": 11.8359142,
+    "demEle": 1510.8,
+    "tags": {
+      "ele": "1552",
+      "name": "Wasserspitz",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "wikidata": "Q31515706",
+      "wikipedia": "de:Wasserspitz"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1621410767": {
+    "lat": 47.509013,
+    "lon": 11.4876,
+    "demEle": 2072.8,
+    "tags": {
+      "ele": "2102",
+      "name": "Schafreuter",
+      "natural": "peak",
+      "source": "aerial imagery;basemap.at",
+      "wikidata": "Q315887",
+      "wikipedia": "de:Schafreuter"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1627270003": {
+    "lat": 47.3051777,
+    "lon": 11.3504655,
+    "demEle": 2230.6,
+    "tags": {
+      "ele": "2270",
+      "name": "Frau Hitt",
+      "natural": "peak",
+      "wikidata": "Q877602",
+      "wikipedia": "de:Frau Hitt"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1631172973": {
+    "lat": 47.5549563,
+    "lon": 10.7494061,
+    "demEle": 989.7,
+    "tags": {
+      "check_date": "2026-04-06",
+      "direction": "NNW-ENE;S-SW",
+      "name": "Aussichtspunkt Marienbrücke",
+      "tourism": "viewpoint"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1638504578": {
+    "lat": 47.7312885,
+    "lon": 11.6682092,
+    "demEle": 1213.8,
+    "local": {
+      "visited": "missing"
+    },
+    "tags": {
+      "ele": "1212",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1644165590": {
+    "lat": 47.7335365,
+    "lon": 11.5072874,
+    "demEle": 1234.4,
+    "tags": {
+      "ele": "1237",
+      "name": "Blomberg Ostgipfel",
+      "natural": "peak",
+      "summit:cross": "no",
+      "summit:register": "no",
+      "wikidata": "Q31558978"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1679600826": {
+    "lat": 47.7187677,
+    "lon": 11.9776495,
+    "demEle": 1320.2,
+    "tags": {
+      "ele": "1350",
+      "name": "Breitensteinfensterl",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1711924736": {
+    "lat": 47.6498367,
+    "lon": 11.3819654,
+    "demEle": 801.3,
+    "tags": {
+      "ele": "748",
+      "name": "Lainbachfall",
+      "source_ref": "http://www.flickr.com/photos/kogo59/6922687632/",
+      "waterway": "waterfall"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1736669828": {
+    "lat": 28.4356548,
+    "lon": 83.8384571,
+    "demEle": 2354.4,
+    "tags": {
+      "description": "Guesthouse",
+      "name": "Sinuwa Guesthouse",
+      "tourism": "hotel"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1736683294": {
+    "lat": 28.42835,
+    "lon": 83.826067,
+    "demEle": 2013.1,
+    "tags": {
+      "description": "Guesthouse",
+      "name": "Green View",
+      "tourism": "hotel"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1743681602": {
+    "lat": 47.7338721,
+    "lon": 11.7683304,
+    "demEle": 1170.0,
+    "tags": {
+      "ele": "1178",
+      "name": "Gassler Berg",
+      "natural": "peak",
+      "wikidata": "Q16064616"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1743681826": {
+    "lat": 47.7344509,
+    "lon": 11.7765773,
+    "demEle": 1135.9,
+    "tags": {
+      "ele": "1135",
+      "name": "Oeder Kogel",
+      "natural": "peak",
+      "wikidata": "Q16320527"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1743682069": {
+    "lat": 47.7348091,
+    "lon": 11.7863439,
+    "demEle": 1131.4,
+    "tags": {
+      "ele": "1134",
+      "name": "Schußkogel",
+      "natural": "peak",
+      "wikidata": "Q18289376"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1743682072": {
+    "lat": 47.744995,
+    "lon": 11.7966675,
+    "demEle": 946.1,
+    "tags": {
+      "ele": "936",
+      "name": "Wallenburger Kogel",
+      "natural": "peak",
+      "wikidata": "Q18334815"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1781859543": {
+    "lat": 47.8426523,
+    "lon": 13.776766,
+    "demEle": 751.2,
+    "tags": {
+      "ele": "800",
+      "name": "Baalstein",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1781859544": {
+    "lat": 47.840867,
+    "lon": 13.7771705,
+    "demEle": 844.9,
+    "tags": {
+      "ele": "872",
+      "name": "Geißwand",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1832777816": {
+    "lat": 32.7355733,
+    "lon": -16.9286501,
+    "demEle": 1800.1,
+    "tags": {
+      "alt_name": "Arieiro",
+      "ele": "1818",
+      "importance": "regional",
+      "name": "Arieiro",
+      "natural": "peak",
+      "wikidata": "Q1192102",
+      "wikimedia_commons": "Category:Pico do Areeiro",
+      "wikipedia": "pt:Pico do Areeiro (Madeira)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1841764370": {
+    "lat": 47.625939,
+    "lon": 11.3718596,
+    "demEle": 1546.8,
+    "tags": {
+      "ele": "1565",
+      "name": "Jochberg",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q322506",
+      "wikipedia": "de:Jochberg (Berg)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1843134014": {
+    "lat": 47.3523323,
+    "lon": 10.9220655,
+    "demEle": 2356.0,
+    "tags": {
+      "ele": "2410",
+      "name": "Hinterer Drachenkopf",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-28"
+  },
+  "node/1850303773": {
+    "lat": 50.7360326,
+    "lon": 15.7396072,
+    "demEle": 1593.2,
+    "tags": {
+      "contact:website": "http://www.sniezka.karpacz.pl",
+      "description": "Najwyższy szczyt Karkonoszy i Sudetów",
+      "ele": "1603.3",
+      "image": "https://pl.wikipedia.org/wiki/Śnieżka#/media/File:%C5%9Anie%C5%BCka_z_zachodu.jpg",
+      "importance": "national",
+      "name": "Śnieżka / Sněžka",
+      "name:be": "Снежка",
+      "name:cs": "Sněžka",
+      "name:de": "Schneekoppe",
+      "name:pl": "Śnieżka",
+      "natural": "peak",
+      "prominence": "1197",
+      "ref:prng": "137281",
+      "source:ele": "http://www.tisicovky.cz/exp/krkonose/snezka-hlv1/C6A5D7B1-2929-486B-9F6C-ADBF7C29F302ori.pdf",
+      "source:position": "http://www.tisicovky.cz/exp/krkonose/snezka-hlv1/C6A5D7B1-2929-486B-9F6C-ADBF7C29F302ori.pdf http://geography.cz/geograficke-rozhledy/wp-content/uploads/2016/04/Proč-je-správná-výška-Sněžky-1603-m.pdf",
+      "tourism": "attraction",
+      "url": "http://dolny-slask.org.pl/518799,Karpacz,Sniezka_1602_m_n_p_m.html",
+      "wheelchair": "no",
+      "wikidata": "Q617511",
+      "wikipedia": "pl:Śnieżka"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1896552485": {
+    "lat": 49.5475376,
+    "lon": 11.5421996,
+    "demEle": 560.0,
+    "tags": {
+      "ele": "580",
+      "name": "Petrus",
+      "natural": "peak",
+      "source": "Bing",
+      "source:ele": "estimation"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1913686966": {
+    "lat": 47.6178993,
+    "lon": 12.0382256,
+    "demEle": 1353.8,
+    "tags": {
+      "ele": "1363",
+      "name": "Nesselberg",
+      "natural": "peak",
+      "source": "geoimage.at MaxRes",
+      "wikidata": "Q21873217"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1950350430": {
+    "lat": 47.3941838,
+    "lon": 11.5286201,
+    "demEle": 1730.7,
+    "tags": {
+      "natural": "spring"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1950351332": {
+    "lat": 47.3989876,
+    "lon": 11.5580425,
+    "demEle": 1225.2,
+    "tags": {
+      "amenity": "drinking_water",
+      "check_date": "2023-09-04",
+      "fountain": "drinking"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/1976803003": {
+    "lat": 47.6718782,
+    "lon": 11.9205621,
+    "demEle": 1672.7,
+    "tags": {
+      "ele": "1703",
+      "name": "Tanzeck",
+      "natural": "peak",
+      "summit:cross": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2005598198": {
+    "lat": 47.5901918,
+    "lon": 10.9917475,
+    "demEle": 1561.1,
+    "tags": {
+      "check_date": "2026-05-10",
+      "ele": "1579",
+      "name": "Auf dem Stein",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "no"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2081253533": {
+    "lat": 47.6443372,
+    "lon": 11.3727532,
+    "demEle": 942.6,
+    "local": {
+      "visited": "yes"
+    },
+    "tags": {
+      "ele": "968",
+      "name": "Kienstein",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "no"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2114909062": {
+    "lat": 47.7194665,
+    "lon": 11.4448587,
+    "demEle": 942.4,
+    "tags": {
+      "ele": "932",
+      "name": "Hollerkopf",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2117581057": {
+    "lat": 47.730822,
+    "lon": 11.5125471,
+    "demEle": 1184.5,
+    "local": {
+      "visited": "missing"
+    },
+    "tags": {
+      "ele": "1205",
+      "man_made": "cross",
+      "material": "wood",
+      "name": "Blombergkreuz",
+      "summit:register": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2173906237": {
+    "lat": 47.402544,
+    "lon": 11.5677568,
+    "demEle": 1208.9,
+    "tags": {
+      "amenity": "cafe",
+      "check_date": "2023-09-04",
+      "name": "Alpencafe Eng",
+      "website": "https://www.eng.at/index.php?id=249&L=0"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2273005201": {
+    "lat": 48.8378723,
+    "lon": 12.183366,
+    "demEle": 380.6,
+    "tags": {
+      "addr:country": "DE",
+      "BLfD:criteria": "Baudenkmal",
+      "heritage": "4",
+      "heritage:operator": "BLfD",
+      "historic": "memorial",
+      "image": "http://commons.wikimedia.org/wiki/File:Eggm%C3%BChl-L%C3%B6wendenkmal.jpg",
+      "memorial": "statue",
+      "name": "Löwendenkmal",
+      "ref:BLfD": "D-3-75-196-29"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2319315497": {
+    "lat": 32.77445,
+    "lon": -16.9354954,
+    "demEle": 1104.2,
+    "local": {
+      "name": "Caldeirão Verde"
+    },
+    "tags": {
+      "ft_link": "www.freietonne.de?edit=10084",
+      "waterway": "waterfall"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2338028257": {
+    "lat": 47.6485766,
+    "lon": 11.8662068,
+    "demEle": 1582.0,
+    "tags": {
+      "ele": "1602",
+      "name": "Rotkopf",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2338028258": {
+    "lat": 47.6622252,
+    "lon": 11.8563377,
+    "demEle": 1499.3,
+    "tags": {
+      "ele": "1506",
+      "name": "Stümpfling",
+      "natural": "peak",
+      "source:ele": "guidepost",
+      "wikidata": "Q15060197",
+      "wikipedia": "de:Stümpfling"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2461227223": {
+    "lat": 47.3950926,
+    "lon": 11.5236742,
+    "demEle": 1791.2,
+    "tags": {
+      "ele": "1794",
+      "mountain_pass": "yes",
+      "name": "Hohljoch",
+      "natural": "saddle",
+      "wikidata": "Q21868060",
+      "wikipedia": "de:Hohljoch"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2510073225": {
+    "lat": 47.3929061,
+    "lon": 11.0146928,
+    "demEle": 2037.9,
+    "tags": {
+      "ele": "2045",
+      "mountain_pass": "yes",
+      "name": "Feldernjöchl",
+      "natural": "saddle"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2526645264": {
+    "lat": 47.5460461,
+    "lon": 11.1748876,
+    "demEle": 1937.1,
+    "tags": {
+      "name": "Henneneck",
+      "natural": "peak",
+      "wikidata": "Q31541397",
+      "wikipedia": "de:Henneneck"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2597722489": {
+    "lat": 47.7284036,
+    "lon": 11.680452,
+    "demEle": 1264.8,
+    "tags": {
+      "ele": "1258",
+      "name": "Nesselscheibe",
+      "natural": "peak",
+      "wikidata": "Q16854886",
+      "wikipedia": "de:Nesselscheibe"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2607182341": {
+    "lat": 47.7288407,
+    "lon": 11.6905672,
+    "demEle": 1215.7,
+    "tags": {
+      "ele": "1211",
+      "name": "Wasenkogel",
+      "natural": "peak",
+      "source:name": "https://de.wikipedia.org/wiki/Holzeralm_(Gmund_am_Tegernsee)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2641015239": {
+    "lat": 47.6751604,
+    "lon": 11.8645597,
+    "demEle": 1621.1,
+    "tags": {
+      "alt_name": "Brecherspitz Wintergipfel",
+      "ele": "1643",
+      "name": "Brecherspitz Vorgipfel",
+      "natural": "peak",
+      "summit:cross": "no",
+      "summit:register": "no"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2641018246": {
+    "lat": 47.7376374,
+    "lon": 11.8342723,
+    "demEle": 1054.7,
+    "tags": {
+      "ele": "1051",
+      "name": "Huberspitz",
+      "natural": "peak",
+      "place": "isolated_dwelling",
+      "summit:cross": "no",
+      "wikidata": "Q31537823"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2665669316": {
+    "lat": 47.6468339,
+    "lon": 11.938496,
+    "demEle": 1690.8,
+    "tags": {
+      "ele": "1695",
+      "name": "Kümpflscharte",
+      "natural": "saddle"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2700114094": {
+    "lat": 47.3874108,
+    "lon": 10.9842118,
+    "demEle": 1915.8,
+    "tags": {
+      "ele": "1925",
+      "name": "Issentalköpfl",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2770355657": {
+    "lat": 47.5822824,
+    "lon": 10.992152,
+    "demEle": 1491.5,
+    "tags": {
+      "ele": "1566",
+      "name": "Pürschling",
+      "natural": "peak",
+      "wikidata": "Q2120961",
+      "wikimedia_commons": "File:20240904 xl 1327- Pürschling Kopf.jpg"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2770577404": {
+    "lat": 48.5131292,
+    "lon": 12.1048297,
+    "demEle": 462.3,
+    "tags": {
+      "historic": "ruins",
+      "name": "Ringwall Tiefenbach",
+      "opening_hours": "24/7"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2853862101": {
+    "lat": 47.6509569,
+    "lon": 12.0390806,
+    "demEle": 1636.7,
+    "tags": {
+      "ele": "1645",
+      "ele:source": "sign",
+      "name": "Fellalm-Sattel",
+      "natural": "saddle"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2874807218": {
+    "lat": 47.6479779,
+    "lon": 11.9260025,
+    "demEle": 1766.9,
+    "tags": {
+      "name": "Kirchstein",
+      "natural": "peak",
+      "wikidata": "Q55489734"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2883814653": {
+    "lat": 28.5783028,
+    "lon": 83.800725,
+    "local": {
+      "visited": "no"
+    },
+    "tags": {
+      "alt_name": "Bharha Chuli",
+      "ele": "7647",
+      "name": "Baraha Shikhar (Annapurna Fang Peak)",
+      "name:en": "Baraha Shikhar (Annapurna Fang Peak)",
+      "name:zh": "狼牙峰",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2883814670": {
+    "lat": 28.6069026,
+    "lon": 83.8888403,
+    "local": {
+      "visited": "no"
+    },
+    "tags": {
+      "alt_name": "Glacier Dome",
+      "ele": "7168",
+      "name": "Tarke Kang",
+      "name:zh": "冰河丘峰",
+      "natural": "peak",
+      "wikidata": "Q31652628"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2935181986": {
+    "lat": 28.5853509,
+    "lon": 83.9891091,
+    "local": {
+      "visited": "no"
+    },
+    "tags": {
+      "ele": "7555",
+      "int_name": "Annapurna III",
+      "name": "अन्नपूर्णा III",
+      "name:en": "Annapurna III",
+      "name:fa": "آناپورنا 3",
+      "name:ru": "Аннапурна III",
+      "name:zh": "安娜普納 3 峰",
+      "natural": "peak",
+      "prominence": "725",
+      "source:prominence": "7555-6830 (Col at the W towards Annapurna I)",
+      "westra_ref": "10590",
+      "wikidata": "Q564576"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/2935182022": {
+    "lat": 28.605655,
+    "lon": 83.9635144,
+    "local": {
+      "visited": "no"
+    },
+    "tags": {
+      "ele": "7455",
+      "int_name": "Gangapurna",
+      "name": "Gangapurna",
+      "name:en": "Gangapurna",
+      "name:ne": "गङ्गापुर्ण",
+      "name:ru": "Гангапурна",
+      "name:zh": "康加普納峰",
+      "natural": "peak",
+      "westra_ref": "10564",
+      "wikidata": "Q1133863",
+      "wikipedia": "de:Gangapurna"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/3229970780": {
+    "lat": 47.7305888,
+    "lon": 11.8104963,
+    "demEle": 1261.9,
+    "tags": {
+      "ele": "1252",
+      "name": "Auer Berg",
+      "natural": "peak",
+      "wikidata": "Q16054465"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/3229970782": {
+    "lat": 47.7323621,
+    "lon": 11.8263212,
+    "demEle": 1168.7,
+    "tags": {
+      "ele": "1169",
+      "name": "Rainer Berg",
+      "natural": "peak",
+      "wikidata": "Q16292474"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/3229978767": {
+    "lat": 47.6795493,
+    "lon": 11.8446746,
+    "demEle": 1349.4,
+    "tags": {
+      "ele": "1386",
+      "name": "Eckspitz",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/3233329548": {
+    "lat": 47.7112511,
+    "lon": 11.695073,
+    "demEle": 1125.4,
+    "tags": {
+      "ele": "1113",
+      "name": "Auereck",
+      "natural": "peak",
+      "summit:cross": "no"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/3233329670": {
+    "lat": 47.6842313,
+    "lon": 11.8617174,
+    "demEle": 1503.3,
+    "local": {
+      "visited": "missing"
+    },
+    "tags": {
+      "ele": "1524",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/3233329679": {
+    "lat": 47.7156792,
+    "lon": 11.9864452,
+    "demEle": 1348.8,
+    "tags": {
+      "ele": "1351",
+      "natural": "saddle"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/3233329685": {
+    "lat": 47.6805761,
+    "lon": 12.0081736,
+    "demEle": 946.0,
+    "tags": {
+      "ele": "962",
+      "name": "Reitberg",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/3233329686": {
+    "lat": 47.6468378,
+    "lon": 11.942073,
+    "demEle": 1719.5,
+    "local": {
+      "visited": "yes"
+    },
+    "tags": {
+      "ele": "1733",
+      "name": "Sebaldstein",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/3233329687": {
+    "lat": 47.7105567,
+    "lon": 11.7034539,
+    "demEle": 1111.8,
+    "tags": {
+      "check_date": "2026-05-17",
+      "ele": "1101",
+      "name": "Semmelberg",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "no",
+      "wikidata": "Q31520990"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/3253363153": {
+    "lat": 47.6018138,
+    "lon": 11.0038927,
+    "demEle": 1411.8,
+    "tags": {
+      "ele": "1425",
+      "name": "Rosengarten",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "no",
+      "wikidata": "Q31525331"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/3253369961": {
+    "lat": 47.6068666,
+    "lon": 11.0056656,
+    "demEle": 1361.2,
+    "tags": {
+      "ele": "1372",
+      "name": "Schartenköpfl",
+      "natural": "peak",
+      "source_ref": "https://flic.kr/p/qnVPd3",
+      "summit:cross": "yes",
+      "summit:register": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/3253370804": {
+    "lat": 47.6014991,
+    "lon": 10.9966936,
+    "demEle": 1394.8,
+    "tags": {
+      "ele": "1405",
+      "name": "Bremeneck",
+      "natural": "peak",
+      "wikidata": "Q31557519"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/3662166614": {
+    "lat": 47.5840874,
+    "lon": 11.0267772,
+    "demEle": 1549.4,
+    "tags": {
+      "ele": "1615",
+      "else": "1580",
+      "name": "Am Zahn",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "wikidata": "Q31557182"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/3743479379": {
+    "lat": 47.694642,
+    "lon": 11.8665749,
+    "demEle": 1224.1,
+    "tags": {
+      "ele": "1260",
+      "name": "Dürnbachwand",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "no"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/3743479380": {
+    "lat": 47.6908221,
+    "lon": 11.8629108,
+    "demEle": 1409.0,
+    "local": {
+      "visited": "missing"
+    },
+    "tags": {
+      "ele": "1445",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/3743479381": {
+    "lat": 47.6940627,
+    "lon": 11.8662156,
+    "demEle": 1239.1,
+    "tags": {
+      "ele": "1279",
+      "name": "Schlierseespitz",
+      "natural": "peak",
+      "summit:cross": "no",
+      "summit:register": "no"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/3859294830": {
+    "lat": 47.6494437,
+    "lon": 11.9313898,
+    "demEle": 1810.1,
+    "local": {
+      "visited": "yes"
+    },
+    "tags": {
+      "ele": "1858",
+      "name": "Rotwandkopf",
+      "natural": "peak",
+      "source:ele": "gps",
+      "summit:cross": "no",
+      "summit:register": "no"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/3906281333": {
+    "lat": 47.6432444,
+    "lon": 11.8674221,
+    "demEle": 1582.9,
+    "tags": {
+      "ele": "1604",
+      "name": "Stolzeneck",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/3995319667": {
+    "lat": 32.7352344,
+    "lon": -16.9248409,
+    "demEle": 1703.3,
+    "tags": {
+      "ele": "1718",
+      "name": "Juncal",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/4004528624": {
+    "lat": 47.6605904,
+    "lon": 11.8858221,
+    "demEle": 1089.4,
+    "tags": {
+      "addr:city": "Schliersee",
+      "addr:country": "DE",
+      "addr:housenumber": "1",
+      "addr:postcode": "83727",
+      "addr:street": "Roßkopfweg",
+      "amenity": "restaurant",
+      "cuisine": "bavarian",
+      "indoor_seating": "yes",
+      "internet_access": "wlan",
+      "internet_access:fee": "customers",
+      "name": "Alte Wurzhütte",
+      "opening_hours": "PH,Mo-Su 17:00-23:30",
+      "outdoor_seating": "yes",
+      "phone": "+49 8026 6068201",
+      "website": "https://www.alte-wurzhuette.de/"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/4097856091": {
+    "lat": 46.1655181,
+    "lon": 10.9528253,
+    "demEle": 1873.2,
+    "tags": {
+      "ele": "1913",
+      "name": "Palon de Tovre",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/4102642399": {
+    "lat": 47.6123428,
+    "lon": 11.0046358,
+    "demEle": 1210.7,
+    "tags": {
+      "ele": "1202",
+      "name": "Köpfel",
+      "natural": "peak",
+      "wikidata": "Q31557753"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/4193344090": {
+    "lat": 28.52673,
+    "lon": 83.9075282,
+    "demEle": 3672.0,
+    "tags": {
+      "addr:city": "Annapurna Rural Mun 11",
+      "contact:phone": "9746064813,9846293225,061696484",
+      "manager": "Dipesh Gurung",
+      "name": "Shankar Guest House and Restaurant",
+      "proprietor": "Lokman/buddhi Gurung",
+      "tourism": "guest_house"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/4193344289": {
+    "lat": 28.4983007,
+    "lon": 83.8991697,
+    "demEle": 3206.2,
+    "tags": {
+      "name": "Deurali Guest House",
+      "tourism": "guest_house"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/4193344490": {
+    "lat": 28.5304557,
+    "lon": 83.8782661,
+    "demEle": 4116.7,
+    "tags": {
+      "contact:phone": "994610000,061696988",
+      "name": "Annapurna Sanctuary Lodge & Restaurant",
+      "tourism": "guest_house"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/4278669243": {
+    "lat": 47.6767017,
+    "lon": 11.863455,
+    "demEle": 1574.4,
+    "tags": {
+      "amenity": "place_of_worship",
+      "building": "wayside_shrine",
+      "denomination": "catholic",
+      "historic": "wayside_shrine",
+      "inscription": "Königin der Alpen Hl. Gottesmutter: Beschütze unsere Alpen ...",
+      "name": "Birkenstein",
+      "religion": "christian"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/4369817141": {
+    "lat": 47.7236176,
+    "lon": 11.7956894,
+    "demEle": 1336.3,
+    "tags": {
+      "ele": "1335",
+      "name": "Gindelalmschneid",
+      "natural": "peak",
+      "summit:cross": "no",
+      "summit:register": "no",
+      "wikidata": "Q1524911",
+      "wikimedia_commons": "Category:Gindelalmschneid",
+      "wikipedia": "de:Gindelalmschneid"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/4395226596": {
+    "lat": 43.4448339,
+    "lon": 16.6982678,
+    "demEle": 260.4,
+    "tags": {
+      "ele": "303",
+      "name": "Fortica",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/4647797222": {
+    "lat": 47.7012898,
+    "lon": 11.6755881,
+    "demEle": 1385.1,
+    "tags": {
+      "ele": "1382",
+      "name": "Huder",
+      "natural": "peak",
+      "wikidata": "Q19963321",
+      "wikipedia": "de:Huder (Berg)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/4730936370": {
+    "lat": 47.5866038,
+    "lon": 11.3948072,
+    "demEle": 820.3,
+    "tags": {
+      "amenity": "restaurant",
+      "cuisine": "bavarian",
+      "email": "info@waldschaenke-niedernach.de",
+      "name": "Waldschänke Niedernach",
+      "opening_hours": "Th-Mo 10:00-18:00",
+      "opening_hours:kitchen": "Th-Mo 11:30-17:30",
+      "phone": "+49 8043 1021",
+      "website": "https://waldschaenke-niedernach.de/"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/4732623385": {
+    "lat": 47.6739314,
+    "lon": 11.4430379,
+    "demEle": 964.2,
+    "tags": {
+      "height": "25",
+      "name": "Lainbachwasserfälle",
+      "waterway": "waterfall",
+      "width": "10"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/4938335786": {
+    "lat": 47.4138898,
+    "lon": 10.970039,
+    "demEle": 2664.6,
+    "tags": {
+      "ele": "2699",
+      "name": "Schneefernerscharte",
+      "natural": "saddle"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/5037526152": {
+    "lat": 47.5799654,
+    "lon": 11.1150155,
+    "demEle": 1329.6,
+    "tags": {
+      "amenity": "drinking_water",
+      "drinking_water": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/5141185722": {
+    "lat": 28.417124,
+    "lon": 83.8168528,
+    "demEle": 2296.4,
+    "tags": {
+      "addr:street": "ghandruk-9 chhomrong",
+      "internet_access": "wlan",
+      "name:en": "Real chhomrong lodge and restaurant",
+      "name:fr": "Real chhomrong lodge and restaurant",
+      "opening_hours": "24/7",
+      "phone": "9846359659",
+      "tourism": "alpine_hut"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/5340076821": {
+    "lat": 47.632728,
+    "lon": 11.6783446,
+    "demEle": 1603.9,
+    "tags": {
+      "addr:city": "Kreuth",
+      "addr:country": "DE",
+      "addr:housenumber": "20",
+      "addr:postcode": "83708",
+      "addr:street": "Berghaus",
+      "check_date": "2026-07-14",
+      "check_date:diet:vegetarian": "2026-07-14",
+      "diet:vegetarian": "yes",
+      "drinking_water": "no",
+      "drinking_water:legal": "no",
+      "ele": "1650",
+      "fee": "yes",
+      "name": "Tegernseer Hütte",
+      "phone": "+49 8029 287",
+      "power_supply": "yes",
+      "shower": "no",
+      "smoking": "outside",
+      "start_date": "1903",
+      "toilets": "yes",
+      "tourism": "alpine_hut",
+      "website": "https://tegernseerhuette.de/",
+      "wikidata": "Q2400327",
+      "wikipedia": "de:Tegernseer Hütte"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/5469566999": {
+    "lat": 47.6606654,
+    "lon": 11.920228,
+    "demEle": 1585.4,
+    "tags": {
+      "ele": "1580",
+      "name": "Lochgrabensattel",
+      "natural": "saddle",
+      "source:ele": "gps"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/5741212084": {
+    "lat": 47.7272436,
+    "lon": 11.6876825,
+    "demEle": 1172.7,
+    "tags": {
+      "natural": "spring"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/5810277909": {
+    "lat": 47.3775867,
+    "lon": 10.9352297,
+    "demEle": 1442.7,
+    "tags": {
+      "ele": "1493",
+      "leisure": "picnic_table",
+      "name": "Coburger Bank",
+      "tourism": "picnic_site"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/5860388407": {
+    "lat": 47.3964984,
+    "lon": 11.5473682,
+    "demEle": 1393.7,
+    "tags": {
+      "amenity": "drinking_water"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/5906629046": {
+    "lat": 46.1710813,
+    "lon": 10.9406454,
+    "demEle": 2299.8,
+    "tags": {
+      "ele": "2360",
+      "name": "Cima  Sophia",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/5997401874": {
+    "lat": 47.5849787,
+    "lon": 11.10044,
+    "demEle": 1643.9,
+    "tags": {
+      "ele": "1686",
+      "name": "Laber Hauptgipfel",
+      "natural": "peak",
+      "summit:cross": "no",
+      "summit:register": "no"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/6047606998": {
+    "lat": 28.4095174,
+    "lon": 83.824043,
+    "demEle": 1717.3,
+    "tags": {
+      "amenity": "restaurant",
+      "generator:source": "grid",
+      "internet_access": "cellular,wlan",
+      "name": "Jhini Guest House",
+      "note": "hot spring!",
+      "rooms": "10",
+      "toilet:seated": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/6513058893": {
+    "lat": 32.7789972,
+    "lon": -16.9218614,
+    "demEle": 956.3,
+    "tags": {
+      "waterway": "waterfall"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/6556491409": {
+    "lat": 32.7828182,
+    "lon": -16.9135953,
+    "demEle": 930.2,
+    "tags": {
+      "waterway": "waterfall"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/6767676700": {
+    "lat": 50.7340107,
+    "lon": 15.6654555,
+    "demEle": 1406.2,
+    "tags": {
+      "alt_name": "Kozí hřbety",
+      "ele": "1422",
+      "name": "Krakonoš",
+      "natural": "peak",
+      "source": "ČÚZK",
+      "wikidata": "Q42575324",
+      "wikipedia": "cs:Krakonoš (Kozí hřbety)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/6855810185": {
+    "lat": 28.478755,
+    "lon": 83.8858165,
+    "demEle": 2855.0,
+    "tags": {
+      "addr:city": "Annapurna Rural Mun 11",
+      "name": "१०८ छहरा",
+      "name:en": "108 Chahara",
+      "waterway": "waterfall"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/6956416906": {
+    "lat": 48.691649,
+    "lon": 12.2087026,
+    "demEle": 465.1,
+    "tags": {
+      "ele": "462",
+      "name": "Kapellenberg/Lourdes-Kapelle",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/6965620685": {
+    "lat": 28.426326,
+    "lon": 83.8193496,
+    "demEle": 1965.9,
+    "tags": {
+      "shop": "convenience"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/6966299856": {
+    "lat": 28.4846128,
+    "lon": 83.8887343,
+    "demEle": 2838.3,
+    "tags": {
+      "amenity": "cafe",
+      "name:en": "Himalaya Cafe"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/7306641852": {
+    "lat": 48.5207204,
+    "lon": 12.1308078,
+    "demEle": 470.2,
+    "tags": {
+      "ele": "473",
+      "name": "Birkenberg",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/7329438513": {
+    "lat": 48.4817297,
+    "lon": 12.0330994,
+    "demEle": 486.2,
+    "tags": {
+      "ele": "487",
+      "name": "Kuhberg",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/7329558590": {
+    "lat": 48.4880016,
+    "lon": 12.0347533,
+    "demEle": 470.9,
+    "tags": {
+      "ele": "474",
+      "name": "Steinbuckel",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/7563799011": {
+    "lat": 48.5165877,
+    "lon": 12.1133482,
+    "demEle": 446.3,
+    "tags": {
+      "archaeological_site": "earthwork",
+      "historic": "archaeological_site",
+      "historic:civilization": "medieval",
+      "name": "Burgstall Schlossberg",
+      "wikidata": "Q98398064"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/7686984944": {
+    "lat": 48.0053418,
+    "lon": 11.3922679,
+    "demEle": 662.1,
+    "local": {
+      "visited": "no"
+    },
+    "tags": {
+      "ele": "656",
+      "name": "Schloßberg",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/8042266343": {
+    "lat": 48.5272906,
+    "lon": 12.1510479,
+    "demEle": 459.2,
+    "tags": {
+      "ele": "463",
+      "name": "Annaberg",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/9101538957": {
+    "lat": 47.6656009,
+    "lon": 11.6209367,
+    "demEle": 865.4,
+    "tags": {
+      "waterway": "waterfall"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/9278796023": {
+    "lat": 47.6518126,
+    "lon": 11.6311714,
+    "demEle": 1353.8,
+    "tags": {
+      "addr:city": "Lenggries",
+      "addr:housenumber": "2",
+      "addr:place": "Seekaralm",
+      "addr:postcode": "83661",
+      "amenity": "cafe",
+      "check_date": "2024-05-18",
+      "cuisine": "german;regional",
+      "description": "Hütte mit Sommerterasse, Stube und 48 Schlafplätzen. Reservierung für die Übernachtung per Webseite.",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "ele": "1338",
+      "email": "info@lenggrieserhuette.de",
+      "indoor_seating": "yes",
+      "mobile": "+49 171 4849349",
+      "name": "Lenggrieser Hütte",
+      "opening_hours": "May-Oct 10:00-19:00; Nov-Apr We-Su 10:00-19:00",
+      "outdoor_seating": "yes",
+      "payment:cash": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+49 8042 967112;+49 8042 5633096",
+      "smoking": "no",
+      "toilets": "yes",
+      "website": "https://www.lenggrieserhuette.de/",
+      "website:menu": "http://www.lenggrieserhuette.de/kulinarisches.html",
+      "wheelchair": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/9315606664": {
+    "lat": 47.7197396,
+    "lon": 11.9808216,
+    "demEle": 1490.4,
+    "local": {
+      "visited": "yes"
+    },
+    "tags": {
+      "ele": "1514",
+      "name": "Bockstein",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/9510889687": {
+    "lat": 43.4501249,
+    "lon": 16.6658171,
+    "demEle": 403.6,
+    "tags": {
+      "ele": "455.6",
+      "name": "Čeline",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/9883893791": {
+    "lat": 47.4001648,
+    "lon": 11.5138933,
+    "demEle": 1527.7,
+    "tags": {
+      "amenity": "drinking_water"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/9892741718": {
+    "lat": 47.7100497,
+    "lon": 11.6638254,
+    "demEle": 1291.7,
+    "tags": {
+      "ele": "1290",
+      "name": "Brauneck",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/9895387909": {
+    "lat": 47.7053102,
+    "lon": 11.9992281,
+    "demEle": 1480.1,
+    "tags": {
+      "ele": "1512",
+      "name": "Türkenköpfl",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/10300162542": {
+    "lat": 47.7018864,
+    "lon": 11.6661234,
+    "demEle": 1337.1,
+    "tags": {
+      "ele": "1339",
+      "name": "Spitzeck",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/10300162543": {
+    "lat": 47.6938922,
+    "lon": 11.6721641,
+    "demEle": 1380.8,
+    "tags": {
+      "ele": "1384",
+      "name": "Sattelkopf",
+      "natural": "peak",
+      "wikidata": "Q25392929",
+      "wikipedia": "de:Sattelkopf (Tegernseer Berge)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/10676465928": {
+    "lat": 47.6584409,
+    "lon": 11.9218715,
+    "demEle": 1657.9,
+    "tags": {
+      "ele": "1660",
+      "name": "Taubensteinsattel",
+      "natural": "saddle",
+      "source:ele": "guidepost"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/10946117706": {
+    "lat": 49.5439361,
+    "lon": 11.5327441,
+    "demEle": 552.4,
+    "local": {
+      "visited": "no"
+    },
+    "tags": {
+      "ele": "564",
+      "name": "Azelstein",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/10946117709": {
+    "lat": 49.5379721,
+    "lon": 11.5470498,
+    "demEle": 587.3,
+    "local": {
+      "visited": "yes"
+    },
+    "tags": {
+      "ele": "517",
+      "name": "Gemeindeberg",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/10946117713": {
+    "lat": 49.5458614,
+    "lon": 11.5416824,
+    "demEle": 582.3,
+    "tags": {
+      "ele": "591",
+      "name": "Rutschen",
+      "natural": "peak"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/11581492069": {
+    "lat": 28.4040108,
+    "lon": 83.8229485,
+    "demEle": 1677.0,
+    "tags": {
+      "amenity": "restaurant",
+      "name:en": "Jhinu Danda jeep station"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/12254467701": {
+    "lat": 28.45682,
+    "lon": 83.8566859,
+    "demEle": 2313.3,
+    "tags": {
+      "name": "Bambou Guest House & Restaurant",
+      "tourism": "hotel"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/12347743970": {
+    "lat": 28.5086017,
+    "lon": 83.9048181,
+    "demEle": 3738.3,
+    "tags": {
+      "direction": "5",
+      "name": "The Rodolfo Viewpoint",
+      "tourism": "viewpoint"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/12488719494": {
+    "lat": 47.5950427,
+    "lon": 11.0615954,
+    "demEle": 842.1,
+    "tags": {
+      "access": "private",
+      "castle_type": "stately",
+      "historic": "castle",
+      "name": "Ammerschlössel",
+      "start_date": "1899",
+      "wikidata": "Q98646568"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/12762897023": {
+    "lat": 47.5671264,
+    "lon": 11.2881699,
+    "demEle": 1019.6,
+    "tags": {
+      "name": "Vorderfallbachhöhle",
+      "natural": "cave_entrance"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/12806819227": {
+    "lat": 47.4118778,
+    "lon": 10.9684542,
+    "demEle": 2798.1,
+    "local": {
+      "visited": "missing"
+    },
+    "tags": {
+      "description": "Nordschulter des Schneefernerkopfs",
+      "ele": "2836",
+      "natural": "peak",
+      "source:ele": "Laserscan"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/13114781686": {
+    "lat": 47.3977864,
+    "lon": 10.3399694,
+    "demEle": 1633.5,
+    "tags": {
+      "ele": "1629",
+      "natural": "saddle"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/13700242205": {
+    "lat": 28.463492,
+    "lon": 83.8610123,
+    "demEle": 2440.8,
+    "tags": {
+      "name": "Nice bathing",
+      "waterway": "waterfall"
+    },
+    "fetched": "2026-10-26"
+  },
+  "node/13700242706": {
+    "lat": 28.4734553,
+    "lon": 83.8748305,
+    "demEle": 2558.3,
+    "tags": {
+      "name": "Greenland guest house and restaurant",
+      "tourism": "alpine_hut"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/17725549": {
+    "lat": 47.36851660000001,
+    "lon": 10.93504585,
+    "demEle": 1657.1,
+    "tags": {
+      "ele": "1657",
+      "name": "Seebensee",
+      "natural": "water",
+      "water": "lake",
+      "wikidata": "Q2264576",
+      "wikipedia": "de:Seebensee"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/19921110": {
+    "lat": 50.7345027,
+    "lon": 15.69660345,
+    "demEle": 1415.2,
+    "tags": {
+      "addr:conscriptionnumber": "203",
+      "addr:country": "CZ",
+      "addr:housenumber": "203",
+      "addr:place": "Pec pod Sněžkou",
+      "addr:postcode": "54221",
+      "alt_name:en": "Meadow Chalet",
+      "alt_name:pl": "Schronisko Buda Łąkowa",
+      "building": "hotel",
+      "building:ruian:type": "11",
+      "check_date": "2024-02-13",
+      "image": "https://cs.wikipedia.org/wiki/Luční_bouda#/media/File:Lu%C4%8Dn%C3%AD_Bouda_FR01.jpg",
+      "internet_access": "wlan",
+      "microbrewery": "yes",
+      "name": "Luční bouda",
+      "name:cs": "Luční bouda",
+      "name:de": "Wiesenbaude",
+      "opening_hours": "Mo-Su 08:00-24:00",
+      "payment:cash": "yes",
+      "payment:contactless": "yes",
+      "payment:credit_cards": "yes",
+      "ref:ruian:addr": "21047367",
+      "ref:ruian:building": "20806141",
+      "source": "cuzk:ruian",
+      "tourism": "alpine_hut",
+      "website": "https://lucnibouda.cz/",
+      "wheelchair": "no",
+      "wikidata": "Q132423",
+      "wikipedia": "cs:Luční bouda"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/19921121": {
+    "lat": 50.73950705,
+    "lon": 15.7289735,
+    "demEle": 1392.4,
+    "tags": {
+      "addr:city": "Karpacz",
+      "addr:city:simc": "0936032",
+      "addr:housenumber": "20",
+      "addr:postcode": "58-540",
+      "addr:street": "Na Śnieżkę",
+      "addr:street:sym_ul": "36115",
+      "alt_name": "Śląski Dom",
+      "beds": "57",
+      "building": "yes",
+      "building:levels": "3",
+      "contact:email": "info@domslaski.pl",
+      "contact:phone": "+48 75 753 52 90",
+      "contact:website": "https://domslaski.pl",
+      "ele": "1400",
+      "internet_access": "wlan",
+      "internet_access:fee": "no",
+      "name": "Dom Śląski",
+      "name:cs": "Slezský Dům",
+      "name:de": "Schlesisches Haus",
+      "name:pl": "Dom Śląski",
+      "old_name:de": "Schlesierhaus",
+      "old_name:pl": "Pod Śnieżką",
+      "operator": "Karol Warecki",
+      "phone": "+48 75 612 67 00",
+      "roof:colour": "gray",
+      "roof:levels": "1",
+      "roof:shape": "hipped",
+      "rooms": "14",
+      "source:addr": "karpacz.e-mapa.net",
+      "start_date": "1923",
+      "tourism": "alpine_hut",
+      "website": "https://domslaski.pl/",
+      "wikidata": "Q9334361",
+      "wikipedia": "pl:Schronisko Górskie „Dom Śląski”",
+      "year_of_construction": "1921..1922"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/25075130": {
+    "lat": 47.64876715,
+    "lon": 11.958481249999998,
+    "demEle": 1507.3,
+    "tags": {
+      "access": "private",
+      "addr:city": "Bayrischzell",
+      "addr:country": "DE",
+      "addr:housenumber": "4",
+      "addr:postcode": "83735",
+      "addr:street": "Rotwand",
+      "alt_ele": "1517",
+      "alt_ele:source": "label on building",
+      "alt_name": "Hütte der Ruchenköpfler",
+      "building": "yes",
+      "description": "Nicht bewirtschaftet!",
+      "ele": "1509",
+      "name": "Ruchenkopf-Hütte",
+      "reservation": "members_only",
+      "staff": "no",
+      "tourism": "wilderness_hut",
+      "website": "https://ruchenkoepfler.de/"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/25206339": {
+    "lat": 48.5314496,
+    "lon": 12.15284085,
+    "demEle": 469.7,
+    "tags": {
+      "addr:city": "Landshut",
+      "addr:country": "DE",
+      "addr:housenumber": "168",
+      "addr:place": "Burg Trausnitz",
+      "addr:postcode": "84036",
+      "area": "yes",
+      "ele": "500",
+      "heritage": "4",
+      "heritage:operator": "BLfD",
+      "historic": "castle",
+      "name": "Burg Trausnitz",
+      "name:be": "Замак Траусніц",
+      "ref:BLfD": "D-2-61-000-563",
+      "toilets:wheelchair": "yes",
+      "wheelchair": "limited",
+      "wikidata": "Q512271",
+      "wikimedia_commons": "Category:Burg Trausnitz",
+      "wikipedia": "de:Burg Trausnitz"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/26515725": {
+    "lat": 47.5685232,
+    "lon": 10.7567698,
+    "demEle": 824.8,
+    "tags": {
+      "access": "yes",
+      "amenity": "parking",
+      "currency:EUR": "yes",
+      "currency:others": "no",
+      "fee": "yes",
+      "lastcheck": "2016-09-24",
+      "name": "Talstation Tegelbergbahn",
+      "opening_hours": "Mo-Su 06:00-22:00",
+      "operator": "Tegelbergbahn",
+      "operator:type": "private",
+      "parking": "surface",
+      "payment:credit_cards": "no",
+      "payment:ep_ge": "no",
+      "payment:girocard_contactless": "yes",
+      "payment:notes": "no",
+      "surface": "asphalt",
+      "wheelchair": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/26516059": {
+    "lat": 47.559566149999995,
+    "lon": 10.77895565,
+    "demEle": 1708.5,
+    "tags": {
+      "addr:city": "Schwangau",
+      "addr:country": "DE",
+      "addr:housenumber": "2",
+      "addr:place": "Tegelberg",
+      "addr:postcode": "87645",
+      "aerialway": "station",
+      "aerialway:access": "both",
+      "aerialway:summer:access": "both",
+      "building": "yes",
+      "email": "info@tegelbergbahn.de",
+      "internet_access": "wlan",
+      "internet_access:fee": "no",
+      "internet_access:ssid": "@BayernWLAN",
+      "name": "Tegelbergbahn Bergstation",
+      "operator": "Tegelbergbahn",
+      "phone": "+49 8362 98360",
+      "public_transport": "station",
+      "website": "https://www.tegelbergbahn.de/de",
+      "wheelchair": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/26954262": {
+    "lat": 47.3599669,
+    "lon": 10.9335342,
+    "demEle": 1909.3,
+    "tags": {
+      "addr:city": "Axams",
+      "addr:country": "AT",
+      "addr:postcode": "6414",
+      "addr:street": "Köhlgasse",
+      "amenity": "restaurant",
+      "building": "commercial",
+      "capacity": "80",
+      "ele": "1927",
+      "email": "office@coburgerhuette.at",
+      "name": "Coburger Hütte",
+      "note:de": "FIXME: Rauchverbot prüfen",
+      "operator": "DAV Sektion Coburg",
+      "operator:tenant": "Friedrich Schranz",
+      "outdoor_seating": "yes",
+      "payment:cash": "yes",
+      "payment:credit_cards": "no",
+      "payment:debit_cards": "no",
+      "payment:electronic_purses": "no",
+      "phone": "+43 6643254714",
+      "reservation": "recommended",
+      "smoking": "no",
+      "tourism": "alpine_hut",
+      "website": "https://www.coburgerhuette.at/",
+      "wikidata": "Q1104821",
+      "wikipedia": "de:Coburger Hütte"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/26955651": {
+    "lat": 47.3734658,
+    "lon": 10.9428002,
+    "demEle": 1576.7,
+    "tags": {
+      "addr:city": "Ehrwald",
+      "addr:country": "AT",
+      "addr:housenumber": "1",
+      "addr:postcode": "6632",
+      "addr:street": "Seebenalm",
+      "amenity": "restaurant",
+      "building": "yes",
+      "ele": "1566",
+      "name": "Seeben Alm",
+      "tourism": "alpine_hut"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/26960869": {
+    "lat": 47.399653150000006,
+    "lon": 11.498947000000001,
+    "demEle": 1842.4,
+    "tags": {
+      "addr:city": "Vomp",
+      "addr:country": "AT",
+      "addr:housenumber": "43",
+      "addr:place": "Hinterriß",
+      "addr:postcode": "6215",
+      "building": "yes",
+      "check_date": "2025-08-20",
+      "check_date:diet:gluten_free": "2025-08-20",
+      "check_date:diet:vegetarian": "2025-08-20",
+      "cuisine": "regional",
+      "diet:gluten_free": "no",
+      "diet:vegetarian": "yes",
+      "ele": "1846",
+      "fax": "+43 5245 245",
+      "internet_access": "no",
+      "name": "Falkenhütte",
+      "operator": "DAV Sektion Oberland",
+      "operator:tenant": "Claudia & Bertl Rackwitz-Hartmann",
+      "phone": "+43 5245 245",
+      "power_supply": "yes",
+      "shower": "yes",
+      "smoking": "no",
+      "tourism": "alpine_hut",
+      "website": "http://www.falkenhuette.at",
+      "website:booking": "https://www.alpsonline.org/reservation/calendar?hut_id=354",
+      "wikidata": "Q1394246",
+      "wikipedia": "de:Falkenhütte",
+      "winter_room": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/27365348": {
+    "lat": 47.94811665,
+    "lon": 11.2232108,
+    "demEle": 720.4,
+    "tags": {
+      "addr:housenumber": "8",
+      "amenity": "place_of_worship",
+      "building": "yes",
+      "name": "St. Johannes Baptist",
+      "religion": "christian",
+      "wikidata": "Q24264911",
+      "wikimedia_commons": "Category:St. Johann Baptist (Machtlfing)",
+      "wikipedia": "de:St. Johann Baptist (Machtlfing)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/28963332": {
+    "lat": 48.9184865,
+    "lon": 12.20466935,
+    "demEle": 361.5,
+    "tags": {
+      "building": "yes",
+      "castle_type": "manor",
+      "historic": "castle",
+      "name": "Schloß Alteglofsheim",
+      "wikidata": "Q2239998",
+      "wikimedia_commons": "Category:Schloss Alteglofsheim",
+      "wikipedia": "de:Schloss Alteglofsheim"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/29313903": {
+    "lat": 47.3988588,
+    "lon": 11.5576198,
+    "demEle": 1221.6,
+    "tags": {
+      "addr:city": "Vomp",
+      "addr:country": "AT",
+      "addr:housenumber": "11",
+      "addr:postcode": "6215",
+      "addr:street": "Hinterriß-Eng",
+      "amenity": "restaurant",
+      "building": "retail",
+      "check_date": "2023-09-04",
+      "diet:vegan": "no",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "name": "Rasthütte Engalm",
+      "outdoor_seating": "yes",
+      "payment:contactless": "yes",
+      "payment:debit_cards": "yes",
+      "smoking": "no",
+      "website": "https://www.engalm.at/engalm/rasthuette/",
+      "wheelchair": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/30907084": {
+    "lat": 47.588037400000005,
+    "lon": 11.79032565,
+    "demEle": 1461.7,
+    "tags": {
+      "addr:country": "DE",
+      "building": "yes",
+      "description": "DAV-Selbstversorgerhütte Bayerische Wildalm",
+      "ele": "1450",
+      "name": "Bayerische Wildalm",
+      "operator": "DAV Sektion München und Oberland",
+      "reservation": "members_only",
+      "tourism": "wilderness_hut",
+      "wikidata": "Q812314",
+      "wikipedia": "de:Bayerische Wildalm"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/31128149": {
+    "lat": 50.7410064,
+    "lon": 15.64750525,
+    "demEle": 1006.6,
+    "tags": {
+      "addr:conscriptionnumber": "176",
+      "addr:country": "CZ",
+      "addr:housenumber": "176",
+      "addr:place": "Špindlerův Mlýn",
+      "addr:postcode": "54351",
+      "building": "yes",
+      "cuisine": "regional",
+      "email": "bile.labe@seznam.cz",
+      "internet_access": "wlan",
+      "internet_access:fee": "no",
+      "name": "Bouda Bílé Labe",
+      "name:de": "Weißwasser Baude",
+      "opening_hours": "Mo-Su 10:30-18:00",
+      "payment:cash": "yes",
+      "payment:contactless": "no",
+      "payment:credit_cards": "no",
+      "phone": "+420 499 422 121",
+      "power_supply": "yes",
+      "ref:ruian:addr": "2345692",
+      "shower": "yes",
+      "smoking": "outside",
+      "source": "bing",
+      "tourism": "alpine_hut",
+      "website": "https://www.boudabilelabe.cz/"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/31898848": {
+    "lat": 47.413452649999996,
+    "lon": 10.9799604,
+    "demEle": 2579.2,
+    "tags": {
+      "addr:country": "DE",
+      "addr:housenumber": "6",
+      "addr:street": "Partenkirchen",
+      "building": "yes",
+      "ele": "2588",
+      "name": "Zugspitzplatt",
+      "operator": "BZB",
+      "public_transport": "station",
+      "rack": "yes",
+      "railway": "station",
+      "railway:position": "0.9",
+      "ref:ibnr": "966908",
+      "wheelchair": "limited",
+      "wikidata": "Q106486357",
+      "wikimedia_commons": "Category:Bahnhof Zugspitzplatt"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/34601514": {
+    "lat": 47.74817175,
+    "lon": 11.737614950000001,
+    "demEle": 733.3,
+    "tags": {
+      "access": "yes",
+      "alt_name": "Parkplatz am See",
+      "amenity": "parking",
+      "charge": "0.5 EUR/0.5 hour",
+      "ele": "735",
+      "fee": "no",
+      "fee:conditional": "yes @ (stay > 2 hours) AND (08:00-18:00)",
+      "maxstay": "72 hours",
+      "name": "Volksfestplatz",
+      "parking": "surface",
+      "source": "survey",
+      "surface": "paved",
+      "website": "https://www.tegernsee.com/a-parkplatz-am-see"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/37452163": {
+    "lat": 47.68893885,
+    "lon": 11.6731807,
+    "demEle": 1264.3,
+    "tags": {
+      "addr:city": "Bad Wiessee",
+      "addr:postcode": "83707",
+      "addr:street": "Bad Wiesseer Höhenstraße",
+      "building": "cabin",
+      "contact:phone": "+49 8022 83600",
+      "contact:website": "https://www.aueralm.de/",
+      "cuisine": "regional",
+      "diet:vegan": "no",
+      "diet:vegetarian": "yes",
+      "ele": "1269",
+      "email": "mail@aueralm.de",
+      "indoor_seating": "yes",
+      "name": "Aueralm",
+      "opening_hours": "Tu,Th,Fr 09:00-17:00; Sa-Su 09:00-17:00; We 10:30-22:00",
+      "outdoor_seating": "yes",
+      "payment:cash": "yes",
+      "smoking": "no",
+      "tourism": "alpine_hut",
+      "wheelchair": "no",
+      "wikidata": "Q100256552",
+      "wikipedia": "de:Aueralm"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/37652067": {
+    "lat": 47.6658677,
+    "lon": 11.703025400000001,
+    "demEle": 1505.1,
+    "tags": {
+      "amenity": "restaurant",
+      "building": "yes",
+      "ele": "1511",
+      "name": "Hirschberghaus",
+      "note:de": "FIXME: Rauchverbot prüfen",
+      "phone": "+498029465",
+      "smoking": "no",
+      "tourism": "alpine_hut",
+      "website": "https://www.hirschberghaus.de/",
+      "wikidata": "Q1620377",
+      "wikipedia": "de:Hirschberghaus"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/38173874": {
+    "lat": 47.5472281,
+    "lon": 11.1887844,
+    "demEle": 1943.8,
+    "tags": {
+      "alt_name": "Krottenkopfhütte",
+      "building": "yes",
+      "description": "Adresse des Hüttenwirts lt. Webseite: Hochstraße 5, 82494 Krün",
+      "ele": "1946",
+      "name": "Weilheimer Hütte",
+      "operator": "DAV Sektion Weilheim",
+      "operator:tenant": "Christian Weiermann",
+      "phone": "+49 1702708052",
+      "smoking": "no",
+      "tourism": "alpine_hut",
+      "url": "http://www.dav-weilheim.de/",
+      "website": "https://dav-weilheim.de/huetten/weilheimer-huette/",
+      "wikidata": "Q2555668",
+      "winter_room": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/38723149": {
+    "lat": 50.70794655,
+    "lon": 15.731258050000001,
+    "demEle": 856.3,
+    "tags": {
+      "access": "yes",
+      "building": "yes",
+      "building:ruian:type": "8",
+      "capacity": "47",
+      "contact:website": "https://betyna.cz/chata-betyna/",
+      "drinking_water": "yes",
+      "mattress": "yes",
+      "name": "Betyna",
+      "ref:ruian:building": "20806094",
+      "shower": "yes",
+      "source": "cuzk:ruian",
+      "toilets": "yes",
+      "tourism": "alpine_hut"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/46372114": {
+    "lat": 47.628015899999994,
+    "lon": 11.75805815,
+    "demEle": 825.2,
+    "tags": {
+      "addr:housenumber": "85",
+      "addr:street": "Raineralmweg",
+      "amenity": "restaurant",
+      "building": "yes",
+      "contact:website": "https://www.schwaigeralm.de/",
+      "name": "Schwaiger Alm",
+      "wikidata": "Q98647827"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/48844974": {
+    "lat": 47.67928995,
+    "lon": 11.86201805,
+    "demEle": 1550.7,
+    "tags": {
+      "alt_name": "St. Leonhard",
+      "amenity": "place_of_worship",
+      "building": "chapel",
+      "denomination": "catholic",
+      "ele": "1587.2",
+      "heritage": "4",
+      "heritage:operator": "BLfD",
+      "name": "Freudenreichkapelle",
+      "ref:BLfD": "D-1-82-131-101",
+      "religion": "christian",
+      "wikidata": "Q41237067",
+      "wikimedia_commons": "Category:St. Leonhard (Freudenreichsattel)",
+      "wikipedia": "de:St. Leonhard (Freudenreichsattel)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/56072725": {
+    "lat": 47.559255750000005,
+    "lon": 11.138795550000001,
+    "demEle": 653.8,
+    "tags": {
+      "access": "yes",
+      "amenity": "parking",
+      "fee": "no",
+      "parking": "surface"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/56688296": {
+    "lat": 27.72147845,
+    "lon": 85.36201175,
+    "demEle": 1339.1,
+    "tags": {
+      "addr:postcode": "977",
+      "addr:street": "Boudha Main Road",
+      "alt_name": "Boudha Stupa",
+      "amenity": "place_of_worship",
+      "barrier": "wall",
+      "building:colour": "white",
+      "check_date": "2025-10-29",
+      "email": "lotusbazra@boudhanathstupa.org",
+      "height": "2",
+      "heritage": "1",
+      "heritage:operator": "whc",
+      "name": "Boudhanāth Stupa",
+      "name:ne": "बौद्धनाथ स्तूप",
+      "phone": "+977 01 4471908",
+      "religion": "buddhist",
+      "roof:colour": "white",
+      "tourism": "attraction",
+      "website": "http://boudhanathstupa.org/#_home",
+      "whc:criteria": "iii,iv,vi",
+      "wheelchair": "yes",
+      "width": "0.6"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/60309009": {
+    "lat": 47.66013455,
+    "lon": 11.8569169,
+    "demEle": 1480.0,
+    "tags": {
+      "amenity": "restaurant",
+      "building": "yes",
+      "cuisine": "bavarian",
+      "ele": "1506",
+      "name": "Jagahütt'n",
+      "payment:credit_cards": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/60310929": {
+    "lat": 47.677701,
+    "lon": 11.83905195,
+    "demEle": 1350.4,
+    "tags": {
+      "addr:city": "Schliersee",
+      "addr:country": "DE",
+      "addr:housenumber": "1",
+      "addr:place": "Bodenschneid",
+      "addr:postcode": "83727",
+      "building": "yes",
+      "check_date": "2026-05-21",
+      "contact:email": "info@bodenschneidhaus.de",
+      "contact:mobile": "+49 172 3735798",
+      "contact:phone": "+49 80 26 46 92",
+      "contact:website": "https://bodenschneidhaus.de/",
+      "ele": "1365",
+      "internet_access": "wlan",
+      "name": "Bodenschneidhaus",
+      "operator": "DAV Sektion Bodenschneid",
+      "tourism": "alpine_hut",
+      "website:booking": "https://www.hut-reservation.org/reservation/book-hut/218/wizard",
+      "wikidata": "Q889655",
+      "wikipedia": "de:Bodenschneidhaus"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/60313973": {
+    "lat": 47.667748950000004,
+    "lon": 11.85056885,
+    "demEle": 1317.8,
+    "tags": {
+      "amenity": "restaurant",
+      "building": "yes",
+      "diet:halal": "no",
+      "diet:kosher": "no",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "name": "Untere Firstalm",
+      "outdoor_seating": "yes",
+      "smoking": "outside"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/60315210": {
+    "lat": 47.6700782,
+    "lon": 11.8540124,
+    "demEle": 1366.3,
+    "tags": {
+      "addr:city": "Schliersee",
+      "addr:country": "DE",
+      "addr:place": "Obere Firstalm",
+      "addr:postcode": "83727",
+      "addr:suburb": "Spitzingsee",
+      "amenity": "restaurant",
+      "building": "yes",
+      "check_date": "2026-10-04",
+      "check_date:opening_hours": "2026-10-04",
+      "diet:vegetarian": "yes",
+      "ele": "1369",
+      "email": "info@firstalm.de",
+      "fax": "+49 8026 71731",
+      "indoor_seating": "yes",
+      "internet_access": "wlan",
+      "name": "Obere Firstalm",
+      "opening_hours": "Mo-Su,PH 10:00-22:00",
+      "opening_hours:kitchen": "11:00-17:00",
+      "operator": "Ingrid Votteler GmbH",
+      "operator:tenant": "Votteler Ingrid",
+      "outdoor_seating": "yes",
+      "phone": "+49 8026 7302",
+      "self_service": "yes",
+      "smoking": "no",
+      "tourism": "alpine_hut",
+      "website": "https://firstalm.de/",
+      "wheelchair": "no",
+      "wikidata": "Q27926449",
+      "wikipedia": "de:Firstalm"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/61577689": {
+    "lat": 47.3853425,
+    "lon": 10.9682018,
+    "demEle": 1504.0,
+    "tags": {
+      "addr:city": "Ehrwald",
+      "addr:country": "AT",
+      "addr:housenumber": "6",
+      "addr:place": "Ehrwalder Alm",
+      "addr:postcode": "6632",
+      "aerialway": "station",
+      "aerialway:station": "top",
+      "at_bev:addr_date": "2017-10-01",
+      "building": "yes",
+      "ele": "1502",
+      "name": "Ehrwalder Almbahn Bergstation",
+      "old_name": "Ehrwalder Alm"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/61577692": {
+    "lat": 47.385292899999996,
+    "lon": 10.9692004,
+    "demEle": 1507.4,
+    "tags": {
+      "addr:city": "Ehrwald",
+      "addr:country": "AT",
+      "addr:housenumber": "3",
+      "addr:postcode": "6632",
+      "addr:street": "Ehrwalder Alm",
+      "amenity": "restaurant",
+      "building": "yes",
+      "name": "Tirolerhaus",
+      "source": "Local_knowledge, Bing"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/67146529": {
+    "lat": 47.64469835,
+    "lon": 12.0984172,
+    "demEle": 1357.7,
+    "tags": {
+      "addr:city": "Oberaudorf",
+      "addr:country": "DE",
+      "addr:housenumber": "1",
+      "addr:place": "Brünnsteinhaus",
+      "addr:postcode": "83080",
+      "building": "yes",
+      "ele": "1342",
+      "inscription": "Brünnsteinhaus 1360m - Erbaut 1894 D.A.V. Sektion Rosenheim",
+      "name": "Brünnsteinhaus",
+      "operator": "DAV Sektion Rosenheim",
+      "operator:tenant": "Yvonne und Sepp Tremml",
+      "phone": "+49 8033 1431",
+      "smoking": "no",
+      "source:ele": "https://de.m.wikipedia.org/wiki/Brünnsteinhaus",
+      "start_date": "1894",
+      "tourism": "alpine_hut",
+      "url": "http://www.bruennsteinhaus.de/",
+      "website": "http://www.bruennsteinhaus.de/",
+      "website:booking": "https://www.alpsonline.org/reservation/calendar?hut_id=210",
+      "wikidata": "Q997098",
+      "wikipedia": "de:Brünnsteinhaus"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/72036146": {
+    "lat": 47.96739985,
+    "lon": 11.1842083,
+    "demEle": 669.4,
+    "tags": {
+      "amenity": "place_of_worship",
+      "building": "yes",
+      "denomination": "catholic",
+      "name": "St. Vitus",
+      "religion": "christian",
+      "wikidata": "Q24261947",
+      "wikipedia": "de:St. Vitus (Erling)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/75922177": {
+    "lat": 47.41352695,
+    "lon": 10.347113799999999,
+    "demEle": 1920.2,
+    "tags": {
+      "addr:city": "Oberstdorf",
+      "addr:country": "DE",
+      "addr:housenumber": "1",
+      "addr:postcode": "87561",
+      "addr:street": "Nebelhorn",
+      "amenity": "restaurant",
+      "building": "yes",
+      "capacity:overnight": "108",
+      "delivery": "no",
+      "ele": "1932",
+      "indoor_seating": "yes",
+      "name": "Edmund-Probst-Haus",
+      "operator": "DAV Sektion Immenstadt",
+      "operator:tenant": "Georg Säckl",
+      "outdoor_seating": "yes",
+      "phone": "+49 8322 4795",
+      "ref:avf": "386",
+      "smoking": "outside",
+      "start_date": "1890",
+      "tourism": "alpine_hut",
+      "website": "https://www.edmund-probst-haus.de/",
+      "wheelchair": "yes",
+      "wheelchair:description": "Begleitperson sollten dabei sein, da der Weg kurz und steil ist",
+      "wikidata": "Q1285911",
+      "wikimedia_commons": "Category:Edmund-Probst-Haus",
+      "wikipedia": "de:Edmund-Probst-Haus"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/79119143": {
+    "lat": 47.95323795,
+    "lon": 11.20420915,
+    "demEle": 731.9,
+    "tags": {
+      "amenity": "place_of_worship",
+      "building": "chapel",
+      "ele": "728",
+      "heritage": "4",
+      "heritage:operator": "BLfD",
+      "name": "St. Stephan",
+      "ref:BLfD": "D-1-88-117-30",
+      "religion": "christian",
+      "roof:shape": "gabled",
+      "wikidata": "Q41257659",
+      "wikimedia_commons": "Category:Wallfahrtskapelle St. Stephan"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/80751554": {
+    "lat": 47.755114500000005,
+    "lon": 12.849566150000001,
+    "demEle": 1724.1,
+    "tags": {
+      "addr:city": "Bad Reichenhall",
+      "addr:country": "DE",
+      "addr:housename": "Staufenhaus",
+      "addr:housenumber": "81",
+      "addr:postcode": "83435",
+      "addr:street": "Nonn",
+      "alt_name": "Staufenhaus",
+      "building": "yes",
+      "ele": "1750",
+      "name": "Reichenhaller Haus",
+      "opening_hours": "Mo-Su",
+      "operator": "DAV Sektion Bad Reichenhall",
+      "operator:tenant": "Daniel Peyerl",
+      "phone": "+49 8651 5566",
+      "smoking": "no",
+      "source": "survey",
+      "source_ref": "non copyright protected construction of live measured or estimated base dimensions of 11x12 meters, a compass direction of 180 degrees and a recorded gps position",
+      "tourism": "alpine_hut",
+      "website": "https://www.dav-badreichenhall.de/huetten-kletteranlagen/reichenhaller-haus",
+      "wheelchair": "no",
+      "wikidata": "Q1565094",
+      "wikipedia": "de:Reichenhaller Haus"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/82814302": {
+    "lat": 47.72264145,
+    "lon": 12.068087,
+    "demEle": 989.8,
+    "tags": {
+      "addr:city": "Brannenburg",
+      "addr:country": "DE",
+      "addr:housenumber": "9 1/2",
+      "addr:place": "Wendelstein",
+      "addr:postcode": "83098",
+      "alt_name": "Breitenberghaus",
+      "amenity": "restaurant",
+      "building": "yes",
+      "cuisine": "regional",
+      "ele": "1050",
+      "name": "Breitenberghütte",
+      "operator": "Naturfreunde Deutschland",
+      "phone": "+49 8034 8663",
+      "ref": "N 058",
+      "tourism": "alpine_hut",
+      "website": "https://www.breitenberghütte-brannenburg.de/",
+      "wikidata": "Q906217"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/83052777": {
+    "lat": 47.593171,
+    "lon": 12.20343135,
+    "demEle": 707.4,
+    "tags": {
+      "addr:city": "Ebbs",
+      "addr:country": "AT",
+      "addr:housename": "Gasthaus Veitenhof",
+      "addr:housenumber": "3",
+      "addr:postcode": "6341",
+      "addr:street": "Kaisertal",
+      "amenity": "restaurant",
+      "building": "yes",
+      "ele": "724",
+      "email": "otto.pirchmoser@aon.at",
+      "name": "Gasthaus Veitenhof",
+      "opening_hours": "We-Su 09:00-20:00",
+      "phone": "+43 5372 63415",
+      "source": "geoimage.at",
+      "tourism": "alpine_hut",
+      "website": "https://www.veitenhof.at/"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/83052779": {
+    "lat": 47.59379385,
+    "lon": 12.2172863,
+    "demEle": 777.7,
+    "tags": {
+      "addr:city": "Ebbs",
+      "addr:country": "AT",
+      "addr:housename": "Pfandl",
+      "addr:housenumber": "7",
+      "addr:postcode": "6341",
+      "addr:street": "Kaisertal",
+      "amenity": "restaurant",
+      "building": "yes",
+      "contact:email": "info@pfandlhof.at",
+      "contact:fax": "+43 5372 62118",
+      "contact:phone": "+43 5372 62 118",
+      "contact:website": "http://www.pfandlhof.at/",
+      "cuisine": "regional",
+      "ele": "780",
+      "name": "Pfandlhof",
+      "source": "geoimage.at",
+      "source:ele": "Tiris: contour lines",
+      "tourism": "alpine_hut"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/83052786": {
+    "lat": 47.60386655,
+    "lon": 12.2308714,
+    "demEle": 1159.9,
+    "tags": {
+      "addr:city": "Ebbs",
+      "addr:country": "AT",
+      "addr:housename": "Ritzaualm",
+      "addr:housenumber": "14",
+      "addr:postcode": "6341",
+      "addr:street": "Kaisertal",
+      "amenity": "restaurant",
+      "building": "yes",
+      "description": "Fam. Josef Anker",
+      "ele": "1161",
+      "email": "info@ritzaualm.com",
+      "fax": "+43 5372 63624",
+      "name": "Ritzaualm",
+      "opening_hours": "Mo off",
+      "phone": "+43 5372 63624",
+      "source": "local_knowledge;geoimage.at",
+      "tourism": "alpine_hut",
+      "website": "https://www.ritzaualm.com/"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/83122401": {
+    "lat": 47.60607125,
+    "lon": 12.2393808,
+    "demEle": 1386.8,
+    "tags": {
+      "addr:city": "Ebbs",
+      "addr:country": "AT",
+      "addr:housename": "Vorderkaiserfeldenhütte",
+      "addr:housenumber": "15",
+      "addr:postcode": "6341",
+      "addr:street": "Kaisertal",
+      "amenity": "restaurant",
+      "building": "yes",
+      "cuisine": "regional",
+      "ele": "1388",
+      "email": "info@vorderkaiserfelden.com",
+      "fax": "+43 5372 63482",
+      "name": "Vorderkaiserfeldenhütte",
+      "phone": "+43 5372 63482",
+      "source": "geoimage.at",
+      "tourism": "alpine_hut",
+      "website": "http://www.vorderkaiserfelden.com",
+      "wikidata": "Q2533783",
+      "wikipedia": "de:Vorderkaiserfeldenhütte"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/84097007": {
+    "lat": 47.71426375,
+    "lon": 11.979896100000001,
+    "demEle": 1272.9,
+    "tags": {
+      "addr:city": "Fischbachau",
+      "addr:country": "DE",
+      "addr:housenumber": "2",
+      "addr:place": "Kesselalm",
+      "addr:postcode": "83730",
+      "amenity": "restaurant",
+      "building": "yes",
+      "capacity": "20",
+      "diet:vegetarian": "yes",
+      "ele": "1278",
+      "indoor_seating": "yes",
+      "mobile": "+49 170 8493855",
+      "name": "Kesselalm",
+      "opening_hours": "Th off, Mo-We,Fr-Su,PH 10:30-17:00",
+      "operator": "Ludwig und Brigitte Wetscher",
+      "outdoor_seating": "balcony",
+      "phone": "+4980282602",
+      "smoking": "no",
+      "tourism": "alpine_hut",
+      "website": "https://kesselalm.com/"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/85472419": {
+    "lat": 47.620811950000004,
+    "lon": 13.5615111,
+    "demEle": 1583.9,
+    "tags": {
+      "addr:city": "Bad Goisern",
+      "addr:country": "AT",
+      "addr:housenumber": "51",
+      "addr:place": "Ramsau",
+      "addr:postcode": "4822",
+      "building": "yes",
+      "ele": "1592",
+      "email": "info@goisererhuette.at",
+      "massif": "Salzkammergut-Berge",
+      "name": "Goiserer Hütte",
+      "operator": "OeAV Sektion Bad Goisern",
+      "phone": "+43 6135 21450",
+      "source": "geoimage.at",
+      "tenant": "Max Verwagner",
+      "tourism": "alpine_hut",
+      "website": "https://www.goisererhuette.at/"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/91920694": {
+    "lat": 47.646153350000006,
+    "lon": 11.935142200000001,
+    "demEle": 1724.7,
+    "tags": {
+      "addr:city": "Schliersee",
+      "addr:country": "DE",
+      "addr:housenumber": "3",
+      "addr:place": "Spitzingsee",
+      "addr:postcode": "83727",
+      "air_conditioning": "no",
+      "amenity": "restaurant",
+      "building": "yes",
+      "cuisine": "regional",
+      "diet:halal": "no",
+      "diet:kosher": "no",
+      "diet:vegetarian": "yes",
+      "ele": "1737",
+      "fax": "+49 8026 7683",
+      "indoor_seating": "yes",
+      "internet_access": "wlan",
+      "name": "Rotwandhaus",
+      "operator": "DAV Sektion Turner-Alpen-Kränzchen",
+      "operator:tenant": "Peter Weihrer",
+      "outdoor_seating": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+49 8026 7683; +43 664 1645290",
+      "smoking": "no",
+      "source": "bing",
+      "start_date": "1906",
+      "tourism": "alpine_hut",
+      "website": "https://www.rotwandhaus.de",
+      "website:booking": "https://www.hut-reservation.org/reservation/book-hut/104/wizard",
+      "wikidata": "Q2169123",
+      "wikipedia": "de:Rotwandhaus"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/93450441": {
+    "lat": 47.6650875,
+    "lon": 11.90613265,
+    "demEle": 1412.8,
+    "tags": {
+      "amenity": "restaurant",
+      "building": "yes",
+      "capacity": "36",
+      "cuisine": "bavarian",
+      "currency:XBT": "yes",
+      "diet:lactose_free": "yes",
+      "diet:non-vegetarian": "yes",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "ele": "1410",
+      "inscription": "Schönfeldhütte 1410m erbaut 1949 D.A.V.S. München",
+      "name": "Schönfeldhütte",
+      "opening_hours": "2026 Apr 29-2026 Nov 08",
+      "operator": "DAV Sektion München",
+      "operator:tenant": "Ute Werner & Uwe Gruber",
+      "organic": "yes",
+      "payment:lightning": "yes",
+      "payment:lightning_contactless": "yes",
+      "payment:onchain": "yes",
+      "phone": "+49 8026 7496",
+      "power_supply": "yes",
+      "shower": "yes",
+      "smoking": "no",
+      "source:ele": "inscription",
+      "start_date": "1949",
+      "survey:date": "2026-04-25",
+      "tourism": "alpine_hut",
+      "website": "https://www.alpenverein-muenchen-oberland.de/huetten/alpenvereinshuetten/schoenfeldhuette",
+      "wikidata": "Q16294589",
+      "wikipedia": "de:Schönfeldhütte"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/96257977": {
+    "lat": 47.65490645,
+    "lon": 11.88682075,
+    "demEle": 1049.5,
+    "tags": {
+      "addr:city": "Schliersee",
+      "addr:country": "DE",
+      "addr:housenumber": "8",
+      "addr:postcode": "83727",
+      "addr:street": "Valepper Straße",
+      "air_conditioning": "no",
+      "amenity": "restaurant",
+      "brewery": "Hacker-Pschorr;Paulaner",
+      "building": "yes",
+      "building:levels": "2",
+      "changing_table": "yes",
+      "check_date:opening_hours": "2026-07-12",
+      "cuisine": "bavarian",
+      "diet:halal": "no",
+      "diet:kosher": "no",
+      "diet:vegetarian": "yes",
+      "ele": "1053",
+      "email": "info@albert-link-huette.de",
+      "indoor_seating": "yes",
+      "name": "Albert-Link-Hütte",
+      "opening_hours": "Mo off",
+      "operator": "DAV Deutscher Alpenverein Sektion München",
+      "operator:tenant": "Uwe Gruber, Ute Werner",
+      "outdoor_seating": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+49 8026 71264",
+      "roof:shape": "gabled",
+      "self_service": "no",
+      "shower": "yes",
+      "smoking": "no",
+      "source": "Bing",
+      "start_date": "1939",
+      "toilets": "yes",
+      "toilets:access": "customers",
+      "tourism": "alpine_hut",
+      "website": "https://www.alpenverein-muenchen-oberland.de/huetten/alpenvereinshuetten/albert-link-huette",
+      "wheelchair": "limited",
+      "wikidata": "Q2637448",
+      "wikipedia": "de:Albert-Link-Hütte"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/96257994": {
+    "lat": 47.6480215,
+    "lon": 11.8905974,
+    "demEle": 1034.4,
+    "tags": {
+      "addr:city": "Schliersee",
+      "addr:country": "DE",
+      "addr:housenumber": "1",
+      "addr:place": "Bleckstein",
+      "addr:postcode": "83727",
+      "addr:street": "Bleckstein",
+      "amenity": "restaurant",
+      "brewery": "Herzoglich Bayerisches Brauhaus Tegernsee",
+      "building": "yes",
+      "capacity": "44",
+      "contact:website": "http://www.blecksteinhaus.de/",
+      "diet:lactose_free": "limited",
+      "diet:sugar_free": "limited",
+      "diet:vegan": "no",
+      "diet:vegetarian": "yes",
+      "ele": "1022",
+      "email": "info@blecksteinhaus.com",
+      "fixme": "Auf dem Namensschild außen an der Hütte steht \"Seehöhe 1060 m)",
+      "indoor_seating": "yes",
+      "name": "Blecksteinhaus",
+      "operator": "DAV Sektion Männer Turnverein München",
+      "operator:tenant": "Fam. Majumdar",
+      "outdoor_seating": "yes",
+      "phone": "+49 8026 9246792",
+      "smoking": "no",
+      "source": "Bing",
+      "start_date": "1927",
+      "toilets": "yes",
+      "toilets:access": "customers",
+      "toilets:fee": "no",
+      "toilets:gender_segregated": "yes",
+      "tourism": "alpine_hut",
+      "website": "http://www.blecksteinhaus.de",
+      "wikidata": "Q883386"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/96258180": {
+    "lat": 47.564017050000004,
+    "lon": 11.25979465,
+    "demEle": 1602.4,
+    "tags": {
+      "building": "cabin",
+      "name": "Simetsberg Diensthütte"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/97296499": {
+    "lat": 47.735105700000005,
+    "lon": 11.497615249999999,
+    "demEle": 1201.7,
+    "tags": {
+      "addr:city": "Wackersberg",
+      "addr:country": "DE",
+      "addr:housenumber": "1",
+      "addr:postcode": "83646",
+      "addr:street": "Am Blomberg",
+      "amenity": "restaurant",
+      "brewery": "Hacker-Pschorr",
+      "building": "yes",
+      "contact:website": "https://www.der-blomberg.de/blomberghaus",
+      "cuisine": "regional",
+      "diet:vegetarian": "yes",
+      "ele": "1203",
+      "indoor_seating": "yes",
+      "internet_access": "wlan",
+      "internet_access:fee": "no",
+      "name": "Berggasthof Blomberghaus",
+      "opening_hours": "Tu-Su,PH 09:30-17:00; Mo off",
+      "outdoor_seating": "yes",
+      "rooms:double": "10",
+      "rooms:single": "5",
+      "shower": "yes",
+      "tourism": "alpine_hut"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/97575267": {
+    "lat": 47.65774915,
+    "lon": 11.462431500000001,
+    "demEle": 1326.7,
+    "tags": {
+      "addr:city": "Benediktbeuern",
+      "addr:country": "DE",
+      "addr:housenumber": "9",
+      "addr:postcode": "83671",
+      "addr:street": "Wurzweg",
+      "amenity": "restaurant",
+      "beds": "75",
+      "building": "yes",
+      "building:levels": "1",
+      "building:material": "wood",
+      "capacity": "109",
+      "contact:city": "Kochel am See",
+      "contact:country": "DE",
+      "contact:housenumber": "2",
+      "contact:mobile": "+49 175 1641690",
+      "contact:postcode": "82431",
+      "contact:street": "Am Oberried",
+      "contact:website": "https://tutzinger-huette.de/",
+      "ele": "1327",
+      "electricity": "yes",
+      "email": "kontakt@tutzinger-huette.de",
+      "internet_access": "no",
+      "name": "Tutzinger Hütte",
+      "opening_hours": "May-Oct",
+      "operator": "DAV Sektion Tutzing",
+      "outdoor_seating": "yes",
+      "payment:girocard": "yes",
+      "power_supply": "yes",
+      "reservation": "recommended",
+      "roof:levels": "1",
+      "roof:material": "metal",
+      "rooms": "16",
+      "shower": "yes",
+      "smoking": "no",
+      "start_date": "1908",
+      "tenant": "Thomas Jauernig, Sabine Jauernig, Christine Seemüller",
+      "tourism": "alpine_hut",
+      "website:booking": "https://www.alpsonline.org/reservation/calendar?hut_id=212",
+      "wikidata": "Q2461881",
+      "wikipedia": "de:Tutzinger Hütte",
+      "winter_room": "no"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/97581401": {
+    "lat": 47.663874199999995,
+    "lon": 11.52463385,
+    "demEle": 1540.8,
+    "tags": {
+      "addr:city": "Lenggries",
+      "addr:country": "DE",
+      "addr:housenumber": "1",
+      "addr:place": "Brauneck",
+      "addr:postcode": "83661",
+      "amenity": "restaurant",
+      "building": "yes",
+      "cuisine": "regional;jause",
+      "ele": "1540",
+      "name": "Brauneck-Gipfelhaus",
+      "operator": "DAV Sektion Alpiner Ski-Club",
+      "operator:tenant": "Herwig Pietsch",
+      "outdoor_seating": "yes",
+      "payment:cash": "yes",
+      "phone": "+49 8042 8786",
+      "reservation": "recommended",
+      "smoking": "no",
+      "start_date": "1931",
+      "tourism": "alpine_hut",
+      "website": "https://www.brauneckgipfelhaus.de/",
+      "wikidata": "Q900813",
+      "wikipedia": "de:Brauneck-Gipfelhaus"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/99203628": {
+    "lat": 47.408529099999996,
+    "lon": 10.312959849999999,
+    "demEle": 1264.4,
+    "tags": {
+      "amenity": "restaurant",
+      "building": "retail",
+      "check_date": "2024-06-09",
+      "ele": "1280",
+      "indoor_seating": "yes",
+      "name": "Berggasthof Seealpe",
+      "operator": "Nebelhornbahn AG",
+      "outdoor_seating": "yes",
+      "pasture": "none",
+      "ref:dadlo": "385"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/99318407": {
+    "lat": 47.3373743,
+    "lon": 11.343033599999998,
+    "demEle": 1267.8,
+    "tags": {
+      "addr:city": "Innsbruck",
+      "addr:country": "AT",
+      "addr:housenumber": "1",
+      "addr:postcode": "6020",
+      "addr:street": "Klein-Christen",
+      "alt_name": "Arzler Kristenalm",
+      "building": "yes",
+      "cuisine": "regional",
+      "ele": "1262",
+      "email": "info@moeslalm.tirol",
+      "internet_access": "no",
+      "name": "Möslalm",
+      "operator:tenant": "Alfred Ripfl",
+      "phone": "+43 512 27 57 83",
+      "tourism": "alpine_hut",
+      "website": "https://www.moeslalm.tirol/",
+      "wikidata": "Q1763579",
+      "wikipedia": "de:Möslalm"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/99523239": {
+    "lat": 47.67215415,
+    "lon": 11.58778985,
+    "demEle": 712.9,
+    "tags": {
+      "building": "yes",
+      "historic": "castle",
+      "name": "Schloss Hohenburg",
+      "website": "http://schloss.st-ursula.net/",
+      "wheelchair": "limited",
+      "wikidata": "Q2241603",
+      "wikimedia_commons": "Category:Schloss Hohenburg",
+      "wikipedia": "de:Hohenburg (Lenggries)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/100510700": {
+    "lat": 47.50414595,
+    "lon": 11.4926344,
+    "demEle": 1833.2,
+    "tags": {
+      "addr:city": "Eben am Achensee",
+      "addr:country": "AT",
+      "addr:housenumber": "1",
+      "addr:postcode": "6215",
+      "addr:street": "Hinterriß",
+      "building": "yes",
+      "capacity": "70",
+      "cuisine": "regional",
+      "diet:lactose_free": "yes",
+      "diet:vegan": "yes",
+      "ele": "1825",
+      "electricity": "solar",
+      "email": "info@toelzer-huette.at",
+      "internet_access": "no",
+      "mobile": "+491601450618",
+      "name": "Tölzer Hütte",
+      "opening_hours": "Jun 15-Oct 15",
+      "operator": "DAV Sektion Bad Tölz",
+      "operator:tenant": "Margot Lickert",
+      "phone": "+43 6641801790",
+      "reservation": "required",
+      "shower": "no",
+      "smoking": "no",
+      "tourism": "alpine_hut",
+      "website": "https://www.toelzer-huette.at/",
+      "website:booking": "https://www.alpsonline.org/reservation/calendar?hut_id=163",
+      "wikidata": "Q2464003",
+      "wikipedia": "de:Tölzer Hütte",
+      "winter_room": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/101553587": {
+    "lat": 47.663255449999994,
+    "lon": 11.52684,
+    "demEle": 1494.1,
+    "tags": {
+      "addr:city": "Lenggries",
+      "addr:country": "DE",
+      "addr:housenumber": "2",
+      "addr:postcode": "83661",
+      "addr:street": "Brauneck",
+      "amenity": "restaurant",
+      "building": "yes",
+      "cuisine": "regional",
+      "indoor_seating": "yes",
+      "name": "Panoramarestaurant Brauneck",
+      "opening_hours": "09:00-16:30",
+      "outdoor_seating": "yes",
+      "phone": "+49 8042 501250",
+      "toilets": "yes",
+      "website": "https://panoramarestaurant-brauneck.de/",
+      "wheelchair": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/102542595": {
+    "lat": 47.40887095,
+    "lon": 10.323608100000001,
+    "demEle": 1339.1,
+    "tags": {
+      "amenity": "biergarten",
+      "building": "farm_auxiliary",
+      "check_date": "2024-06-09",
+      "name": "Vordere Seealpe",
+      "note": "Hof der vorderen Seealpe",
+      "operator": "Nebelhornbahn AG",
+      "pasture": "galt",
+      "ref:dadlo": "386.1",
+      "start_date": "1886",
+      "wikidata": "Q131350734"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/109885527": {
+    "lat": 47.67365225,
+    "lon": 11.54281765,
+    "demEle": 913.4,
+    "tags": {
+      "addr:housename": "Reiseralm",
+      "addr:street": "Reiseralm",
+      "air_conditioning": "no",
+      "alt_name": "Reiser Alm",
+      "amenity": "restaurant",
+      "brewery": "Tegernseer",
+      "brewery:Weizenbier": "Klosterbrauerei Reutberg",
+      "building": "yes",
+      "building:colour": "white",
+      "changing_table": "yes",
+      "changing_table:location": "female_toilet",
+      "cuisine": "bavarian",
+      "diet:vegan": "no",
+      "diet:vegetarian": "yes",
+      "ele": "920",
+      "indoor_seating": "yes",
+      "name": "Reiseralm",
+      "opening_hours": "We-Su 10:00-18:00",
+      "outdoor_seating": "terrace",
+      "payment:credit_cards": "no",
+      "payment:debit_cards": "yes",
+      "phone": "+4980428302",
+      "smoking": "outside",
+      "website": "http://www.reiseralm.de/",
+      "wheelchair": "no"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/110224489": {
+    "lat": 47.64785105,
+    "lon": 11.8760118,
+    "demEle": 1316.1,
+    "tags": {
+      "access": "private",
+      "building": "cabin",
+      "drinking_water": "yes",
+      "mattress": "yes",
+      "name": "Untere Haushamer Alm",
+      "operator": "Gehörlose Bergfreunde München",
+      "reservation": "required",
+      "tourism": "wilderness_hut",
+      "website": "https://www.gbf-muenchen.de/kategorie/huette/",
+      "wikidata": "Q41237070",
+      "winter_room": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/110343520": {
+    "lat": 47.67601825,
+    "lon": 11.5541521,
+    "demEle": 713.3,
+    "tags": {
+      "addr:city": "Lenggries",
+      "addr:country": "DE",
+      "addr:housenumber": "29b",
+      "addr:place": "Gilgenhöfe",
+      "addr:postcode": "83661",
+      "amenity": "restaurant",
+      "building": "yes",
+      "check_date": "2024-11-06",
+      "cuisine": "german",
+      "name": "Jaegers",
+      "opening_hours": "Mo-Th 17:30-24:00; Fr-Su,PH 10:00-24:00",
+      "phone": "+49 8042 2239",
+      "website": "https://www.jaegers-grill.de/",
+      "wheelchair": "no"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/111088094": {
+    "lat": 47.7301832,
+    "lon": 12.043831,
+    "demEle": 1142.9,
+    "tags": {
+      "addr:city": "Brannenburg",
+      "addr:postcode": "83098",
+      "amenity": "restaurant",
+      "brewery": "Ayinger",
+      "building": "yes",
+      "capacity": "19",
+      "contact:instagram": "Schuhbraeualm",
+      "contact:website": "http://www.schuhbräu-alm.de",
+      "cuisine": "regional",
+      "description": "Übernachtung nur am Wochenende.",
+      "description:en": "Bed&Breakfast on weekends only",
+      "ele": "1157",
+      "inscription": "Erbaut von Fr. Xaver Wild im Jahr 1898",
+      "name": "Schuhbräualm",
+      "opening_hours": "May-Oct: We-Th 09:00-22:00; May-Oct: Fr 09:00-20:00; May-Oct: Sa,Su,PH 09:00-18:00",
+      "payment:cash": "yes",
+      "phone": "+49 8034 2391",
+      "shower": "no",
+      "source:ele": "label on building",
+      "start_date": "1898",
+      "tourism": "alpine_hut"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/112396026": {
+    "lat": 47.66091705,
+    "lon": 12.0912461,
+    "demEle": 983.0,
+    "tags": {
+      "access": "private",
+      "alt_name": "Schneelahnerhütte",
+      "building": "yes",
+      "description": "Nicht bewirtschaftete Hütte",
+      "ele": "970",
+      "email": "schneelahner@alpenverein-grafing.de",
+      "fee": "yes",
+      "internet_access": "no",
+      "name": "Schneelahner Hütte",
+      "operator": "Deutscher Alpenverein Sektion Grafing",
+      "reservation": "required",
+      "source": "Bing",
+      "source:ele": "GPS",
+      "tourism": "wilderness_hut",
+      "website": "https://www.alpenverein-grafing.de/huetten/schneelahner-huette",
+      "wheelchair": "no"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/116240805": {
+    "lat": 47.5837526,
+    "lon": 10.992460600000001,
+    "demEle": 1540.9,
+    "tags": {
+      "air_conditioning": "no",
+      "alt_name": "Pürschlinghaus",
+      "amenity": "restaurant",
+      "building": "yes",
+      "cuisine": "regional",
+      "diet:halal": "no",
+      "diet:kosher": "no",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "ele": "1564",
+      "email": "mail@august-schuster-haus.de",
+      "indoor_seating": "yes",
+      "name": "August-Schuster-Haus",
+      "note:de": "FIXME: Rauchverbot prüfen",
+      "opening_hours": "Dec-Oct 10:00-18:00; Tu off; Th 10:00-22:00",
+      "opening_hours:kitchen": "Dec-Oct 11:00-16:00; Tu off; Th 11:00-20:00",
+      "operator": "DAV Sektion Bergland",
+      "operator:tenant": "Judith Krabbat",
+      "outdoor_seating": "yes",
+      "payment:cash": "only",
+      "phone": "+49 8822 3567",
+      "smoking": "no",
+      "tourism": "alpine_hut",
+      "website": "https://august-schuster-haus.de",
+      "wheelchair": "no",
+      "wikidata": "Q760644"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/117389463": {
+    "lat": 47.5616909,
+    "lon": 11.27811895,
+    "demEle": 1208.8,
+    "tags": {
+      "building": "cabin",
+      "name": "Tiroler Hütte"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/121789060": {
+    "lat": 46.15722435,
+    "lon": 10.9546275,
+    "demEle": 1503.5,
+    "tags": {
+      "building": "yes",
+      "cuisine": "italian",
+      "ele": "1575",
+      "email": "riflamontanara@virgilio.it",
+      "mobile": "+39 348 7289560",
+      "name": "Rifugio La Montanara",
+      "phone": "+39 0461 585603",
+      "tourism": "alpine_hut",
+      "website": "https://www.rifugiolamontanara.it"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/121940390": {
+    "lat": 47.46746675,
+    "lon": 11.35641075,
+    "demEle": 1394.6,
+    "tags": {
+      "building": "yes",
+      "capacity": "30",
+      "ele": "1407",
+      "electricity": "yes",
+      "email": "toni.gilg@t-online.de",
+      "internet_access": "no",
+      "name": "Krinner-Kofler-Hütte",
+      "note": "Selbstversorgerhütte; Postanschrift: Im Schwarzenfeld 16 ; 82481 Mittenwald",
+      "opening_hours": "Jun-Sep",
+      "operator": "DAV Sektion Mittenwald",
+      "payment:cash": "yes",
+      "phone": "+49 8823 2480",
+      "reservation": "required",
+      "shower": "no",
+      "smoking": "no",
+      "source": "DAV",
+      "start_date": "1952",
+      "tourism": "wilderness_hut",
+      "website": "https://www.krinner-kofler-huette.de/",
+      "wikidata": "Q1789032",
+      "wikipedia": "de:Krinner-Kofler-Hütte",
+      "winter_room": "no"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/122002876": {
+    "lat": 47.67190755,
+    "lon": 11.886515549999999,
+    "demEle": 1130.9,
+    "tags": {
+      "access": "yes",
+      "alt_name": "Firstalm, Brecherspitz",
+      "amenity": "parking",
+      "cost": "5€ per day",
+      "ele": "1127",
+      "fee": "yes",
+      "name": "Spitzingsattel",
+      "parking": "surface",
+      "source:ele": "guidepost",
+      "source:name": "Parkticket"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/123125010": {
+    "lat": 47.387416650000006,
+    "lon": 10.93806305,
+    "demEle": 1105.6,
+    "tags": {
+      "addr:city": "Ehrwald",
+      "addr:country": "AT",
+      "addr:housenumber": "66",
+      "addr:postcode": "6632",
+      "addr:street": "Dr. Ludwig Ganghofer-Straße",
+      "aerialway": "station",
+      "aerialway:station": "bottom",
+      "building": "transportation",
+      "ele": "1108",
+      "height": "9",
+      "name": "Ehrwalder Almbahn Talstation",
+      "public_transport": "station",
+      "roof:levels": "0",
+      "roof:material": "gravel",
+      "roof:shape": "flat",
+      "wheelchair": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/128443556": {
+    "lat": 47.448093,
+    "lon": 11.549532450000001,
+    "demEle": 1024.2,
+    "tags": {
+      "access": "yes",
+      "amenity": "parking",
+      "fee": "no",
+      "name": "P6 Laliderertal",
+      "parking": "surface"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/136652067": {
+    "lat": 47.49219855,
+    "lon": 11.519023650000001,
+    "demEle": 1328.3,
+    "tags": {
+      "building": "shooting_lodge",
+      "name": "Jagdhütte Roßangerl",
+      "tourism": "chalet"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/136892007": {
+    "lat": 47.7021928,
+    "lon": 12.0122523,
+    "demEle": 1712.4,
+    "tags": {
+      "addr:city": "Bayrischzell",
+      "addr:housenumber": "1",
+      "addr:postcode": "83735",
+      "addr:street": "Wendelstein",
+      "amenity": "restaurant",
+      "building": "yes",
+      "construction_year": "1883",
+      "cuisine": "bavarian;regional",
+      "email": "info@wendelsteinhaus.de",
+      "name": "Wendelsteinhaus",
+      "opening_hours": "Oct-May: Mo-Su 09:30-16:00; Jun-Sep: Mo-Su 09:30-17:00",
+      "phone": "+49 8023 404",
+      "source": "Bing",
+      "toilets": "yes",
+      "website": "https://wendelsteinhaus.de/",
+      "wheelchair": "yes",
+      "wikidata": "Q2559057"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/140178107": {
+    "lat": 47.7021765,
+    "lon": 12.013322,
+    "demEle": 1718.5,
+    "tags": {
+      "addr:city": "Brannenburg",
+      "addr:country": "DE",
+      "addr:housenumber": "2",
+      "addr:postcode": "83098",
+      "addr:street": "Wendelstein",
+      "amenity": "place_of_worship",
+      "building": "church",
+      "check_date": "2024-11-02",
+      "denomination": "roman_catholic",
+      "description": "Gottesmutter Maria, der Patrona Bavariae geweiht",
+      "ele": "1740",
+      "name": "Wendelsteinkircherl",
+      "religion": "christian",
+      "source:ele": "gps",
+      "wheelchair": "no",
+      "wikidata": "Q41213882",
+      "wikipedia": "de:Wendelsteinkirche"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/143270539": {
+    "lat": 47.6846643,
+    "lon": 12.005732349999999,
+    "demEle": 993.6,
+    "tags": {
+      "addr:city": "Bayrischzell",
+      "addr:country": "DE",
+      "addr:housenumber": "3",
+      "addr:postcode": "83735",
+      "addr:street": "Hochkreuth",
+      "amenity": "cafe",
+      "building": "yes",
+      "email": "info@siglhof.com",
+      "name": "Bergcafé Siglhof",
+      "opening_hours": "We-Su,PH 10:00-18:00",
+      "operator": "Josef Winlker",
+      "outdoor_seating": "yes",
+      "phone": "+49 8023 679",
+      "tourism": "guest_house",
+      "website": "https://www.siglhof.com/"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/143918895": {
+    "lat": 47.402176049999994,
+    "lon": 11.56704695,
+    "demEle": 1205.7,
+    "tags": {
+      "access": "customers",
+      "amenity": "parking",
+      "capacity:disabled": "2",
+      "fee": "no",
+      "parking": "surface",
+      "wheelchair": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/145033136": {
+    "lat": 43.444770399999996,
+    "lon": 16.6994514,
+    "demEle": 273.4,
+    "tags": {
+      "addr:city": "Omiš",
+      "addr:postcode": "21310",
+      "alt_name": "Fortica",
+      "barrier": "city_wall",
+      "castle_type": "fortress",
+      "fee": "yes",
+      "historic": "castle",
+      "name": "Tvrđava \"Stari grad\"",
+      "name:cs": "Pevnost \"Stari grad\"",
+      "name:de": "Festung \"Stari grad\"",
+      "name:en": "Fort \"Stari grad\"",
+      "ruins": "yes",
+      "tourism": "attraction",
+      "wikidata": "Q7601914"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/147007448": {
+    "lat": 47.656405199999995,
+    "lon": 11.72417265,
+    "demEle": 1190.2,
+    "tags": {
+      "access": "private",
+      "addr:city": "Rottach-Egern",
+      "addr:country": "DE",
+      "addr:postcode": "83700",
+      "building": "cabin",
+      "capacity": "10",
+      "description": "DAV-Selbstversorgerhütte Gründhütte",
+      "ele": "1195",
+      "name": "Gründhütte",
+      "operator": "DAV Sektion München und Oberland",
+      "reservation": "members_only",
+      "tourism": "wilderness_hut",
+      "website": "https://www.alpenverein-muenchen-oberland.de/gruendhuette",
+      "wikidata": "Q112116630",
+      "wikipedia": "de:Gründhütte"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/150573146": {
+    "lat": 48.4827498,
+    "lon": 12.089299650000001,
+    "demEle": 487.2,
+    "tags": {
+      "addr:country": "DE",
+      "addr:housenumber": "9",
+      "addr:street": "Schloßstraße",
+      "building": "yes",
+      "castle_type": "stately",
+      "historic": "castle",
+      "name": "Schloß Ast",
+      "note": "Hausnummernänderung von 4 auf 9 seit 2/2022",
+      "wikidata": "Q41229775"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/154960992": {
+    "lat": 47.3583357,
+    "lon": 10.93463445,
+    "demEle": 1867.5,
+    "tags": {
+      "ele": "1874",
+      "name": "Drachensee",
+      "natural": "water",
+      "source": "GeoImage.at",
+      "water": "lake",
+      "wikidata": "Q21034656"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/165427124": {
+    "lat": 47.7488474,
+    "lon": 11.6924728,
+    "demEle": 869.6,
+    "tags": {
+      "amenity": "restaurant",
+      "building": "yes",
+      "name": "Restaurant Steinberg",
+      "source": "survey"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/168972370": {
+    "lat": 43.4490022,
+    "lon": 16.6696532,
+    "demEle": 351.3,
+    "tags": {
+      "alt_name:hr": "Crkva Svete Marije;Crkva Gospe od Snijega;Crkva Gospe od Sniga;Crkva Gospe na Stomorici",
+      "amenity": "place_of_worship",
+      "building": "church",
+      "denomination": "roman_catholic",
+      "name": "Crkva Gospe Snježne",
+      "name:cs": "Kostel Panny Marie Sněžné",
+      "name:en": "Church of Our Lady of the Snows",
+      "name:hr": "Crkva Gospe Snježne",
+      "name:sk": "Kostol Panny Márie Snežnej",
+      "religion": "christian",
+      "roof:material": "roof_tiles",
+      "roof:shape": "gabled",
+      "website": "https://www.smn.hr/nadbiskupija/44-poljicki-dekanat/474-duce"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/173682244": {
+    "lat": 47.4053143,
+    "lon": 11.0356874,
+    "demEle": 1370.0,
+    "tags": {
+      "addr:city": "Garmisch-Partenkirchen",
+      "addr:country": "DE",
+      "addr:housenumber": "1",
+      "addr:postcode": "82467",
+      "addr:street": "Partenkirchen",
+      "amenity": "restaurant",
+      "building": "yes",
+      "capacity": "110",
+      "check_date": "2025-08-08",
+      "contact:email": "reservierung@reintal.de",
+      "contact:phone": "+49 8821 7089743",
+      "contact:website": "https://www.alpenverein-muenchen-oberland.de/huetten/alpenvereinshuetten/reintalangerhuette/",
+      "cuisine": "regional",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "ele": "1366",
+      "indoor_seating": "yes",
+      "internet_access": "no",
+      "name": "Reintalangerhütte",
+      "operator": "DAV Sektion München",
+      "operator:tenant": "Robert Schmon und Andy Kiechle",
+      "outdoor_seating": "yes",
+      "payment:cards": "no",
+      "payment:cash": "yes",
+      "payment:credit_cards": "no",
+      "payment:debit_cards": "no",
+      "reservation": "yes",
+      "shower": "yes",
+      "smoking": "no",
+      "start_date": "1912",
+      "tourism": "alpine_hut",
+      "website:booking": "https://www.alpsonline.org/reservation/calendar?hut_id=128",
+      "wheelchair": "no",
+      "wikidata": "Q917130",
+      "wikimedia_commons": "Category:Reintalangerhütte",
+      "wikipedia": "de:Reintalangerhütte",
+      "winter_room": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/185528411": {
+    "lat": 48.61229675,
+    "lon": 12.1963693,
+    "demEle": 405.5,
+    "tags": {
+      "addr:city": "Essenbach",
+      "addr:country": "DE",
+      "addr:housenumber": "20",
+      "addr:postcode": "84051",
+      "addr:street": "Schlossstraße",
+      "addr:suburb": "Altheim",
+      "building": "yes",
+      "historic": "castle",
+      "name": "Schloss Mirskofen",
+      "tourism": "attraction",
+      "wheelchair": "no",
+      "wikidata": "Q18630555",
+      "wikipedia": "de:Schloss Mirskofen"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/201223707": {
+    "lat": 27.71493105,
+    "lon": 85.290391,
+    "demEle": 1402.8,
+    "tags": {
+      "amenity": "place_of_worship",
+      "building": "yes",
+      "building:colour": "#fcecc0",
+      "building:levels": "1",
+      "height": "12",
+      "historic": "yes",
+      "man_made": "tower",
+      "name": "Swayambhunath",
+      "name:ne": "स्वयंभुनाथ",
+      "name:new": "स्वयंभु",
+      "note": "tourists may call it monkey temple, but that's not a name.",
+      "religion": "buddhist",
+      "roof:colour": "white",
+      "roof:height": "11",
+      "roof:shape": "dome",
+      "tower:type": "stupa",
+      "wikipedia": "en:Swayambhunath"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/206436034": {
+    "lat": 47.460694399999994,
+    "lon": 10.20587985,
+    "demEle": 1520.3,
+    "tags": {
+      "aerialway": "station",
+      "building": "yes",
+      "ele": "1540",
+      "layer": "1",
+      "name": "Hörnerbahn Bergstation",
+      "public_transport": "station"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/219995240": {
+    "lat": 28.4190411,
+    "lon": 83.81774175000001,
+    "demEle": 2197.6,
+    "tags": {
+      "building": "yes",
+      "description": "Guesthouse",
+      "name": "Lucky Guest House and Restaurant",
+      "nohousenumber": "yes",
+      "phone": "9746068008, 9846054685",
+      "shower": "hot",
+      "tourism": "hotel"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/220070602": {
+    "lat": 47.694436100000004,
+    "lon": 12.012636050000001,
+    "demEle": 1348.2,
+    "tags": {
+      "access": "private",
+      "building": "hut",
+      "capacity": "14",
+      "contact:phone": "+49 89 290709-0",
+      "contact:website": "https://www.alpenverein-muenchen-oberland.de/siglhuette",
+      "description": "DAV-Selbstversorgerhütte, wegen Baumaßnahme bis auf Weiteres geschlossen, siehe Website.",
+      "ele": "1334",
+      "name": "Siglhütte",
+      "operator": "DAV Sektion München und Oberland",
+      "reservation": "members_only",
+      "tourism": "wilderness_hut",
+      "website": "https://www.alpenverein-muenchen-oberland.de/siglhuette#horizontalTab3"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/221601969": {
+    "lat": 47.557548249999996,
+    "lon": 10.7495224,
+    "demEle": 963.9,
+    "tags": {
+      "architect": "Christian Jank;Eduard Riedel;Georg Dollmann;Julius Hofmann",
+      "BLfD:criteria": "Baudenkmal",
+      "castle_type": "stately",
+      "contact:fax": "+49 8362 93988-19",
+      "contact:phone": "+49 8362 93988-0",
+      "contact:website": "https://www.neuschwanstein.de/",
+      "description": "Besichtigung der Gebäude und des Innenhofs nur im Rahmen einer Führung. Tickets online: www.hohenschwangau.de oder im Ticketshop unten im Ort. Kein Ticketverkauf am Schloss.",
+      "description:en": "Visiting the buildings and the court is only possible as a part of a guided tour. Tickets for the tour are available online: www.hohenschwangau.de or in the village at Ticket Center Hohenschwangau. Tickets can not be bought at the castle.",
+      "heritage": "4",
+      "heritage:operator": "BLfD",
+      "historic": "castle",
+      "image": "https://commons.wikimedia.org/wiki/File:Schloss_Neuschwanstein_2013.jpg",
+      "importance": "international",
+      "internet_access": "wlan",
+      "internet_access:fee": "no",
+      "landmark": "16",
+      "name": "Schloss Neuschwanstein",
+      "name:ar": "قصر نويشفانشتاين",
+      "name:be": "Замак Нойшванштайн",
+      "name:en": "Neuschwanstein Castle",
+      "name:es": "Castillo del Rey Loco",
+      "name:fr": "Château de Neuschwanstein",
+      "name:hu": "Neuschwanstein kastély",
+      "name:it": "Castello di Neuschwanstein",
+      "name:ja": "ノイシュヴァンシュタイン城",
+      "name:ja-Hira": "ノイシュヴァンシュタインじょう",
+      "name:nl": "Slot Neuschwanstein",
+      "name:ru": "Замок Нойшванштайн",
+      "name:zh": "新天鹅堡",
+      "note": "World Heritage Site: see https://www.openstreetmap.org/relation/19349144",
+      "opening_hours": "Apr 01-Oct 15: Mo-Su,PH 09:00-18:00; Oct 16-Mar 31: Mo-Su,PH 10:00-16:00; Jan 01,Dec 24,25,31 closed",
+      "ref:BLfD": "D-7-77-169-33",
+      "reservation": "required",
+      "start_date": "1868-1892",
+      "TMC:cid_58:tabcd_1:Class": "Area",
+      "TMC:cid_58:tabcd_1:LCLversion": "9.00",
+      "TMC:cid_58:tabcd_1:LocationCode": "31451",
+      "toilets:wheelchair": "yes",
+      "tourism": "attraction",
+      "wheelchair": "limited",
+      "wheelchair:description": "Guided tour for wheelchair users once a week, reservation mandatory. Call for info. Accessible toilet available.",
+      "wikidata": "Q4152",
+      "wikimedia_commons": "Category:Exterior of Neuschwanstein Castle",
+      "wikipedia": "de:Schloss Neuschwanstein"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/222472784": {
+    "lat": 47.6772599,
+    "lon": 11.932213149999999,
+    "demEle": 1327.5,
+    "tags": {
+      "amenity": "restaurant",
+      "building": "yes",
+      "diet:halal": "no",
+      "diet:kosher": "no",
+      "diet:vegan": "no",
+      "diet:vegetarian": "yes",
+      "name": "Geitauer Alm",
+      "opening_hours": "Mo-Su,PH 10:00-17:00",
+      "payment:credit_cards": "no",
+      "payment:debit_cards": "no"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/236047957": {
+    "lat": 47.42107185,
+    "lon": 10.98489115,
+    "demEle": 2939.6,
+    "tags": {
+      "addr:city": "Garmisch-Partenkirchen",
+      "addr:country": "DE",
+      "addr:housename": "Schneefernerhaus",
+      "addr:housenumber": "1",
+      "addr:place": "Zugspitze",
+      "addr:postcode": "82475",
+      "amenity": "restaurant",
+      "building": "hut",
+      "ele": "2959",
+      "layer": "1",
+      "name": "Münchner Haus",
+      "name:ja": "ミュンヒナー・ハウス",
+      "note": "Don't move, Bing isn't accurate here!",
+      "operator": "DAV Sektion München",
+      "phone": "+49 8821 2901",
+      "ref:refuges.info": "8951",
+      "shower": "no",
+      "tourism": "alpine_hut",
+      "website": "https://www.alpenverein-muenchen-oberland.de/huetten/alpenvereinshuetten/muenchner-haus",
+      "website:booking": "https://www.alpsonline.org/reservation/calendar?hut_id=150",
+      "wikidata": "Q16444"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/237035038": {
+    "lat": 47.38490285,
+    "lon": 10.968359450000001,
+    "demEle": 1498.3,
+    "tags": {
+      "addr:city": "Ehrwald",
+      "addr:country": "AT",
+      "addr:housenumber": "3",
+      "addr:place": "Ehrwalder Alm",
+      "addr:postcode": "6632",
+      "addr:street": "Ehrwalder Alm",
+      "at_bev:addr_date": "2017-10-01",
+      "building": "yes",
+      "ele": "1502",
+      "name": "Gasthof Ehrwalder Alm",
+      "phone": "+43567340505",
+      "shower": "yes",
+      "source": "local knowledge",
+      "tourism": "alpine_hut",
+      "website": "https://www.ehrwalderalm.at"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/238463222": {
+    "lat": 47.9108155,
+    "lon": 11.2780697,
+    "demEle": 603.0,
+    "tags": {
+      "amenity": "place_of_worship",
+      "building": "church",
+      "check_date": "2026-05-27",
+      "denomination": "catholic",
+      "name": "St. Joseph",
+      "religion": "christian",
+      "service_times": "Th 19:00; Apr-Oct: Sa 19:00; Nov-Mar: Sa 18:00; Su 08:30, 10:30",
+      "start_date": "1929",
+      "website": "http://www.st-joseph-tutzing.de/st-joseph/",
+      "wheelchair": "yes",
+      "wikidata": "Q41258184",
+      "wikipedia": "de:St. Joseph (Tutzing)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/258604435": {
+    "lat": 43.454262099999994,
+    "lon": 16.679570849999998,
+    "demEle": 221.1,
+    "tags": {
+      "amenity": "place_of_worship",
+      "building": "church",
+      "name": "Crkva sv. Ante",
+      "religion": "christian",
+      "roof:material": "roof_tiles",
+      "roof:shape": "gabled"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/261950928": {
+    "lat": 47.94418245,
+    "lon": 11.25796025,
+    "demEle": 666.8,
+    "tags": {
+      "addr:city": "Tutzing",
+      "addr:housenumber": "2",
+      "addr:postcode": "82327",
+      "addr:street": "Pfarrweg",
+      "amenity": "place_of_worship",
+      "building": "church",
+      "denomination": "roman_catholic",
+      "name": "Mariä Geburt",
+      "religion": "christian",
+      "wikidata": "Q41258292",
+      "wikipedia": "de:Mariä Geburt (Traubing)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/313172002": {
+    "lat": 47.4913995,
+    "lon": 11.2138734,
+    "demEle": 923.8,
+    "tags": {
+      "amenity": "place_of_worship",
+      "building": "chapel",
+      "building:levels": "2",
+      "name": "Kapelle Gerold",
+      "religion": "christian",
+      "roof:shape": "gabled"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/350865285": {
+    "lat": 28.4698693,
+    "lon": 83.86964234999999,
+    "demEle": 2511.0,
+    "tags": {
+      "building": "yes",
+      "internet_access": "wlan",
+      "name": "Dovan Guest House",
+      "tourism": "guest_house"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/365253728": {
+    "lat": 32.7836315,
+    "lon": -16.90618585,
+    "demEle": 889.6,
+    "tags": {
+      "amenity": "cafe",
+      "building": "yes",
+      "building:levels": "1",
+      "diet:vegan": "no",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "outdoor_seating": "yes",
+      "payment:cash": "only",
+      "payment:credit_cards": "no",
+      "roof:levels": "1",
+      "roof:material": "thatch",
+      "roof:shape": "gabled",
+      "smoking": "outside",
+      "toilets": "no",
+      "wheelchair": "no"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/368450363": {
+    "lat": 48.95441725,
+    "lon": 11.731912900000001,
+    "demEle": 382.9,
+    "local": {
+      "visited": "yes"
+    },
+    "tags": {
+      "climbing": "crag",
+      "name": "Prunner Turm",
+      "natural": "cliff",
+      "sport": "climbing"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/368450369": {
+    "lat": 48.95414935,
+    "lon": 11.7326775,
+    "demEle": 391.6,
+    "local": {
+      "visited": "yes"
+    },
+    "tags": {
+      "climbing": "crag",
+      "name": "Prunner Wand",
+      "natural": "cliff",
+      "sport": "climbing"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/370669072": {
+    "lat": 47.437941949999995,
+    "lon": 11.0251844,
+    "demEle": 1389.0,
+    "tags": {
+      "amenity": "restaurant",
+      "building": "yes",
+      "ele": "1387",
+      "name": "Höllentalangerhütte",
+      "opening_hours": "Mo-Su,PH 11:00-20:00",
+      "operator": "DAV Sektion München",
+      "operator:tenant": "Silvia Reichhold und Thomas Auer",
+      "payment:cash": "yes",
+      "payment:ep_geldkarte": "no",
+      "phone": "+49 8821 9438548",
+      "power_supply": "yes",
+      "shower": "yes",
+      "tourism": "alpine_hut",
+      "website": "http://www.hoellentalangerhuette.de/",
+      "website:booking": "https://www.alpsonline.org/reservation/calendar?hut_id=73",
+      "wikidata": "Q183323",
+      "wikimedia_commons": "Category:Höllentalangerhütte",
+      "wikipedia": "de:Höllentalangerhütte"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/373662966": {
+    "lat": 47.9480791,
+    "lon": 11.22103735,
+    "demEle": 707.1,
+    "tags": {
+      "amenity": "place_of_worship",
+      "building": "church",
+      "name": "Unsere Liebe Frau",
+      "religion": "christian",
+      "website": "https://www.pg-andechs.de/marienkirche_machtlfing.html",
+      "wikidata": "Q41257652",
+      "wikimedia_commons": "Category:Unsere Liebe Frau (Machtlfing)",
+      "wikipedia": "de:Unsere Liebe Frau (Machtlfing)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/378435526": {
+    "lat": 47.719552199999995,
+    "lon": 11.70632305,
+    "demEle": 812.6,
+    "tags": {
+      "access": "yes",
+      "amenity": "parking",
+      "fee": "no",
+      "parking": "surface",
+      "supervised": "no"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/378630219": {
+    "lat": 47.7058514,
+    "lon": 11.8748888,
+    "demEle": 808.6,
+    "tags": {
+      "access": "yes",
+      "amenity": "parking",
+      "capacity": "50",
+      "description": "Neuhaus Bahnhof - P&R",
+      "fee": "yes",
+      "parking": "surface",
+      "park_ride": "yes"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/430957208": {
+    "lat": 47.387552299999996,
+    "lon": 10.9392071,
+    "demEle": 1120.6,
+    "tags": {
+      "addr:city": "Ehrwald",
+      "addr:country": "AT",
+      "addr:housenumber": "68",
+      "addr:postcode": "6632",
+      "addr:street": "Dr. Ludwig Ganghofer-Straße",
+      "amenity": "restaurant",
+      "at_bev:addr_date": "2017-10-01",
+      "building": "yes",
+      "building:material": "wood",
+      "cuisine": "regional",
+      "email": "info@brentalm.at",
+      "fax": "+43 5673 22 08-440",
+      "height": "5",
+      "indoor_seating": "yes",
+      "name": "BrentAlm",
+      "operator": "Platzhirsch GmbH",
+      "outdoor_seating": "yes",
+      "phone": "+43567320116",
+      "roof:colour": "#333333",
+      "roof:height": "2",
+      "roof:material": "metal",
+      "roof:shape": "crosspitched",
+      "smoking": "no",
+      "website": "https://www.brentalm.at/",
+      "wheelchair": "limited"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/541645987": {
+    "lat": 28.42205285,
+    "lon": 83.81707804999999,
+    "demEle": 2091.6,
+    "tags": {
+      "amenity": "place_of_worship",
+      "building": "yes",
+      "name": "Gumba"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/627403025": {
+    "lat": 47.38284615,
+    "lon": 10.967648,
+    "demEle": 1479.4,
+    "tags": {
+      "aerialway": "station",
+      "aerialway:station": "bottom",
+      "building": "yes",
+      "name": "Isentalkopfbahn"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/843412150": {
+    "lat": 47.57162555,
+    "lon": 10.960763499999999,
+    "demEle": 955.4,
+    "tags": {
+      "alt_name": "Linderhof",
+      "building": "yes",
+      "building:architecture": "historicism",
+      "castle_type": "palace",
+      "castle_type:de": "schloss",
+      "historic": "castle",
+      "name": "Schloss Linderhof",
+      "name:ar": "قصر ليندرهوف",
+      "name:be": "Замак Ліндерхоф",
+      "name:bg": "Замък Линдерхоф",
+      "name:cs": "Zámek Linderhof",
+      "name:da": "Linderhof Slot",
+      "name:de": "Schloss Linderhof",
+      "name:en": "Linderhof Palace",
+      "name:fa": "کاخ لیندرهوف",
+      "name:fr": "Château de Linderhof",
+      "name:he": "טירת לינדרהוף",
+      "name:hi": "लिंडरहोफ कैसल",
+      "name:it": "Castello di Linderhof",
+      "name:ja": "リンダーホーフ城",
+      "name:nl": "Slot Linderhof",
+      "name:pl": "Pałac Linderhof",
+      "name:pt": "Palácio de Linderhof",
+      "name:ro": "Castelul Linderhof",
+      "name:ru": "Дворец Линдерхоф",
+      "name:sl": "Dvorec Linderhof",
+      "name:sv": "Slottet Linderhof",
+      "name:tr": "Kale Linderhof",
+      "name:zh": "林德霍夫宫",
+      "note": "World Heritage Site: see https://www.openstreetmap.org/relation/19349144",
+      "opening_hours": "Apr 01-Oct 15 Mo-Su,PH 09:00-18:00; Oct 16-Mar 31 Mo-Su,PH 10:00-16:30; Jan 01 off; Dec 24,Dec 25,Dec 31 off; easter -47 days off",
+      "tourism": "attraction",
+      "website": "https://schlosslinderhof.de/",
+      "wheelchair": "no",
+      "wikidata": "Q162052",
+      "wikimedia_commons": "Category:Exteriors of Schloss Linderhof",
+      "wikipedia": "de:Schloss Linderhof"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/909747952": {
+    "lat": 47.6408574,
+    "lon": 11.7855904,
+    "demEle": 1586.6,
+    "tags": {
+      "amenity": "shelter",
+      "bench": "yes",
+      "bin": "no",
+      "ele": "1595",
+      "name": "Gams-Beobachtungspunkt",
+      "shelter_type": "weather_shelter"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/913170315": {
+    "lat": 27.71046465,
+    "lon": 85.3486653,
+    "demEle": 1313.3,
+    "tags": {
+      "amenity": "place_of_worship",
+      "building": "temple",
+      "height": "6",
+      "heritage:operator": "whc",
+      "heritage:website": "https://whc.unesco.org/en/list/121",
+      "name": "पशुपतीनाथ",
+      "name:en": "Pashupatinath Temple",
+      "ref:whc": "121",
+      "religion": "hindu",
+      "whc:criteria": "(iii)(iv)(vi)",
+      "whc:inscription_date": "1979"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/1030463554": {
+    "lat": 47.61767015,
+    "lon": 11.3455517,
+    "demEle": 809.9,
+    "tags": {
+      "access": "yes",
+      "amenity": "parking",
+      "capacity": "10",
+      "fee": "no",
+      "parking": "surface",
+      "surface": "asphalt"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/1147768588": {
+    "lat": 47.481977099999995,
+    "lon": 11.2386854,
+    "demEle": 938.9,
+    "tags": {
+      "amenity": "place_of_worship",
+      "building": "chapel",
+      "denomination": "roman_catholic",
+      "historic": "chapel",
+      "name": "Klaiser Kapelle",
+      "religion": "christian",
+      "wikidata": "Q41218008",
+      "wikipedia": "de:Kapelle Klais"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/1226405162": {
+    "lat": 28.42876485,
+    "lon": 83.83045465000001,
+    "demEle": 2104.3,
+    "tags": {
+      "building": "yes",
+      "fee": "yes",
+      "internet_access": "yes",
+      "name": "Namaste Buddha Lodge",
+      "tourism": "alpine_hut"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/1237496868": {
+    "lat": 28.47886625,
+    "lon": 83.88503475,
+    "demEle": 2719.7,
+    "tags": {
+      "alt_name:en": "Shakti Pitha",
+      "amenity": "place_of_worship",
+      "building": "temple",
+      "name:en": "Pojenhyam Baraha Than Temple",
+      "religion": "buddhist"
+    },
+    "fetched": "2026-10-26"
+  },
+  "way/1414600808": {
+    "lat": 27.7049025,
+    "lon": 85.30795739999999,
+    "demEle": 1313.2,
+    "tags": {
+      "amenity": "place_of_worship",
+      "building": "yes",
+      "building:colour": "brown",
+      "height": "0.5",
+      "name": "Taleju Temple",
+      "religion": "hindu",
+      "roof:colour": "brown",
+      "wikidata": "Q83776242",
+      "wikipedia": "en:Taleju Temple, Kathmandu"
+    },
+    "fetched": "2026-10-26"
+  },
+  "relation/1207420": {
+    "lat": 47.97445055,
+    "lon": 11.182951500000001,
+    "demEle": 709.3,
+    "tags": {
+      "building": "yes",
+      "contact:website": "https://www.andechs.de/",
+      "name": "Kloster Andechs",
+      "type": "multipolygon",
+      "wikidata": "Q259971",
+      "wikipedia": "de:Kloster Andechs"
+    },
+    "fetched": "2026-10-26"
+  },
+  "relation/1802818": {
+    "lat": 48.902455950000004,
+    "lon": 12.1796922,
+    "demEle": 391.4,
+    "tags": {
+      "addr:city": "Thalmassing",
+      "addr:country": "DE",
+      "addr:housenumber": "1",
+      "addr:postcode": "93107",
+      "addr:street": "Neueglofsheim",
+      "building": "yes",
+      "heritage": "4",
+      "heritage:operator": "BLfD",
+      "historic": "castle",
+      "name": "Schloss Haus",
+      "ref:BLfD": "D-3-75-205-8",
+      "source": "bing",
+      "type": "multipolygon",
+      "wikidata": "Q2241466",
+      "wikipedia": "de:Schloss Haus (Neueglofsheim)"
+    },
+    "fetched": "2026-10-26"
+  },
+  "relation/1837410": {
+    "lat": 47.5809718,
+    "lon": 12.16867555,
+    "demEle": 532.1,
+    "tags": {
+      "castle_type": "fortress",
+      "castle_type:de": "festung",
+      "heritage": "2",
+      "heritage:operator": "bda",
+      "historic": "castle",
+      "layer": "3",
+      "name": "Festung Kufstein",
+      "ref": "Festung Kufstein",
+      "ref:at:bda": "39645",
+      "start_date": "1205",
+      "tourism": "attraction",
+      "type": "multipolygon",
+      "wheelchair": "no",
+      "wikidata": "Q700709",
+      "wikimedia_commons": "Category:Festung_Kufstein",
+      "wikipedia": "de:Festung Kufstein"
+    },
+    "fetched": "2026-10-26"
+  },
+  "relation/1965417": {
+    "lat": 48.4925973,
+    "lon": 12.03913005,
+    "demEle": 437.0,
+    "tags": {
+      "addr:city": "Eching",
+      "addr:housenumber": "4",
+      "addr:street": "Schloßstraße",
+      "building": "yes",
+      "historic": "castle",
+      "name": "Schloss Kronwinkl",
+      "type": "multipolygon",
+      "wikidata": "Q2241958",
+      "wikimedia_commons": "Category:Schloss Kronwinkl"
+    },
+    "fetched": "2026-10-26"
+  },
+  "relation/3190662": {
+    "lat": 48.73734105,
+    "lon": 12.190167550000002,
+    "demEle": 400.7,
+    "tags": {
+      "addr:city": "Neufahrn in Niederbayern",
+      "addr:country": "DE",
+      "addr:housenumber": "2",
+      "addr:postcode": "84088",
+      "addr:street": "Schloßweg",
+      "building": "yes",
+      "heritage": "4",
+      "heritage:operator": "BLfD",
+      "historic": "castle",
+      "image": "https://commons.wikimedia.org/wiki/File:Schloss_Neufahrn.JPG",
+      "name": "Schlosshotel Neufahrn",
+      "ref:BLfD": "D-2-74-153-2",
+      "type": "multipolygon",
+      "wikidata": "Q17488753",
+      "wikimedia_commons": "Category:Schloss Neufahrn in Niederbayern",
+      "wikipedia": "de:Schloss Neufahrn"
+    },
+    "fetched": "2026-10-26"
+  }
+}

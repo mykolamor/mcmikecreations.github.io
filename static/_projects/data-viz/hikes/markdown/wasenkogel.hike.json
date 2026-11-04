@@ -21,140 +21,7 @@
     [11.7349962, 47.7496082]
   ],
   "places": ["marienstein"],
-  "nodes": [
-    {
-      "id": 2607182341,
-      "lat": 47.7288407,
-      "lon": 11.6905672,
-      "demEle": 1215.7,
-      "tags": {
-        "name": "Wasenkogel",
-        "natural": "peak",
-        "ele": "1211"
-      }
-    },
-    {
-      "id": 2597722489,
-      "lat": 47.7284036,
-      "lon": 11.6804520,
-      "demEle": 1264.8,
-      "tags": {
-        "name": "Nesselscheibe",
-        "natural": "peak",
-        "ele": "1258",
-        "wikidata": "Q16854886",
-        "wikipedia": "de:Nesselscheibe"
-      }
-    },
-    {
-      "id": 1638504578,
-      "lat": 47.7312885,
-      "lon": 11.6682092,
-      "demEle": 1213.8,
-      "tags": {
-        "natural": "peak",
-        "ele": "1212",
-        "visited": "missing"
-      }
-    },
-    {
-      "id": 1272834691,
-      "lat": 47.7313486,
-      "lon": 11.6570780,
-      "demEle": 1078.4,
-      "tags": {
-        "name": "Gefällberg",
-        "natural": "peak",
-        "ele": "1070",
-        "summit:cross": "no",
-        "wikidata": "Q31545349",
-        "wikipedia": "de:Gefällberg"
-      }
-    },
-    {
-      "id": 1272834694,
-      "lat": 47.7490516,
-      "lon": 11.6502786,
-      "demEle": 890.2,
-      "tags": {
-        "name": "Platten",
-        "natural": "peak",
-        "ele": "879",
-        "summit:cross": "no",
-        "wikidata": "Q236127",
-        "wikipedia": "de:Platten"
-      }
-    },
-    {
-      "id": 356022809,
-      "lat": 47.7498374,
-      "lon": 11.6839371,
-      "demEle": 808.5,
-      "tags": {
-        "name": "Marienstein",
-        "place": "hamlet",
-        "ele": "807",
-        "wikidata": "Q956430",
-        "wikipedia": "de:Marienstein (Waakirchen)"
-      }
-    },
-    {
-      "id": 1223715722,
-      "lat": 47.7445866,
-      "lon": 11.7131921,
-      "demEle": 833.5,
-      "tags": {
-        "name": "Hainzenhöhe",
-        "natural": "peak",
-        "ele": "833"
-      }
-    },
-    {
-      "id": 1200501391,
-      "lat": 47.7478702,
-      "lon": 11.7178535,
-      "demEle": 854.0,
-      "tags": {
-        "name": "Kaltenbrunner Eck",
-        "natural": "peak",
-        "ele": "842"
-      }
-    },
-    {
-      "id": 378435526,
-      "lat": 47.7196666,
-      "lon": 11.7065722,
-      "demEle": 808.5,
-      "tags": {
-        "name": "Breitenbachtal parking",
-        "access": "yes",
-        "amenity": "parking",
-        "fee": "no",
-        "parking": "surface",
-        "supervised": "no"
-      }
-    },
-    {
-      "id": 165427124,
-      "lat": 47.7489248,
-      "lon": 11.6922621,
-      "demEle": 870.9,
-      "tags": {
-        "name": "Restaurant Steinberg",
-        "amenity": "restaurant",
-        "building": "yes"
-      }
-    },
-    {
-      "id": 5741212084,
-      "lat": 47.7272436,
-      "lon": 11.6876825,
-      "demEle": 1172.7,
-      "tags": {
-        "natural": "spring"
-      }
-    }
-  ],
+  "nodes": ["node/2607182341", "node/2597722489", "node/1638504578", "node/1272834691", "node/1272834694", "node/356022809", "node/1223715722", "node/1200501391", "way/378435526", "way/165427124", "node/5741212084"],
   "facts": {
     "summary": {
       "en": "A long hike across low summits west of Gmund over mountains mostly used in forestry.",
@@ -165,70 +32,6 @@
         "en": "T3 for the steep section from Gefällberg (1070 m) to the road; T2 for everything else.",
         "de": "T3 für den steilen Abschnitt vom Gefällberg (1070 m) bis zur Straße; T2 für alles andere."
       },
-      "sections": [
-        {
-          "to": {
-            "node": 1638504578,
-            "name": {
-              "en": "Unnamed hill",
-              "de": "Unbenannter Hügel"
-            }
-          },
-          "sac": "T2",
-          "note": {
-            "en": "Forest roads, dirt trails.",
-            "de": "Forststraßen, Schotterwege."
-          }
-        },
-        {
-          "from": {
-            "node": 1638504578,
-            "name": {
-              "en": "Unnamed hill",
-              "de": "Unbenannter Hügel"
-            }
-          },
-          "to": {
-            "lat": 47.7282882,
-            "lon": 11.656818,
-            "demEle": 943.3,
-            "name": {
-              "en": "Forestry track",
-              "de": "Forststraße"
-            }
-          },
-          "sac": "T3",
-          "note": {
-            "en": "Short secured passage before the gate.",
-            "de": "Kurze versicherte Passage vor dem Gatterl."
-          }
-        },
-        {
-          "from": {
-            "lat": 47.7282882,
-            "lon": 11.656818,
-            "demEle": 943.3,
-            "name": {
-              "en": "Forestry track",
-              "de": "Forststraße"
-            }
-          },
-          "to": {
-            "lat": 47.7515947,
-            "lon": 11.7205706,
-            "demEle": 784.0,
-            "name": {
-              "en": "Dirt path ending at the parking lot",
-              "de": "Schotterweg endet am Parkplatz"
-            }
-          },
-          "sac": "T1-T2",
-          "note": {
-            "en": "Forestry track occasionally interrupted by trails",
-            "de": "Forststraße gelegentlich unterbrochen von Wanderwegen"
-          }
-        }
-      ],
       "fitness": 3
     },
     "season": {
@@ -286,7 +89,7 @@
             "de": "Gefällberg"
           },
           "from": {
-            "node": 1638504578,
+            "ref": "node/1638504578",
             "name": {
               "en": "Unnamed hill",
               "de": "Unbenannter Hügel"
@@ -330,7 +133,7 @@
       {
         "kind": "overgrown",
         "from": {
-          "node": 1638504578,
+          "ref": "node/1638504578",
           "name": {
             "en": "Unnamed hill",
             "de": "Unbenannter Hügel"
@@ -375,7 +178,7 @@
       },
       {
         "at": {
-          "node": 1638504578
+          "ref": "node/1638504578"
         },
         "to": {
           "en": "Towards Gmund through forestry roads",
@@ -393,7 +196,7 @@
     "water": [
       {
         "at": {
-          "node": 5741212084,
+          "ref": "node/5741212084",
           "name": {
             "en": "Spring",
             "de": "Quelle"
@@ -501,7 +304,7 @@
             "en": "Breitenbachtal parking",
             "de": "Parkplatz Breitenbachtal"
           },
-          "at": "Breitenbachtal parking",
+          "at": {"ref": "way/378435526", "name": "Breitenbachtal parking"},
           "size": "small",
           "fills": "weekends",
           "checked": "2026-10-04"
@@ -530,7 +333,7 @@
       },
       {
         "to": {
-          "node": 1638504578,
+          "ref": "node/1638504578",
           "name": {
             "en": "Unnamed hill",
             "de": "Unbenannter Hügel"
@@ -575,9 +378,77 @@
             "de": "Schotterweg endet am Parkplatz"
           }
         },
-        "terrain": ["forest-road","path","road"],
+        "terrain": ["forest-road", "path", "road"],
         "sac": "T1-T2",
         "marking": "good"
+      },
+      {
+        "to": {
+          "ref": "node/1638504578",
+          "name": {
+            "en": "Unnamed hill",
+            "de": "Unbenannter Hügel"
+          }
+        },
+        "sac": "T2",
+        "note": {
+          "en": "Forest roads, dirt trails.",
+          "de": "Forststraßen, Schotterwege."
+        },
+        "inTable": false,
+        "onProfile": true
+      },
+      {
+        "from": {
+          "ref": "node/1638504578",
+          "name": {
+            "en": "Unnamed hill",
+            "de": "Unbenannter Hügel"
+          }
+        },
+        "to": {
+          "lat": 47.7282882,
+          "lon": 11.656818,
+          "demEle": 943.3,
+          "name": {
+            "en": "Forestry track",
+            "de": "Forststraße"
+          }
+        },
+        "sac": "T3",
+        "note": {
+          "en": "Short secured passage before the gate.",
+          "de": "Kurze versicherte Passage vor dem Gatterl."
+        },
+        "inTable": false,
+        "onProfile": true
+      },
+      {
+        "from": {
+          "lat": 47.7282882,
+          "lon": 11.656818,
+          "demEle": 943.3,
+          "name": {
+            "en": "Forestry track",
+            "de": "Forststraße"
+          }
+        },
+        "to": {
+          "lat": 47.7515947,
+          "lon": 11.7205706,
+          "demEle": 784.0,
+          "name": {
+            "en": "Dirt path ending at the parking lot",
+            "de": "Schotterweg endet am Parkplatz"
+          }
+        },
+        "sac": "T1-T2",
+        "note": {
+          "en": "Forestry track occasionally interrupted by trails",
+          "de": "Forststraße gelegentlich unterbrochen von Wanderwegen"
+        },
+        "inTable": false,
+        "onProfile": true
       }
     ],
     "plan": {

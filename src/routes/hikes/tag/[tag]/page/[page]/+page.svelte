@@ -3,9 +3,10 @@
 	import type { PageData } from './$types';
 	import HikeTagPage from '../../../../components/HikeTagPage.svelte';
 	import HikeJsonLd from '../../../../components/HikeJsonLd.svelte';
-	import { hikesTagTitle, hikesTagDescription } from '$lib/hikes/hikes-meta';
+	import { hikesTagTitle, hikesTagDescription, tagLabel } from '$lib/hikes/hikes-meta';
 	import resume from '$lib/data/resume.json';
 	import AppBreadcrumbs from '$lib/components/AppBreadcrumbs.svelte';
+	import { t } from '$lib/i18n/strings';
 
     interface Props {
         data: PageData;
@@ -23,14 +24,14 @@
 	description={hikesTagDescription(tag, pagination.currentPage)}
 	type="website"
 	article-author={resume.basics.name}
-	article-section="Hikes"
+	article-section={t('en', 'meta.section')}
 />
 <HikeJsonLd variant="tag" {tag} {posts} currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
 <AppBreadcrumbs items={[
-	{ name: 'Home', href: '/' },
-	{ name: 'Hikes', href: '/hikes/' },
-	{ name: tag, href: `/hikes/tag/${encodeURIComponent(tag)}/` },
-	{ name: `Page ${pagination.currentPage}` }
+	{ name: t('en', 'nav.home'), href: '/' },
+	{ name: t('en', 'nav.hikes'), href: '/hikes/' },
+	{ name: tagLabel('en', tag), href: `/hikes/tag/${encodeURIComponent(tag)}/` },
+	{ name: t('en', 'nav.page', { page: pagination.currentPage }) }
 ]} />
 
 <HikeTagPage {posts} {pagination} {showPeople} {tag} />

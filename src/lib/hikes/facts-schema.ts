@@ -11,8 +11,9 @@
  * Framework-free and browser-safe.
  */
 
-export const LANGS = ['en', 'de'] as const;
-export type Lang = (typeof LANGS)[number];
+import type { Lang } from '../i18n/languages';
+
+export { LANGS, type Lang } from '../i18n/languages';
 
 export const LEVEL4 = ['none', 'low', 'moderate', 'high'] as const;
 export const SEVERITIES = ['low', 'medium', 'high'] as const;
@@ -123,8 +124,8 @@ export type EnumGroup = keyof typeof ENUMS;
 
 type Of<T extends readonly string[]> = T[number];
 
-/** Free text, normalized: a plain string in YAML becomes `{ en }`. */
-export interface Text { en: string; de?: string }
+/** Free text, normalized: a plain string in YAML becomes `{ en }`; one optional key per other language. */
+export type Text = { en: string } & Partial<Record<Exclude<Lang, 'en'>, string>>;
 
 /** The text in `lang`, falling back to English. */
 export function textIn(text: Text | null | undefined, lang: Lang): string {
@@ -136,17 +137,23 @@ export function textIn(text: Text | null | undefined, lang: Lang): string {
 export interface Place {
 	/** What to call it: the node's name, or the authored name or string. */
 	name: Text;
-	/** OSM node id when it's one of the hike's nodes. */
-	node?: number;
+	/** Typed OSM id (`node/123`) when it's one of the hike's nodes. */
+	ref?: string;
 	lat?: number;
 	lon?: number;
-	/** Distance along the route, km on the chart's scale; absent when off the route or unresolved. */
+	/**
+	 * Distance along the route, km on the chart's scale; absent when off the route or unresolved.
+	 * Of several passes, the first, except at a span's end, where it is the pass that keeps the
+	 * span in route order (`orderSpans` in `facts.server.ts`).
+	 */
 	km?: number;
+	/** Every pass of the place along the route (km, route order), when the route passes it more than once. */
+	passes?: number[];
 	/** Elevation, m: the node's `ele`, else the track's. */
 	ele?: number;
 	/**
 	 * The 3D map's terrain height there (m): the node's, or the place's own
-	 * (scripts/backfill_terrain.py fills sidecar places). Without it the place
+	 * (`pnpm crm terrain` fills sidecar places). Without it the place
 	 * stays off the 3D map, like a photo without one.
 	 */
 	demEle?: number;
@@ -172,10 +179,9 @@ export interface ClimbGrade { grade: string; scale?: Of<typeof CLIMB_SCALES> }
 
 export interface Difficulty {
 	sac?: string;
-	/** Present whenever `sac` is: written by hand, or the hardest section/leg grade. */
+	/** Present whenever `sac` is: written by hand, or the hardest non-optional `legs` grade. */
 	sacSource?: 'manual' | 'computed';
 	note?: Text;
-	sections?: Array<Span & { sac?: string; viaFerrata?: FerrataGrade; climbing?: ClimbGrade; note?: Text }>;
 	viaFerrata?: Array<FerrataGrade & Span & { name?: Text; length?: number; gain?: number; time?: number; note?: Text }>;
 	climbing?: ClimbGrade & { note?: Text };
 	exposure?: { level: Of<typeof LEVEL4>; note?: Text };
@@ -374,14 +380,35 @@ export interface Suitability {
 	note?: Text;
 }
 
+/**
+ * One entry of the route list: a row in the leg table (`inTable`), a band on
+ * the elevation profile and a line in the guide's Sections list (`onProfile`),
+ * or both. A table entry's `from` is the previous table entry's `to`
+ * (undefined at the start); a profile-only entry's open end is the route's
+ * start or end.
+ */
 export interface Leg {
-	to: Place;
-	terrain?: Array<Of<typeof TERRAINS>>;
+	from?: Place;
+	to?: Place;
 	sac?: string;
 	viaFerrata?: FerrataGrade;
+	climbing?: ClimbGrade;
+	terrain?: Array<Of<typeof TERRAINS>>;
 	marking?: Of<typeof MARKINGS>;
 	optional?: boolean;
 	note?: Text;
+	inTable: boolean;
+	onProfile: boolean;
+}
+
+/** The leg table's rows, in list order. */
+export function tableLegs(facts: HikeAuthoredFacts): Leg[] {
+	return (facts.legs ?? []).filter((l) => l.inTable);
+}
+
+/** The profile bands and the guide's Sections list, in list order. */
+export function profileLegs(facts: HikeAuthoredFacts): Leg[] {
+	return (facts.legs ?? []).filter((l) => l.onProfile);
 }
 
 export interface Conditions {

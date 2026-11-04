@@ -12,7 +12,7 @@
  */
 
 import { cumulativeKm, pointAtKm, routeCoords } from './hike-metrics';
-import { sacTop, textIn, type HikeAuthoredFacts, type Lang, type Place } from './facts-schema';
+import { profileLegs, sacTop, textIn, type HikeAuthoredFacts, type Lang, type Place } from './facts-schema';
 import { enumLabel, formatBailoutWhere, formatGrades, formatKm, formatRouteStats, formatWater, label } from './facts-format';
 
 export type FactsPinKind = 'hazard' | 'bailout' | 'water';
@@ -38,8 +38,8 @@ export interface FactsPin {
 	demEle?: number;
 	/** On one of the hike's POI nodes, which has its own marker on the map. */
 	onNode: boolean;
-	/** That node's id: the maps fold the pin into the node's marker (see `pinsByNode`). */
-	node?: number;
+	/** That node's typed id: the maps fold the pin into the node's marker (see `pinsByNode`). */
+	ref?: string;
 	items: FactsPinItem[];
 }
 
@@ -96,7 +96,7 @@ function located(p: Place | undefined): p is Place & { lat: number; lon: number 
 }
 
 function placeKey(p: Place & { lat: number; lon: number }): string {
-	return p.node != null ? `node:${p.node}` : `${p.lat.toFixed(5)},${p.lon.toFixed(5)}`;
+	return p.ref != null ? `ref:${p.ref}` : `${p.lat.toFixed(5)},${p.lon.toFixed(5)}`;
 }
 
 /** The km a span covers: an open end runs to the route's start or end; an unresolved end drops it. */
@@ -131,24 +131,28 @@ export function routeSlice(coords: number[][], distanceFactor: number, fromKm: n
 /**
  * @param coords The route GeoJSON's coordinates, `[lon, lat, ele?]`.
  * @param distanceFactor The chart's distance stretch (`computeMetricScales`).
+ * @param nodeRefs Refs of the hike's own nodes, the ones with a marker: a pin on
+ *   any other store element is no POI pin (`onNode`).
  */
 export function buildFactsOverlay(
 	facts: HikeAuthoredFacts | null | undefined,
 	lang: Lang,
 	coords: number[][] | null | undefined,
-	distanceFactor: number
+	distanceFactor: number,
+	nodeRefs: Iterable<string | undefined> = []
 ): FactsOverlay {
 	const overlay: FactsOverlay = { pins: [], bands: [], lines: [], routes: [] };
 	if (!facts) return overlay;
 	const route = routeCoords(coords);
 	const total = cumulativeKm(route, distanceFactor).at(-1) ?? 0;
 
+	const drawnRefs = new Set(nodeRefs);
 	const pins = new Map<string, FactsPin>();
 	const pin = (place: Place & { lat: number; lon: number }, item: FactsPinItem) => {
 		const key = placeKey(place);
 		let p = pins.get(key);
 		if (!p) {
-			p = { name: textIn(place.name, lang), lat: place.lat, lon: place.lon, km: place.km, ele: place.ele, demEle: place.demEle, onNode: place.node != null, node: place.node, items: [] };
+			p = { name: textIn(place.name, lang), lat: place.lat, lon: place.lon, km: place.km, ele: place.ele, demEle: place.demEle, onNode: place.ref != null && drawnRefs.has(place.ref), ref: place.ref, items: [] };
 			pins.set(key, p);
 		}
 		p.items.push(item);
@@ -209,7 +213,7 @@ export function buildFactsOverlay(
 		});
 	}
 
-	for (const s of facts.difficulty?.sections ?? []) {
+	for (const s of profileLegs(facts)) {
 		const km = spanKm(s.from, s.to, total);
 		if (!km) continue;
 		const grade = formatGrades(lang, s);
@@ -351,22 +355,22 @@ function pinRowsHtml(pin: FactsPin): string {
 }
 
 /** Popup body for a pin on the map. */
-export function pinPopupHtml(pin: FactsPin): string {
-	const head = `<div style="margin-bottom:6px;"><b>${escapeHtml(pin.name)}</b>${pin.ele != null ? ` (${pin.ele} m)` : ''}${pin.km != null ? ` · ${formatKm(pin.km)}` : ''}</div>`;
+export function pinPopupHtml(pin: FactsPin, lang: Lang = 'en'): string {
+	const head = `<div style="margin-bottom:6px;"><b>${escapeHtml(pin.name)}</b>${pin.ele != null ? ` (${pin.ele} m)` : ''}${pin.km != null ? ` · ${formatKm(pin.km, lang)}` : ''}</div>`;
 	return head + pinRowsHtml(pin);
 }
 
 /**
  * Splits the pins between the hike's POI nodes and the rest. A pin whose place
- * is one of `nodeIds` (the same node, not just nearby) shows on that node's
+ * is one of `nodeRefs` (the same node, not just nearby) shows on that node's
  * marker instead of as a pin of its own: one marker per place.
  */
-export function pinsByNode(pins: FactsPin[], nodeIds: Iterable<number | undefined>): { onNodes: Map<number, FactsPin>; loose: FactsPin[] } {
-	const ids = new Set(nodeIds);
-	const onNodes = new Map<number, FactsPin>();
+export function pinsByNode(pins: FactsPin[], nodeRefs: Iterable<string | undefined>): { onNodes: Map<string, FactsPin>; loose: FactsPin[] } {
+	const refs = new Set(nodeRefs);
+	const onNodes = new Map<string, FactsPin>();
 	const loose: FactsPin[] = [];
 	for (const pin of pins) {
-		if (pin.node != null && ids.has(pin.node)) onNodes.set(pin.node, pin);
+		if (pin.ref != null && refs.has(pin.ref)) onNodes.set(pin.ref, pin);
 		else loose.push(pin);
 	}
 	return { onNodes, loose };

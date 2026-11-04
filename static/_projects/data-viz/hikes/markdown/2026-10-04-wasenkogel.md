@@ -4,7 +4,7 @@ description: A mushroom wonderland in the German Alps with a loop across histori
 tags:
   - Web
 gpx: /_projects/data-viz/hikes/gpx/wasenkogel.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 22596
 ascent: 860
 descent: 871

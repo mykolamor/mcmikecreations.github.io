@@ -1,5 +1,5 @@
 import { getMapFeatures } from '$lib/data/map-get-features';
-import type { Bailout } from '$lib/hikes/facts-schema';
+import type { Bailout, Text } from '$lib/hikes/facts-schema';
 
 const Mode2d = '2d';
 const Mode3d = '3d';
@@ -52,17 +52,39 @@ interface StandardFeatures {
 }
 
 interface MapNode {
-	id: number;
+	/** Typed OSM id, `node/123`, `way/4` or `relation/5`: the key into `osm.json`. */
+	ref: string;
 	lat: number;
 	lon: number;
 	/**
 	 * Terrain height (m) under lat/lon as the post's 3D map renders it, from
-	 * scripts/backfill_terrain.py. Placement only - `tags.ele` stays OSM's value.
+	 * `pnpm crm terrain`. Placement only - `tags.ele` stays OSM's value.
 	 */
 	demEle?: number;
 	tags: {
 		[key: string]: string | null | undefined;
 	};
+}
+
+/**
+ * One element of the shared OSM store, `static/_projects/data-viz/hikes/osm.json`,
+ * keyed there by typed id. Fetched by the Python tools (`osmstore.py`);
+ * resolved into `MapNode`s by `osm-store.js`.
+ */
+interface OsmEntry {
+	/** A way's or relation's centre. */
+	lat: number;
+	lon: number;
+	/** Terrain height (m) under lat/lon, as for `MapNode.demEle`. */
+	demEle?: number;
+	/**
+	 * My own tags, applied over `tags` (which OSM owns and a re-fetch replaces);
+	 * `null` hides an OSM tag. Peaks carry `visited: 'yes' | 'no' | 'missing'` here.
+	 */
+	local?: { [key: string]: string | null };
+	tags: { [key: string]: string | null | undefined };
+	/** Day of the last fetch from OSM; absent for elements OSM no longer has. */
+	fetched?: string;
 }
 
 interface MapDate {
@@ -123,8 +145,9 @@ interface MapProperties {
  * beside the markdown rather than in `hikes.json`. See `hikes-db`.
  */
 interface HikeMeta {
-	name: string;
-	description: string;
+	/** A plain string, or translated (`{ en, de }`); the hike itself reads the English. */
+	name: string | Text;
+	description: string | Text;
 	image: string;
 	/** Hand-picked map centre, unique per hike. */
 	origin: OriginData;
@@ -144,10 +167,17 @@ interface HikeMeta {
 	places?: unknown;
 }
 
+/** A sidecar as stored on disk: `nodes` are typed ids into the OSM store. */
+type RawHikeMeta = Omit<HikeMeta, 'nodes'> & { nodes?: string[] };
+
 interface Map {
+	/** The sidecar's English name, whether or not it is translated. */
 	name: string;
 	image: string;
 	description: string;
+	/** The sidecar's name and description in every language, when it translates them. */
+	nameText?: Text;
+	descriptionText?: Text;
 	route: string;
 	height: number;
 	standardFeatures: StandardFeatures;
@@ -155,7 +185,7 @@ interface Map {
 }
 
 export type {
-	MapProvider, Map, MapProperties, MapNode, HikeMeta, Feature, GeometryData, TilesData, TilesMapsData, OriginData, Mode, MapDate
+	MapProvider, Map, MapProperties, MapNode, HikeMeta, RawHikeMeta, OsmEntry, Feature, GeometryData, TilesData, TilesMapsData, OriginData, Mode, MapDate
 };
 export {
 	getMapFeatures

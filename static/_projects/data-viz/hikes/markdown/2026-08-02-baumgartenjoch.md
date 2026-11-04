@@ -4,7 +4,7 @@ description: Traversing the slopes with no trail in sight.
 gpx: /_projects/data-viz/hikes/gpx/baumgartenjoch.gpx
 people:
   - Bohdan Pryshchenko
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 28712
 ascent: 2056
 descent: 2053

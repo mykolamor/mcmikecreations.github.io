@@ -16,32 +16,5 @@
     [11.7462209, 47.6469534],
     [11.7477276, 47.6662618]
   ],
-  "nodes": [
-    {
-      "id": 26862641,
-      "lat": 47.63307,
-      "lon": 11.6793681,
-      "demEle": 1577.0,
-      "tags": {
-        "name": "Buchstein",
-        "natural": "peak",
-        "ele": "1701",
-        "summit:cross": "yes",
-        "wikidata": "Q31557989"
-      }
-    },
-    {
-      "id": 5340076821,
-      "lat": 47.632728,
-      "lon": 11.6783446,
-      "demEle": 1603.9,
-      "tags": {
-        "name": "Tegernseer Hütte",
-        "tourism": "alpine_hut",
-        "ele": "1650",
-        "wikidata": "Q2400327",
-        "wikipedia": "de:Tegernseer Hütte"
-      }
-    }
-  ]
+  "nodes": ["node/26862641", "node/5340076821"]
 }

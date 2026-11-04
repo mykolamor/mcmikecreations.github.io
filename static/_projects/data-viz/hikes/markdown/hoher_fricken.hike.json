@@ -20,32 +20,5 @@
     [11.1086752, 47.4952846],
     [11.0970176, 47.4915407]
   ],
-  "nodes": [
-    {
-      "id": 519688895,
-      "lat": 47.5313452,
-      "lon": 11.1531653,
-      "demEle": 1906.6,
-      "tags": {
-        "name": "Hoher Fricken",
-        "natural": "peak",
-        "ele": "1940",
-        "summit:cross": "yes",
-        "summit:register": "yes",
-        "wikidata": "Q315767"
-      }
-    },
-    {
-      "id": 429259298,
-      "lat": 47.5238658,
-      "lon": 11.1485315,
-      "demEle": 1657.9,
-      "tags": {
-        "name": "Ochsenberg",
-        "natural": "peak",
-        "ele": "1694",
-        "wikidata": "Q31529062"
-      }
-    }
-  ]
+  "nodes": ["node/519688895", "node/429259298"]
 }

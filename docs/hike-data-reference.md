@@ -15,6 +15,7 @@ your time, and where to get the data. Step-by-step guides live elsewhere:
 4. [Post front matter `<date>-<slug>.md`](#4-post-front-matter-date-slugmd)
 5. [The facts layer (`facts:`)](#5-the-facts-layer-facts)
 6. [Place docs](#6-place-docs)
+   - [Localization](#6b-localization)
 7. [What's worth filling in first](#7-whats-worth-filling-in-first)
 8. [Where to get the data](#8-where-to-get-the-data)
 9. [Gotchas](#9-gotchas)
@@ -27,11 +28,12 @@ One route has one **slug** (`schneefernerkopf`). Every file is named after it.
 
 | File | What it holds | Who writes it |
 |---|---|---|
-| `static/_projects/data-viz/hikes/markdown/<slug>.hike.json` | **The sidecar.** The route itself: name, map framing, POI nodes, and **route-level facts defaults**. Its existence is what makes the hike exist. | You, plus `backfill_terrain.py` (`demEle`) |
+| `static/_projects/data-viz/hikes/markdown/<slug>.hike.json` | **The sidecar.** The route itself: name, map framing, POI nodes, and **route-level facts defaults**. Its existence is what makes the hike exist. | You, plus `pnpm crm terrain` (`demEle`) |
 | `static/_projects/data-viz/hikes/markdown/<date>-<slug>.md` | **A post.** One walk on that route: story, photos, the day's numbers, and **post-level facts**. The file name gives the date and the slug. | You, plus the image tools (`images:`, `elapsed`) |
 | `static/_projects/data-viz/hikes/geojson/<slug>.json` | The route line, with elevation per point. | openrouteservice export |
 | `static/_projects/data-viz/hikes/gpx/<slug>.gpx` | The recorded (or planned) track, offered as a download. | Your watch or app |
 | `static/_projects/data-viz/hikes/gpx/bailouts/*.gpx` | Planned bailout routes, referenced from `facts.bailouts[].route`. | A route planner |
+| `static/_projects/data-viz/hikes/facts-library.json` | **The facts library.** Stops, transport, lifts, parking and tickets shared by several hikes; see [the shared library](#the-shared-library-facts-libraryjson). | You |
 | `static/_projects/data-viz/hikes/places/<slug>.md` | **A place doc.** Reference text about a hut or peak, shown under every post that lists it. | You, plus the image tools |
 | `src/lib/data/hikes.json` | Only hikes that still have **no post**, and their dates. | You |
 | `src/lib/data/contacts.json` | People's avatars and links, matched by `people:` names. | You |
@@ -71,7 +73,7 @@ them, recursively:
 | What | Rule |
 |---|---|
 | Plain value (string, number, true/false, a choice like `high`) | Post wins. |
-| Translated text `{en, de}` | Merged per language. A post can add only `de` to the sidecar's English, or replace only `en`. A plain string counts as `{en}`. |
+| Translated text `{en, de, …}` | Merged per language (any language in `LANGS`, see §5). A post can add only `de` to the sidecar's English, or replace only `en`. A plain string counts as `{en}`. |
 | Object (`difficulty`, `access`, `plan`, `season`, …) | Merged field by field, all the way down. |
 | List of plain values (`season.best`, `route.trails`, `route.terrain`, `route.peaks`, `route.regions`, `route.categories`, `route.countries`, `route.huts`, `plan.for`, `plan.notFor`, `alternatives.*`, `tickets[].includes`, `conditions.weather`, `conditions.trail`) | Post's list **replaces** the sidecar's. `best: [8]` means August, not August plus the sidecar's months. |
 | Price lists (`price: [...]`) | Replaced as a whole. |
@@ -80,21 +82,23 @@ them, recursively:
 | `remove: true` on a post entry | Drops the matching sidecar entry. If nothing matches, the build warns. |
 
 Identity keys. Places compare after being resolved, so `Knorrhütte` and
-`{node: 476498599}` are the same place.
+`{ref: node/476498599}` are the same place.
 
 | List | Matched on |
 |---|---|
 | `hazards` | `kind` + `at` (or `from` + `to`) |
 | `bailouts`, `water`, `stops`, `access.borders` | `at` |
-| `signal`, `navigation.spans`, `difficulty.sections` | `from` + `to` |
+| `signal`, `navigation.spans` | `from` + `to` |
 | `difficulty.viaFerrata`, `route.optional` | `name`, else `from` + `to` |
 | `rules` | `kind` + `from` + `to` |
-| `legs` | `to` |
+| `legs` | a table entry (`inTable`, the default) by `to`; an entry with `inTable: false` by `from` + `to` |
 | `access.transport` | `mode` + `from` + `to` |
 | `access.parking` | `name`, else `at` |
 | `access.lifts`, `access.tickets`, `permits`, `plan.variants` | `name` (its English text) |
 | `plan.gear` | `item` (+ `label`) |
 | `sources` | `url` |
+
+An entry with `use` is matched on the identity of the record it uses (`mode` + `from` + `to`, or `name`), read through the record plus the entry's own fields.
 
 Only a post may set `conditions` and `deviations`, since they describe one day; the
 sidecar's copies are ignored with a warning. Only a post may set `facts.hidden`.
@@ -119,11 +123,11 @@ Some values are computed from the track and only take over when you write nothin
 
 | Value | Computed from | Written override |
 |---|---|---|
-| Distance, ascent, descent, moving time | GeoJSON, or `scripts/track_metrics.py` for recorded tracks | `distance`, `ascent`, `descent`, `duration` in the post |
+| Distance, ascent, descent, moving time | GeoJSON, or `pnpm crm metrics` for recorded tracks | `distance`, `ascent`, `descent`, `duration` in the post |
 | Elapsed time | GPX timestamps (minus gaps over 3 h) | `elapsed: {start, end, source}` in the post |
 | Highest/lowest point, typical (DAV) time | The route's own elevations | none |
 | Route type | Track shape | `facts.route.type` |
-| Overall SAC grade | Hardest of `difficulty.sections[].sac` and non-optional `legs[].sac` (a range counts as its upper end) | `facts.difficulty.sac`. If yours is easier than the computed one, the build warns. |
+| Overall SAC grade | Hardest of the non-optional `legs[].sac`, table and profile entries alike (a range counts as its upper end) | `facts.difficulty.sac`. If yours is easier than the computed one, the build warns. |
 | km and altitude of a facts place | Projected onto the route | none |
 | Bailout route length, ascent, descent, DAV time | Its GPX file | `bailouts[].time` is your own figure, shown separately |
 | `dateModified` | Last git commit that changed the post's text | `updated: YYYY-MM-DD` |
@@ -140,8 +144,8 @@ replaces the sidecar's, and an omitted or `null` one falls back to it.
 
 ```jsonc
 {
-  "name": "Schneefernerkopf",                       // required: the hike's name
-  "description": "Hike from Ehrwald to …",          // required: one sentence; the post's description is prepended
+  "name": "Schneefernerkopf",                       // required: the hike's name; Text, so {"en": …, "de": …} works
+  "description": "Hike from Ehrwald to …",          // required: one sentence, also Text; the post's description is prepended
   "image": "/images/projects/data-viz/hikes/schneefernerkopf.jpg",  // required: full-size; thumb/ is derived
   "origin": { "lat": 47.40009, "lon": 10.96796 },   // required: map centre, hand-picked to frame the route
   "height": 512,                                    // required: map size in px (and which tiles get downloaded)
@@ -149,7 +153,7 @@ replaces the sidecar's, and an omitted or `null` one falls back to it.
   "nodes": [                                        // optional: OSM points of interest
     {
       "id": 476498599, "lat": 47.4100105, "lon": 11.012732,
-      "demEle": 2047.3,                             // written by backfill_terrain.py; puts the marker on the 3D map
+      "demEle": 2047.3,                             // written by pnpm crm terrain; puts the marker on the 3D map
       "tags": { "name": "Knorrhütte", "ele": "2052", "tourism": "alpine_hut",
                 "phone": "+4988212905", "website": "http://www.knorrhuette.de/",
                 "visited": "no" }                   // your own tag: yes / no / missing (peak marker colour)
@@ -190,14 +194,14 @@ All keys are optional. The date and route come from the file name; there's no `d
 | `contacts` | list | Per-post people details: `{name, avatar?, links: [{network or label, url}]}`. |
 | `author` | text | Defaults to you. |
 | `gpx` | path | The track to link; also listed in the Web graph popup. |
-| `distance`, `ascent`, `descent` | metres | Override the GeoJSON. Recorded hikes: computed by `track_metrics.py`. |
+| `distance`, `ascent`, `descent` | metres | Override the GeoJSON. Recorded hikes: computed by `pnpm crm metrics`. |
 | `duration` | minutes | **Moving** time. |
 | `elapsed` | `{start, end, source}` | Wall-clock start and end (`'2026-07-18T20:30'`), `source: photos` (a lower bound) or `manual`. Wins over GPX timestamps. |
 | `updated` | date | Forces `dateModified` (JSON-LD, sitemap). |
 | `places` | list of slugs | Place docs shown at the bottom (§6). Replaces the sidecar's list; `[]` shows none. |
 | `facts` | object | The facts layer (§5). `facts: {hidden: true}` switches it off for this post. |
 | `images` | map | **Don't write by hand.** Filename → `{w, h, lat?, lon?, demEle?, taken?, located?, blur}`, maintained by the image tools (§8). |
-| `videos` | map | YouTube id → `{title, uploadDate, duration, description, w, h, blur}` or `{unavailable: true}`, written by `video_meta.py` (§8). `title` and `description` are `{en, de, uk}`: your YouTube translations (a language without one is left out). Feeds the self-hosted poster and the post's `VideoObject`, which uses `description.en`. The description is YouTube's first paragraph; rewrite any language by hand if you like (the script keeps it). |
+| `videos` | map | YouTube id → `{title, uploadDate, duration, description, w, h, blur}` or `{unavailable: true}`, written by `pnpm crm video-meta` (§8). `title` and `description` are `{en, de, uk}`: your YouTube translations (a language without one is left out). Feeds the self-hosted poster and the post's `VideoObject`, which uses `description.en`. The description is YouTube's first paragraph; rewrite any language by hand if you like (the command keeps it). |
 | `filePath`, `metaPath` | path | Another GeoJSON or sidecar for this date (a different route variant). |
 
 ### Overriding the hike (rare)
@@ -218,26 +222,30 @@ Lives in the sidecar (route defaults) and/or the post (this walk), merged as in 
 
 ### Shared building blocks
 
-**Text:** `"English"` or `{en: "English", de: "Deutsch"}`. The German is ready for
-the planned `/de/` pages; today the page shows English.
+**Text:** `"English"` or `{en: "English", de: "Deutsch"}`: English plus one optional
+key per other language in `LANGS` (`src/lib/i18n/translation-name.js`, today `en` and
+`de`). A plain string means `{en}`. English is the source and the only required
+language; a missing translation falls back to it. A key for a language not in `LANGS`
+(`fr: "…"`) fails the build, naming the file and the path. The translations are ready
+for the planned localized pages; today the page shows English.
 
 **Place**: where something is.
 
 | Form | Example | Use when |
 |---|---|---|
 | Node name | `Knorrhütte` | **Default.** Matched like story place links. |
-| `{node, name?}` | `{node: 12806819227, name: {en: Fore-summit cross}}` | The node has no name, or you want another. |
+| `{ref, name?}` | `{ref: node/12806819227, name: {en: Fore-summit cross}}` | The element has no name, or you want another. `ref` is a typed id of any element in the OSM store, not only the hike's `nodes` (`node/…`, `way/…` or `relation/…`); only the hike's `nodes` are drawn on the map; the old numeric `{node: 123}` fails the build. |
 | `km N` / `{km: N}` | `km 19.0` | A point on the route with no node. |
 | `{lat, lon, name?, ele?, demEle?}` | `{lat: 47.4133, lon: 10.9802, name: Sonnalpin}` | Off-route, or nothing else fits. |
 
 - A name that matches no node is a **warning**: it shows as plain text, with no map
   link or km.
 - **3D map heights.** A pin stands on the 3D map only with a `demEle`:
-  - A node's comes from `backfill_terrain.py`.
-  - `{lat, lon}` places **in the sidecar** get one from the same script.
+  - A node's comes from `pnpm crm terrain`.
+  - `{lat, lon}` places **in the sidecar** get one from the same command.
   - Places in a post's YAML and `km` places don't, unless you type `demEle` yourself.
 - **One marker per node.** Hazards, bailouts and water at a node (by name or
-  `{node}`) don't get a pin of their own on the 2D and 3D maps. The node's marker
+  `{ref}`) don't get a pin of their own on the 2D and 3D maps. The node's marker
   wears a small badge with their emojis instead, and its popup lists them. Water on
   a node already drawn as water (💧, 🚰) adds no badge. A `{lat, lon}` or `km` place
   keeps its own pin, however close to a node. The elevation charts still show pins.
@@ -259,9 +267,8 @@ story, **G** = guide below the story, **C** = elevation charts, **M** = 2D and 3
 |---|---|---|---|
 | `checked` | date | G | Default "checked …" stamp. |
 | `summary` | text | S | 1–2 sentences over the safety box. |
-| `difficulty.sac` | `T1`–`T6`, optional `+`/`-`; or an easier–harder range, `T1-T2` | T G | Hand-written, else computed from sections and legs. Every `sac` field takes a range; it's shown with an en dash (`T1–T2`) and ranks as its upper end. |
+| `difficulty.sac` | `T1`–`T6`, optional `+`/`-`; or an easier–harder range, `T1-T2` | T G | Hand-written, else computed from `legs`. Every `sac` field takes a range; it's shown with an en dash (`T1–T2`) and ranks as its upper end. |
 | `difficulty.note` | text | G | **The justification.** Always write one with a grade. |
-| `difficulty.sections[]` | span + `sac`, `viaFerrata`, `climbing`, `note` | G C | Coloured SAC band on the charts. Give a stretch of mixed difficulty a range (`T1-T2`) instead of splitting it; the band takes the harder grade's colour. |
 | `difficulty.viaFerrata[]` | `grade`, `scale` (schall/huesler/french/italian), span, `name`, `length`, `gain`, `time`, `note` | T G | The tile shows the hardest. |
 | `difficulty.climbing` | `grade`, `scale` (uiaa/french/yds), `note` | T G | |
 | `difficulty.exposure` | `level`: none/low/moderate/high, `note` | T G | |
@@ -287,17 +294,17 @@ story, **G** = guide below the story, **C** = elevation charts, **M** = 2D and 3
 | `signal[]` | span + `quality` none/patchy/good, `network`, `note` | G | |
 | `stops[]` | `at`, `kind`, `open` (window / all-year / closed), `days`, `overnight`, `food`, `water`, `cash`, `price[]`, `booking`, `phone`, `note`, `checked` | G | `phone` and `booking` fall back to the node's OSM tags. See [Stops](#stops). |
 | `access.carFree` | yes/partial/no | T G | The tile shows only this, linking to "Getting there". |
-| `access.transport[]` | `mode`, `from`, `to`, `direction` there/back/both, `duration`, `changes`, `line`, `operator`, `first`, `last`, `frequency`, `price[]`, `ticket`, `url`, `note`, `checked` | G | One entry per leg or alternative. Quote times: `"06:32"`. |
-| `access.parking[]` | `name`, `at`, `price[]`, `size`, `fills`, `freeWith`, `url`, `note`, `checked` | G | See [Parking](#parking). |
-| `access.lifts[]` | `name`, `kind`, span, `direction`, `open`, `first`, `last`, `price[]`, `url`, `note`, `checked` | G | |
-| `access.tickets[]` | `name`, `includes[]`, `price[]`, `validity`, `url`, `note`, `checked` | G | |
+| `access.transport[]` | `use` ([library](#the-shared-library-facts-libraryjson) record id), `mode`, `from`, `to`, `direction` there/back/both, `duration`, `changes`, `line`, `operator`, `first`, `last`, `frequency`, `price[]`, `ticket`, `url`, `note`, `checked` | G | One entry per leg or alternative. Quote times: `"06:32"`. |
+| `access.parking[]` | `use` ([library](#the-shared-library-facts-libraryjson) record id), `name`, `at`, `price[]`, `size`, `fills`, `freeWith`, `url`, `note`, `checked` | G | See [Parking](#parking). |
+| `access.lifts[]` | `use` ([library](#the-shared-library-facts-libraryjson) record id), `name`, `kind`, span, `direction`, `open`, `first`, `last`, `price[]`, `url`, `note`, `checked` | G | |
+| `access.tickets[]` | `use` ([library](#the-shared-library-facts-libraryjson) record id), `name`, `includes[]`, `price[]`, `validity`, `url`, `note`, `checked` | G | |
 | `access.borders[]` | `at`, `from`, `to` (country codes), `note` | G | |
 | `permits[]` | `name`, `required`, `where`, `price[]`, `url`, `note`, `checked` | G | |
 | `protectedAreas` | text | G | Naturschutzgebiet and similar zones, in your words. |
 | `drones` | text | G | Where drones are forbidden and why. |
 | `rules[]` | `kind` (protected-area, no-camping, no-drones, dogs-on-leash, …), `label?`, span, `season`, `note` | G | Short, place-bound rules. See [Rules](#rules). |
 | `suitability` | `kids`, `dogs`, `stroller`, `bike`, `winter`, `night`, `solo`, `note` | G | Fixed values: `kids` yes / older / no; `dogs` yes / leash / no; `stroller` true / false; `bike` yes / partial / no; `winter` yes / with-gear / no; `night` and `solo` yes / experienced ("experienced only") / no. `note` is free text. |
-| `legs[]` | `to`, `terrain[]`, `sac`, `viaFerrata`, `marking`, `optional`, `note` | G | A leg runs from the previous `to`. Optional legs don't count towards the SAC grade. See [`legs` in detail](#legs-in-detail). |
+| `legs[]` | `from`, `to`, `terrain[]`, `sac`, `viaFerrata`, `climbing`, `marking`, `optional`, `note`, `inTable`, `onProfile` | G C | The route list: rows of the leg table (`inTable`, the default) and coloured SAC bands on the charts (`onProfile`). A table entry runs from the previous one's `to`. Optional entries don't count towards the SAC grade. See [`legs` in detail](#legs-in-detail). |
 | `conditions` | `weather[]`, `temp {min, max}`, `visibility`, `snowLine`, `traction`, `trail[]`, `crowding`, `start`, `why`, `note` | S | **Post only.** |
 | `deviations[]` | `kind` (solo, night, unroped, off-trail, …), `at`, `note` | S | **Post only.** "Don't copy this." |
 | `plan.gear[]` | `item` (~55 kinds), `label?`, `need` essential/conditional/optional, `when`, `amount` | G | Checklist with tick boxes. |
@@ -497,8 +504,11 @@ Each stop renders as up to four lines:
 | `note` | text | Anything else: who runs it, the winter room, "bring a sleeping-bag liner". |
 | `checked` | date | When you last checked hours and prices. Falls back to `facts.checked`. |
 
-The fallbacks apply only when `at` resolves to a node (by name or `{node}`), and
+The fallbacks apply only when `at` resolves to a node (by name or `{ref}`), and
 only when you leave the field out. Set it yourself to override OSM.
+
+A stop on several routes can live in the shared library, keyed by its OSM ref;
+each hike then writes only its `at`. See [the shared library](#the-shared-library-facts-libraryjson).
 
 **Kinds:**
 
@@ -699,8 +709,8 @@ Any other key fails the build. So does a `type`, `terrain`, `shade`, `regions` o
 | `{name, at}` | `{name: {en: "Ehrwald station"}, at: {lat: …, lon: …}}` | `at` is looked up as a place for the map link and km, but your `name` is what's shown. |
 
 - In the `{name, …}` form, any key other than `name` and `at` fails the build. That
-  includes `{node: 123, name: …}`: since it has a `name`, it's read as a spot. Write
-  `{name: …, at: {node: 123}}` instead.
+  includes `{ref: node/123, name: …}`: since it has a `name`, it's read as a spot. Write
+  `{name: …, at: {ref: node/123}}` instead.
 - An object with `lat` is always read as a normal place, even if it has a `name`.
 
 **Computed vs. written `type`.** With no `type`, the build classifies the track
@@ -814,13 +824,13 @@ building blocks:
 | Form | Example | Result |
 |---|---|---|
 | Node name | `"Wasenkogel"` | **The usual one.** Matched like story place links. Gets coordinates, `ele` from the node (else the track) and a map link. |
-| `{node, name?}` | `{node: 1638504578, name: {en: "Point 1212"}}` | A summit node with no OSM name, or that you want called something else. |
+| `{ref, name?}` | `{ref: node/1638504578, name: {en: "Point 1212"}}` | A summit with no OSM name, or that you want called something else. |
 | `{lat, lon, name, ele?}` | `{lat: 47.4212, lon: 10.9863, name: "Zugspitze", ele: 2962}` | A summit that isn't one of the hike's nodes. Give `ele`: a point near the route takes the track's elevation, but one off it gets none. |
 | `km N` | `"km 12.4"` | Possible, but it shows as "km 12.4", which is no name for a summit, and the JSON-LD `Mountain` gets that as its name. Avoid. |
 
 - A name that matches no node is a build **warning**, not an error. The summit still
   shows, as plain text with no elevation and no map link, and in the JSON-LD it gets
-  no `geo`. Fix the spelling or switch to `{node}` / `{lat, lon}`.
+  no `geo`. Fix the spelling or switch to `{ref}` / `{lat, lon}`.
 - Rendered as **Summits** ("Gipfel"): `Wasenkogel (1211 m), Nesselscheibe (1258 m)`.
   Each name with coordinates is a link that centres the 2D map on it. No km is shown.
 - Order kept as written. List them in the order they're reached.
@@ -908,7 +918,7 @@ Route-level, so they go in the sidecar. They're what the future hub pages
 
   Each region also has an outline, `static/_projects/data-viz/hikes/regions/<slug>.json`
   (GeoJSON, from OpenStreetMap), built by `scripts/region_shapes.py`; `deploy.sh` builds
-  any that are missing. The sources are in `SOURCES` in `scripts/matches/regions.py`:
+  any that are missing. The sources are in `SOURCES` in `scripts/geo/hikegeo/regions.py`:
   OSM mountain-area relations for the ranges, municipality boundaries for most areas,
   a buffered lake or valley line for `walchensee` and `risstal`, and, since OSM has no
   outline for them, `mangfall-mountains` and `walchensee-mountains` as the Bavarian
@@ -951,7 +961,7 @@ Route-level, so they go in the sidecar. They're what the future hub pages
 | You want to say | Use |
 |---|---|
 | Terrain, grade or marking stretch by stretch | `legs[]` |
-| How hard a stretch is | `difficulty.sections[]` |
+| How hard a stretch is | `legs[]` with `onProfile: true` |
 | A different route someone could take instead | `plan.variants[]` (a whole alternative), not `optional` (a detour off this one) |
 | How to reach `start` and get home from `end` | `access.transport[]`, `access.parking[]` |
 | Waymarking quality | `navigation` |
@@ -1048,15 +1058,53 @@ convention, so grades stay comparable between posts:
 
 ### `legs` in detail
 
-`legs[]` splits the route into stretches between named points and describes each
-one: what's underfoot, how hard it is and how well it's marked. It renders as the
-**Leg by leg** table in the guide's Route section. Legs aren't drawn on the
-elevation charts or maps. For a coloured grade band on the charts, use
-`difficulty.sections`.
+`legs[]` is the route list. It splits the route into stretches and describes each
+one: what's underfoot, how hard it is and how well it's marked. Two flags say
+where an entry shows:
 
-**How legs chain.** A leg has only an end, `to`. It runs from the previous leg's
-`to`; the first leg runs from the route's start. Legs aren't sorted, so write them
-in walking order. The last leg's `to` is usually the route's end.
+- `inTable` (default `true`): a row of the **Leg by leg** table in the guide's
+  Route section.
+- `onProfile` (default `false`): a coloured SAC band on the elevation charts, and
+  a line in the guide's **Sections** list. Entries aren't drawn on the maps.
+
+An entry can be both: a table row and a band over the same stretch. An entry with
+`inTable: false` must set `onProfile: true`, or it shows nowhere and the build
+fails. The table shows the table entries in list order; the bands and the
+Sections list show the profile entries in list order.
+
+This list replaces the old `difficulty.sections`: each old section is an entry with
+`inTable: false` and `onProfile: true`. The build rejects `difficulty.sections`
+with a hint; `scripts/crm/oneoff/merge-route-list.ts` converted the files (see
+[The two one-time passes](#the-two-one-time-passes)).
+
+**An example, converted from Wasenkogel.** Before, the sidecar had five `legs` and
+three `difficulty.sections` for the T3 stretch; now they are one list. The first
+five entries are table rows, as before. The last three are profile-only: the first
+has no `from`, so it starts at the route's start, and the next two chain by their
+`from`. Texts, `terrain` and `marking` are left out here.
+
+```json
+"legs": [
+  { "to": "Wasenkogel", "sac": "T1-T2" },
+  { "to": { "ref": "node/1638504578" }, "sac": "T2" },
+  { "to": { "lat": 47.7282882, "lon": 11.656818 }, "sac": "T3", "optional": true },
+  { "to": "Platten", "sac": "T2" },
+  { "to": { "lat": 47.7515947, "lon": 11.7205706 }, "sac": "T1-T2" },
+  { "to": { "ref": "node/1638504578" }, "sac": "T2", "inTable": false, "onProfile": true },
+  { "from": { "ref": "node/1638504578" }, "to": { "lat": 47.7282882, "lon": 11.656818 }, "sac": "T3", "inTable": false, "onProfile": true },
+  { "from": { "lat": 47.7282882, "lon": 11.656818 }, "to": { "lat": 47.7515947, "lon": 11.7205706 }, "sac": "T1-T2", "inTable": false, "onProfile": true }
+]
+```
+
+**How table entries chain.** A table entry has only an end, `to`, and may not set
+`from`. It runs from the previous table entry's `to`; the first runs from the
+route's start. Entries aren't sorted, so write them in walking order. The last
+table entry's `to` is usually the route's end.
+
+**Profile-only entries** (`inTable: false`) have their own span and don't chain:
+`from` absent means the route's start and `to` absent means its end. Give a
+stretch of mixed difficulty a range (`T1-T2`) instead of splitting it; the band
+takes the harder grade's colour.
 
 The table has four columns:
 
@@ -1069,17 +1117,21 @@ The table has four columns:
 
 | Field | Values | What it does |
 |---|---|---|
-| `to` | place | **Required.** Where the leg ends. A node name links to the map and gives the km. It's also the leg's identity, so a post entry with the same `to` merges into the sidecar's. |
+| `to` | place | **Required** on a table entry. Where the leg ends. A node name links to the map and gives the km. It's also a table entry's identity, so a post entry with the same `to` merges into the sidecar's. |
+| `from` | place | Only on an entry with `inTable: false`: where its stretch starts. With `to`, it's that entry's identity for merging. |
+| `inTable`, `onProfile` | true / false | Where the entry shows; see above. A post entry merges into a sidecar entry of the same kind only, so it can't move an entry between the table and the profile-only entries. |
 | `terrain` | list of terrain values | Surfaces underfoot on this leg, in the order you meet them. Same values as `route.terrain`, including `road`; see [`terrain`, `shade`, `trails`, `peaks`](#terrain-shade-trails-peaks) for the full list and meanings. Anything else fails the build. |
 | `sac` | `T1`–`T6`, optional `+`/`-`, or a range like `T2-T3` | The leg's SAC grade. Every non-optional leg's grade feeds the computed overall grade. See below. |
-| `viaFerrata` | `{grade, scale?}` | The ferrata grade if the leg includes one. `scale` is `schall` (default), `huesler`, `french` or `italian`. For the ferrata's name, length and time, use `difficulty.viaFerrata[]`; this field only shows the grade in the table. |
+| `viaFerrata` | `{grade, scale?}` | The ferrata grade if the leg includes one. `scale` is `schall` (default), `huesler`, `french` or `italian`. For the ferrata's name, length and time, use `difficulty.viaFerrata[]`; this field only shows the grade in the table and on the band. |
+| `climbing` | `{grade, scale?}` | A climbing grade on the stretch, shown with the SAC grade. `scale` is `uiaa` (default), `french` or `yds`. |
 | `marking` | `good` / `partial` / `poor` / `none` | Waymarking on the leg. Same meanings as `navigation.marking`; see [`navigation` in detail](#navigation-in-detail). Don't repeat the same stretch in `navigation.spans`. |
 | `optional` | true / false | A side trip or summit detour that isn't part of the main route. Shown greyed and labelled "(optional)", and left out of the computed SAC grade. |
 | `note` | text | What the table can't say: "steep switchbacks after the bridge", "cable section near the top". |
 
 **The overall SAC grade.** Without a hand-written `difficulty.sac`, the overall
-grade is the hardest of all `difficulty.sections[].sac` and all non-optional
-`legs[].sac`. A range counts as its upper end. It's shown as "computed". With a
+grade is the hardest `sac` of all non-optional entries, table and profile entries
+alike. A range counts as its upper end. Of two equally hard grades, a profile-only
+entry's is the one shown. It's shown as "computed". With a
 hand-written `difficulty.sac` that's easier than this, the build warns. So grade an
 optional summit's leg honestly; it can't push the overall grade up.
 
@@ -1100,17 +1152,113 @@ this; readers take an optional detour as there and back. If the route really goe
 on from the detour's end, or the way back isn't obvious, say so in the next leg's
 `note`.
 
-**Legs, sections or route-level fields?**
+**Merging in a post.** As for other lists: a post entry merges into the sidecar's
+entry with the same identity, `remove: true` drops it, and a new one is appended.
+`legs: null` in a post drops the sidecar's whole list, table and bands alike, and
+`difficulty: null` leaves the list alone, since the bands live in `legs` now. A
+build error in a post entry checked against the merged list names the merged
+list's index and says "after merging with the sidecar".
+
+**Table, profile or route-level fields?**
 
 | You want | Use |
 |---|---|
-| A table of the route stretch by stretch | `legs[]` |
-| A coloured SAC band on the elevation charts | `difficulty.sections[]` (span + `sac`) |
+| A table of the route stretch by stretch | `legs[]` (table entries) |
+| A coloured SAC band on the elevation charts | `legs[]` with `onProfile: true`: `inTable: false` and a span for a stretch of its own, or on a table entry for that row's stretch |
 | One terrain list for the whole route | `route.terrain`. With legs, keep it to the main surfaces. |
 | One marking value for the whole route | `navigation.marking` |
 | A ferrata's name, length, gain and time | `difficulty.viaFerrata[]` |
 
-Legs and sections can coexist. Both feed the computed SAC grade.
+Table and profile entries can coexist in one list. Both feed the computed SAC grade.
+
+#### Store refs
+
+A place written `{ "ref": "node/12806819227" }` (also as `to`, `from` and `at`)
+resolves against the **whole OSM store** (`osm.json`), not only the hike's own
+`nodes`. Only the hike's `nodes` are drawn on its map, so a ref outside them shows
+in the facts but not as a map marker. Without a store (the bailout reader), the
+hike's `nodes` are the fallback. A ref the store doesn't have is a warning that
+names the store, and the place is shown as plain text.
+
+### The shared library (`facts-library.json`)
+
+`static/_projects/data-viz/hikes/facts-library.json` holds the facts entries that
+several hikes share: a hut you stop at on two routes, the train you take to three
+trailheads. Each is written once, as a **record**, and every hike that uses it says
+so in one line.
+
+```json
+{
+	"stops": { "way/60315210": { "kind": "restaurant", "food": true } },
+	"transport": { "train-rb-6-oberau": { "mode": "train", "from": "Munich", "to": { "name": "Oberau" }, "line": "RB 6" } },
+	"lifts": {},
+	"parking": {},
+	"tickets": {}
+}
+```
+
+| Kind | Record id | How a hike uses it |
+|---|---|---|
+| `stops` | the typed OSM ref of the stop's place (`node/…`, `way/…`, `relation/…`) | Nothing to write: a `stops[]` entry whose `at` resolves to that ref (by name or `{ref}`) starts from the record. `{ "at": "Obere Firstalm" }` is a whole entry. |
+| `transport`, `lifts`, `parking`, `tickets` | lowercase words joined by `-`: `train-rb-6-oberau` | `"use": "<id>"` on an entry of `access.transport[]`, `access.lifts[]`, `access.parking[]` or `access.tickets[]`. |
+
+**A record** is the matching facts entry without what ties it to one hike: a
+stop's record has no `at` (the key is the place), and no record has a `use`.
+Everything else is as in that entry's table above, `mode`, `from` and `to` included
+for transport, and `name` still required for a lift. A transport record may hold
+only part of a connection; the entry using it must end up with `mode`, `from` and
+`to`. Places and texts stay as written, and each hike resolves the places on its
+own route.
+
+**Merging.** The record comes first, then the sidecar's entry, then the post's, each
+deep-merged as in §2b: a field the hike writes overrides that field only, and the
+record's other fields stay. `null` in the post removes a record's field for that
+post. A `use` naming no record fails the build, naming the file, the path and the
+id. The phone and website fallback for stops still applies when neither the record
+nor the hike gives them.
+
+**Merge order.** Library, then sidecar, then post: `library ← sidecar ← post`. A
+stop's record is found by the OSM ref its `at` resolves to, so a name that matches
+a node in the store attaches it too.
+
+**`checked`.** A record keeps its own `checked` date. A hike that overrides a field
+of the record doesn't change it, so after re-checking a price or a timetable, bump
+`checked` in the record and every hike using it shows the new date.
+
+**Checks.** `pnpm crm check` reads the file as the build does: a malformed record
+or id is an error naming `facts-library.json`, and a record no hike uses (no
+`use: "<id>"` for it, or for a stop no `at` that resolves to its ref) is a warning:
+`facts-library.json: warning: transport "x" is used by no hike`.
+
+**Writing the file.** `scripts/crm/lib/facts-library-file.ts` writes it byte-stably:
+tab indentation, the kinds in the order above, ids sorted, every record's fields in
+the schema's order. Edit it with that writer (or by hand in the same layout), not
+with a JSON formatter.
+
+#### The two one-time passes
+
+Both are history: they ran once on the real files, changed no page, and a second
+run changes nothing. Run with `JITI_ALIAS='{"$lib":"'"$PWD"'/src/lib"}' node_modules/.bin/jiti <file> [--dry-run]`.
+
+- `scripts/crm/oneoff/merge-route-list.ts` moved each `difficulty.sections` entry
+  into `legs` as an entry with `inTable: false` and `onProfile: true`, after the
+  legs, in the sections' order. A section on exactly a leg's stretch (the same `to`
+  and chained start) would have merged into that leg, which then got `onProfile:
+  true`, but only when the page stayed the same: the `sac`, `viaFerrata`, `climbing`
+  and `note` the same on both or on neither, the leg not optional and not already on
+  the profile, the order of the profile entries kept and the computed grade
+  unchanged. In today's data no pair merged: every section stayed its own
+  profile-only entry, as the Wasenkogel example shows.
+- `scripts/crm/oneoff/extract-facts-library.ts` moved every entry that two or more
+  documents held byte-identically (key order aside) into the library, and left each
+  copy as `{ "at": … }` or `{ "use": … }`. **Where the records came from.** A stop
+  moved only when its `at` resolved to one OSM ref, the same in every document and
+  with no other stop at that place; a copy that read differently from the record
+  stayed inline. The pass printed the entries that share a key but differ (stops by
+  OSM ref, transport by `mode`/`from`/`to`/`line`, lifts and tickets by `name`,
+  parking by `name` and `at`) and wrote them to `scripts/crm/data/near-duplicates.json`
+  (not in git), so they can be merged by hand. Both passes print a summary and the
+  list of what they couldn't convert.
 
 ## 6. Place docs
 
@@ -1128,6 +1276,7 @@ Markdown text, photos like a post's.
 ```
 
 - **Any other key fails the build.** No facts or metrics here.
+- **Translations.** `<slug>.<lang>.md` beside the doc (see Localization below).
 - **Listing them.** Put route places in the sidecar, so every post on the route
   shows them. Use a post's own list only when that day differs:
 
@@ -1159,6 +1308,46 @@ Markdown text, photos like a post's.
 
 ---
 
+## 6b. Localization
+
+English is the source of every text; each other language in `LANGS`
+(`src/lib/i18n/translation-name.js`) is optional. Adding a language later is: add it
+to that list, add its JSON table (`src/lib/hikes/i18n/<lang>.json`) and its import line
+in `src/lib/i18n/strings.ts`; nothing else changes.
+
+- **`Text` fields** (sidecar `name` and `description`, facts text): `"English"` or
+  `{en, de}`, see §5. A sidecar `name` or `description` given as `{en, de}` is shown as
+  its English text everywhere today. Code that needs the other languages reads them
+  with `hikeText(hike, 'name' | 'description')` (`src/lib/data/hikes-core.js`), never
+  from `name` / `description`, which stay the English.
+- **Translation files.** A post or place doc is translated by a file beside it, named
+  after it with the language before `.md`:
+  - post: `<date>-<slug>.<lang>.md` in `markdown/`;
+  - place doc: `<slug>.<lang>.md` in `places/`.
+
+  `<lang>` is in `LANGS` and is not `en`. Slugs never contain a dot, so a translation
+  is never mistaken for a post or place doc of its own.
+- **Front matter, only these keys:** a post translation takes `title` and
+  `description`; a place translation takes `title`, `description` and `aliases`. The
+  body is the whole translated text, photos included. Everything else (`images`,
+  facts, dates, tags) stays in the English file.
+- **State.** A translation is optional per file: with no `.de.md` the page is English
+  only. One with a missing key (for example no `description`) keeps the English for it.
+- **Build validation.** The build fails, naming the file, for a language not in `LANGS`
+  (`.fr.md`, `.DE.md`), a translation with no English file beside it, a key outside
+  the list above, an empty value, or a photo or clip that doesn't exist. `pnpm crm
+  check` reports the same.
+- **Photos.** A photo used only by a translation counts as used: the CRM won't remove it.
+- **String tables.** The site's own words (labels, buttons, fact names) live in
+  `src/lib/hikes/i18n/<lang>.json`, read through `t()` in `src/lib/i18n/strings.ts`.
+  English is complete; `pnpm crm check` prints `src/lib/hikes/i18n/de.json: warning:
+  missing "<key>"` for each string another language lacks, before its summary, which
+  counts them apart from the other warnings (`3 warnings (plus 12 missing strings)`),
+  then one count per language. Missing strings never fail `--strict`; the page falls
+  back to English.
+
+---
+
 ## 7. What's worth filling in first
 
 Ordered by reader value per minute of your time.
@@ -1179,8 +1368,8 @@ places, 3D pins, search.
 6. `conditions` and `deviations`, **for new posts, while you remember.**
 
 **Tier 2: planning.** `water`, `stops`, `difficulty.exposure` and `fitness`,
-`navigation.marking`, `plan.gear`, `plan.for`/`notFor`, `difficulty.sections` or `legs`
-(either one also computes the SAC grade).
+`navigation.marking`, `plan.gear`, `plan.for`/`notFor`, `legs` as table rows or
+profile bands (either one also computes the SAC grade).
 
 **Tier 3: nice to have.** Prices, tickets, parking, lifts, permits, rules, `drones`,
 `protectedAreas`, `signal`, `suitability`, `variants`, `alternatives`, `sources`,
@@ -1199,68 +1388,71 @@ the post only for what differs on that day.
 |---|---|
 | Route GeoJSON | [openrouteservice](https://maps.openrouteservice.org/) export; see the blog post "How I make the hiking routes". |
 | Recorded GPX | Garmin Connect / Strava / Komoot export. |
-| `distance`, `ascent`, `descent`, `duration` | `scripts/track_metrics.py` for recorded tracks (`deploy.sh` runs it with `--missing-only`). |
+| `distance`, `ascent`, `descent`, `duration` | `pnpm crm metrics` for recorded tracks (`deploy.sh` runs it with `--missing-only`). |
 | `elapsed` | GPX timestamps automatically. Without them, hand-pick the first and last photo. |
-| `images:` (`w`, `h`, `blur`, AVIF tiers) | `scripts/image_match.py` (or the web UI `image_match_web.py`), then `scripts/image_optimize.py`. |
-| `images[].lat/lon` | `image_optimize.py`, from Immich (`backfill_gps.py` for older posts). |
-| `images[].taken`, `located: track` | `backfill_time.py` (`deploy.sh` runs it). |
-| `videos:` (upload date, duration, poster) | `scripts/video_meta.py`, for every `![caption](https://www.youtube.com/watch?v=…)` embed (`deploy.sh` runs it). |
-| `demEle` (photos, nodes, sidecar facts places) | `scripts/backfill_terrain.py`. Run it after adding nodes or `{lat, lon}` facts places to a sidecar. |
-| Nodes | [Overpass turbo](https://overpass-turbo.eu/) around the route; keep the OSM shape. Then `node scripts/check-nodes.js`. |
+| `images:` (`w`, `h`, `blur`, AVIF tiers) | The CRM's Photos tab (`pnpm crm`), which adds photos from Immich; `pnpm crm images` fills in what's missing for local images (`deploy.sh` runs it). |
+| `images[].lat/lon` | The Photos tab, from Immich (**Fix location** to correct one). |
+| `images[].taken`, `located: track` | The Photos tab, then `pnpm crm photo-times` (`deploy.sh` runs it). |
+| `videos:` (upload date, duration, poster) | `pnpm crm video-meta` (or **YouTube** in the CRM's Write tab), for every `![caption](https://www.youtube.com/watch?v=…)` embed (`deploy.sh` runs it). |
+| `demEle` (photos, nodes, sidecar facts places) | `pnpm crm terrain` (`deploy.sh` runs it). Run it after adding nodes or `{lat, lon}` facts places to a sidecar. |
+| Nodes | [Overpass turbo](https://overpass-turbo.eu/) around the route; keep the OSM shape, or the CRM's Map tab (**Inspect**). Then `pnpm crm check`. |
 | Node `visited` | Your own comparison with Komoot's peak list. |
 | Map tiles | `scripts/map-download.js <slug>`, after setting `origin` and `height`. |
 
 ### Scripts to run for each hike
 
 Run these from the repository root, in this order. `POST` arguments are the post's
-filename (`2026-07-19-schneefernerkopf.md`; the `.md` is optional). Every Python script
-takes `--dry-run` to preview its changes and `--help` for all its options. The image
-scripts read `$IMMICH_URL` and `$IMMICH_API_KEY`.
+filename (`2026-07-19-schneefernerkopf.md`) or its `<date>-<slug>` name. Every
+`pnpm crm` command except `check` (which writes nothing) takes `--dry-run` to preview
+its changes; `pnpm crm help` lists them all. The CRM reads Immich from `$IMMICH_URL`
+and `$IMMICH_API_KEY`, else `scripts/crm/data/settings.json`. `deploy.sh` runs steps
+4–8 for every post, in this order, and then step 1 (`pnpm crm prebuild`), so these
+are for checking a hike before then.
 
 ```sh
-# 1. Sidecar nodes: check for duplicate ids, names and wikidata across all hikes.
-node scripts/check-nodes.js
+# 1. Sidecar nodes: check for duplicate ids, names and wikidata across all hikes
+#    (and every other post and place doc problem).
+pnpm crm check
 
 # 2. Map tiles, once the sidecar has `origin` and `height`. Takes the slug, not the
 #    post filename. Mapbox/Nextzen tokens come from the environment
 #    (mapboxDEMAccess, mapboxSatelliteAccess, nextzenAccess, ...).
 node scripts/map-download.js schneefernerkopf
 
-# 3. Match the post's compressed photos to their Immich originals. Writes
-#    scripts/matches/hikes/<post>.json. Album is guessed from the post name;
-#    pass --album "Name" if the guess is wrong. --force re-matches an existing report.
-#    To review or fix matches in the browser instead: scripts/.venv/bin/python scripts/image_match_web.py
-scripts/.venv/bin/python scripts/image_match.py 2026-07-19-schneefernerkopf.md
+# 3. Photos: open the post in the CRM's Photos tab and pick them from Immich (album
+#    guessed from the post name, or choose one). Each added photo gets its AVIF tiers,
+#    blur placeholder and w, h, lat/lon, demEle and taken, and stays linked to its
+#    Immich asset. Fix time there also updates the Immich asset, and so does Fix
+#    location for a position set on the map (not one from the track, nor a dropped one).
+pnpm crm
 
-# 4. Build the AVIF tiers and blur placeholders, and write the post's `images:`
-#    (w, h, blur, lat/lon and demEle from Immich). --force rebuilds an existing `images:`
-#    (see Gotchas: this resets hand-fixed GPS).
-scripts/.venv/bin/python scripts/image_optimize.py 2026-07-19-schneefernerkopf.md
+# 4. Distance, ascent, descent and moving time from the recorded GPX. deploy.sh
+#    runs it with --missing-only; run it without that flag to overwrite metrics
+#    already written.
+pnpm crm metrics 2026-07-19-schneefernerkopf.md
 
-# 5. Photo timestamps (`taken`), and placing photos without GPS on the recorded track
-#    (`located: track`). deploy.sh also runs this for every post.
-scripts/.venv/bin/python scripts/backfill_time.py 2026-07-19-schneefernerkopf.md
+# 5. Photo timestamps (`taken`) checked, and photos without GPS placed on the
+#    recorded track (`located: track`).
+pnpm crm photo-times 2026-07-19-schneefernerkopf.md
 
-# 6. Distance, ascent, descent and moving time from the recorded GPX. Takes the slug
-#    or the post filename. deploy.sh runs it with --missing-only for every post;
-#    run it without that flag to overwrite metrics already written.
-scripts/.venv/bin/python scripts/track_metrics.py 2026-07-19-schneefernerkopf.md
+# 6. demEle for every located photo, osm.json element and sidecar `{lat, lon}` facts
+#    place. Re-run whenever you add nodes or facts places. Covers every post and
+#    hike; there is no POST argument.
+pnpm crm terrain
 
-# 7. demEle for the sidecar's nodes and `{lat, lon}` facts places, and any located
-#    photo still missing it. Re-run whenever you add nodes or facts places.
-#    Nodes are done for every *.hike.json regardless of the POST argument.
-scripts/.venv/bin/python scripts/backfill_terrain.py 2026-07-19-schneefernerkopf.md
-
-# 8. Embedded YouTube videos: upload date and duration from the watch page, title and
+# 7. Embedded YouTube videos: upload date and duration from the watch page, title and
 #    description in English, German and Ukrainian (your YouTube translations), and the poster saved to static/images/projects/data-viz/hikes/videos/<id>.jpg
 #    with AVIF tiers. Only fills what's missing; --refresh re-fetches everything
-#    (and overwrites a hand-written description). deploy.sh runs it for every post.
-scripts/.venv/bin/python scripts/video_meta.py 2026-07-19-schneefernerkopf.md
+#    (and overwrites a hand-written description).
+pnpm crm video-meta 2026-07-19-schneefernerkopf.md
+
+# 8. AVIF tiers, w, h and blur for any local image a post or place doc shows that
+#    is still missing them (e.g. one added by hand). Never rebuilds existing ones.
+pnpm crm images
 ```
 
-`backfill_gps.py` (photo `lat`/`lon`) and `backfill_file_size.py` were one-time
-backfills for posts made before `image_optimize.py` wrote those fields. A new hike
-doesn't need them.
+The old one-time backfills for photo GPS and file sizes are gone: every photo the
+CRM adds already has those fields.
 
 ### Facts (by hand; good sources)
 
@@ -1295,9 +1487,11 @@ doesn't need them.
   (§2a), in facts it deletes it (§2b).
 - **Two different `hidden`s:** top-level `hidden` in a post does nothing; `facts.hidden`
   switches the facts layer off.
-- **Re-running the optimizer** rebuilds a post's `images:` from its match report, so
-  hand-fixed photo GPS comes back. Fix it in Immich instead. (See
-  `offroute-photos.md` for photos whose GPS is off the route.)
+- **Photo GPS fixes stick:** nothing rebuilds `images:` from Immich, and `pnpm crm
+  images` only adds missing fields. **Fix location** in the CRM's Photos tab also
+  updates a linked Immich asset, for a position set on the map (not one from the track,
+  nor a dropped one). (See `offroute-photos.md` for photos whose GPS is
+  off the route.)
 - **Editing a place doc doesn't change the posts' `dateModified`.** Add `updated:` to
   a post if the change matters for it.
 - **Most prerender failures don't fail the build**; the page is just missing. Watch the

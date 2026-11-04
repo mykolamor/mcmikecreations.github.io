@@ -1,3 +1,7 @@
+import { escapeHtml, t, tHtml } from '$lib/i18n/strings';
+import type { Lang } from '$lib/i18n/languages';
+import { webUrl, wikidataUrl, wikipediaUrl } from './web-url';
+
 const peakColor = (visited: string | undefined) => {
     switch (visited) {
         case 'yes': return '#16a34a'; // I'm 95% sure I haven't visited it, but Komoot counted it
@@ -37,9 +41,15 @@ export const getNodeIconDetails = (tags: any) => {
     return { emoji: '📍', color: '#3b82f6' };
 };
 
-export const formatTags = (tags: any): [string, string][] => {
+/**
+ * A node's OSM tags as popup rows, `[label, value HTML]`; the labels are HTML too.
+ * OSM data is anyone's to edit, so every tag key and value is escaped, in attributes too.
+ */
+export const formatTags = (tags: any, lang: Lang = 'en'): [string, string][] => {
     const formatted = new Map<string, string>();
     const handledKeys = new Set(['name', 'ele']);
+    const link = (href: string, text: string, newTab = false) =>
+        `<a href="${escapeHtml(href)}"${newTab ? ' target="_blank" rel="noopener noreferrer"' : ''} style="color: #2563eb; text-decoration: none;">${text}</a>`;
 
     const addHandled = (keys: string[], label: string, formatter: (v: string) => string) => {
         keys.forEach(k => handledKeys.add(k));
@@ -51,26 +61,24 @@ export const formatTags = (tags: any): [string, string][] => {
         }
     };
 
-    addHandled(['contact:phone', 'phone', 'contact:mobile', 'mobile'], 'Phone', v => 
+    addHandled(['contact:phone', 'phone', 'contact:mobile', 'mobile'], tHtml(lang, 'map.tags.phone'), v => 
         v.split(';').map(p => {
             const num = p.trim();
-            return `<a href="tel:${num}" style="color: #2563eb; text-decoration: none;">${num}</a>`;
+            return link(`tel:${num}`, escapeHtml(num));
         }).join(', ')
     );
-    addHandled(['contact:website', 'website', 'url'], 'Website', v => `<a href="${v.startsWith('http') ? v : 'https://' + v}" target="_blank" rel="noopener noreferrer" style="color: #2563eb; text-decoration: none;">Link</a>`);
-    addHandled(['contact:email', 'email'], 'Email', v => `<a href="mailto:${v}" style="color: #2563eb; text-decoration: none;">${v}</a>`);
+    addHandled(['contact:website', 'website', 'url'], tHtml(lang, 'map.tags.website'), v => link(webUrl(v), tHtml(lang, 'map.tags.link'), true));
+    addHandled(['contact:email', 'email'], tHtml(lang, 'map.tags.email'), v => link(`mailto:${v}`, escapeHtml(v)));
 
     handledKeys.add('wikipedia');
     if (tags.wikipedia) {
-        const parts = String(tags.wikipedia).split(':');
-        const lang = parts.length > 1 ? parts[0] : 'en';
-        const title = parts.length > 1 ? parts[1] : parts[0];
-        formatted.set('Wikipedia', `<a href="https://${lang}.wikipedia.org/wiki/${encodeURIComponent(title)}" target="_blank" rel="noopener noreferrer" style="color: #2563eb; text-decoration: none;">${tags.wikipedia}</a>`);
+        formatted.set('Wikipedia', link(wikipediaUrl(String(tags.wikipedia)), escapeHtml(String(tags.wikipedia)), true));
     }
 
     handledKeys.add('wikidata');
     if (tags.wikidata) {
-        formatted.set('Wikidata', `<a href="https://www.wikidata.org/wiki/${tags.wikidata}" target="_blank" rel="noopener noreferrer" style="color: #2563eb; text-decoration: none;">${tags.wikidata}</a>`);
+        const url = wikidataUrl(String(tags.wikidata));
+        formatted.set('Wikidata', url ? link(url, escapeHtml(String(tags.wikidata)), true) : escapeHtml(String(tags.wikidata)));
     }
 
     for (const [k, v] of Object.entries(tags)) {
@@ -79,7 +87,7 @@ export const formatTags = (tags: any): [string, string][] => {
                                .split(' ')
                                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
                                .join(' ');
-            formatted.set(prettyKey, String(v));
+            formatted.set(escapeHtml(prettyKey), escapeHtml(String(v)));
         }
     }
 
@@ -148,18 +156,27 @@ export function isPeakOrSaddle(node: { tags?: Record<string, unknown> | null }):
     return natural === 'peak' || natural === 'saddle';
 }
 
-/** Node name for its popup heading and accessible label. */
-export function nodeTitle(tags: any): string {
-    return tags?.name || tags?.natural || 'POI';
+/**
+ * A node's name: the one in the page's language when OSM has one (`name:en`
+ * on this English site, though the local `name` may be in another script),
+ * else the local name; null for an unnamed node. Plain text.
+ */
+export function nodeName(tags: any, lang: Lang = 'en'): string | null {
+    return tags?.[`name:${lang}`] || tags?.name || null;
 }
 
-/** A POI node's popup body: name, OSM elevation, its formatted tags, then `extra` (the facts about it). */
-export function nodePopupHtml(tags: any, extra = ''): string {
-    const ele = tags?.ele ? ` (${tags.ele}m)` : '';
-    const tagsList = formatTags(tags ?? {})
+/** Node name for its popup heading and accessible label: `nodeName`, else what it is. Plain text. */
+export function nodeTitle(tags: any, lang: Lang = 'en'): string {
+    return nodeName(tags, lang) || tags?.natural || t(lang, 'map.poi');
+}
+
+/** A POI node's popup body, as HTML: name, OSM elevation, its formatted tags, then `extra` (HTML: the facts about it). */
+export function nodePopupHtml(tags: any, extra = '', lang: Lang = 'en'): string {
+    const ele = tags?.ele ? ` (${escapeHtml(String(tags.ele))}m)` : '';
+    const tagsList = formatTags(tags ?? {}, lang)
         .map(([k, v]: [string, string]) => `<tr><td style="padding-right:8px;font-weight:600;font-size:11px;color:#6b7280;vertical-align:top;white-space:nowrap;">${k}</td><td style="font-size:11px;word-break:break-word;">${v}</td></tr>`)
         .join('');
-    return `<div style="margin-bottom:8px;"><b>${nodeTitle(tags)}</b>${ele}</div>`
+    return `<div style="margin-bottom:8px;"><b>${escapeHtml(nodeTitle(tags, lang))}</b>${ele}</div>`
         + (tagsList ? `<div style="max-height:150px;overflow-y:auto;"><table style="min-width:100%;border-spacing:0;">${tagsList}</table></div>` : '')
         + extra;
 }

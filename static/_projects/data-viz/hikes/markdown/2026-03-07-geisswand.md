@@ -4,7 +4,7 @@ description: Letting Pavlo recover on a nice walk.
 people:
   - Pavlo Pustelnyk
 gpx: /_projects/data-viz/hikes/gpx/geisswand.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 5679
 ascent: 460
 descent: 477

@@ -8,9 +8,10 @@ import type { Feature, GeoJsonObject, Geometry } from 'geojson';
 import HikesTimeline from './HikesTimeline.svelte';
 import { primaryGeometryColor } from '$lib/hikes/build-geometry';
 import { type MapDate } from '$lib/data/map-info';
-import { getNodeIconDetails, formatTags } from '$lib/hikes/map-utils';
+import { getNodeIconDetails, nodeName, nodePopupHtml } from '$lib/hikes/map-utils';
 import { addRegionPane, regionLayer, type RegionKind } from '$lib/hikes/region-overlay';
 import { onMount } from 'svelte';
+import { paragraphTexts, t, tHtml } from '$lib/i18n/strings';
 
 type WeekHike = { name: string; route: string; hasBlog: boolean };
 type WeekData = { year: number; weekIndex: number; label: string; hikes: WeekHike[] };
@@ -22,7 +23,7 @@ type WebStats = {
 	totalDescent: number;
 };
 type HikeStats = { distance: number | null; duration: number | null; ascent: number | null; descent: number | null };
-type PeakNode = { id: any; lat: number; lon: number; tags: Record<string, string> };
+type PeakNode = { ref: string; lat: number; lon: number; tags: Record<string, string> };
 type Peak = { node: PeakNode; name: string | null; elevation: number | null; color: string; emoji: string };
 
 interface Props {
@@ -30,6 +31,9 @@ interface Props {
 }
 
 let { webData }: Props = $props();
+
+// Shown as text in one `<p>`, so the prerendered HTML has no `{@html}` markers.
+const intro = paragraphTexts('en', 'tags.Web.intro');
 
 let loadingProgress = $state(0);
 let isLoading = $state(true);
@@ -42,8 +46,6 @@ let leaflet: any = null;
 let mapInstance: any = null;
 let rerenderNodes: (() => void) | null = null;
 
-const nodeName = (tags: Record<string, string>) => tags.name || tags['name:de'] || tags['name:en'] || null;
-
 function nodeElevation(tags: Record<string, string>): number | null {
     const raw = tags.ele;
     if (raw === undefined || raw === null) return null;
@@ -51,36 +53,19 @@ function nodeElevation(tags: Record<string, string>): number | null {
     return Number.isFinite(parsed) ? parsed : null;
 }
 
-const formatElevation = (elevation: number) => `${Math.round(elevation).toLocaleString('en-US')} m`;
-
-function nodePopupContent(node: PeakNode): string {
-    const tags = node.tags || {};
-    const name = nodeName(tags) || tags.natural || 'POI';
-    const ele = tags.ele ? ` (${tags.ele}m)` : '';
-
-    let popupContent = `<div style="margin-bottom: 8px;"><b>${name}</b>${ele}</div>`;
-    const tagsList = formatTags(tags)
-        .map(([k, v]) => `<tr><td style="padding-right: 8px; font-weight: 600; font-size: 11px; color: #6b7280; vertical-align: top; white-space: nowrap;">${k}</td><td style="font-size: 11px; word-break: break-word;">${v}</td></tr>`)
-        .join('');
-
-    if (tagsList) {
-        popupContent += `<div style="max-height: 150px; overflow-y: auto;"><table style="min-width: 100%; border-spacing: 0;">${tagsList}</table></div>`;
-    }
-
-    return popupContent;
-}
+const formatElevation = (elevation: number) => t('en', 'web.elevation', { value: Math.round(elevation).toLocaleString('en-US') });
 
 function focusPeak(peak: Peak) {
     if (!leaflet || !mapInstance) return;
 
-    selectedPeakId = peak.node.id;
+    selectedPeakId = peak.node.ref;
     const latlng: [number, number] = [peak.node.lat, peak.node.lon];
     mapInstance.setView(latlng, Math.max(mapInstance.getZoom(), 13), { animate: false });
     rerenderNodes?.();
 
     leaflet.popup({ maxWidth: 300 })
         .setLatLng(latlng)
-        .setContent(nodePopupContent(peak.node))
+        .setContent(nodePopupHtml(peak.node.tags))
         .openOn(mapInstance);
 
     if (window.matchMedia('(max-width: 767px)').matches) {
@@ -267,21 +252,21 @@ async function startLoading() {
             if (feature.properties) {
                 const gpxLinks = (feature.properties.dates || [])
                     .filter((x: any) => x.gpx)
-                    .map((x: any, i: number) => `<a href="${x.gpx}">GPX${i > 0 ? ` ${i + 1}` : ''}</a>`);
+                    .map((x: any, i: number) => `<a href="${x.gpx}">${tHtml('en', 'web.popup.gpx', { n: i + 1 })}</a>`);
                 const gpxSuffix = gpxLinks.length > 0 ? `, ${gpxLinks.join(', ')}` : '';
                 layer.bindPopup(
 `<ul>
-<li>Distance: ${getDistance(feature.properties.distance ?? 0)}</li>
-<li>Duration: ${getTime(feature.properties.duration ?? 0)}</li>
-<li>Ascent: ${getDistance(feature.properties.ascent ?? 0)}</li>
-<li>Descent: ${getDistance(feature.properties.descent ?? 0)}</li>
-<li>Posts: ${feature.properties.dates.map((x: MapDate) => {
+<li>${tHtml('en', 'web.popup.distance', { value: getDistance(feature.properties.distance ?? 0) })}</li>
+<li>${tHtml('en', 'web.popup.duration', { value: getTime(feature.properties.duration ?? 0) })}</li>
+<li>${tHtml('en', 'web.popup.ascent', { value: getDistance(feature.properties.ascent ?? 0) })}</li>
+<li>${tHtml('en', 'web.popup.descent', { value: getDistance(feature.properties.descent ?? 0) })}</li>
+<li>${tHtml('en', 'web.popup.posts', { links: feature.properties.dates.map((x: MapDate) => {
     const filename = x.path ? x.path!.split('/').pop()!.replace('.md', '') : null;
     const targetRoute = filename ? `/hikes/${filename}/` : feature.properties.route;
     return `<a href="${targetRoute}">${new Date(x.date).toLocaleDateString('en-us', { year:"numeric", month:"short", day:"numeric"})}` + `</a>`;
-}).join('; ')}</li>
-<li>${feature.properties.dates.map((x: MapDate) => !!x.path).includes(true) ? '' : `<a href="${feature.properties.route}/">Map Link</a>, `}
-<a href="${feature.properties.filePath}">GeoJSON</a>${gpxSuffix}
+}).join('; ') })}</li>
+<li>${feature.properties.dates.map((x: MapDate) => !!x.path).includes(true) ? '' : `<a href="${feature.properties.route}/">${tHtml('en', 'web.popup.mapLink')}</a>, `}
+<a href="${feature.properties.filePath}">${tHtml('en', 'web.popup.geojson')}</a>${gpxSuffix}
 </li>
 </ul>`);
             }
@@ -297,7 +282,7 @@ async function startLoading() {
         }
     });
 
-    const uniqueNodes = Array.from(new Map(nodesData.map(node => [node.id, node])).values());
+    const uniqueNodes = Array.from(new Map(nodesData.map(node => [node.ref, node])).values());
     const nodesLayer = L.layerGroup().addTo(map);
 
     peaks = uniqueNodes
@@ -323,7 +308,7 @@ async function startLoading() {
         const filteredNodes: any[] = [];
         const minPixelDistance = 24;
 
-        const selectedNode = uniqueNodes.find(node => node.id === selectedPeakId);
+        const selectedNode = uniqueNodes.find(node => node.ref === selectedPeakId);
         if (selectedNode) filteredNodes.push(selectedNode);
 
         uniqueNodes.forEach(node => {
@@ -350,7 +335,7 @@ async function startLoading() {
             });
 
             const marker = L.marker([node.lat, node.lon], { icon })
-            .bindPopup(nodePopupContent(node));
+            .bindPopup(nodePopupHtml(node.tags));
             nodesLayer.addLayer(marker);
         });
     };
@@ -373,7 +358,7 @@ async function startLoading() {
 
         const anchorElement = L.DomUtil.create('a', 'text-[22px]', divElement);
         anchorElement.href = '#';
-        anchorElement.title = 'Toggle colors';
+        anchorElement.title = t('en', 'web.toggleColors');
         anchorElement.role = 'button';
         anchorElement.ariaLabel = anchorElement.title;
         anchorElement.ariaDisabled = 'false';
@@ -396,8 +381,8 @@ async function startLoading() {
     const regionGroups: Record<RegionKind, any> = { range: L.layerGroup(), area: L.layerGroup() };
     const regionsLoaded = new Set<RegionKind>();
     L.control.layers(undefined, {
-        'Mountain ranges': regionGroups.range,
-        'Hike areas': regionGroups.area,
+        [tHtml('en', 'web.ranges')]: regionGroups.range,
+        [tHtml('en', 'web.areas')]: regionGroups.area,
     }, { position: 'topright' }).addTo(map);
     map.on('overlayadd', async (e: any) => {
         const kind = (Object.keys(regionGroups) as RegionKind[]).find((k) => regionGroups[k] === e.layer);
@@ -420,12 +405,8 @@ onMount(() => {
 </script>
 
 
-<Heading tag="h2" class="mb-2">Web of Hikes: Collecting All Routes and Peaks</Heading>
-<p class="mb-8 text-gray-600 dark:text-gray-300">
-	These posts focus on visiting all
-	peaks in the biggest possible area while using the same departure and
-	arrival points as other hikes.
-</p>
+<Heading tag="h2" class="mb-2">{t('en', 'tags.Web.heading')}</Heading>
+<p class="mb-8 text-gray-600 dark:text-gray-300">{intro[0]}</p>
 
 <div class="flex flex-col gap-4 mt-8">
     <article class="
@@ -438,7 +419,7 @@ onMount(() => {
                     <TrackingOutline class="w-5 h-5 md:w-6 md:h-6" />
                 </div>
                 <div class="min-w-0">
-                    <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide truncate">Total Hikes</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide truncate">{t('en', 'web.stats.hikes')}</div>
                     <div class="font-semibold whitespace-nowrap">{webData.stats.totalHikes}</div>
                 </div>
             </div>
@@ -447,7 +428,7 @@ onMount(() => {
                     <ClockOutline class="w-5 h-5 md:w-6 md:h-6" />
                 </div>
                 <div class="min-w-0">
-                    <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide truncate">Total Time</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide truncate">{t('en', 'web.stats.time')}</div>
                     <div class="font-semibold whitespace-nowrap">{getTime(webData.stats.totalTime)}</div>
                 </div>
             </div>
@@ -456,7 +437,7 @@ onMount(() => {
                     <MapPinOutline class="w-5 h-5 md:w-6 md:h-6" />
                 </div>
                 <div class="min-w-0">
-                    <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide truncate">Distance</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide truncate">{t('en', 'web.stats.distance')}</div>
                     <div class="font-semibold whitespace-nowrap">{getDistance(webData.stats.totalDistance)}</div>
                 </div>
             </div>
@@ -465,7 +446,7 @@ onMount(() => {
                     <ArrowUpOutline class="w-5 h-5 md:w-6 md:h-6" />
                 </div>
                 <div class="min-w-0">
-                    <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide truncate">Ascent</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide truncate">{t('en', 'web.stats.ascent')}</div>
                     <div class="font-semibold whitespace-nowrap">{getDistance(webData.stats.totalAscent)}</div>
                 </div>
             </div>
@@ -474,7 +455,7 @@ onMount(() => {
                     <ArrowDownOutline class="w-5 h-5 md:w-6 md:h-6" />
                 </div>
                 <div class="min-w-0">
-                    <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide truncate">Descent</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide truncate">{t('en', 'web.stats.descent')}</div>
                     <div class="font-semibold whitespace-nowrap">{getDistance(webData.stats.totalDescent)}</div>
                 </div>
             </div>
@@ -487,17 +468,17 @@ onMount(() => {
         <aside class="w-full lg:w-72 xl:w-80 shrink-0 order-last lg:order-none relative bg-gray-50 rounded-lg dark:bg-gray-800">
             <div class="lg:absolute lg:inset-0 flex flex-col p-4 transition-opacity duration-500 {isLoading ? 'opacity-0 pointer-events-none' : 'opacity-100'}">
                 <div class="shrink-0 mb-3 text-xl font-semibold text-gray-900 dark:text-white">
-                    {peaks.length} bagged peaks
+                    {t('en', 'web.peaks', { count: peaks.length })}
                 </div>
                 <ul class="overflow-y-auto max-h-72 lg:max-h-none lg:flex-1 lg:min-h-0 -mx-1 px-1">
-                    {#each peaks as peak (peak.node.id)}
+                    {#each peaks as peak (peak.node.ref)}
                         <li>
                             <button
                                 type="button"
                                 onclick={() => focusPeak(peak)}
                                 class="w-full flex items-center gap-2 text-left px-2 py-1.5 rounded-md
                                     hover:bg-gray-100 dark:hover:bg-gray-700
-                                    {selectedPeakId === peak.node.id ? 'bg-gray-100 dark:bg-gray-700' : ''}"
+                                    {selectedPeakId === peak.node.ref ? 'bg-gray-100 dark:bg-gray-700' : ''}"
                             >
                                 <span
                                     class="shrink-0 w-4 h-4 rounded-full border border-white shadow-sm flex items-center justify-center text-[9px] leading-none"
@@ -505,7 +486,7 @@ onMount(() => {
                                     aria-hidden="true"
                                 >{peak.emoji}</span>
                                 <span class="min-w-0 truncate text-sm text-gray-900 dark:text-white">
-                                    {peak.name ?? 'Unnamed peak'}
+                                    {peak.name ?? t('en', 'web.unnamedPeak')}
                                 </span>
                                 {#if peak.elevation !== null}
                                     <span class="ml-auto shrink-0 text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">

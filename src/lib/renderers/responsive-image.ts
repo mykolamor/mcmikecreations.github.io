@@ -1,37 +1,45 @@
 /**
- * Responsive AVIF tier math for hike post inline images, mirroring
- * scripts/matches/optimize.py's tier_dimensions exactly: tiers scale by
+ * Responsive AVIF tier math for hike post inline images, shared with
+ * `pnpm crm images` (scripts/crm/lib/images.ts): tiers scale by
  * the LONG EDGE (larger of width/height), not by a fixed target width, so
  * a portrait photo's "2560" tier is 2560px tall and proportionally
  * narrower — not 2560px wide with an even taller height.
  */
 
+import type { PhotoPin } from '$lib/hikes/photo-pins';
+
 /** One matched or unmatched image's entry in a post's `images` front matter. */
 export interface HikeImageMeta {
 	w: number;
 	h: number;
+	/** Places marked on the photo (`photo-pins.ts`), validated server-side. */
+	pins?: PhotoPin[];
+	/** Set by the tools when the photo was replaced with another shape after pinning. */
+	pinsReview?: boolean;
 	/** Where the photo was taken (from the matched Immich asset's EXIF), when known. */
 	lat?: number;
 	lon?: number;
 	/**
 	 * Terrain height (m) under lat/lon as the post's 3D map renders it
-	 * (scripts/matches/terrain.py); pins the photo onto the 3D map.
+	 * (`pnpm crm terrain`); pins the photo onto the 3D map.
 	 */
 	demEle?: number;
 	/**
 	 * When the photo was taken, local wall clock with offset
-	 * (`2026-09-27T11:18:16+02:00`), vetted by scripts/backfill_time.py.
+	 * (`2026-09-27T11:18:16+02:00`), vetted by `pnpm crm photo-times`.
 	 */
 	taken?: string;
 	/** `track`: `lat`/`lon` are the recorded track's position at `taken`, not the photo's own GPS. */
 	located?: 'track';
 	/** Present only for images with generated AVIF tiers. */
 	blur?: string;
+	/** Alt text for the `<img>`, when it should differ from the caption (`scripts/crm`). */
+	alt?: string;
 }
 
 /**
  * One embedded YouTube video's entry in a post's `videos` front matter,
- * keyed by video id. Written by scripts/video_meta.py; the poster lives at
+ * keyed by video id. Written by `pnpm crm video-meta`; the poster lives at
  * `videoPosterHref(id)` with AVIF tiers beside it.
  */
 export interface HikeVideoMeta {
@@ -70,7 +78,7 @@ export const AVIF_TIERS: readonly number[] = [640, 1280, 2560];
 
 /**
  * Output (width, height) for one tier, or null if it would upscale.
- * Must stay in lockstep with scripts/matches/optimize.py's tier_dimensions.
+ * `pnpm crm images` writes the tiers with this same function.
  */
 export function tierDimensions(
 	w: number,

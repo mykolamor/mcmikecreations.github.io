@@ -6,7 +6,7 @@ people:
   - Pavlo Pustelnyk
 gpx: /_projects/data-viz/hikes/gpx/nebelhorn_2026.gpx
 filePath: /_projects/data-viz/hikes/geojson/nebelhorn_2026.json
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 14413
 ascent: 1273
 descent: 157

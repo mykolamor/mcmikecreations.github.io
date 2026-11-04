@@ -4,7 +4,7 @@ description: Joining a Ukrainian group to Fockenstein, then taking on Geierstein
 tags:
   - Wandern für glückliche Menschen
 gpx: /_projects/data-viz/hikes/gpx/fockenstein_geierstein.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 22120
 ascent: 1376
 descent: 1452

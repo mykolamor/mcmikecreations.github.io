@@ -17,224 +17,22 @@
 
 import {
 	ENUMS, LEVEL4, SNOWSHOE_GRADES, isSacGrade, normaliseSac, sacRank,
-	type BailoutRoute, type HikeAuthoredFacts, type Place, type Text
+	type BailoutRoute, type HikeAuthoredFacts, type Leg, type Place, type Text
 } from './facts-schema';
+import { FACTS, KM_RE, PLACE, RECORDS, TEXT, entryKey, type LibraryKind, type Spec } from './facts-spec';
+import { RECORD_NAMES, type FactsLibrary } from './facts-library.server';
+import { LANGS } from '../i18n/languages';
+import { webUrl } from './web-url';
 import { davDuration } from './hike-facts';
 import { buildPlaceIndex, nodeEle, normalizePlaceName, type PlaceIndex } from './place-links';
-import { routeLocator } from './photo-stops';
+import { routeLocator, type RoutePass } from './photo-stops';
+import { REF_RE } from '$lib/data/osm-store';
+import { formatPhones } from '$lib/data/osm-phone';
 import { cumulativeKm, haversineKm, pointAtKm, routeCoords } from './hike-metrics';
 import schemaKeys from './schema-keys.json';
 
-// ---------------------------------------------------------------------------
-// Schema description
-
-type Spec =
-	| { t: 'str' }
-	| { t: 'num'; min?: number; max?: number; int?: boolean }
-	| { t: 'bool' }
-	| { t: 'date' }
-	| { t: 'time' }
-	| { t: 'month' }
-	| { t: 'enum'; of: readonly (string | number)[]; labelled?: boolean }
-	| { t: 'sac' }
-	/** An ISO 3166-1 alpha-2 country code, `DE`. */
-	| { t: 'country' }
-	| { t: 'text' }
-	/** A Place: a node name, `km 7.5`, `{node}`, `{km}` or `{lat, lon}`. Warns when unresolved. */
-	| { t: 'place' }
-	/** A Place, or a named spot that needn't be a node: `{name, at?}`, or a string that may just be a name. */
-	| { t: 'spot' }
-	| { t: 'link' }
-	/** A served path to a GPX file (`/_projects/…/x.gpx`); read and summarised after the merge. */
-	| { t: 'gpx' }
-	| { t: 'window' }
-	| { t: 'open' }
-	/** `id`: identity fields for merging, first alternative with any field present wins. Without one, the post's list replaces. */
-	| { t: 'list'; of: Spec; id?: string[][] }
-	| { t: 'obj'; f: Record<string, Spec>; req?: string[] };
-
-const str: Spec = { t: 'str' };
-const num: Spec = { t: 'num' };
-const nonNeg: Spec = { t: 'num', min: 0 };
-const int0: Spec = { t: 'num', min: 0, int: true };
-const bool: Spec = { t: 'bool' };
-const date: Spec = { t: 'date' };
-const time: Spec = { t: 'time' };
-const text: Spec = { t: 'text' };
-const place: Spec = { t: 'place' };
-const spot: Spec = { t: 'spot' };
-const link: Spec = { t: 'link' };
-const sac: Spec = { t: 'sac' };
-const months: Spec = { t: 'list', of: { t: 'month' } };
-const texts: Spec = { t: 'list', of: text };
-const e = (group: keyof typeof ENUMS, labelled = false): Spec => ({ t: 'enum', of: ENUMS[group], labelled });
-const list = (of: Spec, ...id: string[][]): Spec => ({ t: 'list', of, ...(id.length ? { id } : {}) });
-const obj = (f: Record<string, Spec>, req: string[] = []): Spec => ({ t: 'obj', f, req });
-
-const span = { from: place, to: place };
-const price: Spec = list(obj({ amount: nonNeg, currency: str, per: e('pricePer'), note: text, checked: date }, ['amount']));
-const window: Spec = { t: 'window' };
-const ferrataGrade = { grade: str, scale: e('ferrataScale') };
-const climbGrade = { grade: str, scale: e('climbScale') };
-const SPAN_ID = ['from', 'to'];
-
-const FACTS = obj({
-	checked: date,
-	summary: text,
-	difficulty: obj({
-		sac,
-		note: text,
-		sections: list(
-			obj({ ...span, sac, viaFerrata: obj(ferrataGrade, ['grade']), climbing: obj(climbGrade, ['grade']), note: text }),
-			SPAN_ID
-		),
-		viaFerrata: list(
-			obj({ ...ferrataGrade, ...span, name: text, length: nonNeg, gain: nonNeg, time: nonNeg, note: text }, ['grade']),
-			['name'], SPAN_ID
-		),
-		climbing: obj({ ...climbGrade, note: text }, ['grade']),
-		exposure: obj({ level: { t: 'enum', of: LEVEL4 }, note: text }, ['level']),
-		fitness: { t: 'enum', of: [1, 2, 3, 4, 5] },
-		winter: obj({
-			snowshoe: { t: 'enum', of: SNOWSHOE_GRADES },
-			skiTour: str,
-			avalanche: { t: 'enum', of: [1, 2, 3, 4, 5] },
-			note: text
-		})
-	}),
-	season: obj({ best: months, possible: months, window, note: text }),
-	route: obj({
-		start: spot,
-		end: spot,
-		type: e('routeType'),
-		official: text,
-		optional: list(obj({ ...span, name: text, note: text }), ['name'], SPAN_ID),
-		terrain: list(e('terrain')),
-		shade: e('level4'),
-		trails: list(str),
-		peaks: list(place),
-		regions: list(e('region')),
-		categories: list(e('category')),
-		countries: list({ t: 'country' }),
-		huts: list(place)
-	}),
-	navigation: obj({
-		marking: e('marking'),
-		spans: list(obj({ ...span, marking: e('marking'), note: text }, ['marking']), SPAN_ID),
-		note: text,
-		offline: bool
-	}),
-	hazards: list(
-		obj({ ...span, kind: e('hazard', true), label: text, at: place, severity: e('severity'), season: months, note: text }, ['kind']),
-		['kind', 'at', 'from', 'to']
-	),
-	bailouts: list(
-		obj({ at: place, to: text, via: e('bailoutVia'), time: nonNeg, note: text, last: bool, route: { t: 'gpx' } }, ['at']),
-		['at']
-	),
-	water: list(
-		obj({ at: place, kind: e('water'), reliable: e('reliability'), treat: bool, note: text }, ['at']),
-		['at']
-	),
-	signal: list(obj({ ...span, quality: e('signal'), network: str, note: text }, ['quality']), SPAN_ID),
-	stops: list(
-		obj({
-			at: place, kind: e('stop'), open: { t: 'open' }, days: text, overnight: bool, booking: link,
-			phone: str, water: bool, food: bool, cash: bool, price, note: text, checked: date
-		}, ['at']),
-		['at']
-	),
-	access: obj({
-		carFree: e('carFree'),
-		transport: list(
-			obj({
-				mode: e('transport'), from: text, to: spot, direction: e('direction'), duration: nonNeg,
-				changes: int0, line: str, operator: str, first: time, last: time, frequency: text,
-				price, ticket: text, url: link, note: text, checked: date
-			}, ['mode', 'from', 'to']),
-			['mode', 'from', 'to']
-		),
-		parking: list(
-			obj({
-				at: place, name: text, price, size: e('parkingSize'), fills: e('parkingFills'),
-				freeWith: text, url: link, note: text, checked: date
-			}),
-			['name'], ['at']
-		),
-		lifts: list(
-			obj({
-				name: text, kind: e('lift'), ...span, direction: e('liftDirection'), open: window,
-				first: time, last: time, price, url: link, note: text, checked: date
-			}, ['name']),
-			['name']
-		),
-		tickets: list(
-			obj({ name: text, includes: texts, price, validity: text, url: link, note: text, checked: date }, ['name']),
-			['name']
-		),
-		borders: list(obj({ at: place, from: str, to: str, note: text }, ['at', 'from', 'to']), ['at']),
-		note: text,
-		checked: date
-	}),
-	permits: list(
-		obj({ name: text, required: bool, where: text, price, url: link, note: text, checked: date }, ['name']),
-		['name']
-	),
-	drones: text,
-	protectedAreas: text,
-	rules: list(obj({ ...span, kind: e('rule', true), label: text, season: months, note: text }, ['kind']), ['kind', 'from', 'to']),
-	suitability: obj({
-		kids: e('kids'), dogs: e('dogs'), stroller: bool, bike: e('bike'), winter: e('winter'),
-		night: e('experienced'), solo: e('experienced'), note: text
-	}),
-	legs: list(
-		obj({
-			to: place, terrain: list(e('terrain')), sac, viaFerrata: obj(ferrataGrade, ['grade']),
-			marking: e('marking'), optional: bool, note: text
-		}, ['to']),
-		['to']
-	),
-	conditions: obj({
-		weather: list(e('weather')),
-		temp: obj({ min: num, max: num }),
-		visibility: e('visibility'),
-		snowLine: nonNeg,
-		traction: e('traction'),
-		trail: list(e('trail')),
-		crowding: e('crowding'),
-		start: time,
-		why: text,
-		note: text
-	}),
-	deviations: list(obj({ kind: e('deviation'), at: place, note: text }, ['note']), ['kind', 'at']),
-	plan: obj({
-		gear: list(
-			obj({ item: e('gear', true), label: text, need: e('gearNeed'), when: text, amount: text }, ['item']),
-			['item', 'label']
-		),
-		for: texts,
-		notFor: texts,
-		variants: list(
-			obj({
-				name: text, summary: text, distance: nonNeg, ascent: nonNeg, descent: nonNeg, duration: nonNeg,
-				sac, viaFerrata: obj(ferrataGrade, ['grade']), link: str, recommended: bool, note: text
-			}, ['name']),
-			['name']
-		),
-		timing: obj({
-			start: time,
-			turnaround: time,
-			sunrise: obj({ start: time, note: text }, ['start']),
-			note: text
-		}),
-		alternatives: obj({ easier: list(str), harder: list(str), similar: list(str) }),
-		note: text
-	}),
-	sources: list(
-		obj({ title: text, url: str, kind: e('source'), lang: str, note: text }, ['title', 'url']),
-		['url']
-	)
-});
+/** The library file's name in messages. */
+const LIBRARY_SOURCE = 'facts-library.json';
 
 /** Keys that describe a single day, so only a post may set them. */
 const POST_ONLY = new Set(['conditions', 'deviations']);
@@ -245,17 +43,31 @@ const POST_ONLY = new Set(['conditions', 'deviations']);
 /** A post's `null`: removes the sidecar's value for that key. */
 const DELETE = Symbol('delete');
 
+/**
+ * On a validated entry: the library record it starts from, validated and
+ * resolved on this hike. The entry keeps only its own fields until
+ * `useRecords`, after the sidecar and the post have merged, lays them over it.
+ */
+const RECORD = Symbol('record');
+
+type Entry = Record<string | symbol, unknown>;
+
 interface Ctx {
 	source: string;
 	/** Post mode: `null` means DELETE and `remove: true` entries are kept for the merge. */
 	post: boolean;
 	warnings: string[];
 	resolve: (raw: RawPlace, path: string, warn: boolean) => Place;
+	/**
+	 * A library record, validated on this hike, or undefined when there is none.
+	 * `user`: the entry using it, `post.md: stops[0] (stop record "node/1")`, which its messages name first.
+	 */
+	record: (kind: LibraryKind, id: string, user: string) => Entry | undefined;
 }
 
 type RawPlace =
 	| { kind: 'name'; name: string }
-	| { kind: 'node'; node: number; name?: Text }
+	| { kind: 'ref'; ref: string; name?: Text }
 	| { kind: 'km'; km: number }
 	| { kind: 'll'; lat: number; lon: number; name?: Text; ele?: number; demEle?: number };
 
@@ -273,28 +85,62 @@ function isObj(v: unknown): v is Record<string, unknown> {
 }
 
 function readText(ctx: Ctx, v: unknown, path: string): Text {
+	return validateText(v, path, ctx.source, { post: ctx.post });
+}
+
+/**
+ * One free text: a string, or one key per language in `langs` (`LANGS`; a
+ * test passes its own list). `post`: a post may carry only a translation of
+ * the sidecar's text, so `en` may be missing; `clean` checks the merged result has it.
+ */
+export function validateText(
+	v: unknown, path: string, source: string,
+	{ post = false, langs = LANGS }: { post?: boolean; langs?: readonly string[] } = {}
+): Text {
+	function failText(at: string, problem: string): never {
+		throw new FactsError(`Hike facts in ${source}: ${at}: ${problem}`);
+	}
 	if (typeof v === 'string' || typeof v === 'number') {
 		const s = String(v).trim();
-		if (!s) fail(ctx, path, 'empty text');
+		if (!s) failText(path, 'empty text');
 		return { en: s };
 	}
 	if (isObj(v)) {
-		for (const k of Object.keys(v)) if (k !== 'en' && k !== 'de') fail(ctx, path, `unknown language "${k}" (en, de)`);
-		// A post may carry only a translation of the sidecar's text; `clean` checks the merged result has `en`.
-		if (!(ctx.post && v.en == null) && (typeof v.en !== 'string' || !v.en.trim())) {
-			fail(ctx, path, 'text needs a non-empty `en`');
+		for (const k of Object.keys(v)) if (!langs.includes(k)) failText(path, `unknown language "${k}" (${langs.join(', ')})`);
+		if (!(post && v.en == null) && (typeof v.en !== 'string' || !v.en.trim())) {
+			failText(path, 'text needs a non-empty `en`');
 		}
-		const out = (typeof v.en === 'string' ? { en: v.en.trim() } : {}) as Text;
-		if (v.de != null) {
-			if (typeof v.de !== 'string' || !v.de.trim()) fail(ctx, `${path}.de`, 'expected text');
-			out.de = v.de.trim();
+		const out: Record<string, string> = typeof v.en === 'string' ? { en: v.en.trim() } : {};
+		for (const lang of langs) {
+			if (lang === 'en' || v[lang] == null) continue;
+			const t = v[lang];
+			if (typeof t !== 'string' || !t.trim()) failText(`${path}.${lang}`, 'expected text');
+			out[lang] = t.trim();
 		}
-		return out;
+		return out as Text;
 	}
-	fail(ctx, path, 'expected text: a string or { en, de }');
+	failText(path, `expected text: a string or { ${langs.join(', ')} }`);
 }
 
-const KM_RE = /^km\s*(\d+(?:[.,]\d+)?)$/i;
+/**
+ * A sidecar with its `name` and `description` checked: each a string, or a
+ * text with one key per language (an unknown one fails the build). A plain
+ * string is trimmed, as a text's `en` is; a sidecar with nothing to change
+ * comes back as is.
+ */
+export function readSidecarTexts<T extends { name?: unknown; description?: unknown }>(raw: T, source: string): T {
+	let out = raw;
+	for (const key of ['name', 'description'] as const) {
+		const v = raw[key];
+		if (v == null) continue;
+		if (typeof v === 'string') {
+			if (v !== v.trim()) out = { ...out, [key]: v.trim() };
+			continue;
+		}
+		out = { ...out, [key]: validateText(v, key, source) };
+	}
+	return out;
+}
 
 function readRawPlace(ctx: Ctx, v: unknown, path: string): RawPlace {
 	if (typeof v === 'string' && v.trim()) {
@@ -303,17 +149,18 @@ function readRawPlace(ctx: Ctx, v: unknown, path: string): RawPlace {
 	}
 	if (isObj(v)) {
 		const keys = Object.keys(v).sort().join(',');
-		if (keys === 'node' || keys === 'name,node') {
-			if (!Number.isInteger(v.node)) fail(ctx, `${path}.node`, 'expected an OSM node id');
-			// A name for a node OSM leaves unnamed (a fore-summit cross), or to call it something else.
-			return { kind: 'node', node: v.node as number, ...(v.name != null ? { name: readText(ctx, v.name, `${path}.name`) } : {}) };
+		if ('node' in v) fail(ctx, `${path}.node`, 'name the element by typed ref instead: {ref: node/123}');
+		if (keys === 'ref' || keys === 'name,ref') {
+			if (typeof v.ref !== 'string' || !REF_RE.test(v.ref)) fail(ctx, `${path}.ref`, 'expected node/…, way/… or relation/…');
+			// A name for an element OSM leaves unnamed (a fore-summit cross), or to call it something else.
+			return { kind: 'ref', ref: v.ref as string, ...(v.name != null ? { name: readText(ctx, v.name, `${path}.name`) } : {}) };
 		}
 		if (keys === 'km') {
 			if (typeof v.km !== 'number' || v.km < 0) fail(ctx, `${path}.km`, 'expected a distance in km');
 			return { kind: 'km', km: v.km };
 		}
 		if (typeof v.lat === 'number' && typeof v.lon === 'number') {
-			// `demEle`: the 3D map's terrain height there, written by scripts/backfill_terrain.py (sidecar) or by hand.
+			// `demEle`: the 3D map's terrain height there, written by `pnpm crm terrain` (sidecar) or by hand.
 			for (const k of Object.keys(v)) if (!schemaKeys.factsPlaceKeys.includes(k)) fail(ctx, path, `unknown key "${k}"`);
 			if (Math.abs(v.lat) > 90 || Math.abs(v.lon) > 180) fail(ctx, path, 'coordinates out of range');
 			const out: RawPlace = { kind: 'll', lat: v.lat, lon: v.lon };
@@ -430,9 +277,10 @@ function validate(ctx: Ctx, spec: Spec, v: unknown, path: string): unknown {
 						ctx.warnings.push(`Hike facts in ${ctx.source}: ${p}: \`remove\` only means something in a post; entry dropped`);
 						return undefined;
 					}
-					return { ...(validateObj(ctx, spec.of as Extract<Spec, { t: 'obj' }>, rest, p, false) as object), remove: true };
+					const entry = spec.lib ? withRecord(ctx, spec, rest, p, false) : validateObj(ctx, spec.of as Extract<Spec, { t: 'obj' }>, rest, p, false);
+					return { ...(entry as object), remove: true };
 				}
-				const out = validate(ctx, spec.of, item, p);
+				const out = spec.lib && isObj(item) ? withRecord(ctx, spec, item, p, true) : validate(ctx, spec.of, item, p);
 				if (out === undefined || out === DELETE) fail(ctx, p, 'empty list entry');
 				return out;
 			}).filter((x) => x !== undefined);
@@ -465,26 +313,84 @@ function validateObj(ctx: Ctx, spec: Extract<Spec, { t: 'obj' }>, v: unknown, pa
 	return out;
 }
 
+/**
+ * A library kind's entry, with the record it starts from: the one its `use`
+ * names (a missing one fails), or for a stop the one keyed by its place's
+ * OSM ref. A required field may come from the record.
+ */
+function withRecord(ctx: Ctx, spec: Extract<Spec, { t: 'list' }>, item: Record<string, unknown>, path: string, checkRequired: boolean): Entry {
+	const of = spec.of as Extract<Spec, { t: 'obj' }>;
+	const kind = spec.lib!;
+	const used = kind !== 'stops' && item.use != null;
+	const own = validateObj(ctx, of, item, path, checkRequired && !used) as Entry;
+	let record: Entry | undefined;
+	if (used) {
+		record = ctx.record(kind, own.use as string, `${ctx.source}: ${path} (use "${own.use}")`);
+		if (!record) fail(ctx, `${path}.use`, `no ${RECORD_NAMES[kind]} record "${own.use}" in facts-library.json`);
+	} else if (kind === 'stops') {
+		const ref = (own.at as Place | undefined)?.ref;
+		if (ref) record = ctx.record(kind, ref, `${ctx.source}: ${path} (stop record "${ref}")`);
+	}
+	if (!record) return own;
+	if (checkRequired) {
+		for (const k of of.req ?? []) {
+			if ((own[k] ?? record[k]) === undefined || own[k] === DELETE) fail(ctx, `${path}.${k}`, 'required');
+		}
+	}
+	own[RECORD] = record;
+	return own;
+}
+
+/**
+ * Checks one record of the library file, as `validate` checks an entry; its
+ * places are only read, since they are resolved per hike.
+ */
+export function validateLibraryRecord(kind: LibraryKind, id: string, raw: unknown, source: string): void {
+	const ctx: Ctx = {
+		source, post: false, warnings: [],
+		resolve: () => ({ name: { en: '' }, resolved: true }),
+		record: () => undefined
+	};
+	validateObj(ctx, RECORDS[kind], raw, `${kind}.${id}`, true);
+}
+
+/** A library record with its keys in the schema's order, at every depth, for a byte-stable file. */
+export function orderLibraryRecord(kind: LibraryKind, record: unknown): unknown {
+	return inSchemaOrder(RECORDS[kind], record);
+}
+
+function inSchemaOrder(spec: Spec | undefined, v: unknown): unknown {
+	if (Array.isArray(v)) return spec?.t === 'list' ? v.map((x) => inSchemaOrder(spec.of, x)) : v;
+	if (!isObj(v) || !spec) return v;
+	const byKeys = (order: readonly string[], sub: (k: string) => Spec | undefined = () => undefined) => {
+		const out: Record<string, unknown> = {};
+		for (const k of order) if (k in v) out[k] = inSchemaOrder(sub(k), v[k]);
+		for (const [k, val] of Object.entries(v)) if (!(k in out)) out[k] = val;
+		return out;
+	};
+	const named = (k: string) => (k === 'name' ? TEXT : undefined);
+	const point = () => ('ref' in v ? byKeys(['ref', 'name'], named) : byKeys(schemaKeys.factsPlaceKeys, named));
+	switch (spec.t) {
+		case 'obj':
+			return byKeys(Object.keys(spec.f), (k) => spec.f[k]);
+		case 'text':
+			return byKeys(LANGS);
+		case 'link':
+			return byKeys(['url', 'label'], (k) => (k === 'label' ? TEXT : undefined));
+		case 'window':
+		case 'open':
+			return byKeys(['from', 'to']);
+		case 'place':
+			return point();
+		case 'spot':
+			return 'name' in v && !('lat' in v) ? byKeys(['name', 'at'], (k) => (k === 'name' ? TEXT : PLACE)) : point();
+		default:
+			return v;
+	}
+}
+
 // ---------------------------------------------------------------------------
 // Merging
-
-function placeKey(p: Place): string {
-	if (p.node != null) return `node:${p.node}`;
-	if (p.lat != null && p.lon != null) return `ll:${p.lat.toFixed(4)},${p.lon.toFixed(4)}`;
-	return `name:${normalizePlaceName(p.name.en)}`;
-}
-
-function valueKey(v: unknown): string {
-	if (v == null) return '';
-	if (typeof v === 'object' && 'resolved' in (v as object)) return placeKey(v as Place);
-	if (typeof v === 'object' && 'en' in (v as object)) return `text:${normalizePlaceName((v as Text).en)}`;
-	return `v:${String(v)}`;
-}
-
-function identity(entry: Record<string, unknown>, id: string[][]): string {
-	const alt = id.find((fields) => fields.some((f) => entry[f] != null)) ?? id[0];
-	return alt.map((f) => `${f}=${valueKey(entry[f])}`).join('|');
-}
 
 function merge(ctx: Ctx, spec: Spec, base: unknown, over: unknown, path: string): unknown {
 	if (over === undefined) return base;
@@ -494,17 +400,23 @@ function merge(ctx: Ctx, spec: Spec, base: unknown, over: unknown, path: string)
 		const b = (base ?? {}) as Record<string, unknown>;
 		const o = over as Record<string, unknown>;
 		const out: Record<string, unknown> = {};
+		// An entry keeps its record: the post's, unless the post drops its `use`.
+		const record = o.use === DELETE ? undefined : (o as Entry)[RECORD] ?? (b as Entry)[RECORD];
 		for (const k of new Set([...Object.keys(b), ...Object.keys(o)])) {
 			const val = merge(ctx, spec.f[k], b[k], o[k], path ? `${path}.${k}` : k);
 			if (val !== undefined) out[k] = val;
+			// A post's null stays for `useRecords`, to remove the record's value as well.
+			else if (record && o[k] === DELETE) out[k] = DELETE;
 		}
+		if (record) (out as Entry)[RECORD] = record;
 		return out;
 	}
 	if (spec.t === 'list' && spec.id && spec.of.t === 'obj') {
 		const out = ((base ?? []) as Record<string, unknown>[]).map((x) => ({ ...x }));
-		const keys = out.map((x) => identity(x, spec.id!));
+		const idOf = (x: Record<string, unknown>) => entryKey(spec, x, (x as Entry)[RECORD] as Record<string, unknown> | undefined);
+		const keys = out.map(idOf);
 		for (const entry of over as Record<string, unknown>[]) {
-			const key = identity(entry, spec.id);
+			const key = idOf(entry);
 			const at = keys.indexOf(key);
 			if (entry.remove) {
 				if (at === -1) {
@@ -525,6 +437,24 @@ function merge(ctx: Ctx, spec: Spec, base: unknown, over: unknown, path: string)
 		return out;
 	}
 	return over;
+}
+
+/** Lays each entry's own fields (sidecar and post merged) over the library record it starts from. */
+function useRecords(ctx: Ctx, spec: Spec, v: unknown, path: string): unknown {
+	if (spec.t === 'obj' && isObj(v)) {
+		const out: Record<string, unknown> = {};
+		for (const [k, val] of Object.entries(v)) out[k] = useRecords(ctx, spec.f[k], val, path ? `${path}.${k}` : k);
+		return out;
+	}
+	if (spec.t === 'list' && spec.lib && Array.isArray(v)) {
+		return (v as Entry[]).map((entry, i) => {
+			const record = entry[RECORD];
+			if (!record || entry.remove) return entry;
+			const { use: _, [RECORD]: __, ...own } = entry;
+			return merge(ctx, spec.of, record, own, `${path}[${i}]`);
+		});
+	}
+	return v;
 }
 
 /** Drops `remove` entries a post adds without a sidecar underneath, and DELETE markers. */
@@ -555,10 +485,11 @@ function clean(ctx: Ctx, spec: Spec, v: unknown, path: string): unknown {
 // Entry point
 
 export interface FactsNode {
-	id?: number;
+	/** Typed OSM id, `node/123`: the key into the OSM store. */
+	ref?: string;
 	lat: number;
 	lon: number;
-	/** 3D map terrain height, from scripts/backfill_terrain.py. */
+	/** 3D map terrain height, from `pnpm crm terrain`. */
 	demEle?: number;
 	tags?: Record<string, unknown> | null;
 }
@@ -572,11 +503,24 @@ export interface ReadFactsInput {
 	postSource: string;
 	sidecarSource: string;
 	nodes: FactsNode[] | null | undefined;
+	/**
+	 * What a place given by name is matched against: every element of the OSM
+	 * store (`storeNodes`). Without it, the hike's own `nodes`.
+	 */
+	storeNodes?: FactsNode[] | null;
+	/** The hike's map centre: of several nodes with one name, the nearest wins. */
+	origin?: { lat: number; lon: number } | null;
+	/** The hike's map height in px: with `origin`, only store nodes inside the map's tile square match. */
+	height?: number | null;
+	/** Refs of the hike's own nodes: exempt from the tile-square cutoff. */
+	ownRefs?: string[] | null;
 	/** The route GeoJSON's coordinates and the chart's distance stretch, for km/altitude. */
 	coords: number[][] | null | undefined;
 	distanceFactor: number;
 	/** The text of a served GPX file (bailout routes), or null when there's no such file. */
 	readGpx?: (servedPath: string) => string | null;
+	/** The shared facts library (`facts-library.json`), whose records entries `use` and stops attach to. */
+	library?: FactsLibrary;
 }
 
 export interface ReadFactsResult {
@@ -586,22 +530,24 @@ export interface ReadFactsResult {
 
 function makeResolver(input: ReadFactsInput, warnings: string[]) {
 	const nodes = (input.nodes ?? []).filter((n) => typeof n?.lat === 'number' && typeof n?.lon === 'number');
-	const index: PlaceIndex | null = buildPlaceIndex(nodes);
+	const index: PlaceIndex | null = buildPlaceIndex(input.storeNodes ?? nodes, { origin: input.origin, height: input.height, keepRefs: input.ownRefs });
 	const locate = routeLocator(input.coords, input.distanceFactor);
 	const route = routeCoords(input.coords);
 	const cum = cumulativeKm(route, input.distanceFactor);
 	const total = cum.at(-1) ?? 0;
 
 	const fromNode = (node: FactsNode, fallbackName: string, ownName?: Text): Place => {
-		const at = locate(node.lat, node.lon);
+		const passes = locate(node.lat, node.lon);
+		const at = passes[0];
 		const ele = nodeEle(node) ?? at?.ele;
 		const name = typeof node.tags?.name === 'string' && node.tags.name ? node.tags.name : fallbackName;
 		return {
 			name: ownName ?? { en: name },
-			...(node.id != null ? { node: node.id } : {}),
+			...(node.ref != null ? { ref: node.ref } : {}),
 			lat: node.lat,
 			lon: node.lon,
 			...(at ? { km: at.km } : {}),
+			...passesOf(passes),
 			...(ele != null ? { ele: Math.round(ele) } : {}),
 			...(typeof node.demEle === 'number' ? { demEle: node.demEle } : {}),
 			resolved: true
@@ -619,9 +565,9 @@ function makeResolver(input: ReadFactsInput, warnings: string[]) {
 				if (hit && hit.start === 0) return fromNode(hit.node as FactsNode, raw.name);
 				return unresolved(raw.name, 'matches none of the hike\'s nodes');
 			}
-			case 'node': {
-				const node = nodes.find((n) => n.id === raw.node);
-				return node ? fromNode(node, String(raw.node), raw.name) : unresolved(raw.name?.en ?? `node ${raw.node}`, 'is not one of the hike\'s nodes');
+			case 'ref': {
+				const node = (input.storeNodes ?? nodes).find((n) => n.ref === raw.ref);
+				return node ? fromNode(node, raw.ref, raw.name) : unresolved(raw.name?.en ?? raw.ref, input.storeNodes ? 'is not in the OSM store' : 'is not one of the hike\'s nodes');
 			}
 			case 'km': {
 				if (route.length < 2 || raw.km > total + 1e-9) {
@@ -638,13 +584,15 @@ function makeResolver(input: ReadFactsInput, warnings: string[]) {
 				};
 			}
 			case 'll': {
-				const at = locate(raw.lat, raw.lon);
+				const passes = locate(raw.lat, raw.lon);
+				const at = passes[0];
 				const ele = raw.ele ?? at?.ele;
 				return {
 					name: raw.name ?? { en: `${raw.lat.toFixed(5)}, ${raw.lon.toFixed(5)}` },
 					lat: raw.lat,
 					lon: raw.lon,
 					...(at ? { km: at.km } : {}),
+					...passesOf(passes),
 					...(ele != null ? { ele: Math.round(ele) } : {}),
 					...(raw.demEle != null ? { demEle: raw.demEle } : {}),
 					resolved: true
@@ -652,6 +600,66 @@ function makeResolver(input: ReadFactsInput, warnings: string[]) {
 			}
 		}
 	};
+}
+
+/** A place's `passes`, only when the route passes it more than once. */
+function passesOf(passes: RoutePass[]): { passes?: number[] } {
+	return passes.length > 1 ? { passes: passes.map((p) => p.km) } : {};
+}
+
+function isPlace(v: unknown): v is Place {
+	return isObj(v) && typeof v.resolved === 'boolean';
+}
+
+/** A place's candidate distances: every pass, else its one km (a `km 7.5` place, or one passed once). */
+function kmsOf(p: Place): number[] {
+	return p.passes ?? (p.km != null ? [p.km] : []);
+}
+
+/**
+ * Picks, for each end of every span, the pass that keeps the span in route
+ * order: a place the route passes twice (a junction left one way and rejoined
+ * another, an out-and-back) otherwise resolves to its first pass, and the span
+ * would cover the wrong stretch. The route list's table entries run one after
+ * another, so each `to` is its first pass at or after the previous one's; any
+ * other span takes the closest pair of passes with `from` before `to`. Ends are
+ * copied before their km changes, as places can be shared (a table entry's
+ * `from` is the previous one's `to`).
+ */
+export function orderSpans(facts: HikeAuthoredFacts): void {
+	const table = new Set<object>();
+	let cursor = 0;
+	let prev: Place | undefined;
+	for (const leg of facts.legs ?? []) {
+		if (!leg.inTable) continue;
+		table.add(leg);
+		if (prev) leg.from = prev;
+		const to = leg.to;
+		if (to && to.km != null) {
+			const km = kmsOf(to).find((k) => k >= cursor - 1e-9);
+			if (km != null && km !== to.km) leg.to = { ...to, km };
+			cursor = leg.to!.km!;
+		}
+		prev = leg.to;
+	}
+
+	const visit = (v: unknown): void => {
+		if (Array.isArray(v)) return v.forEach(visit);
+		if (!isObj(v) || isPlace(v)) return;
+		if (!table.has(v) && isPlace(v.from) && isPlace(v.to) && v.from.km != null && v.to.km != null) {
+			let best: [number, number] | null = null;
+			for (const a of kmsOf(v.from)) {
+				const b = kmsOf(v.to).find((k) => k > a);
+				if (b != null && (!best || b - a < best[1] - best[0])) best = [a, b];
+			}
+			if (best) {
+				if (best[0] !== v.from.km) v.from = { ...v.from, km: best[0] };
+				if (best[1] !== v.to.km) v.to = { ...v.to, km: best[1] };
+			}
+		}
+		Object.values(v).forEach(visit);
+	};
+	visit(facts);
 }
 
 /** Track or route points of a GPX file, in order: `trkpt`s, or `rtept`s when there are none. */
@@ -709,12 +717,61 @@ function byKm<T extends { at: Place }>(items: T[] | undefined): T[] | undefined 
 	return [...items].sort((a, b) => (a.at.km ?? Infinity) - (b.at.km ?? Infinity));
 }
 
-/** The hardest SAC grade among the sections and the non-optional legs, or undefined. */
+/**
+ * The old profile bands, `difficulty.sections`, are entries of `legs` now; an
+ * old snippet or file fails with the way over rather than being dropped.
+ */
+function rejectSections(ctx: Ctx, facts: unknown): void {
+	if (isObj(facts) && isObj(facts.difficulty) && 'sections' in facts.difficulty) {
+		throw new FactsError(`Hike facts in ${ctx.source}: difficulty.sections moved into legs (inTable: false, onProfile: true); run scripts/crm/oneoff/merge-route-list.ts`);
+	}
+}
+
+/**
+ * The route list's rules: a table entry (`inTable`, the default) needs `to`
+ * and starts where the previous one ended, so it has no `from` of its own; an
+ * entry off the table is drawn on the profile, or it would show nowhere.
+ * `merged` marks a post's list checked after merging with the sidecar's, whose
+ * indices are the merged list's.
+ */
+function checkLegs(ctx: Ctx, legs: unknown, merged = false): void {
+	if (!Array.isArray(legs)) return;
+	const where = merged ? ' (after merging with the sidecar)' : '';
+	for (const [i, leg] of (legs as Record<string, unknown>[]).entries()) {
+		if (leg.inTable ?? true) {
+			if (leg.from !== undefined) fail(ctx, `legs[${i}].from${where}`, 'a table entry starts where the previous one ended; set `inTable: false` for a stretch of its own');
+			if (leg.to === undefined) fail(ctx, `legs[${i}].to${where}`, 'required');
+		} else if (leg.onProfile !== true) {
+			fail(ctx, `legs[${i}]${where}`, 'an entry with `inTable: false` needs `onProfile: true`, or it shows nowhere');
+		}
+	}
+}
+
+/** The route list with its defaults filled in, each table entry starting at the previous one's `to`. */
+function routeList(legs: Record<string, unknown>[]): Leg[] {
+	let prev: Place | undefined;
+	return legs.map((leg) => {
+		const inTable = (leg.inTable as boolean | undefined) ?? true;
+		const out = { ...leg, inTable, onProfile: (leg.onProfile as boolean | undefined) ?? false } as Leg;
+		if (inTable) {
+			out.from = prev;
+			if (!prev) delete out.from;
+			prev = out.to;
+		}
+		return out;
+	});
+}
+
+/**
+ * The hardest SAC grade among the non-optional route list entries, or
+ * undefined. Of two equally hard grades (`T3`, `T1–T3`) the first wins, and
+ * the entries off the table come first, as the old sections did before the legs.
+ */
 export function computedSac(facts: HikeAuthoredFacts): string | undefined {
-	const grades = [
-		...(facts.difficulty?.sections ?? []).map((s) => s.sac),
-		...(facts.legs ?? []).filter((l) => !l.optional).map((l) => l.sac)
-	].filter((g): g is string => typeof g === 'string');
+	const legs = (facts.legs ?? []).filter((l) => !l.optional);
+	const grades = [...legs.filter((l) => !l.inTable), ...legs.filter((l) => l.inTable)]
+		.map((l) => l.sac)
+		.filter((g): g is string => typeof g === 'string');
 	return grades.reduce<string | undefined>((a, b) => (a == null || sacRank(b) > sacRank(a) ? b : a), undefined);
 }
 
@@ -741,13 +798,24 @@ export function readHikeFacts(input: ReadFactsInput): ReadFactsResult {
 	const resolver = makeResolver(input, warnings);
 	const ctxFor = (source: string, post: boolean): Ctx => ({
 		source, post, warnings,
-		resolve: (raw, path, warn) => resolver(raw, path, warn, source)
+		resolve: (raw, path, warn) => resolver(raw, path, warn, source),
+		record
 	});
+
+	// A library record, validated and resolved for each entry using it, so a
+	// warning about one of its places names that entry before the record's own path.
+	const record = (kind: LibraryKind, id: string, user: string): Entry | undefined => {
+		const raw = input.library?.[kind]?.[id];
+		if (raw === undefined) return undefined;
+		return validateObj(ctxFor(`${user}: ${LIBRARY_SOURCE}`, false), RECORDS[kind], raw, `${kind}.${id}`, true) as Entry;
+	};
 
 	const sideCtx = ctxFor(input.sidecarSource, false);
 	let side: Record<string, unknown> | undefined;
 	if (input.sidecar != null) {
+		rejectSections(sideCtx, input.sidecar);
 		side = validate(sideCtx, FACTS, input.sidecar, '') as Record<string, unknown>;
+		checkLegs(sideCtx, side.legs);
 		for (const k of POST_ONLY) {
 			if (k in side) {
 				warnings.push(`Hike facts in ${input.sidecarSource}: ${k}: describes a single day, so only a post may set it; ignored`);
@@ -757,20 +825,32 @@ export function readHikeFacts(input: ReadFactsInput): ReadFactsResult {
 	}
 
 	const postCtx = ctxFor(input.postSource, true);
-	const post = postFacts != null ? validate(postCtx, FACTS, postFacts, '') : undefined;
+	rejectSections(postCtx, postFacts);
+	const post = postFacts != null ? validate(postCtx, FACTS, postFacts, '') as Record<string, unknown> : undefined;
 	if (side === undefined && post === undefined) return { facts: null, warnings };
 
-	const merged = clean(postCtx, FACTS, merge(postCtx, FACTS, side, post, ''), '') as HikeAuthoredFacts | undefined;
+	const merged = clean(postCtx, FACTS, useRecords(postCtx, FACTS, merge(postCtx, FACTS, side, post, ''), ''), '') as HikeAuthoredFacts | undefined;
 	if (!merged || Object.keys(merged).length === 0) return { facts: null, warnings };
+	// The sidecar's list passed on its own; what the post changed is checked merged.
+	if (post?.legs !== undefined) checkLegs(postCtx, merged.legs, Array.isArray(side?.legs));
+	if (merged.legs) merged.legs = routeList(merged.legs as unknown as Record<string, unknown>[]);
+	orderSpans(merged);
 
-	// A stop on one of the hike's nodes takes its contact details from OSM when the facts give none.
+	// A stop on an OSM element (the whole store, else the hike's nodes) takes its contact details from OSM when neither the facts nor its library record give any.
 	for (const stop of merged.stops ?? []) {
-		const tags = (input.nodes ?? []).find((n) => n.id != null && n.id === stop.at.node)?.tags;
+		const tags = (input.storeNodes ?? input.nodes ?? []).find((n) => n.ref != null && n.ref === stop.at.ref)?.tags;
 		if (!tags) continue;
 		const phone = tags.phone ?? tags['contact:phone'];
 		const website = tags.website ?? tags['contact:website'];
 		if (!stop.phone && typeof phone === 'string') stop.phone = phone;
-		if (!stop.booking && typeof website === 'string') stop.booking = { url: website };
+		if (!stop.booking && typeof website === 'string') stop.booking = { url: webUrl(website) };
+	}
+
+	// Authored phone numbers read the same as OSM's: international, joined with "; ".
+	for (const stop of merged.stops ?? []) {
+		if (typeof stop.phone === 'string' && stop.at.lat != null && stop.at.lon != null) {
+			stop.phone = formatPhones(stop.phone, stop.at.lat, stop.at.lon);
+		}
 	}
 
 	// Bailout routes: read and summarise each GPX file. A missing file fails like any other typo.

@@ -8,11 +8,13 @@
  * names in the post's prose so the markdown renderer can link them. Reading
  * the files (front matter, validation) is server-only, in `places.server.ts`.
  *
- * Framework-free and dependency-free, so it runs under plain Node for tests.
+ * Framework-free, so it runs under plain Node for tests.
  */
 
 import type { GalleryItem } from '$lib/renderers/gallery-item';
 import { addPlaceName, matchTrailingWords } from './place-links';
+import { tHtml } from '../i18n/strings';
+import type { Lang } from '../i18n/languages';
 
 /** What the prose renderer needs to link a doc: its slug and the names it goes by. */
 export interface PlaceDocRef {
@@ -103,7 +105,7 @@ function escapeAttr(text: string): string {
  * section further down. Separate from the name, which keeps its own link to
  * the 2D map.
  */
-export function placeDocMarkerHtml(doc: PlaceDocRef): string {
-	const label = escapeAttr(`About ${doc.title}`);
+export function placeDocMarkerHtml(doc: PlaceDocRef, lang: Lang = 'en'): string {
+	const label = tHtml(lang, 'render.placeDocAbout', { title: escapeAttr(doc.title) });
 	return `<a class="mk-place-doc" href="#${placeDocAnchor(doc.slug)}" data-place-doc="${escapeAttr(doc.slug)}" title="${label}" aria-label="${label}" translate="no">ⓘ</a>`;
 }

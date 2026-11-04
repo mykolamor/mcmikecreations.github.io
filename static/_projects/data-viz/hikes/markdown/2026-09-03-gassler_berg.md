@@ -4,7 +4,7 @@ description: Enjoying the fresh weather by visiting all peaks towards Hausham.
 tags:
   - Web
 gpx: /_projects/data-viz/hikes/gpx/gassler_berg.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 18648
 ascent: 880
 descent: 857

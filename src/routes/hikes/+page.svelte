@@ -19,6 +19,7 @@
 	import HikeJsonLd from './components/HikeJsonLd.svelte';
 	import { HIKES_BLOG_TITLE, HIKES_BLOG_DESCRIPTION, HIKES_HERO_IMAGE } from '$lib/hikes/hikes-meta';
 	import AppBreadcrumbs from '$lib/components/AppBreadcrumbs.svelte';
+	import { paragraphTexts, t } from '$lib/i18n/strings';
 
 	interface Props {
 		data: PageData;
@@ -28,6 +29,10 @@
 	let posts = $derived(data.posts);
 	let yearList = $derived(data.yearList);
 	let showProgressbar = $derived(data.showProgressbar);
+
+	// Shown as text, one `<p>` each, so the prerendered HTML has no `{@html}` markers.
+	const webText = paragraphTexts('en', 'showcase.web.text');
+	const climbText = paragraphTexts('en', 'showcase.climb.text');
 
 	const imagesToLoad = 6;
 	let loadedImages = $state(0);
@@ -88,10 +93,10 @@
 	type="website"
 	image={page.url.origin + HIKES_HERO_IMAGE}
 	article-author={resume.basics.name}
-	article-section="Hikes"
+	article-section={t('en', 'meta.section')}
 />
 <HikeJsonLd variant="blog" posts={data.posts} currentPage={data.pagination.currentPage} totalPages={data.pagination.totalPages} />
-<AppBreadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Hikes', href: '/hikes/' }]} />
+<AppBreadcrumbs items={[{ name: t('en', 'nav.home'), href: '/' }, { name: t('en', 'nav.hikes'), href: '/hikes/' }]} />
 
 <AppNavbar
     class="fixed z-50 top-0"
@@ -117,28 +122,18 @@
 
 <section id="projects" class="container mx-auto my-8 scroll-my-20">
     <div class="mx-4 2xl:mx-0 md:px-24 mb-8">
-        <Heading tag="h2">Projects</Heading>
+        <Heading tag="h2">{t('en', 'home.projects')}</Heading>
         <div class="mt-8">
             <ShowcaseGrid>
-                <ShowcaseTile x={2} y={1} href="/hikes/tag/Web/" img="/images/hikes/hero/web.jpg" alt="Hiking Web preview" title="Hiking Web">
-                    <p>An attempt to connect all visited hiking paths into a single network.</p>
-                    <p>
-                        All of the simplified hiking routes on the page are fully explorable,
-                        some even contain event descriptions and photos from the hike.
-                        Additional statistics are available regarding the frequency and length of hikes.
-                    </p>
-                    <p>
-                        The simplified routes are based on the approximate origins and destinations
-                        of the hikes and include intersection points with other simplified routes.
-                    </p>
-                    <p>Currently, most of the South Bavarian hikes have been connected.</p>
+                <ShowcaseTile x={2} y={1} href="/hikes/tag/Web/" img="/images/hikes/hero/web.jpg" alt={t('en', 'showcase.web.alt')} title={t('en', 'showcase.web.title')}>
+                    <p>{webText[0]}</p>
+                    <p>{webText[1]}</p>
+                    <p>{webText[2]}</p>
+                    <p>{webText[3]}</p>
                 </ShowcaseTile>
-                <ShowcaseTile href="/hikes/tag/Climb/" img="/images/hikes/hero/viaferrata.jpg" alt="Via ferrata climb preview" title="Via Ferrata">
-                    <p>A set of full-length recordings of via ferrata climbs, with or without gear.</p>
-                    <p>
-                        Any attempts to follow these climbs should be done with all necessary gear and
-                        utilizing all safety rules, regulations, and equipment.
-                    </p>
+                <ShowcaseTile href="/hikes/tag/Climb/" img="/images/hikes/hero/viaferrata.jpg" alt={t('en', 'showcase.climb.alt')} title={t('en', 'showcase.climb.title')}>
+                    <p>{climbText[0]}</p>
+                    <p>{climbText[1]}</p>
                 </ShowcaseTile>
             </ShowcaseGrid>
         </div>
@@ -147,7 +142,7 @@
 
 <section id="blog" class="container mx-auto mb-8 scroll-my-20">
 	<div class="mx-4 2xl:mx-0 md:px-24 mb-8">
-		<Heading tag="h2">Blog</Heading>
+		<Heading tag="h2">{t('en', 'home.blog')}</Heading>
 		<div class="mt-8">
 			<YearsNav years={yearList} />
 		</div>
@@ -172,7 +167,7 @@
 			<div class="mx-4 2xl:mx-0 md:px-24">
 				<ImagePlaceholder size="md" class="mb-8" />
 				<noscript>
-					<P>Enable JavaScript to continue.</P>
+					<P>{t('en', 'home.enableJs')}</P>
 				</noscript>
 				<Progressbar progress={Math.round(loadedImages / imagesToLoad * 100)} />
 				<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 justify-items-stretch my-8">

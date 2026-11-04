@@ -30,8 +30,12 @@ export const load: PageLoad = async ({ data, fetch, params }) => {
 					const postRaw = await res.text();
 					clientHtml = (await parseMarkdown(postRaw, data.post.tags, {
 						stops: photoStopsFromRecord(data.post.photoStops),
-						nodes: data.map.properties.nodes,
-						placeDocs: data.placeRefs
+						nodes: data.placeNodes,
+						origin: data.origin,
+						height: data.height,
+						ownRefs: data.ownRefs,
+						placeDocs: data.placeRefs,
+						pinNodes: data.pinNodes
 					})).html;
 				}
 			} else {
@@ -47,6 +51,11 @@ export const load: PageLoad = async ({ data, fetch, params }) => {
 			linkedPosts: data.linkedPosts,
 			places: data.places,
 			placeRefs: data.placeRefs,
+			placeNodes: data.placeNodes,
+			origin: data.origin,
+			height: data.height,
+			ownRefs: data.ownRefs,
+			pinNodes: data.pinNodes,
 			durationSource: data.durationSource,
 			display: data.display,
 			contacts: data.contacts,

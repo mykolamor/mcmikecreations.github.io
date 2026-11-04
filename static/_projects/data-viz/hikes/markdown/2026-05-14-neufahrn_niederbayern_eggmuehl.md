@@ -4,7 +4,7 @@ description: Chasing rainy clouds and wild deer towards Regensburg.
 tags:
   - Web
 gpx: /_projects/data-viz/hikes/gpx/neufahrn_niederbayern_eggmuehl.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 19302
 ascent: 254
 descent: 277

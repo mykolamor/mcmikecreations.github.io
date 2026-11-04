@@ -14,68 +14,7 @@
     [11.1185921, 47.5778643],
     [11.0932308, 47.5686928]
   ],
-  "nodes": [
-    {
-      "id": 703834455,
-      "lat": 47.5752543,
-      "lon": 11.1292092,
-      "demEle": 1204.2,
-      "tags": {
-        "name": "Kleiner Laber",
-        "ele": "1205",
-        "natural": "peak",
-        "wikidata": "Q31534471"
-      }
-    },
-    {
-      "id": 703354390,
-      "lat": 47.5716100,
-      "lon": 11.1173541,
-      "demEle": 1296.9,
-      "tags": {
-        "name": "Mühlberg",
-        "ele": "1305",
-        "natural": "peak",
-        "wikidata": "Q31530111"
-      }
-    },
-    {
-      "id": 702260997,
-      "lat": 47.5778643,
-      "lon": 11.1185921,
-      "demEle": 1456.6,
-      "tags": {
-        "name": "Großer Laber",
-        "ele": "1466",
-        "natural": "peak",
-        "summit:cross": "yes",
-        "summit:register": "yes",
-        "wikidata": "Q31543959"
-      }
-    },
-    {
-      "id": 56072725,
-      "lat": 47.5592776,
-      "lon": 11.1388804,
-      "demEle": 653.9,
-      "tags": {
-        "access": "yes",
-        "amenity": "parking",
-        "fee": "no",
-        "parking": "surface"
-      }
-    },
-    {
-      "id": 5037526152,
-      "lat": 47.5799654,
-      "lon": 11.1150155,
-      "demEle": 1329.6,
-      "tags": {
-        "drinking_water": "yes",
-        "amenity": "drinking_water"
-      }
-    }
-  ],
+  "nodes": ["node/703834455", "node/703354390", "node/702260997", "way/56072725", "node/5037526152"],
   "facts": {
     "summary": {
       "en": "A medium point-to-point from Oberau to Ettal across the lesser-known Laber sub-peaks.",
@@ -86,25 +25,6 @@
         "en": "T4 for the steep descent from Großer Laber; everything else is T2.",
         "de": "T4 für den steilen Abstieg vom Großen Laber; alles andere ist T2."
       },
-      "sections": [
-        {
-          "from": "Großer Laber",
-          "to": {
-            "lat": 47.5802789,
-            "lon": 11.1168166,
-            "demEle": 1350.9,
-            "name": {
-              "en": "Meadow",
-              "de": "Wiese"
-            }
-          },
-          "sac": "T4",
-          "note": {
-            "en": "The trail on the steep slope is barely visible, but the descent is laregely safe.",
-            "de": "Der Weg am steilen Hang ist kaum sichtbar, aber der Abstieg ist weitgehend ungefährlich."
-          }
-        }
-      ],
       "exposure": {
         "level": "low",
         "note": {
@@ -458,6 +378,25 @@
         "terrain": ["forest-road"],
         "sac": "T2",
         "marking": "good"
+      },
+      {
+        "from": "Großer Laber",
+        "to": {
+          "lat": 47.5802789,
+          "lon": 11.1168166,
+          "demEle": 1350.9,
+          "name": {
+            "en": "Meadow",
+            "de": "Wiese"
+          }
+        },
+        "sac": "T4",
+        "note": {
+          "en": "The trail on the steep slope is barely visible, but the descent is laregely safe.",
+          "de": "Der Weg am steilen Hang ist kaum sichtbar, aber der Abstieg ist weitgehend ungefährlich."
+        },
+        "inTable": false,
+        "onProfile": true
       }
     ],
     "plan": {

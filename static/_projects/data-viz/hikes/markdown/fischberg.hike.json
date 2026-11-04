@@ -13,61 +13,7 @@
     [11.3948072, 47.5866038],
     [11.3047868, 47.5710232]
   ],
-  "nodes": [
-    {
-      "id": 1431131352,
-      "lat": 47.6000678,
-      "lon": 11.3914884,
-      "demEle": 1157.1,
-      "tags": {
-        "name": "Fischberg",
-        "ele": "1164",
-        "natural": "peak",
-        "wikidata": "Q31546939"
-      }
-    },
-    {
-      "id": 4730936370,
-      "lat": 47.5866038,
-      "lon": 11.3948072,
-      "demEle": 820.3,
-      "tags": {
-        "name": "Waldschänke Niedernach",
-        "amenity": "restaurant",
-        "cuisine": "bavarian",
-        "email": "info@waldschaenke-niedernach.de",
-        "phone": "+4980431021",
-        "website": "https://waldschaenke-niedernach.de/"
-      }
-    },
-    {
-      "id": 259090434,
-      "lat": 47.6078457,
-      "lon": 11.3700208,
-      "demEle": 806.9,
-      "tags": {
-        "name": "Kiosk Sachenbach",
-        "amenity": "biergarten",
-        "phone": "+498851359",
-        "website": "https://www.sachenbacher-walchensee.de/"
-      }
-    },
-    {
-      "id": 1030463554,
-      "lat": 47.6174734,
-      "lon": 11.3453655,
-      "demEle": 806.9,
-      "tags": {
-        "name": "Parkplatz Urfeld",
-        "access": "yes",
-        "amenity": "parking",
-        "capacity": "10",
-        "fee": "no",
-        "parking": "surface",
-        "surface": "asphalt"
-      }
-    }
-  ],
+  "nodes": ["node/1431131352", "node/4730936370", "node/259090434", "way/1030463554"],
   "facts": {
     "summary": {
       "en": "A medium-length point-to-point around Walchensee, making an optional detour to Fischberg.",
@@ -287,7 +233,7 @@
             "en": "Urfeld Parking",
             "de": "Parkplatz Urfeld"
           },
-          "at": "Parkplatz Urfeld",
+          "at": {"ref": "way/1030463554", "name": "Parkplatz Urfeld"},
           "size": "small",
           "fills": "weekends",
           "checked": "2026-10-21"

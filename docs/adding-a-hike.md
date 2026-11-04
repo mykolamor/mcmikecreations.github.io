@@ -104,19 +104,20 @@ files. Fields shared by every date on the route live here.
   track; it is the simplified line drawn on the Web graph (`/hikes/tag/Web/`). Take a
   handful of points along the GeoJSON - existing hikes use between 2 and 19, typically
   6. Note the order: longitude first, as in GeoJSON.
-- **`nodes`** - optional OSM points of interest (peaks, huts, waterfalls). Omit the key
-  entirely if there are none; do not write `[]` unless you mean it. 71 of 127 hikes have
-  them. Query them with [Overpass](https://overpass-turbo.eu/) and keep the OSM shape:
-
-  ```json
-  { "id": 264056175, "lat": 47.6521541, "lon": 11.6431635,
-    "tags": { "name": "Seekarkreuz", "natural": "peak", "ele": "1601" } }
-  ```
+- **`nodes`** - optional OSM points of interest (peaks, huts, waterfalls), as typed ids
+  into the shared store `static/_projects/data-viz/hikes/osm.json`: `"node/264056175"`,
+  `"way/…"` or `"relation/…"`. Omit the key entirely if there are none; do not write
+  `[]` unless you mean it. Edit the list in the CRM's **Map** tab (`pnpm crm`, see
+  `scripts/crm/README.md`): **Inspect** finds nearby OSM objects and adds one to the
+  store (a way's or relation's centre stands in for its position), the side panel
+  reorders the list, the node editor sets `visited` as a local tag, and **Refresh from
+  OSM** re-fetches an element. Each element is stored once, however
+  many hikes list it; OSM owns its `tags`, and only `visited` is my own.
 
   They render as labelled markers on the 2D map and feed the search index's
-  `nodeNames`, so a hut or summit named here becomes searchable. Run
-  `node scripts/check-nodes.js` afterwards to catch duplicate ids, names or wikidata
-  entries across hikes.
+  `nodeNames`, so a hut or summit named here becomes searchable. An id missing from
+  the store fails the build. Run `pnpm crm check` afterwards to catch
+  duplicate positions, names or wikidata entries in the store.
 
 ### 6. The post - `<date>-<slug>.md`
 
@@ -194,11 +195,6 @@ origin: { lat: 47.37161708892748, lon: 10.93568801879883 }
 checkpoints:
   - [10.9385542, 47.3874899]
   - [10.9352297, 47.3775867]
-nodes:
-  - id: 264056175
-    lat: 47.6521541
-    lon: 11.6431635
-    tags: { name: Drachenkopf, natural: peak, ele: '2302' }
 draft: false
 hidden: false
 
@@ -241,7 +237,6 @@ them - if a value is wrong for every date on the route, fix the sidecar instead.
 | `height` | number | rendered map size in pixels |
 | `origin` | `{ lat, lon }` | map centre; replaces the sidecar's |
 | `checkpoints` | `[[lon, lat], ...]` | the coarse Web-graph outline |
-| `nodes` | object[] | OSM points of interest |
 | `draft`, `hidden` | boolean | see the caveat below |
 
 ### Rules
@@ -323,11 +318,20 @@ contacts:
 A link needs a `url` plus either a known `network` (which picks the icon) or a freeform
 `label`.
 
+## Facts shared with other hikes
+
+The `facts:` layer is covered in the [hike data reference](hike-data-reference.md#5-the-facts-layer-facts). Three things matter when you add a hike:
+
+- **Route list.** Write the stretches of the walk as `facts.legs`: table rows by default (`to` only, they chain), and `inTable: false` + `onProfile: true` for a coloured SAC band of its own. `difficulty.sections` no longer exists; the build rejects it. See [`legs` in detail](hike-data-reference.md#legs-in-detail).
+- **Places by ref.** A `{ "ref": "node/…" }` place resolves against the whole OSM store, so a hut or station that isn't one of this hike's `nodes` still resolves. Only the hike's `nodes` are drawn on its map.
+- **The shared library.** A train, lift, car park or ticket that other hikes use too belongs in `facts-library.json`; write `"use": "<id>"` on the entry. A stop whose place has a library record starts from it; write only its `at`. See [the shared library](hike-data-reference.md#the-shared-library-facts-libraryjson). A mistyped `use` fails the build, naming the file, the path and the id.
+
 ## Check it
 
 ```sh
 pnpm build     # prerenders everything; the new pages should appear
 pnpm check     # types
+pnpm crm check # posts, place docs, the OSM store and facts-library.json (a record no hike uses is a warning)
 ```
 
 Then look at:

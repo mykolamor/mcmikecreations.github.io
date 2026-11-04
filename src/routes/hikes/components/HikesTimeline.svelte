@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { t } from '$lib/i18n/strings';
 
 	const GRID_ROWS = 6;
 
@@ -75,7 +76,7 @@
 						class="w-4 h-4 rounded-xs {getIntensityClass(week.hikes)} transition-colors hover:ring-2 hover:ring-gray-400 dark:hover:ring-gray-500 cursor-pointer"
 						role="button"
 						tabindex="0"
-						aria-label="{week.label}: {week.hikes.length} hikes"
+						aria-label={t('en', 'web.weekHikes', { label: week.label, count: week.hikes.length })}
 						on:click={(e) => week.hikes.length > 0 && togglePopover(e, week)}
 						on:keydown={(e) => e.key === 'Enter' && week.hikes.length > 0 && togglePopover(e, week)}
 					></div>
@@ -92,7 +93,7 @@
 		style={popoverStyle}
 		on:click={(e) => e.stopPropagation()}
 	>
-		<div class="font-medium mb-2 border-b pb-2 dark:border-gray-700 text-gray-900 dark:text-white">Week: {activeWeek.label}</div>
+		<div class="font-medium mb-2 border-b pb-2 dark:border-gray-700 text-gray-900 dark:text-white">{t('en', 'web.week', { label: activeWeek.label })}</div>
 		<ul class="list-disc pl-4 m-0 space-y-1 text-left">
 			{#each activeWeek.hikes as hike}
 				<li class="break-words">

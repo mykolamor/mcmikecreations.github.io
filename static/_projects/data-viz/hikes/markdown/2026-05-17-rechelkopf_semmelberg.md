@@ -4,7 +4,7 @@ description: Recovering from 3 vaccines 2 days before while visiting 15 peaks on
 tags:
   - Web
 gpx: /_projects/data-viz/hikes/gpx/rechelkopf_semmelberg.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 35434
 ascent: 1773
 descent: 1684
@@ -57,7 +57,7 @@ the map, made by tractors after dragging chopped down trees or cleared out
 ferns. Although I had 3 vaccines two days before, I was confident I could
 complete this route in my condition.
 
-![View from the Schürfen Kopf (1096 m) slope towards Brauneck (1555 m)](/images/projects/data-viz/hikes/stories/rechelkopf_semmelberg/2026-05-17-01.jpg)
+![View from the Schürfen Kopf (1096 m) slope towards Brauneck (1290 m)](/images/projects/data-viz/hikes/stories/rechelkopf_semmelberg/2026-05-17-01.jpg)
 
 Following my "Web of Hikes" idea, I started the route leaning a bit to the
 west. I passed a nearby bridge during my [Bad Tölz to Lenggries](/404/) hike,
@@ -191,9 +191,9 @@ signs, so I had to closely follow the map and hope for the best. The whole
 route in this area goes along a fence, sometimes crossing it, so taking this
 trail is a huge pain.
 
-![The views at Huder (1405 m)](/images/projects/data-viz/hikes/stories/rechelkopf_semmelberg/2026-05-17-22.jpg)
+![The views at Huder (1382 m)](/images/projects/data-viz/hikes/stories/rechelkopf_semmelberg/2026-05-17-22.jpg)
 
-Next up I was going to go south, but I spotted Huder (1405 m), the top of a
+Next up I was going to go south, but I spotted Huder (1382 m), the top of a
 nearby hill. At first, I was hesitant to go there through wilderness with no
 trail, but I spotted someone's footsteps in the snow and just followed them.
 The person was hiking straight uphill from Auereck (1113 m). I tried

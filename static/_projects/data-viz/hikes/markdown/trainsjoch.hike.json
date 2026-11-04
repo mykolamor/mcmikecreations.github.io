@@ -17,33 +17,5 @@
     [12.0111304, 47.6385934],
     [12.010998, 47.6757044]
   ],
-  "nodes": [
-    {
-      "id": 264035398,
-      "lat": 47.615268,
-      "lon": 12.0543473,
-      "demEle": 1674.1,
-      "tags": {
-        "name": "Trainsjoch",
-        "natural": "peak",
-        "ele": "1707",
-        "summit:cross": "yes",
-        "summit:register": "yes",
-        "wikidata": "Q15132489",
-        "wikipedia": "de:Trainsjoch"
-      }
-    },
-    {
-      "id": 1913686966,
-      "lat": 47.6174517,
-      "lon": 12.0378767,
-      "demEle": 1348.4,
-      "tags": {
-        "name": "Nesselberg",
-        "natural": "peak",
-        "ele": "1363",
-        "wikidata": "Q21873217"
-      }
-    }
-  ]
+  "nodes": ["node/264035398", "node/1913686966"]
 }

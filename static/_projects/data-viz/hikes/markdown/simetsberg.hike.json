@@ -12,50 +12,5 @@
     [11.301275, 47.5697947],
     [11.3064766, 47.5716255]
   ],
-  "nodes": [
-    {
-      "id": 12762897023,
-      "lat": 47.5671264,
-      "lon": 11.2881699,
-      "demEle": 1019.6,
-      "tags": {
-        "name": "Vorderfallbachhöhle",
-        "natural": "cave_entrance"
-      }
-    },
-    {
-      "id": 117389463,
-      "lat": 47.5616581,
-      "lon": 11.2780258,
-      "demEle": 1210.2,
-      "tags": {
-        "name": "Tiroler Hütte",
-        "building": "cabin"
-      }
-    },
-    {
-      "id": 96258180,
-      "lat": 47.5640375,
-      "lon": 11.2597325,
-      "demEle": 1604.0,
-      "tags": {
-        "name": "Simetsberg Diensthütte",
-        "building": "cabin"
-      }
-    },
-    {
-      "id": 268949226,
-      "lat": 47.5665209,
-      "lon": 11.2537283,
-      "demEle": 1816.2,
-      "tags": {
-        "name": "Simetsberg",
-        "natural": "peak",
-        "ele": "1840",
-        "summit:cross": "yes",
-        "wikidata": "Q315741",
-        "wikipedia": "de:Simetsberg (Estergebirge)"
-      }
-    }
-  ]
+  "nodes": ["node/12762897023", "way/117389463", "way/96258180", "node/268949226"]
 }

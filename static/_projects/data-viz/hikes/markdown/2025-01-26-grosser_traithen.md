@@ -69,15 +69,15 @@ in the leftovers of the view. Although we were happy to have made it to the
 top, we realized that the ridge was just starting, and we had a long way to go
 to reach Oberaudorf.
 
-![View from Großer Traithen (1852 m) towards Unterbergerjoch (1796 m)](/images/projects/data-viz/hikes/stories/grosser_traithen/2025-01-26-04.jpg)
+![View from Großer Traithen (1852 m) towards Unterbergerjoch (1813 m)](/images/projects/data-viz/hikes/stories/grosser_traithen/2025-01-26-04.jpg)
 ![Our group on the top of Großer Traithen (1852 m)](/images/projects/data-viz/hikes/stories/grosser_traithen/2025-01-26-05.jpg)
 
-The way to Unterbergerjoch (1796 m) was relatively easy, with a gentle descent.
+The way to Unterbergerjoch (1813 m) was relatively easy, with a gentle descent.
 The wind settled down, and we could enjoy the scenery. At that point, we still
 haven't seen any other hikers, which was surprising given the popularity of the
 area.
 
-![View from Unterbergerjoch (1796 m)](/images/projects/data-viz/hikes/stories/grosser_traithen/2025-01-26-06.jpg)
+![View from Unterbergerjoch (1813 m)](/images/projects/data-viz/hikes/stories/grosser_traithen/2025-01-26-06.jpg)
 ![Karl Ruppert memorial plaque](/images/projects/data-viz/hikes/stories/grosser_traithen/2025-01-26-07.jpg)
 
 We kept going towards the next peak, and eventually passed by the Karl Ruppert
@@ -89,7 +89,7 @@ from Seeon Alm to the peak has a level A via ferrata section, but this didn't
 seem to deter the hiker.
 
 ![Going towards Steilner Joch (1747 m)](/images/projects/data-viz/hikes/stories/grosser_traithen/2025-01-26-08.jpg)
-![The hiker going back to Unterbergerjoch (1796 m)](/images/projects/data-viz/hikes/stories/grosser_traithen/2025-01-26-09.jpg)
+![The hiker going back to Unterbergerjoch (1813 m)](/images/projects/data-viz/hikes/stories/grosser_traithen/2025-01-26-09.jpg)
 
 The Steilner Joch (1747 m) summit itself was uneventful. The view from it is
 roughly the same as the previous peaks. However, the lower elevation meant that

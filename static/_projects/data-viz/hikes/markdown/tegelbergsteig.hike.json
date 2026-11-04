@@ -16,92 +16,7 @@
     [10.7401371, 47.5567196]
   ],
   "places": ["tegelberghaus", "neuschwanstein"],
-  "nodes": [
-    {
-      "id": 221601969,
-      "lat": 47.5575908,
-      "lon": 10.7495244,
-      "demEle": 964.0,
-      "tags": {
-        "name": "Schloss Neuschwanstein",
-        "castle_type": "stately",
-        "contact:fax": "+49836293988-19",
-        "contact:phone": "+49836293988-0",
-        "contact:website": "https://www.neuschwanstein.de/",
-        "heritage": "4",
-        "heritage:operator": "BLfD",
-        "historic": "castle",
-        "importance": "international",
-        "internet_access": "wlan",
-        "internet_access:fee": "no",
-        "ref:BLfD": "D-7-77-169-33",
-        "tourism": "attraction",
-        "wikidata": "Q4152",
-        "wikipedia": "de:Schloss Neuschwanstein"
-      }
-    },
-    {
-      "id": 1631172973,
-      "lat": 47.5549563,
-      "lon": 10.7494061,
-      "demEle": 989.7,
-      "tags": {
-        "name": "Aussichtspunkt Marienbrücke",
-        "tourism": "viewpoint"
-      }
-    },
-    {
-      "id": 266995158,
-      "lat": 47.5681888,
-      "lon": 10.7562201,
-      "demEle": 824.8,
-      "tags": {
-        "name": "Tegelbergbahn (Talstation)",
-        "aerialway": "station",
-        "email": "info@tegelbergbahn.de",
-        "phone": "+49836298360",
-        "public_transport": "station",
-        "tourism": "yes",
-        "website": "https://www.tegelbergbahn.de/",
-        "wikidata": "Q1524386",
-        "wikipedia": "en:Tegelberg Cable Car"
-      }
-    },
-    {
-      "id": 26516059,
-      "lat": 47.5596223,
-      "lon": 10.7789855,
-      "demEle": 1707.8,
-      "tags": {
-        "name": "Tegelbergbahn (Bergstation)",
-        "operator": "Tegelbergbahn",
-        "aerialway": "station",
-        "building": "yes",
-        "email": "info@tegelbergbahn.de",
-        "phone": "+49836298360",
-        "public_transport": "station",
-        "tourism": "yes",
-        "website": "https://www.tegelbergbahn.de/"
-      }
-    },
-    {
-      "id": 26515725,
-      "lat": 47.5686078,
-      "lon": 10.7570536,
-      "demEle": 825.1,
-      "tags": {
-        "name": "Talstation Tegelbergbahn",
-        "fee": "yes",
-        "access": "yes",
-        "amenity": "parking",
-        "opening_hours": "Mo-Su 06:00-22:00",
-        "operator": "Tegelbergbahn",
-        "operator:type": "private",
-        "parking": "surface",
-        "surface": "asphalt"
-      }
-    }
-  ],
+  "nodes": ["way/221601969", "node/1631172973", "node/266995158", "way/26516059", "way/26515725"],
   "facts": {
     "summary": {
       "en": "A difficult via ferrata point-to-point from the Tegelbergbahn valley station to the top, following until Neuschwanstein.",
@@ -112,68 +27,6 @@
         "en": "T3 for the walkable via ferrata sections, T2 for the rest. Via ferrata grade C.",
         "de": "T3 für die begehbaren Klettersteig-Abschnitte, T2 für den Rest. Klettersteig C."
       },
-      "sections": [
-        {
-          "from": {
-            "lat": 47.5672339,
-            "lon": 10.7684725,
-            "demEle": 991.3,
-            "name": "Schutzengelweg"
-          },
-          "to": {
-            "lat": 47.5654291,
-            "lon": 10.7722042,
-            "demEle": 1089.2,
-            "name": "Rautbach"
-          },
-          "sac": "T2",
-          "note": {
-            "en": "Steep open trail.",
-            "de": "Steiler, offener Weg."
-          }
-        },
-        {
-          "from": {
-            "lat": 47.5654291,
-            "lon": 10.7722042,
-            "demEle": 1089.2,
-            "name": "Rautbach"
-          },
-          "to": {
-            "lat": 47.5631531,
-            "lon": 10.7722037,
-            "demEle": 1226.2,
-            "name": "Wasserfall"
-          },
-          "sac": "T3",
-          "note": {
-            "en": "Rocky forest trail.",
-            "de": "Felsiger Waldweg."
-          }
-        },
-        {
-          "from": {
-            "lat": 47.5631531,
-            "lon": 10.7722037,
-            "demEle": 1226.2,
-            "name": "Wasserfall"
-          },
-          "to": {
-            "lat": 47.5611685,
-            "lon": 10.7777632,
-            "demEle": 1582.1,
-            "name": "Scheideweg"
-          },
-          "sac": "T3",
-          "viaFerrata": {
-            "grade": "C"
-          },
-          "note": {
-            "en": "Via ferrata with short trail sections.",
-            "de": "Klettersteig mit kurzen Gehpassagen."
-          }
-        }
-      ],
       "viaFerrata": [
         {
           "name": {
@@ -417,7 +270,7 @@
           },
           "kind": "gondola",
           "from": "Tegelbergbahn (Talstation)",
-          "to": "Tegelbergbahn (Bergstation)",
+          "to": {"ref": "way/26516059", "name": "Tegelbergbahn (Bergstation)"},
           "direction": "both",
           "open": {
             "from": "03-28",
@@ -518,6 +371,72 @@
         "terrain": ["path"],
         "sac": "T2",
         "marking": "good"
+      },
+      {
+        "from": {
+          "lat": 47.5672339,
+          "lon": 10.7684725,
+          "demEle": 991.3,
+          "name": "Schutzengelweg"
+        },
+        "to": {
+          "lat": 47.5654291,
+          "lon": 10.7722042,
+          "demEle": 1089.2,
+          "name": "Rautbach"
+        },
+        "sac": "T2",
+        "note": {
+          "en": "Steep open trail.",
+          "de": "Steiler, offener Weg."
+        },
+        "inTable": false,
+        "onProfile": true
+      },
+      {
+        "from": {
+          "lat": 47.5654291,
+          "lon": 10.7722042,
+          "demEle": 1089.2,
+          "name": "Rautbach"
+        },
+        "to": {
+          "lat": 47.5631531,
+          "lon": 10.7722037,
+          "demEle": 1226.2,
+          "name": "Wasserfall"
+        },
+        "sac": "T3",
+        "note": {
+          "en": "Rocky forest trail.",
+          "de": "Felsiger Waldweg."
+        },
+        "inTable": false,
+        "onProfile": true
+      },
+      {
+        "from": {
+          "lat": 47.5631531,
+          "lon": 10.7722037,
+          "demEle": 1226.2,
+          "name": "Wasserfall"
+        },
+        "to": {
+          "lat": 47.5611685,
+          "lon": 10.7777632,
+          "demEle": 1582.1,
+          "name": "Scheideweg"
+        },
+        "sac": "T3",
+        "viaFerrata": {
+          "grade": "C"
+        },
+        "note": {
+          "en": "Via ferrata with short trail sections.",
+          "de": "Klettersteig mit kurzen Gehpassagen."
+        },
+        "inTable": false,
+        "onProfile": true
       }
     ],
     "plan": {

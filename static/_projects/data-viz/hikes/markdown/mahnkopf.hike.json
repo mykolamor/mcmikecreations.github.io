@@ -19,180 +19,7 @@
     [11.5580425, 47.3989876],
     [11.5670479, 47.4024863]
   ],
-  "nodes": [
-    {
-      "id": 128443556,
-      "lat": 47.4481373,
-      "lon": 11.5497452,
-      "demEle": 1023.7,
-      "tags": {
-        "name": "P6 Laliderertal",
-        "access": "yes",
-        "amenity": "parking",
-        "fee": "no",
-        "parking": "surface"
-      }
-    },
-    {
-      "id": 9883893791,
-      "lat": 47.4001648,
-      "lon": 11.5138933,
-      "demEle": 1527.7,
-      "tags": {
-        "amenity": "drinking_water"
-      }
-    },
-    {
-      "id": 26960869,
-      "lat": 47.3996605,
-      "lon": 11.4989124,
-      "demEle": 1842.1,
-      "tags": {
-        "name": "Falkenhütte",
-        "ele": "1846",
-        "building": "yes",
-        "cuisine": "regional",
-        "internet_access": "no",
-        "operator": "DAV Sektion Oberland",
-        "fax": "+435245245",
-        "phone": "+435245245",
-        "power_supply": "yes",
-        "shower": "yes",
-        "winter_room": "yes",
-        "tourism": "alpine_hut",
-        "website": "http://www.falkenhuette.at",
-        "wikidata": "Q1394246",
-        "wikipedia": "de:Falkenhütte"
-      }
-    },
-    {
-      "id": 448886687,
-      "lat": 47.4021255,
-      "lon": 11.5020406,
-      "demEle": 1904.9,
-      "tags": {
-        "name": "Ladizköpfl",
-        "ele": "1920",
-        "natural": "peak",
-        "summit:cross": "no",
-        "summit:register": "no"
-      }
-    },
-    {
-      "id": 448886673,
-      "lat": 47.4068622,
-      "lon": 11.5048660,
-      "demEle": 1819.9,
-      "tags": {
-        "name": "Ladizjöchl",
-        "ele": "1825",
-        "mountain_pass": "yes",
-        "natural": "saddle"
-      }
-    },
-    {
-      "id": 490410746,
-      "lat": 47.4123538,
-      "lon": 11.5078912,
-      "demEle": 2059.4,
-      "tags": {
-        "name": "Mahnkopf",
-        "ele": "2093",
-        "natural": "peak",
-        "summit:cross": "yes",
-        "summit:register": "yes",
-        "wikidata": "Q15119244",
-        "wikipedia": "de:Mahnkopf (Karwendel)"
-      }
-    },
-    {
-      "id": 2461227223,
-      "lat": 47.3950926,
-      "lon": 11.5236742,
-      "demEle": 1791.2,
-      "tags": {
-        "name": "Hohljoch",
-        "ele": "1794",
-        "mountain_pass": "yes",
-        "natural": "saddle",
-        "wikidata": "Q21868060",
-        "wikipedia": "de:Hohljoch"
-      }
-    },
-    {
-      "id": 1950350430,
-      "lat": 47.3941838,
-      "lon": 11.5286201,
-      "demEle": 1730.7,
-      "tags": {
-        "natural": "spring"
-      }
-    },
-    {
-      "id": 5860388407,
-      "lat": 47.3964984,
-      "lon": 11.5473682,
-      "demEle": 1393.7,
-      "tags": {
-        "amenity": "drinking_water"
-      }
-    },
-    {
-      "id": 29313903,
-      "lat": 47.3987945,
-      "lon": 11.5579425,
-      "demEle": 1225.3,
-      "tags": {
-        "name": "Rasthütte Engalm",
-        "amenity": "restaurant",
-        "building": "retail",
-        "website": "https://www.engalm.at/engalm/rasthuette/"
-      }
-    },
-    {
-      "id": 1950351332,
-      "lat": 47.3989876,
-      "lon": 11.5580425,
-      "demEle": 1225.2,
-      "tags": {
-        "amenity": "drinking_water",
-        "fountain": "drinking"
-      }
-    },
-    {
-      "id": 1364156812,
-      "lat": 47.3995813,
-      "lon": 11.5598594,
-      "demEle": 1218.9,
-      "tags": {
-        "amenity": "drinking_water",
-        "fountain": "drinking"
-      }
-    },
-    {
-      "id": 143918895,
-      "lat": 47.4021600,
-      "lon": 11.5671166,
-      "demEle": 1206.4,
-      "tags": {
-        "access": "customers",
-        "amenity": "parking",
-        "fee": "no",
-        "parking": "surface"
-      }
-    },
-    {
-      "id": 2173906237,
-      "lat": 47.4025440,
-      "lon": 11.5677568,
-      "demEle": 1208.9,
-      "tags": {
-        "name": "Alpencafe Eng",
-        "amenity": "cafe",
-        "website": "https://www.eng.at/index.php?id=249&L=0"
-      }
-    }
-  ],
+  "nodes": ["way/128443556", "node/9883893791", "way/26960869", "node/448886687", "node/448886673", "node/490410746", "node/2461227223", "node/1950350430", "node/5860388407", "way/29313903", "node/1950351332", "node/1364156812", "way/143918895", "node/2173906237"],
   "facts": {
     "summary": {
       "en": "A long point-to-point from Laliderertal over Falkenhütte to Eng with a detour to visit Mahnkopf (2093 m).",
@@ -203,54 +30,6 @@
         "en": "T2 mountain trail with a T1 gravel road at the beginning.",
         "de": "T2 Bergweg mit T1 Schotterstraße am Anfang."
       },
-      "sections": [
-        {
-          "to": {
-            "node": 9883893791,
-            "name": {
-              "en": "Drinking water",
-              "de": "Trinkwasser"
-            }
-          },
-          "sac": "T1",
-          "note": {
-            "en": "Gravel road across meadows.",
-            "de": "Schotterstraße über Wiesen."
-          }
-        },
-        {
-          "from": {
-            "node": 9883893791,
-            "name": {
-              "en": "Drinking water",
-              "de": "Trinkwasser"
-            }
-          },
-          "to": "Mahnkopf",
-          "sac": "T2",
-          "note": {
-            "en": "Narrow dirt trail on the slope.",
-            "de": "Schmaler Pfad am Hang."
-          }
-        },
-        {
-          "from": "Mahnkopf",
-          "to": "Rasthütte Engalm",
-          "sac": "T2",
-          "note": {
-            "en": "Mountain trail across gravel, stone, and dirt slopes.",
-            "de": "Bergweg über Schotter-, Stein- und Erdhang."
-          }
-        },
-        {
-          "from": "Rasthütte Engalm",
-          "sac": "T1",
-          "note": {
-            "en": "Asphalt road across the settlement.",
-            "de": "Teerstraße durch die Siedlung."
-          }
-        }
-      ],
       "exposure": {
         "level": "moderate",
         "note": {
@@ -632,6 +411,60 @@
         "terrain": ["road"],
         "sac": "T1",
         "marking": "none"
+      },
+      {
+        "to": {
+          "ref": "node/9883893791",
+          "name": {
+            "en": "Drinking water",
+            "de": "Trinkwasser"
+          }
+        },
+        "sac": "T1",
+        "note": {
+          "en": "Gravel road across meadows.",
+          "de": "Schotterstraße über Wiesen."
+        },
+        "inTable": false,
+        "onProfile": true
+      },
+      {
+        "from": {
+          "ref": "node/9883893791",
+          "name": {
+            "en": "Drinking water",
+            "de": "Trinkwasser"
+          }
+        },
+        "to": "Mahnkopf",
+        "sac": "T2",
+        "note": {
+          "en": "Narrow dirt trail on the slope.",
+          "de": "Schmaler Pfad am Hang."
+        },
+        "inTable": false,
+        "onProfile": true
+      },
+      {
+        "from": "Mahnkopf",
+        "to": "Rasthütte Engalm",
+        "sac": "T2",
+        "note": {
+          "en": "Mountain trail across gravel, stone, and dirt slopes.",
+          "de": "Bergweg über Schotter-, Stein- und Erdhang."
+        },
+        "inTable": false,
+        "onProfile": true
+      },
+      {
+        "from": "Rasthütte Engalm",
+        "sac": "T1",
+        "note": {
+          "en": "Asphalt road across the settlement.",
+          "de": "Teerstraße durch die Siedlung."
+        },
+        "inTable": false,
+        "onProfile": true
       }
     ],
     "plan": {

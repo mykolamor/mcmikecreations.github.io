@@ -92,8 +92,9 @@ export function formatMinutes(lang: Lang, minutes: number): string {
 	return h === 0 ? `${m} ${min}` : m === 0 ? `${h} h` : `${h} h ${m} ${min}`;
 }
 
-export function formatKm(km: number): string {
-	return `km ${km.toFixed(1)}`;
+/** `km 7.5`: where on the route. */
+export function formatKm(km: number, lang: Lang = 'en'): string {
+	return `${label(lang, 'km')} ${km.toFixed(1)}`;
 }
 
 /** `B`, or `K3 (Hüsler)` when the scale isn't Schall. */

@@ -4,7 +4,7 @@ description: Going back to the place I failed to take back what's mine.
 people:
   - Stanislav Kidalau
 gpx: /_projects/data-viz/hikes/gpx/unterammergau_sonnenberg.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 17962
 ascent: 980
 descent: 980

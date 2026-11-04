@@ -4,13 +4,13 @@ description: Socializing on a nice relaxing hike in Austria.
 tags:
   - DAAD FK
 gpx: /_projects/data-viz/hikes/gpx/thierberg.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 10642
 ascent: 369
 descent: 235
 duration: 183
 images:
-  2025-11-29-00.jpg: {w: 1600, h: 1200}
+  2025-11-29-00.jpg: {w: 1600, h: 1200, blur: 'data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAACwBACdASoYABIAPtFcpk6oJSMiKAqpABoJZQC06A69iAc/lh1IgQdWGcMc54ZYAP6mcQSHuX1JQiAT2NfFBnNfMlTJb1rO6a5Uf8+yiMp6YKLrk7xeBywQLUCJO0hz6CVB1FGvSHk00Z4ny2jP1r8ax0Y55xaxzN+IfEsMUpQPTzz8Q+GnDq4D4xXNf+sbigMNTDczie7BUYGFcB+8Pr7JSUvmNxh+rXXyh3rFT+Gp3gVm3gAAAA=='}
   2025-11-29-01.jpg: {w: 3560, h: 4744, lat: 47.615598, lon: 12.187785, demEle: 490.6, taken: '2025-11-29T12:14:01+01:00', blur: 'data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAADQBACdASoSABgAPtFeqE+oJKOiKAgBABoJaQAAH2EYqsdMnrFdufoUz2Jy7Z7ggAD98EtQ68fb2Y92jZ3yPvBA5ALjSzEmlVHRBJl/sP6Aqz3vud418hxyvGYo2iHH2eMA/1GJ6d+LnGbWx8XzE700N+xYJgR1fFhs85qKwxfY4d4rUrArr/m/FpbrC/C0AE3i7FRqiMshEeSntLR5WCBAAAA='}
   2025-11-29-02.jpg: {w: 8160, h: 6120, lat: 47.614003, lon: 12.16304, demEle: 529.3, taken: '2025-11-29T12:45:28+01:00', blur: 'data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAACQBACdASoYABIAPtFcpU6oJSMiKAqpABoJYwCw7Ak3YYtRX80x6Pm6qb8Ql7AA/rdQCFDkfLyUKsDGGPlSTtEQ6yH4+Rw0kEUIDWWza7M7j7vxMG1dMZgFkKjTHIi/awNQqHZJ0qbW+DC5ibtoNaQtv0B7I82/gYqJQxm0kIK2Y0kTd5umUXln/tDMViQAAAA='}
   2025-11-29-03.jpg: {w: 8160, h: 6120, lat: 47.613187, lon: 12.163515, demEle: 565.7, taken: '2025-11-29T12:52:11+01:00', blur: 'data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAACwBACdASoYABIAPtFWpU2oJCOiMBgIAQAaCWcAxzAN0s/7YJ4isiqWFCnoxG6AAPwjBrpCqV9F5x5ep8YnhyWm5X43bS9sW4LU6pWQoVyTpc7NZuFaUDFaasha/yvMpbr17eoldMlxK7vK5QDJQ0K1Fg6vXb/n/Kx/aeE+UfzVeVeh2JFxh0YVUuOYQYhkjAA='}

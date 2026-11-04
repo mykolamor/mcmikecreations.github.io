@@ -14,44 +14,5 @@
     [11.1177609, 47.5993189],
     [11.0802376, 47.5964637]
   ],
-  "nodes": [
-    {
-      "id": 446758934,
-      "lat": 47.5831408,
-      "lon": 11.0975734,
-      "demEle": 1625.8,
-      "tags": {
-        "name": "Schartenkopf",
-        "natural": "peak",
-        "ele": "1636"
-      }
-    },
-    {
-      "id": 5997401874,
-      "lat": 47.5849787,
-      "lon": 11.10044,
-      "demEle": 1643.9,
-      "tags": {
-        "name": "Laber Hauptgipfel",
-        "natural": "peak",
-        "ele": "1686",
-        "summit:cross": "no",
-        "summit:register": "no"
-      }
-    },
-    {
-      "id": 452941377,
-      "lat": 47.5858442,
-      "lon": 11.102169,
-      "demEle": 1632.2,
-      "tags": {
-        "name": "Laber",
-        "natural": "peak",
-        "ele": "1682",
-        "summit:cross": "yes",
-        "summit:register": "yes",
-        "wikidata": "Q1799411"
-      }
-    }
-  ]
+  "nodes": ["node/446758934", "node/5997401874", "node/452941377"]
 }

@@ -16,22 +16,5 @@
     [11.8836539, 47.686114],
     [11.8733766, 47.7062602]
   ],
-  "nodes": [
-    {
-      "id": 96257994,
-      "lat": 47.6481236,
-      "lon": 11.8905576,
-      "demEle": 1034.8,
-      "tags": {
-        "name": "Blecksteinhaus",
-        "tourism": "alpine_hut",
-        "ele": "1022",
-        "building": "yes",
-        "amenity": "restaurant",
-        "contact:website": "http://www.blecksteinhaus.de/",
-        "phone": "+49802671204",
-        "wikidata": "Q883386"
-      }
-    }
-  ]
+  "nodes": ["way/96257994"]
 }

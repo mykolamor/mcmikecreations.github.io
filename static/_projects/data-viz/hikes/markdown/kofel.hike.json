@@ -13,33 +13,5 @@
     [11.0615954, 47.5950427],
     [11.056387, 47.5999017]
   ],
-  "nodes": [
-    {
-      "id": 296034076,
-      "lat": 47.5868607,
-      "lon": 11.0595271,
-      "demEle": 1193.3,
-      "tags": {
-        "name": "Kofel",
-        "natural": "peak",
-        "ele": "1342",
-        "summit:cross": "yes",
-        "summit:register": "yes",
-        "wikidata": "Q1641755",
-        "wikipedia": "de:Kofel"
-      }
-    },
-    {
-      "id": 12488719494,
-      "lat": 47.5950427,
-      "lon": 11.0615954,
-      "demEle": 842.1,
-      "tags": {
-        "name": "Ammerschlössel",
-        "historic": "castle",
-        "castle_type": "stately",
-        "wikidata": " Q98646568"
-      }
-    }
-  ]
+  "nodes": ["node/296034076", "node/12488719494"]
 }

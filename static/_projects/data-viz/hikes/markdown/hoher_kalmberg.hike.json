@@ -14,34 +14,5 @@
     [13.5615707, 47.6208792],
     [13.6131441, 47.6396874]
   ],
-  "nodes": [
-    {
-      "id": 990927426,
-      "lat": 47.6207262,
-      "lon": 13.5615579,
-      "demEle": 1583.2,
-      "tags": {
-        "name": "Goiserer Hütte",
-        "tourism": "alpine_hut",
-        "ele": "1592",
-        "building": "yes",
-        "email": "info@goisererhuette.at",
-        "phone": "+43613521450",
-        "website": "https://www.goisererhuette.at/"
-      }
-    },
-    {
-      "id": 435173020,
-      "lat": 47.6124692,
-      "lon": 13.5675514,
-      "demEle": 1785.2,
-      "tags": {
-        "name": "Hoher Kalmberg",
-        "natural": "peak",
-        "ele": "1833",
-        "summit:cross": "yes",
-        "summit:register": "yes"
-      }
-    }
-  ]
+  "nodes": ["way/85472419", "node/435173020"]
 }

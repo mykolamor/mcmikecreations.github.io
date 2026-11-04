@@ -4,7 +4,7 @@ description: Walking between two historic settlements and visiting local castles
 tags:
   - Web
 gpx: /_projects/data-viz/hikes/gpx/eggmuehl_koefering.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 17627
 ascent: 218
 descent: 248

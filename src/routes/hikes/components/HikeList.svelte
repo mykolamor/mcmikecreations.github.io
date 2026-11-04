@@ -3,6 +3,8 @@
     import { UserSolid } from 'flowbite-svelte-icons';
     import DateBadge from '$lib/components/DateBadge.svelte';
     import type { ProcessedPost } from '$lib/hikes/hikes-info';
+    import { tagLabel } from '$lib/hikes/hikes-meta';
+    import { t } from '$lib/i18n/strings';
 
     export let posts: ProcessedPost[] = [];
     export let showPeople: boolean = false;
@@ -36,18 +38,18 @@
                         </a>
                     </div>
                     <div class="flex-grow flex flex-row justify-end gap-2 relative z-20" aria-details="tags">
-                        <span aria-label="tags" class="sr-only"></span>
+                        <span aria-label={t('en', 'list.tagsLabel')} class="sr-only"></span>
                         {#if showPeople && p.people}
-                            {#each p.people as t}
+                            {#each p.people as person}
                                 <Badge rounded>
                                     <UserSolid class="me-1.5 size-2.5" />
-                                    {t}
+                                    {person}
                                 </Badge>
                             {/each}
                         {/if}
-                        {#each p.tags as t}
-                            <a href={`/hikes/tag/${encodeURIComponent(t)}/`}>
-                                <Badge class="cursor-pointer hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors">{t}</Badge>
+                        {#each p.tags as tag}
+                            <a href={`/hikes/tag/${encodeURIComponent(tag)}/`}>
+                                <Badge class="cursor-pointer hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors">{tagLabel('en', tag)}</Badge>
                             </a>
                         {/each}
                     </div>

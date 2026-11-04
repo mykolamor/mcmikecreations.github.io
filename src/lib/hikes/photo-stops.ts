@@ -6,14 +6,16 @@
  * Distance and altitude come from projecting the photo's `lat`/`lon` onto the
  * route's GeoJSON track, the same track and distance stretch the elevation
  * chart draws, so the two agree. The time is the photo's own `taken` (already
- * vetted by scripts/backfill_time.py), else the recorded GPX's time where it
+ * vetted by `pnpm crm photo-times`), else the recorded GPX's time where it
  * passes the photo, else none.
  *
- * Framework-free and dependency-free, so it runs under plain Node for tests.
+ * Framework-free, so it runs under plain Node for tests.
  */
 
 import { cumulativeKm, haversineKm, routeCoords } from './hike-metrics';
 import { formatKm } from './facts-format';
+import { t } from '../i18n/strings';
+import type { Lang } from '../i18n/languages';
 
 export interface StopPhoto {
 	/** The image's `data-media-index`; photos must be passed in reading order. */
@@ -244,27 +246,33 @@ export function computePhotoStops(
 	return stops;
 }
 
+/** One pass of the route by a point: distance on the chart's stretched scale, and the track's altitude there. */
+export interface RoutePass {
+	km: number;
+	ele?: number;
+}
+
 /**
- * Where a point lies along the route: distance (on the chart's stretched
- * scale) and track altitude at its closest pass, or null when it's further
- * than `OFF_TRACK_KM` from the route. On an out-and-back, the first pass.
- * Used for places named in a post's facts (`facts.server.ts`).
+ * Where a point lies along the route: every pass of it, in route order (an
+ * out-and-back or a loop passes a spot more than once; each stretch of track
+ * that comes close yields its closest point), or [] when it's further than
+ * `OFF_TRACK_KM` from the route. Callers pick the pass they need: the facts
+ * order a span's two ends along the route (`facts.server.ts`).
  */
 export function routeLocator(
 	coords: number[][] | null | undefined,
 	distanceFactor: number
-): (lat: number, lon: number) => { km: number; ele?: number } | null {
+): (lat: number, lon: number) => RoutePass[] {
 	const route = routeCoords(coords);
 	const cum = cumulativeKm(route);
 	return (lat, lon) => {
-		if (route.length === 0) return null;
-		const cands = candidates(route, cum, [lon, lat]);
-		if (cands.length === 0) return null;
-		const pick = cands[0];
-		const a = route[pick.i][2];
-		const b = route[Math.min(pick.i + 1, route.length - 1)][2];
-		const ele = typeof a === 'number' && typeof b === 'number' ? a + (b - a) * pick.f : undefined;
-		return { km: pick.along * distanceFactor, ...(ele != null ? { ele } : {}) };
+		if (route.length === 0) return [];
+		return candidates(route, cum, [lon, lat]).map((c) => {
+			const a = route[c.i][2];
+			const b = route[Math.min(c.i + 1, route.length - 1)][2];
+			const ele = typeof a === 'number' && typeof b === 'number' ? a + (b - a) * c.f : undefined;
+			return { km: c.along * distanceFactor, ...(ele != null ? { ele } : {}) };
+		});
 	};
 }
 
@@ -277,10 +285,10 @@ export function photoStopsFromRecord(record: Record<string, PhotoStop> | null | 
 }
 
 /** The caption line's text, e.g. `km 13.4 · 2052 m · 11:18`. */
-export function photoStopText(stop: PhotoStop): string {
+export function photoStopText(stop: PhotoStop, lang: Lang = 'en'): string {
 	const parts: string[] = [];
-	if (stop.km != null) parts.push(formatKm(stop.km));
-	if (stop.ele != null) parts.push(`${Math.round(stop.ele)} m`);
+	if (stop.km != null) parts.push(formatKm(stop.km, lang));
+	if (stop.ele != null) parts.push(t(lang, 'units.m', { value: Math.round(stop.ele) }));
 	if (stop.time != null) parts.push(stop.time);
 	return parts.join(' · ');
 }

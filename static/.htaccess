@@ -36,7 +36,7 @@ DirectoryIndex index.html
 	ExpiresActive On
 
 	# Photos and fonts aren't content-hashed - a later re-run of
-	# scripts/image_optimize.py could change a same-named file's bytes, so
+	# `pnpm crm images` could change a same-named file's bytes, so
 	# this stays well short of a year and is not marked immutable. Listed
 	# before the /_app/immutable/ rule below so that rule (more specific,
 	# and the only one of the two that's actually safe to mark immutable)

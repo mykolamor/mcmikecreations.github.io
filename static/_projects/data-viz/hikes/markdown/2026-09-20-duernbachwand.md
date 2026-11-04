@@ -4,7 +4,7 @@ description: Exploring the other Brecherspitz Vorgipfel (1643 m) ridge after sur
 people:
   - David Bilan
 gpx: /_projects/data-viz/hikes/gpx/duernbachwand.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 13463
 ascent: 1028
 descent: 727

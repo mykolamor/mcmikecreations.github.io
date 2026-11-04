@@ -14,6 +14,10 @@ images:
   2025-08-03-02.jpg: {w: 1288, h: 966, blur: 'data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAABQBQCdASoYABIAPtFgqU+oJaOiKAgBABoJZQDCgYwScD0oKw3WeQPMNdezG6kR3OAi6AAA/vaJ1jIesPiHFuqujy05gUiOLMW0NMjm2Xh+ZQDJhcKVS8t/2Da4MkRXT9zuulxZpXDO5KxW6kD/exFrzRdacQOuI4UImupt1xPJ6zV8Olgaypk/DjTkl+rQpy05EBO7ZyCe5iKX92LzRAAA'}
   2025-08-03-06.jpg: {w: 3472, h: 4640, lat: 49.707528, lon: 11.61535, taken: '2025-08-03T15:43:43+02:00', blur: 'data:image/webp;base64,UklGRtAAAABXRUJQVlA4IMQAAAAQBQCdASoSABgAPtFgqU+oJSOiKAgBABoJZQCw7BGXAyrqYwPxaiO0iY3pGzN3QdiEAP7uOIS+Qw6GmFtjaukg4kOt2OYO1TU2VCeO1g2Xn3Mbfcmj5khT3W3c36bEngxH99xNgjPsaH6FuPJYQU4p0kfXAqK7oukzihhQrgky4+sDum2CMdZ2UByXWQP01xdQx+p0ulyLBFYzR/Hr5Hw6lxnstPWsa6HGMBbHckoZ0HE5UMyTSUEnMFcO2hMeVQhuDgAA'}
   2025-08-03-01.jpg: {w: 1536, h: 2048, blur: 'data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAAAQBQCdASoSABgAPtFgqk+oJaOiKAgBABoJZwAALnTY1lM+yLGb9pKAzxK52b0o4gbAAP0DipjR8v0rB8Ipk5ZPyGFoR8rC2z7JsgBnwLDCm3/awstBR/T3K+dPZ+f7gGtn7vSVu6MtYlxC2G4G7NIp8eRXX6fGSC533Tt49p4oKcDB1eK92FlSkMLzYq8XCfFpCLPCdsoAAA=='}
+  norissteig.png: {w: 2105, h: 1492}
+  hoehengluecksteig.png: {w: 1754, h: 1240}
+  /images/hikes/topo/norissteig.png: {w: 2105, h: 1492, blur: 'data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAACwBACdASoYABEAPtFapk4oJKMiKAqpABoJZwDM0A8fq6zdFze5SHalM3JgBmyAAP7V69skpy3Y06eE3loVMQWdm3EMPIlI9NSi85vF10ytUQYnWmdsvRLguiiJlwQeWVzBKBDL4YCHT77TV/O3SIW3wvN0hBWxkxrn5kapBOUyAAAA'}
+  /images/hikes/topo/hoehengluecksteig.png: {w: 1754, h: 1240, blur: 'data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAADwBACdASoYABEAPtFWpE2oJCMiMBgIAQAaCWcAyrQQ5DqTfAN7wz+tSU/v3s4cLgAA/vPOvGMStn/lP1dznAfzZNB/ASlgsO6V0ZXQsLPv5VSFHgJbKpuCdGGciJDjczF4os9+xM3XLheZdwd7xo4/DFordxs+6tocU+H/UE//GS9xpkL9+deZyGs4qwWRsWiQh8VvWgGAAA=='}
 ---
 Topo from bergsteigen.com for [Norissteig](https://www.bergsteigen.com/touren/klettersteig/norissteig-klettersteig/)
 and [Höhenglücksteig](https://www.bergsteigen.com/touren/klettersteig/hoehengluecksteig-klettersteig/):

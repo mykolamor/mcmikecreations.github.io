@@ -6,7 +6,7 @@ tags:
 people:
   - Stanislav Kidalau
 gpx: /_projects/data-viz/hikes/gpx/drachensee.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 15215
 ascent: 1028
 descent: 1002
@@ -34,6 +34,8 @@ images:
   2026-06-21-19.jpg: {w: 8160, h: 6120, lat: 47.384048, lon: 10.967226, demEle: 1482.6, taken: '2026-06-21T15:59:38+02:00', blur: 'data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAABQBQCdASoYABIAPtFQokwoJCMiMBgMAQAaCUAXZfhCgACrS9ptNYgtVLk7RIjMPqCjWkAA/pvKcId69cqbjaPSlfBSQTUQTZc/MNLJe+bAnZfe3NQXUSdSP2r7dEk7xHt+8RSytxakEycRlpTVgktCKSxvmotF9pIUI3vkSWKbRr4r/kHKZbB/QsMxc41cEPXUoTxScnSQJ/OgvyjJxGRytImV6l/T0VkiYx8RSt5CgAAA'}
   2026-06-21-20.jpg: {w: 4572, h: 3428, lat: 47.384968, lon: 10.966792, demEle: 1480.6, taken: '2026-06-21T16:01:18+02:00', blur: 'data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAAAQBQCdASoYABIAPtFan0uoJaKhsBgMAQAaCUAYUAIfCpfzN72lXRCnW7WC89WB390AAP7U5QzsCW4yOVtnBKCXgrMwJRYriuNVdp0SytGUn0gf61/F66cU97e2WZBdh2QUNI8SBpEfyxHaW9DSCo3WUgpVWRlKDgr+wfNVVlS7mhKhrVsybM8p9n9NVkpiiWnZfHouHZZXCh8AAAA='}
   2026-06-21-21.jpg: {w: 8160, h: 6120, lat: 47.38563, lon: 10.955947, demEle: 1332.7, taken: '2026-06-21T16:12:36+02:00', blur: 'data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAADQBACdASoYABIAPtFYpUyoJSOiKA1RABoJZACsABBVwlGnW2tGy294h5pYUvsBAAD+sg4rAE3zXGPDeZ7IPZkblmkHBJWDRxayOeMnfVq9nWJE+JexsWu9ZWSdZECUKrriYu43kxDM8xYMGqsQMQe3B5A/f735P95gIeRlNwyK2N2MFrKw0Ovio7VK2B3KWSlkdSuI6fxxScXGR5AAAA=='}
+  hoher_gang.jpg: {w: 1200, h: 900}
+  /images/hikes/topo/hoher_gang.jpg: {w: 1200, h: 900, blur: 'data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAADQBACdASoYABIAPtFYpUyoJSOiKA1RABoJYwC7ABEDlE4pAqw3CKDBKpzsdrxO0AD+8gOPJw+wPYM6zn1hFpJgj66CJ71RVW62M+41RvtPrCO/fy/YFo4DtDFAVTtKkc2KTn2GXb2rufJxNe7xdciCUewJ5b9slqqCqC3BcrXVW+eOto0JCsm2TEWpz5FDS+3V0OCrAnJDCRx52YgjRekAAAA='}
 ---
 After my hike to X, I needed some time to recover and take it easy. Although I
 have a backlog of boring hikes for the ["Web"](/hikes/tag/Web/) category, I

@@ -10,7 +10,7 @@
  *     description: DAV hut below the Zugspitzplatt.
  *     tags: [Hut]                      # optional
  *     aliases: [Knorrhütte, Knorr hut] # optional: more names it goes by in posts
- *     images: {...}                    # optional, written by scripts/image_optimize.py
+ *     images: {...}                    # optional, written by `pnpm crm images`
  *     ---
  *     Markdown body, images and all.
  *
@@ -32,7 +32,7 @@ export interface PlaceDoc extends PlaceDocRef {
 	raw: string;
 }
 
-// Shared with scripts/matches/placedoc.py.
+// Shared with scripts/crm (place-slug.ts, cli/terrain.ts).
 const { placeDoc } = schemaKeys;
 /** `knorrhuette`, `zugspitz_platt`: what a file may be named and a post may list. */
 const SLUG = new RegExp(placeDoc.slug);

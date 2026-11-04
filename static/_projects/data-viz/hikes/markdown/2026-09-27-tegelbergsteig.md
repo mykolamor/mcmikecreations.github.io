@@ -6,7 +6,7 @@ tags:
 people:
   - David Bilan
 gpx: /_projects/data-viz/hikes/gpx/tegelbergsteig.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 15195
 ascent: 916
 descent: 951
@@ -28,6 +28,8 @@ images:
   2026-09-27-13.jpg: {w: 5016, h: 3760, lat: 47.556052, lon: 10.755446, demEle: 1178.9, taken: '2026-09-27T18:27:24+02:00', blur: 'data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAAAQBQCdASoYABIAPtFUo0uoJKMhsAgBABoJZQC1G47C+8QmO6TW5S1+1uX/xP0GDnWwAPa2HHgmXu7YTMKWpNcAsMPZwdwQ60JW9rC+zeA6e+LUirpafn0QyEq8SZN9xV0xo8gL4QBw5D3BRJ988F+tI3N5c0wP//ghR5yBSzuIfwI3UMC8bUCCAne0QdQGuo4AAA=='}
   2026-09-27-14.jpg: {w: 8160, h: 6120, lat: 47.556101, lon: 10.753877, demEle: 1105.5, taken: '2026-09-27T18:37:47+02:00', blur: 'data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAADQBACdASoYABIAPtFWo0uoJKMhsAgBABoJYwCzgCHnf3VmTu7Ms421GiySUT2fmAD+ji9UwLjS22X+agOAqXfPPDZgmb3e6PV0HHoMlzWo3G3rBl1AZMUqjf0A/FbuZ0Nm8P64HlATZb3FQxv/oEMYu6zvvgbBCE+QtOAmYR8BQzBkYNfsEUH4z48QxQAA'}
   2026-09-27-15.jpg: {w: 4784, h: 3588, lat: 47.55562, lon: 10.746878, demEle: 959.0, taken: '2026-09-27T19:04:39+02:00', blur: 'data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAABwBQCdASoYABIAPtFao00oJSMiMBgIAQAaCWUArjdf7b/ANvq5gjW+1/8kwgcsKg39EXFQAP5pvpUs00lfTkrMDA6cwmMicztqwc5/hAppj3irEH0Ll5T6bw6dVsFAGSXuVCpe1UL+o1lRlWgkKqxJqbev7NT7E3oYE22LGSbXeg5DD4lPxswA'}
+  tegelbergsteig.jpg: {w: 1075, h: 779}
+  /images/hikes/topo/tegelbergsteig.jpg: {w: 1075, h: 779, blur: 'data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAAAQBQCdASoYABEAPtFapE0oJSMiKA1RABoJZQDIXBFAWe9nUqOPr7L9iT2/hAPs6UAAAP7zw+uFGBX0aaf56mRg70ENhZbeF23sCuvG7PbAPk19+yI78TVfKHlxXVs3nWi7+ouIF59SGsYT8POeazPML2rvdGX4xTY9pfAv7Gp6KjKWQd8IBL/JL4Trf5Ed33qzswAA'}
 facts:
   sources:
     - {title: Komoot, url: 'https://www.komoot.com/tour/3314104400', kind: mirror}

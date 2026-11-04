@@ -16,6 +16,8 @@ images:
   2025-08-14-01.jpg: {w: 8160, h: 6120, lat: 43.44515, lon: 16.697342, demEle: 223.3, taken: '2025-08-14T07:40:08+02:00', blur: 'data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAACwBACdASoYABIAPtFWo0uoJKMhsAgBABoJYwC06CHWrKGX0sghU3LenAu2fjsAAP3d7469GDDvKl23LyHZOQ19bQjgLXXJlZzZhC+HkrhY2mxekghyTDVUQr6fEZJyp31tDLmhLu1f/xdLVM9CKnngLOjFDb4XCxXFWwrZE8NXGod6Y2anBJbOAK8AAA=='}
   2025-08-14-02.jpg: {w: 8160, h: 6120, lat: 43.44515, lon: 16.697342, demEle: 223.3, taken: '2025-08-14T07:40:19+02:00', blur: 'data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABQBQCdASoYABIAPtFcpU0oJSOiMBgIAQAaCWUAxnwQ7k7eeqJTGl49TwOxVw8QnQez6CAA/sReIAEATG1NnMQsgVJKKtXEE3AduDhZABeF0wXseODaZhfn1w/Bezd21CXKj3J4Cz1csGVbbT1twHaNAyz5WVqMNVHMY/m0+NevgAAA'}
   2025-08-14-03.jpg: {w: 8160, h: 6120, lat: 43.445299, lon: 16.690867, demEle: 1.2, taken: '2025-08-14T08:32:53+02:00', blur: 'data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAwBQCdASoYABIAPtFWpE2oJCMiMBgIAQAaCWUAvkgQN+oybQy8+W3dZUQVBiUl/XQ4AAD+jiWeV1JmYjy14evMQQ9rTGl2lZS3jqACONDaKDvxPOBDMqvnuAYoyBJk+SzJNa1sMgAVMeXNlApAntbravkPChoOmT4211LEswV4Y5vS0AA='}
+  omis_fort_climb.png: {w: 1655, h: 2339}
+  /images/hikes/topo/omis_fort_climb.png: {w: 1655, h: 2339, blur: 'data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAQBACdASoRABgAPtFgqE+oJSOiKAgBABoJZwDN/Yy8ZcBhdHrf+cDzkAD+67yaM24ZFkPj97Qph9IJ17nGU86Xsjs4fJ3a/89mHpcq9/V6cjslEEg9MB0Y+unr1VW0B/XfKTY600u2UzbR0X5uOnSVOPMaYmwK/cE40gTkMcuPK21QV68g6rPIvh/UAAAA'}
 ---
 Topo from [bergsteigen.com](https://www.bergsteigen.com/touren/klettersteig/ferrata-fortica-omis/):
 ![Topo of the climb](/images/hikes/topo/omis_fort_climb.png)

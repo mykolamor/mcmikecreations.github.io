@@ -4,6 +4,7 @@
 	// elevation and distance along the route when known.
 	import { textIn, type Lang, type Place } from '$lib/hikes/facts-schema';
 	import { formatKm } from '$lib/hikes/facts-format';
+	import { t } from '$lib/i18n/strings';
 
 	interface Props {
 		place: Place;
@@ -21,4 +22,4 @@
 			href="#hike-map"
 			data-place-lat={place.lat}
 			data-place-lon={place.lon}
-			title="Show on the map">{name}</a>{:else}{name}{/if}{#if place.ele != null}&nbsp;({place.ele}&nbsp;m){/if}</span>{#if km && place.km != null}<span class="text-gray-500 dark:text-gray-400 tabular-nums" translate="no">&nbsp;· {formatKm(place.km)}</span>{/if}
+			title={t(lang, 'render.showOnMap')}>{name}</a>{:else}{name}{/if}{#if place.ele != null}&nbsp;({place.ele}&nbsp;m){/if}</span>{#if km && place.km != null}<span class="text-gray-500 dark:text-gray-400 tabular-nums" translate="no">&nbsp;· {formatKm(place.km, lang)}</span>{/if}

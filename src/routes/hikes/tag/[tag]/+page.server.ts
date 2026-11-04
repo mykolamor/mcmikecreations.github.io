@@ -5,6 +5,7 @@ import type { Map as HikeMap, GeometryData } from '$lib/data/map-info';
 import { getMapFeatures } from '$lib/data/map-info';
 import { providerFolder } from '$lib/data/map-providers';
 import { mergeMetrics } from '$lib/hikes/hike-metrics';
+import { t } from '$lib/i18n/strings';
 
 export const prerender = true;
 
@@ -34,7 +35,7 @@ function getYearWeeks(year: number): WeekData[] {
         if (wStart.getUTCFullYear() > year) break;
         const startStr = wStart.toISOString().split('T')[0];
         const endStr = wEnd.toISOString().split('T')[0];
-        weeks.push({ year, weekIndex: i, label: `${startStr} to ${endStr}`, hikes: [] });
+        weeks.push({ year, weekIndex: i, label: t('en', 'web.weekLabel', { start: startStr, end: endStr }), hikes: [] });
     }
     return weeks;
 }

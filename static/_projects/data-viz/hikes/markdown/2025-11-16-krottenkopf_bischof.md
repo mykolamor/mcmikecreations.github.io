@@ -4,7 +4,7 @@ description: Catching the last warm days of the year and finishing off my to-do 
 people:
   - Bohdan Pryshchenko
 gpx: /_projects/data-viz/hikes/gpx/krottenkopf_bischof.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 26871
 ascent: 1849
 descent: 1860

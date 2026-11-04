@@ -2,15 +2,15 @@
 """Build the home page hero map's per-hike heightmaps.
 
 Run `scripts/.venv/bin/python scripts/hero_heightmaps.py --help` for options.
-Implementation lives in the `matches` package beside this file.
+Implementation lives in `hikegeo`, under scripts/geo.
 """
 
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent / "geo"))
 
-from matches.hero_heightmaps import main  # noqa: E402
+from hikegeo.hero_heightmaps import main  # noqa: E402
 
 if __name__ == "__main__":
     raise SystemExit(main())

@@ -4,7 +4,7 @@ description: Taking Pavlo for a tour near Hallstätter See.
 people:
   - Pavlo Pustelnyk
 gpx: /_projects/data-viz/hikes/gpx/hoher_kalmberg.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 19276
 ascent: 1108
 descent: 1379

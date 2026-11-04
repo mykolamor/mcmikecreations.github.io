@@ -1,5 +1,6 @@
 import { getAllPosts } from '$lib/hikes/hikes-info.server';
 import resume from '$lib/data/resume.json';
+import { t } from '$lib/i18n/strings';
 
 export const prerender = true;
 
@@ -14,8 +15,8 @@ export function GET({ url }) {
 
 	const xml = `<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
-  <title>Hiking, Climbing, Via Ferrata &amp; Trail Maps | Personal Hike Experiences</title>
-  <subtitle>The most thorough hike reviews on the web</subtitle>
+  <title>${escapeXml(t('en', 'meta.blogTitle'))}</title>
+  <subtitle>${escapeXml(t('en', 'meta.blogDescription'))}</subtitle>
   <link href="${url.origin}/hikes/atom.xml" rel="self" />
   <link href="${url.origin}/" />
   <id>${url.origin}/hikes/</id>

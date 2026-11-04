@@ -6,7 +6,7 @@ tags:
 people:
   - Parlad Dharel
 gpx: /_projects/data-viz/hikes/gpx/annapurna_bc_3.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 9808
 ascent: 1298
 descent: 107

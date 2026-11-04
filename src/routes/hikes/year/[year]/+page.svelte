@@ -11,6 +11,7 @@
 		import { hikesYearTitle, hikesYearDescription } from '$lib/hikes/hikes-meta';
 		import resume from '$lib/data/resume.json';
 		import AppBreadcrumbs from '$lib/components/AppBreadcrumbs.svelte';
+		import { t } from '$lib/i18n/strings';
 
     interface Props {
         data: PageData;
@@ -29,12 +30,12 @@
 	description={hikesYearDescription(year, pagination.currentPage)}
 	type="website"
 	article-author={resume.basics.name}
-	article-section="Hikes"
+	article-section={t('en', 'meta.section')}
 />
 <HikeJsonLd variant="year" {year} {posts} currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
 <AppBreadcrumbs items={[
-	{ name: 'Home', href: '/' },
-	{ name: 'Hikes', href: '/hikes/' },
+	{ name: t('en', 'nav.home'), href: '/' },
+	{ name: t('en', 'nav.hikes'), href: '/hikes/' },
 	{ name: String(year), href: `/hikes/year/${year}/` }
 ]} />
 
@@ -46,10 +47,10 @@
 		<div class="mb-6">
 			<A href="/hikes/#blog" class="inline-flex items-center">
 				<ArrowLeftOutline class="w-5 h-5 me-2" />
-				Back to All Hikes
+				{t('en', 'nav.backToAll')}
 			</A>
 		</div>
-		<Heading tag="h2" class="mb-8">Hikes from {year}</Heading>
+		<Heading tag="h2" class="mb-8">{t('en', 'list.year', { year, page: pagination.currentPage })}</Heading>
 		<div class="mt-8">
 			<YearsNav years={yearList} />
 		</div>

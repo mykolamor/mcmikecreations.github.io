@@ -38,7 +38,8 @@ export const POST_FILE = /^(\d{4}-\d{2}-\d{2})-(.+)\.md$/;
 export const HIKE_KEYS = new Set(['name', 'height']);
 
 /** Front-matter keys that set fields on the hike's `properties`. */
-export const PROPS_KEYS = new Set(['draft', 'hidden', 'checkpoints', 'nodes']);
+// Not `nodes`: those are ids into the OSM store, resolved with the sidecar.
+export const PROPS_KEYS = new Set(['draft', 'hidden', 'checkpoints']);
 
 /**
  * Front-matter keys that set fields on this post's date entry.
@@ -120,10 +121,37 @@ export function defaultGpxPath(filePath) {
 }
 
 /**
+ * A sidecar text's English: the string itself, or the `en` of a translated one
+ * (`{ en, de }`). Anything else comes back as is.
+ *
+ * @param {unknown} value
+ */
+export function englishText(value) {
+	return isPlainObject(value) ? value.en : value;
+}
+
+/**
+ * A hike's `name` or `description` as a `Text`: the translated one it keeps
+ * (`nameText` / `descriptionText`), else its English string as `{ en }`. The
+ * contract for reading a hike's text in another language: read it through
+ * this, not `name` / `description`, which stay the English.
+ *
+ * @param {Hike} hike
+ * @param {'name' | 'description'} field
+ * @returns {import('../hikes/facts-schema').Text}
+ */
+export function hikeText(hike, field) {
+	return (field === 'name' ? hike.nameText : hike.descriptionText) ?? { en: hike[field] };
+}
+
+/**
  * Fold a sidecar into a hike, in the key order `hikes.json` used to have.
  *
  * The sidecar owns its seven fields outright: swapping one in replaces them all,
  * including dropping `nodes` again if the new sidecar declares none.
+ *
+ * `name` and `description` are the English text, whatever the sidecar says; a
+ * translated one is also kept whole, as `nameText` / `descriptionText`.
  *
  * @param {{ route: string; properties: MapProperties }} hike
  * @param {HikeMeta} meta
@@ -135,15 +163,19 @@ export function withHikeMeta(hike, meta) {
 	if (meta.nodes === undefined) delete properties.nodes;
 	else properties.nodes = meta.nodes;
 
-	return {
-		name: meta.name,
+	/** @type {Hike} */
+	const out = {
+		name: /** @type {string} */ (englishText(meta.name)),
 		image: meta.image,
 		properties,
-		description: meta.description,
+		description: /** @type {string} */ (englishText(meta.description)),
 		route: hike.route,
 		height: meta.height,
 		standardFeatures: { origin: meta.origin }
 	};
+	if (isPlainObject(meta.name)) out.nameText = meta.name;
+	if (isPlainObject(meta.description)) out.descriptionText = meta.description;
+	return out;
 }
 
 /**
@@ -388,7 +420,9 @@ export function compareHikesNewestFirst(a, b) {
  *    those can say.
  *
  * Throws on a post or `hikes.json` entry with no sidecar, on a hike with no
- * dates, and on a post file that breaks the naming convention.
+ * dates, and on a post file that breaks the naming convention. Translation
+ * files (`translationName` in `i18n/translation-name.js`) are not posts: the
+ * caller leaves them out.
  *
  * @param {{
  *   slugs: string[];

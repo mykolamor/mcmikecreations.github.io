@@ -14,6 +14,7 @@ import { MeshLineHikeMaterial, type MeshLineHikeMaterialParameters } from '$lib/
 import { createMap3dMarkers, type Map3dMarkers, type Map3dNode } from '$lib/hikes/map-3d-markers';
 import { alternatingOffset, isPeakOrSaddle, mapFactsPref, type MapPhoto } from '$lib/hikes/map-utils';
 import { offsetNearRoute, type FactsMarks } from '$lib/hikes/facts-overlay';
+import type { Lang } from '$lib/i18n/languages';
 
 export interface Map3dHandle {
     setIndicator: (lat: number, lon: number, ele: number) => void;
@@ -60,7 +61,9 @@ export function initMap3d(
     onPhotoClick?: (mediaIndex: number) => void,
     /** Which nodes to raise on a vertical stem; peaks and saddles unless told otherwise. */
     elevateNode: (node: Map3dNode) => boolean = isPeakOrSaddle,
-    facts?: FactsMarks
+    facts?: FactsMarks,
+    /** The language of the markers' own text. */
+    lang: Lang = 'en'
 ): Map3dHandle {
     const noop: Map3dHandle = { setIndicator: () => {} };
 		const geometry = geojson?.features?.[0]?.geometry as (GeoPermissibleObjects & { coordinates: number[][] }) | null;
@@ -405,7 +408,7 @@ export function initMap3d(
 		// way the tiles are: relative to its tile plane's (rounded) position, not the
 		// raw projection, and lifted exactly like TileMaterial lifts vertices
 		// (height * tScale + tOffset, tOffset being 0 for tiles). With a `demEle`
-		// from scripts/matches/terrain.py it lands on the drawn surface. Null off the
+		// from `pnpm crm terrain` it lands on the drawn surface. Null off the
 		// drawn tiles, where there's no terrain to stand on (or to occlude it).
 		const drawnTiles = new Set(tiles.map(([x, y]: number[]) => `${x}_${y}`));
 		const terrainPoint = (lat: number, lon: number, ele: number) => {
@@ -433,6 +436,7 @@ export function initMap3d(
 						onPhotoClick,
 						elevateNode,
 						requestRender: () => render(),
+						lang,
 				});
 		}
 

@@ -15,32 +15,5 @@
     [11.7760724, 47.6752184],
     [11.7714181, 47.6937201]
   ],
-  "nodes": [
-    {
-      "id": 909747952,
-      "lat": 47.6408897,
-      "lon": 11.785572,
-      "demEle": 1586.9,
-      "tags": {
-        "name": "Gams-Beobachtungspunkt",
-        "amenity": "shelter",
-        "ele": "1595",
-        "shelter_type": "weather_shelter"
-      }
-    },
-    {
-      "id": 260692620,
-      "lat": 47.6512206,
-      "lon": 11.7846084,
-      "demEle": 1684.7,
-      "tags": {
-        "name": "Setzberg",
-        "natural": "peak",
-        "ele": "1706",
-        "summit:cross": "yes",
-        "summit:register": "no",
-        "wikidata": "Q15059993"
-      }
-    }
-  ]
+  "nodes": ["way/909747952", "node/260692620"]
 }

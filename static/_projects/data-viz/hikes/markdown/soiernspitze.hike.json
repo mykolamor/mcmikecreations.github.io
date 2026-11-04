@@ -14,49 +14,5 @@
     [11.2737778, 47.4556232],
     [11.265749, 47.4399924]
   ],
-  "nodes": [
-    {
-      "id": 121940390,
-      "lat": 47.4675002,
-      "lon": 11.3563005,
-      "demEle": 1395.5,
-      "tags": {
-        "name": "Krinner-Kofler-Hütte",
-        "tourism": "wilderness_hut",
-        "ele": "1407",
-        "building": "yes",
-        "email": "toni.gilg@t-online.de",
-        "phone": "+4988232480",
-        "website": "https://www.krinner-kofler-huette.de/",
-        "wikidata": "Q1789032",
-        "wikipedia": "de:Krinner-Kofler-Hütte"
-      }
-    },
-    {
-      "id": 272070518,
-      "lat": 47.474771,
-      "lon": 11.3628685,
-      "demEle": 1786.7,
-      "tags": {
-        "name": "Jöchel",
-        "natural": "saddle",
-        "mountain_pass": "yes",
-        "ele": "1787"
-      }
-    },
-    {
-      "id": 67233894,
-      "lat": 47.4815666,
-      "lon": 11.3571077,
-      "demEle": 2235.1,
-      "tags": {
-        "name": "Soiernspitze",
-        "natural": "peak",
-        "ele": "2253",
-        "summit:cross": "yes",
-        "wikidata": "Q316066",
-        "wikipedia": "de:Soiernspitze"
-      }
-    }
-  ]
+  "nodes": ["way/121940390", "node/272070518", "node/67233894"]
 }

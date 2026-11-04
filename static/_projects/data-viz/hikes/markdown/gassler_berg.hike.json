@@ -16,87 +16,7 @@
     [11.7966675, 47.7449950],
     [11.8401733, 47.7505216]
   ],
-  "nodes": [
-    {
-      "id": 1023521644,
-      "lat": 47.7331856,
-      "lon": 11.7541109,
-      "demEle": 991.1,
-      "tags": {
-        "name": "Buchberg",
-        "ele": "995.5",
-        "natural": "peak"
-      }
-    },
-    {
-      "id": 1743681602,
-      "lat": 47.7338721,
-      "lon": 11.7683304,
-      "demEle": 1170.0,
-      "tags": {
-        "name": "Gassler Berg",
-        "ele": "1178",
-        "natural": "peak",
-        "wikidata": "Q16064616"
-      }
-    },
-    {
-      "id": 1743681826,
-      "lat": 47.7344509,
-      "lon": 11.7765773,
-      "demEle": 1135.9,
-      "tags": {
-        "name": "Oeder Kogel",
-        "ele": "1135",
-        "natural": "peak",
-        "wikidata": "Q16320527"
-      }
-    },
-    {
-      "id": 1743682069,
-      "lat": 47.7348091,
-      "lon": 11.7863439,
-      "demEle": 1131.4,
-      "tags": {
-        "name": "Schußkogel",
-        "ele": "1134",
-        "natural": "peak",
-        "wikidata": "Q18289376"
-      }
-    },
-    {
-      "id": 1743682072,
-      "lat": 47.7449950,
-      "lon": 11.7966675,
-      "demEle": 946.1,
-      "tags": {
-        "name": "Wallenburger Kogel",
-        "ele": "936",
-        "natural": "peak",
-        "wikidata": "Q18334815"
-      }
-    },
-    {
-      "id": 34601514,
-      "lat": 47.7481070,
-      "lon": 11.7371459,
-      "demEle": 732.5,
-      "tags": {
-        "name": "Parkplatz Volksfestplatz",
-        "alt_name": "Parkplatz am See",
-        "ele": "735",
-        "access": "yes",
-        "amenity": "parking",
-        "charge": "0.5 EUR/0.5 hour",
-        "fee": "no",
-        "fee:conditional": "yes @ (stay > 2 hours) AND (08:00-18:00)",
-        "maxstay": "72 hours",
-        "parking": "surface",
-        "surface": "paved",
-        "website": "https://www.tegernsee.com/a-parkplatz-am-see"
-      }
-    }
-  ],
+  "nodes": ["node/1023521644", "node/1743681602", "node/1743681826", "node/1743682069", "node/1743682072", "way/34601514"],
   "facts": {
     "summary": {
       "en": "A long point-to-point between Gmund and Hausham covering the lowest wild peaks in-between.",
@@ -107,17 +27,6 @@
         "en": "T3 on most wild parts; T1-T2 on the forest roads.",
         "de": "T3 auf den meisten wilden Abschnitten; T1-T2 auf den Forststraßen."
       },
-      "sections": [
-        {
-          "from": "Buchberg",
-          "to": "Schußkogel",
-          "sac": "T3",
-          "note": {
-            "en": "Overgrown areas, river crossings, slope climbs.",
-            "de": "Überwachsene Abschnitte, Bachquerungen, Steigungen."
-          }
-        }
-      ],
       "exposure": {
         "level": "low",
         "note": {
@@ -296,7 +205,7 @@
             "en": "Parking lot Volksfestplatz",
             "de": "Parkplatz Volksfestplatz"
           },
-          "at": "Parkplatz Volksfestplatz",
+          "at": {"ref": "way/34601514", "name": "Parkplatz Volksfestplatz"},
           "price": [
             {
               "amount": 1,
@@ -383,6 +292,17 @@
         "terrain": ["forest-road", "road"],
         "sac": "T1",
         "marking": "good"
+      },
+      {
+        "from": "Buchberg",
+        "to": "Schußkogel",
+        "sac": "T3",
+        "note": {
+          "en": "Overgrown areas, river crossings, slope climbs.",
+          "de": "Überwachsene Abschnitte, Bachquerungen, Steigungen."
+        },
+        "inTable": false,
+        "onProfile": true
       }
     ],
     "plan": {

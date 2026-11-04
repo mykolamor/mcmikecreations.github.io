@@ -1,0 +1,12 @@
+{
+  "elements": {
+    "node/900001": { "type": "node", "id": 900001, "lat": 47.6, "lon": 11.5, "tags": { "name": "Stubspitze", "natural": "peak", "ele": "1800" } },
+    "way/900002": { "type": "way", "id": 900002, "center": { "lat": 47.601, "lon": 11.501 }, "tags": { "name": "Stubhütte", "tourism": "alpine_hut" } },
+    "relation/900003": { "type": "relation", "id": 900003, "center": { "lat": 47.602, "lon": 11.502 }, "tags": { "name": "Stubweg", "route": "hiking" } }
+  },
+  "around": [
+    { "type": "relation", "id": 900003, "center": { "lat": 47.602, "lon": 11.502 }, "tags": { "name": "Stubweg", "route": "hiking" } },
+    { "type": "way", "id": 900002, "center": { "lat": 47.601, "lon": 11.501 }, "tags": { "name": "Stubhütte", "tourism": "alpine_hut" } },
+    { "type": "node", "id": 900001, "lat": 47.6, "lon": 11.5, "tags": { "name": "Stubspitze", "natural": "peak", "ele": "1800" } }
+  ]
+}

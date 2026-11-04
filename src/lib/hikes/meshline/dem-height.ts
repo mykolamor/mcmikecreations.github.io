@@ -10,7 +10,7 @@
  * Bilinear filtering is done by hand on decoded heights: letting the GPU filter
  * the encoded RGB would blend across byte carries.
  *
- * scripts/matches/terrain.py mirrors this (plus the 64-segment tile mesh) to
+ * scripts/crm/server/terrain.ts mirrors this (plus the 64-segment tile mesh) to
  * precompute marker heights - keep the two in step.
  */
 export const DEM_BUFFER_PX = 1;

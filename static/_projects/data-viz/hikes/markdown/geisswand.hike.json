@@ -18,32 +18,5 @@
     [13.7761018, 47.8446972],
     [13.7771341, 47.8552628]
   ],
-  "nodes": [
-    {
-      "id": 1781859543,
-      "lat": 47.8426523,
-      "lon": 13.776766,
-      "demEle": 751.2,
-      "tags": {
-        "name": "Baalstein",
-        "natural": "peak",
-        "ele": "800",
-        "summit:cross": "yes",
-        "summit:register": "yes"
-      }
-    },
-    {
-      "id": 1781859544,
-      "lat": 47.840867,
-      "lon": 13.7771705,
-      "demEle": 844.9,
-      "tags": {
-        "name": "Geißwand",
-        "natural": "peak",
-        "ele": "872",
-        "summit:cross": "yes",
-        "summit:register": "yes"
-      }
-    }
-  ]
+  "nodes": ["node/1781859543", "node/1781859544"]
 }

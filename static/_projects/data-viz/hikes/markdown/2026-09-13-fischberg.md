@@ -4,7 +4,7 @@ description: Walking around the lake to enjoy the views.
 people:
   - David Bilan
 gpx: /_projects/data-viz/hikes/gpx/fischberg.gpx
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 25123
 ascent: 441
 descent: 437

@@ -1,0 +1,32 @@
+/*
+ * A text Fill put in: a DeepL draft until it is edited. One style for every field, textarea and the Write editor;
+ * `:root` so it outweighs a component's own `input`/`textarea` rule.
+ */
+:root .deepl-draft,
+:root .cm-deepl-draft {
+	border: 2px dashed #b26a00;
+	background: #fff4e0;
+}
+/* In the editor the text runs on: an outline, not a border, so the lines don't move. */
+:root .cm-deepl-draft {
+	border: 0;
+	outline: 2px dashed #b26a00;
+	outline-offset: 1px;
+}
+:root .deepl-draft-label,
+:root .cm-deepl-draft-badge {
+	margin: 0;
+	font-size: 0.8rem;
+	color: #7a4800;
+}
+/* The editor's label, at the start of each draft block. */
+:root .cm-deepl-draft-badge {
+	display: inline-block;
+	margin-right: 0.4em;
+	padding: 0 0.3em;
+	border-radius: 3px;
+	background: #ffe2b3;
+	font-family: system-ui, sans-serif;
+	line-height: 1.4;
+	user-select: none;
+}

@@ -13,21 +13,5 @@
     [16.703376, 43.4436037],
     [16.6991156, 43.4447678]
   ],
-  "nodes": [
-    {
-      "id": 145033136,
-      "lat": 43.4447968,
-      "lon": 16.6996614,
-      "demEle": 273.5,
-      "tags": {
-        "name": "Tvrđava \"Stari grad\"",
-        "alt_name": "Fortica",
-        "historic": "castle",
-        "ruins": "yes",
-        "castle_type": "fortress",
-        "tourism": "attraction",
-        "wikidata": "Q7601914"
-      }
-    }
-  ]
+  "nodes": ["way/145033136"]
 }

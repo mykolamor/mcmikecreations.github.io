@@ -10,6 +10,7 @@
 		import { hikesListTitle, hikesListDescription } from '$lib/hikes/hikes-meta';
 		import resume from '$lib/data/resume.json';
 		import AppBreadcrumbs from '$lib/components/AppBreadcrumbs.svelte';
+		import { t } from '$lib/i18n/strings';
 
     interface Props {
         data: PageData;
@@ -26,13 +27,13 @@
 	description={hikesListDescription(pagination.currentPage)}
 	type="website"
 	article-author={resume.basics.name}
-	article-section="Hikes"
+	article-section={t('en', 'meta.section')}
 />
 <HikeJsonLd variant="list" {posts} currentPage={pagination.currentPage} />
 <AppBreadcrumbs items={[
-	{ name: 'Home', href: '/' },
-	{ name: 'Hikes', href: '/hikes/' },
-	{ name: `Page ${pagination.currentPage}` }
+	{ name: t('en', 'nav.home'), href: '/' },
+	{ name: t('en', 'nav.hikes'), href: '/hikes/' },
+	{ name: t('en', 'nav.page', { page: pagination.currentPage }) }
 ]} />
 
 
@@ -43,10 +44,10 @@
 		<div class="mb-6">
 			<A href="/hikes/" class="inline-flex items-center">
 				<ArrowLeftOutline class="w-5 h-5 me-2" />
-				Back to All Hikes
+				{t('en', 'nav.backToAll')}
 			</A>
 		</div>
-		<Heading tag="h2" class="mb-8">All Hikes - Page {pagination.currentPage}</Heading>
+		<Heading tag="h2" class="mb-8">{t('en', 'list.allPage', { page: pagination.currentPage })}</Heading>
 		<div class="mt-8">
             <HikeList {posts} {showPeople} />
             <CustomPagination

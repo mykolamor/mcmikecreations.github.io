@@ -47,7 +47,7 @@ What the script does:
 
 ## Report to the user
 
-State the replaced index ranges and point counts, the spacing match, the elevation offsets that were removed, the dropped instructions, and the old → new distance, ascent and descent. Note that the post's `distance`/`ascent`/`descent` front matter (from `scripts/track_metrics.py`) may override the GeoJSON totals.
+State the replaced index ranges and point counts, the spacing match, the elevation offsets that were removed, the dropped instructions, and the old → new distance, ascent and descent. Note that the post's `distance`/`ascent`/`descent` front matter (from `pnpm crm metrics`) may override the GeoJSON totals.
 
 ## Common mistakes
 

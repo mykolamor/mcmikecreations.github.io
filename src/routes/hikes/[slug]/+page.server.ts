@@ -9,10 +9,11 @@ import type { EntryGenerator, PageServerLoad } from './$types';
 import type { Map, MapDate, MapProperties } from '$lib/data/map-info';
 import { mergeMetrics } from '$lib/hikes/hike-metrics';
 import { applyPostOverrides, readHikeFrontmatter, readMetaPathOverride } from '$lib/hikes/frontmatter.server';
-import { defaultGpxPath, defaultMetaPath, getHikeMeta } from '$lib/data/hikes-db';
+import { defaultGpxPath, defaultMetaPath, factsLibrary, getHikeMeta, storeNodes } from '$lib/data/hikes-db';
 import { readHikeFacts } from '$lib/hikes/facts.server';
 import { placeDocsForPost } from '$lib/hikes/places.server';
 import type { PlaceDocRef, RenderedPlaceDoc } from '$lib/hikes/place-docs';
+import type { PlaceNode } from '$lib/hikes/place-links';
 import { readHikeContacts } from '$lib/hikes/frontmatter';
 import { buildHikeContacts } from '$lib/hikes/contacts';
 import contactsBook from '$lib/data/contacts.json';
@@ -21,6 +22,7 @@ import { computeHikeFacts } from '$lib/hikes/hike-facts';
 import { readHikeElapsed, readTimedTrack } from '$lib/hikes/hike-facts.server';
 import { computePhotoStops } from '$lib/hikes/photo-stops';
 import { computeMetricScales } from '$lib/hikes/hike-metrics';
+import { pinNodesFor } from '$lib/hikes/photo-pins.server';
 
 export const entries: EntryGenerator = () => {
 	return getAllPosts().map((p) => ({ slug: p.anchor }));
@@ -81,7 +83,21 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 		// The post's place docs (`places:`, else the sidecar's): linked from the prose, shown at the bottom.
 		const placeDocs = placeDocsForPost(frontmatter, date.path, { places: sidecar?.places, source: metaPath });
 		const placeRefs: PlaceDocRef[] = placeDocs.map(({ slug, title, names }) => ({ slug, title, names }));
-		const parsed = await parseMarkdown(postRaw, mergedDate.tags, { nodes, placeDocs: placeRefs });
+		// What the photo pins of the post and its place docs point to: a ref
+		// missing from the OSM store, or a malformed pin, fails the build here.
+		const pinNodes = pinNodesFor([
+			{ data: frontmatter, source: date.path },
+			...placeDocs.map((doc) => ({ data: readHikeFrontmatter(doc.raw).data, source: `places/${doc.slug}.md` }))
+		]);
+		// Place mentions may name any element of the OSM store; of several with
+		// one name, the one nearest the post's map centre wins.
+		const allNodes = storeNodes();
+		const origin = mergedHike.standardFeatures?.origin ?? null;
+		// The same height map-download.js fetches tiles for: links stay inside that square.
+		const height = mergedHike.height ?? null;
+		// The post's own nodes (drawn on its map) link wherever they are.
+		const ownRefs = (nodes ?? []).map((n: { ref?: unknown }) => n.ref).filter((r: unknown): r is string => typeof r === 'string');
+		const parsed = await parseMarkdown(postRaw, mergedDate.tags, { nodes: allNodes, origin, height, ownRefs, placeDocs: placeRefs, pinNodes });
 		const media = parsed.media;
 		let postHtml = parsed.html;
 
@@ -134,7 +150,7 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 			readTimedTrack(gpxFile)
 		);
 		if (photoStops.size > 0) {
-			postHtml = (await parseMarkdown(postRaw, mergedDate.tags, { stops: photoStops, nodes, placeDocs: placeRefs })).html;
+			postHtml = (await parseMarkdown(postRaw, mergedDate.tags, { stops: photoStops, nodes: allNodes, origin, height, ownRefs, placeDocs: placeRefs, pinNodes })).html;
 		}
 		locals.postContent = postHtml;
 
@@ -143,9 +159,20 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 		// Sent as HTML (unlike the post's body, which the browser re-parses):
 		// docs are short, and this keeps the browser free of their front matter.
 		const places: RenderedPlaceDoc[] = [];
+		// The nodes the post and its docs link to, by ref: all the browser
+		// needs to re-parse the post, rather than the whole store.
+		const placeNodes = new Map<string, PlaceNode>();
+		const addPlaceNodes = (list: PlaceNode[]) => {
+			for (const node of list) {
+				const ref = (node as { ref?: string }).ref ?? `${node.lat},${node.lon}`;
+				if (!placeNodes.has(ref)) placeNodes.set(ref, node);
+			}
+		};
+		addPlaceNodes(parsed.placeNodes);
 		let mediaOffset = media.length;
 		for (const doc of placeDocs) {
-			const rendered = await parseMarkdown(doc.raw, [], { nodes, mediaOffset, widgets: false, styles: false });
+			const { placeNodes: docNodes, ...rendered } = await parseMarkdown(doc.raw, [], { nodes: allNodes, origin, height, ownRefs, mediaOffset, widgets: false, styles: false, pinNodes });
+			addPlaceNodes(docNodes);
 			places.push({ slug: doc.slug, title: doc.title, description: doc.description, tags: doc.tags, ...rendered });
 			mediaOffset += rendered.media.length;
 		}
@@ -158,6 +185,11 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 			postSource: date.path,
 			sidecarSource: metaPath,
 			nodes,
+			storeNodes: allNodes,
+			library: factsLibrary(),
+			origin,
+			height,
+			ownRefs,
 			coords: coordinates,
 			distanceFactor: coordinates ? computeMetricScales(coordinates, mapProperties).distanceFactor : 1,
 			// Bailout routes are served files under static/, like the hike's own GPX.
@@ -205,6 +237,11 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 			linkedPosts,
 			places,
 			placeRefs,
+			placeNodes: [...placeNodes.values()],
+			origin,
+			height,
+			ownRefs,
+			pinNodes,
 			durationSource,
 			contacts,
 			display: {

@@ -4,7 +4,7 @@ description: Finding trails among cliffs and spiky ferns at the Adriatic seaside
 gpx: /_projects/data-viz/hikes/gpx/omis_celine.gpx
 tags:
   - Croatia
-# Computed from the recorded GPX by scripts/track_metrics.py.
+# Computed from the recorded GPX by `pnpm crm metrics`.
 distance: 8662
 ascent: 596
 descent: 593
