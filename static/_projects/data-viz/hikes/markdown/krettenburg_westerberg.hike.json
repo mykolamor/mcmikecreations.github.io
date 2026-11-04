@@ -260,84 +260,15 @@
       "checked": "2026-10-25",
       "transport": [
         {
-          "mode": "train",
-          "from": {
-            "en": "Munich Central Station",
-            "de": "München Hbf"
-          },
-          "to": {
-            "name": {
-              "en": "Schliersee",
-              "de": "Schliersee"
-            }
-          },
-          "direction": "there",
-          "line": "RB 55",
-          "operator": "DB Regio",
-          "duration": 57,
-          "changes": 0,
-          "first": "06:29",
-          "last": "16:29",
-          "frequency": {
-            "en": "hourly",
-            "de": "stündlich"
-          },
-          "price": [
-            {
-              "amount": 0,
-              "note": {
-                "en": "with Deutschlandticket",
-                "de": "mit Deutschlandticket"
-              }
-            },
-            {
-              "amount": 25,
-              "per": "day"
-            }
-          ],
-          "ticket": {
-            "en": "Deutschlandticket valid to Spitzingsee",
-            "de": "Deutschlandticket bis Spitzingsee gültig"
-          },
-          "url": "https://www.bahn.de/"
+          "use": "train-rb-55-munich-central-station-schliersee"
         },
         {
-          "mode": "bus",
-          "from": {
-            "en": "Schliersee",
-            "de": "Schliersee"
-          },
-          "to": {
-            "name": {
-              "en": "Spitzingsee Spitzingsattel, Schliersee",
-              "de": "Spitzingsee Spitzingsattel, Schliersee"
-            }
-          },
-          "direction": "there",
-          "line": "362",
-          "operator": "MVV",
-          "duration": 14,
-          "changes": 0,
-          "first": "07:31",
-          "last": "17:31"
+          "use": "bus-362-schliersee-spitzingsee-spitzingsattel"
         }
       ],
       "parking": [
         {
-          "name": {
-            "en": "Spitzingsattel parking lot",
-            "de": "Parkplatz Spitzingsattel"
-          },
-          "at": {"ref": "way/122002876", "name": "Parkplatz Spitzingsattel"},
-          "price": [
-            {
-              "amount": 5,
-              "per": "day"
-            }
-          ],
-          "size": "small",
-          "fills": "weekends",
-          "checked": "2026-10-25"
+          "use": "parking-lot-spitzingsee-spitzingsattel"
         }
       ]
     },

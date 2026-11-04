@@ -23,10 +23,229 @@
 				"de": "Vermietet im Winter Schlitten."
 			},
 			"checked": "2026-10-18"
+		},
+		"way/60318909": {
+			"kind": "alpine-hut",
+			"open": {
+				"from": "06-01",
+				"to": "09-01"
+			},
+			"overnight": false,
+			"booking": "https://www.hans-anderl-hof.de/alm.html",
+			"phone": "08022 5469",
+			"water": true,
+			"food": true,
+			"cash": true,
+			"checked": "2026-11-04"
 		}
 	},
-	"transport": {},
+	"transport": {
+		"bus-362-schliersee-spitzingsee-spitzingsattel": {
+			"mode": "bus",
+			"from": {
+				"en": "Schliersee",
+				"de": "Schliersee"
+			},
+			"to": {
+				"name": {
+					"en": "Spitzingsee Spitzingsattel, Schliersee",
+					"de": "Spitzingsee Spitzingsattel, Schliersee"
+				}
+			},
+			"direction": "there",
+			"duration": 14,
+			"changes": 0,
+			"line": "362",
+			"operator": "MVV",
+			"first": "07:31",
+			"last": "17:31"
+		},
+		"train-rb-55-munich-central-station-schliersee": {
+			"mode": "train",
+			"from": {
+				"en": "Munich Central Station",
+				"de": "München Hbf"
+			},
+			"to": {
+				"name": {
+					"en": "Schliersee",
+					"de": "Schliersee"
+				}
+			},
+			"direction": "there",
+			"duration": 57,
+			"changes": 0,
+			"line": "RB 55",
+			"operator": "DB Regio",
+			"first": "06:29",
+			"last": "16:29",
+			"frequency": {
+				"en": "hourly",
+				"de": "stündlich"
+			},
+			"price": [
+				{
+					"amount": 0,
+					"note": {
+						"en": "with Deutschlandticket",
+						"de": "mit Deutschlandticket"
+					}
+				},
+				{
+					"amount": 25,
+					"per": "day"
+				}
+			],
+			"ticket": {
+				"en": "Deutschlandticket valid to Spitzingsee",
+				"de": "Deutschlandticket bis Spitzingsee gültig"
+			},
+			"url": "https://www.bahn.de/"
+		},
+		"train-rb-55-schliersee-munich-central-station": {
+			"mode": "train",
+			"from": {
+				"en": "Schliersee",
+				"de": "Schliersee"
+			},
+			"to": {
+				"name": {
+					"en": "Munich Central Station",
+					"de": "München Hbf"
+				}
+			},
+			"direction": "there",
+			"duration": 62,
+			"changes": 0,
+			"line": "RB 55",
+			"operator": "DB Regio",
+			"first": "05:30",
+			"last": "22:59",
+			"frequency": {
+				"en": "hourly",
+				"de": "stündlich"
+			},
+			"price": [
+				{
+					"amount": 0,
+					"note": {
+						"en": "with Deutschlandticket",
+						"de": "mit Deutschlandticket"
+					}
+				},
+				{
+					"amount": 20.5,
+					"per": "day",
+					"checked": "2026-11-02"
+				}
+			],
+			"ticket": {
+				"en": "Deutschlandticket valid to Schliersee",
+				"de": "Deutschlandticket bis Schliersee gültig"
+			},
+			"url": "https://www.bahn.de/",
+			"checked": "2026-11-02"
+		},
+		"train-rb-57-munich-central-station-tegernsee": {
+			"mode": "train",
+			"from": {
+				"en": "Munich Central Station",
+				"de": "München Hbf"
+			},
+			"to": {
+				"name": {
+					"en": "Tegernsee",
+					"de": "Tegernsee"
+				}
+			},
+			"direction": "there",
+			"duration": 70,
+			"changes": 0,
+			"line": "RB 57",
+			"operator": "DB Regio",
+			"first": "06:02",
+			"last": "23:10",
+			"frequency": {
+				"en": "hourly",
+				"de": "stündlich"
+			},
+			"price": [
+				{
+					"amount": 0,
+					"note": {
+						"en": "with Deutschlandticket",
+						"de": "mit Deutschlandticket"
+					}
+				},
+				{
+					"amount": 20.5,
+					"per": "day",
+					"checked": "2026-11-02"
+				}
+			],
+			"ticket": {
+				"en": "Deutschlandticket valid to Tegernsee",
+				"de": "Deutschlandticket bis Tegernsee gültig"
+			},
+			"url": "https://www.bahn.de/",
+			"checked": "2026-11-02"
+		}
+	},
 	"lifts": {},
-	"parking": {},
+	"parking": {
+		"parking-lot-schliersee": {
+			"at": {
+				"ref": "way/89308953"
+			},
+			"name": {
+				"en": "Schliersee train station parking"
+			},
+			"size": "medium",
+			"fills": "weekends",
+			"checked": "2026-11-04"
+		},
+		"parking-lot-spitzingsee-spitzingsattel": {
+			"at": {
+				"ref": "way/122002876",
+				"name": "Parkplatz Spitzingsattel"
+			},
+			"name": {
+				"en": "Spitzingsattel parking lot",
+				"de": "Parkplatz Spitzingsattel"
+			},
+			"price": [
+				{
+					"amount": 5,
+					"per": "day"
+				}
+			],
+			"size": "small",
+			"fills": "weekends",
+			"checked": "2026-10-25"
+		},
+		"parking-lot-tegernsee-schiessstatte": {
+			"at": {
+				"ref": "way/1056323650"
+			},
+			"name": {
+				"en": "Parking lot Schießstätte",
+				"de": "Wander-Parkplatz Schießstätte Tegernsee"
+			},
+			"price": [
+				{
+					"amount": 5,
+					"currency": "Euro",
+					"per": "day",
+					"note": {
+						"en": "Or 1 Euro per hour."
+					},
+					"checked": "2026-11-02"
+				}
+			],
+			"size": "small",
+			"fills": "summer",
+			"checked": "2026-11-02"
+		}
+	},
 	"tickets": {}
 }

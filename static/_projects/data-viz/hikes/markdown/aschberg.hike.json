@@ -1,0 +1,352 @@
+{
+  "name": {
+    "en": "Aschberg",
+    "de": "Aschberg"
+  },
+  "height": 512,
+  "checkpoints": [
+    [11.8597632, 47.7355828],
+    [11.8453456, 47.7320691],
+    [11.8483596, 47.7214732],
+    [11.8411545, 47.7206684],
+    [11.8454605, 47.6911654],
+    [11.8046984, 47.6848001]
+  ],
+  "description": {
+    "en": "Hike from Schliersee to Rottach-Egern via Krainsbergkogel (1037 m) and Aschberg (1042 m).",
+    "de": "Wanderung von Schliersee nach Rottach-Egern über Krainsbergkogel (1037 m) und Aschberg (1042 m)."
+  },
+  "image": "/images/projects/data-viz/hikes/aschberg.jpg",
+  "origin": {
+    "lat": 47.712611,
+    "lon": 11.829872
+  },
+  "places": ["kuehzagl_alm"],
+  "nodes": ["node/3229970781", "node/3229970779", "way/60318909", "node/619522080", "way/89308953"],
+  "facts": {
+    "sources": [
+      {
+        "kind": "forum",
+        "url": "https://www.hikr.org/tour/post133675.html",
+        "title": {
+          "en": "Brunnerstein trip report",
+          "de": "Brunnerstein Tourbericht"
+        },
+        "lang": "de"
+      }
+    ],
+    "access": {
+      "carFree": "yes",
+      "parking": [
+        {
+          "use": "parking-lot-schliersee"
+        }
+      ],
+      "transport": [
+        {
+          "use": "train-rb-55-munich-central-station-schliersee"
+        }
+      ]
+    },
+    "plan": {
+      "timing": {
+        "start": "08:00",
+        "turnaround": "16:00"
+      },
+      "alternatives": {
+        "harder": ["2026-10-22-krettenburg_westerberg"],
+        "easier": ["2025-10-26-auer_berg", "2024-09-21-rosskopf"],
+        "similar": ["2026-09-03-gassler_berg"]
+      },
+      "variants": [
+        {
+          "name": {
+            "en": "Schliersee to Rottach-Egern forest walk",
+            "de": "Schliersee nach Rottach-Egern Waldwanderung"
+          },
+          "summary": {
+            "en": "Take the same path but skip the detours to peaks.",
+            "de": "Nehmen Sie denselben Weg, aber überspringen Sie die Umwege zu den Gipfeln."
+          },
+          "distance": 14500,
+          "ascent": 598,
+          "descent": 639,
+          "duration": 174,
+          "sac": "T1",
+          "recommended": true
+        }
+      ],
+      "for": [
+        {
+          "en": "Peak baggers",
+          "de": "Gipfeljäger"
+        }
+      ],
+      "notFor": [
+        {
+          "en": "Hikers looking for views",
+          "de": "Wanderer, die nach Aussichten suchen"
+        }
+      ],
+      "gear": [
+        {
+          "item": "trail-shoes"
+        },
+        {
+          "item": "water",
+          "label": {
+            "en": "1-2 L",
+            "de": "1-2 L"
+          }
+        },
+        {
+          "item": "poles",
+          "need": "optional"
+        }
+      ]
+    },
+    "legs": [
+      {
+        "sac": "T1",
+        "terrain": ["forest-road"],
+        "marking": "good",
+        "to": {
+          "lat": 47.7203179,
+          "lon": 11.8464537,
+          "name": {
+            "en": "Detour to Krainsbergkogel",
+            "de": "Umweg zum Krainsbergkogel"
+          },
+          "demEle": 994.5
+        }
+      },
+      {
+        "to": {
+          "ref": "node/3229970781"
+        },
+        "sac": "T1+",
+        "marking": "none",
+        "optional": true,
+        "terrain": ["forest-road", "forest"],
+        "note": {
+          "en": "A slightly overgrown forestry road leading almost to the peak; a walk through the forest at the end.",
+          "de": "Eine leicht überwachsene Forststraße, die fast bis zum Gipfel führt; ein Spaziergang durch den Wald am Ende."
+        },
+        "onProfile": true
+      },
+      {
+        "to": {
+          "lat": 47.7174384,
+          "lon": 11.8424572,
+          "name": {
+            "en": "Detour to Aschberg",
+            "de": "Umweg zum Aschberg"
+          },
+          "demEle": 1061.2
+        },
+        "sac": "T1",
+        "terrain": ["forest-road"],
+        "marking": "good"
+      },
+      {
+        "to": {
+          "ref": "node/3229970779"
+        },
+        "sac": "T2-",
+        "terrain": ["forest-road", "forest"],
+        "marking": "none",
+        "optional": true,
+        "onProfile": true,
+        "note": {
+          "en": "A small private forest road leading close to the summit; a walk uphill in the forest at the end.",
+          "de": "Eine kleine private Forststraße, die in die Nähe des Gipfels führt; ein Spaziergang bergauf im Wald am Ende."
+        }
+      },
+      {
+        "to": {
+          "lat": 47.6870133,
+          "lon": 11.791444,
+          "name": {
+            "en": "Ellmau bus stop",
+            "de": "Bushaltestelle Ellmau"
+          },
+          "demEle": 744.3
+        },
+        "sac": "T1",
+        "terrain": ["forest-road", "road"],
+        "marking": "good"
+      }
+    ],
+    "suitability": {
+      "kids": "yes",
+      "dogs": "yes",
+      "stroller": true,
+      "bike": "yes",
+      "winter": "yes",
+      "night": "yes",
+      "solo": "yes",
+      "note": {
+        "en": "Forest sections are inaccessible to bikes and strollers.",
+        "de": "Waldabschnitte sind für Fahrräder und Kinderwagen unzugänglich."
+      }
+    },
+    "protectedAreas": {
+      "en": "Wald-Wild-Schongebiet covers detour to Aschberg.",
+      "de": "Das Wald-Wild-Schongebiet umfasst den Umweg zum Aschberg."
+    },
+    "stops": [
+      {
+        "at": {
+          "ref": "way/60318909"
+        }
+      }
+    ],
+    "signal": [
+      {
+        "to": {
+          "ref": "node/3229970781"
+        },
+        "quality": "good",
+        "note": {
+          "en": "Enough to watch videos.",
+          "de": "Genug, um Videos anzusehen."
+        }
+      },
+      {
+        "from": {
+          "ref": "node/3229970781"
+        },
+        "to": {
+          "ref": "way/60318909"
+        },
+        "quality": "patchy",
+        "note": {
+          "en": "Barely any connection.",
+          "de": "Kaum Verbindung."
+        }
+      },
+      {
+        "from": {
+          "ref": "way/60318909"
+        },
+        "quality": "good"
+      }
+    ],
+    "water": [
+      {
+        "at": {
+          "ref": "way/60318909"
+        },
+        "kind": "hut",
+        "reliable": "seasonal"
+      }
+    ],
+    "bailouts": [
+      {
+        "at": {
+          "lat": 47.7190051,
+          "lon": 11.8471322,
+          "name": {
+            "en": "Crossroads near Krainsbergkogel",
+            "de": "Kreuzung in der Nähe des Krainsbergkogels"
+          },
+          "demEle": 995.7
+        },
+        "to": {
+          "en": "Fischhausen-Neuhaus train station",
+          "de": "Bahnhof Fischhausen-Neuhaus"
+        },
+        "via": "road",
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/krainsbergkogel-neuhaus.gpx",
+        "time": 51
+      },
+      {
+        "at": {
+          "lat": 47.69559,
+          "lon": 11.846148,
+          "name": {
+            "en": "Crossroads near Westerberg",
+            "de": "Kreuzung in der Nähe des Westerbergs"
+          },
+          "demEle": 1147.2
+        },
+        "to": {
+          "en": "Fischhausen-Neuhaus train station",
+          "de": "Bahnhof Fischhausen-Neuhaus"
+        },
+        "via": "road",
+        "time": 42,
+        "last": true,
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/westerberg-neuhaus.gpx"
+      }
+    ],
+    "navigation": {
+      "marking": "good",
+      "offline": false,
+      "note": {
+        "en": "Good markings except the detours into the forest.",
+        "de": "Gute Markierungen außer den Umwegen in den Wald."
+      }
+    },
+    "route": {
+      "start": {
+        "ref": "node/3779246592"
+      },
+      "end": {
+        "ref": "node/5061212534"
+      },
+      "type": "point-to-point",
+      "terrain": ["road", "forest-road"],
+      "shade": "high",
+      "trails": ["626a"],
+      "peaks": [
+        {
+          "ref": "node/3229970781"
+        },
+        {
+          "ref": "node/3229970779"
+        }
+      ],
+      "regions": ["mangfall-mountains", "schliersee", "tegernsee"],
+      "categories": ["peak-bagging", "hut"],
+      "countries": ["DE"],
+      "huts": [
+        {
+          "ref": "way/60318909"
+        }
+      ],
+      "official": {
+        "en": "The official route follows the same path except the small detours to nearby peaks.",
+        "de": "Die offizielle Route folgt demselben Weg, außer den kleinen Umwegen zu den nahegelegenen Gipfeln."
+      }
+    },
+    "season": {
+      "best": [6, 7, 8],
+      "possible": [1, 2, 3, 4, 5, 9, 10, 11, 12],
+      "note": {
+        "en": "The hut only operates in summer.",
+        "de": "Die Hütte ist nur im Sommer geöffnet."
+      }
+    },
+    "difficulty": {
+      "sac": "T1",
+      "note": {
+        "en": "A very small T2- section on the Aschberg detour.",
+        "de": "Ein sehr kleiner T2- Abschnitt auf dem Umweg zum Aschberg."
+      },
+      "exposure": {
+        "level": "none",
+        "note": {
+          "en": "The whole hike stays on forest roads.",
+          "de": "Die gesamte Wanderung verläuft auf Forststraßen."
+        }
+      },
+      "fitness": 2
+    },
+    "summary": {
+      "en": "A cozy point-to-point between Schliersee and Rottach-Egern (bus stop Ellmau) across the Lahnenkopf-Rainerkopf saddle.",
+      "de": "Ein gemütlicher Punkt-zu-Punkt zwischen Schliersee und Rottach-Egern (Bushaltestelle Ellmau) über den Lahnenkopf-Rainerkopf-Sattel."
+    },
+    "checked": "2026-11-04"
+  }
+}

@@ -249,6 +249,26 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/260686432": {
+    "lat": 47.6658847,
+    "lon": 11.7967506,
+    "demEle": 1701.9,
+    "tags": {
+      "ele": "1722",
+      "historic": "wayside_cross",
+      "inscription": "Errichtet von \"Die Wallberger\", Verein zur Erhaltung der Volkstracht, Egern-Rottach am 14. August 1892",
+      "name": "Wallberg",
+      "natural": "peak",
+      "seamark:landmark:category": "cross",
+      "seamark:type": "landmark",
+      "source:ele": "guidepost",
+      "summit:cross": "yes",
+      "wikidata": "Q321002",
+      "wikimedia_commons": "Category:Wallberg",
+      "wikipedia": "de:Wallberg"
+    },
+    "fetched": "2026-11-04"
+  },
   "node/260692620": {
     "lat": 47.6512206,
     "lon": 11.7846084,
@@ -872,6 +892,22 @@
       "natural": "peak"
     },
     "fetched": "2026-10-26"
+  },
+  "node/295068783": {
+    "lat": 47.6370434,
+    "lon": 11.7160997,
+    "demEle": 1335.1,
+    "tags": {
+      "alt_name": "Leonhardistein",
+      "ele": "1452",
+      "name": "Leonhardstein",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "wikidata": "Q1819346",
+      "wikimedia_commons": "Category:Leonhardstein",
+      "wikipedia": "de:Leonhardstein"
+    },
+    "fetched": "2026-11-04"
   },
   "node/296034076": {
     "lat": 47.5868607,
@@ -1699,6 +1735,16 @@
       "wikidata": "Q21876558"
     },
     "fetched": "2026-10-26"
+  },
+  "node/619522080": {
+    "lat": 47.6911654,
+    "lon": 11.8454605,
+    "demEle": 1149.3,
+    "tags": {
+      "amenity": "shelter",
+      "building": "yes"
+    },
+    "fetched": "2026-11-03"
   },
   "node/650746778": {
     "lat": 47.3848455,
@@ -3249,6 +3295,17 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/3229970779": {
+    "lat": 47.7206684,
+    "lon": 11.8411545,
+    "demEle": 1044.4,
+    "tags": {
+      "ele": "1042",
+      "name": "Aschberg",
+      "natural": "peak"
+    },
+    "fetched": "2026-11-03"
+  },
   "node/3229970780": {
     "lat": 47.7305888,
     "lon": 11.8104963,
@@ -3260,6 +3317,17 @@
       "wikidata": "Q16054465"
     },
     "fetched": "2026-10-26"
+  },
+  "node/3229970781": {
+    "lat": 47.7214732,
+    "lon": 11.8483596,
+    "demEle": 1035.6,
+    "tags": {
+      "ele": "1037",
+      "name": "Krainsbergkogel",
+      "natural": "peak"
+    },
+    "fetched": "2026-11-03"
   },
   "node/3229970782": {
     "lat": 47.7323621,
@@ -3732,6 +3800,24 @@
       "drinking_water": "yes"
     },
     "fetched": "2026-10-26"
+  },
+  "node/5061212534": {
+    "lat": 47.6870574,
+    "lon": 11.7914696,
+    "demEle": 744.4,
+    "tags": {
+      "bus": "yes",
+      "highway": "bus_stop",
+      "kerb": "raised",
+      "kerb:height": "0.09",
+      "name": "Ellmau",
+      "platform:width": "1.9",
+      "public_transport": "platform",
+      "ref:IFOPT": "de:09182:43355:0:2",
+      "shelter": "no",
+      "wheelchair": "no"
+    },
+    "fetched": "2026-11-04"
   },
   "node/5141185722": {
     "lat": 28.417124,
@@ -4993,6 +5079,21 @@
     },
     "fetched": "2026-10-26"
   },
+  "way/60318909": {
+    "lat": 47.6919922,
+    "lon": 11.836324399999999,
+    "demEle": 1083.3,
+    "tags": {
+      "amenity": "restaurant",
+      "building": "yes",
+      "cuisine": "regional",
+      "ele": "1064",
+      "name": "Kühzagl-Alm",
+      "phone": "+49 8022 81171",
+      "website": "https://www.hans-anderl-hof.de/alm.html"
+    },
+    "fetched": "2026-11-03"
+  },
   "way/61577689": {
     "lat": 47.3853425,
     "lon": 10.9682018,
@@ -5336,6 +5437,18 @@
       "website": "https://www.goisererhuette.at/"
     },
     "fetched": "2026-10-26"
+  },
+  "way/89308953": {
+    "lat": 47.7349079,
+    "lon": 11.86095985,
+    "demEle": 786.5,
+    "tags": {
+      "access": "yes",
+      "amenity": "parking",
+      "fee": "yes",
+      "parking": "surface"
+    },
+    "fetched": "2026-11-04"
   },
   "way/91920694": {
     "lat": 47.646153350000006,

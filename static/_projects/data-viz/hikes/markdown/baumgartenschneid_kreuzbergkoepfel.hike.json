@@ -30,17 +30,20 @@
   "facts": {
     "checked": "2026-11-02",
     "summary": {
-      "en": "A medium-difficulty point-to-point route on the 686 trail between Tegernsee and Schliersee, visiting Baumgartenschneid (1448 m)."
+      "en": "A medium-difficulty point-to-point route on the 686 trail between Tegernsee and Schliersee, visiting Baumgartenschneid (1448 m).",
+      "de": "Eine mittelschwere Punkt-zu-Punkt-Route auf dem 686er-Weg zwischen Tegernsee und Schliersee, die die Baumgartenschneid (1448 m) besucht."
     },
     "difficulty": {
       "sac": "T3+",
       "note": {
-        "en": "T3+ on the Kreuzbergköpfel cliff; T2 otherwise."
+        "en": "T3+ on the Kreuzbergköpfel cliff; T2 otherwise.",
+        "de": "T3+ am Kreuzbergköpfel-Felsen; sonst T2."
       },
       "exposure": {
         "level": "low",
         "note": {
-          "en": "Most of the track goes through a wide road; Kreuzbergköpfel requires a few meters of cliff traversal."
+          "en": "Most of the track goes through a wide road; Kreuzbergköpfel requires a few meters of cliff traversal.",
+          "de": "Die meisten Abschnitte verlaufen auf einer breiten Straße; am Kreuzbergköpfel sind ein paar Meter Kletterei am Felsen erforderlich."
         }
       },
       "fitness": 3
@@ -49,7 +52,8 @@
       "best": [4, 5, 6, 7, 8, 9, 10],
       "possible": [3, 11],
       "note": {
-        "en": "The track is accessible in any season; Kreuzbergköpfel may be difficult to descend from in winter."
+        "en": "The track is accessible in any season; Kreuzbergköpfel may be difficult to descend from in winter.",
+        "de": "Die Strecke ist in jeder Jahreszeit begehbar; der Abstieg vom Kreuzbergköpfel kann im Winter schwierig sein."
       }
     },
     "route": {
@@ -61,7 +65,8 @@
       },
       "type": "point-to-point",
       "official": {
-        "en": "The official route follows the track, skipping Lahnenkopf and Kreuzbergköpfel."
+        "en": "The official route follows the track, skipping Lahnenkopf and Kreuzbergköpfel.",
+        "de": "Die offizielle Route folgt dem Weg und überspringt Lahnenkopf und Kreuzbergköpfel."
       },
       "optional": [
         {
@@ -72,10 +77,12 @@
             "ref": "node/1574152590"
           },
           "name": {
-            "en": "Lahnenkopf wild detour"
+            "en": "Lahnenkopf wild detour",
+            "de": "Lahnenkopf wilder Umweg"
           },
           "note": {
-            "en": "Requires hiking up a hill with no trail."
+            "en": "Requires hiking up a hill with no trail.",
+            "de": "Erfordert das Wandern auf einen Hügel ohne Weg."
           }
         },
         {
@@ -86,10 +93,12 @@
             "ref": "node/1574152589"
           },
           "name": {
-            "en": "Kreuzbergköpfel cliff climb"
+            "en": "Kreuzbergköpfel cliff climb",
+            "de": "Kreuzbergköpfel Felsenaufstieg"
           },
           "note": {
-            "en": "Traverse a steep hill up and down to a cliff with views towards Gindelalmschneid."
+            "en": "Traverse a steep hill up and down to a cliff with views towards Gindelalmschneid.",
+            "de": "Überqueren Sie einen steilen Hügel hinauf und hinunter zu einem Felsen mit Blick auf die Gindelalmschneid."
           }
         }
       ],
@@ -145,12 +154,14 @@
           },
           "marking": "none",
           "note": {
-            "en": "The section is missing any marking on the trail, let alone off-trail."
+            "en": "The section is missing any marking on the trail, let alone off-trail.",
+            "de": "Der Abschnitt fehlt jegliche Markierung auf dem Weg, geschweige denn abseits des Weges."
           }
         }
       ],
       "note": {
-        "en": "This is a popular and well-marked path, although there are a few unmapped shortcuts up the slope."
+        "en": "This is a popular and well-marked path, although there are a few unmapped shortcuts up the slope.",
+        "de": "Dies ist ein beliebter und gut markierter Weg, obwohl es ein paar nicht kartierte Abkürzungen den Hang hinauf gibt."
       },
       "offline": false
     },
@@ -160,7 +171,8 @@
           "lat": 47.712191,
           "lon": 11.809517,
           "name": {
-            "en": "Path down from Kreuzbergköpfel"
+            "en": "Path down from Kreuzbergköpfel",
+            "de": "Pfad hinunter vom Kreuzbergköpfel"
           },
           "demEle": 1185.7
         },
@@ -170,10 +182,12 @@
         "kind": "fall-risk",
         "severity": "medium",
         "note": {
-          "en": "Very narrow muddy trail on a steep slope with fallen trees."
+          "en": "Very narrow muddy trail on a steep slope with fallen trees.",
+          "de": "Sehr schmaler, schlammiger Pfad an einem steilen Hang mit umgestürzten Bäumen."
         },
         "label": {
-          "en": "Kreuzbergköpfel detour"
+          "en": "Kreuzbergköpfel detour",
+          "de": "Kreuzbergköpfel Umweg"
         }
       }
     ],
@@ -183,11 +197,13 @@
           "ref": "node/2213748614"
         },
         "to": {
-          "en": "Bus stop Tegernsee, Leeberg"
+          "en": "Bus stop Tegernsee, Leeberg",
+          "de": "Bushaltestelle Tegernsee, Leeberg"
         },
         "via": "trail",
         "note": {
-          "en": "Take a narrow trail through the forest down to the closest Tegernsee bus stop."
+          "en": "Take a narrow trail through the forest down to the closest Tegernsee bus stop.",
+          "de": "Nehmen Sie einen schmalen Pfad durch den Wald hinunter zur nächstgelegenen Bushaltestelle Tegernsee."
         },
         "route": "/_projects/data-viz/hikes/gpx/bailouts/kleintegernseer_berg-tegernsee.gpx"
       },
@@ -196,11 +212,13 @@
           "ref": "way/110298010"
         },
         "to": {
-          "en": "Bus stop Schwaighof"
+          "en": "Bus stop Schwaighof",
+          "de": "Bushaltestelle Schwaighof"
         },
         "via": "road",
         "note": {
-          "en": "Take the gravel road from the hut down to Rottach-Egern."
+          "en": "Take the gravel road from the hut down to Rottach-Egern.",
+          "de": "Nehmen Sie die Schotterstraße von der Hütte hinunter nach Rottach-Egern."
         },
         "route": "/_projects/data-viz/hikes/gpx/bailouts/riederstein-rottach_egern.gpx"
       },
@@ -209,16 +227,19 @@
           "lat": 47.7019727,
           "lon": 11.8059348,
           "name": {
-            "en": "Crossing near Baumgartenschneid"
+            "en": "Crossing near Baumgartenschneid",
+            "de": "Kreuzung nahe Baumgartenschneid"
           },
           "demEle": 1365.9
         },
         "to": {
-          "en": "Bus stop Schwaighof"
+          "en": "Bus stop Schwaighof",
+          "de": "Bushaltestelle Schwaighof"
         },
         "via": "trail",
         "note": {
-          "en": "Take the steep trail from Baumgartenschneid south down to Rottach-Egern."
+          "en": "Take the steep trail from Baumgartenschneid south down to Rottach-Egern.",
+          "de": "Nehmen Sie den steilen Pfad von der Baumgartenschneid nach Süden hinunter nach Rottach-Egern."
         },
         "last": true,
         "route": "/_projects/data-viz/hikes/gpx/bailouts/baumgartenschneid-rottach_egern.gpx"
@@ -275,117 +296,15 @@
       "carFree": "yes",
       "transport": [
         {
-          "mode": "train",
-          "from": {
-            "en": "Munich Central Station",
-            "de": "München Hbf"
-          },
-          "to": {
-            "name": {
-              "en": "Tegernsee",
-              "de": "Tegernsee"
-            }
-          },
-          "direction": "there",
-          "line": "RB 57",
-          "operator": "DB Regio",
-          "duration": 70,
-          "changes": 0,
-          "first": "06:02",
-          "last": "23:10",
-          "frequency": {
-            "en": "hourly",
-            "de": "stündlich"
-          },
-          "price": [
-            {
-              "amount": 0,
-              "note": {
-                "en": "with Deutschlandticket",
-                "de": "mit Deutschlandticket"
-              }
-            },
-            {
-              "amount": 20.5,
-              "per": "day",
-              "checked": "2026-11-02"
-            }
-          ],
-          "ticket": {
-            "en": "Deutschlandticket valid to Tegernsee",
-            "de": "Deutschlandticket bis Tegernsee gültig"
-          },
-          "url": "https://www.bahn.de/",
-          "checked": "2026-11-02"
+          "use": "train-rb-57-munich-central-station-tegernsee"
         },
         {
-          "mode": "train",
-          "from": {
-            "en": "Schliersee",
-            "de": "Schliersee"
-          },
-          "to": {
-            "name": {
-              "en": "Munich Central Station",
-              "de": "München Hbf"
-            }
-          },
-          "direction": "there",
-          "line": "RB 55",
-          "operator": "DB Regio",
-          "duration": 62,
-          "changes": 0,
-          "first": "05:30",
-          "last": "22:59",
-          "frequency": {
-            "en": "hourly",
-            "de": "stündlich"
-          },
-          "price": [
-            {
-              "amount": 0,
-              "note": {
-                "en": "with Deutschlandticket",
-                "de": "mit Deutschlandticket"
-              }
-            },
-            {
-              "amount": 20.5,
-              "per": "day",
-              "checked": "2026-11-02"
-            }
-          ],
-          "ticket": {
-            "en": "Deutschlandticket valid to Schliersee",
-            "de": "Deutschlandticket bis Schliersee gültig"
-          },
-          "url": "https://www.bahn.de/",
-          "checked": "2026-11-02"
+          "use": "train-rb-55-schliersee-munich-central-station"
         }
       ],
       "parking": [
         {
-          "at": {
-            "ref": "way/1056323650"
-          },
-          "name": {
-            "en": "Parking lot Schießstätte",
-            "de": "Wander-Parkplatz Schießstätte Tegernsee"
-          },
-          "size": "small",
-          "price": [
-            {
-              "currency": "Euro",
-              "per": "day",
-              "note": {
-                "en": "Or 1 Euro per hour."
-              },
-              "checked": "2026-11-02",
-              "amount": 5
-            }
-          ],
-          "fills": "summer",
-          "checked": "2026-11-02"
+          "use": "parking-lot-tegernsee-schiessstatte"
         }
       ],
       "checked": "2026-11-02"
@@ -400,7 +319,8 @@
         },
         "kind": "protected-area",
         "label": {
-          "en": "A warning for Wald-Wild-Schöngebiet"
+          "en": "A warning for Wald-Wild-Schöngebiet",
+          "de": "Eine Warnung für Wald-Wild-Schöngebiet"
         },
         "season": [1, 2, 12]
       }
@@ -414,7 +334,8 @@
       "night": "experienced",
       "solo": "yes",
       "note": {
-        "en": "Detours are not accessible for strollers or bikes."
+        "en": "Detours are not accessible for strollers or bikes.",
+        "de": "Umwege sind nicht für Kinderwagen oder Fahrräder zugänglich."
       }
     },
     "sources": [
@@ -426,31 +347,36 @@
         "kind": "guidebook",
         "lang": "de",
         "note": {
-          "en": "A small guide for getting to Lahnenkopf."
+          "en": "A small guide for getting to Lahnenkopf.",
+          "de": "Ein kleiner Leitfaden, um zum Lahnenkopf zu gelangen."
         }
       },
       {
         "url": "https://www.hikr.org/tour/post39675.html",
         "kind": "guidebook",
         "title": {
-          "en": "Tour to Kreuzbergköpfel"
+          "en": "Tour to Kreuzbergköpfel",
+          "de": "Tour zum Kreuzbergköpfel"
         },
         "lang": "de",
         "note": {
-          "en": "A guide to climbing Kreuzbergköpfel."
+          "en": "A guide to climbing Kreuzbergköpfel.",
+          "de": "Ein Leitfaden zum Aufstieg auf den Kreuzbergköpfel."
         }
       },
       {
         "url": "https://www.alpenverein-muenchen-oberland.de/seniorenkreis/2021-tourenberichte/12.08.2021-kreuzbergkoepfel",
         "kind": "guidebook",
         "title": {
-          "en": "DAV visit to Kreuzbergköpfel"
+          "en": "DAV visit to Kreuzbergköpfel",
+          "de": "DAV-Besuch am Kreuzbergköpfel"
         },
         "lang": "de"
       }
     ],
     "protectedAreas": {
-      "en": "The route near Lahnenkopf is part of Wald-Wild-Schöngebiet."
+      "en": "The route near Lahnenkopf is part of Wald-Wild-Schöngebiet.",
+      "de": "Die Route in der Nähe des Lahnenkopfs ist Teil des Wald-Wild-Schöngebiets."
     },
     "plan": {
       "gear": [
@@ -469,14 +395,18 @@
         }
       ],
       "for": [{
-          "en": "Adventurous hikers chasing Tegernsee views"
+          "en": "Adventurous hikers chasing Tegernsee views",
+          "de": "Abenteuerlustige Wanderer, die Tegernsee-Blicke suchen"
         }, {
-          "en": "Completionists looking for easy wild peaks"
+          "en": "Completionists looking for easy wild peaks",
+          "de": "Vervollständiger, die nach einfachen wilden Gipfeln suchen"
         }],
       "notFor": [{
-          "en": "Casual hikers following the full route"
+          "en": "Casual hikers following the full route",
+          "de": "Gelegenheitswanderer, die der gesamten Route folgen"
         }, {
-          "en": "People with weak stamina"
+          "en": "People with weak stamina",
+          "de": "Menschen mit schwacher Ausdauer"
         }],
       "timing": {
         "start": "08:00",
@@ -514,7 +444,8 @@
         "optional": true,
         "marking": "none",
         "note": {
-          "en": "A vaguely visible trail up a shallow slope."
+          "en": "A vaguely visible trail up a shallow slope.",
+          "de": "Ein vage sichtbarer Pfad auf einem flachen Hang."
         },
         "onProfile": true
       },
@@ -545,7 +476,8 @@
         "marking": "none",
         "optional": true,
         "note": {
-          "en": "No trail upwards; steep overgrown slope."
+          "en": "No trail upwards; steep overgrown slope.",
+          "de": "Kein Weg nach oben; steiler, überwucherter Hang."
         },
         "onProfile": true
       },
@@ -559,7 +491,8 @@
         "terrain": ["forest", "path"],
         "optional": true,
         "note": {
-          "en": "Steep slope covered in leaves; partial trail sections visible."
+          "en": "Steep slope covered in leaves; partial trail sections visible.",
+          "de": "Steiler Hang, der mit Blättern bedeckt ist; teilweise sichtbare Wegabschnitte."
         }
       },
       {
