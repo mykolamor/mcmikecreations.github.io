@@ -330,7 +330,7 @@ test('no key answers no-key without a request', async () => {
 	assert.match((res.json as { message: string }).message, /deeplKey.*DEEPL_API_KEY/);
 	assert.equal(calls.length, 0);
 	const status = await api({ ...post(undefined), method: 'GET', path: '/api/deepl/status' });
-	assert.deepEqual(status.json, { configured: false, targets: ['de'] });
+	assert.deepEqual(status.json, { configured: false, targets: ['de', 'uk'] });
 
 	// With a key: the stub's answer, restored.
 	const keyed = createApi(
@@ -346,7 +346,7 @@ test('no key answers no-key without a request', async () => {
 	});
 	assert.deepEqual(
 		(await keyed({ ...post(undefined), method: 'GET', path: '/api/deepl/status' })).json,
-		{ configured: true, targets: ['de'] }
+		{ configured: true, targets: ['de', 'uk'] }
 	);
 	for (const bad of [
 		{ lang: 'en', texts: [] },

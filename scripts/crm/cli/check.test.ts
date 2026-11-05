@@ -8,6 +8,7 @@ import { check, checkCommand } from './check';
 import { parseArgs } from './index';
 import { isTranslationFile } from '../server/translations';
 import { missingKeys, stringTables } from '../../../src/lib/i18n/strings';
+import { OTHER_LANGS } from '../../../src/lib/i18n/languages';
 import { plural } from './posts';
 import { recorder } from './test-output';
 
@@ -35,8 +36,8 @@ const addRecords = (root: string, records: Record<string, Record<string, unknown
 	writeFileSync(file, JSON.stringify(library));
 };
 const EN = { a: 'A', b: { c: 'C', d: ['D'] } };
-const lagging = checkCommand(stringTables({ en: EN, de: { a: 'Ä' } }).missingKeys);
-const complete = checkCommand(stringTables({ en: EN, de: { a: 'Ä', b: { c: 'Ç', d: ['Ð'] } } }).missingKeys);
+const lagging = checkCommand(stringTables({ en: EN, de: { a: 'Ä' }, uk: { a: 'А', b: { c: 'Ц', d: ['Д'] } } }).missingKeys);
+const complete = checkCommand(stringTables({ en: EN, de: { a: 'Ä', b: { c: 'Ç', d: ['Ð'] } }, uk: { a: 'А', b: { c: 'Ц', d: ['Д'] } } }).missingKeys);
 
 test('check --strict exits 1 on an error', async () => {
 	const root = makeTempRepo();
@@ -103,9 +104,12 @@ test('check prints every warning before its summary', async () => {
 
 test('check reads the site\'s own tables by default', async () => {
 	const { out } = await go(emptyRepo());
-	const missing = missingKeys('de');
-	assert.deepEqual(out.warnings.filter((w) => w.includes('i18n/')), missing.map((key) => `src/lib/hikes/i18n/de.json: warning: missing "${key}"`));
-	assert.equal(out.summaries.includes(`check: de is missing ${plural(missing.length, 'string')}`), missing.length > 0, out.summaries.join('\n'));
+	const expected = OTHER_LANGS.flatMap((lang) => missingKeys(lang).map((key) => `src/lib/hikes/i18n/${lang}.json: warning: missing "${key}"`));
+	assert.deepEqual(out.warnings.filter((w) => w.includes('i18n/')), expected);
+	for (const lang of OTHER_LANGS) {
+		const missing = missingKeys(lang);
+		assert.equal(out.summaries.includes(`check: ${lang} is missing ${plural(missing.length, 'string')}`), missing.length > 0, out.summaries.join('\n'));
+	}
 });
 
 test('--strict ignores missing keys', async () => {

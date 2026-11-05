@@ -9,5 +9,5 @@ test('the plain-JS name rule shares the one language list', () => {
 	assert.equal(OTHER_LANGS, names.OTHER_LANGS);
 	assert.deepEqual(names.translationName('knorrhuette.de.md'), { source: 'knorrhuette.md', lang: 'de' });
 	assert.equal(names.translationName('2026-07-19-x.md'), null);
-	assert.throws(() => names.translationName('x.fr.md'), { message: 'Unknown language "fr" in x.fr.md (de)' });
+	assert.throws(() => names.translationName('x.fr.md'), { message: 'Unknown language "fr" in x.fr.md (de, uk)' });
 });

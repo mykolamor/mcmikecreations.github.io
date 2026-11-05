@@ -62,7 +62,7 @@ test('a plain sidecar name stays a plain hike with no translations', () => {
 });
 
 test('an unknown language in a sidecar name fails the build', () => {
-	assert.throws(() => siteHikes({ ...SIDECAR, name: { en: 'X', fr: 'Z' } }), /x\.hike\.json: name: unknown language "fr" \(en, de\)/);
+	assert.throws(() => siteHikes({ ...SIDECAR, name: { en: 'X', fr: 'Z' } }), /x\.hike\.json: name: unknown language "fr" \(en, de, uk\)/);
 	assert.throws(() => siteHikes({ ...SIDECAR, description: { de: 'Über X.' } }), /x\.hike\.json: description: text needs a non-empty `en`/);
 });
 

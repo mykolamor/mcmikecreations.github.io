@@ -51,7 +51,7 @@ test('load-hikes.js rejects a translation in an unknown language', () => {
 	const p = repoPaths(root);
 	writeFileSync(`${p.markdown}/2026-09-06-grosser_laber.fr.md`, '---\ntitle: Grand Laber\n---\n');
 	assert.throws(() => loadHikesFrom(p.static, p.hikesJson, { fresh: true }), {
-		message: 'Unknown language "fr" in 2026-09-06-grosser_laber.fr.md (de)'
+		message: 'Unknown language "fr" in 2026-09-06-grosser_laber.fr.md (de, uk)'
 	});
 });
 

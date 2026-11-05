@@ -103,7 +103,7 @@ test('readText rejects a language not in LANGS, listing the allowed ones', () =>
 		() => read({ summary: { en: 'x', fr: 'y' } }),
 		new RegExp(`summary: unknown language "fr" \\(${LANGS.join(', ')}\\)`)
 	);
-	assert.throws(() => read({ summary: { en: 'x', fr: 'y' } }), /unknown language "fr" \(en, de\)/);
+	assert.throws(() => read({ summary: { en: 'x', fr: 'y' } }), /unknown language "fr" \(en, de, uk\)/);
 });
 
 test('readText keeps every listed language', () => {
@@ -119,11 +119,11 @@ test('readText keeps every listed language', () => {
 });
 
 test('adding a language to LANGS is the only change needed', () => {
-	const langs = ['en', 'de', 'uk'];
-	assert.deepEqual(validateText({ en: 'Hut', uk: ' Хатина ' }, 'name', 'side.hike.json', { langs }), { en: 'Hut', uk: 'Хатина' });
-	assert.deepEqual(validateText({ uk: 'Хатина' }, 'name', 'post.md', { langs, post: true }), { uk: 'Хатина' });
-	assert.throws(() => validateText({ en: 'Hut', uk: 'Хатина' }, 'name', 'side.hike.json'), /name: unknown language "uk" \(en, de\)/);
-	assert.throws(() => validateText({ en: 'Hut', cs: 'Chata' }, 'name', 'side.hike.json', { langs }), /unknown language "cs" \(en, de, uk\)/);
+	const langs = ['en', 'de', 'uk', 'cs'];
+	assert.deepEqual(validateText({ en: 'Hut', cs: ' Chata ' }, 'name', 'side.hike.json', { langs }), { en: 'Hut', cs: 'Chata' });
+	assert.deepEqual(validateText({ cs: 'Chata' }, 'name', 'post.md', { langs, post: true }), { cs: 'Chata' });
+	assert.throws(() => validateText({ en: 'Hut', cs: 'Chata' }, 'name', 'side.hike.json'), /name: unknown language "cs" \(en, de, uk\)/);
+	assert.throws(() => validateText({ en: 'Hut', pl: 'Chata' }, 'name', 'side.hike.json', { langs }), /unknown language "pl" \(en, de, uk, cs\)/);
 });
 
 test('an enum value the list lacks is fine with a label', () => {

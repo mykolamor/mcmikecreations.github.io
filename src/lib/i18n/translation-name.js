@@ -12,7 +12,7 @@
  */
 
 /** The one language list. */
-export const LANGS = /** @type {const} */ (['en', 'de']);
+export const LANGS = /** @type {const} */ (['en', 'de', 'uk']);
 
 /** Every language but English: the ones a text may translate into. */
 export const OTHER_LANGS = LANGS.filter((lang) => lang !== 'en');

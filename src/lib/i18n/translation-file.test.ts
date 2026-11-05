@@ -13,13 +13,13 @@ test('a translation file names its source and language', () => {
 
 test('an unknown language file fails the build naming it', () => {
 	assert.throws(() => translationOf('2026-07-19-x.fr.md'), {
-		message: 'Unknown language "fr" in 2026-07-19-x.fr.md (de)'
+		message: 'Unknown language "fr" in 2026-07-19-x.fr.md (de, uk)'
 	});
 	assert.throws(() => translationOf('2026-07-19-x.DE.md'), {
-		message: 'Unknown language "DE" in 2026-07-19-x.DE.md (de)'
+		message: 'Unknown language "DE" in 2026-07-19-x.DE.md (de, uk)'
 	});
 	// English is the source itself, never a translation.
 	assert.throws(() => translationOf('knorrhuette.en.md'), {
-		message: 'Unknown language "en" in knorrhuette.en.md (de)'
+		message: 'Unknown language "en" in knorrhuette.en.md (de, uk)'
 	});
 });

@@ -22,6 +22,7 @@
 // both); a language added to `LANGS` needs its line here.
 import en from '../hikes/i18n/en.json';
 import de from '../hikes/i18n/de.json';
+import uk from '../hikes/i18n/uk.json';
 import { LANGS, type Lang } from './languages';
 
 export type Table = { [key: string]: string | string[] | Table };
@@ -39,7 +40,7 @@ export function tablesFor<T extends { en: Table }>(langs: readonly string[], imp
 }
 
 /** The site's tables, one per language in `LANGS`. Read them through `t()`; the facts labels' view (`facts-strings.ts`) reads them here. */
-export const TABLES = tablesFor(LANGS, { en, de }) as { en: typeof en } & Record<Lang, Table>;
+export const TABLES = tablesFor(LANGS, { en, de, uk }) as { en: typeof en } & Record<Lang, Table>;
 
 /** `t`, `tHtml`, `tSplit`, `paragraphList` and `missingKeys` over the given tables (the site's are below; tests pass their own). */
 export function stringTables(tables: { en: Table } & Partial<Record<Lang, Table>>) {
