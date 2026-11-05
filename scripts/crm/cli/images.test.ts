@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import sharp from 'sharp';
 import { repoPaths } from '../server/paths';
-import { images } from './images';
+import { blogImages, images } from './images';
 import { parseArgs } from './index';
 import { recorder } from './test-output';
 
@@ -96,4 +96,69 @@ test('images covers an image only a translation shows', async () => {
 	assert.match(readFileSync(post, 'utf8'), /2024-01-01-00\.jpg: \{w: 1500, h: 1000/);
 	assert.ok(existsSync(join(root, STORIES, '2024-01-01-00-640.avif')));
 	assert.deepEqual(out.warnings, []);
+});
+
+async function setupBlog(post: string) {
+	const root = mkdtempSync(join(tmpdir(), 'crm-cli-blog-images-'));
+	const blog = join(root, 'static/_blog');
+	const pics = join(root, 'static/images/blog/foo');
+	const hikes = join(root, 'static/images/projects/data-viz/hikes');
+	for (const d of [blog, pics, hikes]) mkdirSync(d, { recursive: true });
+	writeFileSync(join(pics, 'shot.png'), await sharp({ create: { width: 900, height: 600, channels: 3, background: '#abc' } }).png().toBuffer());
+	writeFileSync(join(pics, 'diagram.svg'), '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"/>');
+	writeFileSync(join(root, 'static/images/blog/foo.jpg'), await jpeg(1400, 700));
+	writeFileSync(join(hikes, 'hero.jpg'), await jpeg(2000, 1000));
+	const file = join(blog, '2024-01-01-foo.md');
+	writeFileSync(file, post);
+	// a translation is never a post of its own
+	writeFileSync(join(blog, '2024-01-01-foo.de.md'), '---\ntitle: Fuu\n---\nText.\n');
+	return { root, file, pics, hikes };
+}
+
+const goBlog = (root: string, argv: string[] = []) => {
+	const out = recorder();
+	return blogImages.run(root, parseArgs(['blog-images', ...argv]), out).then((code) => ({ code, out }));
+};
+
+test('blog-images covers image, imageFull and raster body images, never SVG, and is idempotent', async () => {
+	const body = [
+		'![Shot](/images/blog/foo/shot.png)',
+		'',
+		'![Diagram](/images/blog/foo/diagram.svg "invert")',
+		'',
+		'![Remote](https://example.com/x.jpg)',
+		''
+	].join('\n');
+	const front = "title: Foo\ndate: '2024-01-01'\nimage: /images/blog/foo.jpg\nimageFull: /images/projects/data-viz/hikes/hero.jpg\n";
+	const { root, file, pics, hikes } = await setupBlog(`---\n${front}---\n${body}`);
+	// a borrowed hike photo's tier already on disk is reused
+	writeFileSync(join(hikes, 'hero-640.avif'), 'existing tier');
+
+	const { code, out } = await goBlog(root);
+	assert.equal(code, 0, out.warnings.join('\n'));
+	assert.deepEqual(out.changes.map((c) => c.split(':')[0]), ['static/_blog/2024-01-01-foo.md']);
+	assert.equal(readFileSync(join(hikes, 'hero-640.avif'), 'utf8'), 'existing tier');
+	for (const f of ['hero-1280.avif']) assert.ok(existsSync(join(hikes, f)), f);
+	assert.ok(existsSync(join(pics, 'shot-640.avif')));
+	assert.ok(!existsSync(join(pics, 'diagram-640.avif')));
+
+	const text = readFileSync(file, 'utf8');
+	assert.ok(text.endsWith(`---\n${body}`), 'body untouched');
+	assert.match(text, /\n {2}\/images\/blog\/foo\.jpg: \{w: 1400, h: 700, blur: 'data:image\/webp;base64,[^']+'\}\n/);
+	assert.match(text, /\n {2}\/images\/projects\/data-viz\/hikes\/hero\.jpg: \{w: 2000, h: 1000, blur: '[^']+'\}\n/);
+	assert.match(text, /\n {2}\/images\/blog\/foo\/shot\.png: \{w: 900, h: 600, blur: '[^']+'\}\n/);
+	assert.doesNotMatch(text, /diagram\.svg:/);
+
+	const again = await goBlog(root);
+	assert.equal(again.code, 0);
+	assert.deepEqual(again.out.changes, []);
+	assert.equal(readFileSync(file, 'utf8'), text);
+});
+
+test('blog-images keeps an existing alt-only entry and fills it in', async () => {
+	const front = "title: Foo\nimages:\n  /images/blog/foo/shot.png: {alt: 'A screenshot'}\n";
+	const { root, file } = await setupBlog(`---\n${front}---\n![Shot](/images/blog/foo/shot.png)\n`);
+	const { code } = await goBlog(root);
+	assert.equal(code, 0);
+	assert.match(readFileSync(file, 'utf8'), /\/images\/blog\/foo\/shot\.png: \{w: 900, h: 600, blur: '[^']+', alt: 'A screenshot'\}/);
 });

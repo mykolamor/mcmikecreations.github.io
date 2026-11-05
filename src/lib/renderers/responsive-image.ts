@@ -115,3 +115,39 @@ export function avifVariantHref(href: string, target: number): string {
 export function buildAvifSrcset(href: string, tiers: AvifTier[]): string {
 	return tiers.map((t) => `${avifVariantHref(href, t.target)} ${t.width}w`).join(', ');
 }
+
+/** Raster formats `pnpm crm images` / `blog-images` encode; SVG and GIF are shown as they are. */
+const RASTER_IMAGE = /\.(?:jpe?g|png|webp)$/i;
+
+/** Everything a `<picture>` with AVIF tiers needs for one image. */
+export interface ResponsivePicture {
+	/** The original: the `<img>` fallback for browsers without AVIF. */
+	src: string;
+	srcset: string;
+	/** The largest tier, for the fullscreen view. */
+	largest: string;
+	/** The original's size, for `width`/`height` and the aspect ratio. */
+	width: number;
+	height: number;
+	blur: string;
+}
+
+/**
+ * The `<picture>` data of a local raster image whose `images` entry has tiers and a blur, else null (an SVG, a
+ * remote image, an image without an entry or too small for a tier: shown as a plain `<img>`).
+ */
+export function responsivePicture(href: string, meta: HikeImageMeta | undefined): ResponsivePicture | null {
+	const src = href.trim();
+	if (!meta?.blur || !meta.w || !meta.h) return null;
+	if (!src.startsWith('/') || src.startsWith('//') || !RASTER_IMAGE.test(src.split(/[?#]/)[0])) return null;
+	const tiers = avifTiers(meta.w, meta.h);
+	if (!tiers.length) return null;
+	return {
+		src,
+		srcset: buildAvifSrcset(src, tiers),
+		largest: avifVariantHref(src, tiers[tiers.length - 1].target),
+		width: meta.w,
+		height: meta.h,
+		blur: meta.blur
+	};
+}

@@ -2,14 +2,25 @@
 	import { Modal } from 'flowbite-svelte';
 	import { parseMediaFlags } from '$lib/renderers/media-flags';
 	import ScriptEmbed from '$lib/renderers/ScriptEmbed.svelte';
+	import ResponsivePicture from '$lib/renderers/ResponsivePicture.svelte';
+	import { responsivePicture, type HikeImageMeta } from '$lib/renderers/responsive-image';
 
 	interface Props {
 		href?: string;
 		title?: any;
+		/** The markdown alt text: the figure's caption. */
 		text?: string;
+		/** The `<img>` alt when it should differ from the caption (`BlogImage`); defaults to `text`. */
+		alt?: string;
+		/** The image's `images` front-matter entry, when the caller has one: size, and AVIF tiers when it has a blur. */
+		meta?: HikeImageMeta;
+		/** `sizes` for the AVIF `srcset`. */
+		sizes?: string;
 	}
 
-	let { href = '', title = undefined, text = '' }: Props = $props();
+	let { href = '', title = undefined, text = '', alt = undefined, meta = undefined, sizes = '100vw' }: Props = $props();
+	const imgAlt = $derived(alt ?? text);
+	const picture = $derived(responsivePicture(href, meta));
 	let openModal = $state(false);
 	const isYoutubeLink = $derived(href.includes('youtube.com'));
 	const media = $derived(parseMediaFlags(title));
@@ -83,15 +94,31 @@
 	</figure>
 {:else}
 	<figure class="w-full xl:w-3/4 mx-auto flex flex-col justify-center">
-		<!-- svelte-ignore a11y_click_events_have_key_events -->
-		<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-		<img
-			src={href}
-			title={media.title || undefined}
-			alt={text}
-			class="cursor-pointer !my-0{invertClass}"
-			onclick={() => (openModal = true)}
-		/>
+		{#if picture}
+			<ResponsivePicture
+				{picture}
+				alt={imgAlt}
+				title={media.title || undefined}
+				{sizes}
+				class="w-full"
+				imgClass="cursor-pointer{invertClass}"
+				onclick={() => (openModal = true)}
+			/>
+		{:else}
+			<!-- svelte-ignore a11y_click_events_have_key_events -->
+			<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+			<img
+				src={href}
+				title={media.title || undefined}
+				alt={imgAlt}
+				width={meta?.w || undefined}
+				height={meta?.h || undefined}
+				loading={meta ? 'lazy' : undefined}
+				decoding={meta ? 'async' : undefined}
+				class="cursor-pointer !my-0{invertClass}"
+				onclick={() => (openModal = true)}
+			/>
+		{/if}
 		<figcaption class="text-center">{text}</figcaption>
 	</figure>
 	<Modal bind:open={openModal} fullscreen size="none" classes={{ close: 'bg-white dark:bg-gray-900' }}>
@@ -105,13 +132,19 @@
 				if (e.target === e.currentTarget) openModal = false;
 			}}
 		>
-			<img
-				src={href}
-				title={media.title || undefined}
-				alt={text}
-				class="max-h-full max-w-full object-contain cursor-default{invertClass}"
-				onclick={(e) => e.stopPropagation()}
-			/>
+			<!-- The largest AVIF tier when there are tiers, not the full-size original. -->
+			<picture class="contents">
+				{#if picture}
+					<source type="image/avif" srcset={picture.largest} />
+				{/if}
+				<img
+					src={href}
+					title={media.title || undefined}
+					alt={imgAlt}
+					class="max-h-full max-w-full object-contain cursor-default{invertClass}"
+					onclick={(e) => e.stopPropagation()}
+				/>
+			</picture>
 		</div>
 	</Modal>
 {/if}

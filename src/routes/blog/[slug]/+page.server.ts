@@ -6,6 +6,7 @@ import { readBlogFrontmatter } from '$lib/blog/frontmatter.server';
 import { getBlogPostMeta } from '$lib/blog/blog-posts.server';
 import { postDateModified } from '$lib/server/date-modified';
 import { BLOG_MAX_IMAGES } from '$lib/blog/blog-meta';
+import { readBlogImages } from '$lib/blog/blog-images';
 
 function cleanTokens(tokens: Token[] | TokensList | undefined) {
 	if (!tokens) return;
@@ -54,7 +55,7 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 
 		// `postBody` has the front matter fence removed so the header outline,
 		// reading time, and rendered content ignore the metadata block.
-		const { content: postBody } = readBlogFrontmatter(await res.text());
+		const { data: front, content: postBody } = readBlogFrontmatter(await res.text());
 
 		// Find all headers.
 		const headerRegex = /#{2} (.*)\r?\n/g;
@@ -71,6 +72,10 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 				description: meta.description,
 				image: meta.image,
 				imageFull: meta.imageFull,
+				// The hero's alt; without one it is decorative next to the title.
+				imageAlt: typeof front.imageAlt === 'string' ? front.imageAlt.trim() : '',
+				// `pnpm crm blog-images`: size, blur and AVIF tiers per image href, plus an optional `alt`.
+				images: readBlogImages(front.images),
 				content: content,
 				headers: headers,
 				time: stats.text,

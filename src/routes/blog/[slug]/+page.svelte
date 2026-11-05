@@ -4,7 +4,12 @@
 	import DefaultCode from '$lib/renderers/DefaultCode.svelte';
 	import DefaultLink from '$lib/renderers/DefaultLink.svelte';
 	import ToTopButton from '$lib/components/ToTopButton.svelte';
-	import DefaultImage from '$lib/renderers/DefaultImage.svelte';
+	import BlogImage from '$lib/blog/BlogImage.svelte';
+	import ResponsivePicture from '$lib/renderers/ResponsivePicture.svelte';
+	import { responsivePicture } from '$lib/renderers/responsive-image';
+	import { imageMetaFor } from '$lib/renderers/image-meta';
+	import { BLOG_IMAGES, BLOG_IMAGE_SIZES } from '$lib/blog/blog-images';
+	import { setContext } from 'svelte';
 	import FigureParagraph from '$lib/renderers/FigureParagraph.svelte';
 	import AppMeta from '$lib/components/AppMeta.svelte';
 	import AppBreadcrumbs from '$lib/components/AppBreadcrumbs.svelte';
@@ -18,6 +23,11 @@
 	}
 
 	let { data }: Props = $props();
+
+	// A getter: the page component is reused when navigating from post to post.
+	setContext(BLOG_IMAGES, () => data.post.images);
+	const heroMeta = $derived(data.post.imageFull ? imageMetaFor(data.post.images, data.post.imageFull) : undefined);
+	const heroPicture = $derived(data.post.imageFull ? responsivePicture(data.post.imageFull, heroMeta) : null);
 </script>
 
 <AppBreadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Blog', href: '/blog/' }, { name: data.post.title, href: `/blog/${data.post.anchor}/` }]} />
@@ -66,10 +76,25 @@
 				</div>
 			{/if}
 		</div>
-		{#if data.post.imageFull}
-			<img src={data.post.imageFull} class="w-full xl:w-3/4 mx-auto !mb-8 !mt-0 object-contain rounded-sm border border-gray-200 dark:border-gray-800" alt="Main" />
+		{#if heroPicture}
+			<ResponsivePicture
+				picture={heroPicture}
+				alt={data.post.imageAlt}
+				sizes={BLOG_IMAGE_SIZES}
+				eager
+				class="w-full xl:w-3/4 mx-auto !mb-8 !mt-0 rounded-sm border border-gray-200 dark:border-gray-800"
+			/>
+		{:else if data.post.imageFull}
+			<img
+				src={data.post.imageFull}
+				width={heroMeta?.w || undefined}
+				height={heroMeta?.h || undefined}
+				fetchpriority="high"
+				class="w-full xl:w-3/4 mx-auto !mb-8 !mt-0 object-contain rounded-sm border border-gray-200 dark:border-gray-800"
+				alt={data.post.imageAlt}
+			/>
 		{/if}
-		<Markdown source={data.post.content} renderers={{ code: DefaultCode, link: DefaultLink, image: DefaultImage, paragraph: FigureParagraph }} />
+		<Markdown source={data.post.content} renderers={{ code: DefaultCode, link: DefaultLink, image: BlogImage, paragraph: FigureParagraph }} />
 	</div>
 </article>
 

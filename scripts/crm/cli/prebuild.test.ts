@@ -38,7 +38,7 @@ test('prebuild runs the steps in order and stops at the first failure', async ()
 
 	assert.deepEqual(
 		prebuild.steps.map(([c, f]) => [c.name, ...f].join(' ')),
-		['metrics missing-only', 'photo-times', 'terrain', 'video-meta', 'images', 'check']
+		['metrics missing-only', 'photo-times', 'terrain', 'video-meta', 'images', 'blog-images', 'check']
 	);
 });
 

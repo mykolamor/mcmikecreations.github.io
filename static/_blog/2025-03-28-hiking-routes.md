@@ -9,6 +9,9 @@ author: Mykola Morozov
 tags:
   - Data-Viz
   - Hiking
+images:
+  /images/projects/data-viz/hikes/thumb/riedenburg_kelheim.jpg: {w: 400, h: 299, blur: 'data:image/webp;base64,UklGRtwAAABXRUJQVlA4INAAAAAQBQCdASoYABIAPtFcpE6oJSMiKAqpABoJYwCsM0xBCmSs6eXomc0V+QoEPWXYdr+AAMsIDePJ91FKLlNBbG1qoejCmKNl1vYDRF88um8wUsu8e5fUUsTRykgH5Xcv+MF1flpWH7HxjqZ1nBchnj4AVJY7pjSlw+S6kVS06T2GB/H1f0SB3nkeE0fialttL6A6bXUZXOgbGfgInEadFn/N1qjyyxMkyl48vQyY1Xp2Yg6JNpRyd2TsI217GLVDUX5673likbcZczlZ9dOaCwAA'}
+  /images/projects/data-viz/hikes/riedenburg_kelheim.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRtoAAABXRUJQVlA4IM4AAADwBACdASoYABIAPtFcpE6oJSMiKAqpABoJYwCw7Aq/B2zIl7mm5xFoqom1StzK2JgAyvGDJb+72DzLG3V5vHmj+/4ZN/s5j2ZVdPPOL9An+PcKxYQNyO3ihziV8Thk9Ft7n9byrtPwc6pfNJVIjKglkW3wJsnluVnzF+x+z5OmaTewh2G7YfVdtm8RA64frOQx7CUGeq7mxSWcoD0jL9qvWdj42S2s1/klDJVGOuBrs3NEM/nEQmDDuP1HlXP88608dulIhACVIULReqOMAA=='}
 ---
 # How I make the hiking routes for the website
 

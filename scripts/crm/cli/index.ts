@@ -1,7 +1,7 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { check } from './check';
-import { images } from './images';
+import { blogImages, images } from './images';
 import { metrics } from './metrics';
 import { photoTimes } from './photo-times';
 import { prebuild } from './prebuild';
@@ -30,7 +30,7 @@ export type Command = {
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 
-export const COMMANDS: Command[] = [metrics, terrain, photoTimes, videoMeta, images, check, prebuild];
+export const COMMANDS: Command[] = [metrics, terrain, photoTimes, videoMeta, images, blogImages, check, prebuild];
 
 /** `--name` becomes the flag `name`; the first other word is the command, the rest are positionals. */
 export function parseArgs(argv: string[]): ParsedArgs {

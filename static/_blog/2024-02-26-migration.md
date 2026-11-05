@@ -7,6 +7,9 @@ path: 2024-02-26-migration.md
 author: Mykola Morozov
 tags:
   - Frontend
+images:
+  /images/blog/migration.jpg: {w: 585, h: 439, blur: 'data:image/webp;base64,UklGRkgBAABXRUJQVlA4IDwBAABwBwCdASoYABIAPtFaqU2oJSQiKAqpABoJbACdMoR11vK8BtgOeA/wGoAbzojQNn2O6lMv3ov9NN/r5e+h3UvqulCoWAD4Oj8GzcRCwYs/4WgMtGWS6Of90+Y/mCwxVZGrhCKodrMIRLgaFuJg4J3NmH7PPFYkKbv9JYYDZENsL7qdlYCKK1+1Dm/3kAX70b2OqrkFJnfujx9aZSmGTdWAU8m4AZhhHZvSgkRYEoV8iyCwN7ewwgULYqfm9afbgEoMHbzNr1XcN/1zhXf7cz51cTPGlzqUYiYvnQpi+lp5G6Mf4TNIRek5VM+/bjW6mMVz1/eIuVb+wvNT2bu/LKnmVaDy1RmiSPZXuh/c/mAJEE57vjiLGErCSn0wgbiR0wLZvK99ZRTx00ue/LUvX4tWHzr+huTLy/objIAA'}
+  /images/blog/migration/old-resume.png: {w: 1895, h: 1421, blur: 'data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAACQBACdASoYABIAPtFeqE+oJKOiKAgBABoJaQAALjA37cpI3Lgq5Lk2LLjl1AAA/u6xadwMHHxq5PLgC0dgF01DWxbxcavMJrRsteYx8qTeRjhih5oSNsdVrvx/Z1C57RJr5EYHtVU1yMR7G5At6M7HUu35IgVcz6ED4sAAAAA=', alt: 'Dark résumé page with my name and job title, a row of social media icons, an About Me section with a portrait and a Projects list'}
 ---
 # Jekyll to Flowbite Svelte
 

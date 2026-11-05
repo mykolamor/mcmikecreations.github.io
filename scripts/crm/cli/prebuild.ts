@@ -1,7 +1,7 @@
 import { existsSync, readdirSync, rmSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { check } from './check';
-import { images } from './images';
+import { blogImages, images } from './images';
 import { metrics } from './metrics';
 import { photoTimes } from './photo-times';
 import { terrain } from './terrain';
@@ -83,13 +83,14 @@ const STEPS: Step[] = [
 	[terrain, []],
 	[videoMeta, []],
 	[images, []],
+	[blogImages, []],
 	[check, []]
 ];
 
 /** The deploy's data step: stale temp files removed, then every headless command in the order the site build needs them. */
 export const prebuild: Command & { steps: Step[] } = {
 	name: 'prebuild',
-	summary: "the deploy's data steps in order: metrics --missing-only, photo-times, terrain, video-meta, images, check",
+	summary: "the deploy's data steps in order: metrics --missing-only, photo-times, terrain, video-meta, images, blog-images, check",
 	flags: ['dry-run'],
 	steps: STEPS,
 	run(root, args, out) {
