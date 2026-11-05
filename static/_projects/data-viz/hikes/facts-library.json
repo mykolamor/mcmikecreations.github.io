@@ -1,5 +1,17 @@
 {
 	"stops": {
+		"way/26960869": {
+			"kind": "alpine-hut",
+			"open": {
+				"from": "06-12",
+				"to": "10-03"
+			},
+			"overnight": true,
+			"water": true,
+			"food": true,
+			"cash": true,
+			"checked": "2026-10-12"
+		},
 		"way/60310929": {
 			"kind": "alpine-hut",
 			"days": {
@@ -83,6 +95,35 @@
 			"operator": "MVV",
 			"first": "07:31",
 			"last": "17:31"
+		},
+		"bus-lenggries-bergbus-hinterriss-einstieg-laliderertal": {
+			"mode": "bus",
+			"from": {
+				"en": "Lenggries",
+				"de": "Lenggries"
+			},
+			"to": {
+				"name": {
+					"en": "Hinterriß Einstieg Laliderertal",
+					"de": "Hinterriß Einstieg Laliderertal"
+				}
+			},
+			"direction": "there",
+			"duration": 50,
+			"changes": 0,
+			"line": "Bergbus",
+			"operator": "MVV",
+			"first": "08:18",
+			"last": "17:28",
+			"price": [
+				{
+					"amount": 0,
+					"note": {
+						"en": "with Deutschlandticket",
+						"de": "mit Deutschlandticket"
+					}
+				}
+			]
 		},
 		"train-rb-55-munich-central-station-schliersee": {
 			"mode": "train",
@@ -170,6 +211,48 @@
 			"url": "https://www.bahn.de/",
 			"checked": "2026-11-02"
 		},
+		"train-rb-56-munich-central-station-lenggries": {
+			"mode": "train",
+			"from": {
+				"en": "Munich Central Station",
+				"de": "München Hbf"
+			},
+			"to": {
+				"name": {
+					"en": "Lenggries",
+					"de": "Lenggries"
+				}
+			},
+			"direction": "there",
+			"duration": 69,
+			"changes": 0,
+			"line": "RB 56",
+			"operator": "DB Regio",
+			"first": "07:02",
+			"last": "16:02",
+			"frequency": {
+				"en": "hourly",
+				"de": "stündlich"
+			},
+			"price": [
+				{
+					"amount": 0,
+					"note": {
+						"en": "with Deutschlandticket",
+						"de": "mit Deutschlandticket"
+					}
+				}
+			],
+			"ticket": {
+				"en": "Deutschlandticket valid to Eng",
+				"de": "Deutschlandticket bis Eng gültig"
+			},
+			"url": "https://www.bahn.de/",
+			"note": {
+				"en": "Change in Lenggries.",
+				"de": "Umstieg in Lenggries."
+			}
+		},
 		"train-rb-57-munich-central-station-tegernsee": {
 			"mode": "train",
 			"from": {
@@ -217,6 +300,16 @@
 	},
 	"lifts": {},
 	"parking": {
+		"parking-lot-p6-laliderertal": {
+			"at": "P6 Laliderertal",
+			"name": {
+				"en": "P6 Laliderertal",
+				"de": "P6 Laliderertal"
+			},
+			"size": "small",
+			"fills": "weekends",
+			"checked": "2026-10-11"
+		},
 		"parking-lot-schliersee": {
 			"at": {
 				"ref": "way/89308953"

@@ -2586,6 +2586,19 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/1617864267": {
+    "lat": 47.3978809,
+    "lon": 11.5261525,
+    "demEle": 1938.1,
+    "tags": {
+      "ele": "1978",
+      "name": "Teufelskopf",
+      "natural": "peak",
+      "wikidata": "Q69164601",
+      "wikipedia": "de:Teufelskopf (Karwendel)"
+    },
+    "fetched": "2026-11-05"
+  },
   "node/1621410767": {
     "lat": 47.509013,
     "lon": 11.4876,
