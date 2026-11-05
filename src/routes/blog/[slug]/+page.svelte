@@ -10,6 +10,8 @@
 	import { imageMetaFor } from '$lib/renderers/image-meta';
 	import { BLOG_IMAGES, BLOG_IMAGE_SIZES } from '$lib/blog/blog-images';
 	import { setContext } from 'svelte';
+	import AuthorBox from '$lib/components/AuthorBox.svelte';
+	import resume from '$lib/data/resume.json';
 	import FigureParagraph from '$lib/renderers/FigureParagraph.svelte';
 	import AppMeta from '$lib/components/AppMeta.svelte';
 	import AppBreadcrumbs from '$lib/components/AppBreadcrumbs.svelte';
@@ -27,6 +29,10 @@
 	// A getter: the page component is reused when navigating from post to post.
 	setContext(BLOG_IMAGES, () => data.post.images);
 	const heroMeta = $derived(data.post.imageFull ? imageMetaFor(data.post.images, data.post.imageFull) : undefined);
+	const showDate = (iso: string) =>
+		new Date(iso).toLocaleDateString('en-us', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
+	// Readers judge code by how recent it is: show the last body change when there was one after publishing.
+	const updated = $derived(data.post.dateModified !== data.post.isoDate ? data.post.dateModified : null);
 	const heroPicture = $derived(data.post.imageFull ? responsivePicture(data.post.imageFull, heroMeta) : null);
 </script>
 
@@ -65,7 +71,11 @@
 			·
 			<span>{data.post.time}</span>
 			·
-			<span>{data.post.date}</span>
+			<time datetime={data.post.isoDate}>{data.post.date}</time>
+			{#if updated}
+				·
+				<span>Updated <time datetime={updated}>{showDate(updated)}</time></span>
+			{/if}
 			{#if data.post.tags?.length}
 				·
 				<div class="flex flex-row justify-end gap-2" aria-details="tags">
@@ -95,6 +105,9 @@
 			/>
 		{/if}
 		<Markdown source={data.post.content} renderers={{ code: DefaultCode, link: DefaultLink, image: BlogImage, paragraph: FigureParagraph }} />
+		<AuthorBox profiles={['GitHub', 'LinkedIn', 'Google Scholar']}>
+			<p>{resume.basics.quote}</p>
+		</AuthorBox>
 	</div>
 </article>
 

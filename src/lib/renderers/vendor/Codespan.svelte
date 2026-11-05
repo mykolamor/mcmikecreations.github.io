@@ -3,4 +3,4 @@
 	export let raw;
 </script>
 
-<code>{(text ?? raw)?.replace(/`/g, '')}</code>
+<code translate="no">{(text ?? raw)?.replace(/`/g, '')}</code>

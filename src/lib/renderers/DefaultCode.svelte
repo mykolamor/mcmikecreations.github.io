@@ -13,4 +13,5 @@
 	const highlightedText = $derived(hljs.highlight(text, { language: lang ? lang : 'plaintext' }).value);
 </script>
 
-<pre class="hljs"><code class={lang ? `language-` + lang : ''}>{@html highlightedText}</code></pre>
+<!-- Browser translation would mangle identifiers. -->
+<pre class="hljs" translate="no"><code class={lang ? `language-` + lang : ''}>{@html highlightedText}</code></pre>

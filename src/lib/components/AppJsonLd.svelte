@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import resume from '$lib/data/resume.json';
+	import { AUTHOR_PAGE } from '$lib/author';
 	import { blogId, blogDateTime, blogTimeRequired, BLOG_MAX_IMAGES } from '$lib/blog/blog-meta';
 
 	type WebsiteProps = { variant: 'website' };
@@ -160,7 +161,7 @@
 			const blogRef = { '@type': 'Blog', '@id': blogId(origin) };
 			// The site owner, as on the hikes and the blog listing. The front-matter
 			// `author` stays the visible byline only.
-			const authorRef = { '@type': 'Person', name: resume.basics.name, url: origin + '/' };
+			const authorRef = { '@type': 'Person', name: resume.basics.name, url: origin + AUTHOR_PAGE };
 			const images = [
 				...new Set(
 					[props.image, props.imageFull, ...(props.bodyImages ?? [])]

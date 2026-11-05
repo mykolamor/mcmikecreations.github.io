@@ -2,6 +2,7 @@
 	import { page } from '$app/state';
 	import type { ProcessedBlogPost } from '$lib/blog/blog-info';
 	import resume from '$lib/data/resume.json';
+	import { AUTHOR_PAGE } from '$lib/author';
 	import {
 		BLOG_TITLE,
 		BLOG_DESCRIPTION,
@@ -65,7 +66,7 @@
 		const origin = page.url.origin;
 		const blogId = blogIdFor(origin);
 		const blogRef = { '@type': 'Blog', '@id': blogId };
-		const authorRef = { '@type': 'Person', name: resume.basics.name, url: origin + '/' };
+		const authorRef = { '@type': 'Person', name: resume.basics.name, url: origin + AUTHOR_PAGE };
 
 		const blogNode = {
 			'@type': 'Blog',

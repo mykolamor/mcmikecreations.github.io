@@ -79,7 +79,7 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 				content: content,
 				headers: headers,
 				time: stats.text,
-				date: new Date(meta.date).toLocaleDateString('en-us', { year: 'numeric', month: 'short', day: 'numeric' }),
+				date: new Date(meta.date).toLocaleDateString('en-us', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' }),
 				isoDate: meta.date,
 				// Body-only git history, so a front-matter-only commit doesn't count.
 				dateModified: postDateModified(`static/_blog/${fileName}`, meta.date, meta.updated),
