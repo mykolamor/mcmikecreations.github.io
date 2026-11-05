@@ -28,7 +28,7 @@ images:
 After my [Nebelhorn (2224 m) hike with Pavlo](/hikes/2026-05-23-nebelhorn/) I
 went to the [SIGMOD/PODS 2026 conference](https://2026.sigmod.org/)
 in Bengaluru, India. There, I presented my DaMoN paper
-["Evaluating Apple Silicon for Data Processing"](/cv/Evaluating_Apple_Silicon_for_Data_Processing.pdf)
+["Evaluating Apple Silicon for Data Processing"](/cv/beischl2026evaluatingapplesilicon.pdf)
 and visited the rest of the workshops and talks. After an exhausting week of
 work, I decided to make a detour to Nepal before heading home.
 

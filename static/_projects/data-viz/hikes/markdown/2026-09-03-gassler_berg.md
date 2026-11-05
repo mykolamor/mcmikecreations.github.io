@@ -132,7 +132,7 @@ mountain.
 Once I reached the "saddle" between the two peaks, I had to cross yet more
 wetlands and streams, followed by an abandoned tractor road from the local
 forestry works. The road was overgrown with moss, but there was no tall grass
-like [near Obergries](/2026-05-17-rechelkopf_semmelberg/), so it was easy to
+like [near Obergries](/hikes/2026-05-17-rechelkopf_semmelberg/), so it was easy to
 walk on.
 
 ![The summit of Schußkogel (1134 m)](/images/projects/data-viz/hikes/stories/gassler_berg/2026-09-03-12.jpg)

@@ -8,6 +8,10 @@ facts:
     - {title: Strava, url: 'https://www.strava.com/activities/20737709686', kind: mirror}
     - {title: Komoot, url: 'https://www.komoot.com/tour/3366795469', kind: mirror}
 gpx: /_projects/data-viz/hikes/gpx/baumgartenschneid_kreuzbergkoepfel.gpx
+distance: 18457
+ascent: 1153
+descent: 1122
+duration: 264
 images:
   2026-10-26-00.jpg: {w: 4080, h: 3060, lat: 47.712726, lon: 11.764594, demEle: 785.5, taken: '2026-10-26T10:22:25+01:00', blur: 'data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAAAwBQCdASoYABIAPtFUpk2oJCOiMBgIAQAaCWMAxnwQlxF5PTZK+/38SmHWgrUW0vlcgAD+4VgM9zdjA4QzkmOKuOTEuuJH7NdYVrwjYei8YRdp0VYu3x0/jJxmd/j/fazWD/dcj8DcGxRqqT9OOejhxN6Ho6I4vn9hkQuuC7EeQKxRvtorVhRkEvqf61IF3aQdNTxIAgDzhRzSx1qjrsWT9w/MsubPM8DdCIz2jGBoKAAA'}
   2026-10-26-01.jpg: {w: 8160, h: 6120, lat: 47.71058, lon: 11.765529, demEle: 866.8, taken: '2026-10-26T10:30:55+01:00', blur: 'data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAACwBACdASoYABIAPtFWpE2oJCMiMBgIAQAaCWIAtOgREXvmPtD9vlOHWSHMQS5oAP7JbjeNGis+MvVv/mAW25Dwmm/XDmbPcugEdAQlO977gd/C6Wv/dkOMrfKt6rakF1j8AaJzz0jCTNXHDuEyzTPR5jH5CLljx6FmRU0tlq9SjjBsOBumAAAA', pins: [{ref: node/1276074774, x: 0.3755, y: 0.4336}, {ref: node/264056090, x: 0.1847, y: 0.4174}, {ref: node/3233329687, x: 0.5672, y: 0.4589}, {ref: node/10300162543, x: 0.4253, y: 0.4332}, {ref: node/4647797222, x: 0.4805, y: 0.4302}]}

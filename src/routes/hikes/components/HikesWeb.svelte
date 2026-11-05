@@ -143,7 +143,7 @@ function hash(str: string): number {
 
 async function startLoading() {
     hasStartedLoading = true;
-    const maps = await (await fetch('/hikes/index.json')).json();
+    const { hikes: maps } = await (await fetch('/hikes/index.json')).json();
 
     const features: object[] = [];
     const mapsToProcess = (maps as any[]).filter(mapInfo => mapInfo.properties?.hidden !== true);

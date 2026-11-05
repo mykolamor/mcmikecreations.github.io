@@ -352,7 +352,7 @@
 			"price": [
 				{
 					"amount": 5,
-					"currency": "Euro",
+					"currency": "EUR",
 					"per": "day",
 					"note": {
 						"en": "Or 1 Euro per hour.",
