@@ -10,6 +10,7 @@
  *     title: Knorrhütte              # optional, each one
  *     description: DAV-Hütte unter dem Zugspitzplatt.
  *     aliases: [Knorr-Hütte]         # place docs only
+ *     section: Programmierung        # blog posts only
  *     ---
  *     The whole translated body, images and all.
  *
@@ -26,7 +27,7 @@ import { translationOf } from '$lib/i18n/translation-file';
 import type { Lang } from '$lib/i18n/languages';
 import { AVIF_TIERS, avifVariantHref } from '$lib/renderers/responsive-image';
 
-export type TranslationKind = 'post' | 'place';
+export type TranslationKind = 'post' | 'place' | 'blog';
 
 /** A translation file read from disk, before rendering. */
 export interface ParsedTranslation {
@@ -37,6 +38,8 @@ export interface ParsedTranslation {
 	description?: string;
 	/** Place docs only. */
 	aliases?: string[];
+	/** Blog posts only: the `article:section` / `articleSection` in this language. */
+	section?: string;
 	/** The body, front matter removed; empty when only the texts above are translated. */
 	body: string;
 }
@@ -46,7 +49,8 @@ export type TranslationsBySource = ReadonlyMap<string, Partial<Record<Lang, Pars
 
 const ALLOWED_KEYS: Record<TranslationKind, readonly string[]> = {
 	post: ['title', 'description'],
-	place: ['title', 'description', 'aliases']
+	place: ['title', 'description', 'aliases'],
+	blog: ['title', 'description', 'section']
 };
 
 /**
@@ -113,7 +117,7 @@ export function parseTranslation(file: string, raw: string, kind: TranslationKin
 		}
 	}
 	const out: ParsedTranslation = { lang: named.lang, source: named.source, body: content.trim() ? content : '' };
-	for (const key of ['title', 'description'] as const) {
+	for (const key of ['title', 'description', 'section'] as const) {
 		const value = data[key];
 		if (value == null) continue;
 		if (typeof value !== 'string') throw new Error(`Translation ${file}: ${key}: expected text`);

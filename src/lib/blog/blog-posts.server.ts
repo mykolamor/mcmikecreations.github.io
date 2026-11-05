@@ -5,71 +5,38 @@
  * post) is invisible: excluded from every listing, feed, and search index here.
  */
 
-import matter from 'gray-matter';
 import type { ProcessedBlogPost } from './blog-info';
+import type { Lang } from '$lib/i18n/languages';
+import type { ParsedTranslation } from '$lib/hikes/translations.server';
+import { buildBlogIndex, translationIn, translationLangsOf, type BlogPostMeta } from './blog-index.server';
 
-// Raw markdown for every post, keyed by glob path, inlined into the bundle.
+export type { BlogPostMeta };
+
+// Raw markdown for every post and translation, keyed by glob path, inlined into the bundle.
 const rawFiles = import.meta.glob('/static/_blog/*.md', {
 	eager: true,
 	query: '?raw',
 	import: 'default'
 }) as Record<string, string>;
 
-export interface BlogPostMeta {
-	title: string;
-	date: string;
-	image: string | null;
-	imageFull: string | null;
-	description: string;
-	author: string | null;
-	tags: string[];
-	/**
-	 * `article:section` / `articleSection`: the front-matter `section`, else the
-	 * first tag, else null (the tag is then omitted).
-	 */
-	section: string | null;
-	/** Front-matter `updated: YYYY-MM-DD` override for `dateModified`, raw. */
-	updated: unknown;
-	draft: boolean;
-	/** File name, e.g. `2024-03-01-ecs.md`. */
-	path: string;
-	/** File name without extension, e.g. `2024-03-01-ecs` — the URL slug. */
-	anchor: string;
+/** Parsed once, at module load (build time); a translation the site can't read fails the build. */
+const index = buildBlogIndex(
+	Object.fromEntries(Object.entries(rawFiles).map(([key, raw]) => [key.substring(key.lastIndexOf('/') + 1), raw]))
+);
+const allMeta: BlogPostMeta[] = index.posts;
+
+/**
+ * A post's translation into `lang` (title, description, section and body), or undefined. Drafts' translations
+ * included, as `getBlogPostMeta` includes drafts. For the future `/de/blog/` routes and the sitemap.
+ */
+export function getBlogTranslation(anchor: string, lang: Lang): ParsedTranslation | undefined {
+	return translationIn(index, anchor, lang);
 }
 
-/** Coerce a front-matter date to a `YYYY-MM-DD` string, tolerating YAML Dates. */
-function toDateString(value: unknown): string {
-	if (value instanceof Date) return value.toISOString().slice(0, 10);
-	return typeof value === 'string' ? value : String(value ?? '');
+/** The languages a post is translated into (English not included). */
+export function getBlogTranslationLangs(anchor: string): Lang[] {
+	return translationLangsOf(index, anchor) as Lang[];
 }
-
-function toStringOrNull(value: unknown): string | null {
-	return typeof value === 'string' && value.length > 0 ? value : null;
-}
-
-/** Parse every markdown file's front matter once, at module load (build time). */
-const allMeta: BlogPostMeta[] = Object.entries(rawFiles)
-	.map(([key, raw]) => {
-		const { data } = matter(raw);
-		const path = key.substring(key.lastIndexOf('/') + 1);
-		const anchor = path.replace(/\.md$/, '');
-		const tags: string[] = Array.isArray(data.tags) ? data.tags.map(String) : [];
-		return {
-			title: typeof data.title === 'string' ? data.title : anchor,
-			date: toDateString(data.date),
-			image: toStringOrNull(data.image),
-			imageFull: toStringOrNull(data.imageFull),
-			description: typeof data.description === 'string' ? data.description : '',
-			author: toStringOrNull(data.author),
-			tags,
-			section: toStringOrNull(data.section) ?? tags[0] ?? null,
-			updated: data.updated,
-			draft: data.draft === true,
-			path,
-			anchor
-		};
-	})
-	.sort((a, b) => (a.date > b.date ? -1 : a.date < b.date ? 1 : 0));
 
 /** Full metadata for a single post by file name, or undefined. Includes drafts. */
 export function getBlogPostMeta(path: string): BlogPostMeta | undefined {
