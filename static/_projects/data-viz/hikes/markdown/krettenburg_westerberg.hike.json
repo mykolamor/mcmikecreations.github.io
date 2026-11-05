@@ -1,6 +1,12 @@
 {
-  "name": "Krettenburg - Westerberg",
-  "description": "Hike from Spitzingsattel to Schliersee via Krettenburg (1494 m), Eckspitz (1386 m), Westerberg (1328 m), and Brunstkogel (1251 m).",
+  "name": {
+    "en": "Krettenburg - Westerberg",
+    "de": "Krettenburg - Westerberg"
+  },
+  "description": {
+    "en": "Hike from Spitzingsattel to Schliersee via Krettenburg (1494 m), Eckspitz (1386 m), Westerberg (1328 m), and Brunstkogel (1251 m).",
+    "de": "Wanderung vom Spitzingsattel nach Schliersee über Krettenburg (1494 m), Eckspitz (1386 m), Westerberg (1328 m) und Brunstkogel (1251 m)."
+  },
   "image": "/images/projects/data-viz/hikes/krettenburg_westerberg.jpg",
   "origin": {
     "lat": 47.70485219503704,
@@ -68,12 +74,15 @@
         "lat": 47.7355828,
         "lon": 11.8597632,
         "demEle": 786.2,
-        "name": "Schliersee"
+        "name": {
+          "en": "Schliersee",
+          "de": "Schliersee"
+        }
       },
       "type": "point-to-point",
       "official": {
         "en": "The usual route follows the road to Obere Firstalm, the summer way to Bodenschneidhaus, and the forest road down to Schliersee.",
-        "de": "Die übliche Route folgt der Straße zur Oberen Firstalm, dem Sommerweg zum Bodenschneidhaus und der Waldstraße hinab nach Schliersee."
+        "de": "Die übliche Route folgt der Straße zur Oberen Firstalm, dem Sommerweg zum Bodenschneidhaus und der Forststraße hinab nach Schliersee."
       },
       "optional": [
         {
@@ -87,7 +96,7 @@
             "demEle": 1384.3,
             "name": {
               "en": "Obere Firstalm barrier",
-              "de": "Obere Firstalm Schranke"
+              "de": "Schranke Obere Firstalm"
             }
           },
           "to": "Bodenschneidhaus",
@@ -117,7 +126,7 @@
             "demEle": 1384.3,
             "name": {
               "en": "Obere Firstalm barrier",
-              "de": "Obere Firstalm Schranke"
+              "de": "Schranke Obere Firstalm"
             }
           },
           "to": "Krettenburg",
@@ -139,7 +148,7 @@
       ],
       "note": {
         "en": "Good markings on forest roads; absent markings on the peaks.",
-        "de": "Gute Markierungen auf Waldstraßen; keine Markierungen auf den Gipfeln."
+        "de": "Gute Markierungen auf Forststraßen; keine Markierungen auf den Gipfeln."
       }
     },
     "hazards": [
@@ -151,7 +160,7 @@
           "demEle": 1384.3,
           "name": {
             "en": "Obere Firstalm barrier",
-            "de": "Obere Firstalm Schranke"
+            "de": "Schranke Obere Firstalm"
           }
         },
         "to": "Krettenburg",
@@ -180,7 +189,7 @@
           "demEle": 1384.3,
           "name": {
             "en": "Obere Firstalm barrier",
-            "de": "Obere Firstalm Schranke"
+            "de": "Schranke Obere Firstalm"
           }
         },
         "to": {
@@ -193,7 +202,7 @@
         "route": "/_projects/data-viz/hikes/gpx/bailouts/krettenburg-neuhaus.gpx",
         "note": {
           "en": "Down the wide T1 path/road; detour also possible after Eckspitz.",
-          "de": "Über den breiten T1-Weg/Waldstraße; Abzweig auch nach dem Eckspitz möglich."
+          "de": "Über den breiten T1-Weg/Forststraße; Abzweig auch nach dem Eckspitz möglich."
         }
       }
     ],
@@ -226,29 +235,7 @@
         "at": "Obere Firstalm"
       },
       {
-        "at": "Bodenschneidhaus",
-        "kind": "alpine-hut",
-        "days": {
-          "en": "Daily 09:00-22:00",
-          "de": "Täglich 09:00-22:00"
-        },
-        "booking": {
-          "url": "https://www.bodenschneidhaus.de/",
-          "label": {
-            "en": "Bodenschneidhaus website",
-            "de": "Bodenschneidhaus Website"
-          }
-        },
-        "food": true,
-        "water": true,
-        "overnight": true,
-        "cash": false,
-        "phone": "+49 172 3735798",
-        "checked": "2026-10-25",
-        "note": {
-          "en": "Overnight stay possible.",
-          "de": "Übernachtung möglich."
-        }
+        "at": "Bodenschneidhaus"
       }
     ],
     "access": {
@@ -282,7 +269,7 @@
       "solo": "experienced",
       "note": {
         "en": "Dogs will have a hard time navigating overgrown areas.",
-        "de": "Hunde haben es schwer, sich durch zugewachsene Bereiche zu navigieren."
+        "de": "Hunde haben es schwer, sich durch zugewachsene Bereiche zu bewegen."
       }
     },
     "legs": [
@@ -293,7 +280,7 @@
         "marking": "good",
         "note": {
           "en": "Forest road with occasional cars in summer or sledges in winter.",
-          "de": "Waldstraße mit gelegentlichem Autoverkehr im Sommer oder Schlitten im Winter."
+          "de": "Forststraße mit gelegentlichem Autoverkehr im Sommer oder Schlitten im Winter."
         }
       },
       {
@@ -321,7 +308,7 @@
         "marking": "good",
         "note": {
           "en": "Forest road abruptly ends; unmarked T3 slope to the top.",
-          "de": "Waldstraße endet abrupt; unmarkierter T3-Hang zum Gipfel."
+          "de": "Forststraße endet abrupt; unmarkierter T3-Hang zum Gipfel."
         }
       },
       {
@@ -337,7 +324,7 @@
           "demEle": 786.2,
           "name": {
             "en": "Schliersee train station",
-            "de": "Schliersee Bahnhof"
+            "de": "Bahnhof Schliersee"
           }
         },
         "terrain": ["forest-road", "road"],
@@ -351,7 +338,7 @@
           "demEle": 1384.3,
           "name": {
             "en": "Obere Firstalm barrier",
-            "de": "Obere Firstalm Schranke"
+            "de": "Schranke Obere Firstalm"
           }
         },
         "to": "Bodenschneidhaus",
@@ -402,13 +389,13 @@
       "for": [
         {
           "en": "Fit hikers exploring easily accessible but unknown peaks",
-          "de": "Fitten Wanderern, die leicht erreichbare, aber unbekannte Gipfel erkunden"
+          "de": "Fitte Wanderer, die leicht erreichbare, aber unbekannte Gipfel erkunden"
         }
       ],
       "notFor": [
         {
           "en": "Normal hikers on a day trip",
-          "de": "Normalen Wanderern auf Tagestour"
+          "de": "Normale Wanderer auf Tagestour"
         }
       ],
       "variants": [
@@ -420,7 +407,7 @@
           "recommended": true,
           "summary": {
             "en": "Take the road to Obere Firstalm, the summer way to Bodenschneidhaus, and the forest road down to Schliersee.",
-            "de": "Über die Straße zur Oberen Firstalm, den Sommerweg zum Bodenschneidhaus und die Waldstraße hinab nach Schliersee."
+            "de": "Über die Straße zur Oberen Firstalm, den Sommerweg zum Bodenschneidhaus und die Forststraße hinab nach Schliersee."
           },
           "distance": 13700,
           "ascent": 535,

@@ -1,5 +1,29 @@
 {
 	"stops": {
+		"way/60310929": {
+			"kind": "alpine-hut",
+			"days": {
+				"en": "Daily 09:00-22:00",
+				"de": "Täglich 09:00-22:00"
+			},
+			"overnight": true,
+			"booking": {
+				"url": "https://www.bodenschneidhaus.de/",
+				"label": {
+					"en": "Bodenschneidhaus website",
+					"de": "Bodenschneidhaus Website"
+				}
+			},
+			"phone": "+49 172 3735798",
+			"water": true,
+			"food": true,
+			"cash": false,
+			"note": {
+				"en": "Overnight stay possible.",
+				"de": "Übernachtung möglich."
+			},
+			"checked": "2026-10-25"
+		},
 		"way/60315210": {
 			"kind": "restaurant",
 			"days": {
@@ -198,7 +222,8 @@
 				"ref": "way/89308953"
 			},
 			"name": {
-				"en": "Schliersee train station parking"
+				"en": "Schliersee train station parking",
+				"de": "Parkplatz Schliersee Bahnhof"
 			},
 			"size": "medium",
 			"fills": "weekends",
@@ -237,7 +262,8 @@
 					"currency": "Euro",
 					"per": "day",
 					"note": {
-						"en": "Or 1 Euro per hour."
+						"en": "Or 1 Euro per hour.",
+						"de": "Oder 1 Euro pro Stunde."
 					},
 					"checked": "2026-11-02"
 				}

@@ -285,6 +285,23 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/260813828": {
+    "lat": 47.6578441,
+    "lon": 11.9414061,
+    "demEle": 1870.6,
+    "tags": {
+      "ele": "1883",
+      "ele:NN": "1882",
+      "image": "http://www.panoramio.com/photo/91496033",
+      "man_made": "cross",
+      "name": "Hochmiesing",
+      "natural": "peak",
+      "source:ele": "guidepost",
+      "summit:cross": "yes",
+      "wikidata": "Q15056698"
+    },
+    "fetched": "2026-11-05"
+  },
   "node/260826433": {
     "lat": 47.673511,
     "lon": 11.9060494,
@@ -364,6 +381,21 @@
       "wikipedia": "de:Zwiesel (Kocheler Berge)"
     },
     "fetched": "2026-10-26"
+  },
+  "node/263534391": {
+    "lat": 47.6636283,
+    "lon": 11.9209823,
+    "demEle": 1646.2,
+    "tags": {
+      "alt_name": "Rauhkopf",
+      "ele": "1691",
+      "name": "Raukopf",
+      "natural": "peak",
+      "source:ele": "summit cross",
+      "summit:cross": "yes",
+      "wikidata": "Q19721169"
+    },
+    "fetched": "2026-11-05"
   },
   "node/264035398": {
     "lat": 47.615268,
@@ -1474,6 +1506,20 @@
       "natural": "peak"
     },
     "fetched": "2026-10-26"
+  },
+  "node/441306332": {
+    "lat": 47.6829037,
+    "lon": 11.7330155,
+    "demEle": 1273.6,
+    "tags": {
+      "ele": "1293",
+      "name": "Ringspitz",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "wikidata": "Q26882765",
+      "wikipedia": "de:Ringspitz"
+    },
+    "fetched": "2026-11-05"
   },
   "node/442345031": {
     "lat": 47.6180237,
@@ -3000,6 +3046,19 @@
       "ref:BLfD": "D-3-75-196-29"
     },
     "fetched": "2026-10-26"
+  },
+  "node/2283172843": {
+    "lat": 47.713758,
+    "lon": 11.8891802,
+    "demEle": 1256.2,
+    "tags": {
+      "ele": "1272",
+      "name": "Hirschgröhrkopf",
+      "natural": "peak",
+      "source": "survey",
+      "wikidata": "Q31540383"
+    },
+    "fetched": "2026-11-05"
   },
   "node/2291559247": {
     "lat": 47.7341065,

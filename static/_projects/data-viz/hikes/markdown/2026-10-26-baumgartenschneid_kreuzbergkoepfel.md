@@ -10,26 +10,26 @@ facts:
 gpx: /_projects/data-viz/hikes/gpx/baumgartenschneid_kreuzbergkoepfel.gpx
 images:
   2026-10-26-00.jpg: {w: 4080, h: 3060, lat: 47.712726, lon: 11.764594, demEle: 785.5, taken: '2026-10-26T10:22:25+01:00', blur: 'data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAAAwBQCdASoYABIAPtFUpk2oJCOiMBgIAQAaCWMAxnwQlxF5PTZK+/38SmHWgrUW0vlcgAD+4VgM9zdjA4QzkmOKuOTEuuJH7NdYVrwjYei8YRdp0VYu3x0/jJxmd/j/fazWD/dcj8DcGxRqqT9OOejhxN6Ho6I4vn9hkQuuC7EeQKxRvtorVhRkEvqf61IF3aQdNTxIAgDzhRzSx1qjrsWT9w/MsubPM8DdCIz2jGBoKAAA'}
-  2026-10-26-01.jpg: {w: 8160, h: 6120, lat: 47.71058, lon: 11.765529, demEle: 866.8, taken: '2026-10-26T10:30:55+01:00', blur: 'data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAACwBACdASoYABIAPtFWpE2oJCMiMBgIAQAaCWIAtOgREXvmPtD9vlOHWSHMQS5oAP7JbjeNGis+MvVv/mAW25Dwmm/XDmbPcugEdAQlO977gd/C6Wv/dkOMrfKt6rakF1j8AaJzz0jCTNXHDuEyzTPR5jH5CLljx6FmRU0tlq9SjjBsOBumAAAA'}
+  2026-10-26-01.jpg: {w: 8160, h: 6120, lat: 47.71058, lon: 11.765529, demEle: 866.8, taken: '2026-10-26T10:30:55+01:00', blur: 'data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAACwBACdASoYABIAPtFWpE2oJCMiMBgIAQAaCWIAtOgREXvmPtD9vlOHWSHMQS5oAP7JbjeNGis+MvVv/mAW25Dwmm/XDmbPcugEdAQlO977gd/C6Wv/dkOMrfKt6rakF1j8AaJzz0jCTNXHDuEyzTPR5jH5CLljx6FmRU0tlq9SjjBsOBumAAAA', pins: [{ref: node/1276074774, x: 0.3755, y: 0.4336}, {ref: node/264056090, x: 0.1847, y: 0.4174}, {ref: node/3233329687, x: 0.5672, y: 0.4589}, {ref: node/10300162543, x: 0.4253, y: 0.4332}, {ref: node/4647797222, x: 0.4805, y: 0.4302}]}
   2026-10-26-02.jpg: {w: 8160, h: 6120, lat: 47.707049, lon: 11.770822, demEle: 1072.1, taken: '2026-10-26T10:48:37+01:00', blur: 'data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAAAQBQCdASoYABIAPtFWpk2oJCOiMBgIAQAaCUAXYAIqyAy3y1XJP04bOmfY4CmlDnwAAPwrhfqW/wf49XUE42sr5zWxja+l7IqoPsXZc+/+pDrbIk62euzeLxLWopQIbBA7l7qjcY+ejJ7GvR3RWf3HS96toAy1dJqYyoCIrjkjTwfTZA12A3CfFil5Y2h1AAA='}
   2026-10-26-03.jpg: {w: 8160, h: 6120, lat: 47.706932, lon: 11.772422, demEle: 1081.4, taken: '2026-10-26T10:50:36+01:00', blur: 'data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAABQBQCdASoYABIAPtFcqE4oJSQiKAqpABoJQBBPEsAHscIv5/TDZveb1f2+e8j6Adoz7EAA/fAsNbIFCeXVHQt3vhbbbCWLQ2Z/Z/yPLCOiE6IJ9LES8BbB9BdHQ9bsk7G6XLkA/1bG7IV9otLRmr7lekWVlU8vsVB4jaF9DS1FXBB49cPzXdzKlzkj4y7Iw3/cnuPiz1lnsJNN4qNSPQ7XcJKLRQAAAAA='}
-  2026-10-26-04.jpg: {w: 8160, h: 6120, lat: 47.703817, lon: 11.787848, demEle: 1085.0, taken: '2026-10-26T11:06:26+01:00', blur: 'data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAADQBACdASoYABIAPtFcpk4oJSOiKAqpABoJYwDMHBGSaTPtTOlw6rAZOd7cBHGjgAD+ZUOtuNTnwmGwnk/p1sWRfajnHMb6gvXmygE0kPKKqzEltmWHHwNYVHuLX5sOeQOIxNC/GjQyLmmv2oyO7d6OvVLV5PDrIkhRX5d/moXbqv0d7mvf7hBiHFJAAA=='}
+  2026-10-26-04.jpg: {w: 8160, h: 6120, lat: 47.703817, lon: 11.787848, demEle: 1085.0, taken: '2026-10-26T11:06:26+01:00', blur: 'data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAADQBACdASoYABIAPtFcpk4oJSOiKAqpABoJYwDMHBGSaTPtTOlw6rAZOd7cBHGjgAD+ZUOtuNTnwmGwnk/p1sWRfajnHMb6gvXmygE0kPKKqzEltmWHHwNYVHuLX5sOeQOIxNC/GjQyLmmv2oyO7d6OvVLV5PDrIkhRX5d/moXbqv0d7mvf7hBiHFJAAA==', pins: [{ref: node/260686432, x: 0.7723, y: 0.442}, {ref: node/357274338, x: 0.0533, y: 0.2417}]}
   2026-10-26-05.jpg: {w: 6120, h: 8160, lat: 47.704311, lon: 11.792456, demEle: 1166.7, taken: '2026-10-26T11:18:55+01:00', blur: 'data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAABwBQCdASoSABgAPtFgqU+oJSOiKAgBABoJZQCo9A+0FjIOCyPyEsvrhtfxhqVzjMQrBKwQAPl0vpkpE3wto8EotjCgrSS6g2e7zE6XcLJ8WDScG4tquauOxgBFmcg+SH2luC8CDK5UbctQs0NuJd+yjSTnYP1G7NrrbVB78rEdmf2P4clZP0m5qygoOkL803Eu2K/vYQx9I7UyBa/Z5CscZ1vK3/WaP1SkGxz3X2ilt0auUcAAAA=='}
-  2026-10-26-06.jpg: {w: 8160, h: 6120, lat: 47.704186, lon: 11.792312, demEle: 1162.7, taken: '2026-10-26T11:19:33+01:00', blur: 'data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABQBQCdASoYABIAPtFOpEuoJCOhsBgMAQAaCUATpmsf6gSaKN8u7h3u66L24HBpR1pox3wA/uqCQ9/fYc5RrZskDqXRKPmZXwHe6zWYBpxE0edX/vQUZ0e4FiwPC4OyYOBUBJUek2Y085sEuJdmjrOiZ1c9LrJFabJ41RNgrjDkeyAA', pins: [{ref: node/26862641, x: 0.3699, y: 0.4164}]}
+  2026-10-26-06.jpg: {w: 8160, h: 6120, lat: 47.704186, lon: 11.792312, demEle: 1162.7, taken: '2026-10-26T11:19:33+01:00', blur: 'data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABQBQCdASoYABIAPtFOpEuoJCOhsBgMAQAaCUATpmsf6gSaKN8u7h3u66L24HBpR1pox3wA/uqCQ9/fYc5RrZskDqXRKPmZXwHe6zWYBpxE0edX/vQUZ0e4FiwPC4OyYOBUBJUek2Y085sEuJdmjrOiZ1c9LrJFabJ41RNgrjDkeyAA', pins: [{ref: node/26862641, x: 0.3699, y: 0.4164}, {ref: node/295068783, x: 0.2498, y: 0.4281}, {ref: node/441306332, x: 0.5097, y: 0.4368}, {ref: node/264056090, x: 0.5876, y: 0.4239}, {ref: node/1276074774, x: 0.7376, y: 0.4281}, {ref: node/10300162543, x: 0.8003, y: 0.4369}, {ref: node/4647797222, x: 0.8601, y: 0.4336}]}
   2026-10-26-07.jpg: {w: 8160, h: 6120, lat: 47.700952, lon: 11.79749, demEle: 1307.2, taken: '2026-10-26T11:38:14+01:00', blur: 'data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACwBACdASoYABIAPtFap04oJSOiKAqpABoJZQC7AActhHlDOZmNGosQhINqzDGgAP57zBHGrzL2eeaUF3IeG28WDsOO7sLVpOQdWI2Z/mt+SmeWEkEQ+okIh8+C1oOTHVjO15Vtzq4kW64ClsMWvVCXRry+zWp+HzGASZo44suUMkUjJQQ3ZUgAAAA='}
-  2026-10-26-08.jpg: {w: 8160, h: 6120, lat: 47.702164, lon: 11.807039, demEle: 1378.9, taken: '2026-10-26T11:48:56+01:00', blur: 'data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAAAwBQCdASoYABIAPtFcpEyoJSOiMBgIAQAaCWUAvkgMkz+6XOmRY0OoBIdIXpT1Q4eeAAD+VGZ2XDadvdE2ve/v4W90u97quJv1lCwwTvrkxjpsyRa981kqGBKrqBuvGp9139o9aYF7pauyu4RVCQ5hEzGPLy0/O22B2GXLxiVoYTSNmah/0vUHGe1labQ2vNfekGSn9yc7zerMwoAAAA=='}
-  2026-10-26-09.jpg: {w: 8160, h: 6120, lat: 47.702492, lon: 11.808784, demEle: 1418.0, taken: '2026-10-26T11:53:51+01:00', blur: 'data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAADQBACdASoYABIAPtFgqU+oJaOiKAgBABoJYwCCcAReD0u3JTOkdrlxasFU+z2rwAD+7UTIJv1a7NKIpM/ceoBQkVgn3Bt2DO/mnHUsd0RX13251+44Hf2zEt7t9SSByX1UvYRoiwmLF20BLEnF663K6RHHOGgBjSiFeAsaNGwPRRIJ47WMDkQT9f2z48Uy6gv1wAAA'}
+  2026-10-26-08.jpg: {w: 8160, h: 6120, lat: 47.702164, lon: 11.807039, demEle: 1378.9, taken: '2026-10-26T11:48:56+01:00', blur: 'data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAAAwBQCdASoYABIAPtFcpEyoJSOiMBgIAQAaCWUAvkgMkz+6XOmRY0OoBIdIXpT1Q4eeAAD+VGZ2XDadvdE2ve/v4W90u97quJv1lCwwTvrkxjpsyRa981kqGBKrqBuvGp9139o9aYF7pauyu4RVCQ5hEzGPLy0/O22B2GXLxiVoYTSNmah/0vUHGe1labQ2vNfekGSn9yc7zerMwoAAAA==', pins: [{ref: node/266572730, x: 0.5074, y: 0.4765}]}
+  2026-10-26-09.jpg: {w: 8160, h: 6120, lat: 47.702492, lon: 11.808784, demEle: 1418.0, taken: '2026-10-26T11:53:51+01:00', blur: 'data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAADQBACdASoYABIAPtFgqU+oJaOiKAgBABoJYwCCcAReD0u3JTOkdrlxasFU+z2rwAD+7UTIJv1a7NKIpM/ceoBQkVgn3Bt2DO/mnHUsd0RX13251+44Hf2zEt7t9SSByX1UvYRoiwmLF20BLEnF663K6RHHOGgBjSiFeAsaNGwPRRIJ47WMDkQT9f2z48Uy6gv1wAAA', pins: [{ref: node/357274338, x: 0.4089, y: 0.5012}, {ref: node/289759260, x: 0.6449, y: 0.5522}, {ref: node/1738763687, x: 0.7115, y: 0.5117}, {ref: node/2213748620, x: 0.6577, y: 0.4927}, {ref: node/26862641, x: 0.0298, y: 0.379}, {ref: node/301642754, x: 0.038, y: 0.379}, {ref: node/10300162543, x: 0.4812, y: 0.3907}, {ref: node/4647797222, x: 0.5214, y: 0.3889}, {ref: node/1276074774, x: 0.4295, y: 0.3818}, {ref: node/264056090, x: 0.2957, y: 0.3817}, {ref: node/96874625, x: 0.1806, y: 0.3728}, {ref: node/441306332, x: 0.2616, y: 0.414}]}
   2026-10-26-10.jpg: {w: 4428, h: 3320, lat: 47.702412, lon: 11.809135, demEle: 1422.4, taken: '2026-10-26T11:55:18+01:00', blur: 'data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADwBACdASoYABIAPs1OokunpCMht/VYAPAZiWUArhwQ+DQbnazKa1553cXwb/zidAAA/tMW3OCxTKyyjn/qtOcMnlOgFkjBvVh6EQZxOwug+bB6jKUgtaitzzfhBVN0Na6KBVVjebzcxz9yeVgV92LOgYNWMMgA'}
-  2026-10-26-11.jpg: {w: 8160, h: 6120, lat: 47.699479, lon: 11.82492, demEle: 1410.9, taken: '2026-10-26T12:19:27+01:00', blur: 'data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAADQBACdASoYABIAPtFYpEuoJSOhsAgBABoJYwDDNBuMaMcPH+dVH/k9elEnR2WuAAD+7yDxha6qElqWazzVhOJ/WbxjRtb4gOcbi++3qI1a4LXxC7Humbw+XvNE/CGo5fyZCuLmHZ9SlqdiTqKwQPExyPP6RiYCXzCK+bnaPRIj+EZsdAA='}
-  2026-10-26-12.jpg: {w: 8160, h: 6120, lat: 47.702486, lon: 11.809212, demEle: 1419.0, taken: '2026-10-26T12:45:36+01:00', blur: 'data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADQBACdASoYABIAPtFcqE4oJSQiKAqpABoJZQCsMxgBrVdtVqxgNA4T88qCkXjFAAD94pVXjTO+nIpv33a7t5tD7uqxXReGYZntRFt47z1/vYTg2uD3PYXnw8ID/nGALoSh4a9dOZLbgAAA'}
+  2026-10-26-11.jpg: {w: 8160, h: 6120, lat: 47.699479, lon: 11.82492, demEle: 1410.9, taken: '2026-10-26T12:19:27+01:00', blur: 'data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAADQBACdASoYABIAPtFYpEuoJSOhsAgBABoJYwDDNBuMaMcPH+dVH/k9elEnR2WuAAD+7yDxha6qElqWazzVhOJ/WbxjRtb4gOcbi++3qI1a4LXxC7Humbw+XvNE/CGo5fyZCuLmHZ9SlqdiTqKwQPExyPP6RiYCXzCK+bnaPRIj+EZsdAA=', pins: [{ref: node/1574152589, x: 0.4431, y: 0.3975}]}
+  2026-10-26-12.jpg: {w: 8160, h: 6120, lat: 47.702486, lon: 11.809212, demEle: 1419.0, taken: '2026-10-26T12:45:36+01:00', blur: 'data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADQBACdASoYABIAPtFcqE4oJSQiKAqpABoJZQCsMxgBrVdtVqxgNA4T88qCkXjFAAD94pVXjTO+nIpv33a7t5tD7uqxXReGYZntRFt47z1/vYTg2uD3PYXnw8ID/nGALoSh4a9dOZLbgAAA', pins: [{ref: node/4369817141, x: 0.194, y: 0.4773}, {ref: node/1574152589, x: 0.439, y: 0.5543}]}
   2026-10-26-13.jpg: {w: 4744, h: 3560, lat: 47.703904, lon: 11.808104, demEle: 1367.2, taken: '2026-10-26T12:50:27+01:00', blur: 'data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAABwBQCdASoYABIAPtFcpk6oJKMiKAqpABoJQBYj5EDV/cFxSEj3ufvi84XorQKvZRU9YmagAM1rXMyabFs/OE+nGvvMqGUSdu+tzrdsXVVmxHB3RvVZlf7d2x6uDamVRiG2XNuU9eX1RxOwPuGE54bI0Z50J8YxYyTSRe/Nk7oCfAmMGJQtAAFk4we/uN0Xq8392psgXZzAEw/pOxNRR+SHBJZd1xpxaF4kGEf14F83aPo4hu0n81ZUGo6Y/Z6gBMzCJ4oB2M6YAA=='}
-  2026-10-26-14.jpg: {w: 4080, h: 3060, lat: 47.704885, lon: 11.808098, demEle: 1342.8, taken: '2026-10-26T12:52:09+01:00', blur: 'data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADwBACdASoYABIAPtFYpU0oJKOiMBgIAQAaCWUAvzgQ46HCpYLLmt7SZaYlxVnf9wAA/tNGTKOnNdBJwbEqetlkEfmu7eS2TzQgWPbIIftKCc1EODAHOLgnN8HVci07LPX5eIwUp6KLVNtmDIn5gS2oAAA='}
+  2026-10-26-14.jpg: {w: 4080, h: 3060, lat: 47.704885, lon: 11.808098, demEle: 1342.8, taken: '2026-10-26T12:52:09+01:00', blur: 'data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADwBACdASoYABIAPtFYpU0oJKOiMBgIAQAaCWUAvzgQ46HCpYLLmt7SZaYlxVnf9wAA/tNGTKOnNdBJwbEqetlkEfmu7eS2TzQgWPbIIftKCc1EODAHOLgnN8HVci07LPX5eIwUp6KLVNtmDIn5gS2oAAA=', pins: [{ref: node/26865134, x: 0.5624, y: 0.4102}, {ref: node/283733455, x: 0.3716, y: 0.432}, {ref: node/260979669, x: 0.3879, y: 0.436}]}
   2026-10-26-15.jpg: {w: 8160, h: 6120, lat: 47.711399, lon: 11.811333, demEle: 1261.2, taken: '2026-10-26T13:27:42+01:00', blur: 'data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAACQBACdASoYABIAPtFYpUyoJSOiKA1RABoJYwC+SAq3QJyzlFWEIOppMGvRIMAA/qxOg4LsVcraQy+B+xtT00shSvk2mF73wmQUDay+UdNgTery5xo7CHtFpsZWZHEGNyU1QkqjIi8yYI0Sr23gkiDjDzZD3XjujPCrZBET8+0jdxYlrsk9Env1XJ0cnAAA'}
   2026-10-26-16.jpg: {w: 8160, h: 6120, lat: 47.711683, lon: 11.810892, demEle: 1259.3, taken: '2026-10-26T13:29:40+01:00', blur: 'data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAADQBACdASoYABIAPtFaqE4oJSQiKAqpABoJZQDGQA0zZMPVfI7SrN4z5UtIG85YoAD+zxc6+3CpN+HwtGc343VyJLsAmrAnQRwZlViUrBqRYS5hYf2ql33oJw+f4Y/DY7uWSqh83zTpqrJH/4SH76jVswOb1vCbtzWfmK7jVjF15nXrLz7L12aXCkC/2VwhwcXiAAAA'}
-  2026-10-26-17.jpg: {w: 8160, h: 6120, lat: 47.711686, lon: 11.810574, demEle: 1247.2, taken: '2026-10-26T13:31:35+01:00', blur: 'data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAACwBACdASoYABIAPtFYo0uoJSMhsAgBABoJZQC2yCHfa14fPiZJFs0Xjbi1NDgAAP7qfMD+fRSjhpdy/2f6TvHGejwpq9HMS2VEIbV4lpoUKRi0dToBmt5bPhkvriGUxZsHrcONHrW1N5C4Xw6mWF8AAAA='}
+  2026-10-26-17.jpg: {w: 8160, h: 6120, lat: 47.711686, lon: 11.810574, demEle: 1247.2, taken: '2026-10-26T13:31:35+01:00', blur: 'data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAACwBACdASoYABIAPtFYo0uoJSMhsAgBABoJZQC2yCHfa14fPiZJFs0Xjbi1NDgAAP7qfMD+fRSjhpdy/2f6TvHGejwpq9HMS2VEIbV4lpoUKRi0dToBmt5bPhkvriGUxZsHrcONHrW1N5C4Xw6mWF8AAAA=', pins: [{ref: node/26862641, x: 0.1534, y: 0.4346}, {ref: node/96874625, x: 0.2684, y: 0.4309}, {ref: node/264056090, x: 0.3735, y: 0.4447}, {ref: node/1276074774, x: 0.4981, y: 0.4512}]}
   2026-10-26-18.jpg: {w: 8160, h: 6120, lat: 47.71183, lon: 11.809822, demEle: 1205.1, taken: '2026-10-26T13:52:16+01:00', blur: 'data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAAAwBQCdASoYABIAPtFcpk6oJSMiKAqpABoJYwDBD2QBCwu4YI08fxLs4wuQ6b78K7v3QAD+8EpSk1orhlCTHMoFXrw35NVL8Syn0xdVEQJBUfGTV6J5q51vWF24TLMpjBXuVd3TnoDa38fIfx9D4rtSQzXD68k2I21a84ogH3ddtZJ2U0XufgjUvxPF7POXUotAT8fTSgfoF5l1z+wX9P024zXiDq8xJuz4nW/85fNxAAAA'}
-  2026-10-26-19.jpg: {w: 8160, h: 6120, lat: 47.733256, lon: 11.854565, demEle: 777.7, taken: '2026-10-26T14:50:34+01:00', blur: 'data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADQBACdASoYABIAPtFao00oJSMiMBgIAQAaCWMAwNwRVhCTiokw7+38EoG3+rncAAD+6ueSaJ/GxLXWxxKP4DEu/lV0pzH0OkctsTMJdvYi1ZCKNPeaNu1C5JzXBeq+hQogmidBE20BHPJeUBU+WCCaWhEsqkC2YAA='}
-  2026-10-26-20.jpg: {w: 8160, h: 6120, lat: 47.733783, lon: 11.859521, demEle: 780.5, taken: '2026-10-26T14:54:44+01:00', blur: 'data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAABQBACdASoYABIAPtFYpEuoJSOhsAgBABoJYwCw7CHVWqBeNJIkTOTzVybAAP60k2YD1LzXwNf6rimTKYLVW78hErRYu6Qzr+Oga7eQL5F4GyAYQ50Pkem3AK76crRs1ScskT8oWnP3JIW2uA7RkG9c7qGc09w23cojZJqCkTarL2kAAAA='}
+  2026-10-26-19.jpg: {w: 8160, h: 6120, lat: 47.733256, lon: 11.854565, demEle: 777.7, taken: '2026-10-26T14:50:34+01:00', blur: 'data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADQBACdASoYABIAPtFao00oJSMiMBgIAQAaCWMAwNwRVhCTiokw7+38EoG3+rncAAD+6ueSaJ/GxLXWxxKP4DEu/lV0pzH0OkctsTMJdvYi1ZCKNPeaNu1C5JzXBeq+hQogmidBE20BHPJeUBU+WCCaWhEsqkC2YAA=', pins: [{ref: node/2641018246, x: 0.7866, y: 0.4333}, {ref: node/3229970782, x: 0.5503, y: 0.4518}]}
+  2026-10-26-20.jpg: {w: 8160, h: 6120, lat: 47.733783, lon: 11.859521, demEle: 780.5, taken: '2026-10-26T14:54:44+01:00', blur: 'data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAABQBACdASoYABIAPtFYpEuoJSOhsAgBABoJYwCw7CHVWqBeNJIkTOTzVybAAP60k2YD1LzXwNf6rimTKYLVW78hErRYu6Qzr+Oga7eQL5F4GyAYQ50Pkem3AK76crRs1ScskT8oWnP3JIW2uA7RkG9c7qGc09w23cojZJqCkTarL2kAAAA=', pins: [{ref: node/260826433, x: 0.3961, y: 0.39}, {ref: node/2283172843, x: 0.2367, y: 0.3155}, {ref: node/292352453, x: 0.6503, y: 0.3724}]}
 ---
 After submitting my paper, I got lucky not having tasks to start on a Monday.
 With the [Krettenburg (1494 m) hike](/hikes/2026-10-22-krettenburg_westerberg/)
@@ -126,7 +126,6 @@ group somewhere behind me was taking photos, a pair of faster hikers overtook me
 and reached the summit first, sitting down on a bench there to enjoy the views.
 
 ![The pair of hikers enjoying the Tegernsee panorama](/images/projects/data-viz/hikes/stories/baumgartenschneid_kreuzbergkoepfel/2026-10-26-10.jpg)
-
 ![The slope of Baumgartenschneid (1448 m) with Tegernsee in the background](/images/projects/data-viz/hikes/stories/baumgartenschneid_kreuzbergkoepfel/2026-10-26-09.jpg)
 
 I've seen plenty of the scenery before, but I still stopped in awe of the
@@ -158,7 +157,6 @@ by. My next target was the aforementioned Kreuzbergköpfel (1273 m), with only a
 single entry on hikr.org.
 
 ![View from Baumgartenschneid (1448 m) towards Gindelalmschneid (1335 m) and Auer Berg (1252 m)](/images/projects/data-viz/hikes/stories/baumgartenschneid_kreuzbergkoepfel/2026-10-26-12.jpg)
-
 ![Field gentians on the slope of Baumgartenschneid (1448 m)](/images/projects/data-viz/hikes/stories/baumgartenschneid_kreuzbergkoepfel/2026-10-26-13.jpg)
 
 Although the path down from Baumgartenschneid (1448 m) to Baumgartenalm (1368 m)
@@ -187,12 +185,11 @@ way down.
 
 When I reached the summit, I saw absolutely nothing. The trees weren't that
 dense, but the fact that other trees down the slope were also high enough to
-occupy my vision meant I won't get any panoramic sights from this spot. I then
+occupy my vision meant I wouldn't get any panoramic sights from this spot. I then
 remembered about a cross on a cliff right near this summit, and decided to head
 there and investigate. Sure enough, the views were there all along!
 
 ![The cross on the cliff right next to Kreuzbergköpfel (1273 m)](/images/projects/data-viz/hikes/stories/baumgartenschneid_kreuzbergkoepfel/2026-10-26-16.jpg)
-
 ![View from the Kreuzbergköpfel (1273 m) cliff](/images/projects/data-viz/hikes/stories/baumgartenschneid_kreuzbergkoepfel/2026-10-26-17.jpg)
 
 I got to the cliff, found a small trail between the pine bushes leading to the
@@ -218,17 +215,16 @@ dangerous. On my visit, the trail was at least dry, but I'd say it's very
 dangerous after rain- or snowfall.
 
 After getting my stuff back at the shelter, I headed down the somewhat popular
-trail towards Prinzenweg and down to Schliersee. I've met an elderly hiker on
+trail towards Prinzenweg and down to Schliersee. I met an elderly hiker on
 her phone, another elderly couple slowly walking to the village while enjoying
 views, and some younger hikers returning after their adventures.
 
 ![View from Schliersee towards Huberspitz (1051 m)](/images/projects/data-viz/hikes/stories/baumgartenschneid_kreuzbergkoepfel/2026-10-26-19.jpg)
-
 ![The obligatory view from the Schliersee beach towards Anklspitz (1112 m) and Jägerkamp (1746 m)](/images/projects/data-viz/hikes/stories/baumgartenschneid_kreuzbergkoepfel/2026-10-26-20.jpg)
 
 As usual, I noticed I was quite late for my train, so I had to rush all the way
 to the village, getting myself extra tired before my sports training. Still, I
 enjoyed this hike. The autumn colors made it a pastel wonderland, and the views
 from Baumgartenschneid (1448 m) were some of the best I've seen close to
-Tegernsee. I definitely recommend readers to visit at least some of these peaks
+Tegernsee. I definitely recommend you visit at least some of these peaks
 and see the panorama for yourself.
