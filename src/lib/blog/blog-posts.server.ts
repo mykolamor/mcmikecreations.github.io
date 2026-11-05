@@ -23,6 +23,13 @@ export interface BlogPostMeta {
 	description: string;
 	author: string | null;
 	tags: string[];
+	/**
+	 * `article:section` / `articleSection`: the front-matter `section`, else the
+	 * first tag, else null (the tag is then omitted).
+	 */
+	section: string | null;
+	/** Front-matter `updated: YYYY-MM-DD` override for `dateModified`, raw. */
+	updated: unknown;
 	draft: boolean;
 	/** File name, e.g. `2024-03-01-ecs.md`. */
 	path: string;
@@ -46,6 +53,7 @@ const allMeta: BlogPostMeta[] = Object.entries(rawFiles)
 		const { data } = matter(raw);
 		const path = key.substring(key.lastIndexOf('/') + 1);
 		const anchor = path.replace(/\.md$/, '');
+		const tags: string[] = Array.isArray(data.tags) ? data.tags.map(String) : [];
 		return {
 			title: typeof data.title === 'string' ? data.title : anchor,
 			date: toDateString(data.date),
@@ -53,7 +61,9 @@ const allMeta: BlogPostMeta[] = Object.entries(rawFiles)
 			imageFull: toStringOrNull(data.imageFull),
 			description: typeof data.description === 'string' ? data.description : '',
 			author: toStringOrNull(data.author),
-			tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
+			tags,
+			section: toStringOrNull(data.section) ?? tags[0] ?? null,
+			updated: data.updated,
 			draft: data.draft === true,
 			path,
 			anchor

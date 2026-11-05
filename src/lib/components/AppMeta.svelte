@@ -77,7 +77,7 @@
 		<meta name="twitter:image" content={fullImageUrl}>
 	{/if}
 
-	{#each Object.entries(otherProps) as [key, value] (key)}
+	{#each Object.entries(otherProps).filter(([, value]) => value != null) as [key, value] (key)}
 		<meta property={key.replaceAll('-', ':')} content={value}>
 	{/each}
 </svelte:head>

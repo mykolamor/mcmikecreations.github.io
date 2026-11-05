@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { json } from '@sveltejs/kit';
 import { getPostFrontmatter, hikes } from '$lib/hikes/hikes.server';
 import { readDateBailouts } from '$lib/hikes/bailouts.server';
-import { postDateModified } from '$lib/hikes/date-modified.server';
+import { postDateModified } from '$lib/server/date-modified';
 
 export const prerender = true;
 

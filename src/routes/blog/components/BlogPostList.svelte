@@ -20,7 +20,7 @@
 			text-gray-500 dark:text-gray-400
 			group hover:shadow-xl transition-shadow duration-200"
 		>
-			<a href={p.url} data-sveltekit-reload class="absolute inset-0 z-10 block" aria-label={p.title}></a>
+			<a href={p.url} class="absolute inset-0 z-10 block" aria-label={p.title}></a>
 
 			<div class="relative block md:max-h-48 md:min-h-48 md:min-w-64 !aspect-crt overflow-hidden rounded-t-lg md:rounded-tr-none md:rounded-l-lg">
 				<div class="w-full md:w-auto md:h-full aspect-crt flex justify-center items-center">

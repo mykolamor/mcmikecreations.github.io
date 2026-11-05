@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import resume from '$lib/data/resume.json';
+	import { blogId, blogDateTime, blogTimeRequired, BLOG_MAX_IMAGES } from '$lib/blog/blog-meta';
 
 	type WebsiteProps = { variant: 'website' };
 	type ProfileProps = { variant: 'profile', description?: string | null, dateModified?: string | null };
@@ -13,8 +14,15 @@
 		title: string;
 		description?: string | null;
 		image?: string | null;
+		imageFull?: string | null;
+		/** Local body images, in order; capped together with the front-matter images. */
+		bodyImages?: string[];
 		isoDate: string;
-		author?: string | null;
+		dateModified?: string | null;
+		section?: string | null;
+		wordCount?: number;
+		/** Reading time in minutes, for `timeRequired`. */
+		minutes?: number;
 		tags?: string[];
 		anchor: string;
 	};
@@ -127,7 +135,7 @@
 			const blogUrl = origin + '/blog/';
 			const blogNode: Record<string, unknown> = {
 				'@type': 'Blog',
-				'@id': blogUrl + '#blog',
+				'@id': blogId(origin),
 				name: 'Blog',
 				url: blogUrl,
 				inLanguage: 'en',
@@ -149,7 +157,17 @@
 
 		if (props.variant === 'blog-post') {
 			const postUrl = absUrl(`/blog/${props.anchor}/`);
-			const blogRef = { '@type': 'Blog', '@id': origin + '/blog/#blog' };
+			const blogRef = { '@type': 'Blog', '@id': blogId(origin) };
+			// The site owner, as on the hikes and the blog listing. The front-matter
+			// `author` stays the visible byline only.
+			const authorRef = { '@type': 'Person', name: resume.basics.name, url: origin + '/' };
+			const images = [
+				...new Set(
+					[props.image, props.imageFull, ...(props.bodyImages ?? [])]
+						.filter((src): src is string => !!src)
+						.map(absUrl)
+				)
+			].slice(0, BLOG_MAX_IMAGES);
 			return graph(
 				{
 					'@type': 'BlogPosting',
@@ -157,10 +175,15 @@
 					headline: props.title,
 					url: postUrl,
 					inLanguage: 'en',
-					datePublished: props.isoDate + 'T16:00:00+00:00',
+					datePublished: blogDateTime(props.isoDate),
+					...(props.dateModified ? { dateModified: blogDateTime(props.dateModified) } : {}),
 					...(props.description ? { description: props.description } : {}),
-					...(props.image ? { image: absUrl(props.image) } : {}),
-					...(props.author ? { author: { '@type': 'Person', name: props.author } } : {}),
+					...(images.length > 0 ? { image: images.length === 1 ? images[0] : images } : {}),
+					author: authorRef,
+					publisher: authorRef,
+					...(props.section ? { articleSection: props.section } : {}),
+					...(props.wordCount ? { wordCount: props.wordCount } : {}),
+					...(props.minutes ? { timeRequired: blogTimeRequired(props.minutes) } : {}),
 					...(props.tags?.length ? { keywords: props.tags.join(', ') } : {}),
 					mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
 					isPartOf: blogRef

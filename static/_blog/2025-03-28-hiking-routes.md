@@ -8,6 +8,7 @@ path: 2025-03-28-hiking-routes.md
 author: Mykola Morozov
 tags:
   - Data-Viz
+  - Hiking
 ---
 # How I make the hiking routes for the website
 

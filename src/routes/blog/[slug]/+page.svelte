@@ -5,11 +5,13 @@
 	import DefaultLink from '$lib/renderers/DefaultLink.svelte';
 	import ToTopButton from '$lib/components/ToTopButton.svelte';
 	import DefaultImage from '$lib/renderers/DefaultImage.svelte';
+	import FigureParagraph from '$lib/renderers/FigureParagraph.svelte';
 	import AppMeta from '$lib/components/AppMeta.svelte';
 	import AppBreadcrumbs from '$lib/components/AppBreadcrumbs.svelte';
 	import AppJsonLd from '$lib/components/AppJsonLd.svelte';
 	import { page } from '$app/state';
 	import { A } from 'flowbite-svelte';
+	import { blogDateTime } from '$lib/blog/blog-meta';
 
 	interface Props {
 		data: PageData;
@@ -24,20 +26,26 @@
 	title={data.post.title}
 	description={data.post.description}
 	image={data.post.image}
+	imageFull={data.post.imageFull}
+	bodyImages={data.post.bodyImages}
 	isoDate={data.post.isoDate}
-	author={data.post.author}
+	dateModified={data.post.dateModified}
+	section={data.post.section}
+	wordCount={data.post.wordCount}
+	minutes={data.post.minutes}
 	tags={data.post.tags}
 	anchor={data.post.anchor}
 />
 <AppMeta
 	title={data.post.title}
 	description={data.post.description ?? undefined}
-	image={data.post.image}
+	image={data.post.image ?? undefined}
 	type="article"
 	tags={data.post.tags}
-	article-published_time="{data.post.date}T16:00:00+00:00"
-	article-author={data.post.author}
-	article-section="Programming"
+	article-published_time={blogDateTime(data.post.isoDate)}
+	article-modified_time={blogDateTime(data.post.dateModified)}
+	article-author={data.post.author ?? undefined}
+	article-section={data.post.section ?? undefined}
 />
 
 <article class="mx-4 2xl:mx-0">
@@ -61,7 +69,7 @@
 		{#if data.post.imageFull}
 			<img src={data.post.imageFull} class="w-full xl:w-3/4 mx-auto !mb-8 !mt-0 object-contain rounded-sm border border-gray-200 dark:border-gray-800" alt="Main" />
 		{/if}
-		<Markdown source={data.post.content} renderers={{ code: DefaultCode, link: DefaultLink, image: DefaultImage }} />
+		<Markdown source={data.post.content} renderers={{ code: DefaultCode, link: DefaultLink, image: DefaultImage, paragraph: FigureParagraph }} />
 	</div>
 </article>
 

@@ -62,6 +62,12 @@
 					{/each}
 				</svelte:component>
 			{/if}
+		{:else if type === 'paragraph'}
+			<!-- `tokens` is this component's own prop, so it isn't in $$restProps;
+			     the paragraph renderer needs it to tell a figure-only paragraph. -->
+			<svelte:component this={renderers.paragraph} {tokens} {...$$restProps}>
+				<svelte:self {tokens} {renderers} />
+			</svelte:component>
 		{:else}
 			<svelte:component this={renderers[type]} {...$$restProps}>
 				{#if tokens}

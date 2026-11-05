@@ -11,6 +11,7 @@
 		blogTagDescription,
 		blogYearTitle,
 		blogYearDescription,
+		blogId as blogIdFor,
 	} from '$lib/blog/blog-meta';
 
 	type BlogProps = {
@@ -62,9 +63,9 @@
 
 	const schema = $derived.by(() => {
 		const origin = page.url.origin;
-		const blogId = origin + '/blog/';
+		const blogId = blogIdFor(origin);
 		const blogRef = { '@type': 'Blog', '@id': blogId };
-		const authorRef = { '@type': 'Person', name: resume.basics.name };
+		const authorRef = { '@type': 'Person', name: resume.basics.name, url: origin + '/' };
 
 		const blogNode = {
 			'@type': 'Blog',
@@ -72,7 +73,7 @@
 			inLanguage: 'en',
 			name: BLOG_TITLE,
 			description: BLOG_DESCRIPTION,
-			url: blogId,
+			url: origin + '/blog/',
 			author: authorRef,
 			publisher: authorRef,
 			isPartOf: { '@type': 'WebSite', '@id': origin + '/#website' },

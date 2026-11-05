@@ -17,7 +17,7 @@ import type { PlaceNode } from '$lib/hikes/place-links';
 import { readHikeContacts } from '$lib/hikes/frontmatter';
 import { buildHikeContacts } from '$lib/hikes/contacts';
 import contactsBook from '$lib/data/contacts.json';
-import { postDateModified } from '$lib/hikes/date-modified.server';
+import { postDateModified } from '$lib/server/date-modified';
 import { computeHikeFacts } from '$lib/hikes/hike-facts';
 import { readHikeElapsed, readTimedTrack } from '$lib/hikes/hike-facts.server';
 import { computePhotoStops } from '$lib/hikes/photo-stops';

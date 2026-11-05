@@ -20,7 +20,6 @@
 			{#each posts as p}
 				<Card
 					href={p.url}
-					data-sveltekit-reload
 					img={p.image ?? undefined}
 					classes={{ image: "w-full aspect-crt object-cover object-center" }}
 					class="max-w-sm lg:max-w-xl flex-1"

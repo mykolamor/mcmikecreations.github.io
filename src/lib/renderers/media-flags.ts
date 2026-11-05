@@ -3,12 +3,14 @@
  *
  *     ![Cows chasing a dog](/clip.mp4 "autoplay")
  *
- * Flags are comma-separated and case-insensitive. Anything in the title that
+ * Flags are comma-separated and case-insensitive. `autoplay` starts a video
+ * muted; `invert` inverts an image in dark mode (black line art such as
+ * diagrams on a transparent background). Anything in the title that
  * isn't a recognized flag stays a real `title` attribute, so a caption-style
  * title keeps working.
  */
 
-const MEDIA_FLAGS = new Set(['autoplay']);
+const MEDIA_FLAGS = new Set(['autoplay', 'invert']);
 
 export interface MediaFlags {
 	/** Recognised flags found in the title, lower-cased. */

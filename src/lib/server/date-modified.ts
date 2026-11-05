@@ -7,12 +7,13 @@
  * maps) touch every post at once without changing what a reader sees, and must
  * not make every post look freshly updated.
  *
- * Server-only: shells out to git, which only exists at build time.
+ * Shared by hikes and the blog. Server-only: shells out to git, which only
+ * exists at build time.
  */
 
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
-import { stripFrontmatter } from '$lib/hikes/frontmatter';
+import { stripFrontmatter } from '$lib/frontmatter';
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 

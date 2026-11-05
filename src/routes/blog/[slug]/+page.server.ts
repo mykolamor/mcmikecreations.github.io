@@ -4,6 +4,8 @@ import { readingTime } from 'reading-time-estimator';
 import { marked, type TokensList, type Token } from 'marked';
 import { readBlogFrontmatter } from '$lib/blog/frontmatter.server';
 import { getBlogPostMeta } from '$lib/blog/blog-posts.server';
+import { postDateModified } from '$lib/server/date-modified';
+import { BLOG_MAX_IMAGES } from '$lib/blog/blog-meta';
 
 function cleanTokens(tokens: Token[] | TokensList | undefined) {
 	if (!tokens) return;
@@ -12,6 +14,23 @@ function cleanTokens(tokens: Token[] | TokensList | undefined) {
 		if ((t as any).tokens) cleanTokens((t as any).tokens);
 		if ((t as any).items) cleanTokens((t as any).items);
 	}
+}
+
+const IMAGE_FILE = /\.(jpe?g|png|gif|webp|avif|svg)$/i;
+
+/**
+ * Hrefs of the body's images that are files of this site, in order, for the
+ * JSON-LD `image` array. Remote images and the `/404/` placeholder are left out.
+ */
+function localBodyImages(tokens: TokensList): string[] {
+	const out: string[] = [];
+	marked.walkTokens(tokens, (t) => {
+		if (t.type !== 'image') return;
+		const href = (t.href ?? '').trim();
+		// Only pictures: a `.js` script embed or an `.mp4` clip is no `image`.
+		if (href.startsWith('/') && !href.startsWith('//') && IMAGE_FILE.test(href)) out.push(href);
+	});
+	return [...new Set(out)].slice(0, BLOG_MAX_IMAGES - 1);
 }
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
@@ -43,6 +62,7 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 		const stats = readingTime(postBody);
 
 		const content = marked.lexer(postBody);
+		const bodyImages = localBodyImages(content);
 		cleanTokens(content);
 
 		return {
@@ -56,6 +76,12 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 				time: stats.text,
 				date: new Date(meta.date).toLocaleDateString('en-us', { year: 'numeric', month: 'short', day: 'numeric' }),
 				isoDate: meta.date,
+				// Body-only git history, so a front-matter-only commit doesn't count.
+				dateModified: postDateModified(`static/_blog/${fileName}`, meta.date, meta.updated),
+				section: meta.section,
+				wordCount: stats.words,
+				minutes: stats.minutes,
+				bodyImages,
 				tags: meta.tags,
 				author: meta.author,
 				anchor: slug

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Modal } from 'flowbite-svelte';
 	import { parseMediaFlags } from '$lib/renderers/media-flags';
+	import ScriptEmbed from '$lib/renderers/ScriptEmbed.svelte';
 
 	interface Props {
 		href?: string;
@@ -13,6 +14,9 @@
 	const isYoutubeLink = $derived(href.includes('youtube.com'));
 	const media = $derived(parseMediaFlags(title));
 	const shouldAutoplay = $derived(media.flags.has('autoplay'));
+	const invertClass = $derived(media.flags.has('invert') ? ' dark:invert' : '');
+	/** `![caption](/demo.js)`: a script that draws its own demo, see `ScriptEmbed`. */
+	const isScript = $derived(/\.m?js$/i.test(href.split(/[?#]/)[0]));
 
 	// Track open modal to prevent scrolling the content behind it.
 	$effect(() => {
@@ -36,7 +40,9 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-{#if isYoutubeLink}
+{#if isScript}
+	<ScriptEmbed {href} caption={text} />
+{:else if isYoutubeLink}
 	{@const url = new URL(href)}
 	{@const videoId = url.searchParams.get('v')}
 	<figure class="w-full xl:w-3/4 mx-auto flex flex-col justify-center">
@@ -81,9 +87,9 @@
 		<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 		<img
 			src={href}
-			{title}
+			title={media.title || undefined}
 			alt={text}
-			class="cursor-pointer !my-0"
+			class="cursor-pointer !my-0{invertClass}"
 			onclick={() => (openModal = true)}
 		/>
 		<figcaption class="text-center">{text}</figcaption>
@@ -101,9 +107,9 @@
 		>
 			<img
 				src={href}
-				{title}
+				title={media.title || undefined}
 				alt={text}
-				class="max-h-full max-w-full object-contain cursor-default"
+				class="max-h-full max-w-full object-contain cursor-default{invertClass}"
 				onclick={(e) => e.stopPropagation()}
 			/>
 		</div>
