@@ -13,6 +13,9 @@ vite.config.ts.timestamp-*
 /svelte-sitemap.config.ts
 /deploy.sh
 
+# Vendored presentation libraries (scripts/presentation-vendor.mjs)
+/static/vendor/
+
 # Python bytecode from scripts/plots
 __pycache__/
 /.deploy-assets.hash

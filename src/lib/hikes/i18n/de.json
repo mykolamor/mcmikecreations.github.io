@@ -536,5 +536,17 @@
 				"mirror": "Kopie"
 			}
 		}
+	},
+	"presentation": {
+		"prev": "Zurück",
+		"next": "Weiter",
+		"grid": "Übersicht",
+		"fullscreen": "Vollbild",
+		"exitFullscreen": "Vollbild beenden",
+		"position": "{slide} / {slides} · {state} / {states}",
+		"region": "Präsentation: {caption}",
+		"slideState": "Folie {slide} · Schritt {state}",
+		"gridLabel": "Folienübersicht",
+		"slide": "Folie {slide}"
 	}
 }

@@ -728,5 +728,17 @@
 	"units": {
 		"km": "{value} km",
 		"m": "{value} m"
+	},
+	"presentation": {
+		"prev": "Previous",
+		"next": "Next",
+		"grid": "Overview",
+		"fullscreen": "Fullscreen",
+		"exitFullscreen": "Exit fullscreen",
+		"position": "{slide} / {slides} · {state} / {states}",
+		"region": "Presentation: {caption}",
+		"slideState": "Slide {slide} · step {state}",
+		"gridLabel": "Slide overview",
+		"slide": "Slide {slide}"
 	}
 }

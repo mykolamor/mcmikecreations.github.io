@@ -152,3 +152,11 @@ Like links, Images also have a footnote style syntax
 With a reference later in the document defining the URL location:
 
 [id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
+
+## Presentation demo
+
+![Presentation module demo](/images/blog/markdown-test/presentation/index.js "presentation")
+
+![Language](/images/blog/markdown-test/presentation/lang-buttons.js)
+
+[Jump to the highlighted bars](#demo/bars/highlight)

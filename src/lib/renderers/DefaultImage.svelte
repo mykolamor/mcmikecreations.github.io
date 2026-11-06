@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Modal } from 'flowbite-svelte';
 	import { parseMediaFlags } from '$lib/renderers/media-flags';
+	import PresentationEmbed from '$lib/presentation/PresentationEmbed.svelte';
 	import ScriptEmbed from '$lib/renderers/ScriptEmbed.svelte';
 	import ResponsivePicture from '$lib/renderers/ResponsivePicture.svelte';
 	import { responsivePicture, type HikeImageMeta } from '$lib/renderers/responsive-image';
@@ -51,7 +52,9 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-{#if isScript}
+{#if isScript && media.flags.has('presentation')}
+	<PresentationEmbed {href} caption={text} />
+{:else if isScript}
 	<ScriptEmbed {href} caption={text} />
 {:else if isYoutubeLink}
 	{@const url = new URL(href)}

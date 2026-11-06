@@ -1,1 +1,14 @@
-{}
+{
+	"presentation": {
+		"prev": "Назад",
+		"next": "Далі",
+		"grid": "Огляд",
+		"fullscreen": "На весь екран",
+		"exitFullscreen": "Вийти з повноекранного режиму",
+		"position": "{slide} / {slides} · {state} / {states}",
+		"region": "Презентація: {caption}",
+		"slideState": "Слайд {slide} · крок {state}",
+		"gridLabel": "Огляд слайдів",
+		"slide": "Слайд {slide}"
+	}
+}

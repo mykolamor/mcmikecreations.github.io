@@ -1,4 +1,5 @@
 import { error } from '@sveltejs/kit';
+import { dev } from '$app/environment';
 import type { PageServerLoad } from './$types';
 import { readingTime } from 'reading-time-estimator';
 import { marked, type TokensList, type Token } from 'marked';
@@ -42,7 +43,7 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 		const fileName = `${slug}.md`;
 		const meta = getBlogPostMeta(fileName);
 
-		if (!meta || meta.draft) {
+		if (!meta || (meta.draft && !dev)) {
 			error(404, { message: `Failed to fetch "${slug}"` });
 		}
 

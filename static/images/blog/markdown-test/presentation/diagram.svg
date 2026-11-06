@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="system-ui, sans-serif">
+	<!-- Hand-written demo diagram. diagram.js inlines it, colours it from the theme, translates the
+	     labels marked data-i18n and moves the .box groups (drawn at the origin) with transforms. -->
+	<text data-i18n="title" x="800" y="110" text-anchor="middle" font-size="56" font-weight="700">Title</text>
+
+	<g data-role="pool">
+		<ellipse cx="800" cy="510" rx="430" ry="220" fill="none" stroke-width="4" stroke-dasharray="14 12"/>
+		<text data-i18n="pool" x="800" y="780" text-anchor="middle" font-size="30">Pool</text>
+	</g>
+
+	<g data-cat="restarts" transform="translate(80 200)">
+		<rect width="440" height="90" rx="20" stroke-width="4"/>
+		<text data-i18n="restarts" x="220" y="57" text-anchor="middle" font-size="34" font-weight="600">Restarts</text>
+	</g>
+	<g data-cat="replicas" transform="translate(1080 200)">
+		<rect width="440" height="90" rx="20" stroke-width="4"/>
+		<text data-i18n="replicas" x="220" y="57" text-anchor="middle" font-size="34" font-weight="600">Replicas</text>
+	</g>
+
+	<g class="box" data-box="restarts">
+		<rect width="220" height="90" rx="14" stroke-width="3"/>
+		<text x="110" y="57" text-anchor="middle" font-size="30">PostgreSQL</text>
+	</g>
+	<g class="box" data-box="replicas">
+		<rect width="220" height="90" rx="14" stroke-width="3"/>
+		<text x="110" y="57" text-anchor="middle" font-size="30">MongoDB</text>
+	</g>
+	<g class="box" data-box="restarts">
+		<rect width="220" height="90" rx="14" stroke-width="3"/>
+		<text x="110" y="57" text-anchor="middle" font-size="30">MySQL</text>
+	</g>
+	<g class="box" data-box="replicas">
+		<rect width="220" height="90" rx="14" stroke-width="3"/>
+		<text x="110" y="57" text-anchor="middle" font-size="30">Cassandra</text>
+	</g>
+	<g class="box" data-box="restarts">
+		<rect width="220" height="90" rx="14" stroke-width="3"/>
+		<text x="110" y="57" text-anchor="middle" font-size="30">SQLite</text>
+	</g>
+	<g class="box" data-box="replicas">
+		<rect width="220" height="90" rx="14" stroke-width="3"/>
+		<text x="110" y="57" text-anchor="middle" font-size="30">Redis</text>
+	</g>
+</svg>
