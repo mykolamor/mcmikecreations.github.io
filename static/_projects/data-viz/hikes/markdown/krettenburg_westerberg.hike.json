@@ -79,13 +79,13 @@
         }
       },
       "end": {
-        "lat": 47.7355828,
-        "lon": 11.8597632,
-        "demEle": 786.2,
         "name": {
           "en": "Schliersee",
           "de": "Schliersee",
           "uk": "Шлірзе"
+        },
+        "at": {
+          "ref": "node/3779246592"
         }
       },
       "type": "point-to-point",
@@ -342,13 +342,17 @@
         "to": "Brunstkogel",
         "terrain": ["ridge", "meadow"],
         "sac": "T3",
-        "marking": "none"
+        "marking": "none",
+        "note": {
+          "en": "Overgrown ridge with fallen trees and branches.",
+          "de": "Zugewachsener Grat mit umgestürzten Bäumen und Ästen.",
+          "uk": "Зарослий хребет з поваленими деревами та гілками."
+        },
+        "onProfile": true
       },
       {
         "to": {
-          "lat": 47.7355828,
-          "lon": 11.8597632,
-          "demEle": 786.2,
+          "ref": "node/3779246592",
           "name": {
             "en": "Schliersee train station",
             "de": "Bahnhof Schliersee",
@@ -376,18 +380,6 @@
           "en": "Wild overgrown steep slope followed by a slippery trail.",
           "de": "Wild zugewachsener steiler Hang gefolgt von einem rutschigen Weg.",
           "uk": "Дикий зарослий крутий схил, за яким слідує слизька стежка."
-        },
-        "inTable": false,
-        "onProfile": true
-      },
-      {
-        "from": "Westerberg",
-        "to": "Brunstkogel",
-        "sac": "T3",
-        "note": {
-          "en": "Overgrown ridge with fallen trees and branches.",
-          "de": "Zugewachsener Grat mit umgestürzten Bäumen und Ästen.",
-          "uk": "Зарослий хребет з поваленими деревами та гілками."
         },
         "inTable": false,
         "onProfile": true

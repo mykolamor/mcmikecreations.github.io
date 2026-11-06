@@ -1,5 +1,45 @@
 {
 	"stops": {
+		"node/259090434": {
+			"kind": "kiosk",
+			"water": true,
+			"food": true,
+			"checked": "2026-10-21"
+		},
+		"node/4004528624": {
+			"kind": "hotel",
+			"days": {
+				"en": "Daily 08:00-23:30",
+				"de": "Täglich 08:00-23:30",
+				"uk": "Щодня 08:00-23:30"
+			},
+			"booking": {
+				"url": "https://www.alte-wurzhuette.de/",
+				"label": {
+					"en": "Hotel am Spitzingsee website",
+					"de": "Hotel am Spitzingsee Website",
+					"uk": "Вебсайт Hotel am Spitzingsee"
+				}
+			},
+			"phone": "+49 0802 660680",
+			"water": true,
+			"food": true,
+			"cash": false,
+			"checked": "2026-10-18"
+		},
+		"node/4730936370": {
+			"kind": "hotel",
+			"days": {
+				"en": "Daily",
+				"de": "Täglich",
+				"uk": "Щодня"
+			},
+			"overnight": true,
+			"water": true,
+			"food": true,
+			"cash": false,
+			"checked": "2026-10-21"
+		},
 		"way/26960869": {
 			"kind": "alpine-hut",
 			"open": {
@@ -38,6 +78,28 @@
 				"uk": "Можливий нічліг."
 			},
 			"checked": "2026-10-25"
+		},
+		"way/60313973": {
+			"kind": "restaurant",
+			"days": {
+				"en": "Daily 10:00-17:00",
+				"de": "Täglich 10:00-17:00",
+				"uk": "Щодня 10:00-17:00"
+			},
+			"overnight": true,
+			"booking": {
+				"url": "https://unterefirstalm.de/",
+				"label": {
+					"en": "Untere Firstalm website",
+					"de": "Untere Firstalm Website",
+					"uk": "Вебсайт Untere Firstalm"
+				}
+			},
+			"phone": "+49(0)8026/7676",
+			"water": true,
+			"food": true,
+			"cash": false,
+			"checked": "2026-10-18"
 		},
 		"way/60315210": {
 			"kind": "restaurant",
@@ -80,6 +142,15 @@
 			"cash": true,
 			"checked": "2026-11-04"
 		},
+		"way/110298010": {
+			"kind": "alpine-hut",
+			"open": "all-year",
+			"booking": "https://www.berggasthaus-riederstein-am-galaun.de/",
+			"phone": "+498022273022",
+			"water": true,
+			"food": true,
+			"checked": "2026-11-02"
+		},
 		"way/165427124": {
 			"kind": "restaurant",
 			"open": {
@@ -103,6 +174,55 @@
 		}
 	},
 	"transport": {
+		"bus-326-ettal-klostergasthof-oberau": {
+			"mode": "bus",
+			"from": {
+				"en": "Klostergasthof, Ettal",
+				"de": "Klostergasthof, Ettal",
+				"uk": "Klostergasthof, Етталь"
+			},
+			"to": {
+				"name": {
+					"en": "Oberau",
+					"de": "Oberau",
+					"uk": "Оберау"
+				}
+			},
+			"direction": "back",
+			"duration": 10,
+			"changes": 0,
+			"line": "326",
+			"operator": "MVV",
+			"first": "07:55",
+			"last": "18:55",
+			"frequency": {
+				"en": "hourly",
+				"de": "stündlich",
+				"uk": "щогодини"
+			}
+		},
+		"bus-328-kochel-urfeld-kochel-am-see": {
+			"mode": "bus",
+			"from": {
+				"en": "Kochel",
+				"de": "Kochel",
+				"uk": "Кохель"
+			},
+			"to": {
+				"name": {
+					"en": "Urfeld, Kochel am See",
+					"de": "Urfeld, Kochel am See",
+					"uk": "Урфельд, Кохель-ам-Зе"
+				}
+			},
+			"direction": "there",
+			"duration": 18,
+			"changes": 0,
+			"line": "328",
+			"operator": "MVV",
+			"first": "08:18",
+			"last": "20:28"
+		},
 		"bus-359-gmund-breitenbach-bad-wiessee": {
 			"mode": "bus",
 			"from": {
@@ -123,7 +243,12 @@
 			"line": "359",
 			"operator": "MVV",
 			"first": "08:04",
-			"last": "22:05"
+			"last": "22:05",
+			"note": {
+				"en": "Change in Gmund.",
+				"de": "Umstieg in Gmund.",
+				"uk": "Пересадка в Гмунді."
+			}
 		},
 		"bus-362-schliersee-spitzingsee-spitzingsattel": {
 			"mode": "bus",
@@ -146,6 +271,28 @@
 			"operator": "MVV",
 			"first": "07:31",
 			"last": "17:31"
+		},
+		"bus-362-spitzingsee-kirche-fischhausen-neuhaus": {
+			"mode": "bus",
+			"from": {
+				"en": "Spitzingsee Kirche, Schliersee",
+				"de": "Spitzingsee Kirche, Schliersee",
+				"uk": "Шпіцінгзе, церква, Шлірзе"
+			},
+			"to": {
+				"name": {
+					"en": "Fischhausen-Neuhaus",
+					"de": "Fischhausen-Neuhaus",
+					"uk": "Фішхаузен-Нойхаус"
+				}
+			},
+			"direction": "back",
+			"duration": 13,
+			"changes": 0,
+			"line": "362",
+			"operator": "MVV",
+			"first": "08:00",
+			"last": "18:00"
 		},
 		"bus-996-munich-pasing-tegelbergbahn-schwangau": {
 			"mode": "bus",
@@ -207,12 +354,59 @@
 				}
 			]
 		},
+		"train-rb-55-munich-central-station-fischhausen-neuhaus": {
+			"mode": "train",
+			"from": {
+				"en": "Munich Central Station",
+				"de": "München Hbf",
+				"uk": "Головний вокзал Мюнхена"
+			},
+			"to": {
+				"name": {
+					"en": "Fischhausen-Neuhaus",
+					"de": "Fischhausen-Neuhaus",
+					"uk": "Фішхаузен-Нойхаус"
+				}
+			},
+			"direction": "there",
+			"duration": 75,
+			"changes": 0,
+			"line": "RB 55",
+			"operator": "DB Regio",
+			"first": "05:29",
+			"last": "22:02",
+			"frequency": {
+				"en": "hourly",
+				"de": "stündlich",
+				"uk": "щогодини"
+			},
+			"price": [
+				{
+					"amount": 0,
+					"note": {
+						"en": "with Deutschlandticket",
+						"de": "mit Deutschlandticket",
+						"uk": "з Deutschlandticket"
+					}
+				},
+				{
+					"amount": 23.9,
+					"per": "day"
+				}
+			],
+			"ticket": {
+				"en": "Deutschlandticket valid to Spitzingsee",
+				"de": "Deutschlandticket bis Spitzingsee gültig",
+				"uk": "Deutschlandticket дійсний до Шпіцінгзе"
+			},
+			"url": "https://www.bahn.de/"
+		},
 		"train-rb-55-munich-central-station-schliersee": {
 			"mode": "train",
 			"from": {
 				"en": "Munich Central Station",
 				"de": "München Hbf",
-				"uk": "Мюнхен Головний вокзал"
+				"uk": "Головний вокзал Мюнхена"
 			},
 			"to": {
 				"name": {
@@ -265,7 +459,7 @@
 				"name": {
 					"en": "Munich Central Station",
 					"de": "München Hbf",
-					"uk": "Мюнхен Головний вокзал"
+					"uk": "Головний вокзал Мюнхена"
 				}
 			},
 			"direction": "there",
@@ -308,7 +502,7 @@
 			"from": {
 				"en": "Munich Central Station",
 				"de": "München Hbf",
-				"uk": "Мюнхен Головний вокзал"
+				"uk": "Головний вокзал Мюнхена"
 			},
 			"to": {
 				"name": {
@@ -356,7 +550,7 @@
 			"from": {
 				"en": "Munich Central Station",
 				"de": "München Hbf",
-				"uk": "Центральний вокзал Мюнхена"
+				"uk": "Головний вокзал Мюнхена"
 			},
 			"to": {
 				"name": {
@@ -378,23 +572,18 @@
 				"uk": "щогодини"
 			},
 			"ticket": {
-				"en": "Deutschlandticket valid to Bad Wiessee",
-				"de": "Deutschlandticket bis Bad Wiessee gültig",
-				"uk": "Deutschlandticket дійсний до Бад-Віссе"
+				"en": "Deutschlandticket valid to Gmund and Bad Wiessee",
+				"de": "Deutschlandticket bis Gmund und Bad Wiessee gültig",
+				"uk": "Deutschlandticket дійсний до Гмунда й Бад-Віссе"
 			},
-			"url": "https://www.bahn.de/",
-			"note": {
-				"en": "Change in Gmund.",
-				"de": "Umstieg in Gmund.",
-				"uk": "Пересадка в Гмунді."
-			}
+			"url": "https://www.bahn.de/"
 		},
 		"train-rb-57-munich-central-station-tegernsee": {
 			"mode": "train",
 			"from": {
 				"en": "Munich Central Station",
 				"de": "München Hbf",
-				"uk": "Мюнхен Головний вокзал"
+				"uk": "Головний вокзал Мюнхена"
 			},
 			"to": {
 				"name": {
@@ -437,6 +626,143 @@
 			},
 			"url": "https://www.bahn.de/",
 			"checked": "2026-11-02"
+		},
+		"train-rb-6-munich-central-station-oberau": {
+			"mode": "train",
+			"from": {
+				"en": "Munich Central Station",
+				"de": "München Hbf",
+				"uk": "Головний вокзал Мюнхена"
+			},
+			"to": {
+				"name": {
+					"en": "Oberau",
+					"de": "Oberau",
+					"uk": "Оберау"
+				}
+			},
+			"direction": "there",
+			"duration": 109,
+			"changes": 1,
+			"line": "RB 6",
+			"operator": "DB Regio",
+			"first": "04:55",
+			"last": "22:55",
+			"frequency": {
+				"en": "hourly",
+				"de": "stündlich",
+				"uk": "щогодини"
+			},
+			"price": [
+				{
+					"amount": 0,
+					"note": {
+						"en": "with Deutschlandticket",
+						"de": "mit Deutschlandticket",
+						"uk": "з Deutschlandticket"
+					}
+				},
+				{
+					"amount": 26.8,
+					"per": "day"
+				}
+			],
+			"ticket": {
+				"en": "Deutschlandticket valid to Oberau",
+				"de": "Deutschlandticket bis Oberau gültig",
+				"uk": "Deutschlandticket дійсний до Оберау"
+			},
+			"url": "https://www.bahn.de/",
+			"note": {
+				"en": "Change in Starnberg.",
+				"de": "Umstieg in Starnberg.",
+				"uk": "Пересадка в Штарнберзі."
+			}
+		},
+		"train-rb-6-oberau-munich-central-station": {
+			"mode": "train",
+			"from": {
+				"en": "Oberau",
+				"de": "Oberau",
+				"uk": "Оберау"
+			},
+			"to": {
+				"name": {
+					"en": "Munich Central Station",
+					"de": "München Hbf",
+					"uk": "Головний вокзал Мюнхена"
+				}
+			},
+			"direction": "back",
+			"duration": 110,
+			"changes": 1,
+			"line": "RB 6",
+			"operator": "DB Regio",
+			"first": "08:12",
+			"last": "20:15",
+			"frequency": {
+				"en": "hourly",
+				"de": "stündlich",
+				"uk": "щогодини"
+			},
+			"url": "https://www.bahn.de/",
+			"note": {
+				"en": "Change in Starnberg.",
+				"de": "Umstieg in Starnberg.",
+				"uk": "Пересадка в Штарнберзі."
+			}
+		},
+		"train-rb-66-munich-central-station-kochel": {
+			"mode": "train",
+			"from": {
+				"en": "Munich Central Station",
+				"de": "München Hbf",
+				"uk": "Головний вокзал Мюнхена"
+			},
+			"to": {
+				"name": {
+					"en": "Kochel",
+					"de": "Kochel",
+					"uk": "Кохель"
+				}
+			},
+			"direction": "there",
+			"duration": 108,
+			"changes": 1,
+			"line": "RB 66",
+			"operator": "DB Regio",
+			"first": "06:20",
+			"last": "18:22",
+			"frequency": {
+				"en": "hourly",
+				"de": "stündlich",
+				"uk": "щогодини"
+			},
+			"price": [
+				{
+					"amount": 0,
+					"note": {
+						"en": "with Deutschlandticket",
+						"de": "mit Deutschlandticket",
+						"uk": "з Deutschlandticket"
+					}
+				},
+				{
+					"amount": 25,
+					"per": "day"
+				}
+			],
+			"ticket": {
+				"en": "Deutschlandticket valid to Urfeld",
+				"de": "Deutschlandticket bis Urfeld gültig",
+				"uk": "Deutschlandticket дійсний до Урфельда"
+			},
+			"url": "https://www.bahn.de/",
+			"note": {
+				"en": "Change in Starnberg.",
+				"de": "Umstieg in Starnberg.",
+				"uk": "Пересадка в Штарнберзі."
+			}
 		}
 	},
 	"lifts": {
@@ -502,6 +828,38 @@
 			"size": "small",
 			"fills": "weekends",
 			"checked": "2026-10-04"
+		},
+		"parking-lot-neuhaus-station": {
+			"at": {
+				"ref": "way/378630219",
+				"name": "Neuhaus Bahnhof - P&R"
+			},
+			"name": {
+				"en": "Neuhaus station parking",
+				"de": "Neuhaus Bahnhof - P&R",
+				"uk": "Парковка P&R біля станції Нойхаус"
+			},
+			"size": "medium",
+			"fills": "weekends",
+			"checked": "2026-10-18"
+		},
+		"parking-lot-oberau-station": {
+			"at": {
+				"ref": "way/56072725",
+				"name": {
+					"en": "Oberau train station parking",
+					"de": "Parkplatz Bahnhof Oberau",
+					"uk": "Парковка біля станції Оберау"
+				}
+			},
+			"name": {
+				"en": "Oberau train station",
+				"de": "Bahnhof Oberau",
+				"uk": "Залізнична станція Оберау"
+			},
+			"size": "small",
+			"fills": "weekends",
+			"checked": "2026-09-06"
 		},
 		"parking-lot-p6-laliderertal": {
 			"at": "P6 Laliderertal",
@@ -592,6 +950,41 @@
 			"size": "small",
 			"fills": "summer",
 			"checked": "2026-11-02"
+		},
+		"parking-lot-urfeld": {
+			"at": {
+				"ref": "way/1030463554",
+				"name": "Parkplatz Urfeld"
+			},
+			"name": {
+				"en": "Urfeld Parking",
+				"de": "Parkplatz Urfeld",
+				"uk": "Парковка Урфельд"
+			},
+			"size": "small",
+			"fills": "weekends",
+			"checked": "2026-10-21"
+		},
+		"parking-lot-volksfestplatz": {
+			"at": {
+				"ref": "way/34601514",
+				"name": "Parkplatz Volksfestplatz"
+			},
+			"name": {
+				"en": "Parking lot Volksfestplatz",
+				"de": "Parkplatz Volksfestplatz",
+				"uk": "Парковка Volksfestplatz"
+			},
+			"price": [
+				{
+					"amount": 1,
+					"per": "hour"
+				}
+			],
+			"size": "medium",
+			"fills": "weekends",
+			"url": "https://www.tegernsee.com/a-parkplatz-am-see",
+			"checked": "2026-10-25"
 		}
 	},
 	"tickets": {}

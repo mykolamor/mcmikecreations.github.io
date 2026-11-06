@@ -22,7 +22,10 @@ test('the Node scripts and the CRM read a translated sidecar name as English', (
 	const root = makeTempRepo();
 	const p = repoPaths(root);
 	const sc = `${p.markdown}/grosser_laber.hike.json`;
-	const j = JSON.parse(readFileSync(sc, 'utf8'));
+	const raw = JSON.parse(readFileSync(sc, 'utf8'));
+	// The English, whether the real sidecar holds a plain string or a translated text today.
+	const english = (v: unknown) => (typeof v === 'string' ? v : (v as { en: string }).en);
+	const j = { ...raw, name: english(raw.name), description: english(raw.description) };
 	writeFileSync(sc, JSON.stringify({ ...j, name: { en: j.name, de: 'Großer Laber (de)' }, description: { en: j.description, de: 'Über.' } }));
 	// load-hikes.js: what the feeds, map-download and the CRM's tiles and problems read.
 	const hike = loadHikesFrom(p.static, p.hikesJson, { fresh: true }).find((h: any) => h.route.endsWith('/grosser_laber'))!;

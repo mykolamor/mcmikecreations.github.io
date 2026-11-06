@@ -65,7 +65,7 @@ Ausstiegspunkte und -routen. Die Hütte selbst konnte man mieten, und sie hatte
 eine schöne Terrasse mit Blick auf die umliegenden Gipfel.
 
 ![Blick vom Wasenkogel (1211 m) auf sein Kreuz, den Hirschberg (1670 m) und den Buchstein (1701 m)](/images/projects/data-viz/hikes/stories/wasenkogel/2026-10-04-07.jpg)
-![Blick vom Wasenkogel (1211 m) auf den Tegernsee, den Wallberg (1722 m) und den Bodenschneid (1669 m)](/images/projects/data-viz/hikes/stories/wasenkogel/2026-10-04-08.jpg)
+![Blick vom Wasenkogel (1211 m) auf den Tegernsee, den Wallberg (1722 m) und die Bodenschneid (1669 m)](/images/projects/data-viz/hikes/stories/wasenkogel/2026-10-04-08.jpg)
 
 Ich ging weiter, an einem Kreuz unterhalb des Gipfels vorbei (wahrscheinlich
 dort aufgestellt, damit man es von unten sieht), und erreichte den Gipfel, wo
@@ -211,7 +211,7 @@ erkennbaren Pfaden und Forstwegen durch den Wald.
 ![Das Panorama an der Hainzenhöhe (833 m)](/images/projects/data-viz/hikes/stories/wasenkogel/2026-10-04-25.jpg)
 
 Der Gipfel der Hainzenhöhe (833 m) war wunderschön. Man blickt direkt auf den
-Tegernsee und dahinter auf den [Wallberg (1722 m)](/404/) und den
+Tegernsee und dahinter auf den [Wallberg (1722 m)](/404/) und die
 [Bodenschneid (1669 m)](/hikes/2025-11-01-bodenschneid/). Man sieht auch die
 kleineren Berge ringsum, aber ich war zu faul herauszufinden, welche das waren.
 Die Sonne war inzwischen untergegangen, also lief ich gegen die Uhr, um vor

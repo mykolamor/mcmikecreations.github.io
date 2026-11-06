@@ -60,7 +60,7 @@ I checked out in 2024.
 
 ![View from Anklspitz (1112 m) towards Wendelstein (1838 m)](/images/projects/data-viz/hikes/stories/duernbachwand/2026-09-20-00.jpg)
 
-Since the settlement at the station is at roughly 800 meters from sea lavel,
+Since the settlement at the station is at roughly 800 meters from sea level,
 the ascent to the ridge and the first peak Anklspitz (1112 m) is quite
 steep. The trail is not that well maintained, but still much better than my
 recent hikes, like the one to [Großer Laber (1466 m)](/hikes/2026-09-06-grosser_laber/)
@@ -106,7 +106,7 @@ unnamed 1524-meter flat summit, was still quite some distance away, so we got
 deep into the conversation and stopped paying close attention to the trail.
 
 ![View from the ridge towards Brecherspitz (1685 m) and Jägerkamp (1746 m)](/images/projects/data-viz/hikes/stories/duernbachwand/2026-09-20-08.jpg)
-![Muchroom on near a barbed fence stepover](/images/projects/data-viz/hikes/stories/duernbachwand/2026-09-20-09.jpg)
+![Mushroom near a barbed fence stepover](/images/projects/data-viz/hikes/stories/duernbachwand/2026-09-20-09.jpg)
 
 In-between our discussions, I was trying to give David some information about
 the surrounding mountains, especially the ones I visited, like [Jägerkamp (1746 m)](/hikes/2024-08-31-aiplspitz/).
@@ -155,7 +155,7 @@ summit to David, since he visited it in the past.
 ![View from the trail towards Stümpfling (1506 m)](/images/projects/data-viz/hikes/stories/duernbachwand/2026-09-20-18.jpg)
 ![A wooden penis carved near Brecherspitz Vorgipfel (1643 m)](/images/projects/data-viz/hikes/stories/duernbachwand/2026-09-20-19.jpg)
 
-From there the trips was the same old. We went to Obere Firstalm (1369 m),
+From there the trip was the same old. We went to Obere Firstalm (1369 m),
 checked out the menu and the prices, and listened to local musicians playing
 there. David wanted a different dish not offered on the menu, so he asked us
 to descend to Untere Firstalm and check the menu there.

@@ -1,6 +1,14 @@
 {
-  "name": "Dürnbachwand",
-  "description": "Hike from Neuhaus to Spitzingsee via Anklspitz (1112 m), Dürnbachwand (1260 m), Schlierseespitz (1279 m), Freudenreichkapelle (1587 m), and Brecherspitz Vorgipfel (1643 m).",
+  "name": {
+    "en": "Dürnbachwand",
+    "de": "Dürnbachwand",
+    "uk": "Дюрнбахванд"
+  },
+  "description": {
+    "en": "Hike from Neuhaus to Spitzingsee via Anklspitz (1112 m), Dürnbachwand (1260 m), Schlierseespitz (1279 m), Freudenreichkapelle (1587 m), and Brecherspitz Vorgipfel (1643 m).",
+    "de": "Wanderung von Neuhaus zum Spitzingsee über Anklspitz (1112 m), Dürnbachwand (1260 m), Schlierseespitz (1279 m), Freudenreichkapelle (1587 m) und Brecherspitz Vorgipfel (1643 m).",
+    "uk": "Похід від Нойхауса до Шпіцінгзе через Anklspitz (1112 м), Dürnbachwand (1260 м), Schlierseespitz (1279 м), Freudenreichkapelle (1587 м) та Brecherspitz Vorgipfel (1643 м)."
+  },
   "image": "/images/projects/data-viz/hikes/duernbachwand.jpg",
   "origin": {
     "lat": 47.683996754422495,
@@ -24,18 +32,21 @@
   "facts": {
     "summary": {
       "en": "An unpopular point-to-point from Neuhaus to Spitzingsee across the Dürnbachwand ridge.",
-      "de": "Eine wenig begangene Punkt-zu-Punkt-Tour von Neuhaus nach Spitzingsee über den Dürnbachwand-Grat."
+      "de": "Eine wenig begangene Punkt-zu-Punkt-Tour von Neuhaus nach Spitzingsee über den Dürnbachwand-Grat.",
+      "uk": "Маловідомий маршрут від Нойхауса до Шпіцінгзе гребенем Dürnbachwand."
     },
     "difficulty": {
       "note": {
         "en": "T5 on the unpopular ridge, T4 leading to it; T2 on most of the route.",
-        "de": "T5 auf dem wenig begangenen Grat, T4 auf dem Zustieg; T2 auf den meisten Abschnitten."
+        "de": "T5 auf dem wenig begangenen Grat, T4 auf dem Zustieg; T2 auf den meisten Abschnitten.",
+        "uk": "T5 на маловідомому гребені, T4 на підході до нього; T2 на більшій частині маршруту."
       },
       "exposure": {
         "level": "high",
         "note": {
           "en": "Highly exposed T4/T5 sections with high drop-offs.",
-          "de": "Stark ausgesetzte T4/T5-Abschnitte mit hohen Abstürzen."
+          "de": "Stark ausgesetzte T4/T5-Abschnitte mit tiefen Abbrüchen.",
+          "uk": "Дуже відкриті ділянки T4/T5 з глибокими урвищами."
         }
       },
       "fitness": 4
@@ -45,14 +56,16 @@
       "possible": [5, 10],
       "note": {
         "en": "The T5 section is dangerous in slippery or snowy weather.",
-        "de": "Der T5-Abschnitt ist bei rutschigem oder verschneitem Wetter gefährlich."
+        "de": "Der T5-Abschnitt ist bei rutschigem oder verschneitem Wetter gefährlich.",
+        "uk": "Ділянка T5 небезпечна в слизьку чи сніжну погоду."
       }
     },
     "route": {
       "start": {
         "name": {
           "en": "Neuhaus train station",
-          "de": "Bahnhof Neuhaus"
+          "de": "Bahnhof Neuhaus",
+          "uk": "Залізнична станція Нойхаус"
         },
         "at": {
           "lat": 47.7062602,
@@ -60,7 +73,8 @@
           "demEle": 805.2,
           "name": {
             "en": "Fischhausen-Neuhaus",
-            "de": "Fischhausen-Neuhaus"
+            "de": "Fischhausen-Neuhaus",
+            "uk": "Фішхаузен-Нойхаус"
           }
         }
       },
@@ -70,13 +84,15 @@
         "demEle": 1092.9,
         "name": {
           "en": "Spitzingsee, Kirche",
-          "de": "Spitzingsee, Kirche"
+          "de": "Spitzingsee, Kirche",
+          "uk": "Шпіцінгзе, церква"
         }
       },
       "type": "point-to-point",
       "official": {
         "en": "The route takes the straight path to Anklspitz and follows the ridge to Brecherspitz Vorgipfel, afterwards going down to Spitzingsee.",
-        "de": "Die Route nimmt den direkten Weg zum Anklspitz und folgt dem Grat bis zum Brecherspitz-Vorgipfel, danach geht es hinab zum Spitzingsee."
+        "de": "Die Route nimmt den direkten Weg zum Anklspitz und folgt dem Grat bis zum Brecherspitz-Vorgipfel, danach geht es hinab zum Spitzingsee.",
+        "uk": "Звичайний маршрут іде прямою стежкою на Anklspitz і гребенем до Brecherspitz Vorgipfel, а потім спускається до Шпіцінгзе."
       },
       "terrain": ["forest-road", "road", "meadow", "path", "ridge"],
       "shade": "low",
@@ -93,24 +109,25 @@
         {
           "from": "Anklspitz",
           "to": {
-            "lat": 47.6842313,
-            "lon": 11.8617174,
-            "demEle": 1503.3,
+            "ref": "node/3233329670",
             "name": {
               "en": "Unnamed peak between Schlierseespitz and Freudenreichkapelle",
-              "de": "Unbenannter Gipfel zwischen Schlierseespitz und Freudenreichkapelle"
+              "de": "Unbenannter Gipfel zwischen Schlierseespitz und Freudenreichkapelle",
+              "uk": "Безіменна вершина між Schlierseespitz і Freudenreichkapelle"
             }
           },
           "marking": "none",
           "note": {
             "en": "Many people were rescued from the T4/T5 sections; follow GPS.",
-            "de": "Viele Menschen wurden von den T4/T5-Abschnitten gerettet; GPS folgen."
+            "de": "Von den T4/T5-Abschnitten mussten schon viele Menschen gerettet werden; dem GPS folgen.",
+            "uk": "З ділянок T4/T5 уже рятували багатьох людей; ідіть за GPS."
           }
         }
       ],
       "note": {
         "en": "Good markings start near Freudenreichkapelle.",
-        "de": "Gute Markierungen beginnen in der Nähe der Freudenreichkapelle."
+        "de": "Gute Markierungen beginnen in der Nähe der Freudenreichkapelle.",
+        "uk": "Добре маркування починається біля Freudenreichkapelle."
       }
     },
     "hazards": [
@@ -118,36 +135,36 @@
         "kind": "unsecured-ridge",
         "from": "Anklspitz",
         "to": {
-          "lat": 47.6908221,
-          "lon": 11.8629108,
-          "demEle": 1409.0,
+          "ref": "node/3743479380",
           "name": {
             "en": "Unnamed small peak near Schlierseespitz",
-            "de": "Unbenannter kleiner Gipfel in der Nähe des Schlierseespitzes"
+            "de": "Unbenannter kleiner Gipfel beim Schlierseespitz",
+            "uk": "Безіменна невелика вершина біля Schlierseespitz"
           }
         },
         "severity": "high",
         "note": {
           "en": "The path has no holds or cables; use your hands.",
-          "de": "Der Weg hat keine Griffe oder Seile; Hände benutzen."
+          "de": "Der Weg hat keine Griffe oder Seile; Hände benutzen.",
+          "uk": "На стежці немає скоб чи тросів; допомагайте собі руками."
         }
       },
       {
         "kind": "poor-marking",
         "from": "Anklspitz",
         "to": {
-          "lat": 47.6842313,
-          "lon": 11.8617174,
-          "demEle": 1503.3,
+          "ref": "node/3233329670",
           "name": {
             "en": "Unnamed peak between Schlierseespitz and Freudenreichkapelle",
-            "de": "Unbenannter Gipfel zwischen Schlierseespitz und Freudenreichkapelle"
+            "de": "Unbenannter Gipfel zwischen Schlierseespitz und Freudenreichkapelle",
+            "uk": "Безіменна вершина між Schlierseespitz і Freudenreichkapelle"
           }
         },
         "severity": "medium",
         "note": {
           "en": "Few to no markings on the section; a single trail following the ridge.",
-          "de": "Wenig bis keine Markierungen auf dem Abschnitt; ein einzelner Weg folgt dem Grat."
+          "de": "Wenig bis keine Markierungen auf dem Abschnitt; ein einzelner Weg folgt dem Grat.",
+          "uk": "На ділянці майже немає маркування; гребенем іде одна стежка."
         }
       }
     ],
@@ -156,7 +173,8 @@
         "at": "Schlierseespitz",
         "to": {
           "en": "Neuhaus train station",
-          "de": "Bahnhof Neuhaus"
+          "de": "Bahnhof Neuhaus",
+          "uk": "Залізнична станція Нойхаус"
         },
         "via": "trail",
         "time": 88,
@@ -164,7 +182,8 @@
         "route": "/_projects/data-viz/hikes/gpx/bailouts/schlierseespitz-neuhaus.gpx",
         "note": {
           "en": "Down Ankelsteig to Ankel-Alm, then following the gravel road to Neuhaus.",
-          "de": "Abstieg über Ankelsteig zur Ankel-Alm, dann der Schotterstraße nach Neuhaus folgen."
+          "de": "Über den Ankelsteig hinab zur Ankel-Alm, dann der Schotterstraße nach Neuhaus folgen.",
+          "uk": "Униз Ankelsteig до Ankel-Alm, потім гравійною дорогою до Нойхауса."
         }
       },
       {
@@ -174,12 +193,14 @@
           "demEle": 1480.8,
           "name": {
             "en": "Detour to trail 625a",
-            "de": "Abstecher zum Weg 625a"
+            "de": "Abstecher zum Weg 625a",
+            "uk": "Відгалуження до стежки 625a"
           }
         },
         "to": {
           "en": "Neuhaus train station",
-          "de": "Bahnhof Neuhaus"
+          "de": "Bahnhof Neuhaus",
+          "uk": "Залізнична станція Нойхаус"
         },
         "via": "trail",
         "time": 72,
@@ -187,7 +208,8 @@
         "route": "/_projects/data-viz/hikes/gpx/bailouts/brecherspitz_vorgipfel-neuhaus.gpx",
         "note": {
           "en": "Down trail 625a to Ankel-Alm, then following the gravel road to Neuhaus.",
-          "de": "Abstieg über Weg 625a zur Ankel-Alm, dann der Schotterstraße nach Neuhaus folgen."
+          "de": "Über den Weg 625a hinab zur Ankel-Alm, dann der Schotterstraße nach Neuhaus folgen.",
+          "uk": "Униз стежкою 625a до Ankel-Alm, потім гравійною дорогою до Нойхауса."
         }
       }
     ],
@@ -216,128 +238,31 @@
         "at": "Obere Firstalm"
       },
       {
-        "at": "Untere Firstalm",
-        "kind": "restaurant",
-        "days": {
-          "en": "Daily 10:00-17:00",
-          "de": "Täglich 10:00-17:00"
-        },
-        "booking": {
-          "url": "https://unterefirstalm.de/",
-          "label": {
-            "en": "Untere Firstalm website",
-            "de": "Untere Firstalm Website"
-          }
-        },
-        "overnight": true,
-        "food": true,
-        "water": true,
-        "cash": false,
-        "phone": "+49(0)8026/7676",
-        "checked": "2026-10-18"
+        "at": "Untere Firstalm"
       },
       {
-        "at": "Alte Wurzhütte",
-        "kind": "hotel",
-        "days": {
-          "en": "Daily 08:00-23:30",
-          "de": "Täglich 08:00-23:30"
-        },
-        "booking": {
-          "url": "https://www.alte-wurzhuette.de/",
-          "label": {
-            "en": "Hotel am Spitzingsee website",
-            "de": "Hotel am Spitzingsee Website"
-          }
-        },
-        "food": true,
-        "water": true,
-        "cash": false,
-        "phone": "+49 0802 660680",
-        "checked": "2026-10-18"
+        "at": "Alte Wurzhütte"
       }
     ],
     "access": {
       "carFree": "yes",
       "note": {
         "en": "Arrive by train, leave by bus.",
-        "de": "Anreise mit dem Zug und Abreise mit dem Bus."
+        "de": "Anreise mit dem Zug, Abreise mit dem Bus.",
+        "uk": "Туди поїздом, назад автобусом."
       },
       "checked": "2026-10-18",
       "transport": [
         {
-          "mode": "train",
-          "from": {
-            "en": "Munich Central Station",
-            "de": "München Hbf"
-          },
-          "to": {
-            "name": {
-              "en": "Fischhausen-Neuhaus",
-              "de": "Fischhausen-Neuhaus"
-            }
-          },
-          "direction": "there",
-          "line": "RB 55",
-          "operator": "DB Regio",
-          "duration": 75,
-          "changes": 0,
-          "first": "05:29",
-          "last": "22:02",
-          "frequency": {
-            "en": "hourly",
-            "de": "stündlich"
-          },
-          "price": [
-            {
-              "amount": 0,
-              "note": {
-                "en": "with Deutschlandticket",
-                "de": "mit Deutschlandticket"
-              }
-            },
-            {
-              "amount": 23.90,
-              "per": "day"
-            }
-          ],
-          "ticket": {
-            "en": "Deutschlandticket valid to Spitzingsee",
-            "de": "Deutschlandticket bis Spitzingsee gültig"
-          },
-          "url": "https://www.bahn.de/"
+          "use": "train-rb-55-munich-central-station-fischhausen-neuhaus"
         },
         {
-          "mode": "bus",
-          "from": {
-            "en": "Spitzingsee Kirche, Schliersee",
-            "de": "Spitzingsee Kirche, Schliersee"
-          },
-          "to": {
-            "name": {
-              "en": "Fischhausen-Neuhaus",
-              "de": "Fischhausen-Neuhaus"
-            }
-          },
-          "direction": "back",
-          "line": "Bus 362",
-          "operator": "MVV",
-          "duration": 13,
-          "changes": 0,
-          "first": "08:00",
-          "last": "18:00"
+          "use": "bus-362-spitzingsee-kirche-fischhausen-neuhaus"
         }
       ],
       "parking": [
         {
-          "name": {
-            "en": "Neuhaus station parking",
-            "de": "Neuhaus Bahnhof - P&R"
-          },
-          "at": {"ref": "way/378630219", "name": "Neuhaus Bahnhof - P&R"},
-          "size": "medium",
-          "fills": "weekends",
-          "checked": "2026-10-18"
+          "use": "parking-lot-neuhaus-station"
         }
       ]
     },
@@ -351,7 +276,8 @@
       "solo": "experienced",
       "note": {
         "en": "Later sections of the route are accessible to dogs.",
-        "de": "Spätere Abschnitte der Route sind für Hunde zugänglich."
+        "de": "Spätere Abschnitte der Route sind für Hunde zugänglich.",
+        "uk": "Пізніші ділянки маршруту доступні для собак."
       }
     },
     "legs": [
@@ -365,7 +291,13 @@
         "to": "Schlierseespitz",
         "terrain": ["ridge"],
         "sac": "T4",
-        "marking": "none"
+        "marking": "none",
+        "note": {
+          "en": "Steep narrow ridge with pebbles.",
+          "de": "Steiler schmaler Grat mit Kieselsteinen.",
+          "uk": "Крутий вузький гребінь із дрібним камінням."
+        },
+        "onProfile": true
       },
       {
         "to": {
@@ -374,18 +306,31 @@
           "demEle": 1480.8,
           "name": {
             "en": "Detour to Ankel-Alm",
-            "de": "Abstecher zur Ankel-Alm"
+            "de": "Abstecher zur Ankel-Alm",
+            "uk": "Відгалуження до Ankel-Alm"
           }
         },
         "terrain": ["ridge"],
         "sac": "T5",
-        "marking": "none"
+        "marking": "none",
+        "note": {
+          "en": "Narrow rocky ridge occasionally covered in tree roots.",
+          "de": "Schmaler Felsgrat, gelegentlich mit Baumwurzeln bedeckt.",
+          "uk": "Вузький скелястий гребінь, подекуди вкритий корінням."
+        },
+        "onProfile": true
       },
       {
         "to": "Brecherspitz Vorgipfel",
         "terrain": ["path"],
         "sac": "T3",
-        "marking": "good"
+        "marking": "good",
+        "note": {
+          "en": "Trail on a wide ridge covered in bushes.",
+          "de": "Weg auf einem breiten, buschbewachsenen Grat.",
+          "uk": "Стежка широким гребенем, порослим кущами."
+        },
+        "onProfile": true
       },
       {
         "to": "Untere Firstalm",
@@ -398,55 +343,6 @@
         "terrain": ["forest-road"],
         "sac": "T1",
         "marking": "good"
-      },
-      {
-        "from": "Anklspitz",
-        "to": "Schlierseespitz",
-        "sac": "T4",
-        "note": {
-          "en": "Steep narrow ridge with pebbles.",
-          "de": "Steiler schmaler Grat mit Kieselsteinen."
-        },
-        "inTable": false,
-        "onProfile": true
-      },
-      {
-        "from": "Schlierseespitz",
-        "to": {
-          "lat": 47.6824780,
-          "lon": 11.8614146,
-          "demEle": 1480.8,
-          "name": {
-            "en": "Detour to Ankel-Alm",
-            "de": "Abstecher zur Ankel-Alm"
-          }
-        },
-        "sac": "T5",
-        "note": {
-          "en": "Narrow rocky ridge occasionally covered in tree roots.",
-          "de": "Schmaler Felsgrat, gelegentlich mit Baumwurzeln bedeckt."
-        },
-        "inTable": false,
-        "onProfile": true
-      },
-      {
-        "from": {
-          "lat": 47.6824780,
-          "lon": 11.8614146,
-          "demEle": 1480.8,
-          "name": {
-            "en": "Detour to Ankel-Alm",
-            "de": "Abstecher zur Ankel-Alm"
-          }
-        },
-        "to": "Brecherspitz Vorgipfel",
-        "sac": "T3",
-        "note": {
-          "en": "Trail on a wide ridge covered in bushes.",
-          "de": "Weg auf einem breiten, buschbewachsenen Grat."
-        },
-        "inTable": false,
-        "onProfile": true
       }
     ],
     "plan": {
@@ -458,7 +354,8 @@
           "item": "water",
           "amount": {
             "en": "2–3 L",
-            "de": "2–3 L"
+            "de": "2–3 L",
+            "uk": "2–3 л"
           }
         },
         {
@@ -472,32 +369,38 @@
           "need": "optional",
           "amount": {
             "en": "for the huts",
-            "de": "für die Hütten"
+            "de": "für die Hütten",
+            "uk": "для хатин"
           }
         }
       ],
       "for": [
         {
-          "en": "Fit interested in a wilder ridge hike",
-          "de": "Fit, die an einer wilden Gratwanderung interessiert sind"
+          "en": "Fit hikers interested in a wilder ridge hike",
+          "de": "Fitte Wanderer, die eine wildere Gratwanderung suchen",
+          "uk": "Підготовлених туристів, яких цікавить дикіший похід гребенем"
         },
         {
           "en": "Anyone wanting to explore less popular peaks near Spitzingsee",
-          "de": "Alle, die weniger bekannte Gipfel in der Nähe des Spitzingsees erkunden möchten"
+          "de": "Alle, die weniger bekannte Gipfel in der Nähe des Spitzingsees erkunden möchten",
+          "uk": "Тих, хто хоче дослідити менш відомі вершини біля Шпіцінгзе"
         }
       ],
       "notFor": [
         {
           "en": "A hike fresh after rain",
-          "de": "Eine Wanderung nach Regen"
+          "de": "Eine Tour direkt nach Regen",
+          "uk": "Походу одразу після дощу"
         },
         {
           "en": "Extreme cliff climbers",
-          "de": "Extreme Kletterer"
+          "de": "Extreme Kletterer",
+          "uk": "Екстремальних скелелазів"
         },
         {
           "en": "Afraid of heights",
-          "de": "Nicht schwindelfreie"
+          "de": "Nicht Schwindelfreie",
+          "uk": "Тих, хто боїться висоти"
         }
       ],
       "timing": {
@@ -505,7 +408,8 @@
         "turnaround": "13:00",
         "note": {
           "en": "The difficult section is at the start; the rest of the path is easier.",
-          "de": "Der schwierige Abschnitt befindet sich am Anfang; der Rest des Weges ist einfacher."
+          "de": "Der schwierige Abschnitt kommt am Anfang; der Rest des Weges ist leichter.",
+          "uk": "Складна ділянка на початку; решта шляху легша."
         }
       },
       "alternatives": {

@@ -1,6 +1,14 @@
 {
-  "name": "Großer Laber",
-  "description": "Hike from Oberau to Ettal via Kleiner Laber (1205 m), Mühlberg (1305 m), and Großer Laber (1466 m).",
+  "name": {
+    "en": "Großer Laber",
+    "de": "Großer Laber",
+    "uk": "Гросер Лабер"
+  },
+  "description": {
+    "en": "Hike from Oberau to Ettal via Kleiner Laber (1205 m), Mühlberg (1305 m), and Großer Laber (1466 m).",
+    "de": "Wanderung von Oberau nach Ettal über Kleiner Laber (1205 m), Mühlberg (1305 m) und Großer Laber (1466 m).",
+    "uk": "Похід від Оберау до Етталя через Kleiner Laber (1205 м), Mühlberg (1305 м) та Großer Laber (1466 м)."
+  },
   "image": "/images/projects/data-viz/hikes/grosser_laber.jpg",
   "origin": {
     "lat": 47.569577036593756,
@@ -18,18 +26,21 @@
   "facts": {
     "summary": {
       "en": "A medium point-to-point from Oberau to Ettal across the lesser-known Laber sub-peaks.",
-      "de": "Eine mittelschwere Punkt-zu-Punkt-Tour von Oberau nach Ettal über die weniger bekannten Laber-Nebenberge."
+      "de": "Eine mittelschwere Punkt-zu-Punkt-Tour von Oberau nach Ettal über die weniger bekannten Laber-Nebenberge.",
+      "uk": "Маршрут середньої складності від Оберау до Етталя через менш відомі вершини масиву Laber."
     },
     "difficulty": {
       "note": {
         "en": "T4 for the steep descent from Großer Laber; everything else is T2.",
-        "de": "T4 für den steilen Abstieg vom Großen Laber; alles andere ist T2."
+        "de": "T4 für den steilen Abstieg vom Großen Laber; alles andere ist T2.",
+        "uk": "T4 для крутого спуску з Großer Laber; решта T2."
       },
       "exposure": {
         "level": "low",
         "note": {
           "en": "Most of the hike happens in the forest.",
-          "de": "Die meiste Zeit der Wanderung verläuft im Wald."
+          "de": "Der Großteil der Wanderung verläuft im Wald.",
+          "uk": "Більша частина походу проходить лісом."
         }
       },
       "fitness": 3
@@ -39,14 +50,16 @@
       "possible": [4, 10],
       "note": {
         "en": "The T4 section gets slippery in colder seasons.",
-        "de": "Der T4-Abschnitt wird in kälteren Jahreszeiten rutschig."
+        "de": "Der T4-Abschnitt wird in kälteren Jahreszeiten rutschig.",
+        "uk": "У холодну пору ділянка T4 стає слизькою."
       }
     },
     "route": {
       "start": {
         "name": {
           "en": "Oberau train station",
-          "de": "Bahnhof Oberau"
+          "de": "Bahnhof Oberau",
+          "uk": "Залізнична станція Оберау"
         },
         "at": {
           "lat": 47.5596144,
@@ -54,7 +67,8 @@
           "demEle": 653.7,
           "name": {
             "en": "Oberau train station",
-            "de": "Bahnhof Oberau"
+            "de": "Bahnhof Oberau",
+            "uk": "Залізнична станція Оберау"
           }
         }
       },
@@ -67,19 +81,22 @@
       "type": "point-to-point",
       "official": {
         "en": "The usual route skips Großer Laber and follows the slope either to Ettaler Manndl or down to Ettal.",
-        "de": "Die übliche Route umgeht den Großen Laber und folgt dem Hang entweder zum Ettaler Manndl oder hinab nach Ettal."
+        "de": "Die übliche Route umgeht den Großen Laber und folgt dem Hang entweder zum Ettaler Manndl oder hinab nach Ettal.",
+        "uk": "Звичайний маршрут оминає Großer Laber і йде схилом або до Ettaler Manndl, або вниз до Етталя."
       },
       "optional": [
         {
           "name": {
             "en": "Großer Laber",
-            "de": "Großer Laber"
+            "de": "Großer Laber",
+            "uk": "Großer Laber"
           },
           "from": "Mühlberg",
           "to": "Großer Laber",
           "note": {
             "en": "Slightly overgrown, but regularly visited detour.",
-            "de": "Leicht zugewachsen, aber regelmäßig begangener Abstecher."
+            "de": "Leicht zugewachsen, aber regelmäßig begangener Abstecher.",
+            "uk": "Трохи заросле, але регулярно відвідуване відгалуження."
           }
         }
       ],
@@ -104,19 +121,22 @@
             "demEle": 1350.9,
             "name": {
               "en": "Meadow",
-              "de": "Wiese"
+              "de": "Wiese",
+              "uk": "Лука"
             }
           },
           "marking": "none",
           "note": {
             "en": "Faded trail covered in fallen trees, leaves, and moss; no markings.",
-            "de": "Verblasster Weg, bedeckt mit umgestürzten Bäumen, Laub und Moos; keine Markierungen."
+            "de": "Kaum erkennbarer Pfad voller umgestürzter Bäume, Laub und Moos; keine Markierungen.",
+            "uk": "Ледь помітна стежка, завалена деревами, листям і мохом; маркування немає."
           }
         }
       ],
       "note": {
         "en": "Occasional red markings on trees; clear trails and forest roads otherwise.",
-        "de": "Gelegentliche rote Markierungen auf Bäumen; ansonsten klare Wege und Forststraßen."
+        "de": "Gelegentliche rote Markierungen auf Bäumen; ansonsten klare Wege und Forststraßen.",
+        "uk": "Подекуди червоне маркування на деревах; в інших місцях чіткі стежки й лісові дороги."
       }
     },
     "hazards": [
@@ -135,45 +155,49 @@
           "demEle": 1198.2,
           "name": {
             "en": "Hunting stand",
-            "de": "Hochsitz"
+            "de": "Hochsitz",
+            "uk": "Мисливська вишка"
           }
         },
         "to": {
           "en": "Oberau",
-          "de": "Oberau"
+          "de": "Oberau",
+          "uk": "Оберау"
         },
         "via": "trail",
         "route": "/_projects/data-viz/hikes/gpx/bailouts/kleiner_laber-oberau.gpx",
         "time": 104,
         "note": {
           "en": "South on the crossroads back to Oberau.",
-          "de": "Südlich auf dem Kreuzweg zurück nach Oberau."
+          "de": "An der Kreuzung nach Süden zurück nach Oberau.",
+          "uk": "На роздоріжжі на південь, назад до Оберау."
         }
       },
       {
         "at": "Mühlberg",
         "to": {
           "en": "Ettal",
-          "de": "Ettal"
+          "de": "Ettal",
+          "uk": "Етталь"
         },
         "via": "trail",
         "route": "/_projects/data-viz/hikes/gpx/bailouts/muehlberg-ettal.gpx",
         "time": 74,
         "note": {
           "en": "South-west following the Mühlberg trail down the ridge.",
-          "de": "Südwestlich dem Mühlberg-Weg folgend den Grat hinunter."
+          "de": "Nach Südwesten dem Mühlberg-Weg den Grat hinab folgen.",
+          "uk": "На південний захід стежкою з Mühlberg униз гребенем."
         }
       }
     ],
     "water": [
       {
         "at": {
-          "lat": 47.5799654,
-          "lon": 11.1150155,
-          "demEle": 1329.6,
+          "ref": "node/5037526152",
           "name": {
             "en": "Drinking water tap",
-            "de": "Trinkwasserhahn"
+            "de": "Trinkwasserhahn",
+            "uk": "Кран із питною водою"
           }
         },
         "kind": "tap",
@@ -196,128 +220,24 @@
       "carFree": "yes",
       "note": {
         "en": "Arrive by train, leave by bus.",
-        "de": "Anreise mit dem Zug, Abreise mit dem Bus."
+        "de": "Anreise mit dem Zug, Abreise mit dem Bus.",
+        "uk": "Туди поїздом, назад автобусом."
       },
       "checked": "2026-10-23",
       "transport": [
         {
-          "mode": "train",
-          "from": {
-            "en": "Munich Central Station",
-            "de": "München Hbf"
-          },
-          "to": {
-            "name": {
-              "en": "Oberau",
-              "de": "Oberau"
-            }
-          },
-          "direction": "there",
-          "line": "RB 6",
-          "operator": "DB Regio",
-          "duration": 109,
-          "changes": 1,
-          "first": "04:55",
-          "last": "22:55",
-          "frequency": {
-            "en": "hourly",
-            "de": "stündlich"
-          },
-          "price": [
-            {
-              "amount": 0,
-              "note": {
-                "en": "with Deutschlandticket",
-                "de": "mit Deutschlandticket"
-              }
-            },
-            {
-              "amount": 26.80,
-              "per": "day"
-            }
-          ],
-          "ticket": {
-            "en": "Deutschlandticket valid to Oberau",
-            "de": "Deutschlandticket bis Oberau gültig"
-          },
-          "url": "https://www.bahn.de/",
-          "note": {
-            "en": "Change in Starnberg.",
-            "de": "Umstieg in Starnberg."
-          }
+          "use": "train-rb-6-munich-central-station-oberau"
         },
         {
-          "mode": "bus",
-          "from": {
-            "en": "Klostergasthof, Ettal",
-            "de": "Klostergasthof, Ettal"
-          },
-          "to": {
-            "name": {
-              "en": "Oberau",
-              "de": "Oberau"
-            }
-          },
-          "direction": "back",
-          "line": "326",
-          "operator": "MVV",
-          "duration": 10,
-          "changes": 0,
-          "first": "07:55",
-          "last": "18:55",
-          "frequency": {
-            "en": "hourly",
-            "de": "stündlich"
-          }
+          "use": "bus-326-ettal-klostergasthof-oberau"
         },
         {
-          "mode": "train",
-          "from": {
-            "en": "Oberau",
-            "de": "Oberau"
-          },
-          "to": {
-            "name": {
-              "en": "Munich Central Station",
-              "de": "München Hbf"
-            }
-          },
-          "direction": "back",
-          "line": "RB 6",
-          "operator": "DB Regio",
-          "duration": 110,
-          "changes": 1,
-          "first": "08:12",
-          "last": "20:15",
-          "frequency": {
-            "en": "hourly",
-            "de": "stündlich"
-          },
-          "url": "https://www.bahn.de/",
-          "note": {
-            "en": "Change in Starnberg.",
-            "de": "Umstieg in Starnberg."
-          }
+          "use": "train-rb-6-oberau-munich-central-station"
         }
       ],
       "parking": [
         {
-          "name": {
-            "en": "Oberau train station",
-            "de": "Bahnhof Oberau"
-          },
-          "at": {
-            "lat": 47.5592776,
-            "lon": 11.1388804,
-            "demEle": 653.9,
-            "name": {
-              "en": "Oberau train station parking",
-              "de": "Parkplatz Bahnhof Oberau"
-            }
-          },
-          "size": "small",
-          "fills": "weekends",
-          "checked": "2026-09-06"
+          "use": "parking-lot-oberau-station"
         }
       ]
     },
@@ -331,7 +251,8 @@
       "solo": "yes",
       "note": {
         "en": "Dogs need to be careful on the T4 section.",
-        "de": "Hunde müssen auf dem T4-Abschnitt vorsichtig sein."
+        "de": "Hunde brauchen auf dem T4-Abschnitt Vorsicht.",
+        "uk": "На ділянці T4 собакам треба бути обережними."
       }
     },
     "legs": [
@@ -361,12 +282,19 @@
           "demEle": 1350.9,
           "name": {
             "en": "Meadow",
-            "de": "Wiese"
+            "de": "Wiese",
+            "uk": "Лука"
           }
         },
         "terrain": ["path", "overgrown"],
         "sac": "T4",
-        "marking": "none"
+        "marking": "none",
+        "note": {
+          "en": "The trail on the steep slope is barely visible, but the descent is largely safe.",
+          "de": "Der Weg am steilen Hang ist kaum sichtbar, aber der Abstieg ist weitgehend ungefährlich.",
+          "uk": "Стежку на крутому схилі ледь видно, але спуск загалом безпечний."
+        },
+        "onProfile": true
       },
       {
         "to": {
@@ -378,25 +306,6 @@
         "terrain": ["forest-road"],
         "sac": "T2",
         "marking": "good"
-      },
-      {
-        "from": "Großer Laber",
-        "to": {
-          "lat": 47.5802789,
-          "lon": 11.1168166,
-          "demEle": 1350.9,
-          "name": {
-            "en": "Meadow",
-            "de": "Wiese"
-          }
-        },
-        "sac": "T4",
-        "note": {
-          "en": "The trail on the steep slope is barely visible, but the descent is laregely safe.",
-          "de": "Der Weg am steilen Hang ist kaum sichtbar, aber der Abstieg ist weitgehend ungefährlich."
-        },
-        "inTable": false,
-        "onProfile": true
       }
     ],
     "plan": {
@@ -408,7 +317,8 @@
           "item": "water",
           "amount": {
             "en": "2–3 L",
-            "de": "2–3 L"
+            "de": "2–3 L",
+            "uk": "2–3 л"
           }
         },
         {
@@ -423,25 +333,30 @@
       "for": [
         {
           "en": "Enjoyers of Laber",
-          "de": "Genießer des Laber"
+          "de": "Laber-Fans",
+          "uk": "Шанувальників Laber"
         },
         {
           "en": "People exploring forestry slopes",
-          "de": "Menschen, die Forsthänge erkunden"
+          "de": "Wer gern Forsthänge erkundet",
+          "uk": "Тих, хто любить досліджувати лісові схили"
         }
       ],
       "notFor": [
         {
           "en": "Casual hikers",
-          "de": "Gelegenheitswanderer"
+          "de": "Gelegenheitswanderer",
+          "uk": "Звичайних туристів"
         },
         {
           "en": "People cautious of steep descents",
-          "de": "Menschen, die vorsichtig bei steilen Abstiegen sind"
+          "de": "Wer steile Abstiege lieber meidet",
+          "uk": "Тих, хто остерігається крутих спусків"
         },
         {
           "en": "People with meadow flower allergies",
-          "de": "Menschen mit Allergien gegen Wiesenblumen"
+          "de": "Menschen mit Allergie gegen Wiesenblumen",
+          "uk": "Людей з алергією на лучні квіти"
         }
       ],
       "timing": {

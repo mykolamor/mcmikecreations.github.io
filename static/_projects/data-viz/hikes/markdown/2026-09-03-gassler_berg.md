@@ -42,7 +42,7 @@ hike? Absolutely! Do I need to buy new hiking attire again? Potentially...
 
 The day before I barely had any sleep due to personal reasons, so I started the
 hike quite late. I arrived in Gmund around noon and after some work-related
-phone calls and started the hike around 13:30.
+phone calls started the hike around 13:30.
 
 First on the map was Buchberg (996 m). There are several different ways to
 reach the peak, but I chose to approach it from the north, since I've never
@@ -147,7 +147,7 @@ but its northern side is covered in trees, so it wasn't that exciting.
 The road down, on the other hand, was horrible. Although I found and followed a
 tractor road, the grass on it was getting taller and wetter by the minute. The
 local spiders and bees were covering the occasional flowers in the grass, being
-not too thrilled of me stomping on their homes. The blueberry stems and thorny
+not too thrilled about me stomping on their homes. The blueberry stems and thorny
 plants were cutting into my legs. I immediately realized I'll have to pull out
 ticks when I come home.
 

@@ -1,6 +1,14 @@
 {
-  "name": "Gassler Berg",
-  "description": "Hike from Gmund to Hausham via Buchberg (996 m), Gassler Berg (1180 m), Oeder Kogel (1135 m), Schußkogel (1134 m), and Wallenburger Kogel (936 m).",
+  "name": {
+    "en": "Gassler Berg",
+    "de": "Gassler Berg",
+    "uk": "Гасслер-Берг"
+  },
+  "description": {
+    "en": "Hike from Gmund to Hausham via Buchberg (996 m), Gassler Berg (1178 m), Oeder Kogel (1135 m), Schußkogel (1134 m), and Wallenburger Kogel (936 m).",
+    "de": "Wanderung von Gmund nach Hausham über Buchberg (996 m), Gassler Berg (1178 m), Oeder Kogel (1135 m), Schußkogel (1134 m) und Wallenburger Kogel (936 m).",
+    "uk": "Похід від Гмунда до Хаусхама через Buchberg (996 м), Gassler Berg (1178 м), Oeder Kogel (1135 м), Schußkogel (1134 м) та Wallenburger Kogel (936 м)."
+  },
   "image": "/images/projects/data-viz/hikes/gassler_berg.jpg",
   "origin": {
     "lat": 47.74440260945156,
@@ -20,18 +28,21 @@
   "facts": {
     "summary": {
       "en": "A long point-to-point between Gmund and Hausham covering the lowest wild peaks in-between.",
-      "de": "Eine lange Punkt-zu-Punkt-Wanderung zwischen Gmund und Hausham, die die niedrigsten wilden Gipfel dazwischen abdeckt."
+      "de": "Eine lange Streckenwanderung zwischen Gmund und Hausham über die niedrigsten wilden Gipfel dazwischen.",
+      "uk": "Довгий маршрут між Гмундом і Хаусхамом через найнижчі дикі вершини між ними."
     },
     "difficulty": {
       "note": {
         "en": "T3 on most wild parts; T1-T2 on the forest roads.",
-        "de": "T3 auf den meisten wilden Abschnitten; T1-T2 auf den Forststraßen."
+        "de": "T3 auf den meisten wilden Abschnitten; T1-T2 auf den Forststraßen.",
+        "uk": "T3 на більшості диких ділянок; T1-T2 на лісових дорогах."
       },
       "exposure": {
         "level": "low",
         "note": {
           "en": "The ridges are wide and have trees.",
-          "de": "Die Grate sind breit und bewaldet."
+          "de": "Die Grate sind breit und bewaldet.",
+          "uk": "Гребені широкі й порослі деревами."
         }
       },
       "fitness": 3
@@ -41,14 +52,16 @@
       "possible": [5, 10],
       "note": {
         "en": "Muddy sections become unwalkable in winter and spring.",
-        "de": "Schlammige Abschnitte werden im Winter und Frühjahr unpassierbar."
+        "de": "Schlammige Abschnitte werden im Winter und Frühjahr unpassierbar.",
+        "uk": "Багнисті ділянки взимку й навесні стають непрохідними."
       }
     },
     "route": {
       "start": {
         "name": {
           "en": "Gmund train station",
-          "de": "Bahnhof Gmund"
+          "de": "Bahnhof Gmund",
+          "uk": "Залізнична станція Гмунд"
         },
         "at": {
           "lat": 47.7496082,
@@ -56,7 +69,8 @@
           "demEle": 735.9,
           "name": {
             "en": "Gmund train station",
-            "de": "Bahnhof Gmund"
+            "de": "Bahnhof Gmund",
+            "uk": "Залізнична станція Гмунд"
           }
         }
       },
@@ -66,7 +80,8 @@
         "demEle": 761.6,
         "name": {
           "en": "Hausham train station",
-          "de": "Hausham Bahnhof"
+          "de": "Bahnhof Hausham",
+          "uk": "Залізнична станція Хаусхам"
         }
       },
       "type": "point-to-point",
@@ -90,7 +105,8 @@
             "demEle": 761.6,
             "name": {
               "en": "Hausham train station",
-              "de": "Hausham Bahnhof"
+              "de": "Bahnhof Hausham",
+              "uk": "Залізнична станція Хаусхам"
             }
           },
           "marking": "good"
@@ -98,7 +114,8 @@
       ],
       "note": {
         "en": "Barely any markings besides small sections of popular trails.",
-        "de": "Kaum Markierungen außer auf kleinen Abschnitten beliebter Wege."
+        "de": "Kaum Markierungen außer auf kleinen Abschnitten beliebter Wege.",
+        "uk": "Маркування майже немає, крім коротких ділянок популярних стежок."
       }
     },
     "hazards": [
@@ -109,7 +126,8 @@
         "severity": "medium",
         "note": {
           "en": "Several small mountain streams.",
-          "de": "Mehrere kleine Bergbäche."
+          "de": "Mehrere kleine Bergbäche.",
+          "uk": "Кілька невеликих гірських струмків."
         }
       },
       {
@@ -120,7 +138,8 @@
         "season": [3, 4, 5],
         "note": {
           "en": "Bogs and marshes during wet seasons.",
-          "de": "Sumpfige Wiesen und Moor während nasser Jahreszeiten."
+          "de": "Sumpf und Moor in nassen Jahreszeiten.",
+          "uk": "Болота й трясовини в дощову пору."
         }
       }
     ],
@@ -129,7 +148,8 @@
         "at": "Gassler Berg",
         "to": {
           "en": "Gmund",
-          "de": "Gmund"
+          "de": "Gmund",
+          "uk": "Гмунд"
         },
         "via": "trail",
         "time": 64,
@@ -139,7 +159,8 @@
         "at": "Oeder Kogel",
         "to": {
           "en": "Gmund",
-          "de": "Gmund"
+          "de": "Gmund",
+          "uk": "Гмунд"
         },
         "via": "trail",
         "time": 65,
@@ -170,52 +191,12 @@
       "checked": "2026-10-04",
       "transport": [
         {
-          "mode": "train",
-          "from": {
-            "en": "Munich Central Station",
-            "de": "München Hbf"
-          },
-          "to": {
-            "name": {
-              "en": "Gmund",
-              "de": "Gmund"
-            }
-          },
-          "direction": "there",
-          "line": "RB 57",
-          "operator": "Bayerische Regiobahn",
-          "duration": 61,
-          "changes": 0,
-          "first": "07:02",
-          "last": "20:02",
-          "frequency": {
-            "en": "hourly",
-            "de": "stündlich"
-          },
-          "ticket": {
-            "en": "Deutschlandticket valid to Gmund",
-            "de": "Deutschlandticket bis Gmund gültig"
-          },
-          "url": "https://www.bahn.de/"
+          "use": "train-rb-57-munich-central-station-gmund"
         }
       ],
       "parking": [
         {
-          "name": {
-            "en": "Parking lot Volksfestplatz",
-            "de": "Parkplatz Volksfestplatz"
-          },
-          "at": {"ref": "way/34601514", "name": "Parkplatz Volksfestplatz"},
-          "price": [
-            {
-              "amount": 1,
-              "per": "hour"
-            }
-          ],
-          "size": "medium",
-          "fills": "weekends",
-          "url": "https://www.tegernsee.com/a-parkplatz-am-see",
-          "checked": "2026-10-25"
+          "use": "parking-lot-volksfestplatz"
         }
       ]
     },
@@ -226,7 +207,8 @@
         "to": "Oeder Kogel",
         "note": {
           "en": "Grazing cattle.",
-          "de": "Weidevieh."
+          "de": "Weidevieh.",
+          "uk": "Випас худоби."
         }
       },
       {
@@ -245,7 +227,8 @@
       "solo": "yes",
       "note": {
         "en": "Snow shoes or crampons needed in winter.",
-        "de": "Im Winter Schneeschuhe oder Steigeisen nötig."
+        "de": "Im Winter Schneeschuhe oder Steigeisen nötig.",
+        "uk": "Взимку потрібні снігоступи або кішки."
       }
     },
     "legs": [
@@ -286,7 +269,8 @@
           "demEle": 761.6,
           "name": {
             "en": "Hausham train station",
-            "de": "Hausham Bahnhof"
+            "de": "Bahnhof Hausham",
+            "uk": "Залізнична станція Хаусхам"
           }
         },
         "terrain": ["forest-road", "road"],
@@ -299,7 +283,8 @@
         "sac": "T3",
         "note": {
           "en": "Overgrown areas, river crossings, slope climbs.",
-          "de": "Überwachsene Abschnitte, Bachquerungen, Steigungen."
+          "de": "Zugewachsene Abschnitte, Bachquerungen, Anstiege am Hang.",
+          "uk": "Зарослі ділянки, переходи через струмки, підйоми схилами."
         },
         "inTable": false,
         "onProfile": true
@@ -314,14 +299,16 @@
           "item": "water",
           "amount": {
             "en": "2–3 L",
-            "de": "2–3 L"
+            "de": "2–3 L",
+            "uk": "2–3 л"
           }
         },
         {
           "item": "rain-shell",
           "when": {
             "en": "for crossing streams and bogs",
-            "de": "für das Überqueren von Bächen und Mooren"
+            "de": "zum Durchqueren von Bächen und Mooren",
+            "uk": "для переходу струмків і боліт"
           }
         },
         {
@@ -332,13 +319,15 @@
       "for": [
         {
           "en": "Hikers visiting the very edge of the Prealps",
-          "de": "Wanderer, die den äußersten Rand der Voralpen besuchen"
+          "de": "Wanderer, die den äußersten Rand der Voralpen erkunden",
+          "uk": "Туристів, які досліджують самий край Передальп"
         }
       ],
       "notFor": [
         {
           "en": "Hikers looking for views or challenge",
-          "de": "Wanderer, die Aussicht oder Herausforderung suchen"
+          "de": "Wanderer, die Aussicht oder Herausforderung suchen",
+          "uk": "Туристів, які шукають краєвидів чи виклику"
         }
       ],
       "timing": {

@@ -306,14 +306,7 @@
       {
         "at": {
           "ref": "way/110298010"
-        },
-        "kind": "alpine-hut",
-        "open": "all-year",
-        "booking": "https://www.berggasthaus-riederstein-am-galaun.de/",
-        "phone": "+498022273022",
-        "water": true,
-        "food": true,
-        "checked": "2026-11-02"
+        }
       }
     ],
     "access": {

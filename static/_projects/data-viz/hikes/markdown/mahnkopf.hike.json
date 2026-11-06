@@ -182,9 +182,7 @@
       },
       {
         "at": {
-          "lat": 47.4001648,
-          "lon": 11.5138933,
-          "demEle": 1527.7,
+          "ref": "node/9883893791",
           "name": {
             "en": "Drinking water",
             "de": "Trinkwasser",
@@ -196,9 +194,7 @@
       },
       {
         "at": {
-          "lat": 47.3941838,
-          "lon": 11.5286201,
-          "demEle": 1730.7,
+          "ref": "node/1950350430",
           "name": {
             "en": "Spring",
             "de": "Quelle",
@@ -210,9 +206,7 @@
       },
       {
         "at": {
-          "lat": 47.3964984,
-          "lon": 11.5473682,
-          "demEle": 1393.7,
+          "ref": "node/5860388407",
           "name": {
             "en": "Drinking water",
             "de": "Trinkwasser",
@@ -224,9 +218,7 @@
       },
       {
         "at": {
-          "lat": 47.3989876,
-          "lon": 11.5580425,
-          "demEle": 1225.2,
+          "ref": "node/1950351332",
           "name": {
             "en": "Fountain",
             "de": "Brunnen",
@@ -238,9 +230,7 @@
       },
       {
         "at": {
-          "lat": 47.3995813,
-          "lon": 11.5598594,
-          "demEle": 1218.9,
+          "ref": "node/1364156812",
           "name": {
             "en": "Fountain",
             "de": "Brunnen",

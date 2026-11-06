@@ -176,14 +176,12 @@
       },
       {
         "to": {
-          "lat": 47.6870133,
-          "lon": 11.791444,
+          "ref": "node/5061212534",
           "name": {
             "en": "Ellmau bus stop",
             "de": "Bushaltestelle Ellmau",
             "uk": "Автобусна зупинка «Ельмау»"
-          },
-          "demEle": 744.3
+          }
         },
         "sac": "T1",
         "terrain": ["forest-road", "road"],

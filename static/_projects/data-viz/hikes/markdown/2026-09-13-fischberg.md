@@ -96,7 +96,7 @@ was a bit more challenging, but still manageable despite my recent dental
 surgery. I made sure to take it slow and manage my heart rate, so I wouldn't
 overexert myself.
 
-![A from crossing the road under my feet at Fischberg (1164 m)](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-10.jpg)
+![A frog crossing the road under my feet at Fischberg (1164 m)](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-10.jpg)
 ![Mykola excitedly staring at a frog at Fischberg (1164 m)](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-11.jpg)
 
 The top of the mountain was similar to what I saw on my previous hikes to small

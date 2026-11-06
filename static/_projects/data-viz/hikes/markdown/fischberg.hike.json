@@ -1,6 +1,14 @@
 {
-  "name": "Walchensee",
-  "description": "Hike from Urfeld to Einsiedl via Fischberg (1164 m).",
+  "name": {
+    "en": "Walchensee",
+    "de": "Walchensee",
+    "uk": "Вальхензе"
+  },
+  "description": {
+    "en": "Hike from Urfeld to Einsiedl via Fischberg (1164 m).",
+    "de": "Wanderung von Urfeld nach Einsiedl über den Fischberg (1164 m).",
+    "uk": "Похід від Урфельда до Айнзідля через Fischberg (1164 м)."
+  },
   "image": "/images/projects/data-viz/hikes/fischberg.jpg",
   "origin": {
     "lat": 47.591462247489595,
@@ -17,12 +25,14 @@
   "facts": {
     "summary": {
       "en": "A medium-length point-to-point around Walchensee, making an optional detour to Fischberg.",
-      "de": "Eine mittelschwere Rundtour um den Walchensee, mit optionalem Abstecher zum Fischberg."
+      "de": "Eine mittellange Streckenwanderung am Walchensee mit optionalem Abstecher zum Fischberg.",
+      "uk": "Маршрут середньої довжини вздовж Вальхензе з необов'язковим відгалуженням на Fischberg."
     },
     "difficulty": {
       "note": {
         "en": "T1 around the lake and up Fischberg.",
-        "de": "T1 um den See und hinauf zum Fischberg."
+        "de": "T1 um den See und hinauf zum Fischberg.",
+        "uk": "T1 навколо озера й на Fischberg."
       },
       "fitness": 2
     },
@@ -34,7 +44,8 @@
       "start": {
         "name": {
           "en": "Bus stop Urfeld",
-          "de": "Bushaltestelle Urfeld"
+          "de": "Bushaltestelle Urfeld",
+          "uk": "Автобусна зупинка Урфельд"
         },
         "at": {
           "lat": 47.6177291,
@@ -42,7 +53,8 @@
           "demEle": 808.7,
           "name": {
             "en": "Bus stop Urfeld",
-            "de": "Bushaltestelle Urfeld"
+            "de": "Bushaltestelle Urfeld",
+            "uk": "Автобусна зупинка Урфельд"
           }
         }
       },
@@ -55,19 +67,22 @@
       "type": "point-to-point",
       "official": {
         "en": "The usual route takes a round trip around Walchensee.",
-        "de": "Der übliche Weg führt um den Walchensee herum."
+        "de": "Der übliche Weg führt um den Walchensee herum.",
+        "uk": "Звичайний маршрут іде кільцем навколо Вальхензе."
       },
       "optional": [
         {
           "name": {
             "en": "Fischberg",
-            "de": "Fischberg"
+            "de": "Fischberg",
+            "uk": "Fischberg"
           },
           "from": "Fischberg",
           "to": "Waldschänke Niedernach",
           "note": {
             "en": "A small hill with no views; only for peak baggers.",
-            "de": "Ein kleiner Hügel ohne Aussicht; nur für Gipfelsammler."
+            "de": "Ein kleiner Hügel ohne Aussicht; nur für Gipfelsammler.",
+            "uk": "Невеликий пагорб без краєвидів; лише для збирачів вершин."
           }
         }
       ],
@@ -88,13 +103,15 @@
           "marking": "poor",
           "note": {
             "en": "The Fischberg hill has private areas and close to no marking.",
-            "de": "Der Fischberg hat Privatgrund und kaum Markierungen."
+            "de": "Der Fischberg hat Privatgrund und kaum Markierungen.",
+            "uk": "На пагорбі Fischberg є приватні території й майже немає маркування."
           }
         }
       ],
       "note": {
         "en": "Good markings all along the lake.",
-        "de": "Gute Markierungen entlang des Sees."
+        "de": "Gute Markierungen entlang des Sees.",
+        "uk": "Добре маркування вздовж усього озера."
       }
     },
     "bailouts": [
@@ -102,13 +119,15 @@
         "at": "Waldschänke Niedernach",
         "to": {
           "en": "Einsiedl",
-          "de": "Einsiedl"
+          "de": "Einsiedl",
+          "uk": "Айнзідль"
         },
         "last": true,
         "via": "road",
         "note": {
           "en": "A bus stop and parking along the road, taking you to Einsiedl.",
-          "de": "Bushaltestelle und Parkplatz an der Straße, die nach Einsiedl führen."
+          "de": "Eine Bushaltestelle und ein Parkplatz an der Straße; von dort nach Einsiedl.",
+          "uk": "Автобусна зупинка й парковка біля дороги, звідти до Айнзідля."
         }
       }
     ],
@@ -132,111 +151,31 @@
     ],
     "stops": [
       {
-        "at": "Kiosk Sachenbach",
-        "kind": "kiosk",
-        "food": true,
-        "water": true,
-        "checked": "2026-10-21"
+        "at": "Kiosk Sachenbach"
       },
       {
-        "at": "Waldschänke Niedernach",
-        "kind": "hotel",
-        "days": {
-          "en": "Daily",
-          "de": "Täglich"
-        },
-        "overnight": true,
-        "food": true,
-        "water": true,
-        "cash": false,
-        "checked": "2026-10-21"
+        "at": "Waldschänke Niedernach"
       }
     ],
     "access": {
       "carFree": "yes",
       "note": {
         "en": "Arrive by train and bus; leave the same way.",
-        "de": "Anreise mit Bahn und Bus; Abreise auf demselben Weg."
+        "de": "Anreise mit Bahn und Bus; Abreise auf demselben Weg.",
+        "uk": "Туди поїздом і автобусом; назад так само."
       },
       "checked": "2026-10-21",
       "transport": [
         {
-          "mode": "train",
-          "from": {
-            "en": "Munich Central Station",
-            "de": "München Hbf"
-          },
-          "to": {
-            "name": {
-              "en": "Kochel",
-              "de": "Kochel"
-            }
-          },
-          "direction": "there",
-          "line": "RB 66",
-          "operator": "DB Regio",
-          "duration": 108,
-          "changes": 1,
-          "first": "06:20",
-          "last": "18:22",
-          "frequency": {
-            "en": "hourly",
-            "de": "stündlich"
-          },
-          "price": [
-            {
-              "amount": 0,
-              "note": {
-                "en": "with Deutschlandticket",
-                "de": "mit Deutschlandticket"
-              }
-            },
-            {
-              "amount": 25,
-              "per": "day"
-            }
-          ],
-          "ticket": {
-            "en": "Deutschlandticket valid to Urfeld",
-            "de": "Deutschlandticket bis Urfeld gültig"
-          },
-          "url": "https://www.bahn.de/",
-          "note": {
-            "en": "Change in Starnberg.",
-            "de": "Umstieg in Starnberg."
-          }
+          "use": "train-rb-66-munich-central-station-kochel"
         },
         {
-          "mode": "bus",
-          "from": {
-            "en": "Kochel",
-            "de": "Kochel"
-          },
-          "to": {
-            "name": {
-              "en": "Urfeld, Kochel am See",
-              "de": "Urfeld, Kochel am See"
-            }
-          },
-          "direction": "there",
-          "line": "328",
-          "operator": "MVV",
-          "duration": 18,
-          "changes": 0,
-          "first": "08:18",
-          "last": "20:28"
+          "use": "bus-328-kochel-urfeld-kochel-am-see"
         }
       ],
       "parking": [
         {
-          "name": {
-            "en": "Urfeld Parking",
-            "de": "Parkplatz Urfeld"
-          },
-          "at": {"ref": "way/1030463554", "name": "Parkplatz Urfeld"},
-          "size": "small",
-          "fills": "weekends",
-          "checked": "2026-10-21"
+          "use": "parking-lot-urfeld"
         }
       ]
     },
@@ -250,7 +189,8 @@
       "solo": "yes",
       "note": {
         "en": "Bikes and strollers won't reach the top of Fischberg.",
-        "de": "Mit dem Fahrrad oder Kinderwagen kommt man nicht auf den Gipfel des Fischbergs."
+        "de": "Mit dem Fahrrad oder Kinderwagen kommt man nicht auf den Gipfel des Fischbergs.",
+        "uk": "На велосипеді чи з візком на вершину Fischberg не дістатися."
       }
     },
     "legs": [
@@ -290,7 +230,8 @@
           "item": "water",
           "amount": {
             "en": "2–3 L",
-            "de": "2–3 L"
+            "de": "2–3 L",
+            "uk": "2–3 л"
           }
         },
         {
@@ -302,40 +243,47 @@
           "need": "optional",
           "amount": {
             "en": "for the food",
-            "de": "für die Verpflegung"
+            "de": "für die Verpflegung",
+            "uk": "на їжу"
           }
         }
       ],
       "for": [
         {
           "en": "Hikers of all levels wanting to explore Walchensee",
-          "de": "Wanderer aller Niveaus, die den Walchensee erkunden möchten"
+          "de": "Wanderer aller Könnensstufen, die den Walchensee erkunden möchten",
+          "uk": "Туристів будь-якого рівня, які хочуть дослідити Вальхензе"
         },
         {
           "en": "Trekkers tired of climbing mountains",
-          "de": "Wanderer, die genug vom Bergsteigen haben"
+          "de": "Wanderer, die genug vom Bergsteigen haben",
+          "uk": "Тих, кому набридло підійматися в гори"
         }
       ],
       "notFor": [
         {
           "en": "People looking for an elevation challenge",
-          "de": "Leute, die eine Höhenherausforderung suchen"
+          "de": "Leute, die Höhenmeter als Herausforderung suchen",
+          "uk": "Тих, хто шукає виклику з набором висоти"
         },
         {
           "en": "Beginners uncomfortable with long walks",
-          "de": "Anfänger, die sich mit langen Spaziergängen unwohl fühlen"
+          "de": "Anfänger, die mit langen Strecken nicht zurechtkommen",
+          "uk": "Початківців, яким важко даються довгі прогулянки"
         }
       ],
       "variants": [
         {
           "name": {
             "en": "Lake round trip",
-            "de": "Rund um den See"
+            "de": "Rund um den See",
+            "uk": "Навколо озера"
           },
           "recommended": true,
           "summary": {
             "en": "Skip the detour up Fischberg; optionally, close the loop.",
-            "de": "Ohne Abstecher auf den Fischberg; optional die Runde schließen."
+            "de": "Ohne Abstecher auf den Fischberg; optional die Runde schließen.",
+            "uk": "Пропустіть відгалуження на Fischberg; за бажання замкніть кільце."
           },
           "distance": 15200,
           "ascent": 59,
@@ -358,7 +306,8 @@
       {
         "title": {
           "en": "The website of Sachenbach Kiosk",
-          "de": "Die Website des Kiosks Sachenbach"
+          "de": "Die Website des Kiosks Sachenbach",
+          "uk": "Вебсайт Kiosk Sachenbach"
         },
         "url": "https://www.sachenbacher-walchensee.de/",
         "kind": "official",
@@ -367,7 +316,8 @@
       {
         "title": {
           "en": "The website of Waldschänke Niedernach",
-          "de": "Die Website der Waldschänke Niedernach"
+          "de": "Die Website der Waldschänke Niedernach",
+          "uk": "Вебсайт Waldschänke Niedernach"
         },
         "url": "https://waldschaenke-niedernach.de/",
         "kind": "official",
