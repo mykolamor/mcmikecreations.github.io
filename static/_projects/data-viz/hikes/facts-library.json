@@ -79,9 +79,52 @@
 			"food": true,
 			"cash": true,
 			"checked": "2026-11-04"
+		},
+		"way/165427124": {
+			"kind": "restaurant",
+			"open": {
+				"from": "01-01",
+				"to": "12-31"
+			},
+			"days": {
+				"en": "Daily, closed Wednesdays",
+				"de": "Täglich, mittwochs Ruhetag",
+				"uk": "Щодня, закрито по середах"
+			},
+			"water": true,
+			"food": true,
+			"checked": "2026-10-05"
+		},
+		"way/221601969": {
+			"kind": "shop",
+			"water": true,
+			"food": true,
+			"checked": "2026-09-27"
 		}
 	},
 	"transport": {
+		"bus-359-gmund-breitenbach-bad-wiessee": {
+			"mode": "bus",
+			"from": {
+				"en": "Gmund",
+				"de": "Gmund",
+				"uk": "Гмунд"
+			},
+			"to": {
+				"name": {
+					"en": "Breitenbach, Bad Wiessee",
+					"de": "Breitenbach, Bad Wiessee",
+					"uk": "Брайтенбах, Бад-Віссе"
+				}
+			},
+			"direction": "there",
+			"duration": 7,
+			"changes": 0,
+			"line": "359",
+			"operator": "MVV",
+			"first": "08:04",
+			"last": "22:05"
+		},
 		"bus-362-schliersee-spitzingsee-spitzingsattel": {
 			"mode": "bus",
 			"from": {
@@ -103,6 +146,34 @@
 			"operator": "MVV",
 			"first": "07:31",
 			"last": "17:31"
+		},
+		"bus-996-munich-pasing-tegelbergbahn-schwangau": {
+			"mode": "bus",
+			"from": {
+				"en": "Munich-Pasing",
+				"de": "München-Pasing",
+				"uk": "Мюнхен-Пазінг"
+			},
+			"to": {
+				"name": {
+					"en": "Tegelbergbahn, Schwangau",
+					"de": "Tegelbergbahn, Schwangau",
+					"uk": "Tegelbergbahn, Швангау"
+				}
+			},
+			"direction": "there",
+			"duration": 120,
+			"changes": 0,
+			"line": "996",
+			"operator": "MVV",
+			"first": "06:45",
+			"last": "08:15",
+			"ticket": {
+				"en": "Deutschlandticket valid to Neuschwanstein",
+				"de": "Deutschlandticket bis Neuschwanstein gültig",
+				"uk": "Deutschlandticket дійсний до Neuschwanstein"
+			},
+			"url": "https://www.bahn.de/"
 		},
 		"bus-lenggries-bergbus-hinterriss-einstieg-laliderertal": {
 			"mode": "bus",
@@ -280,6 +351,44 @@
 				"uk": "Пересадка в Ленггріс."
 			}
 		},
+		"train-rb-57-munich-central-station-gmund": {
+			"mode": "train",
+			"from": {
+				"en": "Munich Central Station",
+				"de": "München Hbf",
+				"uk": "Центральний вокзал Мюнхена"
+			},
+			"to": {
+				"name": {
+					"en": "Gmund",
+					"de": "Gmund",
+					"uk": "Гмунд"
+				}
+			},
+			"direction": "there",
+			"duration": 61,
+			"changes": 0,
+			"line": "RB 57",
+			"operator": "Bayerische Regiobahn",
+			"first": "07:02",
+			"last": "20:02",
+			"frequency": {
+				"en": "hourly",
+				"de": "stündlich",
+				"uk": "щогодини"
+			},
+			"ticket": {
+				"en": "Deutschlandticket valid to Bad Wiessee",
+				"de": "Deutschlandticket bis Bad Wiessee gültig",
+				"uk": "Deutschlandticket дійсний до Бад-Віссе"
+			},
+			"url": "https://www.bahn.de/",
+			"note": {
+				"en": "Change in Gmund.",
+				"de": "Umstieg in Gmund.",
+				"uk": "Пересадка в Гмунді."
+			}
+		},
 		"train-rb-57-munich-central-station-tegernsee": {
 			"mode": "train",
 			"from": {
@@ -330,8 +439,70 @@
 			"checked": "2026-11-02"
 		}
 	},
-	"lifts": {},
+	"lifts": {
+		"tegelbergbahn": {
+			"name": {
+				"en": "Tegelbergbahn",
+				"de": "Tegelbergbahn",
+				"uk": "Tegelbergbahn"
+			},
+			"kind": "gondola",
+			"from": {
+				"ref": "node/266995158",
+				"name": {
+					"en": "Tegelbergbahn (valley station)",
+					"de": "Tegelbergbahn (Talstation)",
+					"uk": "Tegelbergbahn (долинна станція)"
+				}
+			},
+			"to": {
+				"ref": "way/26516059",
+				"name": {
+					"en": "Tegelbergbahn (mountain station)",
+					"de": "Tegelbergbahn (Bergstation)",
+					"uk": "Tegelbergbahn (верхня станція)"
+				}
+			},
+			"direction": "both",
+			"open": {
+				"from": "03-28",
+				"to": "11-08"
+			},
+			"first": "09:00",
+			"last": "16:30",
+			"price": [
+				{
+					"amount": 21.5,
+					"per": "adult"
+				},
+				{
+					"amount": 8.5,
+					"per": "child"
+				}
+			],
+			"url": "https://www.tegelbergbahn.de/",
+			"note": {
+				"en": "In summer operates until 17:00. Parking paid separately.",
+				"de": "Im Sommer bis 17:00 Uhr. Parken wird extra bezahlt.",
+				"uk": "Влітку працює до 17:00. Паркування оплачується окремо."
+			}
+		}
+	},
 	"parking": {
+		"parking-lot-breitenbachtal": {
+			"at": {
+				"ref": "way/378435526",
+				"name": "Breitenbachtal parking"
+			},
+			"name": {
+				"en": "Breitenbachtal parking",
+				"de": "Parkplatz Breitenbachtal",
+				"uk": "Парковка Breitenbachtal"
+			},
+			"size": "small",
+			"fills": "weekends",
+			"checked": "2026-10-04"
+		},
 		"parking-lot-p6-laliderertal": {
 			"at": "P6 Laliderertal",
 			"name": {
@@ -375,6 +546,26 @@
 			"size": "small",
 			"fills": "weekends",
 			"checked": "2026-10-25"
+		},
+		"parking-lot-tegelbergbahn-valley-station": {
+			"at": {
+				"ref": "way/26515725"
+			},
+			"name": {
+				"en": "Tegelbergbahn valley station",
+				"de": "Talstation Tegelbergbahn",
+				"uk": "Долинна станція Tegelbergbahn"
+			},
+			"price": [
+				{
+					"amount": 5,
+					"per": "day"
+				}
+			],
+			"size": "large",
+			"fills": "weekends",
+			"url": "https://www.tegelbergbahn.de/de/sommer/info-preise",
+			"checked": "2026-10-15"
 		},
 		"parking-lot-tegernsee-schiessstatte": {
 			"at": {

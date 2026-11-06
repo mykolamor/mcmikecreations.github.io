@@ -353,36 +353,6 @@
     },
     "legs": [
       {
-        "to": "Falkenhütte",
-        "terrain": ["road", "forest-road"],
-        "sac": "T1",
-        "marking": "good"
-      },
-      {
-        "to": "Mahnkopf",
-        "terrain": ["path"],
-        "sac": "T2",
-        "marking": "partial",
-        "optional": true
-      },
-      {
-        "to": "Rasthütte Engalm",
-        "terrain": ["path"],
-        "sac": "T2",
-        "marking": "good",
-        "note": {
-          "en": "From Falkenhütte, after returning from Mahnkopf.",
-          "de": "Ab der Falkenhütte, nach der Rückkehr vom Mahnkopf.",
-          "uk": "Від Falkenhütte, після повернення з Mahnkopf."
-        }
-      },
-      {
-        "to": "Alpencafe Eng",
-        "terrain": ["road"],
-        "sac": "T1",
-        "marking": "none"
-      },
-      {
         "to": {
           "ref": "node/9883893791",
           "name": {
@@ -397,18 +367,10 @@
           "de": "Schotterstraße über Wiesen.",
           "uk": "Гравійна дорога через луки."
         },
-        "inTable": false,
-        "onProfile": true
+        "marking": "good",
+        "terrain": ["road", "forest-road"]
       },
       {
-        "from": {
-          "ref": "node/9883893791",
-          "name": {
-            "en": "Drinking water",
-            "de": "Trinkwasser",
-            "uk": "Питна вода"
-          }
-        },
         "to": "Mahnkopf",
         "sac": "T2",
         "note": {
@@ -416,11 +378,11 @@
           "de": "Schmaler Erdpfad am Hang.",
           "uk": "Вузька земляна стежка на схилі."
         },
-        "inTable": false,
-        "onProfile": true
+        "onProfile": true,
+        "terrain": ["path"],
+        "marking": "partial"
       },
       {
-        "from": "Mahnkopf",
         "to": "Rasthütte Engalm",
         "sac": "T2",
         "note": {
@@ -428,19 +390,29 @@
           "de": "Bergweg über Schotter-, Stein- und Erdhang.",
           "uk": "Гірська стежка через гравійні, кам'яні та земляні схили."
         },
-        "inTable": false,
-        "onProfile": true
+        "onProfile": true,
+        "terrain": ["path"],
+        "marking": "good"
       },
       {
-        "from": "Rasthütte Engalm",
         "sac": "T1",
         "note": {
           "en": "Asphalt road through the settlement.",
           "de": "Teerstraße durch die Siedlung.",
           "uk": "Асфальтована дорога через поселення."
         },
-        "inTable": false,
-        "onProfile": true
+        "marking": "none",
+        "terrain": ["road"],
+        "to": {
+          "lat": 47.4024896,
+          "lon": 11.5670491,
+          "name": {
+            "en": "Bus stop Alpengasthof Eng",
+            "de": "Bushaltestelle Alpengasthof Eng",
+            "uk": "Автобусна зупинка Alpengasthof Eng"
+          },
+          "demEle": 1201.2
+        }
       }
     ],
     "plan": {

@@ -9,6 +9,7 @@ import { withDocLock } from '../server/doc-lock';
 import { factsDocs } from '../server/facts-read';
 import { repoPaths } from '../server/paths';
 import { makeTempRepo } from '../server/test-repo';
+import { editSidecar } from '../server/sidecar-file';
 import { extractLibrary } from '../oneoff/extract-facts-library';
 import { mergeNearDuplicates, nearDuplicateGroups, pagesToCheck } from './facts-near-duplicates';
 
@@ -25,13 +26,38 @@ const POSTS = [
 	{ kind: 'post', slug: 'wasenkogel', date: '2026-10-04' }
 ] as const;
 
+// The pair these tests merge, as the two sidecars held it before either moved into the library: written into each
+// temporary repo, so the tests don't depend on what the real sidecars hold today.
+const RB57_BASE = {
+	mode: 'train', from: { en: 'Munich Central Station', de: 'München Hbf' }, to: { name: { en: 'Gmund', de: 'Gmund' } },
+	direction: 'there', line: 'RB 57', operator: 'Bayerische Regiobahn', duration: 61, changes: 0, first: '07:02', last: '20:02',
+	frequency: { en: 'hourly', de: 'stündlich' }
+};
+const GASSLER_RB57 = { ...RB57_BASE, ticket: { en: 'Deutschlandticket valid to Gmund', de: 'Deutschlandticket bis Gmund gültig' }, url: 'https://www.bahn.de/' };
+const WASENKOGEL_RB57 = {
+	...RB57_BASE,
+	ticket: { en: 'Deutschlandticket valid to Bad Wiessee', de: 'Deutschlandticket bis Bad Wiessee gültig' },
+	url: 'https://www.bahn.de/',
+	note: { en: 'Change in Gmund.', de: 'Umstieg in Gmund.' }
+};
+
+/** A temporary repo whose gassler_berg and wasenkogel sidecars hold the RB 57 pair inline as their first transport. */
+function seeded(): string {
+	const root = makeTempRepo();
+	for (const [slug, entry] of [['gassler_berg', GASSLER_RB57], ['wasenkogel', WASENKOGEL_RB57]] as const) {
+		const file = path.join(repoPaths(root).markdown, `${slug}.hike.json`);
+		writeFileSync(file, editSidecar(readFileSync(file, 'utf8'), [{ path: ['facts', 'access', 'transport', 0], value: entry }]));
+	}
+	return root;
+}
+
 const req = (method: string, route: string, json?: unknown): ApiRequest => ({ method, path: route, query: new URLSearchParams(), headers: {}, json });
 const sidecar = (root: string, slug: string) => readFileSync(path.join(repoPaths(root).markdown, `${slug}.hike.json`), 'utf8');
 const transport = (root: string, slug: string) => JSON.parse(sidecar(root, slug)).facts.access.transport[0];
 const pages = (root: string) => POSTS.map((ref) => readDocFacts(root, ref));
 
-test('groups match the one-off\'s for today\'s data', () => {
-	const root = makeTempRepo();
+test('groups match the one-off\'s for the seeded pair', () => {
+	const root = seeded();
 	const groups = nearDuplicateGroups(root);
 	assert.deepEqual(groups.map(({ id: _, record: __, ...g }) => g), extractLibrary(root, { dryRun: true }).nearDuplicates);
 	assert.deepEqual([groups[0].id, groups[0].record], [RB57.group, undefined]);
@@ -40,7 +66,7 @@ test('groups match the one-off\'s for today\'s data', () => {
 });
 
 test('kept-apart groups are not listed', async () => {
-	const root = makeTempRepo();
+	const root = seeded();
 	const api = createApi(root);
 	const listed = await api(req('GET', '/api/facts/near-duplicates'));
 	assert.equal(listed.status, 200);
@@ -54,7 +80,7 @@ test('kept-apart groups are not listed', async () => {
 });
 
 test('merge keeps each page: the converted entries read the same as before', async () => {
-	const root = makeTempRepo();
+	const root = seeded();
 	const api = createApi(root);
 	const before = pages(root);
 	const wasenkogel = transport(root, 'wasenkogel');
@@ -80,7 +106,7 @@ test('merge keeps each page: the converted entries read the same as before', asy
 });
 
 test('an entry that lacks a field the record has stays out of the merge', async () => {
-	const root = makeTempRepo();
+	const root = seeded();
 	const api = createApi(root);
 	const before = pages(root);
 	const gassler = sidecar(root, 'gassler_berg');
@@ -116,7 +142,7 @@ async function meanwhile<T>(lock: string, change: () => void, start: () => Promi
 }
 
 test('a merge that failed part way is retried with the same id', async () => {
-	const root = makeTempRepo();
+	const root = seeded();
 	const before = pages(root);
 	const original = sidecar(root, 'wasenkogel');
 	// wasenkogel's entry changes after the checks: the library and gassler are written, wasenkogel is not.
@@ -147,7 +173,7 @@ test('a merge that failed part way is retried with the same id', async () => {
 });
 
 test('the id of a record a hike outside the group takes, or one that would change, is taken', async () => {
-	const root = makeTempRepo();
+	const root = seeded();
 	const api = createApi(root);
 	// A record the group's own entry takes, with other content: writing it would change that entry's page.
 	const lib = JSON.parse(readFileSync(repoPaths(root).factsLibrary, 'utf8'));
@@ -169,7 +195,7 @@ test('the id of a record a hike outside the group takes, or one that would chang
 });
 
 test('a merge on a stale library is refused and nothing is written', async () => {
-	const root = makeTempRepo();
+	const root = seeded();
 	const files = [sidecar(root, 'gassler_berg'), sidecar(root, 'wasenkogel')];
 	const lib = repoPaths(root).factsLibrary;
 	const other = readFileSync(lib, 'utf8').replace('"tickets": {}', '"tickets": {\n\t\t"day-pass": {\n\t\t\t"name": "Day pass"\n\t\t}\n\t}');
@@ -182,7 +208,7 @@ test('a merge on a stale library is refused and nothing is written', async () =>
 });
 
 test('a stop merge keeps each stop\'s at, and checks every page', async () => {
-	const root = makeTempRepo();
+	const root = seeded();
 	// A place no stop names yet (the Benediktenwand peak, in the store): two hikes get a stop there, one with a note.
 	const ref = 'node/26862546';
 	const add = (slug: string, stop: Record<string, unknown>) => {

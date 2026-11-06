@@ -108,7 +108,7 @@ I also saw a bunch of children running around the cross, so this route is
 definitely accessible for families. It was really cool seeing all the mountains
 in the area I already visited: [Hirschberg (1670 m) with DAAD FK](/hikes/2024-11-17-hirschberg/),
 [Buchstein (1701 m) with David](/hikes/2025-05-11-buchstein/),
-[Zwergelberg (1113 m) and Fockenstein (1564 m) wth "Wandern für glückliche Menschen"](/hikes/2026-04-05-fockenstein_geierstein/).
+[Zwergelberg (1113 m) and Fockenstein (1564 m) with "Wandern für glückliche Menschen"](/hikes/2026-04-05-fockenstein_geierstein/).
 I've really come a long way.
 
 ![The path from Wasenkogel (1211 m) to Nesselscheibe (1258 m)](/images/projects/data-viz/hikes/stories/wasenkogel/2026-10-04-09.jpg)
@@ -130,7 +130,7 @@ there, but it wasn't much of a problem. The mushrooms though, the autumn smell!
 I got a little thirsty though, so I took a water break, deciding to also add
 water sources to the website.
 
-![Owergrown road near the unnamed 1212-meter peak](/images/projects/data-viz/hikes/stories/wasenkogel/2026-10-04-12.jpg)
+![Overgrown road near the unnamed 1212-meter peak](/images/projects/data-viz/hikes/stories/wasenkogel/2026-10-04-12.jpg)
 
 The rest of the way to the unnamed 1212-meter peak was way more overgrown, but
 still fully walkable. Normally, I'd scratch myself on some branches on such a

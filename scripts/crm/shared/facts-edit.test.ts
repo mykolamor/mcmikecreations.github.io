@@ -1,13 +1,14 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, rmSync } from 'node:fs';
+import { readFileSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
-import { parse } from 'jsonc-parser';
+import { findNodeAtLocation, parse, parseTree } from 'jsonc-parser';
 import { applyFactsEdit, type FactsOp } from './facts-edit';
 import { applyOps } from './ops';
 import { clientDoc, docVersion, loadDoc, saveOps, sidecarPath, type HikeDoc } from '../server/doc';
 import { ApiError } from '../server/errors';
 import { makeTempRepo } from '../server/test-repo';
+import { editSidecar } from '../server/sidecar-file';
 
 const REAL_ROOT = path.resolve(__dirname, '../../..');
 const hike = (path: FactsOp['path'], rest: Partial<FactsOp>): FactsOp => ({ kind: 'facts', scope: 'hike', path, ...rest });
@@ -25,13 +26,15 @@ test('a sidecar facts edit changes only that value\'s bytes', () => {
 	const root = makeTempRepo();
 	try {
 		const file = sidecarPath(root, 'mahnkopf');
+		// The first leg without a note of its own, whatever the real sidecar has there today.
+		writeFileSync(file, editSidecar(readFileSync(file, 'utf8'), [{ path: ['facts', 'legs', 0, 'note'], value: undefined }]));
 		const raw = readFileSync(file, 'utf8');
 		const doc = loadDoc(root, 'mahnkopf', null);
 		const r = saveOps(root, 'mahnkopf', null, doc.version, [hike(['legs', 0, 'note'], { value: { en: 'Gravel first.', de: '' } })]);
 		assert.equal(r.ok, true);
 		// The note goes after the first leg's last member: one new line, and that member gains its comma.
-		const legs = raw.indexOf('"legs": [');
-		const end = raw.indexOf('"marking": "good"', legs) + '"marking": "good"'.length;
+		const last = findNodeAtLocation(parseTree(raw)!, ['facts', 'legs', 0])!.children!.at(-1)!;
+		const end = last.offset + last.length;
 		assert.equal(readFileSync(file, 'utf8'), raw.slice(0, end) + ',\n        "note": {\n          "en": "Gravel first."\n        }' + raw.slice(end));
 		assert.deepEqual((r.doc.facts.hike as any).legs[0].note, { en: 'Gravel first.' });
 		assert.equal(r.doc.facts.post, null);
@@ -124,8 +127,9 @@ test('removing the last entry removes the list, and an empty facts goes', () => 
 
 	// An item of a one-line list leaves it on one line; an entry of a list of maps takes only its own lines.
 	assert.equal(applyFactsEdit(side, 'sidecar', hike(['season', 'best', 2], { remove: true })), side.replace('"best": [5, 6, 7, 8, 9]', '"best": [5, 6, 8, 9]'));
-	const legs = side.indexOf('{', side.indexOf('"legs": ['));
-	const second = side.indexOf('{', side.indexOf('}', legs));
+	const tree = parseTree(side)!;
+	const legs = findNodeAtLocation(tree, ['facts', 'legs', 0])!.offset;
+	const second = findNodeAtLocation(tree, ['facts', 'legs', 1])!.offset;
 	assert.equal(applyFactsEdit(side, 'sidecar', hike(['legs', 0], { remove: true })), side.slice(0, legs) + side.slice(second));
 
 	// The last key of the last map, and then `facts` itself.

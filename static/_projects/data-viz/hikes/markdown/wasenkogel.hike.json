@@ -1,6 +1,14 @@
 {
-  "name": "Wasenkogel",
-  "description": "Hike from Breitenbach to Gmund via Wasenkogel (1211 m), Nesselscheibe (1258 m), Gefällberg (1070 m), Platten (879 m), Hainzenhöhe (833 m), and Kaltenbrunner Eck (842 m).",
+  "name": {
+    "en": "Wasenkogel",
+    "de": "Wasenkogel",
+    "uk": "Вазенкогель"
+  },
+  "description": {
+    "en": "Hike from Breitenbach to Gmund via Wasenkogel (1211 m), Nesselscheibe (1258 m), Gefällberg (1070 m), Platten (879 m), Hainzenhöhe (833 m), and Kaltenbrunner Eck (842 m).",
+    "de": "Wanderung von Breitenbach nach Gmund über Wasenkogel (1211 m), Nesselscheibe (1258 m), Gefällberg (1070 m), Platten (879 m), Hainzenhöhe (833 m) und Kaltenbrunner Eck (842 m).",
+    "uk": "Похід від Брайтенбаха до Гмунда через Wasenkogel (1211 м), Nesselscheibe (1258 м), Gefällberg (1070 м), Platten (879 м), Hainzenhöhe (833 м) та Kaltenbrunner Eck (842 м)."
+  },
   "image": "/images/projects/data-viz/hikes/wasenkogel.jpg",
   "origin": {
     "lat": 47.73609085456234,
@@ -25,12 +33,14 @@
   "facts": {
     "summary": {
       "en": "A long hike across low summits west of Gmund over mountains mostly used in forestry.",
-      "de": "Eine lange Wanderung über niedrige Gipfel westlich von Gmund über Berge, die hauptsächlich in der Forstwirtschaft genutzt werden."
+      "de": "Eine lange Wanderung über niedrige Gipfel westlich von Gmund, auf Bergen, die vor allem forstwirtschaftlich genutzt werden.",
+      "uk": "Довгий похід невисокими вершинами на захід від Гмунда, горами, які переважно використовують для лісового господарства."
     },
     "difficulty": {
       "note": {
         "en": "T3 for the steep section from Gefällberg (1070 m) to the road; T2 for everything else.",
-        "de": "T3 für den steilen Abschnitt vom Gefällberg (1070 m) bis zur Straße; T2 für alles andere."
+        "de": "T3 für den steilen Abschnitt vom Gefällberg (1070 m) bis zur Straße; T2 für alles andere.",
+        "uk": "T3 для крутого відрізка від Gefällberg (1070 м) до дороги; T2 для всього іншого."
       },
       "fitness": 3
     },
@@ -43,14 +53,16 @@
       },
       "note": {
         "en": "Snowfields on the slope in winter. Mud in spring.",
-        "de": "Schneefelder am Hang im Winter. Matsch im Frühjahr."
+        "de": "Schneefelder am Hang im Winter. Matsch im Frühjahr.",
+        "uk": "Сніжники на схилі взимку. Багнюка навесні."
       }
     },
     "route": {
       "start": {
         "name": {
           "en": "Breitenbach, Bad Wiessee",
-          "de": "Breitenbach, Bad Wiessee"
+          "de": "Breitenbach, Bad Wiessee",
+          "uk": "Брайтенбах, Бад-Віссе"
         },
         "at": {
           "lat": 47.7203310,
@@ -58,14 +70,16 @@
           "demEle": 752.5,
           "name": {
             "en": "Breitenbach, Bad Wiessee",
-            "de": "Breitenbach, Bad Wiessee"
+            "de": "Breitenbach, Bad Wiessee",
+            "uk": "Брайтенбах, Бад-Віссе"
           }
         }
       },
       "end": {
         "name": {
           "en": "Bahnhof, Gmund",
-          "de": "Bahnhof, Gmund"
+          "de": "Bahnhof, Gmund",
+          "uk": "Залізнична станція, Гмунд"
         },
         "at": {
           "lat": 47.7496082,
@@ -73,32 +87,37 @@
           "demEle": 735.9,
           "name": {
             "en": "Bahnhof, Gmund",
-            "de": "Bahnhof, Gmund"
+            "de": "Bahnhof, Gmund",
+            "uk": "Залізнична станція, Гмунд"
           }
         }
       },
       "type": "point-to-point",
       "official": {
-        "en": "The usual route takes the larger tractor road off of Nesselscheibe (1268 m) north-east towards Marienstein.",
-        "de": "Die übliche Route nimmt die größere Traktorstraße von der Nesselscheibe (1268 m) nordöstlich Richtung Marienstein."
+        "en": "The usual route takes the larger tractor road off of Nesselscheibe (1258 m) north-east towards Marienstein.",
+        "de": "Die übliche Route nimmt die größere Traktorstraße von der Nesselscheibe (1258 m) nordöstlich Richtung Marienstein.",
+        "uk": "Звичайний маршрут іде більшою тракторною дорогою від Nesselscheibe (1258 м) на північний схід до Marienstein."
       },
       "optional": [
         {
           "name": {
             "en": "Gefällberg",
-            "de": "Gefällberg"
+            "de": "Gefällberg",
+            "uk": "Gefällberg"
           },
           "from": {
             "ref": "node/1638504578",
             "name": {
               "en": "Unnamed hill",
-              "de": "Unbenannter Hügel"
+              "de": "Unbenannter Hügel",
+              "uk": "Безіменний пагорб"
             }
           },
           "to": "Gefällberg",
           "note": {
             "en": "Overgrown, unmarked detour; only for peak baggers.",
-            "de": "Zugewachsener, unmarkierter Abstecher; nur für Gipfelsammler."
+            "de": "Zugewachsener, unmarkierter Abstecher; nur für Gipfelsammler.",
+            "uk": "Заросле, немарковане відгалуження; лише для збирачів вершин."
           }
         }
       ],
@@ -120,13 +139,15 @@
           "marking": "none",
           "note": {
             "en": "No markings, navigate by trail or compass along the ridge line.",
-            "de": "Keine Markierungen, entlang des Grats nach Weg oder Kompass navigieren."
+            "de": "Keine Markierungen, entlang des Grats nach Weg oder Kompass navigieren.",
+            "uk": "Немає маркувань, орієнтуйтеся за стежкою або компасом вздовж гребеня."
           }
         }
       ],
       "note": {
         "en": "Signs and markings showing directions.",
-        "de": "Wegweiser und Markierungen, die Richtungen anzeigen."
+        "de": "Wegweiser und Markierungen, die Richtungen anzeigen.",
+        "uk": "Вказівники та маркування з напрямками."
       }
     },
     "hazards": [
@@ -136,14 +157,16 @@
           "ref": "node/1638504578",
           "name": {
             "en": "Unnamed hill",
-            "de": "Unbenannter Hügel"
+            "de": "Unbenannter Hügel",
+            "uk": "Безіменний пагорб"
           }
         },
         "to": "Gefällberg",
         "severity": "high",
         "note": {
           "en": "The trail is visible but highly overgrown with thorny plants.",
-          "de": "Der Weg ist sichtbar, aber stark zugewachsen mit dornigen Pflanzen."
+          "de": "Der Weg ist sichtbar, aber stark zugewachsen mit dornigen Pflanzen.",
+          "uk": "Стежка видима, але сильно заросла колючими рослинами."
         }
       }
     ],
@@ -152,28 +175,32 @@
         "at": "Wasenkogel",
         "to": {
           "en": "Towards Gmund, along Dürnbach",
-          "de": "Richtung Gmund, entlang des Dürnbachs"
+          "de": "Richtung Gmund, entlang des Dürnbachs",
+          "uk": "У напрямку Гмунда, вздовж Dürnbach"
         },
         "via": "trail",
         "last": false,
         "route": "/_projects/data-viz/hikes/gpx/bailouts/wasenkogel-gmund.gpx",
         "note": {
           "en": "North along the stream through Kaltenbrunn.",
-          "de": "Nach Norden entlang des Bachs durch Kaltenbrunn."
+          "de": "Nach Norden entlang des Bachs durch Kaltenbrunn.",
+          "uk": "На північ уздовж струмка через Кальтенбрунн."
         }
       },
       {
         "at": "Nesselscheibe",
         "to": {
           "en": "Towards Bad Wiessee, along Breitenbach",
-          "de": "Richtung Bad Wiessee, entlang des Breitenbachs"
+          "de": "Richtung Bad Wiessee, entlang des Breitenbachs",
+          "uk": "У напрямку Бад-Віссе, вздовж Breitenbach"
         },
         "via": "trail",
         "last": false,
         "route": "/_projects/data-viz/hikes/gpx/bailouts/nesselscheibe-breitenbach.gpx",
         "note": {
           "en": "South down the slope, then along the stream.",
-          "de": "Nach Süden den Hang hinunter, dann entlang des Bachs."
+          "de": "Nach Süden den Hang hinunter, dann entlang des Bachs.",
+          "uk": "На південь униз схилом, потім уздовж струмка."
         }
       },
       {
@@ -182,14 +209,16 @@
         },
         "to": {
           "en": "Towards Gmund through forestry roads",
-          "de": "Richtung Gmund über Forststraßen"
+          "de": "Richtung Gmund über Forststraßen",
+          "uk": "У напрямку Гмунда через лісові дороги"
         },
         "via": "trail",
         "last": true,
         "route": "/_projects/data-viz/hikes/gpx/bailouts/nesselscheibe-gmund.gpx",
         "note": {
           "en": "North-east onto forestry roads.",
-          "de": "Nordost auf Forststraßen."
+          "de": "Nordost auf Forststraßen.",
+          "uk": "На північний схід на лісові дороги."
         }
       }
     ],
@@ -199,7 +228,8 @@
           "ref": "node/5741212084",
           "name": {
             "en": "Spring",
-            "de": "Quelle"
+            "de": "Quelle",
+            "uk": "Джерело"
           }
         },
         "kind": "spring",
@@ -225,19 +255,7 @@
     ],
     "stops": [
       {
-        "at": "Restaurant Steinberg",
-        "kind": "restaurant",
-        "open": {
-          "from": "01-01",
-          "to": "12-31"
-        },
-        "days": {
-          "en": "Daily, closed Wednesdays",
-          "de": "Täglich, mittwochs Ruhetag"
-        },
-        "food": true,
-        "water": true,
-        "checked": "2026-10-05"
+        "at": "Restaurant Steinberg"
       }
     ],
     "access": {
@@ -245,69 +263,15 @@
       "checked": "2026-10-04",
       "transport": [
         {
-          "mode": "train",
-          "from": {
-            "en": "Munich Central Station",
-            "de": "München Hbf"
-          },
-          "to": {
-            "name": {
-              "en": "Gmund",
-              "de": "Gmund"
-            }
-          },
-          "direction": "there",
-          "line": "RB 57",
-          "operator": "Bayerische Regiobahn",
-          "duration": 61,
-          "changes": 0,
-          "first": "07:02",
-          "last": "20:02",
-          "frequency": {
-            "en": "hourly",
-            "de": "stündlich"
-          },
-          "ticket": {
-            "en": "Deutschlandticket valid to Bad Wiessee",
-            "de": "Deutschlandticket bis Bad Wiessee gültig"
-          },
-          "url": "https://www.bahn.de/",
-          "note": {
-            "en": "Change in Gmund.",
-            "de": "Umstieg in Gmund."
-          }
+          "use": "train-rb-57-munich-central-station-gmund"
         },
         {
-          "mode": "bus",
-          "from": {
-            "en": "Gmund",
-            "de": "Gmund"
-          },
-          "to": {
-            "name": {
-              "en": "Breitenbach, Bad Wiessee",
-              "de": "Breitenbach, Bad Wiessee"
-            }
-          },
-          "direction": "there",
-          "line": "359",
-          "operator": "MVV",
-          "duration": 7,
-          "changes": 0,
-          "first": "08:04",
-          "last": "22:05"
+          "use": "bus-359-gmund-breitenbach-bad-wiessee"
         }
       ],
       "parking": [
         {
-          "name": {
-            "en": "Breitenbachtal parking",
-            "de": "Parkplatz Breitenbachtal"
-          },
-          "at": {"ref": "way/378435526", "name": "Breitenbachtal parking"},
-          "size": "small",
-          "fills": "weekends",
-          "checked": "2026-10-04"
+          "use": "parking-lot-breitenbachtal"
         }
       ]
     },
@@ -321,7 +285,8 @@
       "solo": "yes",
       "note": {
         "en": "The overgrown sections are not accessible with bikes and get muddy in rainy or snowy seasons. Only Wasenkogel (1211 m) is suitable for strollers through a different route.",
-        "de": "Die zugewachsenen Abschnitte sind mit dem Fahrrad nicht befahrbar und werden in der Regen- oder Schneesaison schlammig. Lediglich der Wasenkogel (1211 m) ist über eine andere Route für Kinderwagen geeignet."
+        "de": "Die zugewachsenen Abschnitte sind mit dem Fahrrad nicht befahrbar und werden in der Regen- oder Schneesaison schlammig. Lediglich der Wasenkogel (1211 m) ist über eine andere Route für Kinderwagen geeignet.",
+        "uk": "Зарослі ділянки непрохідні для велосипедів і розкисають у дощову чи сніжну пору. Лише на Wasenkogel (1211 м) можна дістатися з дитячим візком, іншим маршрутом."
       }
     },
     "legs": [
@@ -336,7 +301,8 @@
           "ref": "node/1638504578",
           "name": {
             "en": "Unnamed hill",
-            "de": "Unbenannter Hügel"
+            "de": "Unbenannter Hügel",
+            "uk": "Безіменний пагорб"
           }
         },
         "terrain": ["forest-road", "path"],
@@ -350,7 +316,8 @@
           "demEle": 943.3,
           "name": {
             "en": "Forestry track",
-            "de": "Forststraße"
+            "de": "Forststraße",
+            "uk": "Лісова дорога"
           }
         },
         "terrain": ["path", "forest", "overgrown"],
@@ -359,7 +326,8 @@
         "optional": true,
         "note": {
           "en": "Unmarked overgrown trail, descent through the forest.",
-          "de": "Unmarkierter zugewachsener Weg, Abstieg durch den Wald."
+          "de": "Unmarkierter zugewachsener Weg, Abstieg durch den Wald.",
+          "uk": "Немаркована заросла стежка, спуск через ліс."
         }
       },
       {
@@ -375,7 +343,8 @@
           "demEle": 784.0,
           "name": {
             "en": "Dirt path ending at the parking lot",
-            "de": "Schotterweg endet am Parkplatz"
+            "de": "Feldweg bis zum Parkplatz",
+            "uk": "Ґрунтова дорога до парковки"
           }
         },
         "terrain": ["forest-road", "path", "road"],
@@ -387,13 +356,15 @@
           "ref": "node/1638504578",
           "name": {
             "en": "Unnamed hill",
-            "de": "Unbenannter Hügel"
+            "de": "Unbenannter Hügel",
+            "uk": "Безіменний пагорб"
           }
         },
         "sac": "T2",
         "note": {
           "en": "Forest roads, dirt trails.",
-          "de": "Forststraßen, Schotterwege."
+          "de": "Forststraßen, Erdpfade.",
+          "uk": "Лісові дороги, ґрунтові стежки."
         },
         "inTable": false,
         "onProfile": true
@@ -403,7 +374,8 @@
           "ref": "node/1638504578",
           "name": {
             "en": "Unnamed hill",
-            "de": "Unbenannter Hügel"
+            "de": "Unbenannter Hügel",
+            "uk": "Безіменний пагорб"
           }
         },
         "to": {
@@ -412,13 +384,15 @@
           "demEle": 943.3,
           "name": {
             "en": "Forestry track",
-            "de": "Forststraße"
+            "de": "Forststraße",
+            "uk": "Лісова дорога"
           }
         },
         "sac": "T3",
         "note": {
           "en": "Short secured passage before the gate.",
-          "de": "Kurze versicherte Passage vor dem Gatterl."
+          "de": "Kurze versicherte Passage vor dem Tor.",
+          "uk": "Коротка ділянка зі страховкою перед воротами."
         },
         "inTable": false,
         "onProfile": true
@@ -430,7 +404,8 @@
           "demEle": 943.3,
           "name": {
             "en": "Forestry track",
-            "de": "Forststraße"
+            "de": "Forststraße",
+            "uk": "Лісова дорога"
           }
         },
         "to": {
@@ -439,13 +414,15 @@
           "demEle": 784.0,
           "name": {
             "en": "Dirt path ending at the parking lot",
-            "de": "Schotterweg endet am Parkplatz"
+            "de": "Feldweg bis zum Parkplatz",
+            "uk": "Ґрунтова дорога до парковки"
           }
         },
         "sac": "T1-T2",
         "note": {
           "en": "Forestry track occasionally interrupted by trails",
-          "de": "Forststraße gelegentlich unterbrochen von Wanderwegen"
+          "de": "Forststraße gelegentlich unterbrochen von Wanderwegen",
+          "uk": "Лісова дорога час від часу переривається стежками"
         },
         "inTable": false,
         "onProfile": true
@@ -454,30 +431,35 @@
     "plan": {
       "for": [
         {
-          "en": "For hikers of all levels who love to explore",
-          "de": "Für Wanderer aller Leistungsstufen, die gerne auf Entdeckungstour gehen"
+          "en": "Hikers of all levels who love to explore",
+          "de": "Wanderer aller Leistungsstufen, die gerne auf Entdeckungstour gehen",
+          "uk": "Туристів усіх рівнів, які люблять досліджувати"
         },
         {
-          "en": "For beginners exploring an accessible mountain (short route)",
-          "de": "Für Anfänger, die einen leicht zu besteigenden Berg erkunden möchten (kurze Route)"
+          "en": "Beginners exploring an accessible mountain (short route)",
+          "de": "Anfänger, die einen leicht zu besteigenden Berg erkunden möchten (kurze Route)",
+          "uk": "Початківців, які досліджують доступну гору (короткий маршрут)"
         }
       ],
       "notFor": [
         {
-          "en": "Afraid of getting dirty",
-          "de": "Angst, sich zu beschmutzen"
+          "en": "People afraid of getting dirty",
+          "de": "Menschen, die Angst haben, schmutzig zu werden",
+          "uk": "Людей, які бояться забруднитися"
         }
       ],
       "variants": [
         {
           "name": {
             "en": "Wasenkogel (1211 m) only",
-            "de": "Nur der Wasenkogel (1211 m)"
+            "de": "Nur der Wasenkogel (1211 m)",
+            "uk": "Тільки Wasenkogel (1211 м)"
           },
           "recommended": true,
           "summary": {
             "en": "Stay on the route until the first summit, then take the bailout route.",
-            "de": "Bleiben Sie auf der Route bis zum ersten Gipfel und nehmen Sie dann die Ausweichroute."
+            "de": "Bleib bis zum ersten Gipfel auf der Route und nimm dann die Ausstiegsroute.",
+            "uk": "Ідіть маршрутом до першої вершини, а потім скористайтеся маршрутом сходу."
           },
           "distance": 9400,
           "ascent": 603,
@@ -488,11 +470,13 @@
         {
           "name": {
             "en": "Loop to Nesselscheibe (1258 m)",
-            "de": "Rundwanderung zur Nesselscheibe (1258 m)"
+            "de": "Rundwanderung zur Nesselscheibe (1258 m)",
+            "uk": "Круговий маршрут до Nesselscheibe (1258 м)"
           },
           "summary": {
             "en": "Continue to Nesselscheibe (1258 m) and turn south for a loop.",
-            "de": "Weiter bis zur Nesselscheibe (1258 m) und dann nach Süden abbiegen, um eine Rundwanderung zu machen."
+            "de": "Weiter bis zur Nesselscheibe (1258 m) und dann nach Süden abbiegen, um eine Rundwanderung zu machen.",
+            "uk": "Продовжуйте до Nesselscheibe (1258 м) і поверніть на південь для кругового маршруту."
           },
           "distance": 12000,
           "ascent": 775,
@@ -511,14 +495,16 @@
       },
       "note": {
         "en": "The trek goes near golf courses that shouldn't be walked on.",
-        "de": "Die Wanderroute führt in der Nähe von Golfplätzen entlang, auf denen man nicht laufen sollte."
+        "de": "Die Wanderroute führt in der Nähe von Golfplätzen entlang, auf denen man nicht laufen sollte.",
+        "uk": "Маршрут проходить поблизу гольф-полів, по яких не слід ходити."
       }
     },
     "sources": [
       {
         "title": {
           "en": "Marienstein (Waakirchen) on wikipedia.org",
-          "de": "Marienstein (Waakirchen) auf wikipedia.org"
+          "de": "Marienstein (Waakirchen) auf wikipedia.org",
+          "uk": "Marienstein (Waakirchen) на wikipedia.org"
         },
         "url": "https://de.wikipedia.org/wiki/Marienstein_(Waakirchen)",
         "kind": "website",

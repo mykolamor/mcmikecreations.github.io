@@ -36,7 +36,7 @@ facts:
     - {title: Strava, url: 'https://www.strava.com/activities/20356008642', kind: mirror}
 ---
 With my dental surgery still affecting me, I convinced David to lay off
-difficult hikes and offered him to revisit Tegelberg (1706 m) a location I've
+difficult hikes and offered him to revisit Tegelberg (1706 m), a location I've
 enjoyed several times in the past both for [Grade A/B via ferrata climbing](/404/)
 and [normal hiking](/404/).
 
@@ -82,12 +82,12 @@ beginner test to deter people who are not ready for the challenge. Although we
 eventually did the section, we got stuck there for some time due to a queue of
 other climbers, some of which brought their kids. Continuing on the route,
 most following sections have rungs and the cable is tight, making it easier to
-climb. The general rule of this route is: sevaral seconds of exposed climbing
+climb. The general rule of this route is: several seconds of exposed climbing
 with smoothly polished holds (grabbing onto the cable and pushing feet off the
 rock) followed by a rung to rest and recover.
 
 ![The first resting section of Tegelbergsteig with a view towards Füssen](/images/projects/data-viz/hikes/stories/tegelbergsteig/2026-09-27-04.jpg)
-![Paragliders launching off the Tegelberghaus (1706 m) take-off spot](/images/projects/data-viz/hikes/stories/tegelbergsteig/2026-09-27-05.jpg)
+![Paragliders launching off the Tegelberghaus (1707 m) take-off spot](/images/projects/data-viz/hikes/stories/tegelbergsteig/2026-09-27-05.jpg)
 
 The first section of the climb gives climbers a good overview of the challenges
 ahead, so once you reach the bench with a small register casket in the rock,
@@ -97,7 +97,7 @@ recharge it with a power bank. This gave us a good opportunity to enjoy the
 views and look at the numerous paragliders circling around us like birds of
 prey.
 
-![View towards Tegelberghaus (1706 m) from the top of Tegelbergsteig](/images/projects/data-viz/hikes/stories/tegelbergsteig/2026-09-27-06.jpg)
+![View towards Tegelberghaus (1707 m) from the top of Tegelbergsteig](/images/projects/data-viz/hikes/stories/tegelbergsteig/2026-09-27-06.jpg)
 
 The rest of the climb was more of the same, although I could see David losing
 strength and becoming more scared over time. He hasn't had the luck to fall
@@ -115,7 +115,7 @@ paragliders surrounding us made it even more magical. We also tried taking
 photos of each other, but I once again proved to be a crappy photographer.
 
 ![Paraglider flying over Tegelbergsteig](/images/projects/data-viz/hikes/stories/tegelbergsteig/2026-09-27-08.jpg)
-![Views from the route between Tegelberghaus (1706 m) and Neuschwanstein](/images/projects/data-viz/hikes/stories/tegelbergsteig/2026-09-27-09.jpg)
+![Views from the route between Tegelberghaus (1707 m) and Neuschwanstein](/images/projects/data-viz/hikes/stories/tegelbergsteig/2026-09-27-09.jpg)
 
 From there, we made a short descent back onto the Gelbe-Wand-Steig via ferrata
 and prepared to visit the restaurant. Unfortunately, we spent so much time
@@ -141,7 +141,7 @@ still had to wait for a few minutes to get a clearer view of the castle. Still,
 we couldn't see much due to vegetation. After that whole adventure, we got down
 to the Neuschwanstein entrance and were greeted by a fully closed venue. The
 tourist shops, the souvenir stands, and the ticket office were all closed, with
-some strugglers still trying to get some photos before leaving.
+some stragglers still trying to get some photos before leaving.
 
 ![Neuschwanstein from the overgrown scenic viewpoint](/images/projects/data-viz/hikes/stories/tegelbergsteig/2026-09-27-14.jpg)
 ![Hohenschwangau after sunset](/images/projects/data-viz/hikes/stories/tegelbergsteig/2026-09-27-15.jpg)

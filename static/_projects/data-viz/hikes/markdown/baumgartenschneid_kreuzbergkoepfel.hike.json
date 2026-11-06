@@ -28,6 +28,7 @@
     [11.8453456, 47.7320691],
     [11.8597632, 47.7355828]
   ],
+  "places": ["baumgartenalm"],
   "nodes": ["node/2213748620", "node/1738763687", "node/289759260", "node/357274338", "node/266572730", "node/1574152590", "node/1574152589", "way/110298010", "node/4106176432", "way/31899700", "node/3750690666", "node/2291559247", "node/2213732689", "way/1056323650"],
   "facts": {
     "checked": "2026-11-02",
@@ -108,7 +109,7 @@
           },
           "note": {
             "en": "Traverse a steep hill up and down to a cliff with views towards Gindelalmschneid.",
-            "de": "Überqueren Sie einen steilen Hügel hinauf und hinunter zu einem Felsen mit Blick auf die Gindelalmschneid.",
+            "de": "Geh über einen steilen Hügel hinauf und wieder hinunter zu einem Felsen mit Blick auf die Gindelalmschneid.",
             "uk": "Перетніть крутий пагорб вгору і вниз до скелі з видом на Gindelalmschneid."
           }
         }
@@ -220,7 +221,7 @@
         "via": "trail",
         "note": {
           "en": "Take a narrow trail through the forest down to the closest Tegernsee bus stop.",
-          "de": "Nehmen Sie einen schmalen Pfad durch den Wald hinunter zur nächstgelegenen Bushaltestelle Tegernsee.",
+          "de": "Nimm einen schmalen Pfad durch den Wald hinunter zur nächstgelegenen Bushaltestelle Tegernsee.",
           "uk": "Пройдіть вузькою стежкою через ліс до найближчої автобусної зупинки Тегернзе."
         },
         "route": "/_projects/data-viz/hikes/gpx/bailouts/kleintegernseer_berg-tegernsee.gpx"
@@ -237,7 +238,7 @@
         "via": "road",
         "note": {
           "en": "Take the gravel road from the hut down to Rottach-Egern.",
-          "de": "Nehmen Sie die Schotterstraße von der Hütte hinunter nach Rottach-Egern.",
+          "de": "Nimm die Schotterstraße von der Hütte hinunter nach Rottach-Egern.",
           "uk": "Пройдіть гравійну дорогу від хати вниз до Роттах-Егерн."
         },
         "route": "/_projects/data-viz/hikes/gpx/bailouts/riederstein-rottach_egern.gpx"
@@ -261,7 +262,7 @@
         "via": "trail",
         "note": {
           "en": "Take the steep trail from Baumgartenschneid south down to Rottach-Egern.",
-          "de": "Nehmen Sie den steilen Pfad von der Baumgartenschneid nach Süden hinunter nach Rottach-Egern.",
+          "de": "Nimm den steilen Pfad von der Baumgartenschneid nach Süden hinunter nach Rottach-Egern.",
           "uk": "Пройдіть крутою стежкою від Baumgartenschneid на південь вниз до Роттах-Егерн."
         },
         "last": true,
