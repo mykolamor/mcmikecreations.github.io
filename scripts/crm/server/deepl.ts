@@ -1,7 +1,8 @@
 // DeepL (API v2) for the translation drafts: English texts in, the second language out, in batches of at most 50.
 // What must come back byte for byte (photo and video markup and targets, but not their captions, link targets, URLs, place mentions, code, HTML tags, `{name}`
 // placeholders, the markdown at line starts) is sent as `<x id="N"/>` placeholders, which DeepL keeps with
-// `tag_handling: 'xml'` and `ignore_tags: ['x']`, and put back after; an answer that loses or changes one is refused.
+// `tag_handling: 'xml'` and `ignore_tags: ['x']`, and put back after; an answer that loses or changes one is refused, as is one
+// that drops a link's `[` (not a placeholder) or makes up markup of its own.
 // The key goes only into the Authorization header and is never logged or put into a message.
 import { OTHER_LANGS, type Lang } from '$lib/i18n/languages';
 import { LEADING_ENGLISH, TOPONYM } from '../../../src/lib/hikes/hikes-info';
@@ -211,6 +212,18 @@ const sameMedia = (source: string, restored: string): boolean => {
 	const hrefs = (s: string) => mediaLines(s).map((m) => m.href).join('\n');
 	return hrefs(source) === hrefs(restored);
 };
+/**
+ * The links of `restored` are `source`'s: the same targets, each still opened by its `[`. Only a link's target is a
+ * placeholder, so DeepL can drop or move the `[` (and the words around it) with every placeholder still in place.
+ */
+const sameLinks = (source: string, restored: string): boolean => {
+	const targets = (s: string) => [...s.matchAll(/\[[^[\]]*(\]\((?:<[^<>\n]*>|(?:[^\s()<>]|\([^\s()<>]*\))+)(?:[ \t]+"[^"\n]*")?\))/g)].map((m) => m[1]).sort();
+	const [a, b] = [targets(source), targets(restored)];
+	const brackets = (s: string) => s.replace(/[^[\]]/g, '').length;
+	return a.length === b.length && a.every((t, i) => t === b[i]) && brackets(source) === brackets(restored);
+};
+/** `restored` has a `<` that `source` hasn't: markup DeepL made up (sent back escaped, so `restore` let it through). */
+const addedMarkup = (source: string, restored: string): boolean => restored.split('<').length > source.split('<').length;
 /** A line of `text` whose line break means something: a hard break, a list item's or code's indent, a table, a fence. */
 const fixedLines = (text: string, tagged: string, starts: number[]): boolean => {
 	if (/```|(?: {2}|\\)\r?\n/.test(text)) return true;
@@ -358,7 +371,7 @@ async function request(texts: string[], target: string, deps: DeeplDeps): Promis
 
 /**
  * Translates `texts` from English into `lang`, in requests of at most 50 in order. The answers come back in the
- * order given; one whose placeholders DeepL changed, or whose lines it changed past `relayout`'s repair, is left out and listed in `refused`. A text with
+ * order given; one whose placeholders DeepL changed, whose links lost a bracket, which gained markup, or whose lines it changed past `relayout`'s repair, is left out and listed in `refused`. A text with
  * nothing but protected spans isn't sent: it comes back as it is. Throws a `DeeplError` when a request fails.
  */
 export async function translateBatch(
@@ -393,6 +406,8 @@ export async function translateBatch(
 				id: p.id,
 				reason: 'DeepL changed a protected part (a link, URL, photo line, place or placeholder)'
 			});
+		else if (addedMarkup(p.text, restored)) out.refused.push({ id: p.id, reason: 'DeepL added markup' });
+		else if (!sameLinks(p.text, restored)) out.refused.push({ id: p.id, reason: 'DeepL broke a link' });
 		else if (lineCount(restored) !== lineCount(p.text))
 			out.refused.push({ id: p.id, reason: 'DeepL changed the line breaks' });
 		else if (!markersKept(answer, p.starts))

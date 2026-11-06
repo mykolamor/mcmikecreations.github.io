@@ -131,11 +131,12 @@ function escapeHtml(text: string): string {
 }
 
 // Posts name places as `Wallberg (1722 m)` or `Vordere Kesselschneid (2002 m)`:
-// one to four capitalised words followed by an elevation. Browser translation
+// one to four capitalised words followed by an elevation, in `m` or Ukrainian
+// `м` (`Krainsbergkogel (1037 м)`). Browser translation
 // turns names like Gatterl or Feldernjöchl into nonsense, so these are marked
 // `translate="no"`. Lowercase words end the name, so "View towards Wendelstein
 // (1838 m)" only protects "Wendelstein (1838 m)".
-export const TOPONYM = /(?<![\p{L}\p{N}])((?:\p{Lu}[\p{L}.'’-]*\s){0,3}\p{Lu}[\p{L}.'’-]*\s\(\d{2,4}(?:[.,]\d+)?\s?m\))/gu;
+export const TOPONYM = /(?<![\p{L}\p{N}])((?:\p{Lu}[\p{L}.'’-]*\s){0,3}\p{Lu}[\p{L}.'’-]*\s\(\d{2,4}(?:[.,]\d+)?\s?[mм]\))/gu;
 
 // Capitalised English words that start a sentence ("The Nebelhorn (2224 m)",
 // "After Reintalangerhütte (1366 m)") and so get caught by TOPONYM, but are not
@@ -224,7 +225,7 @@ interface Reference {
 function readReference(match: string, places: PlaceIndex | null): Reference {
     // Words and the whitespace between them alternate: even indices are words.
     // The elevation's own space is non-breaking, so a line never splits `(2024 m)`.
-    const words = match.replace(/\((\d{2,4}(?:[.,]\d+)?)\s(m\))$/, '($1&nbsp;$2').split(/(\s)/);
+    const words = match.replace(/\((\d{2,4}(?:[.,]\d+)?)\s([mм]\))$/, '($1&nbsp;$2').split(/(\s)/);
     // Always keep at least one name word before the `(1234 m)` part.
     const elevationAt = words.findIndex((w) => w.startsWith('('));
     let start = 0;

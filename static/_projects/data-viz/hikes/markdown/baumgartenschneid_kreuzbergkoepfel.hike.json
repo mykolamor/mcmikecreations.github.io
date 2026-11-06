@@ -1,12 +1,14 @@
 {
   "name": {
     "en": "Baumgartenschneid - Kreuzbergköpfel",
-    "de": "Baumgartenschneid - Kreuzbergköpfel"
+    "de": "Baumgartenschneid - Kreuzbergköpfel",
+    "uk": "Баумаґартеншнайд - Кройцберґкьопфель"
   },
   "height": 768,
   "description": {
     "en": "Hike from Tegernsee to Schliersee via Pfliegeleck (1065 m), Kleintegernseer Berg (1106 m), Riederstein (1207 m), Rohrkopf (1316 m), Baumgartenschneid (1448 m), Lahnenkopf (1416 m), and Kreuzbergköpfel (1273 m).",
-    "de": "Wanderung vom Tegernsee zum Schliersee über das Pfliegeleck (1065 m), den Kleintegernseer Berg (1106 m), Riederstein (1207 m), Rohrkopf (1316 m), Baumgartenschneid (1448 m), Lahnenkopf (1416 m) und Kreuzbergköpfel (1273 m)."
+    "de": "Wanderung vom Tegernsee zum Schliersee über das Pfliegeleck (1065 m), den Kleintegernseer Berg (1106 m), Riederstein (1207 m), Rohrkopf (1316 m), Baumgartenschneid (1448 m), Lahnenkopf (1416 m) und Kreuzbergköpfel (1273 m).",
+    "uk": "Похід від Тегернзе до Шлірзе через Pfliegeleck (1065 м), Kleintegernseer Berg (1106 м), Riederstein (1207 м), Rohrkopf (1316 м), Baumgartenschneid (1448 м), Lahnenkopf (1416 м) та Kreuzbergköpfel (1273 м)."
   },
   "image": "/images/projects/data-viz/hikes/baumgartenschneid_kreuzbergkoepfel.jpg",
   "origin": {
@@ -31,19 +33,22 @@
     "checked": "2026-11-02",
     "summary": {
       "en": "A medium-difficulty point-to-point route on the 686 trail between Tegernsee and Schliersee, visiting Baumgartenschneid (1448 m).",
-      "de": "Eine mittelschwere Punkt-zu-Punkt-Route auf dem 686er-Weg zwischen Tegernsee und Schliersee, die die Baumgartenschneid (1448 m) besucht."
+      "de": "Eine mittelschwere Punkt-zu-Punkt-Route auf dem 686er-Weg zwischen Tegernsee und Schliersee, die die Baumgartenschneid (1448 m) besucht.",
+        "uk": "Маршрут середньої складності від точки до точки на трасі 686 між Тегернзе та Шлірзе, що відвідує Baumgartenschneid (1448 м)."
     },
     "difficulty": {
       "sac": "T3+",
       "note": {
         "en": "T3+ on the Kreuzbergköpfel cliff; T2 otherwise.",
-        "de": "T3+ am Kreuzbergköpfel-Felsen; sonst T2."
+        "de": "T3+ am Kreuzbergköpfel-Felsen; sonst T2.",
+        "uk": "T3+ на скелі Kreuzbergköpfel; інакше T2."
       },
       "exposure": {
         "level": "low",
         "note": {
           "en": "Most of the track goes through a wide road; Kreuzbergköpfel requires a few meters of cliff traversal.",
-          "de": "Die meisten Abschnitte verlaufen auf einer breiten Straße; am Kreuzbergköpfel sind ein paar Meter Kletterei am Felsen erforderlich."
+          "de": "Die meisten Abschnitte verlaufen auf einer breiten Straße; am Kreuzbergköpfel sind ein paar Meter Kletterei am Felsen erforderlich.",
+          "uk": "Більшість маршруту проходить по широкій дорозі; на Kreuzbergköpfel потрібно пройти кілька метрів скельного переходу."
         }
       },
       "fitness": 3
@@ -53,7 +58,8 @@
       "possible": [3, 11],
       "note": {
         "en": "The track is accessible in any season; Kreuzbergköpfel may be difficult to descend from in winter.",
-        "de": "Die Strecke ist in jeder Jahreszeit begehbar; der Abstieg vom Kreuzbergköpfel kann im Winter schwierig sein."
+        "de": "Die Strecke ist in jeder Jahreszeit begehbar; der Abstieg vom Kreuzbergköpfel kann im Winter schwierig sein.",
+        "uk": "Маршрут доступний у будь-яку пору року; спуск з Kreuzbergköpfel може бути складним взимку."
       }
     },
     "route": {
@@ -66,7 +72,8 @@
       "type": "point-to-point",
       "official": {
         "en": "The official route follows the track, skipping Lahnenkopf and Kreuzbergköpfel.",
-        "de": "Die offizielle Route folgt dem Weg und überspringt Lahnenkopf und Kreuzbergköpfel."
+        "de": "Die offizielle Route folgt dem Weg und überspringt Lahnenkopf und Kreuzbergköpfel.",
+        "uk": "Офіційний маршрут слідує за трасою, пропускаючи Lahnenkopf та Kreuzbergköpfel."
       },
       "optional": [
         {
@@ -78,11 +85,13 @@
           },
           "name": {
             "en": "Lahnenkopf wild detour",
-            "de": "Lahnenkopf wilder Umweg"
+            "de": "Lahnenkopf wilder Umweg",
+            "uk": "Дикий обхід Lahnenkopf"
           },
           "note": {
             "en": "Requires hiking up a hill with no trail.",
-            "de": "Erfordert das Wandern auf einen Hügel ohne Weg."
+            "de": "Erfordert das Wandern auf einen Hügel ohne Weg.",
+            "uk": "Потребує підйому на пагорб без стежки."
           }
         },
         {
@@ -94,11 +103,13 @@
           },
           "name": {
             "en": "Kreuzbergköpfel cliff climb",
-            "de": "Kreuzbergköpfel Felsenaufstieg"
+            "de": "Kreuzbergköpfel Felsenaufstieg",
+            "uk": "Скельний підйом Kreuzbergköpfel"
           },
           "note": {
             "en": "Traverse a steep hill up and down to a cliff with views towards Gindelalmschneid.",
-            "de": "Überqueren Sie einen steilen Hügel hinauf und hinunter zu einem Felsen mit Blick auf die Gindelalmschneid."
+            "de": "Überqueren Sie einen steilen Hügel hinauf und hinunter zu einem Felsen mit Blick auf die Gindelalmschneid.",
+            "uk": "Перетніть крутий пагорб вгору і вниз до скелі з видом на Gindelalmschneid."
           }
         }
       ],
@@ -155,13 +166,15 @@
           "marking": "none",
           "note": {
             "en": "The section is missing any marking on the trail, let alone off-trail.",
-            "de": "Der Abschnitt fehlt jegliche Markierung auf dem Weg, geschweige denn abseits des Weges."
+            "de": "Der Abschnitt fehlt jegliche Markierung auf dem Weg, geschweige denn abseits des Weges.",
+            "uk": "На ділянці відсутня будь-яка розмітка на стежці, не кажучи вже про поза стежкою."
           }
         }
       ],
       "note": {
         "en": "This is a popular and well-marked path, although there are a few unmapped shortcuts up the slope.",
-        "de": "Dies ist ein beliebter und gut markierter Weg, obwohl es ein paar nicht kartierte Abkürzungen den Hang hinauf gibt."
+        "de": "Dies ist ein beliebter und gut markierter Weg, obwohl es ein paar nicht kartierte Abkürzungen den Hang hinauf gibt.",
+        "uk": "Це популярна та добре позначена стежка, хоча є кілька не нанесених на карту скорочень вгору по схилу."
       },
       "offline": false
     },
@@ -172,7 +185,8 @@
           "lon": 11.809517,
           "name": {
             "en": "Path down from Kreuzbergköpfel",
-            "de": "Pfad hinunter vom Kreuzbergköpfel"
+            "de": "Pfad hinunter vom Kreuzbergköpfel",
+            "uk": "Стежка вниз від Kreuzbergköpfel"
           },
           "demEle": 1185.7
         },
@@ -183,11 +197,13 @@
         "severity": "medium",
         "note": {
           "en": "Very narrow muddy trail on a steep slope with fallen trees.",
-          "de": "Sehr schmaler, schlammiger Pfad an einem steilen Hang mit umgestürzten Bäumen."
+          "de": "Sehr schmaler, schlammiger Pfad an einem steilen Hang mit umgestürzten Bäumen.",
+          "uk": "Дуже вузька брудна стежка на крутому схилі з поваленими деревами."
         },
         "label": {
           "en": "Kreuzbergköpfel detour",
-          "de": "Kreuzbergköpfel Umweg"
+          "de": "Kreuzbergköpfel Umweg",
+          "uk": "Обхід Kreuzbergköpfel"
         }
       }
     ],
@@ -198,12 +214,14 @@
         },
         "to": {
           "en": "Bus stop Tegernsee, Leeberg",
-          "de": "Bushaltestelle Tegernsee, Leeberg"
+          "de": "Bushaltestelle Tegernsee, Leeberg",
+          "uk": "Автобусна зупинка Тегернзе, Ліберг"
         },
         "via": "trail",
         "note": {
           "en": "Take a narrow trail through the forest down to the closest Tegernsee bus stop.",
-          "de": "Nehmen Sie einen schmalen Pfad durch den Wald hinunter zur nächstgelegenen Bushaltestelle Tegernsee."
+          "de": "Nehmen Sie einen schmalen Pfad durch den Wald hinunter zur nächstgelegenen Bushaltestelle Tegernsee.",
+          "uk": "Пройдіть вузькою стежкою через ліс до найближчої автобусної зупинки Тегернзе."
         },
         "route": "/_projects/data-viz/hikes/gpx/bailouts/kleintegernseer_berg-tegernsee.gpx"
       },
@@ -213,12 +231,14 @@
         },
         "to": {
           "en": "Bus stop Schwaighof",
-          "de": "Bushaltestelle Schwaighof"
+          "de": "Bushaltestelle Schwaighof",
+          "uk": "Автобусна зупинка Швайгоф"
         },
         "via": "road",
         "note": {
           "en": "Take the gravel road from the hut down to Rottach-Egern.",
-          "de": "Nehmen Sie die Schotterstraße von der Hütte hinunter nach Rottach-Egern."
+          "de": "Nehmen Sie die Schotterstraße von der Hütte hinunter nach Rottach-Egern.",
+          "uk": "Пройдіть гравійну дорогу від хати вниз до Роттах-Егерн."
         },
         "route": "/_projects/data-viz/hikes/gpx/bailouts/riederstein-rottach_egern.gpx"
       },
@@ -228,18 +248,21 @@
           "lon": 11.8059348,
           "name": {
             "en": "Crossing near Baumgartenschneid",
-            "de": "Kreuzung nahe Baumgartenschneid"
+            "de": "Kreuzung nahe Baumgartenschneid",
+            "uk": "Перехрестя біля Baumgartenschneid"
           },
           "demEle": 1365.9
         },
         "to": {
           "en": "Bus stop Schwaighof",
-          "de": "Bushaltestelle Schwaighof"
+          "de": "Bushaltestelle Schwaighof",
+          "uk": "Автобусна зупинка Швайгоф"
         },
         "via": "trail",
         "note": {
           "en": "Take the steep trail from Baumgartenschneid south down to Rottach-Egern.",
-          "de": "Nehmen Sie den steilen Pfad von der Baumgartenschneid nach Süden hinunter nach Rottach-Egern."
+          "de": "Nehmen Sie den steilen Pfad von der Baumgartenschneid nach Süden hinunter nach Rottach-Egern.",
+          "uk": "Пройдіть крутою стежкою від Baumgartenschneid на південь вниз до Роттах-Егерн."
         },
         "last": true,
         "route": "/_projects/data-viz/hikes/gpx/bailouts/baumgartenschneid-rottach_egern.gpx"
@@ -320,7 +343,8 @@
         "kind": "protected-area",
         "label": {
           "en": "A warning for Wald-Wild-Schöngebiet",
-          "de": "Eine Warnung für Wald-Wild-Schöngebiet"
+          "de": "Eine Warnung für Wald-Wild-Schöngebiet",
+          "uk": "Попередження про заповідну зона «Вальд-Вільд-Шонгебіт»"
         },
         "season": [1, 2, 12]
       }
@@ -335,7 +359,8 @@
       "solo": "yes",
       "note": {
         "en": "Detours are not accessible for strollers or bikes.",
-        "de": "Umwege sind nicht für Kinderwagen oder Fahrräder zugänglich."
+        "de": "Umwege sind nicht für Kinderwagen oder Fahrräder zugänglich.",
+        "uk": "Обходи недоступні для дитячих візків або велосипедів."
       }
     },
     "sources": [
@@ -343,13 +368,15 @@
         "url": "https://www.hikr.org/tour/post130424.html",
         "title": {
           "en": "Tour to Lahnenkopf",
-          "de": "Tour zum Lahnenkopf"
+          "de": "Tour zum Lahnenkopf",
+          "uk": "Тур до Lahnenkopf"
         },
         "kind": "guidebook",
         "lang": "de",
         "note": {
           "en": "A small guide for getting to Lahnenkopf.",
-          "de": "Ein kleiner Leitfaden, um zum Lahnenkopf zu gelangen."
+          "de": "Ein kleiner Leitfaden, um zum Lahnenkopf zu gelangen.",
+          "uk": "Невеликий посібник зі сходження на Lahnenkopf."
         }
       },
       {
@@ -357,12 +384,14 @@
         "kind": "guidebook",
         "title": {
           "en": "Tour to Kreuzbergköpfel",
-          "de": "Tour zum Kreuzbergköpfel"
+          "de": "Tour zum Kreuzbergköpfel",
+          "uk": "Тур до Kreuzbergköpfel"
         },
         "lang": "de",
         "note": {
           "en": "A guide to climbing Kreuzbergköpfel.",
-          "de": "Ein Leitfaden zum Aufstieg auf den Kreuzbergköpfel."
+          "de": "Ein Leitfaden zum Aufstieg auf den Kreuzbergköpfel.",
+          "uk": "Посібник зі сходження на Kreuzbergköpfel."
         }
       },
       {
@@ -370,14 +399,16 @@
         "kind": "guidebook",
         "title": {
           "en": "DAV visit to Kreuzbergköpfel",
-          "de": "DAV-Besuch am Kreuzbergköpfel"
+          "de": "DAV-Besuch am Kreuzbergköpfel",
+          "uk": "Візит DAV до Kreuzbergköpfel"
         },
         "lang": "de"
       }
     ],
     "protectedAreas": {
       "en": "The route near Lahnenkopf is part of Wald-Wild-Schöngebiet.",
-      "de": "Die Route in der Nähe des Lahnenkopfs ist Teil des Wald-Wild-Schöngebiets."
+      "de": "Die Route in der Nähe des Lahnenkopfs ist Teil des Wald-Wild-Schöngebiets.",
+      "uk": "Маршрут поблизу Lahnenkopf є частиною заповідної зони «Вальд-Вільд-Шонгебіт»."
     },
     "plan": {
       "gear": [
@@ -391,23 +422,28 @@
           "item": "water",
           "amount": {
             "en": "2–3 L",
-            "de": "2–3 L"
+            "de": "2–3 L",
+            "uk": "2–3 л"
           }
         }
       ],
       "for": [{
           "en": "Adventurous hikers chasing Tegernsee views",
-          "de": "Abenteuerlustige Wanderer, die Tegernsee-Blicke suchen"
+          "de": "Abenteuerlustige Wanderer, die Tegernsee-Blicke suchen",
+          "uk": "Авантюрних туристи, які шукають види на Тегернзе"
         }, {
           "en": "Completionists looking for easy wild peaks",
-          "de": "Vervollständiger, die nach einfachen wilden Gipfeln suchen"
+          "de": "Vervollständiger, die nach einfachen wilden Gipfeln suchen",
+          "uk": "Туристів, які прагнуть підкорити легкі дикі вершини"
         }],
       "notFor": [{
           "en": "Casual hikers following the full route",
-          "de": "Gelegenheitswanderer, die der gesamten Route folgen"
+          "de": "Gelegenheitswanderer, die der gesamten Route folgen",
+          "uk": "Випадкових туристів, які слідують повним маршрутом"
         }, {
           "en": "People with weak stamina",
-          "de": "Menschen mit schwacher Ausdauer"
+          "de": "Menschen mit schwacher Ausdauer",
+          "uk": "Людей зі слабкою витривалістю"
         }],
       "timing": {
         "start": "08:00",
@@ -446,7 +482,8 @@
         "marking": "none",
         "note": {
           "en": "A vaguely visible trail up a shallow slope.",
-          "de": "Ein vage sichtbarer Pfad auf einem flachen Hang."
+          "de": "Ein vage sichtbarer Pfad auf einem flachen Hang.",
+          "uk": "Слабо помітна стежка на пологому схилі."
         },
         "onProfile": true
       },
@@ -478,7 +515,8 @@
         "optional": true,
         "note": {
           "en": "No trail upwards; steep overgrown slope.",
-          "de": "Kein Weg nach oben; steiler, überwucherter Hang."
+          "de": "Kein Weg nach oben; steiler, überwucherter Hang.",
+          "uk": "Немає стежки вгору; крутий зарослий схил."
         },
         "onProfile": true
       },
@@ -493,7 +531,8 @@
         "optional": true,
         "note": {
           "en": "Steep slope covered in leaves; partial trail sections visible.",
-          "de": "Steiler Hang, der mit Blättern bedeckt ist; teilweise sichtbare Wegabschnitte."
+          "de": "Steiler Hang, der mit Blättern bedeckt ist; teilweise sichtbare Wegabschnitte.",
+          "uk": "Крутий схил, вкритий листям; частково видимі ділянки стежки."
         }
       },
       {

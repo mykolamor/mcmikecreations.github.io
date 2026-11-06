@@ -1,11 +1,13 @@
 {
   "name": {
     "en": "Krettenburg - Westerberg",
-    "de": "Krettenburg - Westerberg"
+    "de": "Krettenburg - Westerberg",
+    "uk": "Креттенбург - Вестерберг"
   },
   "description": {
     "en": "Hike from Spitzingsattel to Schliersee via Krettenburg (1494 m), Eckspitz (1386 m), Westerberg (1328 m), and Brunstkogel (1251 m).",
-    "de": "Wanderung vom Spitzingsattel nach Schliersee über Krettenburg (1494 m), Eckspitz (1386 m), Westerberg (1328 m) und Brunstkogel (1251 m)."
+    "de": "Wanderung vom Spitzingsattel nach Schliersee über Krettenburg (1494 m), Eckspitz (1386 m), Westerberg (1328 m) und Brunstkogel (1251 m).",
+    "uk": "Похід від Шпіцінгсаттель до Шлірзе через Krettenburg (1494 м), Eckspitz (1386 м), Westerberg (1328 м) та Brunstkogel (1251 м)."
   },
   "image": "/images/projects/data-viz/hikes/krettenburg_westerberg.jpg",
   "origin": {
@@ -30,18 +32,21 @@
   "facts": {
     "summary": {
       "en": "A suboptimal point-to-point between Spitzingsee and Schliersee taking Bodenschneid Sommerweg and Wanderwegenetz Landkreis Miesbach and visiting lesser-known peaks along the way.",
-      "de": "Eine suboptimale Punkt-zu-Punkt-Tour zwischen Spitzingsee und Schliersee über den Bodenschneid-Sommerweg und das Wanderwegenetz Landkreis Miesbach, die dabei weniger bekannte Gipfel besucht."
+      "de": "Eine suboptimale Punkt-zu-Punkt-Tour zwischen Spitzingsee und Schliersee über den Bodenschneid-Sommerweg und das Wanderwegenetz Landkreis Miesbach, die dabei weniger bekannte Gipfel besucht.",
+      "uk": "Незручний маршрут між Шпіцінгзе та Шлірзе, що проходить через Bodenschneid Sommerweg та Wanderwegenetz Landkreis Miesbach і відвідує менш відомі вершини по дорозі."
     },
     "difficulty": {
       "note": {
         "en": "T3 towards the summits and on Bodenschneid Sommerweg; T1-T2 for the rest.",
-        "de": "T3 zu den Gipfeln und auf dem Bodenschneid-Sommerweg; T1-T2 für den Rest."
+        "de": "T3 zu den Gipfeln und auf dem Bodenschneid-Sommerweg; T1-T2 für den Rest.",
+        "uk": "T3 до вершин і на Bodenschneid Sommerweg; T1-T2 для решти."
       },
       "exposure": {
         "level": "low",
         "note": {
           "en": "Most of the route goes through the forest.",
-          "de": "Der Großteil der Route verläuft durch den Wald."
+          "de": "Der Großteil der Route verläuft durch den Wald.",
+          "uk": "Більшість маршруту проходить через ліс."
         }
       },
       "fitness": 3
@@ -51,14 +56,16 @@
       "possible": [6, 10],
       "note": {
         "en": "Snow on Krettenburg during winter; mud and bogs between Westerberg and Brunstkogel in spring.",
-        "de": "Schnee auf der Krettenburg im Winter; Matsch und Moor zwischen Westerberg und Brunstkogel im Frühjahr."
+        "de": "Schnee auf der Krettenburg im Winter; Matsch und Moor zwischen Westerberg und Brunstkogel im Frühjahr.",
+        "uk": "Сніг на Krettenburg взимку; бруд і болота між Westerberg і Brunstkogel навесні."
       }
     },
     "route": {
       "start": {
         "name": {
           "en": "Spitzingsattel bus stop",
-          "de": "Bushaltestelle Spitzingsattel"
+          "de": "Bushaltestelle Spitzingsattel",
+          "uk": "Автобусна зупинка Шпіцінгсаттель"
         },
         "at": {
           "lat": 47.6722099,
@@ -66,7 +73,8 @@
           "demEle": 1139.2,
           "name": {
             "en": "Spitzingsattel bus stop",
-            "de": "Bushaltestelle Spitzingsattel"
+            "de": "Bushaltestelle Spitzingsattel",
+            "uk": "Автобусна зупинка Шпіцінгсаттель"
           }
         }
       },
@@ -76,19 +84,22 @@
         "demEle": 786.2,
         "name": {
           "en": "Schliersee",
-          "de": "Schliersee"
+          "de": "Schliersee",
+          "uk": "Шлірзе"
         }
       },
       "type": "point-to-point",
       "official": {
         "en": "The usual route follows the road to Obere Firstalm, the summer way to Bodenschneidhaus, and the forest road down to Schliersee.",
-        "de": "Die übliche Route folgt der Straße zur Oberen Firstalm, dem Sommerweg zum Bodenschneidhaus und der Forststraße hinab nach Schliersee."
+        "de": "Die übliche Route folgt der Straße zur Oberen Firstalm, dem Sommerweg zum Bodenschneidhaus und der Forststraße hinab nach Schliersee.",
+        "uk": "Звичайний маршрут проходить дорогою до Obere Firstalm, літньою стежкою до Bodenschneidhaus і лісовою дорогою вниз до Шлірзе."
       },
       "optional": [
         {
           "name": {
             "en": "Krettenburg",
-            "de": "Krettenburg"
+            "de": "Krettenburg",
+            "uk": "Креттенбург"
           },
           "from": {
             "lat": 47.6712492,
@@ -96,13 +107,15 @@
             "demEle": 1384.3,
             "name": {
               "en": "Obere Firstalm barrier",
-              "de": "Schranke Obere Firstalm"
+              "de": "Schranke Obere Firstalm",
+              "uk": "Бар'єр Obere Firstalm"
             }
           },
           "to": "Bodenschneidhaus",
           "note": {
             "en": "Overgrown steep Krettenburg slope followed by the slippery Bodenschneid Sommerweg trail; only for peak baggers.",
-            "de": "Zugewachsener steiler Krettenburg-Hang gefolgt vom rutschigen Bodenschneid-Sommerweg; nur für Gipfeljäger."
+            "de": "Zugewachsener steiler Krettenburg-Hang gefolgt vom rutschigen Bodenschneid-Sommerweg; nur für Gipfeljäger.",
+            "uk": "Зарослий крутий схил Krettenburg, за яким слідує слизька стежка Bodenschneid Sommerweg; тільки для тих, хто збирає вершини."
           }
         }
       ],
@@ -126,14 +139,16 @@
             "demEle": 1384.3,
             "name": {
               "en": "Obere Firstalm barrier",
-              "de": "Schranke Obere Firstalm"
+              "de": "Schranke Obere Firstalm",
+              "uk": "Бар'єр Obere Firstalm"
             }
           },
           "to": "Krettenburg",
           "marking": "none",
           "note": {
             "en": "Wild overgrown slope with no trails or markers.",
-            "de": "Wild zugewachsener Hang ohne Wege oder Markierungen."
+            "de": "Wild zugewachsener Hang ohne Wege oder Markierungen.",
+            "uk": "Дикий зарослий схил без стежок або маркерів."
           }
         },
         {
@@ -142,13 +157,15 @@
           "marking": "none",
           "note": {
             "en": "Old overgrown forestry tracks and animal trails.",
-            "de": "Alte zugewachsene Forstwege und Wildpfade."
+            "de": "Alte zugewachsene Forstwege und Wildpfade.",
+            "uk": "Старі зарослі лісові дороги та стежки для тварин."
           }
         }
       ],
       "note": {
         "en": "Good markings on forest roads; absent markings on the peaks.",
-        "de": "Gute Markierungen auf Forststraßen; keine Markierungen auf den Gipfeln."
+        "de": "Gute Markierungen auf Forststraßen; keine Markierungen auf den Gipfeln.",
+        "uk": "Добрі маркування на лісових дорогах; відсутні маркування на вершинах."
       }
     },
     "hazards": [
@@ -160,14 +177,16 @@
           "demEle": 1384.3,
           "name": {
             "en": "Obere Firstalm barrier",
-            "de": "Schranke Obere Firstalm"
+            "de": "Schranke Obere Firstalm",
+            "uk": "Бар'єр Obere Firstalm"
           }
         },
         "to": "Krettenburg",
         "severity": "high",
         "note": {
           "en": "Steep wild cliff slope overgrown with pine shrubs.",
-          "de": "Steiler, wild bewachsener Felsabbruch mit Latschen."
+          "de": "Steiler, wild bewachsener Felsabbruch mit Latschen.",
+          "uk": "Крутий дикий скелястий схил, зарослий сосновими кущами."
         }
       },
       {
@@ -177,7 +196,8 @@
         "severity": "medium",
         "note": {
           "en": "Overgrown area with fallen trees, branches, and slippery leaves.",
-          "de": "Zugewachsener Bereich mit umgestürzten Bäumen, Ästen und rutschigen Blättern."
+          "de": "Zugewachsener Bereich mit umgestürzten Bäumen, Ästen und rutschigen Blättern.",
+          "uk": "Заросла ділянка з поваленими деревами, гілками та слизьким листям."
         }
       }
     ],
@@ -189,12 +209,14 @@
           "demEle": 1384.3,
           "name": {
             "en": "Obere Firstalm barrier",
-            "de": "Schranke Obere Firstalm"
+            "de": "Schranke Obere Firstalm",
+            "uk": "Бар'єр Obere Firstalm"
           }
         },
         "to": {
           "en": "Neuhaus train station via Freudenreich-Alm",
-          "de": "Bahnhof Neuhaus über Freudenreich-Alm"
+          "de": "Bahnhof Neuhaus über Freudenreich-Alm",
+          "uk": "Залізнична станція Нойхаус через Freudenreich-Alm"
         },
         "via": "trail",
         "time": 77,
@@ -202,7 +224,8 @@
         "route": "/_projects/data-viz/hikes/gpx/bailouts/krettenburg-neuhaus.gpx",
         "note": {
           "en": "Down the wide T1 path/road; detour also possible after Eckspitz.",
-          "de": "Über den breiten T1-Weg/Forststraße; Abzweig auch nach dem Eckspitz möglich."
+          "de": "Über den breiten T1-Weg/Forststraße; Abzweig auch nach dem Eckspitz möglich.",
+          "uk": "По широкій стежці/дорозі T1; об'їзд також можливий після Eckspitz."
         }
       }
     ],
@@ -242,7 +265,8 @@
       "carFree": "yes",
       "note": {
         "en": "Arrive by train and bus, leave by the same train.",
-        "de": "Mit Zug und Bus anreisen, mit demselben Zug wieder abreisen."
+        "de": "Mit Zug und Bus anreisen, mit demselben Zug wieder abreisen.",
+        "uk": "Приїхати поїздом і автобусом, поїхати тим же поїздом."
       },
       "checked": "2026-10-25",
       "transport": [
@@ -269,7 +293,8 @@
       "solo": "experienced",
       "note": {
         "en": "Dogs will have a hard time navigating overgrown areas.",
-        "de": "Hunde haben es schwer, sich durch zugewachsene Bereiche zu bewegen."
+        "de": "Hunde haben es schwer, sich durch zugewachsene Bereiche zu bewegen.",
+        "uk": "Собакам буде важко орієнтуватися в зарослих місцях."
       }
     },
     "legs": [
@@ -280,7 +305,8 @@
         "marking": "good",
         "note": {
           "en": "Forest road with occasional cars in summer or sledges in winter.",
-          "de": "Forststraße mit gelegentlichem Autoverkehr im Sommer oder Schlitten im Winter."
+          "de": "Forststraße mit gelegentlichem Autoverkehr im Sommer oder Schlitten im Winter.",
+          "uk": "Лісова дорога з випадковим рухом автомобілів влітку або саней взимку."
         }
       },
       {
@@ -308,7 +334,8 @@
         "marking": "good",
         "note": {
           "en": "Forest road abruptly ends; unmarked T3 slope to the top.",
-          "de": "Forststraße endet abrupt; unmarkierter T3-Hang zum Gipfel."
+          "de": "Forststraße endet abrupt; unmarkierter T3-Hang zum Gipfel.",
+          "uk": "Лісова дорога раптово закінчується; немаркований схил T3 до вершини."
         }
       },
       {
@@ -324,7 +351,8 @@
           "demEle": 786.2,
           "name": {
             "en": "Schliersee train station",
-            "de": "Bahnhof Schliersee"
+            "de": "Bahnhof Schliersee",
+            "uk": "Залізнична станція Шлірзе"
           }
         },
         "terrain": ["forest-road", "road"],
@@ -338,14 +366,16 @@
           "demEle": 1384.3,
           "name": {
             "en": "Obere Firstalm barrier",
-            "de": "Schranke Obere Firstalm"
+            "de": "Schranke Obere Firstalm",
+            "uk": "Бар'єр Obere Firstalm"
           }
         },
         "to": "Bodenschneidhaus",
         "sac": "T3",
         "note": {
           "en": "Wild overgrown steep slope followed by a slippery trail.",
-          "de": "Wild zugewachsener steiler Hang gefolgt von einem rutschigen Weg."
+          "de": "Wild zugewachsener steiler Hang gefolgt von einem rutschigen Weg.",
+          "uk": "Дикий зарослий крутий схил, за яким слідує слизька стежка."
         },
         "inTable": false,
         "onProfile": true
@@ -356,7 +386,8 @@
         "sac": "T3",
         "note": {
           "en": "Overgrown ridge with fallen trees and branches.",
-          "de": "Zugewachsener Grat mit umgestürzten Bäumen und Ästen."
+          "de": "Zugewachsener Grat mit umgestürzten Bäumen und Ästen.",
+          "uk": "Зарослий хребет з поваленими деревами та гілками."
         },
         "inTable": false,
         "onProfile": true
@@ -371,14 +402,16 @@
           "item": "water",
           "amount": {
             "en": "2–3 L",
-            "de": "2–3 L"
+            "de": "2–3 L",
+            "uk": "2–3 л"
           }
         },
         {
           "item": "insulation",
           "when": {
             "en": "in case of falling into mud or snow",
-            "de": "falls man in Matsch oder Schnee fällt"
+            "de": "falls man in Matsch oder Schnee fällt",
+            "uk": "у разі падіння в бруд або сніг"
           }
         },
         {
@@ -389,25 +422,29 @@
       "for": [
         {
           "en": "Fit hikers exploring easily accessible but unknown peaks",
-          "de": "Fitte Wanderer, die leicht erreichbare, aber unbekannte Gipfel erkunden"
+          "de": "Fitte Wanderer, die leicht erreichbare, aber unbekannte Gipfel erkunden",
+          "uk": "Підготовлених туристів, які досліджують легко доступні, але невідомі вершини"
         }
       ],
       "notFor": [
         {
           "en": "Normal hikers on a day trip",
-          "de": "Normale Wanderer auf Tagestour"
+          "de": "Normale Wanderer auf Tagestour",
+          "uk": "Звичайних туристів у одноденній поїздці"
         }
       ],
       "variants": [
         {
           "name": {
             "en": "No-peak summer tour",
-            "de": "Gipfelfreie Sommertour"
+            "de": "Gipfelfreie Sommertour",
+            "uk": "Літній тур без вершин"
           },
           "recommended": true,
           "summary": {
             "en": "Take the road to Obere Firstalm, the summer way to Bodenschneidhaus, and the forest road down to Schliersee.",
-            "de": "Über die Straße zur Oberen Firstalm, den Sommerweg zum Bodenschneidhaus und die Forststraße hinab nach Schliersee."
+            "de": "Über die Straße zur Oberen Firstalm, den Sommerweg zum Bodenschneidhaus und die Forststraße hinab nach Schliersee.",
+            "uk": "Дорогою до Obere Firstalm, літньою стежкою до Bodenschneidhaus і лісовою дорогою вниз до Шлірзе."
           },
           "distance": 13700,
           "ascent": 535,
@@ -430,7 +467,8 @@
       {
         "title": {
           "en": "Westerberg description on hikr.org",
-          "de": "Westerberg-Beschreibung auf hikr.org"
+          "de": "Westerberg-Beschreibung auf hikr.org",
+          "uk": "Опис Westerberg на hikr.org"
         },
         "url": "https://www.hikr.org/tour/post34161.html",
         "kind": "website",
@@ -439,7 +477,8 @@
       {
         "title": {
           "en": "Bodenschneidhaus website",
-          "de": "Bodenschneidhaus-Website"
+          "de": "Bodenschneidhaus-Website",
+          "uk": "Веб-сайт Bodenschneidhaus"
         },
         "url": "https://www.bodenschneidhaus.de/",
         "kind": "website",

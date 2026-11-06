@@ -34,7 +34,7 @@ export interface PlaceIndex {
 	match(words: string[], ele: number): PlaceMatch | null;
 }
 
-const NAME_TAGS = ['name', 'name:de', 'name:en', 'name:cs', 'alt_name', 'short_name', 'official_name'];
+const NAME_TAGS = ['name', 'name:de', 'name:en', 'name:cs', 'name:uk', 'alt_name', 'short_name', 'official_name'];
 /** How far a node's `ele` may be from the reference's elevation for a partial name match. */
 const ELE_TOLERANCE_M = 5;
 /**

@@ -1,11 +1,13 @@
 {
   "name": {
     "en": "Mahnkopf",
-    "de": "Mahnkopf"
+    "de": "Mahnkopf",
+    "uk": "Манхкопф"
   },
   "description": {
     "en": "Hike from Laliderertal to Eng via Falkenhütte, Ladizköpfl (1920 m), and Mahnkopf (2093 m).",
-    "de": "Wanderung vom Laliderertal in die Eng über die Falkenhütte, das Ladizköpfl (1920 m) und den Mahnkopf (2093 m)."
+    "de": "Wanderung vom Laliderertal in die Eng über die Falkenhütte, das Ladizköpfl (1920 m) und den Mahnkopf (2093 m).",
+    "uk": "Похід з Лалідерерталь до Енг через Falkenhütte, Ladizköpfl (1920 м) та Mahnkopf (2093 м)."
   },
   "image": "/images/projects/data-viz/hikes/mahnkopf.jpg",
   "origin": {
@@ -29,18 +31,21 @@
   "facts": {
     "summary": {
       "en": "A long point-to-point from Laliderertal over Falkenhütte to Eng with a detour to visit Mahnkopf (2093 m).",
-      "de": "Eine lange Punkt-zu-Punkt-Tour vom Laliderertal über die Falkenhütte in die Eng mit Abstecher zum Mahnkopf (2093 m)."
+      "de": "Eine lange Punkt-zu-Punkt-Tour vom Laliderertal über die Falkenhütte in die Eng mit Abstecher zum Mahnkopf (2093 m).",
+      "uk": "Довга точка з Лалідерерталь через Falkenhütte до Енг з відхиленням, щоб відвідати Mahnkopf (2093 м)."
     },
     "difficulty": {
       "note": {
         "en": "T2 mountain trail with a T1 gravel road at the beginning.",
-        "de": "T2-Bergweg mit T1-Schotterstraße am Anfang."
+        "de": "T2-Bergweg mit T1-Schotterstraße am Anfang.",
+        "uk": "Гірська стежка T2 з гравійною дорогою T1 на початку."
       },
       "exposure": {
         "level": "moderate",
         "note": {
           "en": "Exposed sections on some parts of the slope and near Mahnkopf (2093 m).",
-          "de": "Ausgesetzte Stellen an einigen Hangpartien und nahe dem Mahnkopf (2093 m)."
+          "de": "Ausgesetzte Stellen an einigen Hangpartien und nahe dem Mahnkopf (2093 m).",
+          "uk": "Відкриті ділянки на деяких частинах схилу та біля Mahnkopf (2093 м)."
         }
       },
       "fitness": 4
@@ -54,14 +59,16 @@
       },
       "note": {
         "en": "Muddy ascent to Mahnkopf (2093 m) in colder seasons. Falkenhütte is open June to September.",
-        "de": "Matschiger Aufstieg zum Mahnkopf (2093 m) in kälteren Jahreszeiten. Die Falkenhütte hat von Juni bis September geöffnet."
+        "de": "Matschiger Aufstieg zum Mahnkopf (2093 m) in kälteren Jahreszeiten. Die Falkenhütte hat von Juni bis September geöffnet.",
+        "uk": "Болотистий підйом на Mahnkopf (2093 м) у холодніші сезони. Falkenhütte відкрита з червня по вересень."
       }
     },
     "route": {
       "start": {
         "name": {
           "en": "Bus stop Laliderertal",
-          "de": "Hinterriß Einstieg Laliderertal"
+          "de": "Hinterriß Einstieg Laliderertal",
+          "uk": "Автобусна зупинка Лалідерерталь"
         },
         "at": {
           "lat": 47.4479950,
@@ -69,7 +76,8 @@
           "demEle": 1029.2,
           "name": {
             "en": "Bus stop Laliderertal",
-            "de": "Hinterriß Einstieg Laliderertal"
+            "de": "Hinterriß Einstieg Laliderertal",
+            "uk": "Автобусна зупинка Лалідерерталь"
           }
         }
       },
@@ -79,25 +87,29 @@
         "demEle": 1201.3,
         "name": {
           "en": "Alpengasthof Eng",
-          "de": "Alpengasthof Eng"
+          "de": "Alpengasthof Eng",
+          "uk": "Гірський готель Eng"
         }
       },
       "type": "point-to-point",
       "official": {
         "en": "The usual route goes across Falkenhütte and Hohljoch, then down to Eng.",
-        "de": "Die übliche Route führt über die Falkenhütte und das Hohljoch, dann hinab in die Eng."
+        "de": "Die übliche Route führt über die Falkenhütte und das Hohljoch, dann hinab in die Eng.",
+        "uk": "Звичайний маршрут проходить через Falkenhütte та Hohljoch, а потім вниз до Енг."
       },
       "optional": [
         {
           "name": {
             "en": "Mahnkopf",
-            "de": "Mahnkopf"
+            "de": "Mahnkopf",
+            "uk": "Манхкопф"
           },
           "from": "Falkenhütte",
           "to": "Mahnkopf",
           "note": {
             "en": "Mountain trail across Ladizköpfl (1920 m) to the Mahnkopf (2093 m) summit; views of the valley at the top.",
-            "de": "Bergweg über das Ladizköpfl (1920 m) auf den Mahnkopf (2093 m); Aussicht ins Tal am Gipfel."
+            "de": "Bergweg über das Ladizköpfl (1920 m) auf den Mahnkopf (2093 m); Aussicht ins Tal am Gipfel.",
+            "uk": "Гірська стежка через Ladizköpfl (1920 м) до вершини Mahnkopf (2093 м); види на долину на вершині."
           }
         }
       ],
@@ -120,7 +132,8 @@
           "marking": "poor",
           "note": {
             "en": "Short straightforward section with faded markings.",
-            "de": "Kurzer, geradliniger Abschnitt mit verblassten Markierungen."
+            "de": "Kurzer, geradliniger Abschnitt mit verblassten Markierungen.",
+            "uk": "Короткий прямий відрізок з тьмяними маркуваннями."
           }
         }
       ]
@@ -133,7 +146,8 @@
         "severity": "medium",
         "note": {
           "en": "Slippery dirt with mud in wet weather.",
-          "de": "Rutschiger Erdweg mit Matsch bei Nässe."
+          "de": "Rutschiger Erdweg mit Matsch bei Nässe.",
+          "uk": "Слизька земля з брудом у вологу погоду."
         }
       }
     ],
@@ -142,14 +156,16 @@
         "at": "Falkenhütte",
         "to": {
           "en": "Johannestal",
-          "de": "Johannestal"
+          "de": "Johannestal",
+          "uk": "Йоганнсталь"
         },
         "via": "trail",
         "route": "/_projects/data-viz/hikes/gpx/bailouts/falkenhuette-johannestal.gpx",
         "time": 188,
         "note": {
           "en": "West towards Ladiz-Alpe and through the valley. The path joins the same road as the main route.",
-          "de": "Westlich Richtung Ladiz-Alpe und durchs Tal. Der Weg mündet in dieselbe Straße wie die Hauptroute."
+          "de": "Westlich Richtung Ladiz-Alpe und durchs Tal. Der Weg mündet in dieselbe Straße wie die Hauptroute.",
+          "uk": "На захід до Ladiz-Alpe і через долину. Стежка приєднується до тієї ж дороги, що й основний маршрут."
         }
       }
     ],
@@ -171,7 +187,8 @@
           "demEle": 1527.7,
           "name": {
             "en": "Drinking water",
-            "de": "Trinkwasser"
+            "de": "Trinkwasser",
+            "uk": "Питна вода"
           }
         },
         "kind": "tap",
@@ -184,7 +201,8 @@
           "demEle": 1730.7,
           "name": {
             "en": "Spring",
-            "de": "Quelle"
+            "de": "Quelle",
+            "uk": "Джерело"
           }
         },
         "kind": "spring",
@@ -197,7 +215,8 @@
           "demEle": 1393.7,
           "name": {
             "en": "Drinking water",
-            "de": "Trinkwasser"
+            "de": "Trinkwasser",
+            "uk": "Питна вода"
           }
         },
         "kind": "tap",
@@ -210,7 +229,8 @@
           "demEle": 1225.2,
           "name": {
             "en": "Fountain",
-            "de": "Brunnen"
+            "de": "Brunnen",
+            "uk": "Фонтан"
           }
         },
         "kind": "fountain",
@@ -223,7 +243,8 @@
           "demEle": 1218.9,
           "name": {
             "en": "Fountain",
-            "de": "Brunnen"
+            "de": "Brunnen",
+            "uk": "Фонтан"
           }
         },
         "kind": "fountain",
@@ -254,7 +275,8 @@
       "carFree": "yes",
       "note": {
         "en": "Arrive by train and bus.",
-        "de": "Anreise mit Bahn und Bus."
+        "de": "Anreise mit Bahn und Bus.",
+        "uk": "Приїзд поїздом і автобусом."
       },
       "checked": "2026-10-11",
       "transport": [
@@ -275,12 +297,14 @@
       {
         "name": {
           "en": "No permit needed",
-          "de": "Keine Genehmigung nötig"
+          "de": "Keine Genehmigung nötig",
+          "uk": "Дозвіл не потрібен"
         },
         "required": false,
         "where": {
           "en": "Karwendel mountains",
-          "de": "Karwendelgebirge"
+          "de": "Karwendelgebirge",
+          "uk": "Гори Karwendel"
         },
         "price": [
           {
@@ -291,7 +315,8 @@
         "checked": "2026-10-12",
         "note": {
           "en": "Overnight stays outside huts are not allowed.",
-          "de": "Übernachten außerhalb der Hütten ist nicht erlaubt."
+          "de": "Übernachten außerhalb der Hütten ist nicht erlaubt.",
+          "uk": "Ночівля поза гірськими притулками не дозволена."
         }
       }
     ],
@@ -302,7 +327,8 @@
         "season": [5, 6, 7, 8, 9],
         "note": {
           "en": "Grazing cattle.",
-          "de": "Weidevieh."
+          "de": "Weidevieh.",
+          "uk": "Пасовищна худоба."
         }
       },
       {
@@ -311,7 +337,8 @@
         "to": "Hohljoch",
         "note": {
           "en": "Bikes are forbidden on the mountain trail section.",
-          "de": "Fahrräder sind auf dem Bergwegabschnitt verboten."
+          "de": "Fahrräder sind auf dem Bergwegabschnitt verboten.",
+          "uk": "Велосипеди заборонені на ділянці гірської стежки."
         }
       }
     ],
@@ -345,7 +372,8 @@
         "marking": "good",
         "note": {
           "en": "From Falkenhütte, after returning from Mahnkopf.",
-          "de": "Ab der Falkenhütte, nach der Rückkehr vom Mahnkopf."
+          "de": "Ab der Falkenhütte, nach der Rückkehr vom Mahnkopf.",
+          "uk": "Від Falkenhütte, після повернення з Mahnkopf."
         }
       },
       {
@@ -359,13 +387,15 @@
           "ref": "node/9883893791",
           "name": {
             "en": "Drinking water",
-            "de": "Trinkwasser"
+            "de": "Trinkwasser",
+            "uk": "Питна вода"
           }
         },
         "sac": "T1",
         "note": {
           "en": "Gravel road across meadows.",
-          "de": "Schotterstraße über Wiesen."
+          "de": "Schotterstraße über Wiesen.",
+          "uk": "Гравійна дорога через луки."
         },
         "inTable": false,
         "onProfile": true
@@ -375,14 +405,16 @@
           "ref": "node/9883893791",
           "name": {
             "en": "Drinking water",
-            "de": "Trinkwasser"
+            "de": "Trinkwasser",
+            "uk": "Питна вода"
           }
         },
         "to": "Mahnkopf",
         "sac": "T2",
         "note": {
           "en": "Narrow dirt trail on the slope.",
-          "de": "Schmaler Erdpfad am Hang."
+          "de": "Schmaler Erdpfad am Hang.",
+          "uk": "Вузька земляна стежка на схилі."
         },
         "inTable": false,
         "onProfile": true
@@ -393,7 +425,8 @@
         "sac": "T2",
         "note": {
           "en": "Mountain trail across gravel, stone, and dirt slopes.",
-          "de": "Bergweg über Schotter-, Stein- und Erdhang."
+          "de": "Bergweg über Schotter-, Stein- und Erdhang.",
+          "uk": "Гірська стежка через гравійні, кам'яні та земляні схили."
         },
         "inTable": false,
         "onProfile": true
@@ -403,7 +436,8 @@
         "sac": "T1",
         "note": {
           "en": "Asphalt road through the settlement.",
-          "de": "Teerstraße durch die Siedlung."
+          "de": "Teerstraße durch die Siedlung.",
+          "uk": "Асфальтована дорога через поселення."
         },
         "inTable": false,
         "onProfile": true
@@ -413,33 +447,39 @@
       "for": [
         {
           "en": "Fit hikers comfortable with long-distance hikes over 1000 m of ascent",
-          "de": "Fitte Wanderer, die lange Touren mit über 1000 m Aufstieg gewohnt sind"
+          "de": "Fitte Wanderer, die lange Touren mit über 1000 m Aufstieg gewohnt sind",
+          "uk": "Підготовлених туристів, які звикли до довгих походів з підйомом понад 1000 м"
         },
         {
           "en": "Anyone wanting to experience Laliderer Wände without climbing them",
-          "de": "Alle, die die Laliderer Wände erleben wollen, ohne sie zu besteigen"
+          "de": "Alle, die die Laliderer Wände erleben wollen, ohne sie zu besteigen",
+          "uk": "Тих, хто хоче відвідати Laliderer Wände, не піднімаючись на них"
         }
       ],
       "notFor": [
         {
           "en": "People struggling with elevation",
-          "de": "Alle, die nicht schwindelfrei sind"
+          "de": "Alle, die nicht schwindelfrei sind",
+          "uk": "Тих, хто не звик до висоти"
         },
         {
           "en": "Anyone without proper hiking shoes",
-          "de": "Alle ohne geeignete Wanderschuhe"
+          "de": "Alle ohne geeignete Wanderschuhe",
+          "uk": "Тих, хто не має відповідного туристичного взуття"
         }
       ],
       "variants": [
         {
           "name": {
             "en": "Long loop over Johannestal",
-            "de": "Lange Runde über das Johannestal"
+            "de": "Lange Runde über das Johannestal",
+            "uk": "Довгий маршрут через Йоганнсталь"
           },
           "recommended": false,
           "summary": {
             "en": "Leave the bus at Einstieg Johannestal, hike up to Falkenhütte, and descend via Hohljoch.",
-            "de": "Bus an der Haltestelle Einstieg Johannestal verlassen, zur Falkenhütte aufsteigen und über das Hohljoch absteigen."
+            "de": "Bus an der Haltestelle Einstieg Johannestal verlassen, zur Falkenhütte aufsteigen und über das Hohljoch absteigen.",
+            "uk": "Вийти з автобуса на зупинці Einstieg Johannestal, піднятися до Falkenhütte і спуститися через Hohljoch."
           },
           "distance": 17200,
           "ascent": 1262,
@@ -452,7 +492,8 @@
         "turnaround": "15:00",
         "note": {
           "en": "Peaks covered in fog on cloudy days.",
-          "de": "Gipfel bei bewölktem Wetter in Nebel gehüllt."
+          "de": "Gipfel bei bewölktem Wetter in Nebel gehüllt.",
+          "uk": "Вершини вкриті туманом у похмурі дні."
         }
       },
       "alternatives": {
@@ -462,14 +503,16 @@
       },
       "note": {
         "en": "An overnight stay at Falkenhütte lets you take on higher nearby mountains.",
-        "de": "Übernachtung in der Falkenhütte ermöglicht die Besteigung höherer Berge in der Nähe."
+        "de": "Übernachtung in der Falkenhütte ermöglicht die Besteigung höherer Berge in der Nähe.",
+        "uk": "Ночівля в Falkenhütte дозволяє підкорювати вищі гори поблизу."
       }
     },
     "sources": [
       {
         "title": {
           "en": "Falkenhütte information on the DAV website",
-          "de": "Falkenhütte-Informationen auf der DAV-Website"
+          "de": "Falkenhütte-Informationen auf der DAV-Website",
+          "uk": "Інформація про Falkenhütte на веб-сайті DAV"
         },
         "url": "https://www.alpenverein-muenchen-oberland.de/huetten/alpenvereinshuetten/falkenhuette",
         "kind": "website",

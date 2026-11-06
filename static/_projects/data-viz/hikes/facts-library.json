@@ -16,14 +16,16 @@
 			"kind": "alpine-hut",
 			"days": {
 				"en": "Daily 09:00-22:00",
-				"de": "Täglich 09:00-22:00"
+				"de": "Täglich 09:00-22:00",
+				"uk": "Щодня 09:00-22:00"
 			},
 			"overnight": true,
 			"booking": {
 				"url": "https://www.bodenschneidhaus.de/",
 				"label": {
 					"en": "Bodenschneidhaus website",
-					"de": "Bodenschneidhaus Website"
+					"de": "Bodenschneidhaus Website",
+					"uk": "Вебсайт Bodenschneidhaus"
 				}
 			},
 			"phone": "+49 172 3735798",
@@ -32,7 +34,8 @@
 			"cash": false,
 			"note": {
 				"en": "Overnight stay possible.",
-				"de": "Übernachtung möglich."
+				"de": "Übernachtung möglich.",
+				"uk": "Можливий нічліг."
 			},
 			"checked": "2026-10-25"
 		},
@@ -40,14 +43,16 @@
 			"kind": "restaurant",
 			"days": {
 				"en": "Daily 08:00-20:00",
-				"de": "Täglich 08:00-20:00"
+				"de": "Täglich 08:00-20:00",
+				"uk": "Щодня 08:00-20:00"
 			},
 			"overnight": true,
 			"booking": {
 				"url": "https://firstalm.de/",
 				"label": {
 					"en": "Obere Firstalm website",
-					"de": "Obere Firstalm Website"
+					"de": "Obere Firstalm Website",
+					"uk": "Вебсайт Obere Firstalm"
 				}
 			},
 			"phone": "+49 (0)8026 – 7302",
@@ -56,7 +61,8 @@
 			"cash": false,
 			"note": {
 				"en": "Rents sledges out in winter.",
-				"de": "Vermietet im Winter Schlitten."
+				"de": "Vermietet im Winter Schlitten.",
+				"uk": "Взимку здають в оренду санки."
 			},
 			"checked": "2026-10-18"
 		},
@@ -80,12 +86,14 @@
 			"mode": "bus",
 			"from": {
 				"en": "Schliersee",
-				"de": "Schliersee"
+				"de": "Schliersee",
+				"uk": "Шлірзе"
 			},
 			"to": {
 				"name": {
 					"en": "Spitzingsee Spitzingsattel, Schliersee",
-					"de": "Spitzingsee Spitzingsattel, Schliersee"
+					"de": "Spitzingsee Spitzingsattel, Schliersee",
+					"uk": "Шпіцінгзе Шпіцінгсаттель, Шлірзе"
 				}
 			},
 			"direction": "there",
@@ -100,12 +108,14 @@
 			"mode": "bus",
 			"from": {
 				"en": "Lenggries",
-				"de": "Lenggries"
+				"de": "Lenggries",
+				"uk": "Ленггріс"
 			},
 			"to": {
 				"name": {
 					"en": "Hinterriß Einstieg Laliderertal",
-					"de": "Hinterriß Einstieg Laliderertal"
+					"de": "Hinterriß Einstieg Laliderertal",
+					"uk": "Хінтеррісс Ейнштіг Лалідерерталь"
 				}
 			},
 			"direction": "there",
@@ -120,7 +130,8 @@
 					"amount": 0,
 					"note": {
 						"en": "with Deutschlandticket",
-						"de": "mit Deutschlandticket"
+						"de": "mit Deutschlandticket",
+						"uk": "з Deutschlandticket"
 					}
 				}
 			]
@@ -129,12 +140,14 @@
 			"mode": "train",
 			"from": {
 				"en": "Munich Central Station",
-				"de": "München Hbf"
+				"de": "München Hbf",
+				"uk": "Мюнхен Головний вокзал"
 			},
 			"to": {
 				"name": {
 					"en": "Schliersee",
-					"de": "Schliersee"
+					"de": "Schliersee",
+					"uk": "Шлірзе"
 				}
 			},
 			"direction": "there",
@@ -146,14 +159,16 @@
 			"last": "16:29",
 			"frequency": {
 				"en": "hourly",
-				"de": "stündlich"
+				"de": "stündlich",
+				"uk": "щогодини"
 			},
 			"price": [
 				{
 					"amount": 0,
 					"note": {
 						"en": "with Deutschlandticket",
-						"de": "mit Deutschlandticket"
+						"de": "mit Deutschlandticket",
+						"uk": "з Deutschlandticket"
 					}
 				},
 				{
@@ -163,7 +178,8 @@
 			],
 			"ticket": {
 				"en": "Deutschlandticket valid to Spitzingsee",
-				"de": "Deutschlandticket bis Spitzingsee gültig"
+				"de": "Deutschlandticket bis Spitzingsee gültig",
+				"uk": "Deutschlandticket дійсний до Шпіцінгзе"
 			},
 			"url": "https://www.bahn.de/"
 		},
@@ -171,12 +187,14 @@
 			"mode": "train",
 			"from": {
 				"en": "Schliersee",
-				"de": "Schliersee"
+				"de": "Schliersee",
+				"uk": "Шлірзе"
 			},
 			"to": {
 				"name": {
 					"en": "Munich Central Station",
-					"de": "München Hbf"
+					"de": "München Hbf",
+					"uk": "Мюнхен Головний вокзал"
 				}
 			},
 			"direction": "there",
@@ -188,14 +206,16 @@
 			"last": "22:59",
 			"frequency": {
 				"en": "hourly",
-				"de": "stündlich"
+				"de": "stündlich",
+				"uk": "щогодини"
 			},
 			"price": [
 				{
 					"amount": 0,
 					"note": {
 						"en": "with Deutschlandticket",
-						"de": "mit Deutschlandticket"
+						"de": "mit Deutschlandticket",
+						"uk": "з Deutschlandticket"
 					}
 				},
 				{
@@ -206,7 +226,8 @@
 			],
 			"ticket": {
 				"en": "Deutschlandticket valid to Schliersee",
-				"de": "Deutschlandticket bis Schliersee gültig"
+				"de": "Deutschlandticket bis Schliersee gültig",
+				"uk": "Deutschlandticket дійсний до Шлірзе"
 			},
 			"url": "https://www.bahn.de/",
 			"checked": "2026-11-02"
@@ -215,12 +236,14 @@
 			"mode": "train",
 			"from": {
 				"en": "Munich Central Station",
-				"de": "München Hbf"
+				"de": "München Hbf",
+				"uk": "Мюнхен Головний вокзал"
 			},
 			"to": {
 				"name": {
 					"en": "Lenggries",
-					"de": "Lenggries"
+					"de": "Lenggries",
+					"uk": "Ленггріс"
 				}
 			},
 			"direction": "there",
@@ -232,37 +255,43 @@
 			"last": "16:02",
 			"frequency": {
 				"en": "hourly",
-				"de": "stündlich"
+				"de": "stündlich",
+				"uk": "щогодини"
 			},
 			"price": [
 				{
 					"amount": 0,
 					"note": {
 						"en": "with Deutschlandticket",
-						"de": "mit Deutschlandticket"
+						"de": "mit Deutschlandticket",
+						"uk": "з Deutschlandticket"
 					}
 				}
 			],
 			"ticket": {
 				"en": "Deutschlandticket valid to Eng",
-				"de": "Deutschlandticket bis Eng gültig"
+				"de": "Deutschlandticket bis Eng gültig",
+				"uk": "Deutschlandticket дійсний до Енг"
 			},
 			"url": "https://www.bahn.de/",
 			"note": {
 				"en": "Change in Lenggries.",
-				"de": "Umstieg in Lenggries."
+				"de": "Umstieg in Lenggries.",
+				"uk": "Пересадка в Ленггріс."
 			}
 		},
 		"train-rb-57-munich-central-station-tegernsee": {
 			"mode": "train",
 			"from": {
 				"en": "Munich Central Station",
-				"de": "München Hbf"
+				"de": "München Hbf",
+				"uk": "Мюнхен Головний вокзал"
 			},
 			"to": {
 				"name": {
 					"en": "Tegernsee",
-					"de": "Tegernsee"
+					"de": "Tegernsee",
+					"uk": "Тегернзе"
 				}
 			},
 			"direction": "there",
@@ -274,14 +303,16 @@
 			"last": "23:10",
 			"frequency": {
 				"en": "hourly",
-				"de": "stündlich"
+				"de": "stündlich",
+				"uk": "щогодини"
 			},
 			"price": [
 				{
 					"amount": 0,
 					"note": {
 						"en": "with Deutschlandticket",
-						"de": "mit Deutschlandticket"
+						"de": "mit Deutschlandticket",
+						"uk": "з Deutschlandticket"
 					}
 				},
 				{
@@ -292,7 +323,8 @@
 			],
 			"ticket": {
 				"en": "Deutschlandticket valid to Tegernsee",
-				"de": "Deutschlandticket bis Tegernsee gültig"
+				"de": "Deutschlandticket bis Tegernsee gültig",
+				"uk": "Deutschlandticket дійсний до Тегернзе"
 			},
 			"url": "https://www.bahn.de/",
 			"checked": "2026-11-02"
@@ -304,7 +336,8 @@
 			"at": "P6 Laliderertal",
 			"name": {
 				"en": "P6 Laliderertal",
-				"de": "P6 Laliderertal"
+				"de": "P6 Laliderertal",
+				"uk": "P6 Лалідерерталь"
 			},
 			"size": "small",
 			"fills": "weekends",
@@ -316,7 +349,8 @@
 			},
 			"name": {
 				"en": "Schliersee train station parking",
-				"de": "Parkplatz Schliersee Bahnhof"
+				"de": "Parkplatz Schliersee Bahnhof",
+				"uk": "Парковка біля залізничної станції Шлірзе"
 			},
 			"size": "medium",
 			"fills": "weekends",
@@ -329,7 +363,8 @@
 			},
 			"name": {
 				"en": "Spitzingsattel parking lot",
-				"de": "Parkplatz Spitzingsattel"
+				"de": "Parkplatz Spitzingsattel",
+				"uk": "Парковка Шпіцінгсаттель"
 			},
 			"price": [
 				{
@@ -347,7 +382,8 @@
 			},
 			"name": {
 				"en": "Parking lot Schießstätte",
-				"de": "Wander-Parkplatz Schießstätte Tegernsee"
+				"de": "Wander-Parkplatz Schießstätte Tegernsee",
+				"uk": "Парковка Schießstätte"
 			},
 			"price": [
 				{
@@ -356,7 +392,8 @@
 					"per": "day",
 					"note": {
 						"en": "Or 1 Euro per hour.",
-						"de": "Oder 1 Euro pro Stunde."
+						"de": "Oder 1 Euro pro Stunde.",
+						"uk": "Або 1 євро за годину."
 					},
 					"checked": "2026-11-02"
 				}

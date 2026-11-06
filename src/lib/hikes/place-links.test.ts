@@ -84,6 +84,19 @@ test('a Czech name links too', () => {
 	assert.deepEqual(index.match(['Sněžka'], 1603), { start: 0, node: snezka });
 });
 
+test('a Ukrainian name links too', () => {
+	const hoverla = { lat: 48.16, lon: 24.5, tags: { name: 'Hoverla', 'name:uk': 'Говерла', ele: '2061' } };
+	const index = buildPlaceIndex([hoverla])!;
+	assert.deepEqual(index.match(['Говерла'], 2061), { start: 0, node: hoverla });
+});
+
+test('a Cyrillic м elevation is a reference too', async () => {
+	const { html } = await parseMarkdown(body('Через Knorrhütte (2052 м) до\nКнорргютте (2052 м).'), [], { nodes: [KNORR, { lat: 47.41, lon: 10.99, tags: { name: 'X', 'name:uk': 'Кнорргютте', ele: '2052' } }] });
+	assert.deepEqual(placeLinks(html), ['Knorrhütte (2052&nbsp;м)', 'Кнорргютте (2052&nbsp;м)']);
+	const text = 'Через Knorrhütte (2052 м).';
+	assert.deepEqual(findPlaceMentions(text, places).map(({ from, to }) => text.slice(from, to)), ['Knorrhütte (2052 м)']);
+});
+
 test('a height with decimals links like a whole one', async () => {
 	const snezka = { lat: 50.7, lon: 15.7, tags: { name: 'Śnieżka / Sněžka', 'name:cs': 'Sněžka', ele: '1603.3' } };
 	const { html } = await parseMarkdown(body('At the top of\nSněžka (1603.3 m), with a view, then Gipfel (1603,5 m).'), [], { nodes: [snezka] });

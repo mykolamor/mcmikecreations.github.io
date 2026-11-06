@@ -448,3 +448,28 @@ test('photo lines DeepL put in another order are not rebuilt', async () => {
 	assert.deepEqual(out.texts, []);
 	assert.equal(out.refused.length, 1);
 });
+
+test('an answer that drops the opening bracket of a link is refused', async () => {
+	// DeepL's real answer (into uk): every placeholder is there once, but "[" before Zwergelberg is gone.
+	const out = await answered(
+		'it was nice to recall [Wasenkogel (1211 m)](/w/),\n[Semmelberg (1101 m)](/s/), and\n[Zwergelberg (1113 m)](/z/).',
+		'було приємно згадати [<x id="0"/><x id="1"/>,\n[<x id="2"/><x id="3"/><x id="4"/><x id="5"/>'
+	);
+	assert.deepEqual(out.texts, []);
+	assert.deepEqual(out.refused, [{ id: 'x', reason: 'DeepL broke a link' }]);
+});
+
+test('markup DeepL made up is refused', async () => {
+	// DeepL's real answer (into uk): an escaped `<img id="5"/>` it invented, which would come out as a literal tag.
+	const out = await answered(
+		'![Trautweinweg up to Obere Firstalm (1369 m)](/i/00.jpg)\n![Krettenburg (1494 m) from below](/i/01.jpg)',
+		'<x id="0"/>\nВулиця Траутвайнвег аж до <x id="1"/><x id="2"/>\n\n<x id="3"/>\n&lt;img id="5"/&gt;<x id="4"/>\nзнизу<x id="5"/>'
+	);
+	assert.deepEqual(out.texts, []);
+	assert.deepEqual(out.refused, [{ id: 'x', reason: 'DeepL added markup' }]);
+});
+
+test('a link whose translated text moved inside its brackets is kept', async () => {
+	const out = await answered('Near [Wallberg (1722 m) up close](/w/) it is nice.', 'Schön ist es [<x id="0"/> aus der Nähe<x id="1"/> dort.');
+	assert.deepEqual(out.texts, [{ id: 'x', text: 'Schön ist es [Wallberg (1722 m) aus der Nähe](/w/) dort.' }]);
+});
