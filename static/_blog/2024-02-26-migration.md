@@ -92,7 +92,7 @@ features first. The list was:
 
 - Instead of having the résumé as a single page, I wanted to split different
 sections into multiple pages.
-- The home/index page should be a personal lending overview with relevant
+- The home/index page should be a personal landing overview with relevant
 snippets from other pages.
 - The website should be easily indexable by search engines.
 - The website should be accessible via relevant [ARIA Attributes](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes).
