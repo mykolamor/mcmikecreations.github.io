@@ -1,4 +1,5 @@
 <script lang="ts">
+	import PlayTriangleSolid from '$lib/icons/PlayTriangleSolid.svelte';
 	import { Modal } from 'flowbite-svelte';
 	import { parseMediaFlags } from '$lib/renderers/media-flags';
 	import PresentationEmbed from '$lib/presentation/PresentationEmbed.svelte';
@@ -71,9 +72,7 @@
 				aria-hidden="true"
 				class="pointer-events-none absolute top-1/2 left-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gray-900/50 text-white/85 transition group-hover:scale-105 group-hover:bg-gray-900/75"
 			>
-				<svg viewBox="0 0 24 24" fill="currentColor" class="h-7 w-7">
-					<path d="M5.5 4.5v15L18.5 12 5.5 4.5Z" />
-				</svg>
+				<PlayTriangleSolid class="h-7 w-7" />
 			</span>
 		</a>
 		<figcaption class="text-center">{text}</figcaption>

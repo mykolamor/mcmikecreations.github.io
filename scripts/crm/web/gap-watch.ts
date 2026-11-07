@@ -45,6 +45,6 @@ export function createDocWatch<T>(ref: EnglishRef, path: string, versions: () =>
 export const createGapWatch = (ref: EnglishRef, versions: () => string, show: (gaps: Gaps) => void, request: Request = api) =>
 	createDocWatch<{ gaps: Gaps }>(ref, '/api/translation-gaps', versions, (r) => show(r.gaps), request);
 
-/** The Photos tab's dot: whether a photo of the doc has a pin. */
+/** Whether a photo of the doc has a pin: the Photos tab's dot shows while none has. */
 export const createPinsWatch = (ref: EnglishRef, versions: () => string, show: (hasPins: boolean) => void, request: Request = api) =>
 	createDocWatch<{ hasPins: boolean }>(ref, '/api/photos/has-pins', versions, (r) => show(r.hasPins === true), request);

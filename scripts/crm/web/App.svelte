@@ -35,8 +35,8 @@
 	let trPrefix = $derived(`${secondLang()?.toUpperCase()}: `);
 	/** What the doc lacks per language: the dots on the tabs. */
 	let gaps = $state.raw<Gaps>({});
-	/** A photo of the doc has a pin: the dot on the Photos tab. */
-	let hasPins = $state(false);
+	/** Whether a photo of the doc has a pin; none yet is the dot on the Photos tab. Null until read (no dot meanwhile). */
+	let hasPins = $state<boolean | null>(null);
 	/** Every open session: the English doc's and its translations'. */
 	const allSessions = (): Session[] => (session ? [session, ...(translations?.all() ?? [])] : []);
 
@@ -311,7 +311,7 @@
 
 {#snippet gapDot(tabId: string)}
 	{#if tabHasGap(gaps, secondLang(), tabId)}<span class="gap-dot" role="img" aria-label="{secondLang()?.toUpperCase()} translation incomplete" title="{secondLang()?.toUpperCase()} translation incomplete"></span>{/if}
-	{#if tabId === 'photos' && hasPins}<span class="pins-dot" role="img" aria-label="Photos have pins" title="At least one photo has pins"></span>{/if}
+	{#if tabId === 'photos' && hasPins === false}<span class="gap-dot" role="img" aria-label="No photo pins yet" title="No photo has pins yet"></span>{/if}
 {/snippet}
 
 <style>
@@ -371,16 +371,6 @@
 		margin-left: 0.3rem;
 		border-radius: 50%;
 		background: #c75b00;
-		vertical-align: 0.1em;
-	}
-	/* Filled dark, like the Open screen's Facts badge: something there, not something missing. */
-	.pins-dot {
-		display: inline-block;
-		width: 0.5rem;
-		height: 0.5rem;
-		margin-left: 0.3rem;
-		border-radius: 50%;
-		background: #111;
 		vertical-align: 0.1em;
 	}
 	.status {

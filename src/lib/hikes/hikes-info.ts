@@ -18,6 +18,7 @@ import type { PinNode } from '$lib/hikes/photo-pins';
 import { photoPinsCss, photoPinsHtml } from '$lib/hikes/photo-pins-view';
 import { tHtml } from '$lib/i18n/strings';
 import type { Lang } from '$lib/i18n/languages';
+import { PLAY_TRIANGLE_PATH } from '$lib/icons/paths';
 
 export interface ProcessedPost {
     year: number;
@@ -523,7 +524,7 @@ export async function parseMarkdown(
     <a class="mk-video-link" href="${safeHref}" target="_blank" rel="noopener noreferrer" data-media-index="${mediaIndex}">
         ${posterHtml}
         <span class="mk-play-badge" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.5 4.5v15L18.5 12 5.5 4.5Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="${PLAY_TRIANGLE_PATH}"/></svg>
         </span>
     </a>
     <figcaption class="mk-figcaption">${renderedText}</figcaption>

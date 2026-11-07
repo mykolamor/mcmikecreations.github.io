@@ -10,6 +10,8 @@
 	 * statically, the way the hike page already pulls in Leaflet's stylesheet.
 	 */
 	import { untrack } from 'svelte';
+	import CrossOutline from '$lib/icons/CrossOutline.svelte';
+	import PlayTriangleSolid from '$lib/icons/PlayTriangleSolid.svelte';
 	import type { GalleryItem } from '$lib/renderers/gallery-item';
 	import type { PinNode } from '$lib/hikes/photo-pins';
 	import { containedBox } from '$lib/hikes/photo-pins';
@@ -266,9 +268,7 @@
 				aria-label={t(lang, 'gallery.close')}
 				onclick={close}
 			>
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-					<path d="M6 6l12 12M18 6L6 18" />
-				</svg>
+				<CrossOutline />
 			</button>
 		</div>
 
@@ -329,7 +329,7 @@
 									onerror={onPosterError}
 								/>
 								<span class="mg-play-badge" aria-hidden="true">
-									<svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.5 4.5v15L18.5 12 5.5 4.5Z" /></svg>
+									<PlayTriangleSolid />
 								</span>
 							</a>
 							<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
@@ -360,12 +360,12 @@
 								<!-- The `#t=0.1` fragment makes browsers paint a real frame. -->
 								<video src={`${item.src}#t=0.1`} preload="metadata" muted playsinline></video>
 								<span class="mg-thumb-badge" aria-hidden="true">
-									<svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.5 4.5v15L18.5 12 5.5 4.5Z" /></svg>
+									<PlayTriangleSolid />
 								</span>
 							{:else}
 								<img src={item.thumb ?? `https://img.youtube.com/vi/${item.videoId}/mqdefault.jpg`} alt="" loading="lazy" />
 								<span class="mg-thumb-badge" aria-hidden="true">
-									<svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.5 4.5v15L18.5 12 5.5 4.5Z" /></svg>
+									<PlayTriangleSolid />
 								</span>
 							{/if}
 						</div>
@@ -429,7 +429,7 @@
 		background-color: rgb(17 24 39 / 0.95);
 	}
 
-	.mg-icon-button svg {
+	.mg-icon-button :global(svg) {
 		width: 1.25rem;
 		height: 1.25rem;
 	}
@@ -524,7 +524,7 @@
 		transform: translate(-50%, -50%) scale(1.08);
 	}
 
-	.mg-play-badge svg {
+	.mg-play-badge :global(svg) {
 		width: 1.75rem;
 		height: 1.75rem;
 	}
@@ -587,7 +587,7 @@
 		pointer-events: none;
 	}
 
-	.mg-thumb-badge svg {
+	.mg-thumb-badge :global(svg) {
 		width: 0.6rem;
 		height: 0.6rem;
 	}

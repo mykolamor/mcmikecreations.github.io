@@ -3,8 +3,8 @@
 	import { cx } from './cx';
 	import type { ClassValue } from 'svelte/elements';
 	import { ToolbarButton, getTheme, navbarHamburger } from 'flowbite-svelte';
-	import Menu from 'flowbite-svelte/Menu.svelte';
 	import { getNavbarState } from './context';
+	import MenuOutline from '$lib/icons/MenuOutline.svelte';
 
 	interface Props {
 		class?: ClassValue;
@@ -24,5 +24,5 @@
 </script>
 
 <ToolbarButton {name} onclick={toggle} class={slots.base({ class: cx(theme?.base, className) })}>
-	<Menu class={slots.menu({ class: cx(theme?.menu, classes?.menu) })} />
+	<MenuOutline class={slots.menu({ class: cx(theme?.menu, classes?.menu) })} />
 </ToolbarButton>
