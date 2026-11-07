@@ -76,10 +76,27 @@
 	// The download line: "Grab the <GPX> or <GeoJSON> file and …", links in between.
 	const [grabBefore, grabAfter] = tSplit(lang, 'post.files.grab', 'files');
 
+	// The last body change, when there was one after the hike (§7): readers judge
+	// route info by how recent it is. The same date as the JSON-LD dateModified.
+	const [updatedBefore, updatedAfter] = tSplit(lang, 'post.updated', 'date');
+	const updated = $derived(data.post.dateModified !== data.post.date ? data.post.dateModified : null);
+
 	// A moving time equal to the elapsed time to the minute means no breaks were
 	// detected; showing the same number twice would only confuse.
 	const showElapsed = $derived(
 		data.facts.elapsed != null && Math.abs(data.facts.elapsed.minutes - (data.map.properties.duration ?? 0)) > 1
+	);
+	// Mobile shows the tiles a reader decides by (difficulty, highest point, route type,
+	// season, getting there, typical time) and collapses the rest behind "Show all".
+	let showAllTiles = $state(false);
+	const secondaryTileClass = $derived(showAllTiles ? '' : 'max-md:hidden');
+	const secondaryTileCount = $derived(
+		[
+			showElapsed && data.facts.elapsed,
+			data.facts.lowPoint != null,
+			data.authoredFacts?.difficulty?.exposure,
+			data.authoredFacts?.difficulty?.fitness
+		].filter(Boolean).length
 	);
 	let allHikesLink = $derived(data.post.page > 1 ? `/hikes/page/${data.post.page}/#${data.post.anchor}` : `/hikes/#${data.post.anchor}`);
 
@@ -439,7 +456,8 @@
 				</div>
 				<Breadcrumb aria-label={t(lang, 'post.pagePath')} class="mt-4 not-prose hidden md:flex">
 					<BreadcrumbItem href="/" home>{t(lang, 'nav.home')}</BreadcrumbItem>
-					<BreadcrumbItem href={allHikesLink}>{t(lang, 'nav.hikes')}</BreadcrumbItem>
+					<!-- /hikes/, as in the JSON-LD trail: the paginated anchor goes stale as posts are added. -->
+					<BreadcrumbItem href="/hikes/">{t(lang, 'nav.hikes')}</BreadcrumbItem>
 					<BreadcrumbItem>{data.post.title}</BreadcrumbItem>
 				</Breadcrumb>
 				<Heading tag="h1" class="!mb-0 !mt-2">{data.post.title}</Heading>
@@ -449,6 +467,10 @@
 					<span>{data.post.time}</span>
 					·
 					<a class="underline underline-offset-2 hover:decoration-2 cursor-pointer" href="/hikes/year/{new Date(data.post.date).getFullYear()}/">{new Date(data.post.date).toLocaleDateString('en-us', { year:"numeric", month:"short", day:"numeric"})}</a>
+					{#if updated}
+						·
+						<span>{updatedBefore}<time datetime={updated}>{new Date(updated).toLocaleDateString('en-us', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' })}</time>{updatedAfter}</span>
+					{/if}
 					{#if data.post.tags?.length}
 						·
 						<div class="flex flex-row flex-wrap justify-end gap-2 items-center" aria-details="tags">
@@ -489,7 +511,7 @@
 						<div class="flex flex-col">
 							<div class="flex flex-row flex-wrap gap-4 md:gap-6">
 								{#if showElapsed && data.facts.elapsed}
-									<StatTile icon={HourglassOutline} label={t(lang, 'post.stats.elapsed') + '**'} value={(data.facts.elapsed.source === 'photos' ? '≥ ' : '') + getTime(data.facts.elapsed.minutes)} />
+									<StatTile icon={HourglassOutline} label={t(lang, 'post.stats.elapsed') + '**'} value={(data.facts.elapsed.source === 'photos' ? '≥ ' : '') + getTime(data.facts.elapsed.minutes)} class={secondaryTileClass} />
 								{/if}
 								{#if data.facts.typicalDuration != null}
 									<StatTile icon={UsersGroupOutline} label={t(lang, 'post.stats.typical') + '***'} value={'≈ ' + getTime(Math.round(data.facts.typicalDuration / 15) * 15)} />
@@ -498,19 +520,26 @@
 									<StatTile icon={ChartLineUpOutline} label={t(lang, 'post.stats.highPoint')} value={t(lang, 'units.m', { value: data.facts.highPoint })} />
 								{/if}
 								{#if data.facts.lowPoint != null}
-									<StatTile icon={ChartLineDownOutline} label={t(lang, 'post.stats.lowPoint')} value={t(lang, 'units.m', { value: data.facts.lowPoint })} />
+									<StatTile icon={ChartLineDownOutline} label={t(lang, 'post.stats.lowPoint')} value={t(lang, 'units.m', { value: data.facts.lowPoint })} class={secondaryTileClass} />
 								{/if}
 								{#if data.facts.routeType}
 									<StatTile icon={ROUTE_TYPE_ICONS[data.facts.routeType]} label={t(lang, 'post.stats.routeType')} value={enumLabel(lang, 'routeType', data.facts.routeType)} />
 								{/if}
 								{#if data.authoredFacts}
-									<HikeFactsTiles facts={data.authoredFacts} {lang} />
+									<HikeFactsTiles facts={data.authoredFacts} {lang} secondaryClass={secondaryTileClass} />
 								{/if}
 							</div>
+							{#if secondaryTileCount > 0 && !showAllTiles}
+								<button
+									type="button"
+									class="md:hidden self-start mt-3 text-sm font-medium text-primary-600 dark:text-primary-500 underline decoration-dotted underline-offset-4 hover:decoration-solid"
+									onclick={() => (showAllTiles = true)}
+								>{t(lang, 'post.stats.showAll', { count: secondaryTileCount })}</button>
+							{/if}
 							<div class="text-sm text-gray-500 dark:text-gray-400 mt-2 flex flex-col gap-1">
 								<span>* {DURATION_NOTES[data.durationSource]}</span>
 								{#if showElapsed && data.facts.elapsed}
-									<span>** {ELAPSED_NOTES[data.facts.elapsed.source]}</span>
+									<span class={secondaryTileClass}>** {ELAPSED_NOTES[data.facts.elapsed.source]}</span>
 								{/if}
 								{#if data.facts.typicalDuration != null}
 									<span>*** {t(lang, 'post.notes.typical')}</span>

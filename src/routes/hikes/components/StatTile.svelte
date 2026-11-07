@@ -11,12 +11,13 @@
 		hint?: string;
 		/** Makes the value a link. */
 		href?: string;
+		class?: string;
 	}
 
-	let { icon: Icon, label, value, hint, href }: Props = $props();
+	let { icon: Icon, label, value, hint, href, class: className = '' }: Props = $props();
 </script>
 
-<div class="flex items-center gap-3 basis-[140px] grow" title={hint}>
+<div class="flex items-center gap-3 basis-[140px] grow {className}" title={hint}>
 	<div class="text-primary-600 dark:text-primary-500 bg-primary-100 dark:bg-primary-900 rounded-lg p-2 shrink-0">
 		<Icon class="w-6 h-6" />
 	</div>

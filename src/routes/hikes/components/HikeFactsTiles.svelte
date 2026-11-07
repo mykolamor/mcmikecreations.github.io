@@ -10,9 +10,11 @@
 	interface Props {
 		facts: HikeAuthoredFacts;
 		lang: Lang;
+		/** Class for the tiles mobile collapses behind "Show all" (exposure, fitness). */
+		secondaryClass?: string;
 	}
 
-	let { facts, lang }: Props = $props();
+	let { facts, lang, secondaryClass = '' }: Props = $props();
 
 	const d = $derived(facts.difficulty);
 	const ferrata = $derived(hardestFerrata(d?.viaFerrata));
@@ -34,10 +36,10 @@
 		/>
 	{/if}
 	{#if d?.exposure}
-		<StatTile icon={EyeOutline} label={label(lang, 'exposure')} value={enumLabel(lang, 'level4', d.exposure.level)} />
+		<StatTile icon={EyeOutline} label={label(lang, 'exposure')} value={enumLabel(lang, 'level4', d.exposure.level)} class={secondaryClass} />
 	{/if}
 	{#if d?.fitness}
-		<StatTile icon={FireOutline} label={label(lang, 'fitness')} value={`${d.fitness} ${label(lang, 'fitnessOf')}`} />
+		<StatTile icon={FireOutline} label={label(lang, 'fitness')} value={`${d.fitness} ${label(lang, 'fitnessOf')}`} class={secondaryClass} />
 	{/if}
 	{#if season}
 		<StatTile icon={CalendarMonthOutline} label={label(lang, 'season')} value={season} />

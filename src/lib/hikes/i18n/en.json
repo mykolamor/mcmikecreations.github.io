@@ -637,6 +637,7 @@
 	},
 	"post": {
 		"pagePath": "Page path",
+		"updated": "Updated {date}",
 		"expandImage": "Expand image",
 		"stats": {
 			"movingTime": "Moving time",
@@ -648,7 +649,8 @@
 			"typical": "Typical time",
 			"highPoint": "Highest point",
 			"lowPoint": "Lowest point",
-			"routeType": "Route type"
+			"routeType": "Route type",
+			"showAll": "Show all ({count})"
 		},
 		"notes": {
 			"duration": {

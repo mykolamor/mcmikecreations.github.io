@@ -10,5 +10,11 @@
 		"slideState": "Слайд {slide} · крок {state}",
 		"gridLabel": "Огляд слайдів",
 		"slide": "Слайд {slide}"
+	},
+	"post": {
+		"stats": {
+			"showAll": "Показати все ({count})"
+		},
+		"updated": "Оновлено {date}"
 	}
 }

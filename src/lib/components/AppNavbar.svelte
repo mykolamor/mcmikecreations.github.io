@@ -1,5 +1,9 @@
 <script lang="ts">
-    import {Navbar, NavBrand, NavHamburger, NavLi, NavUl} from "flowbite-svelte";
+    import {NavBrand} from "flowbite-svelte";
+    import Navbar from "$lib/components/navbar/Navbar.svelte";
+    import NavHamburger from "$lib/components/navbar/NavHamburger.svelte";
+    import NavLi from "$lib/components/navbar/NavLi.svelte";
+    import NavUl from "$lib/components/navbar/NavUl.svelte";
     import DarkModeButton from "$lib/components/DarkModeButton.svelte";
     import HikesSearchBar from "$lib/hikes/HikesSearchBar.svelte";
     import { navItems } from "$lib/data/nav";
@@ -30,16 +34,12 @@
         return topLevelSegment ? `/${topLevelSegment}/` : '/';
     });
 
-    // flowbite-svelte's NavUl sets these on navState only via $effect, which doesn't run
-    // during SSR. Passing them as props to NavLi makes them available immediately,
-    // preventing the black flash on initial page load (NavLi prefers the prop over context).
-    const activeNavClass = "text-white bg-primary-700 dark:bg-primary-600 md:bg-transparent md:text-primary-700 md:dark:text-white md:dark:bg-transparent";
-    const nonActiveNavClass = "hover:text-primary-500 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:hover:bg-transparent md:border-0 md:hover:text-primary-700 dark:md:text-gray-400 md:dark:hover:text-white md:dark:hover:bg-transparent";
-
-    // flowbite's Navbar renders the <nav> itself and hands attributes to an inner div,
-    // so name the landmark from inside: it sits beside other navs (the home hero's).
-    const labelNav = (node: HTMLElement) => {
-        node.closest('nav')?.setAttribute('aria-label', 'Main');
+    // aria-current: "page" on the item for this exact URL, "true" on the section it
+    // sits in (Hikes on a post). The active colour is only visual.
+    const ariaCurrent = (href: string): 'page' | 'true' | undefined => {
+        if (href.includes('#')) return undefined;
+        if (page.url.pathname === href) return 'page';
+        return href === activeUrl ? 'true' : undefined;
     };
 
     // Track state to close navbar after navigation
@@ -74,7 +74,10 @@
     };
 </script>
 
-<Navbar class={twMerge(`${fillNarrow ? '' : bgClass} ${fixedNavbar ? fixedProps : 'relative'}`, propsClass)} navContainerClass={alwaysBurger ? 'relative' : undefined}>
+<!-- Our copy of flowbite's Navbar ($lib/components/navbar) puts aria-label on the <nav>
+     in the prerendered HTML. It names the landmark beside other navs (the home hero's,
+     the posts' breadcrumbs). -->
+<Navbar aria-label="Main" class={twMerge(`${fillNarrow ? '' : bgClass} ${fixedNavbar ? fixedProps : 'relative'}`, propsClass)} navContainerClass={alwaysBurger ? 'relative' : undefined}>
     {#snippet children({ hidden, toggle })}
         <NavBrand href="/">
             {#if title}
@@ -92,7 +95,7 @@
         </div>
 
         <!-- invisible tracker specifically for connecting the auto-close state -->
-        <span class="hidden" use:bindCloseAction={{ hidden, toggle }} use:labelNav></span>
+        <span class="hidden" use:bindCloseAction={{ hidden, toggle }}></span>
 
         <NavUl
             {activeUrl}
@@ -101,7 +104,7 @@
             classes={{ ul: `md:space-x-8 md:mt-0 md:text-sm ${fillNarrow ? bgClassUl : ''} ${alwaysBurger ? 'md:!flex-col md:!rounded-lg' : ''}` }}
         >
             {#each navItems as item (item.href)}
-                <NavLi class="md:p-0 rounded-sm" href={item.href} activeClass={item.href.includes('#') ? undefined : activeNavClass} nonActiveClass={nonActiveNavClass}>{item.label}</NavLi>
+                <NavLi class="md:p-0 rounded-sm" href={item.href} aria-current={ariaCurrent(item.href)}>{item.label}</NavLi>
             {/each}
         </NavUl>
     {/snippet}
