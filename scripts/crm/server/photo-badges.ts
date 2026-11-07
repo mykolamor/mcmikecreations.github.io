@@ -2,8 +2,8 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { routeLocator } from '../../../src/lib/hikes/photo-stops';
 import { readFrontmatterDoc } from '../lib/frontmatter';
-import { loadDoc } from './doc';
-import type { DocRef } from './doc-ref';
+import { placePath, type DocRef, type EnglishRef } from './doc-ref';
+import { loadDoc, postPath } from './doc';
 import { ApiError } from './errors';
 import { geojsonTarget, resolveGpxUrl, served } from './files';
 import { repoPaths } from './paths';
@@ -40,6 +40,24 @@ export function badges(doc: { images?: Record<string, any> | null }, trackPoints
 		if (list.length) out[key] = list;
 	}
 	return out;
+}
+
+/** Whether a front matter's `images` has a photo with at least one pin (the Open screen's badge, the Photos tab's dot). */
+export function hasPins(front: { images?: unknown } | null | undefined): boolean {
+	const images = front?.images;
+	if (typeof images !== 'object' || images === null) return false;
+	return Object.values(images).some((im) => Array.isArray((im as { pins?: unknown } | null)?.pins) && (im as { pins: unknown[] }).pins.length > 0);
+}
+
+/** Whether the post or place doc `ref` names has a pinned photo; a hike alone has no photos. False for a missing or unreadable file. */
+export function docHasPins(root: string, ref: EnglishRef): boolean {
+	if (ref.kind === 'hike') return false;
+	const file = ref.kind === 'place' ? placePath(root, ref.slug) : postPath(root, ref.slug, ref.date);
+	try {
+		return hasPins(readFrontmatterDoc(readFileSync(file, 'utf8')).doc.toJS());
+	} catch {
+		return false;
+	}
 }
 
 /** The recorded GPX (the post's, resolved like the site) as timed points; [] when there is none or it has no times. */

@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { mkdirSync, mkdtempSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { badges, photoBadges, positionAt } from './photo-badges';
+import { badges, docHasPins, hasPins, photoBadges, positionAt } from './photo-badges';
+import { repoPaths } from './paths';
 
 const ROUTE = [[11, 47], [11.02, 47]];
 const at = (m: number) => 47 + m / 111194.9;
@@ -44,4 +45,24 @@ test('a place doc gets only the no time / no location badges', () => {
 	mkdirSync(dir, { recursive: true });
 	writeFileSync(join(dir, 'foo.md'), "---\ntitle: Foo\ndescription: D\nimages:\n  a.jpg: {w: 1, h: 1}\n  b.jpg: {w: 1, h: 1, lat: 10, lon: 10, taken: '2020-01-01T10:00:00+01:00'}\n---\n");
 	assert.deepEqual(photoBadges(root, { kind: 'place', slug: 'foo' }), { 'a.jpg': ['no time', 'no location'] });
+});
+
+test('hasPins: a photo with at least one pin', () => {
+	assert.equal(hasPins({}), false);
+	assert.equal(hasPins({ images: null }), false);
+	assert.equal(hasPins({ images: { a: { w: 1 }, b: { pins: [] } } }), false);
+	assert.equal(hasPins({ images: { a: { w: 1 }, b: { pins: [{ ref: 'node/1', x: 0, y: 0 }] } } }), true);
+});
+
+test('docHasPins reads the post or place doc; a hike alone or a missing file has none', () => {
+	const root = mkdtempSync(join(tmpdir(), 'crm-pins-'));
+	const p = repoPaths(root);
+	mkdirSync(p.markdown, { recursive: true });
+	mkdirSync(p.places, { recursive: true });
+	writeFileSync(join(p.markdown, '2026-07-19-foo.md'), '---\ntitle: Foo\nimages:\n  a: {pins: [{ref: node/1, x: 0.5, y: 0.5}]}\n---\n');
+	writeFileSync(join(p.places, 'hut.md'), '---\ntitle: Hut\nimages:\n  a: {w: 1}\n---\n');
+	assert.equal(docHasPins(root, { kind: 'post', slug: 'foo', date: '2026-07-19' }), true);
+	assert.equal(docHasPins(root, { kind: 'hike', slug: 'foo' }), false);
+	assert.equal(docHasPins(root, { kind: 'place', slug: 'hut' }), false);
+	assert.equal(docHasPins(root, { kind: 'post', slug: 'foo', date: '2026-01-01' }), false);
 });

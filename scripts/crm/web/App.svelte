@@ -6,7 +6,7 @@
 	import OpenScreen from './tabs/OpenScreen.svelte';
 	import { OTHER_LANGS, type Lang } from '$lib/i18n/languages';
 	import { secondLang, setSecondLang } from './lang.svelte';
-	import { createGapWatch } from './gap-watch';
+	import { createGapWatch, createPinsWatch } from './gap-watch';
 	import { tabHasGap, type Gaps } from '../shared/translation-gaps';
 	import { createTranslations } from './write/translation-session';
 
@@ -35,6 +35,8 @@
 	let trPrefix = $derived(`${secondLang()?.toUpperCase()}: `);
 	/** What the doc lacks per language: the dots on the tabs. */
 	let gaps = $state.raw<Gaps>({});
+	/** A photo of the doc has a pin: the dot on the Photos tab. */
+	let hasPins = $state(false);
 	/** Every open session: the English doc's and its translations'. */
 	const allSessions = (): Session[] => (session ? [session, ...(translations?.all() ?? [])] : []);
 
@@ -122,9 +124,11 @@
 		const offTranslations = translations?.subscribe(() => opened++);
 		session?.load().catch((e) => (errorMsg = String(e.message ?? e)));
 		const gapWatch = ref ? createGapWatch(ref, () => allSessions().map((s) => s.doc?.version ?? '').join(), (g) => (gaps = g)) : null;
+		const pinsWatch = ref && ref.kind !== 'hike' ? createPinsWatch(ref, () => session?.doc?.version ?? '', (p) => (hasPins = p)) : null;
 		const id = setInterval(() => {
 			tick = Date.now();
 			gapWatch?.tick();
+			pinsWatch?.tick();
 		}, 1000);
 		const check = () => {
 			if (document.visibilityState === 'visible') for (const s of allSessions()) s.checkFresh().catch(() => {});
@@ -307,6 +311,7 @@
 
 {#snippet gapDot(tabId: string)}
 	{#if tabHasGap(gaps, secondLang(), tabId)}<span class="gap-dot" role="img" aria-label="{secondLang()?.toUpperCase()} translation incomplete" title="{secondLang()?.toUpperCase()} translation incomplete"></span>{/if}
+	{#if tabId === 'photos' && hasPins}<span class="pins-dot" role="img" aria-label="Photos have pins" title="At least one photo has pins"></span>{/if}
 {/snippet}
 
 <style>
@@ -366,6 +371,16 @@
 		margin-left: 0.3rem;
 		border-radius: 50%;
 		background: #c75b00;
+		vertical-align: 0.1em;
+	}
+	/* Filled dark, like the Open screen's Facts badge: something there, not something missing. */
+	.pins-dot {
+		display: inline-block;
+		width: 0.5rem;
+		height: 0.5rem;
+		margin-left: 0.3rem;
+		border-radius: 50%;
+		background: #111;
 		vertical-align: 0.1em;
 	}
 	.status {

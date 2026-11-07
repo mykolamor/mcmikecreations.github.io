@@ -25,7 +25,7 @@ import { candidates } from './photo-sources';
 import { createImmich, createStubImmich, type Immich } from './immich-client';
 import { StaleDocError, addFromImmich, addFromLibrary, addUpload, pinState, postPhotos, removePhoto, setAlt, setCaption, setLocation, setPins, setTime } from './photo-ops';
 import { postCaptionPlaces } from './caption-places';
-import { photoBadges } from './photo-badges';
+import { docHasPins, photoBadges } from './photo-badges';
 import { listLibrary } from './photo-library';
 import { findInImmich, hasPhotoKey } from './image-match';
 import { readLinks, setLink } from './immich-links';
@@ -308,6 +308,9 @@ export function defaultRoutes(deps: { spawn?: SpawnFn; settings?: (root: string)
 			const b = body(req);
 			if (typeof b.base !== 'string') throw new ApiError(400, 'base (the doc version) is required');
 			return photoWrite(() => setAlt(root, ref, b.key as string, (b.text ?? null) as string | null, b.base as string));
+		},
+		'GET /api/photos/has-pins': (req, root) => {
+			return { status: 200, json: { hasPins: docHasPins(root, englishRef(req)) } };
 		},
 		'GET /api/photos/pins': (req, root) => {
 			return { status: 200, json: pinState(root, photoRef(req), req.query.get('key') ?? '') };

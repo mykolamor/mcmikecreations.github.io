@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { ownWrites } from './api';
-import { createGapWatch } from './gap-watch';
+import { createGapWatch, createPinsWatch } from './gap-watch';
 
 const ref = { kind: 'post', slug: 'foo', date: '2026-07-19' } as const;
 const flush = () => new Promise((r) => setTimeout(r));
@@ -63,4 +63,14 @@ test('an older answer never replaces a newer one', async () => {
 	answers[0]({ gaps: { de: ['text'] } });
 	await flush();
 	assert.deepEqual(shown, [{ de: ['facts'] }]);
+});
+
+test('the pins watch reads the has-pins route and shows its answer', async () => {
+	const asked: string[] = [];
+	const shown: boolean[] = [];
+	const request = async <T,>(_m: string, path: string): Promise<T> => (asked.push(path), { hasPins: true } as T);
+	createPinsWatch(ref, () => 'v1', (p) => shown.push(p), request);
+	await flush();
+	assert.deepEqual(asked, ['/api/photos/has-pins?slug=foo&date=2026-07-19']);
+	assert.deepEqual(shown, [true]);
 });

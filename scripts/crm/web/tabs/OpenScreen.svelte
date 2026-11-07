@@ -17,7 +17,7 @@
 		hasGpx: boolean;
 		hasFacts: boolean;
 		gaps: Gaps;
-		posts: { date: string; path: string; title: string; hasFacts: boolean; gaps: Gaps }[];
+		posts: { date: string; path: string; title: string; hasFacts: boolean; hasPins: boolean; gaps: Gaps }[];
 		postlessDates: string[];
 	};
 	type PlaceRow = { slug: string; title: string; gaps: Gaps };
@@ -149,7 +149,7 @@
 						<div class="posts">
 							{#each h.posts as p (p.date)}
 								<button type="button" onclick={() => openHike(h.slug, p.date)}
-									>{p.date}<span class="t"> {p.title}</span>{#if p.hasFacts}<span class="facts-mark" title="The post's front matter has facts">Facts</span>{/if}{#each gapBadges(p.gaps) as text (text)}<span class="facts-mark gap" title="The post's own texts still missing in this language">{text}</span>{/each}</button
+									>{p.date}<span class="t"> {p.title}</span>{#if p.hasFacts}<span class="facts-mark" title="The post's front matter has facts">Facts</span>{/if}{#if p.hasPins}<span class="facts-mark" title="At least one of the post's photos has pins">Pins</span>{/if}{#each gapBadges(p.gaps) as text (text)}<span class="facts-mark gap" title="The post's own texts still missing in this language">{text}</span>{/each}</button
 								>
 							{/each}
 						</div>

@@ -40,3 +40,15 @@ test('the Open screen tells which sidecar and posts have a facts sheet', () => {
 	assert.deepEqual(bySlug.foo.posts.map((x) => [x.date, x.hasFacts]), [['2026-08-01', false], ['2026-07-19', true]]);
 	assert.deepEqual(bySlug.bar.posts.map((x) => x.hasFacts), [false]);
 });
+
+test('the Open screen tells which posts have a pinned photo', () => {
+	const root = mkdtempSync(path.join(tmpdir(), 'crm-index-'));
+	const p = repoPaths(root);
+	mkdirSync(p.markdown, { recursive: true });
+	writeFileSync(path.join(p.markdown, 'foo.hike.json'), '{"name": "Foo"}');
+	writeFileSync(path.join(p.markdown, '2026-07-19-foo.md'), '---\ntitle: Foo\nimages:\n  a: {w: 1}\n  b: {pins: [{ref: node/1, x: 0.5, y: 0.5}]}\n---\nText\n');
+	writeFileSync(path.join(p.markdown, '2026-08-01-foo.md'), '---\ntitle: Foo again\nimages:\n  a: {pins: []}\n---\nText\n');
+	writeFileSync(path.join(p.markdown, '2026-09-01-foo.md'), '---\ntitle: No photos\n---\nText\n');
+	const { hikes } = listHikes(root);
+	assert.deepEqual(hikes[0].posts.map((x) => [x.date, x.hasPins]), [['2026-09-01', false], ['2026-08-01', false], ['2026-07-19', true]]);
+});

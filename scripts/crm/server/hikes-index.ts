@@ -2,6 +2,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { POST_FILE, englishText } from '$lib/data/hikes-core.js';
 import { readFrontmatterDoc } from '../lib/frontmatter';
+import { hasPins } from './photo-badges';
 import { repoPaths } from './paths';
 import { listPlaces } from './place-doc';
 import { fileGaps, readLibrary, sidecarGaps } from './translation-gaps';
@@ -17,8 +18,11 @@ export type HikeRow = {
 	hasFacts: boolean;
 	/** What the sidecar lacks per language: its facts, its name and description. */
 	gaps: Gaps;
-	/** `hasFacts`: the post's front matter has a non-empty `facts` sheet. `gaps`: what the post itself lacks per language. */
-	posts: { date: string; path: string; title: string; hasFacts: boolean; gaps: Gaps }[];
+	/**
+	 * `hasFacts`: the post's front matter has a non-empty `facts` sheet. `hasPins`: a photo of the post has a pin.
+	 * `gaps`: what the post itself lacks per language.
+	 */
+	posts: { date: string; path: string; title: string; hasFacts: boolean; hasPins: boolean; gaps: Gaps }[];
 	postlessDates: string[];
 };
 
@@ -36,12 +40,12 @@ function isFactsSheet(v: unknown): boolean {
 	return typeof v === 'object' && v !== null && Object.keys(v).length > 0;
 }
 
-function postHead(file: string): { title: string | null; hasFacts: boolean } {
+function postHead(file: string): { title: string | null; hasFacts: boolean; hasPins: boolean } {
 	try {
 		const front = readFrontmatterDoc(readFileSync(file, 'utf8')).doc.toJS() ?? {};
-		return { title: typeof front.title === 'string' ? front.title : null, hasFacts: isFactsSheet(front.facts) };
+		return { title: typeof front.title === 'string' ? front.title : null, hasFacts: isFactsSheet(front.facts), hasPins: hasPins(front) };
 	} catch {
-		return { title: null, hasFacts: false };
+		return { title: null, hasFacts: false, hasPins: false };
 	}
 }
 
@@ -86,7 +90,7 @@ export function listHikes(root: string): { postCount: number; hikes: HikeRow[]; 
 		const full = path.join(p.markdown, f);
 		if (!row) continue;
 		const head = postHead(full);
-		row.posts.push({ date: m[1], path: full, title: head.title ?? row.name, hasFacts: head.hasFacts, gaps: fileGaps(full, library) });
+		row.posts.push({ date: m[1], path: full, title: head.title ?? row.name, hasFacts: head.hasFacts, hasPins: head.hasPins, gaps: fileGaps(full, library) });
 	}
 	for (const e of readHikesJson(root)) {
 		if (!e.route.startsWith(ROUTE_PREFIX)) continue;
