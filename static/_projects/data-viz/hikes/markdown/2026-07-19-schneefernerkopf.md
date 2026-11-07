@@ -164,7 +164,7 @@ as possible.
 ![Road from Issentalköpfl (1925 m) towards Am Brand (2116 m)](/images/projects/data-viz/hikes/stories/schneefernerkopf/2026-07-19-07.jpg)
 
 Afterward, I continued towards Am Brand (2116 m). By this point the clouds
-have descended onto the slopes and my visibility dropped to a few meters in
+had descended onto the slopes and my visibility dropped to a few meters in
 front, even on the most powerful setting of the headlamp.
 
 ![View from Am Brand (2116 m)](/images/projects/data-viz/hikes/stories/schneefernerkopf/2026-07-19-08.jpg)
@@ -186,7 +186,7 @@ using.
 After the last saddle, the road quickly turned into a via ferrata. It was quite
 an easy one despite the darkness, and it was easily doable with no equipment
 (that I was too lazy to pull out of my backpack). After some more walking, I
-reached the gate at Gatterl (2024 m), after passing which I have officially
+reached the gate at Gatterl (2024 m), after passing which I had officially
 walked onto the Zugspitzplatt.
 
 ![The place of worship at Ehemalige Gatterlhütte](/images/projects/data-viz/hikes/stories/schneefernerkopf/2026-07-19-11.jpg)
@@ -223,7 +223,7 @@ Another 30 minutes and I also started seeing Sonnalpin (2588 m), although at
 that point only through the night mode on my camera. After some more wrong
 turns and climbing I reached the plateau cable car station and took a break.
 There, I saw Schneefernerhaus, my final destination for the day. I knew that
-now was the only chance for me to reach any peaks, since I won't be able to
+now was the only chance for me to reach any peaks, since I wouldn't be able to
 step out of work later otherwise.
 
 ![View at Sonnalpin (2588 m) from below](/images/projects/data-viz/hikes/stories/schneefernerkopf/2026-07-19-18.jpg)
@@ -267,14 +267,14 @@ to Schneefernerhaus.
 Although I wouldn't recommend doing the whole hike at night like I did, the
 route from Ehrwald is by far the easiest route to the top of
 Zugspitze (2962 m). If you take a few liters of water, some warm clothes (the
-temparature drops to 2 degrees Celsius at some points), and some snacks, this
+temperature drops to 2 degrees Celsius at some points), and some snacks, this
 route is achievable for people of quite varying skill levels. I have to warn
 you about the via ferrata section near the top though. Do **NOT** attempt it
 without equipment!
 
 P.S. I decided to include some photos from Schneefernerhaus too below.
 
-![One of radioactive rooms at Schneefernerhaus](/images/projects/data-viz/hikes/stories/schneefernerkopf/2026-07-19-26.jpg)
+![One of the radioactive rooms at Schneefernerhaus](/images/projects/data-viz/hikes/stories/schneefernerkopf/2026-07-19-26.jpg)
 ![The main passenger cog train tunnel of Schneefernerhaus](/images/projects/data-viz/hikes/stories/schneefernerkopf/2026-07-19-27.jpg)
 
 Although I was practically sleeping for the next two days, I did manage to

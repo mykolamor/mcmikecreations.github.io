@@ -1,6 +1,6 @@
 ---
 title: Cinematic Trip to Auerspitz
-description: Going on a trip across Alps with a group of photographers.
+description: Going on a trip across the Alps with a group of photographers.
 tags:
   - DAAD FK
 ascent: 840
@@ -11,19 +11,19 @@ elapsed:
   end: '2024-10-12T17:50'
   source: photos
 images:
-  2024-10-12-00.jpg: {w: 3280, h: 2464, taken: '2024-10-12T10:59:35+02:00', blur: 'data:image/webp;base64,UklGRioBAABXRUJQVlA4IB4BAACQBgCdASoYABIAPtFcpk6oJSMiKAqpABoJbACdMoR2iNGzoPICqBQbW88eC/ThBN6D/Wil1m3A4Jg0CQsAAP7sBShixSb6sdL4rOSNShImIHgBiUD1Eq50p+2Pngyd1lW3uj7YpuqUV/LRRXOTzEVdRu3nczOB23hZWp4lixY1PsZCZCXtsXd+ib5Q7I1iCbm2V7bROx3hQArfOOPkb1cGFjkxfKji6qHU69YCsiNtEgcQ7h1iR5CSCJ7KMCEwKLfVXl9cBopKihJgEDynx1rV5AxUYAbaUUif/Tg6F6Fl1uD/YHwBjMqfVuqrRnMjdaqPC7b/gPnBMbD/PVOBZ8ytIX0F3rLXeotMHkEUr8KZnzyXko25T3td9dhG0AAA'}
+  2024-10-12-00.jpg: {w: 3280, h: 2464, lat: 47.661647, lon: 11.887431, demEle: 1089.0, taken: '2024-10-12T10:59:35+02:00', blur: 'data:image/webp;base64,UklGRioBAABXRUJQVlA4IB4BAACQBgCdASoYABIAPtFcpk6oJSMiKAqpABoJbACdMoR2iNGzoPICqBQbW88eC/ThBN6D/Wil1m3A4Jg0CQsAAP7sBShixSb6sdL4rOSNShImIHgBiUD1Eq50p+2Pngyd1lW3uj7YpuqUV/LRRXOTzEVdRu3nczOB23hZWp4lixY1PsZCZCXtsXd+ib5Q7I1iCbm2V7bROx3hQArfOOPkb1cGFjkxfKji6qHU69YCsiNtEgcQ7h1iR5CSCJ7KMCEwKLfVXl9cBopKihJgEDynx1rV5AxUYAbaUUif/Tg6F6Fl1uD/YHwBjMqfVuqrRnMjdaqPC7b/gPnBMbD/PVOBZ8ytIX0F3rLXeotMHkEUr8KZnzyXko25T3td9dhG0AAA'}
   2024-10-12-01.jpg: {w: 3472, h: 4640, lat: 47.633633, lon: 11.91885, demEle: 1121.8, taken: '2024-10-12T12:45:10+02:00', blur: 'data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAACQBQCdASoSABgAPtFUpE2oJCMiMBgIAQAaCWIArDLT9TgjHYqloF7zCJrHhynP84+n8aY0oAD1hOTdhtKa/p0NhLj6pxolMOuC2do2qW7rHi7nYE3r8tjwNTGqY2pY7LqtUWi68lEkV1ryiAcB0/EP/uThF899mcklRqLwTh8PzBwntmuR39xeILR7ENHgYbWXKTkN85+58gHEvJWQGRFJ6hoSvIIxvbXtWwl0G1uryA9HweLXUB0mEkpn0utqQKZSHCQIncAAAA=='}
   2024-10-12-02.jpg: {w: 4640, h: 3472, lat: 47.635428, lon: 11.932803, demEle: 1321.2, taken: '2024-10-12T13:22:00+02:00', blur: 'data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAACQBQCdASoYABIAPtFepk6oJSMiKAqpABoJYwDCqIBngMWrHQ9zCLrEAYKyo0DMlnYGErEeKAD9wYrqVYeb2X6aGcLOZEyaYmz/QNoP2dPplahJNKz7riN7m+Pa1oY1R7UU2LRZ3UQDwheBFbdU+zamncO2UXgJOJDxRZRVRATK9dO6HiFo8Gss3Cu1y6/wK4HuOGON6aorpsfu7aqgH7tKdC8kd10WvYMjCE3IJhLLSzQAAAA='}
-  2024-10-12-03.jpg: {w: 4640, h: 3472, taken: '2024-10-12T13:58:28+02:00', blur: 'data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAAAQBACdASoYABIAPtFYpEuoJSOlMAgBABoJQBWABD4UamuN+5u6bZDiAAD+85BQ/o0kDPO2cI3gCTLSI82o8PydiAYmRfE5VxAjanniOVdUS8zW0A4D6ilaQsC5JJ5qZwIvwjXO8IPwm7DuQ1TCG8AA'}
+  2024-10-12-03.jpg: {w: 4640, h: 3472, lat: 47.640725, lon: 11.938428, demEle: 1490.3, taken: '2024-10-12T13:58:28+02:00', blur: 'data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAAAQBACdASoYABIAPtFYpEuoJSOlMAgBABoJQBWABD4UamuN+5u6bZDiAAD+85BQ/o0kDPO2cI3gCTLSI82o8PydiAYmRfE5VxAjanniOVdUS8zW0A4D6ilaQsC5JJ5qZwIvwjXO8IPwm7DuQ1TCG8AA'}
   2024-10-12-04.jpg: {w: 4640, h: 3472, lat: 47.645122, lon: 11.939028, demEle: 1653.8, taken: '2024-10-12T14:11:11+02:00', blur: 'data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAADwBQCdASoYABIAPtFSoUyoJCMiMBgMAQAaCUAVJPHct8GAbeNq4rLrxyNeYO7DjT8HGIUI+HhTAAD+79GDnxvBPM3cYUGN0w6+1dAeQAzJUnoREvdUZP+cWPhRMQmq6b64L0iozUIMHEeFyxBqP4oUDPnCJ1kehoebCq817qCl/iGZXQC73VLnop57hwiURltPxceU3VuqeiWolZsgAe+XJqD8if7l+D/xATMb6WQKFAUryAA='}
   2024-10-12-05.jpg: {w: 4640, h: 3472, lat: 47.643783, lon: 11.945403, demEle: 1784.6, taken: '2024-10-12T15:19:07+02:00', blur: 'data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAABQBQCdASoYABIAPtFYpUyoJSOiKA1RABoJQBOgVdgNdeWjv7D0uyDwWtO5fQ3xebXFhAAA/sXeOmMiZ7HNoUF+6NsRGGU8MxnPQG94/g0ssMmpuixS76o7qd3Ahas3x9WZ0Zmo6qw85H3u7Ot5hCbMdGBaWOLDEnCwndIUaFbUH+KS/UNezZ9uXur+LOW3F0/WNMUHEGiFEodERPIp+JrgAAA='}
   2024-10-12-06.jpg: {w: 4640, h: 3472, lat: 47.646853, lon: 11.938542, demEle: 1691.0, taken: '2024-10-12T14:29:46+02:00', blur: 'data:image/webp;base64,UklGRsQAAABXRUJQVlA4ILgAAAAwBQCdASoYABIAPtFcp04oJSOiKAqpABoJYwCw7YwwZTcmYfE+4u8LqcsRpGydkbE8EAD+7az1SeH9wBaQOXVMxiRkU10v3wur5kPBFMJ5vA4tUOuowWfzEJgvuz/Z2/Fj2unlmnwpJ9mtigLwHu1po4m5M3gEWMG3sS10/dOpYcsIToaYqB70MUOeFb+xVQZ3WSQSxi1DPG/npG6KZVUKl7mOwIRjnoES8KY3ugwIZjhM1MF3gAAA'}
   2024-10-12-09.jpg: {w: 4640, h: 3472, lat: 47.643747, lon: 11.945333, demEle: 1784.7, taken: '2024-10-12T15:22:40+02:00', blur: 'data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAACQBACdASoYABIAPtFWpk2oJCOiMBgIAQAaCUAWI+hYL/dByb/BcWtZAKAR3uAA/sXmTUycseJ80UKfBVUGNcdmMg3m1UC5GVdxZIf6TDLDYM9n6e8iLOctyTbzQpyEo9toRgOsPfshO7SlQG0muFr+ew0XjEp2PK6eXFFjvmV5+BjZI2AAAA=='}
   2024-10-12-08.jpg: {w: 4640, h: 3472, lat: 47.643711, lon: 11.945447, demEle: 1783.8, taken: '2024-10-12T15:17:55+02:00', blur: 'data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAABwBQCdASoYABIAPtFcpk4oJSOiKAqpABoJYwC06BEdLZeXSra7kg2VAzOst6oRcj0y/wYAAP7nKH58v4Y1oPLzWi2RqTNFjNO9ypcNv6vMAvgbmqT7Y+KjV34LfqxQS1gzUYlGxPeeHbtkSFbdUmouKw0dUzSlPW1Lg+PMLma4hpX1vaOOueJ9GWMRwkQTDzshaHWI0F6AAA=='}
-  2024-10-12-07.jpg: {w: 4640, h: 3472, taken: '2024-10-12T14:46:44+02:00', blur: 'data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAAAQBQCdASoYABIAPtFcqE4oJSQiKAqpABoJYgC7IL/BVS5E4rspkuC24VTUZ33DGDIAAP7GAGsE575moibqYDnd8XG5Gt0PVV7rrw5qPlSXcTQdw4w9HxbUql7riSbSEqzd/pGzRJ7vZeva0IpZI2ySwWCVJEy7bPfi0UKZwv9SYREUhNbWgDZqdZq6AOK5kFVyk0HbsqatNA8th9YbQrD2U9FKha6ToaAKMvoURXGVw47MbX4/dojKIRKAAA=='}
-  2024-10-12-10.jpg: {w: 4640, h: 3472, taken: '2024-10-12T16:29:16+02:00', blur: 'data:image/webp;base64,UklGRuAAAABXRUJQVlA4INQAAAAwBQCdASoYABIAPtFepE6oJSMiKAqpABoJZQC90BF43K5hKdcXpfbOhCp65k51iHR5QAD+8Bt+vSt+JvEAvsD0f39mfvrTWZDRjo/jJzyl2HWNSEKnYciBmCLVVqQW+Dd/Af0NnOEEYR5YBNycKxL8NpDGKp/H3qCG2MHngu7rh5FdJy6fS8haZT0ZF5mBOuv+0bMex33hYCq8sRegXBawaFAHj881ilH/BnhM0vZ35VjWZfw5Kz+V1x0hnnak3d5WU3Zo21fzhJd974pOCPhY0HRgAA=='}
+  2024-10-12-07.jpg: {w: 4640, h: 3472, lat: 47.646037, lon: 11.945259, demEle: 1720.9, taken: '2024-10-12T14:46:44+02:00', blur: 'data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAAAQBQCdASoYABIAPtFcqE4oJSQiKAqpABoJYgC7IL/BVS5E4rspkuC24VTUZ33DGDIAAP7GAGsE575moibqYDnd8XG5Gt0PVV7rrw5qPlSXcTQdw4w9HxbUql7riSbSEqzd/pGzRJ7vZeva0IpZI2ySwWCVJEy7bPfi0UKZwv9SYREUhNbWgDZqdZq6AOK5kFVyk0HbsqatNA8th9YbQrD2U9FKha6ToaAKMvoURXGVw47MbX4/dojKIRKAAA=='}
+  2024-10-12-10.jpg: {w: 4640, h: 3472, lat: 47.650143, lon: 11.957894, demEle: 1468.7, taken: '2024-10-12T16:29:16+02:00', blur: 'data:image/webp;base64,UklGRuAAAABXRUJQVlA4INQAAAAwBQCdASoYABIAPtFepE6oJSMiKAqpABoJZQC90BF43K5hKdcXpfbOhCp65k51iHR5QAD+8Bt+vSt+JvEAvsD0f39mfvrTWZDRjo/jJzyl2HWNSEKnYciBmCLVVqQW+Dd/Af0NnOEEYR5YBNycKxL8NpDGKp/H3qCG2MHngu7rh5FdJy6fS8haZT0ZF5mBOuv+0bMex33hYCq8sRegXBawaFAHj881ilH/BnhM0vZ35VjWZfw5Kz+V1x0hnnak3d5WU3Zo21fzhJd974pOCPhY0HRgAA=='}
   2024-10-12-11.jpg: {w: 3280, h: 2464, lat: 47.650194, lon: 11.957753, demEle: 1468.3, taken: '2024-10-12T16:29:39+02:00', blur: 'data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAAAQBQCdASoYABIAPtFepU6oJSMiKAqpABoJQBYdghrVJDv8vUGwElaUlZ5HUVmOSN5AAP7q5WpCJiLXGmuiUY7rMJniFtYiKZe08Pkl6owCnYYtAvvz0O3AwkbcRuyPB7FmpLofVOqqvtQrJ5zOYq51IdkE7sfT0fhD8FaeH8ReVBSMsqeYOZmGTmcIW/LL6WXBK5LZVLxUUb9oVJNLwnUOScrnIR2Cq5tXR1w8J3EQ7QXq2Tzmmgs73BAAAA=='}
-  2024-10-12-12.jpg: {w: 4640, h: 3472, lat: 47.681561, lon: 12.012072, demEle: 908.7, taken: '2024-10-12T17:45:18+02:00', blur: 'data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAABwBACdASoYABIAPtFUo0uoJKMisAgBABoJQBOmWOhfHKoZARUJ8dAusw0sAAD+r5sWtUzo3apyN8f6bdpi4DYpxMOA81jRUR1rYcfYh9uE13DZLNqmvfizkFbAN2aF47fJ3pyi+PB27u+V29xKYqdF9SRoiGAR2eKiA/AAAAA='}
+  2024-10-12-12.jpg: {w: 4640, h: 3472, lat: 47.676684, lon: 11.963185, demEle: 830.7, taken: '2024-10-12T17:45:18+02:00', blur: 'data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAABwBACdASoYABIAPtFUo0uoJKMisAgBABoJQBOmWOhfHKoZARUJ8dAusw0sAAD+r5sWtUzo3apyN8f6bdpi4DYpxMOA81jRUR1rYcfYh9uE13DZLNqmvfizkFbAN2aF47fJ3pyi+PB27u+V29xKYqdF9SRoiGAR2eKiA/AAAAA='}
   2024-10-12-13.jpg: {w: 4640, h: 3472, lat: 47.687542, lon: 11.962944, demEle: 800.7, taken: '2024-10-12T17:50:56+02:00', blur: 'data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAADQBACdASoYABIAPtFap04oJSOiKAqpABoJYwDCr8CA6qBYybTt4r79e0RSxL+xgAD+6vIODiuLiT1O3zgw2O111Hdfpao5pEYbrlPkJyr8QBPSS8bluLoXShWPmvtd6TXS1ZRjlg47NIgS0mznd6NYnecjopgQJOtpmgI+Qp9DYGES2uBtus08Wa7FbnjsHNrBMtFaoJmBRiPd0YiNDXN0hUqMAAAA'}
 ---
 The hike that Annette from DAAD FK organized started off disastrously, because
@@ -42,8 +42,8 @@ completely, now going between riverbeds, hills, cliffs, and trees.
 ![Rote Valepp cliffside](/images/projects/data-viz/hikes/stories/auerspitz/2024-10-12-01.jpg)
 
 Around this point, climbing on a narrow trail uphill towards the Alpine huts,
-the group has started to stretch. The quicker hikers were waiting for the
-slower ones, and Annette was making sure that nobody at any point is lost. At
+the group had started to stretch. The quicker hikers were waiting for the
+slower ones, and Annette was making sure that nobody at any point was lost. At
 one moment, a pair of international hikers approached our group and asked for
 some photos, so we had something to do while waiting.
 
@@ -80,9 +80,9 @@ and Wendelstein (1838 m) I [visited a couple of times](/404/).
 ![Looking at Ruchenköpfe (1805 m) with Wendelstein (1838 m) in the background](/images/projects/data-viz/hikes/stories/auerspitz/2024-10-12-07.jpg)
 
 We really split up while going to the Soinsee lake, so there was a longer wait
-ahead. I went up to and around the lake, passing some snow and mud patches on
+ahead. I went up to and around the lake, passing some snow and mud patches en
 route. Thankfully, some people of the faster batch had cameras with them, so I
-spent time looking at them fiddling with camera setting taking pictures of the
+spent time looking at them fiddling with camera settings taking pictures of the
 lake.
 
 ![Soinsee up close](/images/projects/data-viz/hikes/stories/auerspitz/2024-10-12-10.jpg)

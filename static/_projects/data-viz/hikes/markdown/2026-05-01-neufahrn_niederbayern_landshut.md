@@ -31,7 +31,7 @@ images:
 I got two of my wisdom teeth pulled out three days ago, so I wasn't allowed to
 do any real hikes yet. But with the public holiday and the good weather, I just
 couldn't pass up the opportunity to go out and do some hiking. I was really
-happy I got to [visit Risesrkogel (1826 m)](/hikes/2026-04-26-risserkogel/)
+happy I got to [visit Risserkogel (1826 m)](/hikes/2026-04-26-risserkogel/)
 before my dental procedure, but now it was time to lean back and relax.
 
 ![ERLUS AG - Hauptverwaltung](/images/projects/data-viz/hikes/stories/neufahrn_niederbayern_landshut/2026-05-01-00.jpg)
@@ -77,7 +77,7 @@ enough for all of you.
 ![Orange primroses (Primula hortensis)](/images/projects/data-viz/hikes/stories/neufahrn_niederbayern_landshut/2026-05-01-09.jpg)
 
 Closer to the next town, I came across a hut labelled "Waldesruh" with a bunch
-of flowers planted in front of it. I was a lovely sight, and they even had
+of flowers planted in front of it. It was a lovely sight, and they even had
 benches to rest on, but I decided to keep moving. In the distance, I saw the
 Uniper power plant and some ladies riding horses along the fields.
 
@@ -97,9 +97,9 @@ after an already long walk. What I didn't know was that the forest hut was the
 last place I could sit and rest for the next 10 kilometers. The whole section
 to the "castle" and the next town was just an asphalt way parallel to an
 intercity freeway. There was no shade from the trees and no benches, just
-fields. I started growing more and more tired, but thankfully near the entrace
+fields. I started growing more and more tired, but thankfully near the entrance
 to Ergolding, I found a small bench hidden near some bushes by the road. I
-took a break there to take my timely does of antibiotics and went on with my
+took a break there to take my timely dose of antibiotics and went on with my
 trip.
 
 ![Lake Metz in Ergolding](/images/projects/data-viz/hikes/stories/neufahrn_niederbayern_landshut/2026-05-01-14.jpg)

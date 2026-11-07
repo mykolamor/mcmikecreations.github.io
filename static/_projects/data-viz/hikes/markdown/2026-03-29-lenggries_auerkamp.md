@@ -34,7 +34,7 @@ images:
   2026-03-29-22.jpg: {w: 8160, h: 6120, lat: 47.657439, lon: 11.653346, demEle: 1520.8, taken: '2026-03-29T12:42:51+02:00', blur: 'data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAACQBQCdASoYABIAPtFgqU+oJSOiKAgBABoJaQDDrywAoxvch3XvrOic8lUg4/mY5XNKuDgPQAD+3HITPvAcONW/NfnAVUyv6Ofw6WPMFRFLEXY8AYDx/2HqlytyZAVnBUA2Za1pz9ECc2LxyvYDIiezkiAPypLAknSeO2PwShNHDDR4IG49hvWy606dC0Wxamht9XCyxzyoMQX7INLVWdR4UYy6L6+dH3FxCrtmuj0Fu+Af3AA='}
   2026-03-29-23.jpg: {w: 4744, h: 3560, lat: 47.658461, lon: 11.654269, demEle: 1549.8, taken: '2026-03-29T12:48:00+02:00', blur: 'data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAAAQBQCdASoYABIAPtFapE0oJSMiKA1RABoJZwDE2BDiWGW3axtUibWY9ky7LPlfLQyIAP7ysRAICFp3VtknPUp9utcRsW6IcuD29g9cp+jLyEsbXG77uzgTtgStuJuqtd10u1L6G+/06wcpzlgyQ2UU9eSfKTxVvx/8i4fe1oIbb8QeU25TyHSx4akmVjoPOUV9s2tmNA+yBwM0ER2MAAAAAAA='}
   2026-03-29-24.jpg: {w: 3024, h: 4032, lat: 47.658609, lon: 11.654224, demEle: 1553.8, taken: '2026-03-29T12:56:15+02:00', blur: 'data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAADQBACdASoSABgAPtFgqE+oJSOiKAgBABoJZwDE2Ai05TlZL7s6swJDaibd+ZgAAAD7cj2bxMjy8DI9VuEtUQ3OZ0F2ubhDxfZfo7cg490hpSoilYaWPDjqgDphlHwHx0XI5aCCHqOOSrrRxIQNrw6NR11gaxZPCb4/yY5A3zg92fl0qbGT5RHSLsZRqn/i7F1uL67s4vXy9MhC0r0GyBbhCcAAAA=='}
-  2026-03-29-43.jpg: {w: 1080, h: 1920, taken: '2026-03-29T17:01:05+02:00', blur: 'data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAADwAwCdASoOABgAPtFWo0uoJKMhsAgBABoJZQCdAYukdg2NimRfVI4AAPty/aknT7fqJXuzQ3RfyQpEpN03F0tON2bUc3oRdNZV5eH4Vkt+f+4R4Z7gLzCVxVVuPZrIH61cncvANJhlsaPHAAA='}
+  2026-03-29-43.jpg: {w: 1080, h: 1920, lat: 47.65805, lon: 11.654054, demEle: 1527.4, taken: '2026-03-29T17:01:05+02:00', blur: 'data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAADwAwCdASoOABgAPtFWo0uoJKMhsAgBABoJZQCdAYukdg2NimRfVI4AAPty/aknT7fqJXuzQ3RfyQpEpN03F0tON2bUc3oRdNZV5eH4Vkt+f+4R4Z7gLzCVxVVuPZrIH61cncvANJhlsaPHAAA='}
   2026-03-29-25.jpg: {w: 8160, h: 6120, lat: 47.658839, lon: 11.654497, demEle: 1565.2, taken: '2026-03-29T13:07:30+02:00', blur: 'data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAADQBACdASoYABIAPtFgqU+oJSOiKAgBABoJZwDOOA3Wjnd7O3kvldlS8gIkx7+IGAD+n42SHQxq1M6zflUky41hBghwWlqcuHlDi6kMrxLUI54UA5vmMQRoNqCkXOwzjHbnsBJ1dV3pTY7rOccC7Li/5tERhWYIg3OmS2i4y27HRnrz+qk/AAAA'}
   2026-03-29-26.jpg: {w: 8160, h: 6120, lat: 47.658891, lon: 11.654602, demEle: 1566.1, taken: '2026-03-29T13:09:06+02:00', blur: 'data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABwBACdASoYABIAPtFaoUuoJaMhsBgMAQAaCWcAxNgQ76kh9x0RP6q9X8V8sAD+i5yQ5wj9mwEGA41woi6DjvTxWIzyiI6i3a/f06nPGXub6oJftAAAAA=='}
   2026-03-29-27.jpg: {w: 3024, h: 4032, lat: 47.658978, lon: 11.654819, demEle: 1564.7, taken: '2026-03-29T13:12:44+02:00', blur: 'data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQBACdASoSABgAPtFWo0uoJKMhsAgBABoJZyz/wzYAk0SnU8RetkZOAAD+wtJy05Ojo8JX9LSgWNt2EJozuh3kADJkw7CHJMRvaowXCj9Q0ZtM7NS7eaXHBvyvS1biGs6QAAAA'}
@@ -101,7 +101,7 @@ digging the snow with every step.
 ![Looking at Schwarzeck (1382 m)](/images/projects/data-viz/hikes/stories/lenggries_auerkamp/2026-03-29-11.jpg)
 
 Eventually, we crossed a ridge and got to higher elevation huts, Rauhalmhütte,
-near the bottom of Seekarkreuz (1601 m), that I visited [plenty of times before](/hikes/2025-12-14-lainbachfall_jochberg/).
+near the bottom of Seekarkreuz (1601 m), that I visited [plenty of times before](/hikes/2025-03-02-seekarkreuz/).
 
 ![Climbing up to Rauhalmhütte](/images/projects/data-viz/hikes/stories/lenggries_auerkamp/2026-03-29-12.jpg)
 ![Crossing a ridge to Rauhalmhütte](/images/projects/data-viz/hikes/stories/lenggries_auerkamp/2026-03-29-13.jpg)
@@ -178,7 +178,7 @@ top, where the Spitzkamp (1604 m) peak was waiting with proverbial open arms.
 
 We stayed for a bit to look around and panic took over me again. There was
 nowhere to go! South-west was the way we came from, and I had the feeling I
-wouldn't be able to climb down the path I took. North-west and south-east was
+wouldn't be able to climb down the path I took. North-west and south-east were
 the drop-off of the cliff. That obviously wasn't an option either. The only
 choice was to go forward, but the path looked very narrow and sketchy, with
 most of the snow around barely staying on top of buried bushes and trees.
@@ -278,7 +278,7 @@ dwell on it though, as we had to hurry towards the train station.
 A few waterfalls and huts later, we finally got out of the forest and onto the
 fields and meadows of Lenggries. [Schloss Hohenburg](http://schloss.st-ursula.net/)
 came and went, and we were already in the town. I made a bet with Bohdan on how
-many hikers we'll come across on the hike, saying 12 (14 including the ones
+many hikers we'd come across on the hike, saying 12 (14 including the ones
 taking the bus). It fell through, since we only saw 4. Anyway, we quickly
 reached the station and went home.
 

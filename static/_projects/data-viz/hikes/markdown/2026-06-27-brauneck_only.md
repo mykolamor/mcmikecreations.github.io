@@ -30,13 +30,13 @@ images:
   2026-06-27-17.jpg: {w: 6288, h: 4720, lat: 47.663104, lon: 11.527412, demEle: 1482.5, taken: '2026-06-27T21:28:49+02:00', blur: 'data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAADQBACdASoYABIAPtFSoUwoJCMiMBgMAQAaCWMAuwAQ68U3QgWnJabiZCr1m+4+0AD+3zywN961oeBdVeb9InszPDX50t5RZ1XS5rOwug+O+UXWDsNZCMipGB3vx8YXSYrVxAcQ0G54hoy0CpbZylUCPd5smN8sEQiCKOZ1N96vDqSUfAAAAA=='}
   2026-06-27-18.jpg: {w: 4080, h: 3060, lat: 47.663102, lon: 11.527394, demEle: 1482.9, taken: '2026-06-27T21:56:18+02:00', blur: 'data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAACQBACdASoYABIAPtFYpEyoJSOiKA1RABoJZwCnFBEcn1tvdW2TBfvo4oR/kgAA/u5+3on4yWYVvoekUrhYxTpTts/Ftr6bGic48xEhwgFLRHCgSwAUExqSmMSRfDWs7gjoP+5DUZSAAA=='}
 ---
-After I learned that I'll miss all summer solstice celebration events when the
+After I learned that I'd miss all summer solstice celebration events when the
 holiday actually happens, I was really disappointed. To my surprise, Lenggries
 decided to postpone their event a week due to the heat wave pressing on
 Bavaria. They announced that the event will be held on Brauneck (1555 m), which
 I conveniently skipped during my [Benediktenwand (1800 m) hike](/hikes/2024-07-21-benediktenwand/).
 The danger of fire was still there (and the temperature got even
-worse). So the venue made the decision to replace the actual bonfire with a LED
+worse). So the venue made the decision to replace the actual bonfire with an LED
 installation, having a fire show with professional showmen instead. With the
 [hike to Drachensee](/hikes/2026-06-21-drachensee/)
 being on the easier side, this trip also promised to be reasonable, even in
@@ -110,7 +110,7 @@ and flew down to Lenggries.
 
 I looked in the direction the paragliders were flying. Quite a few attempted to
 glide all the way to Bad Tölz, where I finished my
-[Blomberg (1203 m) hike](/hikes/2026-03-15-bichl_blomberg/). In the meantime,
+[Blomberg (1248 m) hike](/hikes/2026-03-15-bichl_blomberg/). In the meantime,
 8 o'clock came around, and the sun slowly started to set. The sky, previously
 blue and spotless, started gathering clouds and becoming yellow. We took our
 chance and went to the restaurant at the cable car building, enjoying some
@@ -120,7 +120,7 @@ drinks and a DJ, waiting for the show to get going.
 ![The start of the sunset on Brauneck (1555 m)](/images/projects/data-viz/hikes/stories/brauneck_only/2026-06-27-15.jpg)
 
 As we waited longer, the yellow sun started taking on strawberry-like colors,
-with a full pallet of yellows and oranges reflecting off the clouds. It was a
+with a full palette of yellows and oranges reflecting off the clouds. It was a
 mesmerising view, further enhanced by the relaxed atmosphere of the party.
 Everyone around us was enjoying their time, getting cocktails from the bar or
 chatting about mundane happenings. Soon after, the organizers lit up the
@@ -133,7 +133,7 @@ of sun.
 The sky started turning red, then caught some purple shades and started
 dimming. The show was also ready to get started. The hikers and local residents
 hurried to the bonfire to get a nice viewing spot. To test the pyrotechnics and
-give viewers a test of what's to come, the show started with a nice music piece
+give viewers a taste of what's to come, the show started with a nice music piece
 with automated fire spewing upwards in tune with the music.
 
 ![The first half of the bonfire performance on Brauneck (1555 m)](/images/projects/data-viz/hikes/stories/brauneck_only/2026-06-27-19.mp4)
@@ -160,7 +160,7 @@ the required 8 km of distance in each direction. The 14 Euro (as of 2026) cable
 car does make it better, but still, [Wallberg (1722 m)](/404/)
 may be a better choice for many.
 
-As for the event, I would say it is must-see. Of course, you don't have to go
+As for the event, I would say it is a must-see. Of course, you don't have to go
 to Brauneck (1555 m) every year. Feel free to enjoy similar events on other
 summits and near mountain huts, or go for a village vibe in the smaller towns
 and communities. Still, the unifying atmosphere of a relaxing evening with nice

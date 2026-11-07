@@ -43,7 +43,7 @@ my guide, suggested to go as far as we can, so we can take our time going
 slower the next day.
 
 He also mentioned that the road between Chhomrong and Samrung has a small hot
-spring, so I could take a bath there and enjoy mylself, given enough time.
+spring, so I could take a bath there and enjoy myself, given enough time.
 This sounded like the best opportunity, but it meant I'd have to walk a lot
 today, making me a bit anxious.
 
@@ -60,7 +60,7 @@ Check out [other hikes](/hikes/tag/Nepal/) from this trip:
 ![The Annapurna Base Camp glacier covered in rocks](/images/projects/data-viz/hikes/stories/annapurna_bc_4/2026-06-12-01.jpg)
 
 We took our morning photos with the only other active European group of
-British blokes. There were stil some hopes to see the clouds move away and
+British blokes. There were still some hopes to see the clouds move away and
 reveal the mountains, but it was not to be. We discussed some cool routes
 that professionals take to reach the top of Annapurna and other peaks, but
 it boiled down to "it's too dangerous even for them so nobody does it".
@@ -79,7 +79,7 @@ were done with the formalities.
 ![View towards Gandharba Chull (6248 m)](/images/projects/data-viz/hikes/stories/annapurna_bc_4/2026-06-12-04.jpg)
 ![Meconopsis Napaulensis near the Annapurna Base Camp](/images/projects/data-viz/hikes/stories/annapurna_bc_4/2026-06-12-05.jpg)
 
-The road back was much better that the ascent. The whole route is not that
+The road back was much better than the ascent. The whole route is not that
 steep, and the road is quite sturdy despite the moisture and fog in the air,
 so we could walk at a good pace. Although the clouds were still covering the
 peaks, the morning sun gave an amazing light to the valley and the mountains,
@@ -180,5 +180,5 @@ All in all, despite the quick pace and the long distance covered, it was one of
 the most memorable days of the trip. I got to experience all the best portions
 of the hike all over again in one big package, and enjoy the views I normally
 had my back turned to on the way up. The weather was also much better than on
-the previous days, with only a small shover near the end, so I could take my
-photos in peace without worrying about drying my phone in such a humid weather.
+the previous days, with only a small shower near the end, so I could take my
+photos in peace without worrying about drying my phone in such humid weather.

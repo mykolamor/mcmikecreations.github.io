@@ -58,7 +58,7 @@ parking lots, making me forget the distance and elevation of the route we
 chose.
 
 The first 6.2 km and 950 elevation meters went by quite fine. I wasn't in my
-best shape, since I just submitted a scientific conference paper the evening
+best shape, since I'd just submitted a scientific conference paper the evening
 before, but I was hopeful that I'd manage to complete the route.
 
 ![View at Soiernspitze (2253 m) from the Tölzer Hütte (1825 m) plateau](/images/projects/data-viz/hikes/stories/baumgartenjoch/2026-08-02-02.jpg)
@@ -117,7 +117,7 @@ Schafreuter (2102 m) is an amazing mountain to visit. It opens a breathtaking
 view of all surrounding areas: Walchensee with [Herzogstand (1731 m)](/404/)
 and [Jochberg (1565 m)](/hikes/2025-12-14-lainbachfall_jochberg/),
 Sylvensteinsee with Hoher Zwiesler (1376 m) and Demeljoch (1924 m), Mittenwald
-with [Soiernspitze (2257 m)](/hikes/2025-01-19-soiernspitze/)
+with [Soiernspitze (2253 m)](/hikes/2025-01-19-soiernspitze/)
 and Hochkarspitze (2481 m) and many more. The neighboring Delpsjoch (1945 m)
 also looked great from across the valley, so we decided to head there next.
 
@@ -167,14 +167,14 @@ Bohdan in his usual manner ran off ahead, leaving my line of sight. Meanwhile,
 I slipped on some long wet grass and fell down, grabbing random ferns with my 
 hands to slow down. It worked, but I badly hurt my elbow and finger. After
 [breaking another finger near Vordere Kesselschneid (2001 m)](/404/)
-and soon after recovering [falling off a cliff at Sonnenberg (1622 m)](/404/)
+and soon after recovering, [falling off a cliff at Sonnenberg (1622 m)](/404/)
 this winter, I try to avoid such incidents, but they keep finding me
 nonetheless.
 
 ![Bohdan descending from Baumgartenjoch (1939 m)](/images/projects/data-viz/hikes/stories/baumgartenjoch/2026-08-02-28.mp4 "autoplay")
 
 Although I called Bohdan plenty of times, he was too far to hear me and help
-out, so I gathered my strength and kept going. A few minutes later he peaked
+out, so I gathered my strength and kept going. A few minutes later he peeked
 over a steeper section asking if I was coming down, since he made quite a bit
 of progress and was waiting for me to catch up. He also suggested climbing down
 backwards with my ass towards the sun, which demanded more endurance, but let
@@ -194,7 +194,7 @@ strength to keep going.
 
 The sky was getting dark and the clouds looked rainy, so we hurried up to get
 on the original trail and head back down. Walking past the Jagdhütte Roßangerl
-I quickly realized that I'm too tired to hike properly, barely moving along the
+I quickly realized that I was too tired to hike properly, barely moving along the
 trail. There was not much time left until the last bus, which got me quite
 worried. A few locals passed by us in their cars, and we waited in the ditches
 for them to drive by.
@@ -209,15 +209,15 @@ got completely wet.
 ![Cows near Baumgartensattel (1554 m)](/images/projects/data-viz/hikes/stories/baumgartenjoch/2026-08-02-21.jpg)
 
 With a bit over one hour left before the last bus towards Lenggries and 2 hours
-of hiking ahead, Bohdan told me he wants to make it alone. He suggested that I
-should take the trail up to Tölzer Hütte (1825 m), while he will trail run downhill to
+of hiking ahead, Bohdan told me he wanted to make it alone. He suggested that I
+should take the trail up to Tölzer Hütte (1825 m), while he would trail run downhill to
 our point of origin near the Kaiserhütte bus stop. Although it was a bitter
 situation, I said my goodbyes and kept pushing towards the hut, seeing Bohdan
 disappear into the mist of the thunderstorm.
 
 ![Rainy slope of Delpsjoch (1945 m) from Tölzer Hütte (1825 m)](/images/projects/data-viz/hikes/stories/baumgartenjoch/2026-08-02-22.jpg)
 
-As I arrived to the hut, all wet and dirty, I was greeted with amused looks from
+As I arrived at the hut, all wet and dirty, I was greeted with amused looks from
 numerous hiking groups inside. I was by far not the only one seeking shelter
 there, with tons of people hanging their clothes in the drying room at the
 entrance. After some negotiations, I got a place for the night and tried eating
@@ -264,7 +264,7 @@ suggesting I wait another 6 hours until the bus comes.
 
 I let him be and kept going, eventually crossing the border back into
 Germany. Several cars drove by in the opposite direction, but I was hopeful
-I'll find at least someone to pick me up. After more walking, I heard a car
+I'd find at least someone to pick me up. After more walking, I heard a car
 behind me and immediately made myself seen by waving and jumping all over the
 place.
 

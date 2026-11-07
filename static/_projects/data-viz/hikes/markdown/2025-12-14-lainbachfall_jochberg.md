@@ -26,7 +26,7 @@ images:
   2025-12-14-10.jpg: {w: 8160, h: 6120, lat: 47.62331, lon: 11.36524, demEle: 1390.2, taken: '2025-12-14T16:14:53+01:00', blur: 'data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAABwBQCdASoYABIAPtFcpE6oJSMiKAqpABoJZQC//f/gG4r0jTTlCzriqlg0DaYviHzkYugYAP7fifkVlum8z5wMh8JrMXbt5V/sSR6Hb34iCtQipuq2ETkbpEPEXLVnnMiW6L2vbnN/8EuxxupGoSgQL5FVbJ6yN7CDLHUgDTSyDq46mqTqd8DLd9qXyFIEaH7Nu8lYOSo1QLtrMhFoVXFDvZk13Eu4HQCZ70AA'}
   2025-12-14-11.jpg: {w: 4488, h: 3366, lat: 47.619369, lon: 11.348172, demEle: 848.1, taken: '2025-12-14T17:22:45+01:00', blur: 'data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAACwAwCdASoYABIAPtFWo0uoJKMhsAgBABoJZwAAUqi9SLc62PrigAD+8rTPFR58S2BaTEQnU60bD0YZLdmV4xxemHmBpQvVwdoHcfARwONwvVNHXjzSYgy6qluJB8AA'}
 ---
-The group of Ukrainians I've met at the end of my recent hike to
+The group of Ukrainians I met at the end of my recent hike to
 [Auer Berg (1252 m)](/hikes/2025-10-26-auer_berg/)
 invited me to an outing up Jochberg, which I visited a couple of times before.
 With a fractured finger and nothing better to do, I gladly accepted the

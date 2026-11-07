@@ -76,7 +76,7 @@
 	// The download line: "Grab the <GPX> or <GeoJSON> file and …", links in between.
 	const [grabBefore, grabAfter] = tSplit(lang, 'post.files.grab', 'files');
 
-	// The last body change, when there was one after the hike (§7): readers judge
+	// The last body change, when there was one after the hike: readers judge
 	// route info by how recent it is. The same date as the JSON-LD dateModified.
 	const [updatedBefore, updatedAfter] = tSplit(lang, 'post.updated', 'date');
 	const updated = $derived(data.post.dateModified !== data.post.date ? data.post.dateModified : null);

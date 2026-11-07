@@ -61,7 +61,7 @@ walking along and catching up to early bird groups.
 ![The forest with the dirt road up](/images/projects/data-viz/hikes/stories/snezka_krakonos/2026-04-11-02.jpg)
 ![Looking back at the valley](/images/projects/data-viz/hikes/stories/snezka_krakonos/2026-04-11-03.jpg)
 
-The forest started to clear up and the road has become way more rocky than
+The forest started to clear up and the road became way more rocky than
 before. Random patches of snow or ice started to show up on the sides, but the
 walk was still pretty comfortable.
 
@@ -94,14 +94,14 @@ crowded.
 
 There was a single paved road leading to the observatory at the top of
 Sněžka (1603.3 m), with a single continuous line of hikers going up and down.
-The snow has already melted revealing the ice that covers the paved trails.
+The snow had already melted revealing the ice that covers the paved trails.
 With the hikers attempting the route mostly without shoe spikes, quite many of
 them were slipping and/or falling.
 
 ![The Czech-Polish border with Studniční hora (1555 m) in the background](/images/projects/data-viz/hikes/stories/snezka_krakonos/2026-04-11-09.jpg)
 
 We decided to skip the spikes on the way up, but we couldn't skip all the
-viewpoints overlooking the surrounding ridges! Every dozen of meters, there was
+viewpoints overlooking the surrounding ridges! Every dozen meters, there was
 a small offshoot of the trail leading to a scenic panorama. We made sure to
 visit all of them while avoiding the constant flood of other tourists.
 
@@ -127,7 +127,7 @@ the prices in the shop were expectedly steep.
 ![The cable car station on the Czech side of Sněžka (1603.3 m)](/images/projects/data-viz/hikes/stories/snezka_krakonos/2026-04-11-11.jpg)
 
 Lastly, there was the cable car station. Since the snow already mostly melted
-and summer hasn't yet started, the station was closed, but it still offered
+and summer hadn't yet started, the station was closed, but it still offered
 nice views along the ridge. Also, the path along the cable car poles was more
 popular, with an even greater flow of tourists going up and down.
 
@@ -152,7 +152,7 @@ eager hikers.
 
 We traversed through the snow and the ice slush, trying to stick to the
 outlined trails, and eventually reached the Krakonoš (1422 m) peak. It was much
-different from Sněžka (1603.3 m), being closed to what you'd typically see in
+different from Sněžka (1603.3 m), being closer to what you'd typically see in
 Bavaria, like the Großer Traithen (1852 m) ridge I [visited in 2025](/hikes/2025-01-26-grosser_traithen/).
 
 ![The view along the ridge of Krakonoš (1422 m)](/images/projects/data-viz/hikes/stories/snezka_krakonos/2026-04-11-19.jpg)
@@ -172,7 +172,7 @@ for most of the routes, with smaller trees and bushes near the top. The hills
 are covered in grass and shrubs, making it a great place to graze for local
 mountain goats. In Austria, the higher peaks are much more rocky, with bushes
 covering the lower sections of the slopes and the higher parts being covered
-in gravel and other small rocks, being a perfect for landslides and avalanches.
+in gravel and other small rocks, being perfect for landslides and avalanches.
 
 ![Frozen water stream on the way down](/images/projects/data-viz/hikes/stories/snezka_krakonos/2026-04-11-22.jpg)
 ![The advanced Czech trail markings showing the way up](/images/projects/data-viz/hikes/stories/snezka_krakonos/2026-04-11-23.jpg)
@@ -225,7 +225,7 @@ To conclude, this is a great area for hiking and the route we took is a great
 introduction to the highest ridges in the Czech Republic. Accessible to
 families and somewhat accessible even to disabled people, this is a must-visit
 for any enthusiast. Especially if you're used to the Alps, this area offers a
-nice change of pace. The abundance of local huts and restaurants allows to stay
+nice change of pace. The abundance of local huts and restaurants allows you to stay
 on the ridges longer and enjoy the local dishes and overnight rooms. Finally,
 the trails along the river streams cool down the valleys nicely, while the
 trees provide the much-needed shade in summer. Go there if you can!

@@ -91,7 +91,7 @@ understanding and patient, waiting for me whenever I needed to stop.
 ![Weilheimer Hütte (1946 m) and Krottenkopf (2086 m)](/images/projects/data-viz/hikes/stories/krottenkopf_bischof/2025-11-16-10.jpg)
 
 Reaching Weilheimer Hütte (1946 m), we met a few other hikers standing there.
-Bohdan headed straight to the top of the mountain, trying to beat his ascend
+Bohdan headed straight to the top of the mountain, trying to beat his ascent
 record from last time. I stayed and chatted with the others for a bit. Turns
 out, all the huts in the area were already closed for the season, so we
 couldn't get any warm drinks to fight the cold wind.
@@ -122,7 +122,7 @@ Archtalkopf (1927 m).
 ![Path down Pustertal Kar](/images/projects/data-viz/hikes/stories/krottenkopf_bischof/2025-11-16-17.jpg)
 
 After descending another rocky section, we reached
-Pustertal Jagdhütte, and after those the way down turned into a simple forest
+Pustertal Jagdhütte, and after that the way down turned into a simple forest
 trail.
 
 ![Pustertal Jagdhütte](/images/projects/data-viz/hikes/stories/krottenkopf_bischof/2025-11-16-18.jpg)

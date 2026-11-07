@@ -71,7 +71,7 @@ kept going and soon after passed the settlement.
 
 Next up was a federal road between Einhausen and Höhenberg. It was quite
 nerve-wracking to walk on the side of it, with cars flying by at 80 km/h, with
-no pedestrian train to be seen. As a positive, I saw some deer peeking out of a
+no pedestrian trail to be seen. As a positive, I saw some deer peeking out of a
 nearby forest. I passed this section as quickly as possible and kept going.
 
 ![Forest road on the way to Untersanding](/images/projects/data-viz/hikes/stories/eggmuehl_koefering/2026-07-05-07.jpg)
@@ -110,7 +110,7 @@ bringing two donkeys for a walk. Then I kept going towards Alteglofsheim.
 
 ![Regensburger Diözesanfußwallfahrt e.V. donkeys](/images/projects/data-viz/hikes/stories/eggmuehl_koefering/2026-07-05-12.jpg)
 
-By this point, I've been walking for 10-12 km, and because of antibiotics and
+By this point, I'd been walking for 10-12 km, and because of antibiotics and
 general post-procedure pain I already started feeling lightheaded. My original
 plan was to keep going another 16 km to Regensburg after reaching my
 destination, but I wasn't feeling up for that. Still, I did my best to enjoy
@@ -130,7 +130,7 @@ installed along the trails, like pull-up bars, ladders, etc.
 Soon after, I reached the Waldlehrpfad - a local trail with educational signs
 and a smaller Wichtelwald section with tiny houses the locals built for magical
 creatures. It was really nice to see the decorations, presumably made by local
-kids and their parent. It's always nice to let children get closer to nature.
+kids and their parents. It's always nice to let children get closer to nature.
 
 ![A tiny magical building on the Waldlehrpfad trail](/images/projects/data-viz/hikes/stories/eggmuehl_koefering/2026-07-05-17.jpg)
 
@@ -154,7 +154,7 @@ pushed through. As soon as I reached the Köfering station, the thunderstorm
 reached me, and the rest of the time until my train arrived, I was just hiding
 in the corner to not get soaked.
 
-![Metal Tiranosaurus in Köfering](/images/projects/data-viz/hikes/stories/eggmuehl_koefering/2026-07-05-19.jpg)
+![Metal Tyrannosaurus in Köfering](/images/projects/data-viz/hikes/stories/eggmuehl_koefering/2026-07-05-19.jpg)
 
 Although I typically don't recommend these hikes to other people, since it's
 just me walking through some settlements, this one felt much better. The

@@ -15,10 +15,10 @@ elapsed:
 images:
   2025-03-09-00.jpg: {w: 3472, h: 4640, lat: 47.750881, lon: 12.896353, demEle: 746.3, taken: '2025-03-09T11:20:18+01:00', blur: 'data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAADwBACdASoSABgAPtFcpk4oJSOiKAqpABoJYgCsM1XBXNkX0naK5h1+7m6XG6Lo0AAAyy4k8qxZvzScpo+zgHLl6OLz+JRqRrNjRM87Qp1tFNBafBpkRyXselxlcuyc+wXcf6sYa92zOAlkVesBSGrQuiyScXNBV8L4ra4egCQGaRvF5Yhe52KbToGZIK7Ke93yhLctIPse8PrgTkDZLBwqLPVC+fMw6jokkJ6Xl9X3PQW/PkrAAA=='}
   2025-03-09-01.jpg: {w: 3472, h: 4640, lat: 47.753303, lon: 12.878142, demEle: 1275.5, taken: '2025-03-09T13:14:56+01:00', blur: 'data:image/webp;base64,UklGRggBAABXRUJQVlA4IPwAAADwBQCdASoSABgAPtFeqE+oJKOiKAgBABoJbAC7L9Y+d7xqUD4BdBw4SwsM55/dSXPqu3aNO2mrAAD3K5UAH4JykHtX1ru54nkMxzFcXitM3v9xnK7pAuxYFBJylk1bu5GwROEiqbNTquyJtMI4pKRwxY1u5VzL/J3WUpEJqWVe7b1Ifu2LYE6HIopzFZE05mSwP6eNP1Gt4sYUGc2KpBR9CqGfOTKOSLSUiE+tNBL7rBq+6t/PTqRXk5ELooUh4DesJPMYZydV53dSTESdpH86APTKkmu+sR+zLO9zCZIJut2QGds2iGlUB537CGsJU0OymcRvnRtDbgXwAAA='}
-  2025-03-09-02.jpg: {w: 3472, h: 4640, taken: '2025-03-09T14:28:37+01:00', blur: 'data:image/webp;base64,UklGRvQAAABXRUJQVlA4IOgAAAAwBQCdASoSABgAPtFgqE+oJSOiKAgBABoJZQDBDhkKgD3AihfwWzBAbczcZo+oQhK8AAD+2fg3js0eRjfIZ2kqQcp2Bu5GtTNBLPK94S90ZvIRooxMZavRVZesGXyDUYaQqLJQiRukkzojNjs6Zgn/E2eu3Twk7+e1XsrNuR+dfZ6yMyz3OhugQpBAu1usMQHWsgsKgaohSCyTxf+9/0ysj/CizoD0XY4di+Ho+CC4IUeEpRWWW2YI+153uQjpDEFatMWnZPPPTy10XXZWRqwVtY+u4GhznR9XlevkQvds3V7L13AiIAAA'}
+  2025-03-09-02.jpg: {w: 3472, h: 4640, lat: 47.75371, lon: 12.860258, demEle: 1371.3, taken: '2025-03-09T14:28:37+01:00', blur: 'data:image/webp;base64,UklGRvQAAABXRUJQVlA4IOgAAAAwBQCdASoSABgAPtFgqE+oJSOiKAgBABoJZQDBDhkKgD3AihfwWzBAbczcZo+oQhK8AAD+2fg3js0eRjfIZ2kqQcp2Bu5GtTNBLPK94S90ZvIRooxMZavRVZesGXyDUYaQqLJQiRukkzojNjs6Zgn/E2eu3Twk7+e1XsrNuR+dfZ6yMyz3OhugQpBAu1usMQHWsgsKgaohSCyTxf+9/0ysj/CizoD0XY4di+Ho+CC4IUeEpRWWW2YI+153uQjpDEFatMWnZPPPTy10XXZWRqwVtY+u4GhznR9XlevkQvds3V7L13AiIAAA'}
   2025-03-09-03.jpg: {w: 3472, h: 4640, lat: 47.754856, lon: 12.850433, demEle: 1686.3, taken: '2025-03-09T16:28:37+01:00', blur: 'data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAADQBQCdASoSABgAPtFaqU2oJSQiKAqpABoJZgCdMxs3nCR/AuLRBtS4bDrwTotF2wxBkghR3JcAAP6ScWV+R1x02f1pwjI7fbR2D+fKYMRAfPe/U/dnxcdvO8x4HCCOL2u0zZQRBb2GWUGVlnhxegs/l4FdnSHh/ZEXOFVw6RsNpo7bTIu6GuXux931aKP4a+qj2ddBgJKQSDzCRaOw2BLPXKcvj1+oeiL7zEMFpmXvkjEWYvbJP0qTCjnQya4hqAA='}
-  2025-03-09-04.jpg: {w: 3472, h: 4640, lat: 47.830683, lon: 12.529933, taken: '2025-03-09T17:14:08+01:00', blur: 'data:image/webp;base64,UklGRs4AAABXRUJQVlA4IMIAAADQBQCdASoSABgAPtFUpk2oJCOiMBgIAQAaCWIAnTMxb/4F3/li7ZaQwanxXDjgIjW4HBxR8d8AAP7yD3TKnzFjzJh+GgDktEnlVyotejpXEd6fp+jnOwrFWHLuHwGNU6cew+TQQHIC2TSKH/3WMEOXs13IsmA3PpbfhZvL6236xNDJTqugxzPihIW5tAHmGNV5R9XDzd9up5KEQEpEEy3fIVuFHNyYSaT4ckpYAce2XdJ0S2yU+llP9uNNbdU9FBDgAA=='}
-  2025-03-09-05.jpg: {w: 4640, h: 3472, lat: 47.830683, lon: 12.529933, taken: '2025-03-09T17:07:39+01:00', blur: 'data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADQBACdASoYABIAPslUn0unpSKhsAwA8BkJZwAAPAYDOz+l2gzmFtIfp84F7UuRAAD6YN+kXXs845oIOu8ZmMMkFz2xJ7KS2mWAILpEa74x6bLMB9GVOvigXn5zacq9rbeF5PGZ+QG4NrpA+0giwBoiAAA='}
+  2025-03-09-04.jpg: {w: 3472, h: 4640, lat: 47.75527, lon: 12.849248, demEle: 1727.4, taken: '2025-03-09T17:14:08+01:00', blur: 'data:image/webp;base64,UklGRs4AAABXRUJQVlA4IMIAAADQBQCdASoSABgAPtFUpk2oJCOiMBgIAQAaCWIAnTMxb/4F3/li7ZaQwanxXDjgIjW4HBxR8d8AAP7yD3TKnzFjzJh+GgDktEnlVyotejpXEd6fp+jnOwrFWHLuHwGNU6cew+TQQHIC2TSKH/3WMEOXs13IsmA3PpbfhZvL6236xNDJTqugxzPihIW5tAHmGNV5R9XDzd9up5KEQEpEEy3fIVuFHNyYSaT4ckpYAce2XdJ0S2yU+llP9uNNbdU9FBDgAA=='}
+  2025-03-09-05.jpg: {w: 4640, h: 3472, lat: 47.754946, lon: 12.848652, demEle: 1731.6, taken: '2025-03-09T17:07:39+01:00', blur: 'data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADQBACdASoYABIAPslUn0unpSKhsAwA8BkJZwAAPAYDOz+l2gzmFtIfp84F7UuRAAD6YN+kXXs845oIOu8ZmMMkFz2xJ7KS2mWAILpEa74x6bLMB9GVOvigXn5zacq9rbeF5PGZ+QG4NrpA+0giwBoiAAA='}
   2025-03-09-06.jpg: {w: 4640, h: 3472, lat: 47.751806, lon: 12.836275, demEle: 1502.6, taken: '2025-03-09T18:02:19+01:00', blur: 'data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAAAQBQCdASoYABIAPtFWpE2oJCMiMBgIAQAaCUAX/YI9NDY6nMCCcE6P3MPCFjZvLMAAAP7tHbuLnY+1s9Zc2qMaa6hSqk7xCjFFeOCGcFo2zzVtghZnl9nSFv1qUqFi+Y23iSzJirsihUUNfVwNozTFNUINab3Ihn/UIYRKxBqEbtGg8Tp8hUB1IFAAAA=='}
   2025-03-09-07.jpg: {w: 4640, h: 3472, lat: 47.748708, lon: 12.842536, demEle: 1251.0, taken: '2025-03-09T18:40:53+01:00', blur: 'data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAADwBACdASoYABIAPtFapE0oJSMiMBgIAQAaCWIAnTLQwYBRA3CUPllGW74mwJ1cvAAA/s18QUzjVTqGqHI8WfZdzkOL/XiXILxPqwo39wfD/z7GY//xzPenmQvzjq9fa54+fBMV9aoABy+alz8Hz6E4wYg+SgnZZLN2MuQxlWjpxdLEiITYaQha+AA='}
 ---
@@ -26,7 +26,7 @@ I planned to have a hike in the Bad Reichenhall area going through a deeper
 mountain, but destiny decided otherwise. Between waking up at a reasonable
 time of 04:30 and running to the train barely in time before departure, I
 forgot to pack most of the things I prepared in advance. I took less water,
-forego making tea, didn't pack the cake I baked for the trip and left the
+forwent making tea, didn't pack the cake I baked for the trip and left the
 cookies I bought on the shelf. Still, I made it to the train in time, which
 was most important. I usually take the earlier S-Bahn to München Hbf, this
 time wasn't an exception.
@@ -34,7 +34,7 @@ time wasn't an exception.
 When I boarded and caught my breath, I realized that we were still on the
 station. 10 minutes later an announcement was made: another section of the
 train is stuck at an earlier stop due to an issue with the railway and
-there's no timeline for the fix. 70 minutes later it was clear I'll have
+there's no timeline for the fix. 70 minutes later it was clear I'd have
 to modify or cancel the hike, leaving Abeer and Mikuláš stranded on the main
 station. After some negotiation we decided to take a later train to Salzburg
 and go for a different hike. We decided on the Hochstaufen (1771 m) peak, with a route

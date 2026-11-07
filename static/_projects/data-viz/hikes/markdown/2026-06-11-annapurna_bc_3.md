@@ -75,12 +75,12 @@ say something like that before dying, so I was a bit anxious if we'd survive
 this trip.
 
 ![Waterfall cutting through a forest on the way](/images/projects/data-viz/hikes/stories/annapurna_bc_3/2026-06-11-01.jpg)
-![View at Gandharba Chull (6248 m) and other peaks on the Machhapuchhre (6993 m) ridge](/images/projects/data-viz/hikes/stories/annapurna_bc_3/2026-06-11-03.jpg)
+![View at Gandharba Chull (6248 m) and other peaks on the Machapuchare (6993 m) ridge](/images/projects/data-viz/hikes/stories/annapurna_bc_3/2026-06-11-03.jpg)
 ![A small wayward stone near the trek](/images/projects/data-viz/hikes/stories/annapurna_bc_3/2026-06-11-11.jpg)
 
 In any case, we had our breakfast and set off to the Annapurna Base Camp with
-some small stops on the way. I haven't even finished packing up when the rain
-started again, making me really upset I'll have to wear the rain coat and would
+some small stops on the way. I hadn't even finished packing up when the rain
+started again, making me really upset I'd have to wear the rain coat and would
 look goofy in all photos. But it's not like I had a choice.
 
 ![The steps towards Deurali](/images/projects/data-viz/hikes/stories/annapurna_bc_3/2026-06-11-02.jpg)
@@ -96,7 +96,7 @@ to reach the village.
 ![A small shrine between Deurali and Hinku Cave](/images/projects/data-viz/hikes/stories/annapurna_bc_3/2026-06-11-10.jpg)
 
 We walked past the Hinku Cave, a historic shelter with a shrine for pilgrims
-walking the trek. When I was there, I haven't realized it was a functional
+walking the trek. When I was there, I hadn't realized it was a functional
 shelter, so I took pictures of the shrine and left without looking deeper into
 the cave.
 
@@ -152,11 +152,11 @@ but gray sadness reflected in the pond.
 ![View of the Baraha Shikhar (Annapurna Fang Peak) (7647 m) behind the clouds](/images/projects/data-viz/hikes/stories/annapurna_bc_3/2026-06-11-25.jpg)
 ![The Paradise Lake reflecting the gray clouds](/images/projects/data-viz/hikes/stories/annapurna_bc_3/2026-06-11-28.jpg)
 
-It wasn't all bad though. I still had hope that the sky will clear up by the
+It wasn't all bad though. I still had hope that the sky would clear up by the
 time we reach the Annapurna Base Camp or later in the evening, so I just kept
-going. Once we reached the camp, we hanged up our wet covers and clothes to dry
+going. Once we reached the camp, we hung up our wet covers and clothes to dry
 and headed for a snack. Then, Parlad suggested I should have some sleep and
-he'll wake me up if the sky clears.
+he'd wake me up if the sky clears.
 
 ![Nepal Cinquefoil (Potentilla nepalensis) on the way](/images/projects/data-viz/hikes/stories/annapurna_bc_3/2026-06-11-27.jpg)
 ![The road to ABC](/images/projects/data-viz/hikes/stories/annapurna_bc_3/2026-06-11-29.jpg)
@@ -178,12 +178,12 @@ the rocky bottom of the slope is similar to
 the snowy slope reminds me of [Frau Hitt (2270 m) in Austria](/hikes/2025-03-23-frau_hitt/).
 All peaks that I've been at and connected with.
 
-![View back at Fish Tail/Machhapuchhre (6993 m)](/images/projects/data-viz/hikes/stories/annapurna_bc_3/2026-06-11-34.jpg)
+![View back at Fish Tail/Machapuchare (6993 m)](/images/projects/data-viz/hikes/stories/annapurna_bc_3/2026-06-11-34.jpg)
 
 And then it hit me. Yes, all of this looks similar, but where is it? What's the
 scale here? At some point I saw a small flag planted near MBC on the slope of
 Annapurna III (7555 m). It was easy to spot on a white background, but the
-giant flag was like a spec of dust on a big wall. My whole field of view was
+giant flag was like a speck of dust on a big wall. My whole field of view was
 taken up by a single mountain far in the distance.
 
 ![Numerous passport photos of people visiting ABC](/images/projects/data-viz/hikes/stories/annapurna_bc_3/2026-06-11-32.jpg)
@@ -197,9 +197,9 @@ at a picture book in reality, I didn't feel present in the moment at all.
 
 ![A field of Himalayan Anemones near the camp](/images/projects/data-viz/hikes/stories/annapurna_bc_3/2026-06-11-30.jpg)
 
-Then there's also the matter of all the dead bodies along the way. There's not
+Then there's also the matter of all the dead bodies along the way. There aren't
 as many of them as on Everest, but enough to wonder if it's worth it. Although
-I'm not planning to go up any time soon, maybe ever, I was curious of how the
+I'm not planning to go up any time soon, maybe ever, I was curious about how the
 process normally works. Well, you take 28 days in total, with 4 camp stops
 along the climb, overnight stays in villages along the way to the base camp
 (on the northern side under the ridge), many acclimatization days and just a

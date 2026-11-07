@@ -36,7 +36,7 @@ and the dentist visit thereafter, I went on vacation to Croatia. The road took
 me 17 hours by FlixBus and only made the muscle pain worse, so I took some days
 off adventuring to recover and prepare for new peaks.
 
-![Flovers on the streets of Omiš](/images/projects/data-viz/hikes/stories/omis_celine/2026-08-08-00.jpg)
+![Flowers on the streets of Omiš](/images/projects/data-viz/hikes/stories/omis_celine/2026-08-08-00.jpg)
 
 Since I ended up visiting my mom vacationing in Omiš again, I decided to
 explore other mountains in the area of the [Old Fort via ferrata](/hikes/2025-08-14-omis_fort_climb/).

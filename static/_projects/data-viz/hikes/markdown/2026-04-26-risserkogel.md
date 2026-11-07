@@ -82,7 +82,7 @@ found the cross on the other side, accessible without equipment but with some
 climbing to do.
 
 I left my belongings and climbed there, taking some photos and quickly climbing
-back down again before the adrenaline wears off. It was time to continue
+back down again before the adrenaline wore off. It was time to continue
 towards the saddle, and the map was telling me to go all the way down the steep
 slope towards the popular trail. I decided against it and kept pushing upward.
 
@@ -92,12 +92,12 @@ The trails around the rock were very faint, with goat droppings, so probably
 not man-made. At that point, I didn't care. I just wanted to get back to the
 normal hiking route.
 
-![The slope where I got burried under the snow in winter](/images/projects/data-viz/hikes/stories/risserkogel/2026-04-26-06.jpg)
+![The slope where I got buried under the snow in winter](/images/projects/data-viz/hikes/stories/risserkogel/2026-04-26-06.jpg)
 
 Going up and leaning towards the main trail, I passed the places I dug through
 with knee-deep snow on my way to [Setzberg (1706 m)](/hikes/2026-01-11-setzberg/).
 It was surreal to see them without the pile of snow and the cold embrace of
-winter, but I didn't want to reminisce for too long, since I haven't done even
+winter, but I didn't want to reminisce for too long, since I hadn't done even
 half of the planned hike.
 
 ![View from the saddle towards Risserkogel (1826 m)](/images/projects/data-viz/hikes/stories/risserkogel/2026-04-26-07.jpg)
@@ -117,14 +117,14 @@ the way to my goal.
 
 ![The flock of paragliders around Wallberg (1722 m)](/images/projects/data-viz/hikes/stories/risserkogel/2026-04-26-10.jpg)
 
-In the meantime, all the paragliders around Wallberg (1722 m) have also set off
+In the meantime, all the paragliders around Wallberg (1722 m) had also set off
 on their journeys, filling the sky with colorful parachutes. It was a great
 sight to behold, and a nice view with Tegernsee in the background to send to my
 parents.
 
 ![The sign near the top of Grubereck (1664 m)](/images/projects/data-viz/hikes/stories/risserkogel/2026-04-26-09.jpg)
 
-The road quite quickly got covered in snow that hasn't melted since winter. It
+The road quite quickly got covered in snow that hadn't melted since winter. It
 wasn't anything dangerous though, with tons of people passing me on their way
 down. The summit of Grubereck (1664 m) only had a plaque describing the
 mountain and the area, so I didn't wait for too long and continued my hike.
@@ -170,7 +170,7 @@ catch, so we parted ways.
 
 ![View from the Risserkogel (1826 m) slope towards Hinteres Sonnwendjoch (1986 m)](/images/projects/data-viz/hikes/stories/risserkogel/2026-04-26-15.jpg)
 
-My initial idea was to go north-east towards Spitzingsee. Peaking over the
+My initial idea was to go north-east towards Spitzingsee. Peeking over the
 slope on the summit, I saw the steep trail and the overabundance of snow on the
 route ahead, so I switched my plan to also go to Wildbad Kreuth instead.
 
@@ -181,7 +181,7 @@ opened up to reveal the panorama of the Austrian Alps just across the German
 border. I distinctly remember my fascination with that view from
 [my hike to Blauberge](/hikes/2025-06-01-blauberge/), when all the mountains
 were covered in dried-up grass and ferns. This time, the Alps were still
-covered in snow, offering a new unique perspective I haven't seen before. At
+covered in snow, offering a new unique perspective I hadn't seen before. At
 this point, I can be certain the view there is great in any season, as long as
 it's not fully covered in clouds.
 
@@ -193,7 +193,7 @@ but the main attractions were still the views towards Austria.
 
 ![Spring Gentians on the way](/images/projects/data-viz/hikes/stories/risserkogel/2026-04-26-18.jpg)
 
-At the crossroads I met a hiker I've come across on my way to
+At the crossroads I met a hiker I'd come across on my way to
 Risserkogel (1826 m). As he greeted me, his foot slipped off a loose rock, and
 he tumbled to the side. After checking up on him, we started going down
 together, but he quickly stopped and I continued on my own.
@@ -251,5 +251,5 @@ and Wallberg (1722 m). I highly recommend the last option, as it offers the
 best views and some interesting educational plaques along the way. It takes
 around an hour to hike between Grubereck (1664 m) and Wallberghaus
 (which closes at 17:00). From there you have plenty of options, including
-buggies, a cable car, paragliding, or just going down to the Wallberbahn
+buggies, a cable car, paragliding, or just going down to the Wallbergbahn
 bus stop.

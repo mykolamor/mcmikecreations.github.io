@@ -1,6 +1,6 @@
 ---
 title: Pedra Rija PR1 Start
-description: What was supposed to be a full-day hike turned to be a 15-minute walk due to a landslide.
+description: What was supposed to be a full-day hike turned out to be a 15-minute walk due to a landslide.
 tags:
   - Portugal
 people:
@@ -11,7 +11,7 @@ images:
   2025-04-04-00.jpg: {w: 3472, h: 4640, lat: 32.738942, lon: -16.933792, demEle: 1618.7, taken: '2025-04-04T11:59:27+01:00', blur: 'data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAACwBQCdASoSABgAPtFWo0uoJKMhsAgBABoJZgCxHuN/gK7CaCisWEl81RRqvLK2dKwKljYE4AAA/lLWVf1NaV9bYObGxF7v/J0JEVgKE/Wz3AIwgA0/ts8XX1KsiuAZ/JtJFzPWfrSQe/QlsE5WhpQ5FSakamK4hUjQ9YlMXAglQHYqTf0+IvI+zEaZCcCGML+sYoGQ6l0KLRG4pUliPdKqZGyqbrR+dClCpnx15fCjFQtjdLOwsyeeX770S8gAAAA='}
 ---
 As soon as I and Serhii landed at the Madeira airport, we immediately took
-a taxi and drove to Pico do Areeiro (1818 m). The taxi driver was really confused where
+a taxi and drove to Pico do Arieiro (1818 m). The taxi driver was really confused where
 we were headed to, but we managed to convince him to drive us to the specified
 location without asking further questions. Upon arrival, we walked around the
 area, explored the souvenir shops, and went on to start the hike.

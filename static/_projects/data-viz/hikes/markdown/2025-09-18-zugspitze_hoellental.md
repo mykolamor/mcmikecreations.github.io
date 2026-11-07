@@ -42,7 +42,7 @@ The idea for this hike was born pretty much immediately after finishing the
 [Reintal route to the Zugspitze (2962 m)](/hikes/2025-06-21-zugspitze_reintal/). We
 planned ahead, bought an ice axe and ice spikes, checked the weather forecast
 and public transport schedule, so nothing would stop us from going up the
-Höllental Klamm. I even spend the night before the hike at David's place, so
+Höllental Klamm. I even spent the night before the hike at David's place, so
 we could get to the train station faster.
 
 ![Trail near Hammersbach](/images/projects/data-viz/hikes/stories/zugspitze_hoellental/2025-09-18-00.jpg)
@@ -117,7 +117,7 @@ At some point, quite early in the climb, I started losing my breath
 and needed to take breaks more often. The altitude really affected me this
 time. It really reminded me of the [Frau Hitt (2270 m)](/hikes/2025-03-23-frau_hitt/)
 hike and the challenges I faced there. David seemed to be doing fine, but
-waited for me nonetheless. Still, we took over a few other hikers who were
+waited for me nonetheless. Still, we overtook a few other hikers who were
 doing even worse than me.
 
 ![The start of Höllental Klettersteig, the main via ferrata](/images/projects/data-viz/hikes/stories/zugspitze_hoellental/2025-09-18-10.jpg)

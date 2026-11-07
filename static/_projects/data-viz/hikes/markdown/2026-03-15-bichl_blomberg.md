@@ -56,7 +56,7 @@ this Blombergbahn route instead.
 ![A house in Bichl](/images/projects/data-viz/hikes/stories/bichl_blomberg/2026-03-15-00.jpg)
 
 Ever since I went sledging near the Blombergbahn with David Bilan, I was
-excited to visit the surrounding peaks, although I haven't prepared much by
+excited to visit the surrounding peaks, although I hadn't prepared much by
 looking at the map and other peoples' routes. I had a plan to visit everything
 on the ridge, then come down to the bus station near Blombergbahn and head
 home. But fate had other plans for me...
@@ -65,7 +65,7 @@ home. But fate had other plans for me...
 ![The trail towards Hollerkopf (932 m)](/images/projects/data-viz/hikes/stories/bichl_blomberg/2026-03-15-02.jpg)
 
 The beginning of the hike was a walk through the forest. Tall pines and light
-snow reinforced my belief that I did the right choice. Higher up, around 1200 m
+snow reinforced my belief that I made the right choice. Higher up, around 1200 m
 of elevation, the whole area was covered in ankle-deep snow.
 
 ![The top of Hollerkopf (932 m)](/images/projects/data-viz/hikes/stories/bichl_blomberg/2026-03-15-03.jpg)
@@ -110,11 +110,11 @@ so I just winged it and hiked in the general direction of the next peak.
 
 After reaching a bigger road and turning off of it to get to the peak again,
 I was greeted with a hilltop covered in artificially planted young pines
-overgrown with spiky wines. Considering my previous fall at
+overgrown with spiky vines. Considering my previous falls at
 [Vordere Kesselschneid (2002 m)](/hikes/2025-11-23-vordere_kesselschneid/) and
 [Sonnenberg (1622 m)](/hikes/2026-02-15-oberammergau_sonnenberg/),
 I didn't want to risk damaging my jacket and pants any further, so I tried
-my best to either walk around or fully step on the wines. While this worked,
+my best to either walk around or fully step on the vines. While this worked,
 there was again no mark at the top, so I had to aimlessly wander around looking
 for the actual highest point so that I can claim I reached the peak.
 
@@ -180,8 +180,8 @@ instead.
 ![The muddy trail down from Zwiesel (1348 m)](/images/projects/data-viz/hikes/stories/bichl_blomberg/2026-03-15-21.jpg)
 ![The road along river Großbach](/images/projects/data-viz/hikes/stories/bichl_blomberg/2026-03-15-22.jpg)
 
-I don't know how the descent looks like in summer with dry weather, but at this
-time of the year, the whole slope is muddy and slippery, which slowed my down
+I don't know what the descent looks like in summer with dry weather, but at this
+time of the year, the whole slope is muddy and slippery, which slowed me down
 to a crawl. It took quite a while to reach the Großbach river at the bottom of
 the hill, and it took even longer to climb onto the next mountain. There was a
 barely visible steep dirt track, probably laid out to carry cut down trees back

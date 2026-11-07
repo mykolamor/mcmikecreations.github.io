@@ -87,7 +87,7 @@ in one of those balloons too! We also took a break at the Alm
 for some snacks and drinks, enjoying the view of the surrounding mountains.
 
 ![Oberaudorfer Alm (1120 m)](/images/projects/data-viz/hikes/stories/trainsjoch/2026-01-18-09.jpg)
-![Hot air baloons near Walchsee](/images/projects/data-viz/hikes/stories/trainsjoch/2026-01-18-10.jpg)
+![Hot air balloons near Walchsee](/images/projects/data-viz/hikes/stories/trainsjoch/2026-01-18-10.jpg)
 
 As we reached the border between Landkreis Miesbach and Bayrischzell, the route
 became significantly more challenging. There was a pair of footsteps following

@@ -29,7 +29,7 @@ images:
   2026-02-15-19.jpg: {w: 8160, h: 6120, lat: 47.583865, lon: 10.99757, demEle: 1461.6, taken: '2026-02-15T17:00:07+01:00', blur: 'data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAAAQBQCdASoYABIAPtFWpU2oJCMpMBgIASAaCWcAwQ9VwX8S0aRPFJEy+n0X8UONGzQAAPyCo2bIZsa0rNH84d18TFIQCvKLreR4+fR90P/Dx6if7Udt/NgF9vEzDZp3KL5X/FWM49bQ2a/sXEkEf+VqNV9bmjD9m3JShnQst7SazRqhqVWzKpRL9Nwn6fhs8K8Cu5Q0kAA='}
   2026-02-15-20.jpg: {w: 8160, h: 6120, lat: 47.583862, lon: 10.997566, demEle: 1461.7, taken: '2026-02-15T17:00:14+01:00', blur: 'data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACQBACdASoYABIAPsFIoEunpCMht/qoAPAYCWcAvsAejKIavWUBtGHEKLpmQ9AA/uqaAdqV91isS3VEYc/+sLFnEN+4IlyvilGRbjDuAzr3UvTMX5dmECk6QeUnriAmm7oDBqJH63QLZTF+IPzXnaXVGK4Ts3q928ouNyMm8Vg0/ylyysc+KqA5oAA='}
   2026-02-15-21.jpg: {w: 8160, h: 6120, lat: 47.607783, lon: 11.017805, demEle: 927.3, blur: 'data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAADQBACdASoYABIAPtFaqU2oJSQiKAqpABoJQBWAMYdGSORusj9HukQBzMKDNOXvwAD4JntthJkcE4XHfgwAMkC4IsSUCuhuDhCO4782xVsSNcK8Jsb4kzuErRvbfxin5N9ZGB/FOhoYmH4mjR8x08JVnQOprI92uueEpQP3uNR+bCofyTsXwOA4qK+ce0MKsl9Lgx0481NgWz5NsyxTAKjL5JrhwAAA'}
-  2026-02-15-22.jpg: {w: 6120, h: 8160, lat: 48.318536, lon: 11.661356, demEle: 462.8, blur: 'data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAACQBACdASoSABgAPtFWpk2oJCOiMBgIAQAaCUAVgAG6RLKB7IEHwCEvFqSJAgAA/tlDzmJNiZsnhWwhBnPEayYSiLamplmKDN2EzP2VQMm99KHn/EWlubN37bcIdvTV9pcyedU2m/pvs6hkSXJu3aO6M5uqLNN6fxycWQYL29Biim45h0vYI+P1q+R0kEhsAAA='}
+  2026-02-15-22.jpg: {w: 6120, h: 8160, blur: 'data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAACQBACdASoSABgAPtFWpk2oJCOiMBgIAQAaCUAVgAG6RLKB7IEHwCEvFqSJAgAA/tlDzmJNiZsnhWwhBnPEayYSiLamplmKDN2EzP2VQMm99KHn/EWlubN37bcIdvTV9pcyedU2m/pvs6hkSXJu3aO6M5uqLNN6fxycWQYL29Biim45h0vYI+P1q+R0kEhsAAA='}
 ---
 Yet another fall from a cliff. If you've read my story about fracturing my
 finger on [Vordere Kesselschneid (2002 m)](/hikes/2025-11-23-vordere_kesselschneid/),
@@ -51,7 +51,7 @@ Sonnenberggrat was a via ferrata route. The navigation app said the route takes
 
 The start of the hike was very chill, walking through Oberammergau and the
 surrounding slopes, where parents were dragging sleds with their kids uphill.
-I can across Kreuzigungsgruppe Oberammergau, and headed further up.
+I came across Kreuzigungsgruppe Oberammergau, and headed further up.
 
 ![View from the monument](/images/projects/data-viz/hikes/stories/oberammergau_sonnenberg/2026-02-15-01.jpg)
 ![Kreuzigungsgruppe Oberammergau](/images/projects/data-viz/hikes/stories/oberammergau_sonnenberg/2026-02-15-02.jpg)
@@ -80,8 +80,8 @@ on the trail, and that's what mattered.
 ![Crossroads near Königssteig](/images/projects/data-viz/hikes/stories/oberammergau_sonnenberg/2026-02-15-06.jpg)
 ![The way up](/images/projects/data-viz/hikes/stories/oberammergau_sonnenberg/2026-02-15-07.jpg)
 
-The path was getting steeper and more difficult, but he snow still wasn't too
-deep. I assumed that this trend will continue, so I kept going. At some point,
+The path was getting steeper and more difficult, but the snow still wasn't too
+deep. I assumed that this trend would continue, so I kept going. At some point,
 a thick cloud approached the mountainside, and the visibility dropped to a few
 meters. I was still managing to follow the ski tracks, so I wasn't too worried
 about it.
@@ -91,7 +91,7 @@ about it.
 
 I saw a ski tour hiker changing his equipment on the way from the top of
 Zahn (1615 m), which meant two things. First, I was on the right path, and the
-top was close. Second, the person making the trail is turning back, which meant
+top was close. Second, the person making the trail was turning back, which meant
 that the conditions along the ridge would get much worse.
 
 ![Walking by a treetop covered in snow](/images/projects/data-viz/hikes/stories/oberammergau_sonnenberg/2026-02-15-10.jpg)
@@ -113,7 +113,7 @@ it. What could go wrong, right?
 ![The way down over the fence](/images/projects/data-viz/hikes/stories/oberammergau_sonnenberg/2026-02-15-15.jpg)
 
 The slope was very steep, but with the deep snow, I was hoping to get a better
-grip and descend safely. I tried staying closer to the tree tops peaking from
+grip and descend safely. I tried staying closer to the tree tops peeking from
 the snow, which provided some support. When I descended to the main pathway,
 I saw the familiar ski tracks, which meant someone continued along the ridge,
 so I followed them.
@@ -138,7 +138,7 @@ to reach the top and send another message to Stanislav.
 ![The steep slope I fell from near Sonnenberg (1622 m)](/images/projects/data-viz/hikes/stories/oberammergau_sonnenberg/2026-02-15-18.jpg)
 
 As I returned to the crossroads and started the way further to the hut, I
-realized there is no way to reach the hut at a reasonable time. The snow was so
+realized there was no way to reach the hut at a reasonable time. The snow was so
 deep that I was practically crawling on the ground, and I was already
 exhausted. The cold was also starting to get to me, with all my clothes soaked
 in snow. I decided to look for a more shallow slope on the trail and descend
@@ -148,7 +148,7 @@ turned out to be a loose piece of ice, and fell down approximately
 
 I was extremely lucky to survive the fall, but I lost one of the hiking poles,
 and I wanted it back. I wasn't thinking straight because of the impact from
-falling and all the adrenaline, so started climbing back up the smooth stone
+falling and all the adrenaline, so I started climbing back up the smooth stone
 surface, getting my gloves further soaked in the process. I got quite close
 to the pole, but I slipped down again, and this time I gave up. Now I was
 off any marked trail, not that they were visible or safe, and I had no choice

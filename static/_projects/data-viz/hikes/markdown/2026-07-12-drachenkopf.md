@@ -39,7 +39,7 @@ images:
 During the [outing to Drachensee](/hikes/2026-06-21-drachensee/)
 I've been to recently, the original plan was to gather a small group with
 hikers from Nuremberg and explore the lakes on a chill social hike. That time
-the trip fell through so Stanislav joined my by himself. The original
+the trip fell through so Stanislav joined me by himself. The original
 participants reached out to him again to organize another trip there, and he
 reluctantly agreed.
 
@@ -48,11 +48,11 @@ Topo from [hikr.org](https://www.hikr.org/gallery/photo2416585.html?post_id=1225
 
 ![The slope near the beginning of the Hoher Gang via ferrata](/images/projects/data-viz/hikes/stories/drachenkopf/2026-07-12-00.jpg)
 
-Stanislav warned me that the hike will start very late due to transport issues.
+Stanislav warned me that the hike would start very late due to transport issues.
 I didn't see the point in repeating the same route trail-for-trail, so I looked
 in the area to expand my route. Surprisingly, most of the via ferrata routes
 had alternatives that required no equipment, so I chose Drachenkopf (2303 m) as
-the easies peak. Then, I could meet the other hikers on the way down and
+the easiest peak. Then, I could meet the other hikers on the way down and
 descend together with them.
 
 The first section of the hike was the same as last time, with me running across
@@ -65,7 +65,7 @@ take ages.
 ![The trail towards Seebensee](/images/projects/data-viz/hikes/stories/drachenkopf/2026-07-12-02.jpg)
 
 Once I got to the valley near Seebensee, I started feeling quite tired. Knowing
-I still have a lot of time left, I got a stupid idea to visit multiple summits
+I still had a lot of time left, I got a stupid idea to visit multiple summits
 on this hike, so I rushed further. Soon after, passing the first lake and
 reaching the slope towards the next, I got my first cramp. I stopped in time
 and avoided the biggest harm from it, but where one comes, others follow.
@@ -84,7 +84,7 @@ to rest, and I didn't rest for long.
 It took me a bit to figure out where to go from the hut towards
 Drachenkopf (2303 m), but eventually I found the right trail and set sail.
 The start of this section is a nice dusty trail uphill onto the valley
-between Drachenkopf (2303 m) and Sonnenspitze (2416 m). I've met a group of
+between Drachenkopf (2303 m) and Sonnenspitze (2416 m). I met a group of
 young fellas hiking up and was tagging behind them, trying to take it easy
 because of the cramp. They had a really weird pace, running up and taking
 long breaks, so I just overtook them and kept going, slow and steady.
@@ -118,7 +118,7 @@ climbing.
 ![Mountain flowers on the way to Drachenkopf (2303 m)](/images/projects/data-viz/hikes/stories/drachenkopf/2026-07-12-10.jpg)
 
 The first section was quite easy, with a visible trail leading up. I went
-through it quite fast, knowing I'll be able to do the same on the way down.
+through it quite fast, knowing I'd be able to do the same on the way down.
 I also saw a bunch of flowers growing in cracks between the rocks, making for
 a nicely decorated trail to follow. Then, the sections got steeper, the rocks
 got more loose. Even the better-kept sections with an actual road were steep
@@ -140,7 +140,7 @@ place with internet connectivity in the area), and started going down.
 The people hanging around on the top decided to descend roughly at the same
 time, so I took my time taking photos of the surroundings. Once I started
 descending, my worries came to life. The route down was taking a long time,
-I kept taking wrongs paths down, climbing back up, slipping on wobbly rocks.
+I kept taking wrong paths down, climbing back up, slipping on wobbly rocks.
 
 ![The way down from Drachenkopf (2303 m)](/images/projects/data-viz/hikes/stories/drachenkopf/2026-07-12-13.jpg)
 
@@ -157,7 +157,7 @@ down and started applying pressure to my leg, looking at others slowly catching
 up with me. Eventually I felt good enough to continue, and started walking
 down the trail back to the hut. On the way there, I met a group of mixed
 russian-Ukrainian hikers from "Horod" (garden in English). The
-Ukrainian-speaking people told me they knew Stanislav, but haven't seen him
+Ukrainian-speaking people told me they knew Stanislav, but hadn't seen him
 since the train station, so I said my goodbyes and kept going down.
 
 ![The view at Drachensee from the hut](/images/projects/data-viz/hikes/stories/drachenkopf/2026-07-12-15.jpg)
@@ -211,7 +211,7 @@ At this point we still had plenty of time before the bus, so we just took our
 time, came down, washed up, bought some drinks (my water ran out all the way
 back at Drachensee), and traveled home.
 
-![The 360° climb of Hohen Gang](/404/)
+![The 360° climb of Hoher Gang](/404/)
 
 All in all, it's an amazing hike, despite some rough sections on the via
 ferratas and near the peaks. I would highly recommend it to everyone in the

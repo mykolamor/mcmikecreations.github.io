@@ -52,7 +52,7 @@ Unterammergau around 9:15 AM and start the hike to the Pürschlinghaus.
 ![Josefs Kapelle on the way to August-Schuster-Haus](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-02.jpg)
 
 Although since the [climb to Kofel (1342 m)](/hikes/2026-05-03-kofel/)
-I got my stiches removed on my wisdom tooth holes, I was still anxious about
+I got my stitches removed on my wisdom tooth holes, I was still anxious about
 overexerting myself. A few days earlier I slept on the wrong side of my face
 and ever since my lip started to go numb from time to time (I went to the
 doctor the day after and he told me it's fine and the numbness will go away).
@@ -93,14 +93,14 @@ sections with wooden bridges across muddy spots.
 
 ![Gentiana orbicularis near Laubeneck (1758 m)](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-11.jpg)
 
-We again did a detour to Latschenkopf (1740 m) for completeness sake, spending
+We again did a detour to Latschenkopf (1740 m) for completeness' sake, spending
 some time looking for the spot that counted as a summit. Once we were satisfied
 with our location, we counted the peak as visited and turned around. This peak
 offers a great view of Laubeneck (1758 m) right beside it, but we weren't
 planning to visit it this time around.
 
 ![Laubeneck (1758 m) with Bohdan on top](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-10.jpg)
-![View from Laubeneck (1758 m) towards Laubeneck (1758 m)](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-12.jpg)
+![View from Latschenkopf (1740 m) towards Laubeneck (1758 m)](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-12.jpg)
 
 The route to Teufelstättkopf (1758 m) was also cool, with a tiny cable-secured
 section towards the top. Although the polished rocks were slippery, the route
@@ -188,14 +188,14 @@ the formal peak, but we were satisfied with being in the general area.
 
 Bohdan wanted to do another quick section going north, since we had 50 minutes
 left. I wasn't so confident in myself, so he suggested taking the shorter route
-to Schleifmühlenkapelle and follow the rural road to the train station instead.
+to Schleifmühlenkapelle and following the rural road to the train station instead.
 I followed his advice and went down, making some wrong turns here and there.
 
 ![The road Bohdan took towards Unterammergau](/images/projects/data-viz/hikes/stories/teufelstaettkopf/2026-05-10-29.jpg)
 
 Despite coming across tons of hikers on the way, I didn't see anyone until I
 reached the village. As I was passing local horses and cows, I met a nice
-farm cat relaxing on a bench. I haven't even touched him when he started to
+farm cat relaxing on a bench. I hadn't even touched him when he started to
 purr, so I had to scratch him at least a little bit as a reward. Since I was
 in a rush to catch the train, I had to part ways with the cat, but I'll make
 sure to grab some sausage snack next time around so I can treat him if he's

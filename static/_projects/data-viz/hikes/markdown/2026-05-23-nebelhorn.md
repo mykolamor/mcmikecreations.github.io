@@ -110,7 +110,7 @@ weren't even trying to get off.
 ![View from the Hintere Seealpe hut](/images/projects/data-viz/hikes/stories/nebelhorn/2026-05-23-07.jpg)
 ![View from Zeigersattel (1922 m)](/images/projects/data-viz/hikes/stories/nebelhorn/2026-05-23-08.jpg)
 
-We had some drinks and food and headed up. Id say the route up to the lake is
+We had some drinks and food and headed up. I'd say the route up to the lake is
 the most challenging and demanding part of the hike, and the trail onwards gets
 better. It's not as steep and the road itself is wider.
 
@@ -134,8 +134,8 @@ Nebelhorn (2224 m).
 ![Mykola and Pavlo on Nebelhorn (2224 m)](/images/projects/data-viz/hikes/stories/nebelhorn/2026-05-23-14.jpg)
 
 There were tons of tourists there, a lady with an eagle on a leash, several
-Alpine Choughts that I fed with some crumbs, and a few larger groups of hikers
-enjoying the views. Not that we weren't in a hurry, we explored the
+Alpine Choughs that I fed with some crumbs, and a few larger groups of hikers
+enjoying the views. Now that we weren't in a hurry, we explored the
 surroundings a bit, got some food and drinks, and enjoyed the rest. We came
 down by cable car too.
 

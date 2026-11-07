@@ -47,7 +47,7 @@ recent updates.
 ![View from Raineralm onto Rinnerspitz (1611 m)](/images/projects/data-viz/hikes/stories/wasserspitz/2025-09-07-02.jpg)
 
 After reaching Raineralm, we started the "real" hike by ascending the trail to
-Wasserspitz (1552 m). The first section was shallow and wide, with kettle
+Wasserspitz (1552 m). The first section was shallow and wide, with cattle
 around us. Once we came up to the mountain ridge, coming across some senior
 hikers going down, the trail became steeper. I caught myself thinking that
 going up this trail in winter or after rain would be uncomfortable.

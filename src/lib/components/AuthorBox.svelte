@@ -4,7 +4,7 @@
 	import { AUTHOR_PAGE } from '$lib/author';
 
 	/**
-	 * Who wrote the post, at its end (website spec, trust signals §10): photo, name, current role and a few lines
+	 * Who wrote the post, at its end: photo, name, current role and a few lines
 	 * of context. Name, photo and role come from the résumé; the context is the caller's (`children`), so the blog
 	 * speaks about programming and the hike posts can speak about alpine experience with the same box.
 	 */

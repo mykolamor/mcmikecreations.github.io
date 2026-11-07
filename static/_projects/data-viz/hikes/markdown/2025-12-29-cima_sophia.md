@@ -1,6 +1,6 @@
 ---
 title: 'Cima Sophia: First Trip to the Dolomites'
-description: Attempting a rocky peak at the cold of winter.
+description: Attempting a rocky peak in the cold of winter.
 people:
   - Serhii Ivanenko
   - Pavlo Pustelnyk
@@ -42,7 +42,7 @@ the Molveno area, which has several peaks accessible from the town itself.
 
 ![Trip up the cable car](/images/projects/data-viz/hikes/stories/cima_sophia/2025-12-29-00.jpg)
 
-I spend several evenings exploring neighboring ridges on Komoot, and finally
+I spent several evenings exploring neighboring ridges on Komoot, and finally
 settled on Cima Sophia (2360 m) and Croz dell'Altissimo (2339 m) from
 [this page](https://www.komoot.com/smarttour/41225363). Since the others didn't
 have that much recent hiking experience, I decided to skip the walk from
@@ -112,7 +112,7 @@ rocks, so it was quite risky.
 
 ![The second plateau with a view towards Croz dell'Altissimo (2339 m)](/images/projects/data-viz/hikes/stories/cima_sophia/2025-12-29-10.jpg)
 
-We took notice of his advice and continued our ascend carefully. After some
+We took notice of his advice and continued our ascent carefully. After some
 steep sections, where we had to use our hands to climb up, we finally reached
 another small plateau, where Serhii and Pavlo decided to stop. They stayed
 there for around 10 minutes, took some photos, and then headed back down.
@@ -127,10 +127,10 @@ I continued my way up alone, breaking the trail through deep snow. The wind
 picked up, and I had to put on my jacket and mittens again. The summit was
 still quite far, and I was getting tired, but I kept going.
 
-Several times along the way, I considered turning back as well, especially when
+Several times along the way, I considered turning back as well, especially when I
 slipped and fell between the rocks a couple of times. My fractured finger from
 the [Vordere Kesselschneid (2002 m) hike](/hikes/2025-11-23-vordere_kesselschneid/)
-hasn't healed yet, so I had to be extra careful not to hurt it again.
+hadn't healed yet, so I had to be extra careful not to hurt it again.
 
 The deep snow covering any and all marks and signposts didn't help either. I had to
 constantly check the terrain to look for a reasonable path up. What made it worse,
@@ -158,13 +158,13 @@ snow patterns and footsteps to figure out what happened.
 
 ![Sunset near Molveno](/images/projects/data-viz/hikes/stories/cima_sophia/2025-12-29-14.jpg)
 
-I didn't know when the others left, so I shouted quite a few times on the top of
+I didn't know when the others left, so I shouted quite a few times at the top of
 my lungs, but there was no response. Considering my friends are not dumb, I
 correctly assumed they already went down, so I kept going.
 
 When I finally descended back to the lower plateau, I finally saw them standing
 on the summit of Palon de Tovre (1913 m), looking around for me, but I was too
-tired to shout again. I just got happy that they are safe and sound, so I
+tired to shout again. I just got happy that they were safe and sound, so I
 hurried to catch up with them.
 
 ![A look back at the peaks](/images/projects/data-viz/hikes/stories/cima_sophia/2025-12-29-15.jpg)
@@ -178,7 +178,7 @@ way down.
 ![A glimpse at the lake from the hillside](/images/projects/data-viz/hikes/stories/cima_sophia/2025-12-29-16.jpg)
 
 Despite that, I finally caught up with them near the bear statue, right before
-the cable car statue. According to Google Maps, the cable car operation closes
+the cable car station. According to Google Maps, the cable car operation closes
 at 16:15, and the time we reached it was 16:03. To our surprise, the cable car
 was already shut down for the day, and there was nobody around.
 

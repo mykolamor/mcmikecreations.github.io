@@ -1,8 +1,7 @@
 /**
  * The hand-written facts a hike post can carry under `facts:` (and its sidecar
  * under `facts`), as the page receives them: validated, merged and with every
- * place resolved. See docs/superpowers/specs/2026-10-04-hike-facts-schema-design.md
- * for the authored (YAML) side.
+ * place resolved.
  *
  * The enum value lists are the single source of truth: the validator in
  * `facts.server.ts` checks against them, the types derive from them, and

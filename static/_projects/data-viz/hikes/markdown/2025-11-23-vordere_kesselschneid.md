@@ -57,7 +57,7 @@ from my recent [hike to Krottenkopf (2086 m)](/hikes/2025-11-16-krottenkopf_bisc
 
 ![Icicles on the way up](/images/projects/data-viz/hikes/stories/vordere_kesselschneid/2025-11-23-05.jpg)
 
-We took the second earliest train from Munich to Kufstein, started the hike
+We took the second earliest train from Munich to Kufstein and started the hike
 around 7:30. The first section to Ritzaualm (1161 m) went by pretty quickly. On
 the last attempt, the clouds were covering the valley, so we stopped many times
 to take pictures and have group breaks. This time, the weather was clear, so we
@@ -86,7 +86,7 @@ section feels never-ending.
 
 After passing Zwölferkogel (1912 m) and descending down a small via ferrata, we
 reached Vogelbad at around 12:00. At this point, I already knew we were close
-to our goal and we can make it back to Kufstein before dark.
+to our goal and we could make it back to Kufstein before dark.
 
 ![View from Zwölferkogel (1912 m) onto Pyramidenspitze (1997 m)](/images/projects/data-viz/hikes/stories/vordere_kesselschneid/2025-11-23-03.jpg)
 ![Via ferrata at Vogelbad](/images/projects/data-viz/hikes/stories/vordere_kesselschneid/2025-11-23-10.jpg)
@@ -118,7 +118,7 @@ with the via ferrata route from Walchsee.
 ![View from Vordere Kesselschneid (2002 m) towards Großer Roßkaiser (1978 m)](/images/projects/data-viz/hikes/stories/vordere_kesselschneid/2025-11-23-14.jpg)
 
 Once we were ready with our photos, we started our descent back to
-Öchselweldkar. The trail was steep and slippery, with a lot of stones and ice
+Öchselweidkar. The trail was steep and slippery, with a lot of stones and ice
 hidden beneath the snow. We had to be very careful with each step to avoid
 slipping, although we did manage to slip a few times anyway. We also saw
 mountain goats and some fox tracks on the way down. At some point, I also
@@ -167,7 +167,7 @@ last time. Despite the earlier hour and more visitors on the trail, the hut was
 almost empty, with the staff cleaning up before closing. I didn't want to make
 small talk because of the situation with my hand, so I just quickly bought the
 cheese and left. Last time, however, I remember the employee telling me about
-how american soldiers stationed nearby used to come to the hut for some rest
+how American soldiers stationed nearby used to come to the hut for some rest
 after their field exercises in the mountains.
 
 ![Road back to Kufstein](/images/projects/data-viz/hikes/stories/vordere_kesselschneid/2025-11-23-21.jpg)

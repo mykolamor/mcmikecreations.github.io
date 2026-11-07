@@ -27,7 +27,7 @@ images:
 When my Ukrainian friend Serhii, who lives in Lisbon, approached me for an easy
 hike near Munich, I decided to offer a peak I haven't done before. Out of the
 easily accessible ones, the area between Tegernsee and Spitzingsee seemed to
-offer a good option. Since I've already done hikes to [Wasserspitz (1552 m)](/hikes/2025-09-07-wasserspitz/),
+offer a good option. Since I've already done hikes to [Wasserspitz (1552 m)](/hikes/2025-09-07-wasserspitz/)
 and [Bodenschneid (1669 m)](/hikes/2025-11-01-bodenschneid/),
 Rainerkopf (1463 m) was the only remaining
 peak on that ridge. Don't confuse it with [Rainer Berg (1169 m)](/hikes/2025-10-26-auer_berg/),
@@ -35,7 +35,7 @@ which is a different mountain near Spitzingsee.
 
 ![Frozen bushes in Neuhaus](/images/projects/data-viz/hikes/stories/rainerkopf/2025-12-23-00.jpg)
 
-We set of in the cold foggy valley of Schliersee, freezing along the way, just
+We set off in the cold foggy valley of Schliersee, freezing along the way, just
 as the surrounding flora. The fog lasted for around 30 minutes, until we reached
 a higher altitude.
 
@@ -48,7 +48,7 @@ Neuhaus, probably late for the train.
 ![Hikers staring at Serhii](/images/projects/data-viz/hikes/stories/rainerkopf/2025-12-23-01.jpg)
 
 When we came up to a hut on the way, Serhii started feeling really hot and
-decided to take of his thermal underpants. Since there was no dresser around,
+decided to take off his thermal underpants. Since there was no dresser around,
 he just dropped them on the ground and started changing. A group of hikers
 approached us and started a small chat right near us, standing and throwing
 glances at Serhii. It made for a great situation.
@@ -69,7 +69,7 @@ constraints, we decided to skip it and head forward, going past [Brecherspitz (1
 ![Towards Bodenschneidhaus (1365 m)](/images/projects/data-viz/hikes/stories/rainerkopf/2025-12-23-06.jpg)
 ![View of Brecherspitz (1685 m)](/images/projects/data-viz/hikes/stories/rainerkopf/2025-12-23-07.jpg)
 
-That's when the route turned to the worse. The trail to Obere Firstalm (1369 m)
+That's when the route turned for the worse. The trail to Obere Firstalm (1369 m)
 was very slippery due to ice, and we had to be very careful with each step.
 We kept slipping and sliding, and Serhii hurt his leg a few times.
 
@@ -82,7 +82,7 @@ I really wanted their permutation of Jagatee, and took some cake with it.
 
 ![Waiting for Jagatee](/images/projects/data-viz/hikes/stories/rainerkopf/2025-12-23-09.jpg)
 
-After spending some time at the hut, we headed down the sledge route down,
+After spending some time at the hut, we headed down the sledge route,
 although there was no snow for sledging. When we reached the asphalt road
 at the bottom, we saw the fog flowing over the ridge and towards Spitzingsee.
 The lake itself was almost completely frozen, with people of all ages skating

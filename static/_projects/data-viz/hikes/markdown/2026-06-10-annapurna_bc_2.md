@@ -53,7 +53,7 @@ Check out [other hikes](/hikes/tag/Nepal/) from this trip:
 ![Flower pots at the Lucky Guest House Hotel in Chhomrong](/images/projects/data-viz/hikes/stories/annapurna_bc_2/2026-06-10-01.jpg)
 
 When I woke up, the sun was still rising over the ridges of nearby mountains.
-The whole valley was covered in sun rays and light mist, and the clouds have
+The whole valley was covered in sun rays and light mist, and the clouds had
 dissipated overnight to give us a clear view of Annapurna South (7219 m).
 
 ![View from Chhomrong towards Annapurna South (7219 m)](/images/projects/data-viz/hikes/stories/annapurna_bc_2/2026-06-10-00.jpg)
@@ -78,7 +78,7 @@ trekking guides, jungle experts, city guides, etc. He passed the exam and
 started working for a tourist company, otherwise he would have had to go
 trekking for another 2 years before he'd be allowed to take the exam again.
 
-![Rice fields near the Chhomgrong Khala river](/images/projects/data-viz/hikes/stories/annapurna_bc_2/2026-06-10-03.jpg)
+![Rice fields near the Chhomrong Khola river](/images/projects/data-viz/hikes/stories/annapurna_bc_2/2026-06-10-03.jpg)
 
 We quickly descended from Chhomrong to the Tilche village on the other side of
 the river, waited for some mules to pass and started going up.
@@ -98,8 +98,8 @@ Nevertheless, there is a horse carriage service you can pay for that goes all
 the way to Bamboo, Dovan, or even Himalaya. Along the way, most of the time
 you can see Machapuchare (6993 m), also known as Fishtail for its shape.
 
-On our way, we passed a small stone bench area with mantras hanged up overhead.
-I was explained that the different colored "flags" all have the same prosperity
+On our way, we passed a small stone bench area with mantras hung up overhead.
+It was explained to me that the different colored "flags" all have the same prosperity
 prayer, and walking under them bathes you in spiritual blessings, bringing
 good fortune and positive energy.
 We took a small break and continued towards the next village. Sinuwa is the

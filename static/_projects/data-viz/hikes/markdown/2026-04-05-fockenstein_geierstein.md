@@ -46,7 +46,7 @@ summits.
 Natalia from "Wandern für glückliche Menschen" wanted to organize a trip to
 Schrecksee that I myself planned for two years, but after I warned her about
 the snow, she changed the route to visit Fockenstein (1564 m) instead. Although
-I [already visited the peak](/404/) with Maskym, it was better than sitting at
+I [already visited the peak](/404/) with Maksym, it was better than sitting at
 home, so I decided to accept the invite.
 
 ![Coming up to Sonnenbichl](/images/projects/data-viz/hikes/stories/fockenstein_geierstein/2026-04-05-01.jpg)
@@ -99,7 +99,7 @@ It was really nice seeing [Hirschberg (1670 m)](/hikes/2024-11-17-hirschberg/)
 from the summit, which brought back a lot of memories of the DAAD FK group
 going there. After the rest of the group showed up 30 minutes later, Natalia
 asked the other hikers at the cross to take photos of our group, and one of
-our member took some drone shots as additional group photos.
+our members took some drone shots as additional group photos.
 
 ![A group member descending Fockenstein (1564 m)](/images/projects/data-viz/hikes/stories/fockenstein_geierstein/2026-04-05-13.jpg)
 

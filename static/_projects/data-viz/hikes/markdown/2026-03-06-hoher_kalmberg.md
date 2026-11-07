@@ -42,7 +42,7 @@ local area and the best mountains to visit. After noting down his choices, the
 man, Pavlo and I all took the bus in the direction of Gosau and then got off at
 the Ramsau stop. From there, we started our hike towards the ridge ahead of us.
 This was the first successful 1000 elevation meter hike for Pavlo, so I was
-really looking forward to his feedback after we finish the hike.
+really looking forward to his feedback after we finished the hike.
 
 ![View towards Gosau](/images/projects/data-viz/hikes/stories/hoher_kalmberg/2026-03-06-00.jpg)
 ![Forest on the way up](/images/projects/data-viz/hikes/stories/hoher_kalmberg/2026-03-06-01.jpg)
@@ -90,7 +90,7 @@ As a result of this detour, we skipped the Schartenalm cluster of huts and
 went straight to the saddle between the neighboring peaks. The huts were
 closed anyway, but maybe the road upwards would have been more scenic than
 going through the forest. As we came to the saddle to Goiserer Hütte (1592 m),
-we saw a trail runner in shorts and summer gear enjoing a sandwich on a bench.
+we saw a trail runner in shorts and summer gear enjoying a sandwich on a bench.
 We talked for a bit, discussed the surrounding peaks and had a scenic toilet
 break with a view of the Kalmberg peaks.
 
@@ -105,7 +105,7 @@ the cable car directly to Bad Goisern.
 ![Approaching Goiserer Hütte (1592 m)](/images/projects/data-viz/hikes/stories/hoher_kalmberg/2026-03-06-11.jpg)
 
 Since logistically the last option sounded the best, we decided to try it out.
-Before departing, the trailrunner told us he shortly tried to take the
+Before departing, the trail runner told us he shortly tried to take the
 north-eastern route down, but the snow was too deep and he had to turn back.
 Having gaiters and shoe spikes, we were a bit more optimistic about our
 chances. I then slid my hand across the wooden railing of the bench and got
@@ -175,7 +175,7 @@ for balance where needed.
 ![Kalmberg ridge from below](/images/projects/data-viz/hikes/stories/hoher_kalmberg/2026-03-06-24.jpg)
 
 Eventually, we reached the bottom of the trail where the supply-only cable car
-was located. It's just a small shed with a road leading up to it from he town,
+was located. It's just a small shed with a road leading up to it from the town,
 but having it and a solid wide road to walk on was a huge help after the rough
 descent. We followed the road all the way down to the town, hoping for a clear
 gravel path, but the whole road was covered in ice from the sledging that took

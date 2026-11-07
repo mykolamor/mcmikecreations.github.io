@@ -60,10 +60,10 @@ falling down from the cliff.
 
 When we walked to the trail going to the cliff top, it was fully covered in
 thick snow. As we didn't want to spend too much time getting stuck in it, I
-suggested following the road to the saddle on top of the ridge and walk
+suggested following the road to the saddle on top of the ridge and walking
 backwards from there.
 
-![The via ferrata section on the sourthern side of the ridge](/images/projects/data-viz/hikes/stories/unterammergau_sonnenberg/2026-03-22-04.jpg)
+![The via ferrata section on the southern side of the ridge](/images/projects/data-viz/hikes/stories/unterammergau_sonnenberg/2026-03-22-04.jpg)
 
 The others didn't have any strong opinions about our path, so they agreed and
 we went all the way to the top. After getting there, I was really surprised to
@@ -112,7 +112,7 @@ the other rock to catch a few rays of sun, waiting for me to retrieve my stick.
 ![A fresh picture of the cliff I slipped down from](/images/projects/data-viz/hikes/stories/unterammergau_sonnenberg/2026-03-22-09.jpg)
 
 I borrowed the hiking poles of one of the other hikers and started climbing
-downhill to reach the spot where my pole was laying. At first, everything was
+downhill to reach the spot where my pole was lying. At first, everything was
 going smoothly, although I did slip a little here and there. But when I
 approached my target, the ridge got much steeper, being bare rocks covered
 in a layer of ice and a bit of snow. There was nothing to hold onto and nowhere
@@ -162,7 +162,7 @@ overall, and started going back by following the path we carved out previously.
 To my big relief, nothing major happened, we safely got to the via ferrata
 cable, climbed over a few fallen trees, then walked a while and climbed over
 the closed gate at the entrance to the ridge path. The gate itself was
-completely burried under a big layer of snow, so climbing over wasn't much of
+completely buried under a big layer of snow, so climbing over wasn't much of
 a challenge.
 
 ![Alpine chamois near the ridge path](/images/projects/data-viz/hikes/stories/unterammergau_sonnenberg/2026-03-22-15.jpg)

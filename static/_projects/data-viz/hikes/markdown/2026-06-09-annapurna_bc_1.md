@@ -79,7 +79,7 @@ The local toilets are also simplistic and don't have toilet paper (it's a
 resource that runs out quickly, plus locals prefer only washing themselves), so
 if you're in the region, make sure to take some with you.
 
-![One of the Tauling kittens](/images/projects/data-viz/hikes/stories/annapurna_bc_1/2026-06-09-03.jpg)
+![One of the Taulung kittens](/images/projects/data-viz/hikes/stories/annapurna_bc_1/2026-06-09-03.jpg)
 
 After having lunch in the village, we walked to Taulung and made a short break
 there. The weather was really unforgiving, with 30 degree heat, no clouds and
@@ -103,7 +103,7 @@ Chhomrong and don't go past Sinuwa, so the rest of the way to Annapurna Base
 Camp the supplies need to be carried on foot.
 
 The rest of the way was quite smooth, as it was easier to walk with clouds
-covering the sun. We walked to the entrance of Chhomrong, last the local stupa
+covering the sun. We walked to the entrance of Chhomrong, past the local stupa
 shrine, went a bit down to the valley and reached the tea house we were
 spending the night at.
 

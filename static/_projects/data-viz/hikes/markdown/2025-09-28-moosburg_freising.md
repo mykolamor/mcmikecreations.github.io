@@ -51,6 +51,6 @@ Hangenham instead.
 
 ![Isar riverside](/images/projects/data-viz/hikes/stories/moosburg_freising/2025-09-28-06.jpg)
 
-I continued onwards to Freising, holding a pace of 6 km/h. At the station got
+I continued onwards to Freising, holding a pace of 6 km/h. At the station I got
 a nice Johannisbeer-Streuseltaler and headed home. There were tons of older
 people on the route, so anyone is welcome to do a portion of it.

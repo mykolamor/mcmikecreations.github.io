@@ -11,11 +11,11 @@ images:
   2025-05-11-00.jpg: {w: 4640, h: 3472, lat: 47.638411, lon: 11.680186, demEle: 1282.0, taken: '2025-05-11T12:46:58+02:00', blur: 'data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAAAQBQCdASoYABIAPtFWpk0oJCOiMBgIAQAaCWYAnQAR/XDRnb+b+mKoy1EOfIkvbzgAAPY+EBDbrsWakGbvXsMLYape7N8lerVWDmA1j/X1vAqvxfF4swZ4jxpWCwNq8YMp7CwkaiNjajKaarOAdVuhUw/DAl4SCVYT/GhPvfnexq0HufmNjEW40ini9GVCWDHuDIaq5USaqzxJ4AA='}
   2025-05-11-01.jpg: {w: 4640, h: 3472, lat: 47.632603, lon: 11.677386, demEle: 1636.4, taken: '2025-05-11T16:15:00+02:00', blur: 'data:image/webp;base64,UklGRs4AAABXRUJQVlA4IMIAAACwBACdASoYABIAPtFaqE4oJSQiKAqpABoJaACw7BEZd5g1HDjzFEFU2C3njdaAAP3v81z15UgDfZwhiNgCuc7NTdZW2Rqes6+tQArtReD7NAbut8LgsDgbMzN+QwT2r7HKC4rbS9UUZVqznWtSN7CSLqqmiBvrLrskbQhvbb6V1RKUefixVF4rFK/xmsxQS4Pgr9npfO1YION0FFlgTWmrYXOCsgEKMQCFDVUOBbr7JiLmy/X0HodJ8jAHjFZy9OAAAA=='}
   2025-05-11-03.jpg: {w: 3472, h: 4640, lat: 47.632603, lon: 11.677386, demEle: 1636.4, taken: '2025-05-11T14:17:12+02:00', blur: 'data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAADQBQCdASoSABgAPtFapE0oJSOiMBgIAQAaCWQAwprgLfbu44gswv9YEtM7pyv+COdE09aUM7FUAP7LgrM9aD40IM0/FtyTrU4Ay7bRmVPR7d9k5d+59ieeWmzf7g/UDd0xxbqzKjUzF/7o/e2O0nokg6K3VP2jSpU5hKHO+JPi6CVrkOLkxR3IYYZusfmnuC6piUijp5XphgeF/iSqNAOlFOR4KC7qbMmBXaTHsMay98NPZaqbU8ncChYniAO7tLxsd96yaHAAAA=='}
-  2025-05-11-07.jpg: {w: 1080, h: 1920, blur: 'data:image/webp;base64,UklGRsQAAABXRUJQVlA4ILgAAABwBACdASoOABgAPtFUo0uoJKMhsAgBABoJZQDCgYv0e36asouuGke665n/AAD2aOOFJ2Zz1nYuHXhQBO8ixOvoeO+rWJhTjpR+buZNeuYlF4cixizJA65QPXnJb3n0nDxqKbixNABueBUIsFM9GAxDTAaYoedd4J7w0Z3py5Simh4q1KD8FfvF6E6ZWrgmYGKfM174EQfbxqTdBwRDagqL6TpVSY9dHI7ctOqmZWLs5Q7gQ/laAAAA'}
+  2025-05-11-07.jpg: {w: 1080, h: 1920, lat: 47.632718, lon: 11.678476, demEle: 1596.6, blur: 'data:image/webp;base64,UklGRsQAAABXRUJQVlA4ILgAAABwBACdASoOABgAPtFUo0uoJKMhsAgBABoJZQDCgYv0e36asouuGke665n/AAD2aOOFJ2Zz1nYuHXhQBO8ixOvoeO+rWJhTjpR+buZNeuYlF4cixizJA65QPXnJb3n0nDxqKbixNABueBUIsFM9GAxDTAaYoedd4J7w0Z3py5Simh4q1KD8FfvF6E6ZWrgmYGKfM174EQfbxqTdBwRDagqL6TpVSY9dHI7ctOqmZWLs5Q7gQ/laAAAA'}
   2025-05-11-02.jpg: {w: 3472, h: 4640, lat: 47.632603, lon: 11.677378, demEle: 1636.6, taken: '2025-05-11T14:58:54+02:00', blur: 'data:image/webp;base64,UklGRvAAAABXRUJQVlA4IOQAAADwBQCdASoSABgAPtFgqE+oJSOiKAgBABoJYwCuPUa1ANIEzQCN81LYdUrx2e/d8bGQSutfbkNAAAD+JcrjgWZsIH60s+qzXytYj+ReKfMyqYUCAEtvog3bRetm4oTV1k5o9r1T6L0gnHPWujF3Dv2VMsc00UE5Z/V3L1ucn1AAY+CIfm4k7yRB/To6FeqPlNL9CMiQoHTHCT+qVL9bcAW5AS3E52AgGOEdwRZNtDqRZLX5BH+0VWuhOf4oMLaG5oJ6bWslIF80PoErmh/dFLs8yhDJGn1SG/tF7ANduGOyUAEF0AA='}
-  2025-05-11-04.jpg: {w: 1944, h: 2592, lat: 47.652767, lon: 11.738811, demEle: 924.5, taken: '2025-05-11T16:57:49+02:00', blur: 'data:image/webp;base64,UklGRkIBAABXRUJQVlA4IDYBAABQBwCdASoSABgAPtFcqE4oJSQiKAqpABoJbACdMw5GeEK8BgmeSAdLAbQGkCZk3ewN33aLXwTSt1QeG0AoxbvI+THAAPe/afEeA+O3UNypBZpr4zfjfuSTzRChVr0LdYaILF7UJ93DnjGTe6lA8KDgzEHD1O6HYaKHnW23LVV8ChqdxYq1gr3fe/FTY66BneUL/uNko/S4D5h4UcouS/BEUUOpw0aqjvioEPr7is1n2cI8/RyfzYbjvux3FsjQJNGzI44gq4Uk+6ad9S5FoJdPz01cwnQj/HhkRMV5QuFFHfYbl9f3KPpdCcXrlWyJsIMEon2kaIzcx6o7/L72dKu2N4012b5Lic2hVkKQko/8hvhYjLhOBNF5974O6WqB1duU7nS1oUWKWh9TsBBwIKwCGsMtI4AA'}
-  2025-05-11-05.jpg: {w: 6000, h: 4000, blur: 'data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADQAwCdASoYABAAPtFUo0uoJKMhsAgBABoJQBOgAhuK/GPAOb8+uiwA5KbLER+mmf4UFit1VV1pd5c9ig1iNgG9uV5Y8gUw17Wbzs+40kcOFWI907oYNVO6zExrpxJUvDA1esAA'}
-  2025-05-11-06.jpg: {w: 4640, h: 3472, lat: 47.656386, lon: 11.597494, demEle: 736.0, taken: '2025-05-11T20:36:14+02:00', blur: 'data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAAAwBQCdASoYABIAPtFUpk2oJCOiMBgIAQAaCWUAw3APAokq8ziy/KtSWiHstvbB4btBIAD+l+tNHlyB+z9saUXLMR8tJZ7cElDpNeSfNtyL+THM74/iwIWb7Y6jqJ2tnU3+Sbsuc6aF072zV/gT6+/AaZ2BHLc+4ZW/RcVJrvJCnjLRcRkFO4CtOH3Ex/t76PcEDE39lFSAAA=='}
+  2025-05-11-04.jpg: {w: 1944, h: 2592, lat: 47.632994, lon: 11.67931, demEle: 1576.6, taken: '2025-05-11T16:57:49+02:00', blur: 'data:image/webp;base64,UklGRkIBAABXRUJQVlA4IDYBAABQBwCdASoSABgAPtFcqE4oJSQiKAqpABoJbACdMw5GeEK8BgmeSAdLAbQGkCZk3ewN33aLXwTSt1QeG0AoxbvI+THAAPe/afEeA+O3UNypBZpr4zfjfuSTzRChVr0LdYaILF7UJ93DnjGTe6lA8KDgzEHD1O6HYaKHnW23LVV8ChqdxYq1gr3fe/FTY66BneUL/uNko/S4D5h4UcouS/BEUUOpw0aqjvioEPr7is1n2cI8/RyfzYbjvux3FsjQJNGzI44gq4Uk+6ad9S5FoJdPz01cwnQj/HhkRMV5QuFFHfYbl9f3KPpdCcXrlWyJsIMEon2kaIzcx6o7/L72dKu2N4012b5Lic2hVkKQko/8hvhYjLhOBNF5974O6WqB1duU7nS1oUWKWh9TsBBwIKwCGsMtI4AA'}
+  2025-05-11-05.jpg: {w: 6000, h: 4000, lat: 47.652203, lon: 11.643182, demEle: 1576.2, blur: 'data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADQAwCdASoYABAAPtFUo0uoJKMhsAgBABoJQBOgAhuK/GPAOb8+uiwA5KbLER+mmf4UFit1VV1pd5c9ig1iNgG9uV5Y8gUw17Wbzs+40kcOFWI907oYNVO6zExrpxJUvDA1esAA'}
+  2025-05-11-06.jpg: {w: 4640, h: 3472, lat: 47.657948, lon: 11.611504, demEle: 902.5, taken: '2025-05-11T20:36:14+02:00', blur: 'data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAAAwBQCdASoYABIAPtFUpk2oJCOiMBgIAQAaCWUAw3APAokq8ziy/KtSWiHstvbB4btBIAD+l+tNHlyB+z9saUXLMR8tJZ7cElDpNeSfNtyL+THM74/iwIWb7Y6jqJ2tnU3+Sbsuc6aF072zV/gT6+/AaZ2BHLc+4ZW/RcVJrvJCnjLRcRkFO4CtOH3Ex/t76PcEDE39lFSAAA=='}
   buchstein.jpg: {w: 1240, h: 1754}
   /images/hikes/topo/buchstein.jpg: {w: 1240, h: 1754, blur: 'data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAACwAwCdASoRABgAPtFgqU+oJaOiKAgBABoJaQAALtAsH+cBXZkqgAD+9OwzjNkFNasVXX3IvjCbDxy1ctx22rxR9BWbmX5k3Dy+dpavdwLxQM5Klu89t+YikEGmvKHo4vg8AAAA'}
 ---
@@ -27,7 +27,7 @@ I was looking to gradually increase the difficulty from the
 One of the few choices I came up with ended up being an extended trip from Tegernsee to Lenggries. Since I already
 did a Lenggries-Tegernsee hike via [Fockenstein (1564 m)](/404/), I wanted to
 follow a more challenging route. Buchstein (1701 m) or Roßstein (1698 m) was the perfect choice. I was warned
-beforehand, that the Buchstein (1701 m) route is a lot more challenging than the Roßstein (1698 m) route, with the former being
+beforehand that the Buchstein (1701 m) route is a lot more challenging than the Roßstein (1698 m) route, with the former being
 a Klettereinlage, a climbing section, and the latter being a simple rope-supported hike. Since the distance
 between the summits was negligible, I decided to take myself and David for both if possible.
 
@@ -59,11 +59,11 @@ and headed down in the direction of Lenggries.
 
 ![Spring gentian on the side of Buchstein (1701 m)](/images/projects/data-viz/hikes/stories/buchstein/2025-05-11-04.jpg)
 
-As we were walking down, I finally noticed the trail to Lenggries going besides [Seekarkreuz (1601 m)](/hikes/2025-03-02-seekarkreuz/),
+As we were walking down, I finally noticed the trail to Lenggries going beside [Seekarkreuz (1601 m)](/hikes/2025-03-02-seekarkreuz/),
 so I suggested to make a side-quest to that summit too. On the way there, after Mariaeck (1469 m), we came across a
 small climbing section with ladders that we had to use to move ahead, our hiking sticks getting stuck in the branches
 of nearby trees and bushes. Still, we persisted and got to the top in a reasonable time. After taking more photos and
-checking out the visitor book tucked in the casket on the cross, finding my previous entry from March 2.
+checking out the visitor book tucked in the casket on the cross, I found my previous entry from March 2.
 
 ![A view from Seekarkreuz (1601 m)](/images/projects/data-viz/hikes/stories/buchstein/2025-05-11-05.jpg)
 

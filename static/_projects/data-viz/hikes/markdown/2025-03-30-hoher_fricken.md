@@ -18,7 +18,7 @@ images:
   2025-03-30-03.jpg: {w: 4640, h: 3472, lat: 47.530819, lon: 11.149644, demEle: 1725.9, taken: '2025-03-30T12:00:36+02:00', blur: 'data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAABwBQCdASoYABIAPtFcpU6oJKMiKAqpABoJZQAFEqkxknJB2fph5J3Y72dyzhvjNPNvmYIAAP7XNdp8tb1n/wuXfV4aRZAfyRuyiRC/RWvcW6HhW1uZUeKnRkB+W7fTi4fYj4KQqw/pRlBPC8wgFVK+57fzgSv4rmKedOVhBS6dc+i36rNn/bURQjNoUHIlp09ZybhuK8dYUTtV8AAqsJ/0BlF2OYk6pcXKioEC9zFm1XtLcXW6o8vPVqPbCLTAAAA='}
   2025-03-30-04.jpg: {w: 3280, h: 2464, lat: 47.531375, lon: 11.153189, demEle: 1907.6, taken: '2025-03-30T12:48:50+02:00', blur: 'data:image/webp;base64,UklGRgABAABXRUJQVlA4IPQAAADQBQCdASoYABIAPtFgqE+oJSOiKAgBABoJYgCsMuI6DBoj8wvxbHfFKanTg6gSFwntTn3BoSpoAP7e2uJ5OkBI9pGPMHkP2qOQa9Q3Ai6KnoRyOjUzCKNzSwNVrcocMDSVX/QHlMJ5e0n5+EUiUftboR3Eza3g58T7h+I9FAqidLTZDO1wXB8mjkwxnFIhR0AwVJ6JXlfRH35/6kdwHhg1IYRr2wCMTRPGQW86So6U4CxjnBnewmqaDswvILrX4hH03oKU0Ize4Fim7ksm51wfAqq4omytj17CABOg4bWYrqzFSnSHrTY90JW5CrRuj4BDXAAA'}
   2025-03-30-05.jpg: {w: 4640, h: 3472, lat: 47.516839, lon: 11.157725, demEle: 1264.0, taken: '2025-03-30T15:24:05+02:00', blur: 'data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAACwBACdASoYABIAPtFaqU2oJSQiKAqpABoJZQDCgBEcMINFYYgpE56JbVIwjvG2AP6QSADZpPLnpXQGHNJnJNf2RGCX57DTL8NAvWv+8Z+HDyBuqdh6DbonYvoy+Ra+soMUbiTR1IKLoDFXgCK1OBiE7u/BIxRobyHtM29UffXWwShmoRqHBBudcEhxQxBPSVTUi/dbIS/dYBHmj6btr8b3mi7o75gfj7vUtNCBnwwvvEBwAAAAAA=='}
-  2025-03-30-06.jpg: {w: 3468, h: 4624, blur: 'data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAADQBACdASoSABgAPtFcpE6oJSMiKAqpABoJZQDA3YzQVqDeNO3Chsa8OZgUU73eAAD3LPFR95mmmUNzG5jnzBI4mgZTRvyp/tZiNiuZAZnYHcHG98sPcyIZPLIiA8rbMsd5dYDnXnKTR21YlScbpuGo8mpKF8BDrT+tIpJvwwut0KIgZimcdqGNUj0EsknxXEMP32IPS1GQWHioJYEV8ogv52TcAAAA'}
+  2025-03-30-06.jpg: {w: 3468, h: 4624, lat: 47.517218, lon: 11.128282, demEle: 1076.6, blur: 'data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAADQBACdASoSABgAPtFcpE6oJSMiKAqpABoJZQDA3YzQVqDeNO3Chsa8OZgUU73eAAD3LPFR95mmmUNzG5jnzBI4mgZTRvyp/tZiNiuZAZnYHcHG98sPcyIZPLIiA8rbMsd5dYDnXnKTR21YlScbpuGo8mpKF8BDrT+tIpJvwwut0KIgZimcdqGNUj0EsknxXEMP32IPS1GQWHioJYEV8ogv52TcAAAA'}
   2025-03-30-07.jpg: {w: 4640, h: 3472, lat: 47.499756, lon: 11.110233, demEle: 783.8, taken: '2025-03-30T17:17:33+02:00', blur: 'data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAABQBQCdASoYABIAPtFSpE2oJCMiMBgIAQAaCWMAVeaDLMrznFDmfjwtJiXhX1t+0tMwGMAA/sXv2L0sYirzbaMZP+P9Yw3/D2QOpRgxTnuGyCitD0H+q6XjXnOzuu6YsTWcl+6pIdVBK5mQNcUJk0bfeDRC1vBdt4VSfjxjLaQkgBtXhebGpiNdGZ8xVCToMhc+GwQcBqmCgJIRsP284eEHCFjQ1JrBlBmcKQAA'}
 ---
 After the demanding [Frau Hitt (2270 m) hike](/hikes/2025-03-23-frau_hitt/)
@@ -47,7 +47,7 @@ The forest itself started getting sparser, opening up enough to see [Zugspitze (
 We kept going along the trail, often getting showered by melting snow and
 falling snow caps from tree tops, until we met two ladies hiking up the same
 route. There was roughly a kilometer left, which reassured both of our groups,
-and we kept tracking up one in front of the other.
+and we kept trekking up one in front of the other.
 
 ![View of Zugspitze (2962 m) from the Fricken forest](/images/projects/data-viz/hikes/stories/hoher_fricken/2025-03-30-03.jpg)
 
@@ -69,11 +69,11 @@ drinks and Kaiserschmarrn. At that point we realized the French group wanted to
 go to a different mountain, Bischof (2033 m), so we had to be the ones to tread
 through the snow on the way down, although it wasn't that deep. The ladies asked
 if it's okay to follow us, and we set off on the way down across Ochsenberg (1694 m) and
-down to Predigtstuhl with a view of [Wankberg (1780 m)](/404/). This time,
+down to Predigtstuhl with a view of [Wank (1780 m)](/404/). This time,
 unlike the usual Alpine choughs, we saw actual ravens and glider planes on the
 way down.
 
-![A look at Wankberg (1780 m) from Esterbergalm (1265 m)](/images/projects/data-viz/hikes/stories/hoher_fricken/2025-03-30-05.jpg)
+![A look at Wank (1780 m) from Esterbergalm (1265 m)](/images/projects/data-viz/hikes/stories/hoher_fricken/2025-03-30-05.jpg)
 
 Eventually our groups reached Esterbergalm (1265 m), where we found out only drinks are
 offered, so the ladies sat down for some more wine, while we had a snack we
@@ -90,7 +90,7 @@ for a bit, before heading to the station. At the station, there was a vending
 machine with a random assortment of items in the same row, so we gambled a little
 bit and finally headed home.
 
-When I finally arrived home and starting filling in the data for the hike, I
+When I finally arrived home and started filling in the data for the hike, I
 finally realized that the mountain was around 2 km high. The snow wasn't deep
 and the view was very picturesque, so I didn't even notice the elevation. Together
 with the waterfalls and the nice terrain, I would recommend this route to anyone

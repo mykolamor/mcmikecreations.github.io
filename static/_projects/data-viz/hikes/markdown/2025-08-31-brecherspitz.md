@@ -1,6 +1,6 @@
 ---
 title: Hot Pursuit of Brecherspitz
-description: Hiking with a fewer has never been so fun.
+description: Hiking with a fever has never been so fun.
 ascent: 540
 descent: 820
 images:
@@ -14,7 +14,7 @@ images:
   2025-08-31-07.jpg: {w: 8160, h: 6120, lat: 47.676529, lon: 11.871011, demEle: 1643.0, taken: '2025-08-31T12:15:52+02:00', blur: 'data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAACQBACdASoYABIAPtFgqE+oJSOiKAgBABoJYgCdMw6BWlG7wRiR8yXFXkMARAAAyoxxxtwBXWsMAhwXZPFgZ2qjnYmTlu4dwnbVh/0iH+FF0dmK8m+m81hHSUlYiHTgwl2TeQrZBjg55GANn76zSedIa9FDm84DfeI7iIRrSJTWizLBi96BSrgU5bsa5kakLRSJS4AA'}
   2025-08-31-08.jpg: {w: 4744, h: 3560, lat: 47.678114, lon: 11.871621, demEle: 1580.0, taken: '2025-08-31T12:34:40+02:00', blur: 'data:image/webp;base64,UklGRvwAAABXRUJQVlA4IPAAAADwBQCdASoYABIAPtFcpk6oJSMiKAqpABoJYgCdMuI4J0dI5hsM6vLBDmAjz07HWV05i0Vu9wt4AAD+PafDd3IlvS2vlM9bmUnIeizw22x0RZXQjEzWn41YMx2Y8Q+8K7lidjxBA4L+eG0ysz34EzV3LKm8DZRRO6t/xd26m3WZMhuyXvRSa2Tkmhw6N/1T3165krv2eEB+8jhOLnDPbPeFYk20/YXEr1mRjwbPQCmCKohEB47AgK7/zbONCIl4n+BXvPtHLr8iuZa+6UEein6i20GD8WJV3JUDjSot3HLhvI9wzr/Ekx7guva2JVxQAAA='}
 ---
-Although I managed to avoid getting sick during my vacation, I could resist the
+Although I managed to avoid getting sick during my vacation, I couldn't resist the
 disease after my trip to GamesCom 2025. Having a 38.6°C fever and a clogged
 nose, I had a brilliant idea to ignore my symptoms and go hiking with a mask
 on.

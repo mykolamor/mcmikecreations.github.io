@@ -8,7 +8,6 @@
  * hand-typed hazard should fail the build, not silently drop the hazard. A
  * place that matches nothing only warns (it still renders, as plain text).
  *
- * The rules live in docs/superpowers/specs/2026-10-04-hike-facts-schema-design.md.
  * One schema description (`FACTS`) drives validation and merging alike, so the
  * two can't disagree about what a field is.
  *

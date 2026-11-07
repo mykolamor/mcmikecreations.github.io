@@ -97,7 +97,7 @@ The path was rewarding though. Even before reaching the top, we saw Seebensee
 with [Zugspitze (2962 m)](/hikes/2025-06-21-zugspitze_reintal/) in the background.
 Some people were taking the detour towards the lake, taking their clothes off as
 they went. Others put on rain jackets instead, covering themselves and their
-backpacks from the miniscule amount of rainfall. We just kept going, trying to
+backpacks from the minuscule amount of rainfall. We just kept going, trying to
 get to the hut and grab some cold drinks.
 
 ![View from Drachensee towards Seebensee and Zugspitze (2962 m)](/images/projects/data-viz/hikes/stories/drachensee/2026-06-21-12.jpg)
@@ -112,8 +112,8 @@ same in their place.
 ![View towards Hinteres Tajatörl (2259 m) from below](/images/projects/data-viz/hikes/stories/drachensee/2026-06-21-15.jpg)
 
 On the way down, we merged with a bigger group of Asian hikers. It felt a bit
-uncomfortable walking alongside them, but I couldn't put my finger down on why.
-After a while I realized, that on my hikes inside Germany slower hikers
+uncomfortable walking alongside them, but I couldn't put my finger on why.
+After a while I realized that on my hikes inside Germany slower hikers
 typically let me through. This happened most of the time with German and
 Austrian hikers on this route, but not with Asian ones. Culture differences, I
 guess.

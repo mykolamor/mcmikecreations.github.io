@@ -95,7 +95,7 @@ can get there from all sides, even from the south through an unmarked trail
 created by woodchoppers.
 
 ![The view from an opening at Sulzkopf (1279 m)](/images/projects/data-viz/hikes/stories/rechelkopf_semmelberg/2026-05-17-04.jpg)
-![The view from an Rechelkopf (1330 m) towards Benediktenwand (1801 m)](/images/projects/data-viz/hikes/stories/rechelkopf_semmelberg/2026-05-17-05.jpg)
+![The view from Rechelkopf (1330 m) towards Benediktenwand (1801 m)](/images/projects/data-viz/hikes/stories/rechelkopf_semmelberg/2026-05-17-05.jpg)
 
 Before going there, I took a quick detour to Sulzkopf (1279 m). While there's
 nothing there except a bench, I met several hikers with dogs doing some light
@@ -110,7 +110,7 @@ and even further beyond! For some reason it snowed the day before in the middle
 of May, covering all the mountains in quite a thick layer of snow. I was hoping
 that the lower mountains I was visiting on this trip were safe from the frost,
 but I started slipping on the snow quite soon. I took some photos trying to
-avoid getting caught on other peoples' camera views, took a short break near
+avoid getting caught on other people's camera views, took a short break near
 the cross, and continued.
 
 ![The view from Mitter Berg (1280 m)](/images/projects/data-viz/hikes/stories/rechelkopf_semmelberg/2026-05-17-07.jpg)
@@ -134,7 +134,7 @@ mixed with the dirt, and stepping there became much easier. The peak itself
 was again nothing special, just a hilltop with a bunch of cut down trees. The
 views from it were completely covered by the remaining pines. The road leading
 there wasn't marked on the map, so I made a mental note to put it there when
-I come home. On the way back I got to see a view of Fockenstein (1564 m),
+I came home. On the way back I got to see a view of Fockenstein (1564 m),
 which I [recently visited](/hikes/2026-04-05-fockenstein_geierstein/)
 with a Ukrainian hiking group.
 
@@ -143,7 +143,7 @@ with a Ukrainian hiking group.
 
 The next summit, which I had to backtrack to a bit, was Gronetseck (1278 m).
 While it was similar to Schwarzköpfel (1140 m), the ferns on the way were very
-appealing. Unline the previous summits in a barren pine forest, this one had
+appealing. Unlike the previous summits in a barren pine forest, this one had
 bushes and various plants around, so it was much more interesting to get there.
 
 ![The trail towards Gronetseck (1278 m)](/images/projects/data-viz/hikes/stories/rechelkopf_semmelberg/2026-05-17-12.jpg)

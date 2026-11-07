@@ -88,7 +88,7 @@ deity.
 
 From there you can go up to the Swayambhu Mahachaitya stupa and the adjacent
 Shantipur Shrine or Harati Ajima Temple. Each one has a different purpose:
-people walk clock-wise along the stupa ringing the cyllindric bells for good
+people walk clock-wise along the stupa ringing the cylindric bells for good
 fortune, pray at the temple and give offerings at the shrine. There are some
 golden circles on the ground that people shouldn't step on if they don't
 want to make an act of severe spiritual disrespect.
@@ -98,7 +98,7 @@ want to make an act of severe spiritual disrespect.
 Next up is the Kathmandu Durbar Square, the national heritage site with a
 local palace, tons of temples and shrines, and the temple of the
 [Living Goddess](https://ntb.gov.np/living-goddess-kumari). There's also the
-Basantapur Dabu merchant square selling trinkets and souvenirs to passer-bys.
+Basantapur Dabu merchant square selling trinkets and souvenirs to passers-by.
 In general, I found it interesting that despite the large quantities of
 international tourists from Europe and America, the biggest tourist group on
 average throughout the year is Indian. Kathmandu is a great pilgrimage site in
@@ -141,15 +141,15 @@ day during the yearly Dashain festival), and the temple is used to worship the
 private deity of the royal family. I found it crazy that the royal family can
 just have an exclusive deity just for them that only they are allowed/supposed
 to pray to. I wonder if it's stronger and gives them better blessings compared
-to common peoples' deities and gods.
+to common people's deities and gods.
 
 ![The Kumari temple Living Goddess balcony](/images/projects/data-viz/hikes/stories/kathmandu_day_tour/2026-06-07-07.jpg)
 
-Afterwards, I turned around and walk to the Kumari temple, the temple of the
+Afterwards, I turned around and walked to the Kumari temple, the temple of the
 [Living Goddess](https://ntb.gov.np/living-goddess-kumari).
 I'm not sure if I was given a "stupid tourist" explanation of what she is and
 what she does, but the basic practical idea is the following. Any religious
-family from the Shakya Buddhist clan (yes, clans and casts are still a thing
+family from the Shakya Buddhist clan (yes, clans and castes are still a thing
 in India, Nepal, and probably some surrounding countries) can submit their
 infant to become the vessel for the Kumari Goddess to possess. More on the
 deity later. After some selection process, one candidate is chosen and taken
@@ -209,8 +209,8 @@ Boudha Stupa in a different part of the city.
 
 Around 8 km east of downtown Kathmandu is the [Boudha stupa](https://ntb.gov.np/boudha),
 the largest stupa in the Kathmandu Valley. Although by law most local temples
-are shared between Buddhists and Hinduists, this stupa is the center of
-Jimalayan Buddhism in particular. As usual, this is a UNESCO World Heritage
+are shared between Buddhists and Hindus, this stupa is the center of
+Himalayan Buddhism in particular. As usual, this is a UNESCO World Heritage
 Site with people walking there barefoot.
 
 ![The commute to the Boudha Stupa](/images/projects/data-viz/hikes/stories/kathmandu_day_tour/2026-06-07-15.jpg)
@@ -273,11 +273,11 @@ thrown back into the river (in which the new dead bodies are purified).
 
 The river is sacred and presumably pure, but somewhere upstream people may
 throw trash into it, and downstream people may drink from it, so it's a bit of
-a weird situation. I tried not to think about it and not to breather the dead
+a weird situation. I tried not to think about it and not to breathe the dead
 body fumes for too long, although the local guide was surprised I didn't want
 to stay longer and film the funeral process (why would I?) as some do.
 
-After such a diverce experience I was sweaty, thirsty, and tired, so I skipped
+After such a diverse experience I was sweaty, thirsty, and tired, so I skipped
 the Narayanhiti Palace Museum (the exterior of it, the entrance was closed) and
 went straight to the hotel. In the colder seasons, I encourage Kathmandu
 visitors to also do a day tour of the city. I'm not sure booking a guide makes

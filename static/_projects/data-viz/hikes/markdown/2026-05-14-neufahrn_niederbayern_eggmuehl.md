@@ -38,13 +38,13 @@ was promising rain throughout the whole day.
 
 The solution was chosen on the fly. I got into the RE 2 train to Hof and sat
 there until I heard an announcement for Neufahrn (Niederbayern). I remembered
-that I still haven't visited the castle there (which was turned into a hotel),
+that I still hadn't visited the castle there (which was turned into a hotel),
 so it made sense to exit and start hiking from there. As for my destination,
 I realized that it takes 30 km to walk from Eggmühl to Saal (Donau), where my
 [Kelheim hike ended](/hikes/2025-03-16-riedenburg_kelheim/), so the choice made
 sense.
 
-The hike started nicely, with me buying a can of coffee on the train station.
+The hike started nicely, with me buying a can of coffee at the train station.
 When I was here last time, Neufahrn (Niederbayern) seemed like a small village
 with nothing going on. That's because the train station is on the edge of it,
 hiding everything interesting out of sight.

@@ -40,7 +40,7 @@ Bolsterlanger Horn (1586 m).
 ![At the bottom ski station](/images/projects/data-viz/hikes/stories/bolsterlanger_horn_only/2026-01-25-01.jpg)
 
 Although I was hesitant at first because of the long commute, I decided to join
-the group. After a few public transport changes, Natalia, me, and Kateryna
+the group. After a few public transport changes, Natalia, Kateryna, and I
 arrived in Fischen im Allgäu and took a bus to Bolsterlang. From there, we
 started our hike going uphill on the side of a ski slope.
 
@@ -65,7 +65,7 @@ part of the Hörnerhaus resort.
 ![Snow machinery at the Hörnerhaus](/images/projects/data-viz/hikes/stories/bolsterlanger_horn_only/2026-01-25-06.jpg)
 
 From the Hörnerhaus, the trail became steeper and more challenging. We took the
-more direct route up the mountainsifer, because we didn't want to walk up the
+more direct route up the mountainside, because we didn't want to walk up the
 active ski slope. The snow was deep, and I had to be extra cautious without
 sticks, spikes or snowshoes. The weather was also getting worse, with clouds
 rolling in and reducing visibility.
@@ -80,7 +80,7 @@ ski enthusiasts exiting the ski lift.
 ![The pretend-cross near the Hörnis Nest restaurant](/images/projects/data-viz/hikes/stories/bolsterlanger_horn_only/2026-01-25-09.jpg)
 ![The view down the slope to Fischen im Allgäu](/images/projects/data-viz/hikes/stories/bolsterlanger_horn_only/2026-01-25-10.jpg)
 
-From taking a break at Hörnis Nest, it was a short walk to the summit of
+After taking a break at Hörnis Nest, it was a short walk to the summit of
 Bolsterlanger Horn (1586 m). The trees on the way up provided some shelter from
 the wind and the snow, so we could enjoy the final stretch of the hike walking
 on bare ground.
@@ -106,7 +106,7 @@ The ladies wanted to take yet another break at one of the huts, the
 ![A piano inside the hut](/images/projects/data-viz/hikes/stories/bolsterlanger_horn_only/2026-01-25-15.jpg)
 
 I remembered the Tutzinger Hütte near Benediktenwand (1801 m), which I
-[visited in 2024](/hikes/2024-07-21-benediktenwand/). They sold tons of merchandise there, including huts,
+[visited in 2024](/hikes/2024-07-21-benediktenwand/). They sold tons of merchandise there, including hats,
 keychains, T-shirts, and local drinks and food. Since I was waiting anyway, I
 asked around for any souvenirs they may have. Unfortunately, this hut didn't
 have anything of the sort, so I headed back to rejoin the ladies. As we exited
@@ -126,7 +126,7 @@ making me limp for the next few days.
 ![Snow clearing tractor in Bolsterlang](/images/projects/data-viz/hikes/stories/bolsterlanger_horn_only/2026-01-25-17.jpg)
 
 When we reached the village, we realized the one and only bus back to
-Fischen im Allgäu would leave in twenty minutes, and we'll have one minute to
+Fischen im Allgäu would leave in twenty minutes, and we'd have one minute to
 change to the train back home. We considered our options, with Kateryna
 deciding to stay and the others going by foot. Despite our predictions, we
 reached the train station at the same time as the bus with a few minutes to

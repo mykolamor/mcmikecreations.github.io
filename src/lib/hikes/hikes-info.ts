@@ -419,9 +419,9 @@ export async function parseMarkdown(
             // mirrors readHikeFrontmatter's server-side try/catch. For an
             // unconverted post this just means no AVIF/dims; for a post whose
             // originals were already deleted by the optimizer, every inline
-            // image falls back to its now-missing .jpg (see design spec's
-            // accepted AVIF-only-fallback tradeoff — there is no un-deleted
-            // original left to point at).
+            // image falls back to its now-missing .jpg (an accepted AVIF-only
+            // fallback tradeoff — there is no un-deleted original left to
+            // point at).
             console.log('Failed to parse hike front matter:', ex);
         }
     }

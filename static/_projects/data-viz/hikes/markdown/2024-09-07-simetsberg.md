@@ -14,10 +14,10 @@ images:
   2024-09-07-00.jpg: {w: 3472, h: 4640, lat: 47.563906, lon: 11.262903, demEle: 1516.5, taken: '2024-09-07T12:01:11+02:00', blur: 'data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAADQBQCdASoSABgAPtFcpU0oJSOiMBgIAQAaCWYArDLfJcMLfBE1sQFSjVel+Nwb84T2WLHPoY+gAP6GRrSsXDHEe3kUrj/VkmSMcfumpvte3IuNVKueJIQdgwLV8PI3LACyN/zJNBe8uebK2ns+pH5T39UnrHfKXNkc0jHBjO/PMMwTgousZ9DKXdaW3BXT3ROVvgD14uhxTfj+xX1RG1XGaSeXB+Ba2gZPa4golYsDjwN++R3VcAZgojq109ugAAA='}
   2024-09-07-07.jpg: {w: 3472, h: 4640, lat: 47.561883, lon: 11.278175, demEle: 1213.6, taken: '2024-09-07T15:48:04+02:00', blur: 'data:image/webp;base64,UklGRhABAABXRUJQVlA4IAQBAADQBgCdASoSABgAPtFep0+oJKMiKAgBABoJaACdMsvERxcYh2VjewRumpcm5A99QxKPC8dYw/ox2LNkPk/4udgA/heqJpACOjq8fA3QVSwUWvj2YKkHpI4v8fOD47wzHCfbF8JCYSJGvF1bVpOBMuWac2S2gauMrLXXiC5/rzUPYK0FS4077RhbPHfwyut+6kJeMuaOd1VKenhFj7ZcgfjTFF78oQKayusiFq2OKz9iIyLtEHWA/SFO9CH5ztPemw5wQd1WSgonbeJkBw4XjSEojVhnHxqYgu7Sr4HiFCYiB63/UNncr+HMZYKVj6dUh8yoWuxouf9+7eEB8npsfnzi2UAAAA=='}
   2024-09-07-01.jpg: {w: 4640, h: 3472, lat: 47.564103, lon: 11.259706, demEle: 1605.8, taken: '2024-09-07T12:45:17+02:00', blur: 'data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAAAQBQCdASoYABIAPsVQoUunpKMhsAwA8BiJbACdMoADTdoN7a73R/K2h+zaf1+V7ZEYAMplYA7imd603Iq/IaRD4a38h7NnL2N0nWI0z+tM88+wjVW8a+AqrF/Zx6KUVhjcpBB3Y4Emni+RrOmXsSfJfOHa5OCVcgnNIpKoDk9x5TpbGZdZjMeOXGeirMYjeOmobTBOA88A6v8jMAAK+60sl4m1D9+0E0VdQAAA'}
-  2024-09-07-04.jpg: {w: 4640, h: 3472, lat: 47.500861, lon: 11.276006, demEle: 879.7, taken: '2024-09-07T13:11:11+02:00', blur: 'data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAAAwBQCdASoYABIAPslQoUunpKMht/VYAPAZCWQAtRsxb/4B4/eH5ezRtmbxQFtfRcudwADeMg2U7wNIDBBiibGU1YtRuOgeAkLWtklcUOTfrfM+0L+So85XWUefYmVxDxDunP7AlJgKodBr8u7WcEPvGkQEIVf5NA7S1+ET990TIqj3+rzL0zUAf527PRXp7vKmK25I2UeKLvGl+2vq7IAA'}
+  2024-09-07-04.jpg: {w: 4640, h: 3472, lat: 47.564472, lon: 11.254609, demEle: 1725.9, taken: '2024-09-07T13:11:11+02:00', blur: 'data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAAAwBQCdASoYABIAPslQoUunpKMht/VYAPAZCWQAtRsxb/4B4/eH5ezRtmbxQFtfRcudwADeMg2U7wNIDBBiibGU1YtRuOgeAkLWtklcUOTfrfM+0L+So85XWUefYmVxDxDunP7AlJgKodBr8u7WcEPvGkQEIVf5NA7S1+ET990TIqj3+rzL0zUAf527PRXp7vKmK25I2UeKLvGl+2vq7IAA'}
   2024-09-07-02.jpg: {w: 4640, h: 3472, lat: 47.564189, lon: 11.257908, demEle: 1643.9, taken: '2024-09-07T12:52:28+02:00', blur: 'data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAABQBQCdASoYABIAPtFcpEyoJSOiMBgIAQAaCWYAnTMRugAku1k83Xaj8nEgJpClRXWXxNAA/Rv8p8+m9ihenOsqpIxbJujaDKco2wvWhgC1cqkO5//gjs+5dJ9i0XbMzN8Do/rV42s5HFwaFATsjAZapDPyP37qOlcT42oYdq08Ih/eXiLg3bx8b+fBenTGVVpjTKptk+dYd9caI76MhuMYdkEAJFVNKPpDfPiMEaBngEG4CcAAAA=='}
-  2024-09-07-05.jpg: {w: 4640, h: 3472, lat: 47.883992, lon: 11.397522, demEle: 683.2, taken: '2024-09-07T13:38:55+02:00', blur: 'data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAADQBACdASoYABIAPtFWpkwoJKOiKA1RABoJQBWGcdgv9zl9OGfU7p33oAk25G288ADdkNbgsL+LLfW3WVKNE+N4bWUxJ+x/Fg51+LZXMBM8JaIuE/2XpxOEMoOHCQ/sGKxYbEM7HqSPuR865Oy5T1qlyRvgBqVVk6ugS8MwAAA='}
-  2024-09-07-06.jpg: {w: 4640, h: 3472, lat: 47.496114, lon: 11.261242, demEle: 907.9, taken: '2024-09-07T13:52:36+02:00', blur: 'data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAACwBACdASoYABIAPtFaqU2oJSQiKAqpABoJYgCdM0LBqZCyuGuldIviEjE1aBa4AP3ddzMyOIHzHl1tYYcRcBBcxlPzXljfdx2fGm3m871WykfHwZ51XTxiUNCpf96jnQO8UyOLB/duVB6nIKL0VDEggCdzoYwAmsFAuapE9qUDaisifxUZhx9TjgnI/Yh2bTSDeU3LqTBQhhtQxQIJVAAA'}
+  2024-09-07-05.jpg: {w: 4640, h: 3472, lat: 47.566439, lon: 11.253685, demEle: 1816.7, taken: '2024-09-07T13:38:55+02:00', blur: 'data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAADQBACdASoYABIAPtFWpkwoJKOiKA1RABoJQBWGcdgv9zl9OGfU7p33oAk25G288ADdkNbgsL+LLfW3WVKNE+N4bWUxJ+x/Fg51+LZXMBM8JaIuE/2XpxOEMoOHCQ/sGKxYbEM7HqSPuR865Oy5T1qlyRvgBqVVk6ugS8MwAAA='}
+  2024-09-07-06.jpg: {w: 4640, h: 3472, lat: 47.566511, lon: 11.253658, demEle: 1816.4, taken: '2024-09-07T13:52:36+02:00', blur: 'data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAACwBACdASoYABIAPtFaqU2oJSQiKAqpABoJYgCdM0LBqZCyuGuldIviEjE1aBa4AP3ddzMyOIHzHl1tYYcRcBBcxlPzXljfdx2fGm3m871WykfHwZ51XTxiUNCpf96jnQO8UyOLB/duVB6nIKL0VDEggCdzoYwAmsFAuapE9qUDaisifxUZhx9TjgnI/Yh2bTSDeU3LqTBQhhtQxQIJVAAA'}
   2024-09-07-03.jpg: {w: 3472, h: 4640, lat: 47.563689, lon: 11.256675, demEle: 1673.3, taken: '2024-09-07T12:57:01+02:00', blur: 'data:image/webp;base64,UklGRsYAAABXRUJQVlA4ILoAAADQBQCdASoSABgAPtFYpEuoJSOhsAgBABoJaACxHxngz5/8B7wSxjxh/uXAfXReKMNP/dXkYwIAAP4hr4iFTtaZzOjDyipHZDZn5fBYArPtLmpt8z/2Er+eP3B615ua/Eh/xo31wPcg+oDHikmH5qxQKWeu4xUkrwzO/+wuQXlOKQj6fjECh1LqxQeEVe26J8HKLsD4S4kkdQONpDCUfzaU5yNkS+MKqzEGHTA3+e9YrKZdM9o7VioQAAA='}
   2024-09-07-08.jpg: {w: 4640, h: 3472, lat: 47.571972, lon: 11.306122, demEle: 806.2, taken: '2024-09-07T18:14:06+02:00', blur: 'data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAADwBACdASoYABIAPtFco0yoJSMiMBgIAQAaCWIAnTMRU/QHKTbFdUJJ9KTsAyKn1gAA/lmIIkR06SRZgbO0dlpHSe9FP6OpuyDfkFJ5fd3ClKKgb3qJUOArsbcc1oH0eg4VHZNRfRV0c5jhOQELr55LD/Uq2iUpjlJHAM0AAc1aRErfN1/NZA2XhzkTgAAA'}
 ---
@@ -51,7 +51,7 @@ considerably more difficult. While the DAAD FK members were more or less
 keeping up, my acquaintance wasn't as comfortable. We started taking more and
 more breaks, making the hike noticeably longer.
 
-![View from the slope of Simetsberg (1836 m) towards Soiernspitze (2257 m) and Hoher Kranzberg (1391 m)](/images/projects/data-viz/hikes/stories/simetsberg/2024-09-07-04.jpg)
+![View from the slope of Simetsberg (1836 m) towards Soiernspitze (2253 m) and Hoher Kranzberg (1391 m)](/images/projects/data-viz/hikes/stories/simetsberg/2024-09-07-04.jpg)
 
 During one of those breaks, we were passed by a mountain biker going down the
 same trail. It was an incredible showing of skill to look at. His arms were
@@ -67,11 +67,11 @@ meet back up in the same spot, said our goodbyes just in case, and parted ways.
 The rest of the group at that point was also quite tired, and it seemed some of
 them made suboptimal clothing choices.
 
-![View from the summit of Simetsberg (1836 m) towards Soiernspitze (2257 m) and Hoher Kranzberg (1391 m)](/images/projects/data-viz/hikes/stories/simetsberg/2024-09-07-05.jpg)
+![View from the summit of Simetsberg (1836 m) towards Soiernspitze (2253 m) and Hoher Kranzberg (1391 m)](/images/projects/data-viz/hikes/stories/simetsberg/2024-09-07-05.jpg)
 
 Simetsberg (1836 m) is a very appealing mountain. While there are multiple ways
 to climb it, each one offers great views in all directions. To the south, you
-can see [Soiernspitze (2257 m)](/hikes/2025-01-19-soiernspitze/)
+can see [Soiernspitze (2253 m)](/hikes/2025-01-19-soiernspitze/)
 and [Hoher Kranzberg (1391 m)](/404/).
 And in general, it offers a great view towards the border, including
 Westliche Karwendelspitze (2385 m) and Wettersteinspitzen (2305 m). To the
@@ -92,10 +92,10 @@ time to go down.
 
 ![Me going down the slope of Simetsberg (1836 m) towards Walchensee](/images/projects/data-viz/hikes/stories/simetsberg/2024-09-07-03.jpg)
 
-When we reached the hut we passed on the way, my acquaintance was laying there
+When we reached the hut we passed on the way, my acquaintance was lying there
 enjoying the sun. We talked a bit about what we saw, but didn't linger for too
 long, since the sun was still high and we wanted to cool down in the lake. The
-treck down took us quite some time, but at the end we made it to the parking
+trek down took us quite some time, but at the end we made it to the parking
 lot at the bottom of the mountain. We then walked along the road all the way
 to the lake and enjoyed swimming in it until the sun went down.
 
@@ -104,5 +104,5 @@ to the lake and enjoyed swimming in it until the sun went down.
 To sum the hike up, it's definitely an interesting and rewarding experience. A
 bit annoying to get to, so I'd either suggest combining it with a swim in
 Walchensee like we did, or take a car to the bottom of the slope. Another
-option would be to start or end the hike Wallgau, where the trail is a bit
+option would be to start or end the hike in Wallgau, where the trail is a bit
 more accessible.

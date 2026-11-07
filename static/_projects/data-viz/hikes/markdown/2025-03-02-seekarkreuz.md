@@ -16,7 +16,7 @@ images:
   2025-03-02-04.jpg: {w: 4640, h: 3472, lat: 47.6498, lon: 11.640939, demEle: 1540.6, taken: '2025-03-02T15:06:16+01:00', blur: 'data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAADQBACdASoYABIAPtFcp04oJSOiKAqpABoJQBadgQANcnrL/2ftdeJit+WfXo98AAD9TALKAOJs2M3a3Hrow7eYdK+nk7ZyDiH1mkl9cVSX0OOEBsdEHt4joz47mISg9ss3yb8hDPUAMNiAeZ7icEAGAqkwV0E8Nm8oPdrRN+Zi7ibqU/At1Ed3UwjYXiewDnSTtiNnGWU1FaagXqZ8yUpnhaxKocYIrAA='}
   2025-03-02-05.jpg: {w: 4640, h: 3472, lat: 47.657322, lon: 11.615767, demEle: 1111.3, taken: '2025-03-02T15:15:59+01:00', blur: 'data:image/webp;base64,UklGRgABAABXRUJQVlA4IPQAAAAQBgCdASoYABIAPtFgqU+oJaOiKAgBABoJaACdMoMuumxFtAmFrAsIfopxtnc86vPRp51SeGQwlgAA/VCBzr5tRqIz7CmIn2tcAUgIyI1p0VrG7/DadLYKkH+7lMIuP2lsfUDzsK4+S53odSclnor9I7CdTV19oc2Eu/4y98kBnqjF7v9k5otm2hBb+w6+VXkk7bMLirQN2hiWvpwt6Knr/fUEttDx0UsCan+pRhSCz4YgRDZMKbZhXypB+PjYRg6qhlIzfT6N2u3BgvSDdDR6/4OUt9DwyvIuU4IKAQTSX6TQ+cmNTOjoOmwxh3BFai/CwAAA'}
   2025-03-02-06.jpg: {w: 3472, h: 4640, lat: 47.649842, lon: 11.641167, demEle: 1541.1, taken: '2025-03-02T16:04:55+01:00', blur: 'data:image/webp;base64,UklGRiIBAABXRUJQVlA4IBYBAABQBgCdASoSABgAPtFcp04oJSOiKAqpABoJbACdMoSA7fzIAAjAHWfDtfxkQf0e6G4MkVnoqeRPXHRW4ADMg0Kq+F1AkDyYbHraByJsQG+guW/7vwwceUh5ylBpilgesoJk/fOE+RwcGhYstGaDDzk5cXGqFyaspIfxwAKc+OrkcNr3nTLPNHvfZkxLikYQ6xh6c//CqNkDBw/alY1pfAawDRCawBZZFLyYX4C2l6jI5Y6FNCR6HBVkejqeIAocNMGkcjgQBopOQIUzML/c56iod74OwchhnlU6zm0hyWSg/cyf6A9x+lfTo1p5VR2x0W3HfiF+ODdMF1anTDJ+khybXQIoXoAC9EpcE9uTW52ZSq2oLgAAAA=='}
-  2025-03-02-07.jpg: {w: 4640, h: 3472, lat: 47.652656, lon: 11.588239, demEle: 693.5, taken: '2025-03-02T17:37:04+01:00', blur: 'data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAACwBQCdASoYABIAPslSn0unpKKhsAwA8BkJZgCdMtVBXfqqV3GfXtcufKVsE29HsAVJh0kyXQAAyornmkvHgK8r38S1t5P8TaJ0at+JnixcqoJRYOT130Ew7WSJuiZAfIxwlQss7SKQUt56Op7K+AmN+nqCuRrp7b56NY/TNdrZRjrWQ7jOvYLGgBxWvxjtD2L3vOWEEaefIuRyvhiOSKja3PewHh8u8Lwxb8dR7yM9RVjAAAA='}
+  2025-03-02-07.jpg: {w: 4640, h: 3472, lat: 47.655829, lon: 11.613266, demEle: 1022.7, taken: '2025-03-02T17:37:04+01:00', blur: 'data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAACwBQCdASoYABIAPslSn0unpKKhsAwA8BkJZgCdMtVBXfqqV3GfXtcufKVsE29HsAVJh0kyXQAAyornmkvHgK8r38S1t5P8TaJ0at+JnixcqoJRYOT130Ew7WSJuiZAfIxwlQss7SKQUt56Op7K+AmN+nqCuRrp7b56NY/TNdrZRjrWQ7jOvYLGgBxWvxjtD2L3vOWEEaefIuRyvhiOSKja3PewHh8u8Lwxb8dR7yM9RVjAAAA='}
 ---
 This event came to be as an invitation to a group hike from Annette without
 many additional details. I've already been on the mountain alone, but reliving
@@ -30,7 +30,7 @@ mind visiting it to enjoy some coffee with Kaiserschmarrn.
 The meeting time was pretty late to begin with, being even more delayed by a
 group member missing the train connection, so I unusually had plenty of time to
 sleep, rest, and recover before the journey. After meeting the group and
-travelling to Lenggries, we set of on the waterfall Winterweg to
+travelling to Lenggries, we set off on the waterfall Winterweg to
 Seekarkreuz (1601 m). We did some minor breaks along the way, some members put
 on shoe spikes and hiking sticks, and we pushed on until the Seekaralm valley.
 

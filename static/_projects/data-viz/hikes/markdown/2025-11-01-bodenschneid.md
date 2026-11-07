@@ -49,8 +49,8 @@ water into our shoes.
 ![Small spruce sapling growing from a tree trunk](/images/projects/data-viz/hikes/stories/bodenschneid/2025-11-01-06.jpg)
 ![View from Bodenschneid (1669 m) onto Bodenschneidhaus (1365 m)](/images/projects/data-viz/hikes/stories/bodenschneid/2025-11-01-07.jpg)
 
-As we reached the plateau at the top, all of us, and random passer-bys,
-repeated the same phase: "The route was horrible, we're all dirty and the
+As we reached the plateau at the top, all of us, and random passers-by,
+repeated the same phrase: "The route was horrible, we're all dirty and the
 rubber profile of our shoes is non-existent". In any case, we reached the top
 of Bodenschneid (1669 m), took a lot of group photos, went to the cross and
 enjoyed the panorama. It really has some excellent views of Spitzingsee,
@@ -68,7 +68,7 @@ Rinnerspitz (1611 m), since I skipped it on a [recent hike to Wasserspitz (1552 
 
 The road from Bodenschneid (1669 m) to it was relatively ok. I got to take a
 few photos and was practically running uphill. The way down, however, was much
-more challenging. The same mud  covered every surface as before, but the path
+more challenging. The same mud covered every surface as before, but the path
 was also incredibly steep. A few times I nearly fell down trying to gently
 climb down a 1.0-1.5 meter drop.
 
@@ -90,7 +90,7 @@ P.S. Due to an SEV bus we ended up in Schliersee and tried going to
 [Jianni's Greek Restaurant](https://maps.app.goo.gl/9huksxPbKzraRjRu7). The waiter
 ignored our group of 4 people for 20 minutes, then told us they were only allowing
 people with reservations. This wasn't true, as we saw several walk-in customers
-getting seated. I told him about it (in German) and he suggested me to leave.
+getting seated. I told him about it (in German) and he suggested I leave.
 Another customer, watching German football at the table near the entrance, shouted
 at me to go back to my home country. If you check other reviews online, I'm by far
 not the only one experiencing this kind of behavior at this restaurant. Avoid it

@@ -131,7 +131,7 @@ lot of machinery nearby drilling a water well.
 Second, I planned to go straight to the castle but saw a hill peak icon of
 Annaberg (463 m) in a random neighborhood. I couldn't just walk by and headed
 there to check it out. It was, as expected, a quiet upper class neighborhood,
-so I didn't dwindle there for too long.
+so I didn't dwell there for too long.
 
 ![Burg Traunsnitz from below](/images/projects/data-viz/hikes/stories/moosburg_landshut/2026-04-03-21.jpg)
 ![Burg Traunsnitz up close](/images/projects/data-viz/hikes/stories/moosburg_landshut/2026-04-03-22.jpg)
