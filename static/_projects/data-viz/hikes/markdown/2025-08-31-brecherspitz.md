@@ -80,8 +80,6 @@ and made my way below. It was unusual to see kids on the route, as there are
 some slippery rocks and narrow paths on the way, which most parents would deem
 unacceptable. I also met a few Asian tourists taking photos while going up too.
 
-![Descending slope of Brecherspitz (1685 m)](/images/projects/data-viz/hikes/stories/brecherspitz/2025-08-31-07.jpg)
-
 After getting to the hut and seeing the famous Panorama-Klo with a giant queue,
 I headed along the gravel road back to Neuhaus and went back home to rest in
 bed.

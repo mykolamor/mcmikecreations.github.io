@@ -113,7 +113,7 @@ but it didn't really lead anywhere and just looped in a circle.
 ![The hill on which the medieval settlement is located](/images/projects/data-viz/hikes/stories/moosburg_landshut/2026-04-03-16.jpg)
 ![White sharp-lobed liverleaf](/images/projects/data-viz/hikes/stories/moosburg_landshut/2026-04-03-17.jpg)
 
-Then, I went to Burgstall Schlossberg near a Naturfreude cafe on top of a hill.
+Then, I went to Burgstall Schlossberg near a Naturfreunde cafe on top of a hill.
 There were a bunch of people enjoying refreshing drinks, but I was in a hurry
 and didn't have company of my own, so I skipped it and kept going. In any case,
 I knew this was the last stretch of the hike, as I was already approaching
@@ -133,16 +133,16 @@ Annaberg (463 m) in a random neighborhood. I couldn't just walk by and headed
 there to check it out. It was, as expected, a quiet upper class neighborhood,
 so I didn't dwell there for too long.
 
-![Burg Traunsnitz from below](/images/projects/data-viz/hikes/stories/moosburg_landshut/2026-04-03-21.jpg)
-![Burg Traunsnitz up close](/images/projects/data-viz/hikes/stories/moosburg_landshut/2026-04-03-22.jpg)
+![Burg Trausnitz from below](/images/projects/data-viz/hikes/stories/moosburg_landshut/2026-04-03-21.jpg)
+![Burg Trausnitz up close](/images/projects/data-viz/hikes/stories/moosburg_landshut/2026-04-03-22.jpg)
 
-Third, I headed to Burg Traunsnitz to check out the Landshut panorama. There
+Third, I headed to Burg Trausnitz to check out the Landshut panorama. There
 were tons of locals and tourists there, and even a tour guide giving a
 historical lesson on the construction and happenings of the castle. I took some
 photos and headed to the museum cafe, since at that point I already ran out of
 all food and water I was carrying.
 
-![My dinner at Burg Traunsnitz](/images/projects/data-viz/hikes/stories/moosburg_landshut/2026-04-03-23.jpg)
+![My dinner at Burg Trausnitz](/images/projects/data-viz/hikes/stories/moosburg_landshut/2026-04-03-23.jpg)
 
 It was a bit weird drinking my mango juice and eating some cake while the other
 visitors were taking long drinks and cocktails. There was also a group of
@@ -152,13 +152,12 @@ mouth than before", while the husband was telling her to shut her mouth and
 take nice pictures of him near the sunset. I ignored this typical russian
 family as much as I could and tried to appreciate the panoramic view instead.
 
-![The panoramic view from Burg Traunsnitz](/images/projects/data-viz/hikes/stories/moosburg_landshut/2026-04-03-24.jpg)
+![The panoramic view from Burg Trausnitz](/images/projects/data-viz/hikes/stories/moosburg_landshut/2026-04-03-24.jpg)
 
 But with all things considered, and with the russian group starting to get
 violent between each other, I decided to head out to the train station. I
 quickly ran down the stairs to Alte Bergstraße and entered the old town.
 
-![The panoramic view from Burg Traunsnitz](/images/projects/data-viz/hikes/stories/moosburg_landshut/2026-04-03-24.jpg)
 ![St. Martin's Church in Landshut](/images/projects/data-viz/hikes/stories/moosburg_landshut/2026-04-03-25.jpg)
 
 Walking across the old town of Landshut was really cool. At first, I was just

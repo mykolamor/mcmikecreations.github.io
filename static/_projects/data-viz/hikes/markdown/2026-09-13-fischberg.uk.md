@@ -18,16 +18,16 @@ description: Прогулянка навколо озера, щоб помилу
 схоже, на цей сезон уже зачинився, хоча вдалині я бачив кількох людей, що
 плавали в озері, здебільшого місцевих.
 
-![Прокат човнів в Урфельді з видом на Soiernspitze (2257 м)](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-00.jpg)
+![Прокат човнів в Урфельді з видом на Soiernspitze (2253 м)](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-00.jpg)
 ![Вид на Урфельд і Herzogstand (1731 м)](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-01.jpg)
 
 Приємно було бачити вдалині знайомі гори, як-от
-[Soiernspitze (2257 м)](/hikes/2025-01-19-soiernspitze/), що визирала з-за
+[Soiernspitze (2253 м)](/hikes/2025-01-19-soiernspitze/), що визирала з-за
 менших вершин ближче до озера. І, звісно, вид на [Herzogstand (1731 м)](/404/)
 теж був чудовим. Я давно там не був, але пам'ятаю його як чудовий і дуже
 популярний похід із прекрасним видом на озеро й навколишні гори.
 
-![Микола дивиться на Soiernspitze (2257 м)](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-02.jpg)
+![Микола дивиться на Soiernspitze (2253 м)](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-02.jpg)
 ![Крокуси дорогою](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-03.jpg)
 
 Ідучи далі, ми дісталися Захенбаха, невеликого села на східному березі озера.

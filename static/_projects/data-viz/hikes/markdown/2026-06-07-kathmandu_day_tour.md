@@ -41,10 +41,10 @@ Check out [other hikes](/hikes/tag/Nepal/) from this trip:
 - _Kathmandu Day Tour_ (you're here)
 - [Annapurna Base Camp (ABC) Day 1](/hikes/2026-06-09-annapurna_bc_1/)
 - [Annapurna Base Camp (ABC) Day 2](/hikes/2026-06-10-annapurna_bc_2/)
-- Annapurna Base Camp (ABC) Day 3
-- Annapurna Base Camp (ABC) Day 4
-- Annapurna Base Camp (ABC) Day 5
-- Pokhara World Peace Stupa 71
+- [Annapurna Base Camp (ABC) Day 3](/hikes/2026-06-11-annapurna_bc_3/)
+- [Annapurna Base Camp (ABC) Day 4](/hikes/2026-06-12-annapurna_bc_4/)
+- [Annapurna Base Camp (ABC) Day 5](/hikes/2026-06-13-annapurna_bc_5/)
+- Pokhara World Peace Stupa
 
 After negotiating some of the trip details, prices, and dates, we've settled on
 the following schedule: 5 days for the hike, 2 days for commuting, 1 day for

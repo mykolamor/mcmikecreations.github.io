@@ -65,7 +65,7 @@ Check out [other hikes](/hikes/tag/Nepal/) from this trip:
 - _Annapurna Base Camp (ABC) Day 3_ (you're here)
 - [Annapurna Base Camp (ABC) Day 4](/hikes/2026-06-12-annapurna_bc_4/)
 - [Annapurna Base Camp (ABC) Day 5](/hikes/2026-06-13-annapurna_bc_5/)
-- Pokhara World Peace Stupa 71
+- Pokhara World Peace Stupa
 
 ![Pines on a rock on the Modi Khola river](/images/projects/data-viz/hikes/stories/annapurna_bc_3/2026-06-11-00.jpg)
 

@@ -54,7 +54,7 @@ Check out [other hikes](/hikes/tag/Nepal/) from this trip:
 - [Annapurna Base Camp (ABC) Day 3](/hikes/2026-06-11-annapurna_bc_3/)
 - _Annapurna Base Camp (ABC) Day 4_ (you're here)
 - [Annapurna Base Camp (ABC) Day 5](/hikes/2026-06-13-annapurna_bc_5/)
-- Pokhara World Peace Stupa 71
+- Pokhara World Peace Stupa
 
 ![Mykola and Parlad at the Annapurna Base Camp](/images/projects/data-viz/hikes/stories/annapurna_bc_4/2026-06-12-00.jpg)
 ![The Annapurna Base Camp glacier covered in rocks](/images/projects/data-viz/hikes/stories/annapurna_bc_4/2026-06-12-01.jpg)

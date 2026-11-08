@@ -18,17 +18,17 @@ behielten sie erst einmal an. Der Bootsverleih schien für die Saison schon
 geschlossen zu haben, auch wenn ich in der Ferne ein paar Leute im Wasser
 schwimmen sah, vor allem Einheimische.
 
-![Bootsverleih in Urfeld mit Blick zur Soiernspitze (2257 m)](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-00.jpg)
+![Bootsverleih in Urfeld mit Blick zur Soiernspitze (2253 m)](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-00.jpg)
 ![Blick auf Urfeld und den Herzogstand (1731 m)](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-01.jpg)
 
 Schön war auch, bekannte Berge in der Ferne zu sehen, etwa die
-[Soiernspitze (2257 m)](/hikes/2025-01-19-soiernspitze/), die hinter den
+[Soiernspitze (2253 m)](/hikes/2025-01-19-soiernspitze/), die hinter den
 kleineren Gipfeln am See hervorschaute. Und natürlich war auch der Blick zum
 [Herzogstand (1731 m)](/404/) großartig. Dort war ich schon länger nicht mehr,
 aber ich erinnere mich an eine tolle und sehr beliebte Tour mit einem herrlichen
 Blick über den See und die umliegenden Berge.
 
-![Mykola schaut zur Soiernspitze (2257 m)](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-02.jpg)
+![Mykola schaut zur Soiernspitze (2253 m)](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-02.jpg)
 ![Krokusse am Weg](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-03.jpg)
 
 Weiter ging es nach Sachenbach, einem kleinen Ort am Ostufer des Sees. Dort gab

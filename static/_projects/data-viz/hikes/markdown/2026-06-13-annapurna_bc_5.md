@@ -40,7 +40,7 @@ Check out [other hikes](/hikes/tag/Nepal/) from this trip:
 - [Annapurna Base Camp (ABC) Day 3](/hikes/2026-06-11-annapurna_bc_3/)
 - [Annapurna Base Camp (ABC) Day 4](/hikes/2026-06-12-annapurna_bc_4/)
 - _Annapurna Base Camp (ABC) Day 5_ (you're here)
-- Pokhara World Peace Stupa 71
+- Pokhara World Peace Stupa
 
 ![Last look from Chhomrong towards Annapurna South (7219 m)](/images/projects/data-viz/hikes/stories/annapurna_bc_5/2026-06-13-01.jpg)
 

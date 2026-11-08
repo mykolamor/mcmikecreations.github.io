@@ -49,18 +49,18 @@ them on for now. The boat rental seemed to be closed already for the season,
 although I could see some people in the distance swimming in the water, mostly
 locals.
 
-![Boat rental in Urfeld with a view towards Soiernspitze (2257 m)](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-00.jpg)
+![Boat rental in Urfeld with a view towards Soiernspitze (2253 m)](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-00.jpg)
 ![View towards Urfeld and Herzogstand (1731 m)](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-01.jpg)
 
 It was also nice to see familiar mountains in the distance, like
-[Soiernspitze (2257 m)](/hikes/2025-01-19-soiernspitze/) peeking out from
+[Soiernspitze (2253 m)](/hikes/2025-01-19-soiernspitze/) peeking out from
 behind the smaller summits closer to the lake. And, of course, the view
 towards [Herzogstand (1731 m)](/404/) was amazing too.
 I haven't been there in quite a while, but I remember it being an amazing
 and very popular hike, rewarding visitors with a great view over the lake and
 the surrounding mountains.
 
-![Mykola looking towards Soiernspitze (2257 m)](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-02.jpg)
+![Mykola looking towards Soiernspitze (2253 m)](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-02.jpg)
 ![Crocus flowers on the way](/images/projects/data-viz/hikes/stories/fischberg/2026-09-13-03.jpg)
 
 As we continued, we reached Sachenbach, a small village on the eastern shore

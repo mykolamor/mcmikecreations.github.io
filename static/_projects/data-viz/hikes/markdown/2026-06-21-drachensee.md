@@ -37,7 +37,7 @@ images:
   hoher_gang.jpg: {w: 1200, h: 900}
   /images/hikes/topo/hoher_gang.jpg: {w: 1200, h: 900, blur: 'data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAADQBACdASoYABIAPtFYpUyoJSOiKA1RABoJYwC7ABEDlE4pAqw3CKDBKpzsdrxO0AD+8gOPJw+wPYM6zn1hFpJgj66CJ71RVW62M+41RvtPrCO/fy/YFo4DtDFAVTtKkc2KTn2GXb2rufJxNe7xdciCUewJ5b9slqqCqC3BcrXVW+eOto0JCsm2TEWpz5FDS+3V0OCrAnJDCRx52YgjRekAAAA='}
 ---
-After my hike to X, I needed some time to recover and take it easy. Although I
+After my [Annapurna Base Camp hike](/hikes/2026-06-09-annapurna_bc_1/), I needed some time to recover and take it easy. Although I
 have a backlog of boring hikes for the ["Web"](/hikes/tag/Web/) category, I
 found an invitation from Stanislav from my [Trainsjoch (1707 m) hike](/hikes/2026-01-18-trainsjoch/)
 to visit Drachensee across the border from Garmisch. Without thinking much, I

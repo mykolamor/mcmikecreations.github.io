@@ -50,8 +50,6 @@ found the Höhenglücksteig via ferrata entrance and started climbing it. There'
 a tiny E difficulty section at the start, which I didn't dare to try both
 times I climbed this route, but David actually managed to do it first try!
 
-![Mushroom at Höhenglücksteig](/images/projects/data-viz/hikes/stories/hoehengluecksteig/2025-08-03-03.jpg)
-
 The rest of the Höhenglücksteig was fun and challenging, with some steep
 and exposed sections. The rocks were still wet, so we had to be careful,
 but we managed to complete most of the route without issues. As we were getting

@@ -48,7 +48,7 @@ Check out [other hikes](/hikes/tag/Nepal/) from this trip:
 - [Annapurna Base Camp (ABC) Day 3](/hikes/2026-06-11-annapurna_bc_3/)
 - [Annapurna Base Camp (ABC) Day 4](/hikes/2026-06-12-annapurna_bc_4/)
 - [Annapurna Base Camp (ABC) Day 5](/hikes/2026-06-13-annapurna_bc_5/)
-- Pokhara World Peace Stupa 71
+- Pokhara World Peace Stupa
 
 ![Flower pots at the Lucky Guest House Hotel in Chhomrong](/images/projects/data-viz/hikes/stories/annapurna_bc_2/2026-06-10-01.jpg)
 

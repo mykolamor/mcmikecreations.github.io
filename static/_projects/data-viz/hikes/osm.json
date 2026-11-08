@@ -31,6 +31,21 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/26863407": {
+    "lat": 47.4989941,
+    "lon": 10.6300956,
+    "tags": {
+      "alt_name": "Köllenspitze",
+      "ele": "2238",
+      "name": "Kellenspitze",
+      "natural": "peak",
+      "prominence": "1092",
+      "ref:avf": "1052",
+      "wikidata": "Q870423",
+      "wikipedia": "de:Kellenspitze"
+    },
+    "fetched": "2026-11-07"
+  },
   "node/26863440": {
     "lat": 47.5443752,
     "lon": 11.1914281,
@@ -131,6 +146,21 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/84446881": {
+    "lat": 47.5486263,
+    "lon": 10.551868,
+    "tags": {
+      "ele": "1838",
+      "name": "Breitenberg",
+      "natural": "peak",
+      "prominence": "199",
+      "ref:avf": "990",
+      "summit:cross": "yes",
+      "wikidata": "Q881991",
+      "wikipedia": "de:Breitenberg (Tannheimer Berge)"
+    },
+    "fetched": "2026-11-07"
+  },
   "node/96874625": {
     "lat": 47.6607583,
     "lon": 11.6961076,
@@ -173,6 +203,21 @@
       "summit:cross": "yes"
     },
     "fetched": "2026-10-26"
+  },
+  "node/256041745": {
+    "lat": 47.5012736,
+    "lon": 10.6125164,
+    "tags": {
+      "ele": "2173",
+      "name": "Gimpel",
+      "natural": "peak",
+      "prominence": "180",
+      "ref:avf": "1047",
+      "summit:cross": "yes",
+      "wikidata": "Q872011",
+      "wikipedia": "de:Gimpel (Berg)"
+    },
+    "fetched": "2026-11-07"
   },
   "node/256041880": {
     "lat": 47.606892,
@@ -783,6 +828,21 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/281463681": {
+    "lat": 47.5301747,
+    "lon": 10.6211695,
+    "tags": {
+      "ele": "1831",
+      "name": "Vilser Kegel",
+      "natural": "peak",
+      "prominence": "231",
+      "ref:avf": "1029",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q21876587"
+    },
+    "fetched": "2026-11-07"
+  },
   "node/281499400": {
     "lat": 47.7222953,
     "lon": 11.6247509,
@@ -925,6 +985,22 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/294799999": {
+    "lat": 47.5184451,
+    "lon": 10.6234601,
+    "tags": {
+      "ele": "2059",
+      "name": "Große Schlicke",
+      "natural": "peak",
+      "prominence": "242",
+      "ref:avf": "1022",
+      "summit:cross": "yes",
+      "summit:register": "no",
+      "wikidata": "Q1548360",
+      "wikipedia": "de:Große Schlicke"
+    },
+    "fetched": "2026-11-07"
+  },
   "node/295068783": {
     "lat": 47.6370434,
     "lon": 11.7160997,
@@ -1044,6 +1120,39 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/308257016": {
+    "lat": 47.5372478,
+    "lon": 10.5576442,
+    "tags": {
+      "alt_name": "Aggenstein Hauptgipfel",
+      "ele": "1986",
+      "image": "https://commons.wikimedia.org/wiki/File:Gipfelkreuz_des_Aggensteins_an_der_Grenze_von_AT_und_DE_s%C3%BCdlich_von_Steinach.jpg",
+      "name": "Aggenstein",
+      "natural": "peak",
+      "prominence": "275",
+      "ref:avf": "994",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q131535119"
+    },
+    "fetched": "2026-11-07"
+  },
+  "node/308678754": {
+    "lat": 47.5323084,
+    "lon": 10.5822668,
+    "tags": {
+      "ele": "2000",
+      "name": "Brentenjoch",
+      "natural": "peak",
+      "prominence": "182",
+      "ref:avf": "998",
+      "summit:cross": "yes",
+      "summit:register": "no",
+      "wikidata": "Q909920",
+      "wikipedia": "de:Brentenjoch"
+    },
+    "fetched": "2026-11-07"
+  },
   "node/309985323": {
     "lat": 47.6426762,
     "lon": 11.8724862,
@@ -1106,6 +1215,19 @@
       "waterway": "waterfall"
     },
     "fetched": "2026-10-26"
+  },
+  "node/319471229": {
+    "lat": 47.5627616,
+    "lon": 10.7119082,
+    "demEle": 982.2,
+    "tags": {
+      "ele": "996",
+      "name": "Kienberg",
+      "natural": "peak",
+      "ref:avf": "1100",
+      "wikidata": "Q31535302"
+    },
+    "fetched": "2026-11-07"
   },
   "node/332441941": {
     "lat": 47.6595256,
@@ -1719,6 +1841,39 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/495075191": {
+    "lat": 47.5349891,
+    "lon": 10.7552771,
+    "demEle": 1976.8,
+    "tags": {
+      "description": "Ostgipfel",
+      "ele": "2048",
+      "ele:AT": "2048",
+      "ele:de": "2047",
+      "name": "Säuling",
+      "natural": "peak",
+      "prominence": "695",
+      "ref:avf": "2515",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q573703",
+      "wikipedia": "de:Säuling"
+    },
+    "fetched": "2026-11-07"
+  },
+  "node/517181845": {
+    "lat": 47.5437021,
+    "lon": 10.7940684,
+    "demEle": 1903.9,
+    "tags": {
+      "ele": "1933",
+      "name": "Hoher Straußberg",
+      "natural": "peak",
+      "ref:avf": "2430",
+      "wikidata": "Q1566749"
+    },
+    "fetched": "2026-11-07"
+  },
   "node/519688895": {
     "lat": 47.5313452,
     "lon": 11.1531653,
@@ -2003,6 +2158,62 @@
       "waterway": "waterfall"
     },
     "fetched": "2026-10-26"
+  },
+  "node/915412136": {
+    "lat": 47.498109,
+    "lon": 10.6371681,
+    "tags": {
+      "alt_name": "Kelleschrofen",
+      "ele": "2091",
+      "name": "Kellenschrofen",
+      "natural": "peak",
+      "prominence": "70",
+      "ref:avf": "1058",
+      "wikidata": "Q130931607"
+    },
+    "fetched": "2026-11-07"
+  },
+  "node/915422971": {
+    "lat": 47.5175432,
+    "lon": 10.6367365,
+    "tags": {
+      "alt_name": "Buck",
+      "ele": "1974",
+      "name": "Bugschrofen",
+      "natural": "peak",
+      "prominence": "56",
+      "ref:avf": "1022",
+      "wikidata": "Q21873715"
+    },
+    "fetched": "2026-11-07"
+  },
+  "node/915622232": {
+    "lat": 47.5187338,
+    "lon": 10.630915,
+    "tags": {
+      "alt_name": "Karetschrofen;Karet",
+      "ele": "2034",
+      "name": "Karretschrofen",
+      "natural": "peak",
+      "prominence": "46",
+      "ref:avf": "1022",
+      "wikidata": "Q21876599"
+    },
+    "fetched": "2026-11-07"
+  },
+  "node/915666058": {
+    "lat": 47.5212025,
+    "lon": 10.587706,
+    "tags": {
+      "alt_name": "Seebenspitze",
+      "ele": "1935",
+      "name": "Sebenspitze",
+      "natural": "peak",
+      "prominence": "90",
+      "ref:avf": "1005",
+      "wikidata": "Q21876594"
+    },
+    "fetched": "2026-11-07"
   },
   "node/919557438": {
     "lat": 48.9184881,
@@ -2399,6 +2610,26 @@
       "wikipedia": "de:Achselköpfe"
     },
     "fetched": "2026-10-26"
+  },
+  "node/1425360278": {
+    "lat": 47.59785,
+    "lon": 10.49605,
+    "tags": {
+      "alt_name": "Alpspitze",
+      "direction": "0-360",
+      "ele": "1575",
+      "mapillary": "822457732005968",
+      "name": "Alpspitz",
+      "natural": "peak",
+      "prominence": "61",
+      "ref:avf": "980",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "tourism": "viewpoint",
+      "wikidata": "Q8553197",
+      "wikipedia": "de:Alpspitz (Allgäuer Alpen)"
+    },
+    "fetched": "2026-11-07"
   },
   "node/1427134777": {
     "lat": 47.6765339,
@@ -2834,6 +3065,9 @@
     "lat": 47.3523323,
     "lon": 10.9220655,
     "demEle": 2356.0,
+    "local": {
+      "visited": "no"
+    },
     "tags": {
       "ele": "2410",
       "name": "Hinterer Drachenkopf",
@@ -2868,6 +3102,20 @@
       "wikipedia": "pl:Śnieżka"
     },
     "fetched": "2026-10-26"
+  },
+  "node/1855020196": {
+    "lat": 47.5662234,
+    "lon": 10.5141685,
+    "tags": {
+      "alt_name": "Kienberg Hauptgipfel",
+      "ele": "1536",
+      "name": "Kienberg",
+      "natural": "peak",
+      "prominence": "331",
+      "ref:avf": "1097",
+      "wikidata": "Q131034312"
+    },
+    "fetched": "2026-11-07"
   },
   "node/1896552485": {
     "lat": 49.5475376,
@@ -3182,6 +3430,24 @@
       "wikipedia": "de:Nesselscheibe"
     },
     "fetched": "2026-10-26"
+  },
+  "node/2598550656": {
+    "lat": 47.5654772,
+    "lon": 10.6127413,
+    "tags": {
+      "alt_name": "Zirmgrat;Zirmengrat",
+      "ele": "1293",
+      "name": "Salober",
+      "name:de": "Salober",
+      "name:de-AT": "Zwölferkopf",
+      "natural": "peak",
+      "prominence": "406",
+      "ref:avf": "1106",
+      "summit:cross": "no",
+      "wikidata": "Q19308399",
+      "wikipedia": "de:Salober (Falkensteinkamm)"
+    },
+    "fetched": "2026-11-07"
   },
   "node/2607182341": {
     "lat": 47.7288407,
@@ -3539,6 +3805,20 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/3389364393": {
+    "lat": 47.5232744,
+    "lon": 10.6186911,
+    "tags": {
+      "alt_name": "Luskopf",
+      "ele": "1803",
+      "name": "Wildböden",
+      "natural": "peak",
+      "prominence": "58",
+      "ref:avf": "1027",
+      "wikidata": "Q130804935"
+    },
+    "fetched": "2026-11-07"
+  },
   "node/3662166614": {
     "lat": 47.5840874,
     "lon": 11.0267772,
@@ -3717,6 +3997,24 @@
     },
     "fetched": "2026-11-02"
   },
+  "node/4111930372": {
+    "lat": 47.5919004,
+    "lon": 10.4965208,
+    "tags": {
+      "direction": "E-W;NNW-NNE",
+      "ele": "1630",
+      "man_made": "cross",
+      "name": "Edelsberg",
+      "natural": "peak",
+      "prominence": "502",
+      "ref:avf": "980",
+      "summit:cross": "yes",
+      "tourism": "viewpoint",
+      "wikidata": "Q1283352",
+      "wikipedia": "de:Edelsberg (Allgäuer Alpen)"
+    },
+    "fetched": "2026-11-07"
+  },
   "node/4193344090": {
     "lat": 28.52673,
     "lon": 83.9075282,
@@ -3851,6 +4149,20 @@
       "width": "10"
     },
     "fetched": "2026-10-26"
+  },
+  "node/4904612647": {
+    "lat": 47.5001427,
+    "lon": 10.655137,
+    "tags": {
+      "ele": "2163",
+      "name": "Gehrenspitze",
+      "natural": "peak",
+      "prominence": "305",
+      "ref:avf": "1066",
+      "wikidata": "Q828076",
+      "wikipedia": "de:Gehrenspitze (Tannheimer Berge)"
+    },
+    "fetched": "2026-11-07"
   },
   "node/4938335786": {
     "lat": 47.4138898,
@@ -4369,6 +4681,17 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/12437463134": {
+    "lat": 47.59577,
+    "lon": 10.49662,
+    "tags": {
+      "ele": "1541",
+      "name": "Hufbichl",
+      "natural": "saddle",
+      "prominence": "14"
+    },
+    "fetched": "2026-11-07"
+  },
   "node/12488719494": {
     "lat": 47.5950427,
     "lon": 11.0615954,
@@ -4382,6 +4705,17 @@
       "wikidata": "Q98646568"
     },
     "fetched": "2026-10-26"
+  },
+  "node/12669493137": {
+    "lat": 47.5616573,
+    "lon": 10.7001901,
+    "demEle": 913.1,
+    "tags": {
+      "ele": "921",
+      "name": "Hutlersberg",
+      "natural": "peak"
+    },
+    "fetched": "2026-11-07"
   },
   "node/12762897023": {
     "lat": 47.5671264,
