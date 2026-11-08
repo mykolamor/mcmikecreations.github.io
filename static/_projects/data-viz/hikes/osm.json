@@ -146,6 +146,21 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/71530342": {
+    "lat": 47.6134565,
+    "lon": 11.3084925,
+    "demEle": 1705.4,
+    "tags": {
+      "ele": "1731",
+      "name": "Herzogstand",
+      "natural": "peak",
+      "summit:cross": "no",
+      "summit:register": "no",
+      "wikidata": "Q315270",
+      "wikipedia": "de:Herzogstand"
+    },
+    "fetched": "2026-11-08"
+  },
   "node/84446881": {
     "lat": 47.5486263,
     "lon": 10.551868,
@@ -294,6 +309,18 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/259486622": {
+    "lat": 47.4294968,
+    "lon": 11.0478118,
+    "demEle": 2580.6,
+    "tags": {
+      "ele": "2628",
+      "name": "Alpspitze",
+      "natural": "peak",
+      "wikidata": "Q252743"
+    },
+    "fetched": "2026-11-08"
+  },
   "node/260686432": {
     "lat": 47.6658847,
     "lon": 11.7967506,
@@ -313,6 +340,23 @@
       "wikipedia": "de:Wallberg"
     },
     "fetched": "2026-11-04"
+  },
+  "node/260686440": {
+    "lat": 47.6401852,
+    "lon": 11.8027794,
+    "demEle": 1642.0,
+    "tags": {
+      "alt_name": "Plankenstein",
+      "ele": "1768",
+      "name": "Blankenstein",
+      "natural": "peak",
+      "sport": "climbing",
+      "summit:cross": "yes",
+      "wikidata": "Q316937",
+      "wikimedia_commons": "Category:Plankenstein (Berg)",
+      "wikipedia": "de:Plankenstein (Berg)"
+    },
+    "fetched": "2026-11-08"
   },
   "node/260692620": {
     "lat": 47.6512206,
@@ -812,6 +856,34 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/277715389": {
+    "lat": 47.5534409,
+    "lon": 11.0550673,
+    "demEle": 1867.1,
+    "tags": {
+      "ele": "1888",
+      "name": "Notkarspitze",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "wikidata": "Q880033"
+    },
+    "fetched": "2026-11-08"
+  },
+  "node/277716447": {
+    "lat": 47.5567233,
+    "lon": 11.0843703,
+    "demEle": 1480.9,
+    "tags": {
+      "ele": "1515",
+      "name": "Ochsensitz",
+      "natural": "peak",
+      "note": "kein Rechtschreibfehler Ochsensitz und NICHT Ochsenspitz",
+      "summit:cross": "yes",
+      "summit:cross:material": "wood",
+      "wikidata": "Q31528883"
+    },
+    "fetched": "2026-11-08"
+  },
   "node/281349904": {
     "lat": 47.45927,
     "lon": 10.20833,
@@ -1119,6 +1191,22 @@
       "wikipedia": "de:Brünnstein"
     },
     "fetched": "2026-10-26"
+  },
+  "node/304353179": {
+    "lat": 47.5087122,
+    "lon": 11.1430301,
+    "demEle": 1767.3,
+    "tags": {
+      "ele": "1780",
+      "historic": "wayside_cross",
+      "name": "Wank",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "no",
+      "wikidata": "Q833896",
+      "wikimedia_commons": "Category:Wank"
+    },
+    "fetched": "2026-11-08"
   },
   "node/308257016": {
     "lat": 47.5372478,
@@ -1998,6 +2086,18 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/715720542": {
+    "lat": 47.5023054,
+    "lon": 11.1249404,
+    "demEle": 1158.6,
+    "tags": {
+      "ele": "1164",
+      "name": "Schafkopf",
+      "natural": "peak",
+      "wikidata": "Q31523694"
+    },
+    "fetched": "2026-11-08"
+  },
   "node/727090665": {
     "lat": 28.5183959,
     "lon": 83.8063433,
@@ -2655,6 +2755,21 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/1468921785": {
+    "lat": 47.6679845,
+    "lon": 11.9035253,
+    "demEle": 1564.7,
+    "tags": {
+      "ele": "1615",
+      "inscription": "''s' wuide Freillein'' 1615m aufgestellt im Oktober 2013 vom Ädi",
+      "name": "Wilde Fräulein",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "wikidata": "Q126947088",
+      "wikipedia": "de:Wilde Fräulein"
+    },
+    "fetched": "2026-11-08"
+  },
   "node/1469811232": {
     "lat": 47.6387482,
     "lon": 11.7850676,
@@ -2955,6 +3070,22 @@
       "summit:register": "no"
     },
     "fetched": "2026-11-02"
+  },
+  "node/1741371913": {
+    "lat": 47.7427943,
+    "lon": 11.8883149,
+    "demEle": 1267.7,
+    "tags": {
+      "alt_name": "Rhonberg",
+      "ele": "1257",
+      "name": "Rohnberg (Schliersberg)",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:register": "yes",
+      "wikidata": "Q15059837",
+      "wikipedia": "de:Schliersberg"
+    },
+    "fetched": "2026-11-08"
   },
   "node/1743681602": {
     "lat": 47.7338721,
@@ -3633,6 +3764,21 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/3068662784": {
+    "lat": 47.5558435,
+    "lon": 11.071442,
+    "demEle": 1701.4,
+    "tags": {
+      "bench": "yes",
+      "ele": "1719",
+      "name": "Ziegelspitz",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:cross:material": "metal",
+      "wikidata": "Q31556628"
+    },
+    "fetched": "2026-11-08"
+  },
   "node/3229970779": {
     "lat": 47.7206684,
     "lon": 11.8411545,
@@ -3975,6 +4121,17 @@
       "natural": "peak"
     },
     "fetched": "2026-10-26"
+  },
+  "node/4102377015": {
+    "lat": 47.5500688,
+    "lon": 10.9685079,
+    "demEle": 1449.6,
+    "tags": {
+      "ele": "1609",
+      "name": "Brunnenköpfl",
+      "natural": "peak"
+    },
+    "fetched": "2026-11-08"
   },
   "node/4102642399": {
     "lat": 47.6123428,

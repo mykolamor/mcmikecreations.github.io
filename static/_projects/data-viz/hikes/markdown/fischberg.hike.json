@@ -62,7 +62,11 @@
         "lat": 47.5710232,
         "lon": 11.3047868,
         "demEle": 809.9,
-        "name": "Einsiedl"
+        "name": {
+          "en": "Einsiedl",
+          "de": "Einsiedl",
+          "uk": "Айнзідль"
+        }
       },
       "type": "point-to-point",
       "official": {
@@ -217,7 +221,11 @@
           "lat": 47.5710232,
           "lon": 11.3047868,
           "demEle": 809.9,
-          "name": "Einsiedl"
+          "name": {
+            "en": "Einsiedl",
+            "de": "Einsiedl",
+            "uk": "Айнзідль"
+          }
         },
         "terrain": ["road"],
         "sac": "T1",

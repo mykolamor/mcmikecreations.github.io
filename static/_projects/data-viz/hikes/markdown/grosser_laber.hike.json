@@ -76,7 +76,11 @@
         "lat": 47.5686928,
         "lon": 11.0932308,
         "demEle": 876.1,
-        "name": "Ettal, Klostergasthof"
+        "name": {
+          "en": "Ettal, Klostergasthof",
+          "de": "Ettal, Klostergasthof",
+          "uk": "Етталь, Klostergasthof"
+        }
       },
       "type": "point-to-point",
       "official": {
@@ -301,7 +305,11 @@
           "lat": 47.5686928,
           "lon": 11.0932308,
           "demEle": 876.1,
-          "name": "Ettal, Klostergasthof"
+          "name": {
+            "en": "Ettal, Klostergasthof",
+            "de": "Ettal, Klostergasthof",
+            "uk": "Етталь, Klostergasthof"
+          }
         },
         "terrain": ["forest-road"],
         "sac": "T2",
