@@ -31,6 +31,20 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/26863070": {
+    "lat": 47.5462308,
+    "lon": 11.7886399,
+    "tags": {
+      "ele": "2194",
+      "name": "Guffertspitze",
+      "natural": "peak",
+      "prominence": "1143",
+      "summit:cross": "yes",
+      "wikidata": "Q769643",
+      "wikipedia": "de:Guffert"
+    },
+    "fetched": "2026-11-09"
+  },
   "node/26863407": {
     "lat": 47.4989941,
     "lon": 10.6300956,
@@ -2612,6 +2626,17 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/1279756168": {
+    "lat": 47.6289608,
+    "lon": 11.6941638,
+    "demEle": 1390.1,
+    "tags": {
+      "ele": "1406",
+      "name": "Friedbergkopf",
+      "natural": "peak"
+    },
+    "fetched": "2026-11-09"
+  },
   "node/1279756195": {
     "lat": 47.6162849,
     "lon": 11.6244428,
@@ -2958,6 +2983,21 @@
       "wikipedia": "de:Schafreuter"
     },
     "fetched": "2026-10-26"
+  },
+  "node/1621410920": {
+    "lat": 47.5460842,
+    "lon": 11.5864439,
+    "demEle": 1892.0,
+    "tags": {
+      "alt_name": "Demmeljoch",
+      "ele": "1923",
+      "name": "Demeljoch",
+      "natural": "peak",
+      "note": "Naming unklar: https://de.wikipedia.org/wiki/Diskussion:Demeljoch",
+      "wikidata": "Q684757",
+      "wikipedia": "de:Demeljoch"
+    },
+    "fetched": "2026-11-09"
   },
   "node/1627270003": {
     "lat": 47.3051777,
@@ -3592,6 +3632,44 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/2607585335": {
+    "lat": 47.6458133,
+    "lon": 11.7131984,
+    "demEle": 1433.4,
+    "tags": {
+      "ele": "1444",
+      "name": "Filzenkogel",
+      "natural": "peak",
+      "wikidata": "Q31546974"
+    },
+    "fetched": "2026-11-09"
+  },
+  "node/2607585336": {
+    "lat": 47.6550126,
+    "lon": 11.6995415,
+    "demEle": 1522.8,
+    "tags": {
+      "ele": "1540",
+      "name": "Silberkopf",
+      "natural": "peak",
+      "wikidata": "Q31520776"
+    },
+    "fetched": "2026-11-09"
+  },
+  "node/2616497949": {
+    "lat": 47.632505,
+    "lon": 11.7231497,
+    "demEle": 1370.2,
+    "tags": {
+      "ele": "1395",
+      "name": "Grüneck",
+      "natural": "peak",
+      "summit:cross": "no",
+      "wikidata": "Q42306274",
+      "wikipedia": "de:Grüneck (Tegernseer Berge)"
+    },
+    "fetched": "2026-11-09"
+  },
   "node/2641015239": {
     "lat": 47.6751604,
     "lon": 11.8645597,
@@ -3764,6 +3842,19 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/2973369663": {
+    "lat": 47.6403833,
+    "lon": 11.6669669,
+    "demEle": 1574.9,
+    "tags": {
+      "ele": "1592",
+      "name": "Hochplatte",
+      "natural": "peak",
+      "wikidata": "Q2400324",
+      "wikipedia": "de:Hochplatte (Tegernseer Berge)"
+    },
+    "fetched": "2026-11-09"
+  },
   "node/3068662784": {
     "lat": 47.5558435,
     "lon": 11.071442,
@@ -3847,6 +3938,18 @@
       "summit:cross": "no"
     },
     "fetched": "2026-10-26"
+  },
+  "node/3233329556": {
+    "lat": 47.6493353,
+    "lon": 11.7155159,
+    "demEle": 1345.0,
+    "tags": {
+      "ele": "1354",
+      "name": "Halseck",
+      "natural": "peak",
+      "wikidata": "Q31542506"
+    },
+    "fetched": "2026-11-09"
   },
   "node/3233329670": {
     "lat": 47.6842313,
@@ -4265,6 +4368,17 @@
       "wikidata": "Q27478934"
     },
     "fetched": "2026-11-02"
+  },
+  "node/4541927441": {
+    "lat": 47.628999,
+    "lon": 11.6748151,
+    "demEle": 1551.7,
+    "tags": {
+      "ele": "1576",
+      "name": "Sonnberg",
+      "natural": "peak"
+    },
+    "fetched": "2026-11-09"
   },
   "node/4647797222": {
     "lat": 47.7012898,
@@ -4838,6 +4952,19 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/12369578509": {
+    "lat": 47.6418245,
+    "lon": 11.67211,
+    "demEle": 1448.7,
+    "tags": {
+      "ele": "1461",
+      "name": "Mühlriedeck",
+      "natural": "peak",
+      "source_ref": "https://geoportal.bayern.de/bayernatlas/?base=910&lang=de&topic=ba&bgLayer=luftbild_labels&catalogNodes=11&E=700703&N=5279963&zoom=13&crosshair=marker",
+      "summit:cross": "no"
+    },
+    "fetched": "2026-11-09"
+  },
   "node/12437463134": {
     "lat": 47.59577,
     "lon": 10.49662,
@@ -5287,6 +5414,21 @@
     },
     "fetched": "2026-10-26"
   },
+  "way/31119033": {
+    "lat": 47.628775000000005,
+    "lon": 11.6804984,
+    "demEle": 1480.2,
+    "tags": {
+      "amenity": "restaurant",
+      "building": "cabin",
+      "building:levels": "1",
+      "name": "Sonnberg Alm",
+      "opening_hours": "May-Sep",
+      "roof:levels": "1",
+      "roof:shape": "gabled"
+    },
+    "fetched": "2026-11-09"
+  },
   "way/31128149": {
     "lat": 50.7410064,
     "lon": 15.64750525,
@@ -5484,6 +5626,18 @@
       "wikidata": "Q98647827"
     },
     "fetched": "2026-10-26"
+  },
+  "way/46439969": {
+    "lat": 47.63726,
+    "lon": 11.67106235,
+    "demEle": 1486.1,
+    "tags": {
+      "amenity": "restaurant",
+      "building": "cabin",
+      "name": "Roßsteinalm",
+      "opening_hours": "May-Sep"
+    },
+    "fetched": "2026-11-09"
   },
   "way/48844974": {
     "lat": 47.67928995,
@@ -7218,6 +7372,28 @@
       "website": "https://www.ehrwalderalm.at"
     },
     "fetched": "2026-10-26"
+  },
+  "way/237716043": {
+    "lat": 47.61599955,
+    "lon": 11.6761953,
+    "demEle": 879.0,
+    "tags": {
+      "access": "yes",
+      "amenity": "parking",
+      "capacity": "100",
+      "capacity:disabled": "no",
+      "capacity:parent": "no",
+      "capacity:women": "no",
+      "ele": "855",
+      "fee": "yes",
+      "name": "Bayerwald",
+      "opening_hours": "08:00-18:00",
+      "parking": "surface",
+      "park_ride": "no",
+      "payment:cash": "yes",
+      "surface": "gravel"
+    },
+    "fetched": "2026-11-09"
   },
   "way/238463222": {
     "lat": 47.9108155,

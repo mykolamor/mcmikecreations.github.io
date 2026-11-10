@@ -1,0 +1,482 @@
+{
+  "name": {
+    "en": "Sonnberg",
+    "de": "Sonnberg",
+    "uk": "Зоннберг"
+  },
+  "height": 384,
+  "checkpoints": [
+    [11.6757052, 47.6156095],
+    [11.6804984, 47.628775000000005],
+    [11.6941638, 47.6289608],
+    [11.6804984, 47.628775000000005],
+    [11.6748151, 47.628999],
+    [11.6757671, 47.6309637],
+    [11.676304, 47.6326069],
+    [11.6783355, 47.6326587],
+    [11.67106235, 47.63726],
+    [11.6669669, 47.6403833],
+    [11.67106235, 47.63726],
+    [11.67211, 47.6418245],
+    [11.67106235, 47.63726],
+    [11.6757671, 47.6309637],
+    [11.6804984, 47.628775000000005]
+  ],
+  "image": "/images/projects/data-viz/hikes/sonnberg.jpg",
+  "description": {
+    "en": "Hike from Bayerwald parking lot and back via Friedbergkopf (1406 m), Sonnberg (1576 m), Roßstein (1698 m), Hochplatte (1592 m), and Mühlriedeck (1461 m).",
+    "de": "Wanderung vom Parkplatz Bayerwald und zurück über Friedbergkopf (1406 m), Sonnberg (1576 m), Roßstein (1698 m), Hochplatte (1592 m) und Mühlriedeck (1461 m).",
+    "uk": "Похід від парковки Баєрвальд і назад через Friedbergkopf (1406 м), Sonnberg (1576 м), Roßstein (1698 м), Hochplatte (1592 м) та Mühlriedeck (1461 м)."
+  },
+  "nodes": ["way/237716043", "way/31119033", "node/1279756168", "node/4541927441", "node/301642754", "node/26862641", "node/5340076821", "way/46439969", "node/2973369663", "node/12369578509"],
+  "origin": {
+    "lat": 47.630049,
+    "lon": 11.678209
+  },
+  "facts": {
+    "checked": "2026-11-10",
+    "summary": {
+      "en": "Medium-distance out-and-back trek visiting Roßstein and the surrounding peaks.",
+      "de": "Mittellange Wanderung hin und zurück zum Roßstein und den umliegenden Gipfeln.",
+      "uk": "Маршрут середньої довжини туди й назад до Roßstein і навколишніх вершин."
+    },
+    "difficulty": {
+      "sac": "T3",
+      "note": {
+        "en": "T3 for the via ferrata section near Roßstein; otherwise T2.",
+        "de": "T3 für den Klettersteig-Abschnitt am Roßstein, sonst T2.",
+        "uk": "T3 на ділянці віа ферати біля Roßstein, решта маршруту — T2."
+      },
+      "viaFerrata": [
+        {
+          "grade": "A",
+          "scale": "french",
+          "from": {
+            "lat": 47.6313891,
+            "lon": 11.6758597,
+            "name": {
+              "en": "Detour to Roßsteinnadel",
+              "de": "Abzweig zur Roßsteinnadel",
+              "uk": "Відгалуження до Roßsteinnadel"
+            },
+            "demEle": 1573.2
+          },
+          "to": {
+            "ref": "node/301642754"
+          },
+          "name": {
+            "en": "Roßsteinsteig",
+            "de": "Roßsteinsteig",
+            "uk": "Roßsteinsteig"
+          },
+          "length": 100,
+          "gain": 50,
+          "time": 15,
+          "note": {
+            "en": "Beginner-level via ferrata.",
+            "de": "Klettersteig für Anfänger.",
+            "uk": "Віа ферата для початківців."
+          }
+        }
+      ],
+      "exposure": {
+        "level": "low",
+        "note": {
+          "en": "The ridge to Friedbergkopf and Roßstein are somewhat exposed, but very hard to fall from.",
+          "de": "Der Grat zum Friedbergkopf und der Roßstein sind etwas ausgesetzt, aber man kann dort kaum abstürzen.",
+          "uk": "Хребет до Friedbergkopf і Roßstein дещо експоновані, але зірватися звідти дуже важко."
+        }
+      },
+      "fitness": 3
+    },
+    "season": {
+      "best": [4, 5, 6, 7, 8, 9, 10],
+      "possible": [3, 11]
+    },
+    "route": {
+      "start": {
+        "ref": "way/237716043"
+      },
+      "end": {
+        "ref": "way/237716043"
+      },
+      "type": "out-and-back",
+      "optional": [
+        {
+          "from": {
+            "ref": "node/5340076821"
+          },
+          "to": {
+            "ref": "node/26862641"
+          },
+          "name": {
+            "en": "Buchstein climb",
+            "de": "Kletterei auf den Buchstein",
+            "uk": "Сходження на Buchstein"
+          },
+          "note": {
+            "en": "A grade 1 climb of the Buchstein peak.",
+            "de": "Kletterei im I. Grad auf den Gipfel des Buchsteins.",
+            "uk": "Лазіння I категорії складності на вершину Buchstein."
+          }
+        }
+      ],
+      "terrain": ["forest-road", "path", "forest", "meadow"],
+      "shade": "moderate",
+      "trails": ["609", "Roßsteinsteig", "Altweibersteig"],
+      "peaks": [
+        {
+          "ref": "node/1279756168"
+        },
+        {
+          "ref": "node/4541927441"
+        },
+        {
+          "ref": "node/301642754"
+        },
+        {
+          "ref": "node/26862641"
+        },
+        {
+          "ref": "node/2973369663"
+        },
+        {
+          "ref": "node/12369578509"
+        }
+      ],
+      "regions": ["mangfall-mountains", "tegernsee"],
+      "categories": ["peak-bagging", "ridge", "via-ferrata", "hut"],
+      "countries": ["DE"],
+      "huts": [
+        {
+          "ref": "way/31119033"
+        },
+        {
+          "ref": "node/5340076821"
+        },
+        {
+          "ref": "way/46439969"
+        }
+      ]
+    },
+    "navigation": {
+      "marking": "good",
+      "spans": [
+        {
+          "from": {
+            "ref": "way/31119033"
+          },
+          "to": {
+            "ref": "node/1279756168"
+          },
+          "marking": "none",
+          "note": {
+            "en": "Narrow trail on a wide ridge with no marking.",
+            "de": "Schmaler Pfad auf einem breiten Grat ohne Markierung.",
+            "uk": "Вузька стежка на широкому хребті без маркування."
+          }
+        }
+      ],
+      "note": {
+        "en": "Popular route with well-marked paths.",
+        "de": "Beliebte Route mit gut markierten Wegen.",
+        "uk": "Популярний маршрут із добре маркованими стежками."
+      },
+      "offline": false
+    },
+    "hazards": [
+      {
+        "from": {
+          "ref": "way/31119033"
+        },
+        "to": {
+          "ref": "node/1279756168"
+        },
+        "kind": "unsecured-ridge",
+        "label": {
+          "en": "Wide but technically unsecured ridge.",
+          "de": "Breiter, aber ungesicherter Grat.",
+          "uk": "Широкий, але не обладнаний для страховки хребет."
+        },
+        "severity": "low"
+      }
+    ],
+    "bailouts": [
+      {
+        "at": {
+          "ref": "way/31119033"
+        },
+        "to": {
+          "en": "Bayerwald parking lot",
+          "de": "Parkplatz Bayerwald",
+          "uk": "Парковка Баєрвальд"
+        },
+        "via": "trail",
+        "note": {
+          "en": "Quickest point to turn back.",
+          "de": "Schnellste Möglichkeit zum Umkehren.",
+          "uk": "Найшвидший спосіб повернутися назад."
+        },
+        "time": 70
+      },
+      {
+        "at": {
+          "ref": "way/31119033"
+        },
+        "to": {
+          "en": "Kreuth, Klamm",
+          "de": "Kreuth, Klamm",
+          "uk": "Кройт, Кламм"
+        },
+        "via": "road",
+        "time": 99,
+        "last": true,
+        "note": {
+          "en": "Longer detour to Kreuth, Klamm on a gravel road.",
+          "de": "Längerer Umweg nach Kreuth, Klamm auf einer Schotterstraße.",
+          "uk": "Довший обхід гравійною дорогою до Кройт, Кламм."
+        },
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/sonnbergalm-klamm.gpx"
+      }
+    ],
+    "water": [
+      {
+        "at": {
+          "ref": "way/31119033"
+        },
+        "kind": "hut",
+        "reliable": "seasonal"
+      },
+      {
+        "at": {
+          "ref": "node/5340076821"
+        },
+        "kind": "hut",
+        "reliable": "seasonal",
+        "note": {
+          "en": "Huts are often closed for repairs and offer no water.",
+          "de": "Die Hütten sind oft wegen Renovierung geschlossen und bieten dann kein Wasser.",
+          "uk": "Хатини часто закриті на ремонт і не мають води."
+        }
+      }
+    ],
+    "signal": [
+      {
+        "to": {
+          "ref": "node/301642754"
+        },
+        "quality": "good"
+      },
+      {
+        "from": {
+          "ref": "node/301642754"
+        },
+        "to": {
+          "ref": "node/2973369663"
+        },
+        "quality": "patchy",
+        "note": {
+          "en": "Bad for calls, good for buffered content.",
+          "de": "Schlecht zum Telefonieren, gut für vorgeladene Inhalte.",
+          "uk": "Погано для дзвінків, добре для завантаженого наперед контенту."
+        }
+      }
+    ],
+    "stops": [
+      {
+        "at": {
+          "ref": "way/31119033"
+        }
+      },
+      {
+        "at": {
+          "ref": "node/5340076821"
+        }
+      }
+    ],
+    "access": {
+      "carFree": "yes",
+      "parking": [
+        {
+          "use": "parking-lot-bayerwald"
+        }
+      ],
+      "transport": [
+        {
+          "use": "train-rb-57-munich-central-station-tegernsee"
+        },
+        {
+          "use": "bus-356-tegernsee-bayerwald-kreuth"
+        }
+      ],
+      "checked": "2026-11-10"
+    },
+    "protectedAreas": {
+      "en": "The eastern slope of Hochplatte is protected, but there are no trails going there.",
+      "de": "Der Osthang der Hochplatte steht unter Schutz, aber dorthin führen keine Wege.",
+      "uk": "Східний схил Hochplatte є заповідним, але стежок туди немає."
+    },
+    "suitability": {
+      "kids": "older",
+      "dogs": "yes",
+      "stroller": false,
+      "bike": "no",
+      "winter": "with-gear",
+      "night": "yes",
+      "solo": "yes",
+      "note": {
+        "en": "The northern side of Roßstein is very slippery in rainy seasons.",
+        "de": "Die Nordseite des Roßsteins ist bei Regen sehr rutschig.",
+        "uk": "Північний схил Roßstein дуже слизький у дощову пору."
+      }
+    },
+    "plan": {
+      "gear": [
+        {
+          "item": "trail-shoes"
+        },
+        {
+          "item": "poles",
+          "need": "optional",
+          "when": {
+            "en": "For steeper sections.",
+            "de": "Für steilere Abschnitte.",
+            "uk": "Для крутіших ділянок."
+          }
+        },
+        {
+          "item": "water",
+          "amount": {
+            "en": "1-2 L",
+            "de": "1-2 l",
+            "uk": "1-2 л"
+          }
+        }
+      ],
+      "for": [
+        {
+          "en": "Hikers searching for Buchstein and Leonhardstein views from unusual angles",
+          "de": "Wanderer, die Buchstein und Leonhardstein aus ungewöhnlichen Blickwinkeln sehen wollen",
+          "uk": "Туристів, які шукають види на Buchstein і Leonhardstein з незвичних ракурсів"
+        },
+        {
+          "en": "People looking for alone time",
+          "de": "Menschen, die Zeit für sich suchen",
+          "uk": "Людей, які шукають усамітнення"
+        }
+      ],
+      "notFor": [
+        {
+          "en": "Casual hikers interested only in Roßstein",
+          "de": "Gelegenheitswanderer, die nur zum Roßstein wollen",
+          "uk": "Звичайних туристів, яких цікавить лише Roßstein"
+        },
+        {
+          "en": "People uncomfortable with muddy or grassy trails",
+          "de": "Menschen, die sich auf schlammigen oder grasigen Pfaden unwohl fühlen",
+          "uk": "Людей, яким некомфортно на брудних або трав'янистих стежках"
+        }
+      ],
+      "variants": [
+        {
+          "link": "2025-10-05-buchstein_only",
+          "recommended": true,
+          "name": {
+            "en": "Buchstein only",
+            "de": "Nur Buchstein",
+            "uk": "Тільки Buchstein"
+          },
+          "summary": {
+            "en": "Visit to Buchstein skipping less popular peaks.",
+            "de": "Besuch des Buchsteins ohne die weniger bekannten Gipfel.",
+            "uk": "Відвідування Buchstein без менш популярних вершин."
+          },
+          "distance": 16904,
+          "ascent": 1000,
+          "descent": 1110,
+          "duration": 360,
+          "sac": "T3",
+          "viaFerrata": {
+            "grade": "A",
+            "scale": "french"
+          },
+          "note": {
+            "en": "The climb up Buchstein itself is optional.",
+            "de": "Die Kletterei auf den Buchstein selbst ist optional.",
+            "uk": "Саме сходження на Buchstein необов'язкове."
+          }
+        },
+        {
+          "name": {
+            "en": "Kreuth to Lenggries over Roßstein",
+            "de": "Von Kreuth nach Lenggries über den Roßstein",
+            "uk": "Від Кройта до Ленггріса через Roßstein"
+          },
+          "summary": {
+            "en": "Longer point-to-point with Roßstein as the main target.",
+            "de": "Längere Streckenwanderung mit dem Roßstein als Hauptziel.",
+            "uk": "Довший лінійний маршрут із Roßstein як головною метою."
+          },
+          "distance": 22714,
+          "ascent": 1250,
+          "descent": 1350,
+          "duration": 481,
+          "sac": "T3",
+          "link": "2025-05-11-buchstein",
+          "recommended": true,
+          "note": {
+            "en": "The extra detour to Seekarkreuz can be skipped.",
+            "de": "Den zusätzlichen Abstecher zum Seekarkreuz kann man auslassen.",
+            "uk": "Додаткове відгалуження до Seekarkreuz можна пропустити."
+          }
+        }
+      ],
+      "timing": {
+        "start": "09:30",
+        "turnaround": "14:30",
+        "note": {
+          "en": "The last bus back leaves early, watch the time.",
+          "de": "Der letzte Bus zurück fährt früh, achtet auf die Zeit.",
+          "uk": "Останній автобус назад їде рано, слідкуйте за часом."
+        }
+      },
+      "alternatives": {
+        "easier": ["2025-10-05-buchstein_only", "2024-11-17-hirschberg"],
+        "harder": ["2025-05-11-buchstein"],
+        "similar": ["2026-03-29-lenggries_auerkamp", "2026-08-23-hochalm"]
+      }
+    },
+    "sources": [
+      {
+        "url": "https://www.bromba.com/berge/bn210819.htm",
+        "kind": "guidebook",
+        "lang": "de",
+        "note": {
+          "en": "A hiker's report on Friedbergkopf.",
+          "de": "Bericht eines Wanderers über den Friedbergkopf.",
+          "uk": "Звіт туриста про похід на Friedbergkopf."
+        },
+        "title": {
+          "en": "Six peaks around Buchstein",
+          "de": "Sechs Gipfel im Buchsteingebiet",
+          "uk": "Шість вершин довкола Buchstein"
+        }
+      },
+      {
+        "url": "https://www.bromba.com/berge/bn170826.htm",
+        "title": {
+          "en": "Sonnbergschneid, Roßstein, Buchstein, Hochplatte",
+          "de": "Sonnbergschneid, Roßstein, Buchstein, Hochplatte",
+          "uk": "Sonnbergschneid, Roßstein, Buchstein, Hochplatte"
+        },
+        "kind": "guidebook",
+        "lang": "de",
+        "note": {
+          "en": "Report of a hiker taking the Sonnbergschneid ridge to Friedbergkopf.",
+          "de": "Bericht eines Wanderers über den Grat der Sonnbergschneid zum Friedbergkopf.",
+          "uk": "Звіт туриста, який пройшов хребтом Sonnbergschneid до Friedbergkopf."
+        }
+      }
+    ]
+  }
+}

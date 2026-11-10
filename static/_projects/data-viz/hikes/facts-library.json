@@ -40,6 +40,20 @@
 			"cash": false,
 			"checked": "2026-10-21"
 		},
+		"node/5340076821": {
+			"kind": "alpine-hut",
+			"open": {
+				"from": "05-15",
+				"to": "11-07"
+			},
+			"overnight": true,
+			"booking": "https://tegernseerhuette.de/",
+			"phone": "+49 (0) 8029 287",
+			"water": true,
+			"food": true,
+			"cash": false,
+			"checked": "2026-11-10"
+		},
 		"way/26960869": {
 			"kind": "alpine-hut",
 			"open": {
@@ -51,6 +65,18 @@
 			"food": true,
 			"cash": true,
 			"checked": "2026-10-12"
+		},
+		"way/31119033": {
+			"kind": "alpine-hut",
+			"open": {
+				"from": "06-01",
+				"to": "09-30"
+			},
+			"overnight": false,
+			"water": true,
+			"food": true,
+			"cash": true,
+			"checked": "2026-11-10"
 		},
 		"way/60310929": {
 			"kind": "alpine-hut",
@@ -222,6 +248,49 @@
 			"operator": "MVV",
 			"first": "08:18",
 			"last": "20:28"
+		},
+		"bus-356-tegernsee-bayerwald-kreuth": {
+			"mode": "bus",
+			"from": {
+				"en": "Tegernsee",
+				"de": "Tegernsee",
+				"uk": "Тегернзе"
+			},
+			"to": {
+				"name": {
+					"en": "Bayerwald, Kreuth",
+					"de": "Bayerwald, Kreuth",
+					"uk": "Баєрвальд, Кройт"
+				}
+			},
+			"direction": "there",
+			"duration": 28,
+			"changes": 0,
+			"operator": "MVV",
+			"line": "356",
+			"first": "08:17",
+			"last": "18:17",
+			"frequency": {
+				"en": "hourly",
+				"de": "stündlich",
+				"uk": "щогодини"
+			},
+			"checked": "2026-11-10",
+			"ticket": {
+				"en": "Deutschlandticket valid to Bayerwald",
+				"de": "Deutschlandticket bis Bayerwald gültig",
+				"uk": "Deutschlandticket дійсний до Баєрвальду"
+			},
+			"price": [
+				{
+					"amount": 0,
+					"note": {
+						"en": "with Deutschlandticket",
+						"de": "mit Deutschlandticket",
+						"uk": "з Deutschlandticket"
+					}
+				}
+			]
 		},
 		"bus-359-gmund-breitenbach-bad-wiessee": {
 			"mode": "bus",
@@ -815,6 +884,19 @@
 		}
 	},
 	"parking": {
+		"parking-lot-bayerwald": {
+			"at": {
+				"ref": "way/237716043"
+			},
+			"name": {
+				"en": "Bayerwald parking lot",
+				"de": "Parkplatz Bayerwald",
+				"uk": "Парковка Баєрвальд"
+			},
+			"size": "small",
+			"fills": "weekends",
+			"checked": "2026-11-10"
+		},
 		"parking-lot-breitenbachtal": {
 			"at": {
 				"ref": "way/378435526",
