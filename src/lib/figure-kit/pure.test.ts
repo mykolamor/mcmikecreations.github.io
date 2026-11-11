@@ -4,6 +4,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { pick, num } from '../../../static/images/blog/_kit/text.js';
 import { paletteVars, PRES_VARS, tint } from '../../../static/images/blog/_kit/palette.js';
+import { fitScale, fitBox } from '../../../static/images/blog/_kit/embed.js';
 
 const loc = { en: 'a', de: 'b', uk: 'c' };
 
@@ -41,4 +42,22 @@ test('PRES_VARS maps the six tokens to the deck frame’s colours', () => {
 
 test('tint mixes towards the figure background', () => {
 	assert.equal(tint('red', 30), 'color-mix(in oklab, red 30%, var(--fig-bg))');
+});
+
+test('fitScale shrinks a figure to the column and never enlarges it', () => {
+	assert.equal(fitScale(720, 1440), 0.5);
+	assert.equal(fitScale(2000, 1440), 1);
+});
+
+test('fitScale is 0 for a container that has no width yet', () => {
+	assert.equal(fitScale(0, 1440), 0);
+	assert.equal(fitScale(NaN, 1440), 0);
+});
+
+test('fitBox centres a figure that is narrower than the column', () => {
+	assert.deepEqual(fitBox(825, 625, 610), { scale: 1, left: 100, height: 610 });
+});
+
+test('fitBox fills a narrower column edge to edge', () => {
+	assert.deepEqual(fitBox(312.5, 625, 610), { scale: 0.5, left: 0, height: 305 });
 });

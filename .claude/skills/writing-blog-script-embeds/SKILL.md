@@ -40,6 +40,34 @@ Reference implementation: `static/images/blog/ecs/pong-sim.js`.
    }
    ```
 
+## Static figures (diagrams, plots)
+
+A figure that should also be usable in a deck, or that is just a static diagram/plot, is written on the shared
+figure kit (`static/images/blog/_kit/`, imported relatively) instead of a hand-made `mount`:
+
+```js
+// static/images/blog/<slug>/figs/flow.js
+import { canvas, svg } from '../../_kit/index.js';
+export const flow = {
+  size: { w: 800, h: 420 },                       // drawn at this size, scaled down to the post column
+  draw(k, root) {                                 // k: the kit builder
+    const c = canvas(800, 420, 'left:0;top:0;');
+    c.append(k.svgText({ x: 20, y: 40, style: 'fill:var(--fig-fg);' }, { en: 'Input', de: 'Eingabe', uk: 'Вхід' }));
+    root.append(c);
+  }
+};
+// static/images/blog/<slug>/embeds/flow.js
+import { embedFigure } from '../../_kit/index.js';
+import { flow } from '../figs/flow.js';
+export default embedFigure(flow, { palette: { accent: { light: '#7c3aed', dark: '#a78bfa' } } });
+```
+
+- Text: `k.text(tag, css, loc)` (markdown-lite) / `k.svgText(attrs, loc)` (`\n` = new line) / `k.attr(el, name, loc)`, all `{ en, de, uk }`; numbers via `num`/`fmt`.
+- Colours: only `var(--fig-fg / bg / muted / accent / accent2 / dim)` plus tokens the post's palette adds (`--fig-<name>`); `tint(c, p)`, `stripes(c)` for shades. Per-post palettes go in `static/images/blog/<slug>/palette.js`. Defaults follow dark mode.
+- States are optional: `k.part(el, (s) => props)` / `k.show(el, from, until)` only where the figure may animate in a deck later; the embed applies one state (`{ state }`, default 0). Draw one element per bar/series/label so it can be animated later.
+- `embedFigure` follows every rule below (state in `mount`, observers disconnected on cleanup). Size `w` must cover everything drawn, overflow is clipped.
+- Decks reuse the same figure: `flow.draw(b, root)` inside a slide's `build` (see `writing-presentations`).
+
 ## Rules
 
 | Rule | Why |

@@ -5,3 +5,4 @@ export * from './palette.js';
 export * from './kit.js';
 export * from './charts.js';
 export * from './slide.js';
+export * from './embed.js';

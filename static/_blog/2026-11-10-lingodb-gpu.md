@@ -13,3 +13,5 @@ draft: true
 *The Three P's of GPU Databases*
 
 ![The Three P's of GPU Databases: talk slides](/images/blog/lingodb-gpu/presentation/index.js "presentation")
+
+![Query compilation in LingoDB: SQL through MLIR dialects and sub-operators to GPU kernels, linked with the device runtime](/images/blog/lingodb-gpu/embeds/lowering.js)
