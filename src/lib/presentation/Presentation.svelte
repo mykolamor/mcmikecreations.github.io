@@ -8,6 +8,7 @@
 	import { keyCommand, swipeCommand, type Command } from './input';
 	import { pick } from './localize';
 	import { initialPosition, normalize } from './order';
+	import { loadPosition, pageStorage, savePosition, storageKey } from './saved-position';
 	import PresentationGrid from './PresentationGrid.svelte';
 	import { DomSlideHost } from './slide-host';
 	import { readTheme, watchTheme } from './theme';
@@ -339,7 +340,10 @@
 		const slideHost = new DomSlideHost(p, canvas, () => env, claim);
 		host = slideHost;
 		const hashRef = parseHash(location.hash, p);
-		const first = initialPosition(p, [hashRef, start]);
+		// A deep link wins; else resume where this reader left the deck on this page; else the embed's start.
+		const storage = pageStorage();
+		const savedKey = storageKey(p, location.pathname);
+		const first = initialPosition(p, [hashRef, loadPosition(storage, savedKey), start]);
 		const ctl = new PresentationController(p, slideHost, first, env);
 		controller = ctl;
 		pos = first;
@@ -347,6 +351,7 @@
 
 		const offChange = ctl.on('change', (at) => {
 			pos = at;
+			savePosition(storage, savedKey, p, at);
 			announcement = positionLabel(at);
 		});
 
