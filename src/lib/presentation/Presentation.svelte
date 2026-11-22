@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount, tick } from 'svelte';
-	import { ArrowLeftOutline, ArrowRightOutline, CompressOutline, ExpandOutline, GridOutline } from 'flowbite-svelte-icons';
+	import { ArrowLeftOutline, ArrowRightOutline, CompressOutline, ExpandOutline, FilePdfOutline, GridOutline } from 'flowbite-svelte-icons';
 	import { isLang } from '$lib/i18n/languages';
 	import { t } from '$lib/i18n/strings';
 	import { PresentationController } from './controller';
@@ -205,6 +205,35 @@
 		}
 	}
 
+	// --- PDF export ----------------------------------------------------------------------------
+	/** Pages rendered so far while an export runs; null when none is running. */
+	let exporting = $state<{ done: number; total: number } | null>(null);
+	let exportAbort: AbortController | null = null;
+
+	async function exportPdf(): Promise<void> {
+		if (exporting || !host) return;
+		const abort = new AbortController();
+		exportAbort = abort;
+		exporting = { done: 0, total: 0 };
+		try {
+			// jsPDF and modern-screenshot load only when someone exports.
+			const { exportPdf: run } = await import('./export-pdf');
+			await run({
+				presentation: p,
+				host,
+				background: getComputedStyle(canvas).backgroundColor,
+				filename: `${p.name}.pdf`,
+				onProgress: (done, total) => (exporting = { done, total }),
+				signal: abort.signal
+			});
+		} catch (err) {
+			if (!abort.signal.aborted) console.error('Presentation PDF export failed', err);
+		} finally {
+			if (exportAbort === abort) exportAbort = null;
+			exporting = null;
+		}
+	}
+
 	// --- Commands ------------------------------------------------------------------------------
 	function run(cmd: Exclude<Command, 'escape'>): void {
 		if (!controller) return;
@@ -402,6 +431,7 @@
 		stage.addEventListener('pointercancel', onPointercancel, { signal });
 
 		return () => {
+			exportAbort?.abort();
 			listeners.abort();
 			stopTheme();
 			resize.disconnect();
@@ -468,6 +498,20 @@
 		<span class="min-w-24 text-center text-sm tabular-nums text-gray-600 dark:text-gray-300">{positionText}</span>
 		<button type="button" class={btn} disabled={atLast} aria-label={t(uiLang, 'presentation.next')} title={t(uiLang, 'presentation.next')} onclick={() => toolbar('next')}>
 			<ArrowRightOutline class="h-5 w-5" aria-hidden="true" />
+		</button>
+		<button
+			type="button"
+			class={btn}
+			disabled={exporting !== null}
+			aria-label={exporting ? t(uiLang, 'presentation.exportingPdf', exporting) : t(uiLang, 'presentation.exportPdf')}
+			title={exporting ? t(uiLang, 'presentation.exportingPdf', exporting) : t(uiLang, 'presentation.exportPdf')}
+			onclick={() => { keysReleased = true; void exportPdf(); }}
+		>
+			{#if exporting && exporting.total > 0}
+				<span class="px-1 text-xs tabular-nums" aria-hidden="true">{Math.floor((exporting.done / exporting.total) * 100)}%</span>
+			{:else}
+				<FilePdfOutline class="h-5 w-5" aria-hidden="true" />
+			{/if}
 		</button>
 		<button type="button" class={btn} aria-pressed={gridOpen} aria-label={t(uiLang, 'presentation.grid')} title={t(uiLang, 'presentation.grid')} onclick={() => toolbar('grid')}>
 			<GridOutline class="h-5 w-5" aria-hidden="true" />

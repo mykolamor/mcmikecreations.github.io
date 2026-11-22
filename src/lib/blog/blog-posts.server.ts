@@ -8,7 +8,7 @@
 import type { ProcessedBlogPost } from './blog-info';
 import type { Lang } from '$lib/i18n/languages';
 import type { ParsedTranslation } from '$lib/hikes/translations.server';
-import { buildBlogIndex, translationIn, translationLangsOf, type BlogPostMeta } from './blog-index.server';
+import { buildBlogIndex, translationIn, translationLangsOf, type BlogIndex, type BlogPostMeta } from './blog-index.server';
 
 export type { BlogPostMeta };
 
@@ -41,6 +41,11 @@ export function getBlogTranslationLangs(anchor: string): Lang[] {
 /** Full metadata for a single post by file name, or undefined. Includes drafts. */
 export function getBlogPostMeta(path: string): BlogPostMeta | undefined {
 	return allMeta.find(m => m.path === path);
+}
+
+/** The whole parsed index: every post, drafts included, and their translations. For the SmackDB tech tree. */
+export function getBlogIndex(): BlogIndex {
+	return index;
 }
 
 /** All published (non-draft) posts' raw metadata, newest first. */

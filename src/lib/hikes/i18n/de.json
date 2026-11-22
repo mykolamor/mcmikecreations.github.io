@@ -547,12 +547,32 @@
 		"region": "Präsentation: {caption}",
 		"slideState": "Folie {slide} · Schritt {state}",
 		"gridLabel": "Folienübersicht",
-		"slide": "Folie {slide}"
+		"slide": "Folie {slide}",
+		"exportPdf": "Als PDF herunterladen",
+		"exportingPdf": "PDF wird erstellt … {done} / {total}"
 	},
 	"post": {
 		"stats": {
 			"showAll": "Alle anzeigen ({count})"
 		},
 		"updated": "Aktualisiert am {date}"
+	},
+	"techTree": {
+		"title": "SmackDB",
+		"description": "Ein Tech-Tree meiner Datenbank-Beiträge: die Paper und Techniken hinter modernen Query-Engines, in der Reihenfolge, in der du sie lesen solltest.",
+		"comingSoon": "Demnächst",
+		"buildsOn": "Baut auf",
+		"empty": "Noch keine Beiträge im Baum.",
+		"timelines": {
+			"query-processing": {
+				"name": "Anfrageverarbeitung",
+				"eras": {
+					"relational": "Relationale Grundlagen",
+					"vectorized": "Iteratoren & Vektorisierung",
+					"compiled": "Query-Kompilierung",
+					"accelerated": "Hardwarebeschleunigung"
+				}
+			}
+		}
 	}
 }

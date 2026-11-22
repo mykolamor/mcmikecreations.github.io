@@ -9,12 +9,32 @@
 		"region": "Презентація: {caption}",
 		"slideState": "Слайд {slide} · крок {state}",
 		"gridLabel": "Огляд слайдів",
-		"slide": "Слайд {slide}"
+		"slide": "Слайд {slide}",
+		"exportPdf": "Завантажити як PDF",
+		"exportingPdf": "Створюю PDF… {done} / {total}"
 	},
 	"post": {
 		"stats": {
 			"showAll": "Показати все ({count})"
 		},
 		"updated": "Оновлено {date}"
+	},
+	"techTree": {
+		"title": "SmackDB",
+		"description": "Дерево технологій моїх дописів про бази даних: статті й техніки, на яких побудовані сучасні рушії запитів, у порядку читання.",
+		"comingSoon": "Незабаром",
+		"buildsOn": "Спирається на",
+		"empty": "У дереві ще немає дописів.",
+		"timelines": {
+			"query-processing": {
+				"name": "Обробка запитів",
+				"eras": {
+					"relational": "Реляційні основи",
+					"vectorized": "Ітератори й векторизація",
+					"compiled": "Компіляція запитів",
+					"accelerated": "Апаратне прискорення"
+				}
+			}
+		}
 	}
 }

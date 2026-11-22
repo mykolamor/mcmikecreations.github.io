@@ -9,6 +9,7 @@
  */
 
 import matter from 'gray-matter';
+import { parseTechTree, type TechTreeEntry } from '$lib/tech-tree/front-matter';
 import {
 	collectTranslations,
 	splitTranslations,
@@ -32,6 +33,8 @@ export interface BlogPostMeta {
 	/** Front-matter `updated: YYYY-MM-DD` override for `dateModified`, raw. */
 	updated: unknown;
 	draft: boolean;
+	/** The `techTree` front matter: on the SmackDB tech tree when set (`$lib/tech-tree/front-matter`). */
+	techTree: TechTreeEntry | null;
 	/** File name, e.g. `2024-03-01-ecs.md`. */
 	path: string;
 	/** File name without extension, e.g. `2024-03-01-ecs` — the URL slug. */
@@ -79,6 +82,7 @@ export function buildBlogIndex(
 				section: toStringOrNull(data.section) ?? tags[0] ?? null,
 				updated: data.updated,
 				draft: data.draft === true,
+				techTree: parseTechTree(data.techTree, path),
 				path,
 				anchor
 			};

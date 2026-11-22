@@ -741,6 +741,26 @@
 		"region": "Presentation: {caption}",
 		"slideState": "Slide {slide} · step {state}",
 		"gridLabel": "Slide overview",
-		"slide": "Slide {slide}"
+		"slide": "Slide {slide}",
+		"exportPdf": "Download as PDF",
+		"exportingPdf": "Preparing PDF… {done} / {total}"
+	},
+	"techTree": {
+		"title": "SmackDB",
+		"description": "A tech tree of my database posts: the papers and techniques behind modern query engines, in the order to read them.",
+		"comingSoon": "Coming soon",
+		"buildsOn": "Builds on",
+		"empty": "No posts on the tree yet.",
+		"timelines": {
+			"query-processing": {
+				"name": "Query Processing",
+				"eras": {
+					"relational": "Relational Foundations",
+					"vectorized": "Iterators & Vectorization",
+					"compiled": "Query Compilation",
+					"accelerated": "Hardware Acceleration"
+				}
+			}
+		}
 	}
 }

@@ -590,6 +590,12 @@
       "description": "A personal hiking blog with route files, interactive maps and metadata."
     },
     {
+      "name": "SmackDB",
+      "quote": "The history of databases incarnated into a universal engine.",
+      "route": "/projects/smackdb/",
+      "description": "Blog posts that follow and implement database papers and techniques, one foundational approach at a time."
+    },
+    {
       "name": "PlanetoidGen",
       "image": "/images/projects/planetoid-gen/coords-cubic.svg",
       "imageDark": "/images/projects/planetoid-gen/coords-cubic-dark.svg",

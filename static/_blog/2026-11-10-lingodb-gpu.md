@@ -7,8 +7,14 @@ tags:
   - Databases
   - GPU
 draft: true
+techTree:
+  timelines: [query-processing]
+  year: 2026
+  buildsOn: [2026-11-12-database-basics]
 ---
 # Closing the Gap: Practical, Portable, and Performant Fused Query Execution on GPUs
+
+When 
 
 *The Three P's of GPU Databases*
 

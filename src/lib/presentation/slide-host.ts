@@ -138,6 +138,31 @@ export class DomSlideHost implements SlideHost {
 		return result;
 	}
 
+	/**
+	 * Mounts slide `slide` into a temporary root inside the stage and calls `visit` once per state, in order,
+	 * after snapping to it. Unlike thumbnail captures, the root is not hidden (rasterisers copy computed
+	 * visibility); it's transparent (opacity 0, which only the root carries) and inert to input instead.
+	 */
+	async captureStates(slide: number, visit: (root: HTMLElement, state: number) => Promise<void>): Promise<void> {
+		if (this.#destroyed || !this.#p.slides[slide]) return;
+		const el = document.createElement('div');
+		el.setAttribute('aria-hidden', 'true');
+		el.style.cssText = 'position:absolute;left:0;top:0;width:1600px;height:900px;opacity:0;pointer-events:none;';
+		this.#stage.appendChild(el);
+		const m = this.#mount(slide, el, 0, true);
+		this.#thumbs.add(m);
+		try {
+			for (let k = 0; k < this.#p.slides[slide].states.length; k++) {
+				if (this.#destroyed) break;
+				this.#call(m, 'snap', k);
+				await visit(el, k);
+			}
+		} finally {
+			if (this.#thumbs.delete(m)) this.#unmount(m, false);
+			el.remove();
+		}
+	}
+
 	destroy(): void {
 		if (this.#destroyed) return;
 		this.#destroyed = true;
