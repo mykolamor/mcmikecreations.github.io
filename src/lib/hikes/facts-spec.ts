@@ -11,7 +11,7 @@ import { normalizePlaceName } from './place-links';
 /** A place written as a distance along the route: `km 7.5` (or `km 7,5`). */
 export const KM_RE = /^km\s*(\d+(?:[.,]\d+)?)$/i;
 
-export const LIBRARY_KINDS = ['stops', 'transport', 'lifts', 'parking', 'tickets'] as const;
+export const LIBRARY_KINDS = ['stops', 'transport', 'lifts', 'parking', 'tickets', 'permits'] as const;
 export type LibraryKind = (typeof LIBRARY_KINDS)[number];
 
 /** A record id other than a stop's, which is its OSM ref: `rb60-munich-ehrwald`. */
@@ -104,6 +104,7 @@ const liftEntry = obj({
 	first: time, last: time, price, url: link, note: text, checked: date
 }, ['name']);
 const ticketEntry = obj({ use: str, name: text, includes: texts, price, validity: text, url: link, note: text, checked: date }, ['name']);
+const permitEntry = obj({ use: str, name: text, required: bool, where: text, price, url: link, note: text, checked: date }, ['name']);
 
 const libList = (lib: LibraryKind, of: Spec, ...id: string[][]): Spec => ({ t: 'list', of, id, lib });
 
@@ -119,7 +120,8 @@ export const RECORDS: Record<LibraryKind, Extract<Spec, { t: 'obj' }>> = {
 	transport: { ...without(transportEntry, 'use'), req: [] },
 	lifts: without(liftEntry, 'use'),
 	parking: without(parkingEntry, 'use'),
-	tickets: without(ticketEntry, 'use')
+	tickets: without(ticketEntry, 'use'),
+	permits: without(permitEntry, 'use')
 };
 
 export const FACTS: Extract<Spec, { t: 'obj' }> = obj({
@@ -188,10 +190,7 @@ export const FACTS: Extract<Spec, { t: 'obj' }> = obj({
 		note: text,
 		checked: date
 	}),
-	permits: list(
-		obj({ name: text, required: bool, where: text, price, url: link, note: text, checked: date }, ['name']),
-		['name']
-	),
+	permits: libList('permits', permitEntry, ['name']),
 	drones: text,
 	protectedAreas: text,
 	rules: list(obj({ ...span, kind: e('rule', true), label: text, season: months, note: text }, ['kind']), ['kind', 'from', 'to']),

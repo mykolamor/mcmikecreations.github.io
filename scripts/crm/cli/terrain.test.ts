@@ -195,7 +195,8 @@ test('terrain fills demEle for library places and a second run changes nothing',
 		}
 	},
 	"parking": {},
-	"tickets": {}
+	"tickets": {},
+	"permits": {}
 }
 `;
 	const before = library('{\n\t\t\t\t"lat": 47.5,\n\t\t\t\t"lon": 11,\n\t\t\t\t"name": "Hammersbach"\n\t\t\t}');
@@ -212,7 +213,7 @@ test('terrain fills demEle for library places and a second run changes nothing',
 	assert.equal(readFileSync(s.p.factsLibrary, 'utf8'), after);
 	// An empty library is left as it is.
 	const t = setup();
-	const empty = '{\n\t"stops": {},\n\t"transport": {},\n\t"lifts": {},\n\t"parking": {},\n\t"tickets": {}\n}\n';
+	const empty = '{\n\t"stops": {},\n\t"transport": {},\n\t"lifts": {},\n\t"parking": {},\n\t"tickets": {},\n\t"permits": {}\n}\n';
 	writeFileSync(t.p.factsLibrary, empty);
 	assert.equal((await go(t.root, ['--no-photos'])).code, 0);
 	assert.equal(readFileSync(t.p.factsLibrary, 'utf8'), empty);

@@ -13,7 +13,8 @@ export const LIST_PATHS: Record<LibraryKind, string[]> = {
 	transport: ['access', 'transport'],
 	lifts: ['access', 'lifts'],
 	parking: ['access', 'parking'],
-	tickets: ['access', 'tickets']
+	tickets: ['access', 'tickets'],
+	permits: ['permits']
 };
 
 /** A text's, a place's or a spot's English label. */

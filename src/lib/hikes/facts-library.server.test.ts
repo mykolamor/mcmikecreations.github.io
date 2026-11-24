@@ -98,6 +98,20 @@ test('a problem inside a used record names the entry that uses it', () => {
 	assert.match(side.warnings[0], /^Hike facts in side\.hike\.json: access\.lifts\[0\] \(use "up"\): facts-library\.json: lifts\.up\.from: place "Nowhere Pass"/);
 });
 
+test('a permit entry with use starts from the permits record', () => {
+	const lib = readFactsLibrary({
+		permits: { 'tpn-entry': { name: { en: 'Entry ticket' }, required: true, price: [{ amount: 11, currency: 'PLN', per: 'day' }], checked: '2026-11-23' } }
+	}, 'facts-library.json');
+	const { facts, warnings } = read(undefined, { permits: [{ use: 'tpn-entry', note: 'Buy online' }] }, lib);
+	assert.deepEqual(warnings, []);
+	const [p] = facts!.permits!;
+	assert.equal(p.name.en, 'Entry ticket');
+	assert.equal(p.required, true);
+	assert.equal(p.price![0].amount, 11);
+	assert.equal(p.note!.en, 'Buy online');
+	assert.throws(() => read(undefined, { permits: [{ use: 'nope' }] }, lib), /permits\[0\]\.use: no permit record "nope"/);
+});
+
 test('a stop on an OSM element with a library record starts from it', () => {
 	const { facts, warnings } = read({ stops: [{ at: 'Knorrhütte', note: 'Closed Mondays' }] }, { stops: [{ at: { ref: 'node/1' }, food: true }] });
 	assert.deepEqual(warnings, []);

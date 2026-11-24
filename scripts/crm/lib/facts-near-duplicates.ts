@@ -1,5 +1,5 @@
 // Near-duplicates of the shared facts library's kinds: entries in two or more places whose key matches but whose
-// content differs (stops by OSM ref, transport by mode/from/to/line, lifts and tickets by name, parking by name and
+// content differs (stops by OSM ref, transport by mode/from/to/line, lifts, tickets and permits by name, parking by name and
 // at). Plan 2's extraction one-off printed them once; the Facts tab reads them fresh from the files, and merges a group
 // into a shared record or keeps it apart (scripts/crm/data/near-duplicates-kept.json).
 //

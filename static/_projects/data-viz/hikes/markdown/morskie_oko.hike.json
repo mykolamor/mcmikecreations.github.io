@@ -1,0 +1,365 @@
+{
+  "name": {
+    "en": "Morskie Oko",
+    "de": "Morskie Oko",
+    "uk": "Морське Око"
+  },
+  "height": 768,
+  "image": "/images/projects/data-viz/hikes/morskie_oko.jpg",
+  "origin": {
+    "lat": 49.218907,
+    "lon": 20.066357
+  },
+  "description": {
+    "en": "Hike from Palenica Białczańska and back via Wielki Staw Polski (1665 m), Świstowa Czuba (1763 m), Świstowa Kopa (1875 m), Kępa (1683 m), and Morskie Oko (1395 m).",
+    "de": "Wanderung von Palenica Białczańska und zurück über den Wielki Staw Polski (1665 m), die Świstowa Czuba (1763 m), die Świstowa Kopa (1875 m), Kępa (1683 m) und den Morskie Oko (1395 m).",
+    "uk": "Піша прогулянка від Палениці Бялчанської і назад через Wielki Staw Polski (1665 м), Świstowa Czuba (1763 м), Świstowa Kopa (1875 м), Kępa (1683 м) та Morskie Oko (1395 м)."
+  },
+  "nodes": ["way/85511474", "node/8757470164", "node/8757470163", "node/9004693486", "way/29239554", "node/3503513134", "way/29239542", "way/250746663", "way/27952583", "way/300719423", "way/29239574", "way/29239539"],
+  "facts": {
+    "route": {
+      "peaks": [
+        {
+          "ref": "node/8757470164"
+        },
+        {
+          "ref": "node/8757470163"
+        },
+        {
+          "ref": "node/9004693486"
+        }
+      ],
+      "start": {
+        "ref": "way/85511474"
+      },
+      "end": {
+        "ref": "way/85511474"
+      },
+      "type": "lollipop",
+      "official": {
+        "en": "The official route takes longer and visits more lakes in Dolina Roztoki, only possible in summer.",
+        "de": "Die offizielle Route dauert länger und führt an mehreren Seen in der Dolina Roztoki vorbei; sie ist nur im Sommer begehbar.",
+        "uk": "Офіційний маршрут триває довше і пролягає повз більше озер у Долині Розтоки; його можна пройти лише влітку."
+      },
+      "terrain": ["road", "forest-road", "path"],
+      "shade": "moderate",
+      "regions": ["tatra", "zakopane"],
+      "categories": ["lake", "hut"],
+      "countries": ["PL"],
+      "huts": [
+        {
+          "ref": "way/250746663"
+        },
+        {
+          "ref": "way/300719423"
+        }
+      ]
+    },
+    "checked": "2026-11-23",
+    "summary": {
+      "en": "A famous loop between 3 high-altitude lakes near the Tatra ridge.",
+      "de": "Eine berühmte Rundwanderung zwischen drei hochgelegenen Seen in der Nähe des Tatra-Gebirgskamms.",
+      "uk": "Відомий маршрут між трьома високогірними озерами поблизу хребта Татр."
+    },
+    "difficulty": {
+      "sac": "T3",
+      "exposure": {
+        "level": "low"
+      },
+      "fitness": 3,
+      "winter": {
+        "note": {
+          "en": "Walkable in winter; slippery sections near the waterfall require shoe spikes or crampons.",
+          "de": "Im Winter begehbar; an rutschigen Stellen in der Nähe des Wasserfalls sind Grödel oder Steigeisen erforderlich.",
+          "uk": "Взимку тут можна ходити пішки; на слизьких ділянках біля водоспаду потрібні шипи на взутті або кішки."
+        }
+      }
+    },
+    "season": {
+      "possible": [2, 3, 11, 12],
+      "best": [4, 5, 6, 7, 8, 9, 10]
+    },
+    "navigation": {
+      "marking": "good",
+      "offline": false,
+      "note": {
+        "en": "Colored markings for different sections of the trail, signs at crossroads.",
+        "de": "Farbige Markierungen für die verschiedenen Abschnitte des Wanderwegs, Schilder an Kreuzungen.",
+        "uk": "Кольорові позначки для різних ділянок маршруту, вказівники на перехрестях."
+      }
+    },
+    "hazards": [
+      {
+        "from": {
+          "lat": 49.2152975,
+          "lon": 20.0447595,
+          "name": {
+            "en": "Trail towards Siklawa waterfall",
+            "de": "Wanderweg zum Siklawa-Wasserfall",
+            "uk": "Стежка до водоспаду Siklawa"
+          },
+          "demEle": 1543.3
+        },
+        "to": {
+          "ref": "node/3503513134"
+        },
+        "kind": "ice",
+        "severity": "high",
+        "season": [1, 2, 3, 10, 11, 12],
+        "note": {
+          "en": "Splashes from the waterfall cover the whole trail in a thick layer of ice.",
+          "de": "Die Spritzer des Wasserfalls bedecken den gesamten Weg mit einer dicken Eisschicht.",
+          "uk": "Бризки від водоспаду вкривають усю стежку товстим шаром льоду."
+        }
+      }
+    ],
+    "water": [
+      {
+        "at": {
+          "ref": "way/29239554"
+        },
+        "kind": "lake",
+        "reliable": "yes",
+        "treat": true
+      },
+      {
+        "at": {
+          "ref": "way/29239542"
+        },
+        "kind": "lake",
+        "reliable": "yes",
+        "treat": true
+      },
+      {
+        "at": {
+          "ref": "way/250746663"
+        },
+        "kind": "shop",
+        "reliable": "yes"
+      },
+      {
+        "at": {
+          "ref": "way/300719423"
+        },
+        "kind": "shop",
+        "reliable": "yes"
+      }
+    ],
+    "signal": [
+      {
+        "quality": "good",
+        "note": {
+          "en": "Good signal on most sections of the trail.",
+          "de": "Auf den meisten Abschnitten des Wanderwegs ist der Empfang gut.",
+          "uk": "На більшості ділянок маршруту хороший сигнал."
+        }
+      }
+    ],
+    "stops": [
+      {
+        "at": {
+          "ref": "way/250746663"
+        }
+      },
+      {
+        "at": {
+          "ref": "way/300719423"
+        }
+      }
+    ],
+    "plan": {
+      "alternatives": {
+        "harder": ["2026-11-14-kasprowy_wierch"],
+        "similar": ["2026-04-11-snezka_krakonos"]
+      },
+      "timing": {
+        "start": "09:00",
+        "turnaround": "13:00"
+      },
+      "notFor": [
+        {
+          "en": "Hikers without proper gear.",
+          "de": "Wanderer ohne geeignete Ausrüstung.",
+          "uk": "Туристи без належного спорядження."
+        },
+        {
+          "en": "Tourists looking for an easy popular walking trail.",
+          "de": "Touristen, die einen einfachen, beliebten Wanderweg suchen.",
+          "uk": "Туристи, які шукають легкий і популярний пішохідний маршрут."
+        }
+      ],
+      "for": [
+        {
+          "en": "Hikers exploring ways to bypass the crowds.",
+          "de": "Wanderer, die nach Möglichkeiten suchen, den Menschenmassen auszuweichen.",
+          "uk": "Туристи, які шукають способи уникнути натовпу."
+        },
+        {
+          "en": "People in search of lake views from above.",
+          "de": "Menschen, die die Seen von oben sehen möchten.",
+          "uk": "Люди, які прагнуть помилуватися краєвидами озера з висоти."
+        }
+      ],
+      "gear": [
+        {
+          "item": "boots",
+          "need": "conditional",
+          "when": {
+            "en": "for winter tours",
+            "de": "für Wintertouren",
+            "uk": "для зимових походів"
+          }
+        },
+        {
+          "item": "poles",
+          "when": {
+            "en": "for the flat sections and descents",
+            "de": "für die flachen Abschnitte und Abstiege",
+            "uk": "на рівних ділянках та спусках"
+          },
+          "need": "optional"
+        },
+        {
+          "item": "water",
+          "amount": {
+            "en": "2–3 L",
+            "de": "2–3 l",
+            "uk": "2–3 л"
+          }
+        },
+        {
+          "item": "microspikes",
+          "need": "conditional",
+          "when": {
+            "en": "in winter for the icy sections",
+            "de": "im Winter für die vereisten Abschnitte",
+            "uk": "взимку на обмерзлих ділянках"
+          }
+        },
+        {
+          "item": "crampons",
+          "need": "conditional",
+          "when": {
+            "en": "in winter for the icy sections",
+            "de": "im Winter für die vereisten Abschnitte",
+            "uk": "взимку на обмерзлих ділянках"
+          }
+        }
+      ]
+    },
+    "legs": [
+      {
+        "to": {
+          "lat": 49.2338879,
+          "lon": 20.0876347,
+          "name": {
+            "en": "Crossroads to Dolina Roztoki",
+            "de": "Abzweig in die Dolina Roztoki",
+            "uk": "Поворот у Долину Розтоки"
+          },
+          "demEle": 1119.2
+        },
+        "sac": "T1",
+        "marking": "good",
+        "terrain": ["road"]
+      },
+      {
+        "to": {
+          "lat": 49.2190807,
+          "lon": 20.0529041,
+          "name": {
+            "en": "Supply cable car for Schronisko PTTK w Dolinie Pięciu Stawów Polskich",
+            "de": "Materialseilbahn der Schronisko PTTK w Dolinie Pięciu Stawów Polskich",
+            "uk": "Вантажна канатна дорога до Schronisko PTTK w Dolinie Pięciu Stawów Polskich"
+          },
+          "demEle": 1394.8
+        },
+        "sac": "T2",
+        "terrain": ["forest-road"],
+        "marking": "good"
+      },
+      {
+        "to": {
+          "ref": "way/250746663"
+        },
+        "sac": "T2",
+        "terrain": ["path"],
+        "marking": "good",
+        "note": {
+          "en": "Some sections freeze over in winter.",
+          "de": "Im Winter frieren einige Abschnitte zu.",
+          "uk": "Взимку деякі ділянки замерзають."
+        }
+      },
+      {
+        "to": {
+          "lat": 49.2038975,
+          "lon": 20.0710692,
+          "name": {
+            "en": "Crossroads from Morskie Oko to Kępa",
+            "de": "Abzweig vom Morskie Oko zur Kępa",
+            "uk": "Перехрестя від Morskie Oko до Kępa"
+          },
+          "demEle": 1404.8
+        },
+        "sac": "T3",
+        "terrain": ["path"],
+        "marking": "good"
+      },
+      {
+        "to": {
+          "ref": "way/85511474"
+        },
+        "sac": "T1",
+        "terrain": ["road"],
+        "marking": "good",
+        "note": {
+          "en": "Asphalt road gets covered with ice in winter.",
+          "de": "Im Winter ist die Asphaltstraße mit Eis bedeckt.",
+          "uk": "Взимку асфальтова дорога вкривається льодом."
+        }
+      }
+    ],
+    "suitability": {
+      "kids": "older",
+      "dogs": "no",
+      "stroller": false,
+      "bike": "no",
+      "winter": "with-gear",
+      "night": "yes",
+      "solo": "yes"
+    },
+    "access": {
+      "carFree": "yes",
+      "checked": "2026-11-23",
+      "transport": [
+        {
+          "use": "bus-zakopane-palenica-bialczanska"
+        }
+      ],
+      "parking": [
+        {
+          "use": "parking-lot-palenica-bialczanska"
+        }
+      ]
+    },
+    "permits": [
+      {
+        "use": "tatra-national-park-entry-ticket"
+      }
+    ],
+    "protectedAreas": {
+      "en": "The whole hike takes place in Tatra National Park.",
+      "de": "Die gesamte Wanderung findet im Tatra-Nationalpark statt.",
+      "uk": "Весь похід проходить на території Татранського національного парку."
+    }
+  },
+  "checkpoints": [
+    [20.103047, 49.255995600000006],
+    [20.0439611, 49.2141556],
+    [20.0487403, 49.21364105000001],
+    [20.0696548, 49.2146063],
+    [20.07126015, 49.2014275],
+    [20.103047, 49.255995600000006]
+  ]
+}

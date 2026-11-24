@@ -27,6 +27,17 @@
 			"cash": false,
 			"checked": "2026-10-18"
 		},
+		"node/4239028296": {
+			"kind": "restaurant",
+			"open": "all-year",
+			"overnight": false,
+			"booking": "https://poziom1959.pl/en/",
+			"phone": "+48693642250",
+			"water": true,
+			"food": true,
+			"cash": false,
+			"checked": "2026-11-21"
+		},
 		"node/4730936370": {
 			"kind": "hotel",
 			"days": {
@@ -197,9 +208,98 @@
 			"water": true,
 			"food": true,
 			"checked": "2026-09-27"
+		},
+		"way/250746663": {
+			"kind": "alpine-hut",
+			"open": "all-year",
+			"overnight": true,
+			"booking": "https://piecstawow.pl/rezerwacje/?hotresevent=hotres_step1",
+			"phone": "+48781055555",
+			"water": true,
+			"food": true,
+			"cash": false,
+			"price": [
+				{
+					"amount": 150,
+					"currency": "PLN",
+					"per": "night",
+					"note": {
+						"en": "Per person.",
+						"de": "Pro Person.",
+						"uk": "На одну особу."
+					},
+					"checked": "2026-11-23"
+				}
+			],
+			"checked": "2026-11-23"
+		},
+		"way/300719423": {
+			"kind": "alpine-hut",
+			"open": "all-year",
+			"overnight": true,
+			"booking": "https://schroniskomorskieoko.pl/en/offer",
+			"phone": "+48182077609",
+			"water": true,
+			"food": true,
+			"cash": false,
+			"price": [
+				{
+					"amount": 120,
+					"currency": "PLN",
+					"per": "night",
+					"note": {
+						"en": "Per person. 140 PLN in summer 01.07–30.09.",
+						"de": "Pro Person. 140 PLN im Sommer vom 01.07. bis 30.09.",
+						"uk": "На особу. 140 злотих у літній період з 01.07 по 30.09."
+					},
+					"checked": "2026-11-23"
+				}
+			],
+			"checked": "2026-11-23"
 		}
 	},
 	"transport": {
+		"bus-12-zakopane-kuznice": {
+			"mode": "bus",
+			"from": {
+				"en": "Zakopane",
+				"de": "Zakopane",
+				"uk": "Закопане"
+			},
+			"to": {
+				"ref": "node/343492983"
+			},
+			"direction": "both",
+			"duration": 14,
+			"line": "12",
+			"operator": "KM Zakopane",
+			"first": "05:30",
+			"last": "19:01",
+			"frequency": {
+				"en": "every 1.5 hours",
+				"de": "alle 1,5 Stunden",
+				"uk": "кожні 1,5 години"
+			},
+			"price": [
+				{
+					"amount": 6,
+					"currency": "PLN",
+					"per": "person",
+					"checked": "2026-11-21"
+				}
+			],
+			"ticket": {
+				"en": "Normal adult ticket",
+				"de": "Normaler Fahrschein für Erwachsene",
+				"uk": "Звичайний квиток для дорослих"
+			},
+			"note": {
+				"en": "Other buses on the same route available every 20 minutes.",
+				"de": "Weitere Busse auf derselben Strecke verkehren alle 20 Minuten.",
+				"uk": "Інші автобуси на цьому ж маршруті курсують кожні 20 хвилин."
+			},
+			"checked": "2026-11-21"
+		},
 		"bus-326-ettal-klostergasthof-oberau": {
 			"mode": "bus",
 			"from": {
@@ -266,20 +366,14 @@
 			"direction": "there",
 			"duration": 28,
 			"changes": 0,
-			"operator": "MVV",
 			"line": "356",
+			"operator": "MVV",
 			"first": "08:17",
 			"last": "18:17",
 			"frequency": {
 				"en": "hourly",
 				"de": "stündlich",
 				"uk": "щогодини"
-			},
-			"checked": "2026-11-10",
-			"ticket": {
-				"en": "Deutschlandticket valid to Bayerwald",
-				"de": "Deutschlandticket bis Bayerwald gültig",
-				"uk": "Deutschlandticket дійсний до Баєрвальду"
 			},
 			"price": [
 				{
@@ -290,7 +384,13 @@
 						"uk": "з Deutschlandticket"
 					}
 				}
-			]
+			],
+			"ticket": {
+				"en": "Deutschlandticket valid to Bayerwald",
+				"de": "Deutschlandticket bis Bayerwald gültig",
+				"uk": "Deutschlandticket дійсний до Баєрвальду"
+			},
+			"checked": "2026-11-10"
 		},
 		"bus-359-gmund-breitenbach-bad-wiessee": {
 			"mode": "bus",
@@ -422,6 +522,38 @@
 					}
 				}
 			]
+		},
+		"bus-zakopane-palenica-bialczanska": {
+			"mode": "bus",
+			"from": {
+				"en": "Zakopane",
+				"de": "Zakopane",
+				"uk": "Закопане"
+			},
+			"to": {
+				"ref": "way/85511474"
+			},
+			"direction": "both",
+			"duration": 53,
+			"changes": 0,
+			"line": "Zakopane-Palenica Białczańska",
+			"operator": "TRANS-BUS-BUKOWINA",
+			"first": "08:09",
+			"last": "18:51",
+			"frequency": {
+				"en": "every 30 minutes",
+				"de": "alle 30 Minuten",
+				"uk": "кожні 30 хвилин"
+			},
+			"price": [
+				{
+					"amount": 15,
+					"currency": "PLN",
+					"per": "person",
+					"checked": "2026-11-23"
+				}
+			],
+			"checked": "2026-11-23"
 		},
 		"train-rb-55-munich-central-station-fischhausen-neuhaus": {
 			"mode": "train",
@@ -835,6 +967,43 @@
 		}
 	},
 	"lifts": {
+		"kasprowy-wierch-cable-car": {
+			"name": {
+				"en": "Kasprowy Wierch cable car",
+				"de": "Seilbahn Kasprowy Wierch",
+				"uk": "Канатна дорога Kasprowy Wierch"
+			},
+			"kind": "cable-car",
+			"from": {
+				"ref": "node/343492983"
+			},
+			"to": {
+				"ref": "node/3552158247"
+			},
+			"direction": "both",
+			"first": "08:00",
+			"last": "16:00",
+			"price": [
+				{
+					"amount": 119,
+					"currency": "PLN",
+					"per": "adult",
+					"note": {
+						"en": "One-way ticket price.",
+						"de": "Preis für eine einfache Fahrt.",
+						"uk": "Вартість квитка в один бік."
+					},
+					"checked": "2026-11-21"
+				}
+			],
+			"url": "https://www.pkl.pl/kasprowy-wierch/cennik-kopia.html",
+			"note": {
+				"en": "If you buy a two-way ticket, you have at most 1 hour 40 minutes at the top.",
+				"de": "Mit einer Hin- und Rückfahrkarte habt ihr oben höchstens 1 Stunde und 40 Minuten Zeit.",
+				"uk": "Якщо ви придбаєте квиток туди й назад, у вас буде не більше 1 години 40 хвилин на вершині."
+			},
+			"checked": "2026-11-21"
+		},
 		"tegelbergbahn": {
 			"name": {
 				"en": "Tegelbergbahn",
@@ -911,6 +1080,19 @@
 			"fills": "weekends",
 			"checked": "2026-10-04"
 		},
+		"parking-lot-kuznice": {
+			"at": {
+				"ref": "way/1535577520"
+			},
+			"name": {
+				"en": "Parking lot Kuźnice",
+				"de": "Parkplatz Kuźnice",
+				"uk": "Автостоянка Кузьниці"
+			},
+			"size": "medium",
+			"fills": "always",
+			"checked": "2026-11-21"
+		},
 		"parking-lot-neuhaus-station": {
 			"at": {
 				"ref": "way/378630219",
@@ -953,6 +1135,28 @@
 			"size": "small",
 			"fills": "weekends",
 			"checked": "2026-10-11"
+		},
+		"parking-lot-palenica-bialczanska": {
+			"at": {
+				"ref": "way/85511474"
+			},
+			"price": [
+				{
+					"amount": 36,
+					"currency": "PLN",
+					"per": "day",
+					"note": {
+						"en": "In-person from 66 PLN / day.",
+						"de": "Vor Ort ab 66 PLN pro Tag.",
+						"uk": "На місці — від 66 злотих на день."
+					},
+					"checked": "2026-11-23"
+				}
+			],
+			"size": "medium",
+			"fills": "always",
+			"url": "https://tpn.gov.pl/parkingi-morskie-oko",
+			"checked": "2026-11-23"
 		},
 		"parking-lot-schliersee": {
 			"at": {
@@ -1069,5 +1273,30 @@
 			"checked": "2026-10-25"
 		}
 	},
-	"tickets": {}
+	"tickets": {},
+	"permits": {
+		"tatra-national-park-entry-ticket": {
+			"name": {
+				"en": "Entry ticket – hiking trails in the Tatra National Park",
+				"de": "Eintrittskarte – Wanderwege im Tatra-Nationalpark",
+				"uk": "Вхідний квиток — пішохідні маршрути в Татранському національному парку"
+			},
+			"required": true,
+			"price": [
+				{
+					"amount": 11,
+					"currency": "PLN",
+					"per": "day",
+					"note": {
+						"en": "Reduced ticket available for 5.50 PLN.",
+						"de": "Ermäßigte Eintrittskarte für 5,50 PLN erhältlich.",
+						"uk": "Квиток за зниженою ціною — 5,50 злотих."
+					},
+					"checked": "2026-11-23"
+				}
+			],
+			"url": "https://tpn.gov.pl/bilety?dl-open=wstep",
+			"checked": "2026-11-23"
+		}
+	}
 }

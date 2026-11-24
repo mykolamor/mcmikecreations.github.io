@@ -68,7 +68,8 @@ const CANONICAL = `{
 		}
 	},
 	"parking": {},
-	"tickets": {}
+	"tickets": {},
+	"permits": {}
 }
 `;
 
@@ -90,7 +91,7 @@ test('the library writer is byte-stable and round-trips', () => {
 		stops: { 'way/3': scrambled.stops['way/3'], 'node/12806819227': scrambled.stops['node/12806819227'], 'node/9': { checked: '2026-06-01', note: 'Bergsteigeressen', kind: 'alpine-hut' } }
 	};
 	assert.equal(serializeFactsLibrary(shuffled as never), CANONICAL);
-	assert.equal(serializeFactsLibrary(parseFactsLibrary('{}')), '{\n\t"stops": {},\n\t"transport": {},\n\t"lifts": {},\n\t"parking": {},\n\t"tickets": {}\n}\n');
+	assert.equal(serializeFactsLibrary(parseFactsLibrary('{}')), '{\n\t"stops": {},\n\t"transport": {},\n\t"lifts": {},\n\t"parking": {},\n\t"tickets": {},\n\t"permits": {}\n}\n');
 	// The file in the repo is canonical, and writing goes to it atomically.
 	assert.equal(serializeFactsLibrary(parseFactsLibrary(readFileSync(REAL, 'utf8'))), readFileSync(REAL, 'utf8'));
 	const root = mkdtempSync(join(tmpdir(), 'crm-facts-library-'));

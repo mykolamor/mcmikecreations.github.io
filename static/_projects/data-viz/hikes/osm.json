@@ -335,6 +335,30 @@
     },
     "fetched": "2026-11-08"
   },
+  "node/260278694": {
+    "lat": 49.1628335,
+    "lon": 20.0000452,
+    "tags": {
+      "alt_name:de": "Krummhorn;Ochsenhorn",
+      "ele": "2494",
+      "ele:bpv": "2494.41",
+      "importance": "national",
+      "man_made": "cross",
+      "name": "Kriváň",
+      "name:de": "Kriwan",
+      "name:hu": "Kriván",
+      "name:pl": "Krywań",
+      "natural": "peak",
+      "prominence": "400",
+      "source": "landsat;knowledge;survey, GPS",
+      "source:ele:bpv": "ÚGKK SR DMR5.0",
+      "source:position": "ÚGKK SR DMR5.0",
+      "summit:cross": "yes",
+      "wikidata": "Q845990",
+      "wikipedia": "sk:Kriváň (vrch v Tatrách)"
+    },
+    "fetched": "2026-11-22"
+  },
   "node/260686432": {
     "lat": 47.6658847,
     "lon": 11.7967506,
@@ -1384,6 +1408,20 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/343492983": {
+    "lat": 49.270251,
+    "lon": 19.9808508,
+    "tags": {
+      "is_in:city": "Zakopane",
+      "name": "Kuźnice",
+      "place": "quarter",
+      "ref:prng": "65942",
+      "teryt:simc": "0964117",
+      "wikidata": "Q11751496",
+      "wikipedia": "pl:Kuźnice (Zakopane)"
+    },
+    "fetched": "2026-11-16"
+  },
   "node/344347709": {
     "lat": 47.5842002,
     "lon": 11.0162519,
@@ -1409,6 +1447,23 @@
       "natural": "peak"
     },
     "fetched": "2026-10-26"
+  },
+  "node/355985949": {
+    "lat": 49.2251794,
+    "lon": 20.0145834,
+    "demEle": 2053.7,
+    "tags": {
+      "alt_name:de": "Polnische Kapelle",
+      "alt_name:sk": "Koščielec",
+      "ele": "2155",
+      "name": "Kościelec",
+      "name:hu": "Kápolna-csúcs",
+      "natural": "peak",
+      "ref:prng": "59391",
+      "wikidata": "Q3695958",
+      "wikipedia": "pl:Kościelec (Tatry)"
+    },
+    "fetched": "2026-11-22"
   },
   "node/356022809": {
     "lat": 47.7498374,
@@ -1452,6 +1507,72 @@
       "website": "http://www.hoellentalklamm.de/"
     },
     "fetched": "2026-10-26"
+  },
+  "node/385103809": {
+    "lat": 49.1828242,
+    "lon": 20.0674662,
+    "demEle": 2356.2,
+    "tags": {
+      "ele": "2410",
+      "name": "Mięguszowiecki Szczyt Czarny / Východný Mengusovský štít",
+      "name:de": "Östliche Mengsdorfer Spitze",
+      "name:hu": "Keleti-Menguszfalvi-csúcs",
+      "name:pl": "Mięguszowiecki Szczyt Czarny",
+      "name:sk": "Východný Mengusovský štít",
+      "natural": "peak",
+      "note:prominence": "97?",
+      "official_name:pl": "Mięguszowiecki Czarny",
+      "prominence": "103",
+      "ref:prng": "80256",
+      "wikidata": "Q11783967",
+      "wikipedia": "pl:Mięguszowiecki Szczyt Czarny"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/385115017": {
+    "lat": 49.1833905,
+    "lon": 20.0880078,
+    "demEle": 2294.9,
+    "tags": {
+      "alt_name:hu": "Középső-Dénes-csúcs",
+      "alt_name:sk": "Nižné Rysy",
+      "description": "Trzeci pod względem wysokości szczyt w Polsce",
+      "ele": "2430",
+      "ele:bpv": "2430.83",
+      "name": "Malé Rysy / Niżnie Rysy",
+      "name:de": "Dénesspitze",
+      "name:hu": "Dénes-csúcs",
+      "name:pl": "Niżnie Rysy",
+      "name:sk": "Malé Rysy",
+      "natural": "peak",
+      "prominence": "65",
+      "ref:prng": "87710",
+      "source:ele:bpv": "ÚGKK SR DMR5.0",
+      "source:position": "ÚGKK SR DMR5.0",
+      "wikidata": "Q3284720"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/385123541": {
+    "lat": 49.2067762,
+    "lon": 20.0134135,
+    "demEle": 2040.0,
+    "tags": {
+      "alt_name:de": "Glattkoppe",
+      "alt_name:hu": "Glatki",
+      "ele": "2065",
+      "name": "Gładki Wierch / Hladký štít",
+      "name:de": "Glatter Berg",
+      "name:hu": "Sima-hegy",
+      "name:pl": "Gładki Wierch",
+      "name:sk": "Hladký štít",
+      "natural": "peak",
+      "prominence": "71",
+      "ref:prng": "33241",
+      "wikidata": "Q3495327",
+      "wikipedia": "pl:Gładki Wierch"
+    },
+    "fetched": "2026-11-22"
   },
   "node/389806116": {
     "lat": 47.7273048,
@@ -1651,6 +1772,22 @@
       "wikidata": "Q31529062"
     },
     "fetched": "2026-10-26"
+  },
+  "node/430646675": {
+    "lat": 49.2282368,
+    "lon": 19.9879231,
+    "tags": {
+      "ele": "2012",
+      "name": "Beskid / Beskyd",
+      "name:pl": "Beskid",
+      "name:sk": "Beskyd",
+      "natural": "peak",
+      "prominence": "60",
+      "ref:prng": "3933",
+      "wikidata": "Q9169549",
+      "wikipedia": "pl:Beskid (Tatry)"
+    },
+    "fetched": "2026-11-16"
   },
   "node/435173020": {
     "lat": 47.6124692,
@@ -1883,6 +2020,25 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/452477312": {
+    "lat": 49.1999582,
+    "lon": 20.0322557,
+    "demEle": 2017.6,
+    "tags": {
+      "alt_name:pl": "Niżni Liptowski Kostur",
+      "ele": "2055",
+      "name": "Niżni Kostur / Nižný kostúr",
+      "name:de": "Unterer Liptauer Wachturm",
+      "name:hu": "Alsó-Liptói-Őrszem",
+      "name:pl": "Niżni Kostur",
+      "name:sk": "Nižný kostúr",
+      "natural": "peak",
+      "ref:prng": "87670",
+      "wikidata": "Q11792499",
+      "wikipedia": "pl:Niżni Kostur"
+    },
+    "fetched": "2026-11-22"
+  },
   "node/452941377": {
     "lat": 47.5858442,
     "lon": 11.102169,
@@ -1896,6 +2052,26 @@
       "wikidata": "Q1799411"
     },
     "fetched": "2026-10-26"
+  },
+  "node/460928401": {
+    "lat": 49.2183172,
+    "lon": 20.0287051,
+    "demEle": 2242.1,
+    "tags": {
+      "ele": "2291",
+      "name": "Kozi Wierch",
+      "name:de": "Gemsenberg",
+      "name:hu": "Zerge-csúcs",
+      "name:pl": "Kozi Wierch",
+      "name:sk": "Kozí vrch",
+      "natural": "peak",
+      "prominence": "168",
+      "ref:prng": "60330",
+      "tourism": "viewpoint",
+      "wikidata": "Q1765870",
+      "wikipedia": "pl:Kozi Wierch"
+    },
+    "fetched": "2026-11-22"
   },
   "node/476498599": {
     "lat": 47.4100105,
@@ -2026,6 +2202,46 @@
       "wikidata": "Q31557250"
     },
     "fetched": "2026-10-26"
+  },
+  "node/605282343": {
+    "lat": 49.2011513,
+    "lon": 20.0052203,
+    "demEle": 1952.9,
+    "tags": {
+      "ele": "1979",
+      "ele:bpv": "1979.37",
+      "name": "Tichý vrch",
+      "name:hu": "Csendes-hegy",
+      "name:pl": "Cichy Wierch",
+      "natural": "peak",
+      "source": "landsat;knowledge",
+      "source:ele:bpv": "ÚGKK SR DMR5.0",
+      "source:position": "ÚGKK SR DMR5.0",
+      "wikidata": "Q11690548",
+      "wikipedia": "pl:Cichy Wierch"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/615589377": {
+    "lat": 49.18703,
+    "lon": 20.0592982,
+    "demEle": 2285.4,
+    "tags": {
+      "description": "Drugi pod względem wysokości szczyt w Polsce",
+      "ele": "2438",
+      "name": "Mięguszowiecki Szczyt Wielki / Veľký Mengusovský štít",
+      "name:de": "Große Mengsdorfer Spitze",
+      "name:hu": "Nagy-Menguszfalvi-csúcs",
+      "name:pl": "Mięguszowiecki Szczyt Wielki",
+      "name:sk": "Veľký Mengusovský štít",
+      "natural": "peak",
+      "official_name:pl": "Mięguszowiecki Szczyt",
+      "prominence": "213",
+      "ref:prng": "80258",
+      "wikidata": "Q3132319",
+      "wikipedia": "pl:Mięguszowiecki Szczyt"
+    },
+    "fetched": "2026-11-22"
   },
   "node/616751711": {
     "lat": 47.5015183,
@@ -2414,6 +2630,46 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/1103562910": {
+    "lat": 49.1992073,
+    "lon": 20.0333875,
+    "demEle": 2028.2,
+    "tags": {
+      "alt_name:pl": "Wyżni Liptowski Kostur",
+      "ele": "2083",
+      "ele:bpv": "2079.51",
+      "name": "Vyšný kostúr / Wyżni Kostur",
+      "name:de": "Oberer Liptauer Wachturm",
+      "name:hu": "Felső-Liptói-Őrszem",
+      "name:pl": "Wyżni Kostur",
+      "name:sk": "Vyšný kostúr",
+      "natural": "peak",
+      "ref:prng": "154022",
+      "source:ele:bpv": "ÚGKK SR DMR5.0",
+      "source:position": "ÚGKK SR DMR5.0",
+      "wikidata": "Q769933",
+      "wikipedia": "pl:Wyżni Kostur"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/1103563283": {
+    "lat": 49.2202917,
+    "lon": 20.0338276,
+    "demEle": 2210.3,
+    "tags": {
+      "alt_name:hu": "Bükk-völgyi-őrtorony",
+      "ele": "2242",
+      "name": "Buczynowa Strażnica",
+      "name:hu": "Buczyna-őrtorony",
+      "name:pl": "Buczynowa Strażnica",
+      "name:sk": "Bučinová strážnica",
+      "natural": "peak",
+      "ref:prng": "12261",
+      "wikidata": "Q9181257",
+      "wikipedia": "pl:Buczynowa Strażnica"
+    },
+    "fetched": "2026-11-22"
+  },
   "node/1129365627": {
     "lat": 47.6717531,
     "lon": 11.8381005,
@@ -2686,6 +2942,54 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/1295278125": {
+    "lat": 49.2312889,
+    "lon": 19.9661663,
+    "tags": {
+      "ele": "1874",
+      "name": "Pośredni Goryczkowy Wierch / Prostredný Goričkový vrch",
+      "name:pl": "Pośredni Goryczkowy Wierch",
+      "name:sk": "Prostredný Goričkový vrch",
+      "natural": "peak",
+      "ref:prng": "109100",
+      "wikidata": "Q11826357",
+      "wikipedia": "pl:Pośredni Goryczkowy Wierch"
+    },
+    "fetched": "2026-11-16"
+  },
+  "node/1295278137": {
+    "lat": 49.2322686,
+    "lon": 19.9576008,
+    "tags": {
+      "alt_name:sk": "Horičkova kopa",
+      "ele": "1912",
+      "name": "Goričkova kopa / Goryczkowa Czuba",
+      "name:pl": "Goryczkowa Czuba",
+      "name:sk": "Goričkova kopa",
+      "natural": "peak",
+      "ref:prng": "35057",
+      "wikidata": "Q9274624",
+      "wikipedia": "pl:Goryczkowa Czuba"
+    },
+    "fetched": "2026-11-16"
+  },
+  "node/1295278148": {
+    "lat": 49.2336471,
+    "lon": 19.9403201,
+    "tags": {
+      "alt_name:sk": "Suchý vrch Kondracký",
+      "ele": "1893",
+      "name": "Suchy Wierch Kondracki / Suchá kopa",
+      "name:pl": "Suchy Wierch Kondracki",
+      "name:sk": "Suchá kopa",
+      "natural": "peak",
+      "ref:prng": "133275",
+      "source:name:sk": "skgeodesy.sk",
+      "wikidata": "Q9347852",
+      "wikipedia": "pl:Suchy Wierch Kondracki"
+    },
+    "fetched": "2026-11-16"
+  },
   "node/1354679430": {
     "lat": 50.732746,
     "lon": 15.7333884,
@@ -2871,6 +3175,23 @@
       "natural": "peak"
     },
     "fetched": "2026-10-26"
+  },
+  "node/1496151182": {
+    "lat": 49.2269445,
+    "lon": 20.0332931,
+    "demEle": 2188.8,
+    "tags": {
+      "ele": "2228",
+      "name": "Skrajny Granat",
+      "name:de": "Nördliche Granatenspitze",
+      "name:hu": "Északi-Gránát-csúcs",
+      "name:sk": "Predný Granát",
+      "natural": "peak",
+      "ref:prng": "123993",
+      "wikidata": "Q9338167",
+      "wikipedia": "pl:Skrajny Granat"
+    },
+    "fetched": "2026-11-22"
   },
   "node/1511563857": {
     "lat": 47.71849,
@@ -3376,6 +3697,32 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/2103272998": {
+    "lat": 49.2390096,
+    "lon": 20.0724576,
+    "demEle": 1853.6,
+    "tags": {
+      "ele": "1901",
+      "name": "Turnia nad Dziadem",
+      "natural": "peak",
+      "wikidata": "Q9362824",
+      "wikipedia": "pl:Turnia nad Dziadem"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/2103273002": {
+    "lat": 49.2283333,
+    "lon": 20.05,
+    "demEle": 2111.5,
+    "tags": {
+      "ele": "2155",
+      "name": "Wielki Wołoszyn",
+      "natural": "peak",
+      "wikidata": "Q9372982",
+      "wikipedia": "pl:Wielki Wołoszyn"
+    },
+    "fetched": "2026-11-22"
+  },
   "node/2114909062": {
     "lat": 47.7194665,
     "lon": 11.4448587,
@@ -3620,6 +3967,19 @@
     },
     "fetched": "2026-11-07"
   },
+  "node/2604672434": {
+    "lat": 49.2646101,
+    "lon": 19.9871382,
+    "tags": {
+      "ele": "1224",
+      "name": "Boczań",
+      "natural": "peak",
+      "ref:prng": "7455",
+      "wikidata": "Q11688387",
+      "wikipedia": "pl:Boczań"
+    },
+    "fetched": "2026-11-16"
+  },
   "node/2607182341": {
     "lat": 47.7288407,
     "lon": 11.6905672,
@@ -3670,6 +4030,59 @@
     },
     "fetched": "2026-11-09"
   },
+  "node/2623551924": {
+    "lat": 49.1900465,
+    "lon": 19.9288105,
+    "tags": {
+      "alt_name": "Brdárova zvonica",
+      "ele": "1712",
+      "ele:bpv": "1721.51",
+      "import_ref": "Záväzné názvoslovie vrchov",
+      "name": "Brdárová zvonica",
+      "name:pl": "Brdarowa Dzwonnica",
+      "natural": "peak",
+      "source:ele:bpv": "ÚGKK SR DMR5.0",
+      "source:name": "skgeodesy.sk",
+      "source:position": "ÚGKK SR DMR5.0",
+      "wikidata": "Q9179135",
+      "wikipedia": "pl:Brdarowa Dzwonnica"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/2630293554": {
+    "lat": 49.1968752,
+    "lon": 19.9425244,
+    "tags": {
+      "ele": "1859",
+      "ele:bpv": "1859.64",
+      "import_ref": "Záväzné názvoslovie vrchov",
+      "name": "Veľká Brdárova grapa",
+      "name:pl": "Wielka Brdarowa Grapa",
+      "natural": "peak",
+      "source:ele:bpv": "ÚGKK SR DMR5.0",
+      "source:name": "skgeodesy.sk",
+      "source:position": "ÚGKK SR DMR5.0",
+      "wikidata": "Q9372769",
+      "wikipedia": "pl:Wielka Brdarowa Grapa"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/2639389008": {
+    "lat": 49.227426,
+    "lon": 20.0430864,
+    "demEle": 2132.2,
+    "tags": {
+      "ele": "2172",
+      "name": "Mała Buczynowa Turnia",
+      "name:hu": "Kis-Buczyna-torony",
+      "name:pl": "Mała Buczynowa Turnia",
+      "name:sk": "Malá Bučinová",
+      "natural": "peak",
+      "wikidata": "Q11772034",
+      "wikipedia": "pl:Mała Buczynowa Turnia"
+    },
+    "fetched": "2026-11-22"
+  },
   "node/2641015239": {
     "lat": 47.6751604,
     "lon": 11.8645597,
@@ -3719,6 +4132,22 @@
       "natural": "peak"
     },
     "fetched": "2026-10-26"
+  },
+  "node/2721684699": {
+    "lat": 49.2236914,
+    "lon": 20.0155525,
+    "demEle": 2061.3,
+    "tags": {
+      "ele": "2162",
+      "name": "Zadni Kościelec",
+      "name:hu": "Hátsó-Koscielec",
+      "name:pl": "Zadni Kościelec",
+      "natural": "peak",
+      "ref:prng": "155434",
+      "wikidata": "Q9385701",
+      "wikipedia": "pl:Zadni Kościelec"
+    },
+    "fetched": "2026-11-22"
   },
   "node/2770355657": {
     "lat": 47.5822824,
@@ -4054,6 +4483,30 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/3343362920": {
+    "lat": 49.2194211,
+    "lon": 20.0093063,
+    "demEle": 2224.6,
+    "tags": {
+      "alt_name:de": "Sauberg;Schweinkopf",
+      "alt_name:hu": "Kocahegy",
+      "ele": "2302",
+      "ele:bpv": "2301.56",
+      "name": "Svinica / Świnica",
+      "name:de": "Seealmspitze",
+      "name:hu": "Svinica",
+      "name:pl": "Świnica",
+      "name:sk": "Svinica",
+      "natural": "peak",
+      "prominence": "355",
+      "ref:prng": "138435",
+      "source:ele:bpv": "ÚGKK SR DMR5.0",
+      "source:position": "ÚGKK SR DMR5.0",
+      "wikidata": "Q2741323",
+      "wikipedia": "pl:Świnica"
+    },
+    "fetched": "2026-11-22"
+  },
   "node/3389364393": {
     "lat": 47.5232744,
     "lon": 10.6186911,
@@ -4067,6 +4520,213 @@
       "wikidata": "Q130804935"
     },
     "fetched": "2026-11-07"
+  },
+  "node/3494334728": {
+    "lat": 49.2199092,
+    "lon": 20.0153375,
+    "demEle": 2170.1,
+    "tags": {
+      "ele": "2247",
+      "name": "Zawratowa Turnia",
+      "name:de": "Unterer Seealmturm",
+      "name:hu": "Zawrat-torony",
+      "name:pl": "Zawratowa Turnia",
+      "name:sk": "Závratová veža",
+      "natural": "peak",
+      "ref:prng": "160165",
+      "wikidata": "Q9387610",
+      "wikipedia": "pl:Zawratowa Turnia"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/3503513134": {
+    "lat": 49.2141556,
+    "lon": 20.0439611,
+    "demEle": 1606.5,
+    "tags": {
+      "description": "Największy wodospad w Polsce",
+      "height": "70",
+      "name": "Siklawa",
+      "source": "mapy.geoportal.gov.pl:ortofoto",
+      "tourism": "attraction",
+      "waterway": "waterfall",
+      "wikidata": "Q3507405",
+      "wikipedia": "pl:Siklawa"
+    },
+    "fetched": "2026-11-16"
+  },
+  "node/3504631174": {
+    "lat": 49.2222837,
+    "lon": 20.0012354,
+    "demEle": 2090.7,
+    "tags": {
+      "ele": "2128",
+      "name": "Prostredná kopa / Pośrednia Turnia",
+      "name:de": "Mittlerer Turm",
+      "name:hu": "Középső-torony",
+      "name:pl": "Pośrednia Turnia",
+      "name:sk": "Prostredná kopa",
+      "natural": "peak",
+      "prominence": "79",
+      "ref:prng": "109115",
+      "wikidata": "Q11826408",
+      "wikipedia": "pl:Pośrednia Turnia"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/3508683869": {
+    "lat": 49.1785869,
+    "lon": 20.0793064,
+    "tags": {
+      "ele": "2291",
+      "name": "Żabi Koń",
+      "name:hu": "Simon-torony",
+      "name:pl": "Żabi Koń",
+      "name:sk": "Žabí kôň",
+      "natural": "peak",
+      "ref:prng": "162819",
+      "source": "geoportal.gov.pl:ortofoto",
+      "wikidata": "Q3594409",
+      "wikipedia": "sk:Žabí kôň"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/3509905952": {
+    "lat": 49.1794211,
+    "lon": 20.0740814,
+    "tags": {
+      "ele": "2365",
+      "ele:bpv": "2373.41",
+      "name": "Rogata Turniczka / Rohatá vežička",
+      "name:pl": "Rogata Turniczka",
+      "name:sk": "Rohatá vežička",
+      "natural": "peak",
+      "source": "geoportal.gov.pl:ortofoto",
+      "source:ele:bpv": "ÚGKK SR DMR5.0",
+      "source:position": "ÚGKK SR DMR5.0"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/3509947614": {
+    "lat": 49.1835586,
+    "lon": 20.0657522,
+    "demEle": 2306.0,
+    "tags": {
+      "alt_name:de": "Bäuerlein",
+      "ele": "2340",
+      "name": "Chłopek",
+      "name:de": "Chlopek",
+      "name:hu": "Parasztocska",
+      "name:pl": "Chłopek",
+      "name:sk": "Chlapík",
+      "natural": "peak",
+      "ref:prng": "15486",
+      "wikidata": "Q9192151",
+      "wikipedia": "pl:Chłopek (Tatry)"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/3552158247": {
+    "lat": 49.2318014,
+    "lon": 19.9815609,
+    "tags": {
+      "ele": "1987",
+      "name": "Kasprov vrch / Kasprowy Wierch",
+      "name:de": "Kasparskogel",
+      "name:hu": "Gáspár-csúcs",
+      "name:pl": "Kasprowy Wierch",
+      "name:sk": "Kasprov vrch",
+      "natural": "peak",
+      "old_name:pl": "Kasprowa Czuba;Stawiańska Czuba;Goryczkowiańska Czuba",
+      "prominence": "37",
+      "ref:ckkp": "MA00235",
+      "ref:prng": "51250",
+      "summit:cross": "no",
+      "wikidata": "Q1735189",
+      "wikipedia": "pl:Kasprowy Wierch"
+    },
+    "fetched": "2026-11-16"
+  },
+  "node/3558357900": {
+    "lat": 49.2342617,
+    "lon": 19.9387605,
+    "tags": {
+      "alt_name:pl": "Przełęcz pod Kondracką Czubą",
+      "ele": "1863",
+      "name": "Przełęcz pod Kopą Kondracką / Kondracké sedlo",
+      "name:pl": "Przełęcz pod Kopą Kondracką",
+      "name:sk": "Kondracké sedlo",
+      "natural": "saddle",
+      "official_name:pl": "Pod Kopą Kondracką",
+      "ref:prng": "103363",
+      "wikidata": "Q11829794",
+      "wikipedia": "pl:Przełęcz pod Kopą Kondracką"
+    },
+    "fetched": "2026-11-16"
+  },
+  "node/3560285056": {
+    "lat": 49.2299344,
+    "lon": 20.011406,
+    "demEle": 1809.9,
+    "tags": {
+      "ele": "1866",
+      "name": "Mały Kościelec",
+      "natural": "peak",
+      "ref:prng": "77094",
+      "wikidata": "Q11772558",
+      "wikipedia": "pl:Mały Kościelec"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/3560695684": {
+    "lat": 49.2365407,
+    "lon": 19.9322676,
+    "tags": {
+      "alt_name:pl": "Kondracka Kopa",
+      "ele": "2005",
+      "import_ref": "Záväzné názvoslovie vrchov",
+      "name": "Kondratova kopa / Kopa Kondracka",
+      "name:hu": "Konrád-púp",
+      "name:pl": "Kopa Kondracka",
+      "name:sk": "Kondratova kopa",
+      "natural": "peak",
+      "ref:prng": "56935",
+      "source:name": "skgeodesy.sk",
+      "wikidata": "Q11743304",
+      "wikipedia": "pl:Kopa Kondracka"
+    },
+    "fetched": "2026-11-16"
+  },
+  "node/3633357479": {
+    "lat": 49.2549125,
+    "lon": 20.0032909,
+    "demEle": 1492.0,
+    "tags": {
+      "alt_name": "Karczmisko",
+      "ele": "1499",
+      "name": "Przełęcz między Kopami",
+      "name:hu": "Király-púpi-nyereg",
+      "natural": "saddle",
+      "ref:prng": "110940",
+      "wikidata": "Q11829746",
+      "wikipedia": "pl:Przełęcz między Kopami"
+    },
+    "fetched": "2026-11-21"
+  },
+  "node/3633401218": {
+    "lat": 49.2558619,
+    "lon": 20.0048452,
+    "tags": {
+      "ele": "1531",
+      "name": "Wielka Królowa Kopa",
+      "natural": "peak",
+      "official_name": "Kopa Królowa Wielka",
+      "ref:prng": "57491",
+      "source": "geoportal.gov.pl:ortofoto",
+      "wikidata": "Q9372803",
+      "wikipedia": "pl:Wielka Kopa Królowa"
+    },
+    "fetched": "2026-11-16"
   },
   "node/3662166614": {
     "lat": 47.5840874,
@@ -4310,6 +4970,26 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/4239028296": {
+    "lat": 49.232815,
+    "lon": 19.9826983,
+    "tags": {
+      "addr:postcode": "34-500",
+      "amenity": "restaurant",
+      "contact:instagram": "poziom_1959",
+      "cuisine": "polish",
+      "delivery": "no",
+      "indoor_seating": "yes",
+      "name": "Poziom 1959",
+      "outdoor_seating": "no",
+      "payment:cash": "yes",
+      "phone": "+48 693 642 250",
+      "source": "survey",
+      "website": "https://poziom1959.pl",
+      "website:menu": "https://poziom1959.pl/menu/"
+    },
+    "fetched": "2026-11-16"
+  },
   "node/4278669243": {
     "lat": 47.6767017,
     "lon": 11.863455,
@@ -4324,6 +5004,29 @@
       "religion": "christian"
     },
     "fetched": "2026-10-26"
+  },
+  "node/4366169405": {
+    "lat": 49.1795756,
+    "lon": 20.0881081,
+    "tags": {
+      "description": "Najwyższy szczyt w Polsce",
+      "ele": "2499",
+      "importance": "national",
+      "name": "Rysy",
+      "name:be": "Рысы",
+      "name:de": "Meeraugspitze",
+      "name:hu": "Tengerszem-csúcs",
+      "name:pl": "Rysy",
+      "name:sk": "Rysy",
+      "natural": "peak",
+      "ref:prng": "119408",
+      "source": "survey, GPS",
+      "summit:cross": "no",
+      "summit:register": "yes",
+      "wikidata": "Q672936",
+      "wikipedia": "pl:Rysy"
+    },
+    "fetched": "2026-11-22"
   },
   "node/4369817141": {
     "lat": 47.7236176,
@@ -4489,6 +5192,22 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/5266496805": {
+    "lat": 49.211741,
+    "lon": 19.9685943,
+    "demEle": 1884.1,
+    "tags": {
+      "alt_name": "Licierova kopa",
+      "ele": "1901",
+      "name": "Magura",
+      "name:pl": "Rycerowa Kopa",
+      "natural": "peak",
+      "source:ele:bpv": "ÚGKK SR DMR5.0",
+      "source:position": "ÚGKK SR DMR5.0",
+      "wikidata": "Q9324325"
+    },
+    "fetched": "2026-11-22"
+  },
   "node/5340076821": {
     "lat": 47.632728,
     "lon": 11.6783446,
@@ -4531,6 +5250,19 @@
       "source:ele": "gps"
     },
     "fetched": "2026-10-26"
+  },
+  "node/5657435456": {
+    "lat": 49.1935958,
+    "lon": 19.9386648,
+    "tags": {
+      "ele:bpv": "1822.42",
+      "name": "Krajný Holý vrch",
+      "natural": "peak",
+      "source": "ZBGIS",
+      "source:ele:bpv": "ÚGKK SR DMR5.0",
+      "source:position": "ÚGKK SR DMR5.0"
+    },
+    "fetched": "2026-11-22"
   },
   "node/5741212084": {
     "lat": 47.7272436,
@@ -4618,6 +5350,20 @@
       "waterway": "waterfall"
     },
     "fetched": "2026-10-26"
+  },
+  "node/6720011784": {
+    "lat": 49.1912991,
+    "lon": 20.0461458,
+    "demEle": 2029.8,
+    "tags": {
+      "ele": "2075",
+      "name": "Kopa nad Wrotami",
+      "natural": "peak",
+      "ref:prng": "57493",
+      "wikidata": "Q11743312",
+      "wikipedia": "pl:Kopa nad Wrotami"
+    },
+    "fetched": "2026-11-22"
   },
   "node/6767676700": {
     "lat": 50.7340107,
@@ -4747,6 +5493,128 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/8518741430": {
+    "lat": 49.2643061,
+    "lon": 19.9940869,
+    "tags": {
+      "ele": "1287",
+      "name": "Wysokie",
+      "natural": "peak",
+      "ref:prng": "153664",
+      "wikidata": "Q9380251",
+      "wikipedia": "pl:Wysokie (Dolina Olczyska)"
+    },
+    "fetched": "2026-11-16"
+  },
+  "node/8757470155": {
+    "lat": 49.2132555,
+    "lon": 20.0453853,
+    "demEle": 1687.8,
+    "tags": {
+      "ele": "1725",
+      "name": "Wyżnia Kopa",
+      "natural": "peak",
+      "ref:prng": "154046",
+      "wikidata": "Q16617232",
+      "wikipedia": "pl:Wyżnia Kopa"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/8757470156": {
+    "lat": 49.2145349,
+    "lon": 20.0510088,
+    "demEle": 1676.9,
+    "tags": {
+      "ele": "1711",
+      "name": "Niżnia Kopa",
+      "natural": "peak",
+      "ref:prng": "87689",
+      "wikidata": "Q16582481",
+      "wikipedia": "pl:Niżnia Kopa"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/8757470163": {
+    "lat": 49.2143579,
+    "lon": 20.0588475,
+    "demEle": 1838.3,
+    "tags": {
+      "ele": "1875",
+      "name": "Świstowa Kopa",
+      "natural": "peak",
+      "ref:prng": "225162",
+      "wikidata": "Q16621791",
+      "wikipedia": "pl:Świstowa Kopa"
+    },
+    "fetched": "2026-11-16"
+  },
+  "node/8757470164": {
+    "lat": 49.2164694,
+    "lon": 20.0575189,
+    "demEle": 1668.8,
+    "tags": {
+      "ele": "1763",
+      "name": "Świstowa Czuba",
+      "natural": "peak",
+      "wikidata": "Q9396489",
+      "wikipedia": "pl:Świstowa Czuba"
+    },
+    "fetched": "2026-11-16"
+  },
+  "node/8967856477": {
+    "lat": 49.2346772,
+    "lon": 20.0671354,
+    "demEle": 1992.5,
+    "tags": {
+      "alt_name": "Zagonny Wierch",
+      "ele": "2039",
+      "name": "Wierch nad Zagonnym Żlebem",
+      "natural": "peak",
+      "wikidata": "Q9373222",
+      "wikipedia": "pl:Wierch nad Zagonnym Żlebem"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/8993678469": {
+    "lat": 49.2191722,
+    "lon": 20.0713708,
+    "demEle": 1615.6,
+    "tags": {
+      "name": "Czuba nad Uboczą",
+      "natural": "peak",
+      "note": "wys. ok. 1630",
+      "wikidata": "Q16538420",
+      "wikipedia": "pl:Czuba nad Uboczą"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/9004693486": {
+    "lat": 49.2146063,
+    "lon": 20.0696548,
+    "demEle": 1661.4,
+    "tags": {
+      "ele": "1683",
+      "name": "Kępa",
+      "natural": "peak"
+    },
+    "fetched": "2026-11-16"
+  },
+  "node/9032605698": {
+    "lat": 49.2284705,
+    "lon": 20.0464117,
+    "demEle": 2094.5,
+    "tags": {
+      "ele": "2135",
+      "name": "Kopa nad Krzyżnem",
+      "name:de": "Kreuzkoppe",
+      "name:hu": "Kereszt-domb",
+      "name:sk": "Kopa nad Krížnym",
+      "natural": "peak",
+      "wikidata": "Q11743310",
+      "wikipedia": "pl:Kopa nad Krzyżnem"
+    },
+    "fetched": "2026-11-22"
+  },
   "node/9101538957": {
     "lat": 47.6656009,
     "lon": 11.6209367,
@@ -4804,6 +5672,34 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/9432740698": {
+    "lat": 49.173278,
+    "lon": 19.890472,
+    "tags": {
+      "alt_name:sk": "Hlinov vrch",
+      "ele": "1863",
+      "name": "Holý vrch / Hlinov vrch",
+      "name:pl": "Hliński Wierch",
+      "name:sk": "Holý vrch",
+      "natural": "peak",
+      "wikidata": "Q9293147",
+      "wikipedia": "pl:Hliński Wierch"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/9447967719": {
+    "lat": 49.243445,
+    "lon": 19.9970056,
+    "demEle": 1732.5,
+    "tags": {
+      "ele": "1750",
+      "name": "Małe Uhrocie Kasprowe",
+      "natural": "peak",
+      "wikidata": "Q11772202",
+      "wikipedia": "pl:Małe Uhrocie Kasprowe"
+    },
+    "fetched": "2026-11-22"
+  },
   "node/9510889687": {
     "lat": 43.4501249,
     "lon": 16.6658171,
@@ -4814,6 +5710,40 @@
       "natural": "peak"
     },
     "fetched": "2026-10-26"
+  },
+  "node/9613404925": {
+    "lat": 49.2057028,
+    "lon": 19.9845954,
+    "tags": {
+      "ele": "1958",
+      "ele:bpv": "1956.25",
+      "name": "Zadná Licierova kopa",
+      "name:pl": "Zadnia Rycerowa Kopa",
+      "natural": "peak",
+      "source:ele:bpv": "ÚGKK SR DMR5.0",
+      "source:position": "ÚGKK SR DMR5.0",
+      "wikidata": "Q9385728"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/9620407832": {
+    "lat": 49.2006483,
+    "lon": 19.9738804,
+    "tags": {
+      "ele": "2052",
+      "ele:bpv": "2052.28",
+      "name": "Veľká kopa",
+      "name:hu": "Nagy-Kapor-tető",
+      "name:pl": "Wielka Kopa Koprowa",
+      "natural": "peak",
+      "prominence": "176",
+      "source": "wikipedia",
+      "source:ele:bpv": "ÚGKK SR DMR5.0",
+      "source:position": "ÚGKK SR DMR5.0",
+      "wikidata": "Q2681073",
+      "wikipedia": "sk:Veľká kopa (vrch vo Vysokých Tatrách)"
+    },
+    "fetched": "2026-11-22"
   },
   "node/9883893791": {
     "lat": 47.4001648,
@@ -4845,6 +5775,89 @@
       "natural": "peak"
     },
     "fetched": "2026-10-26"
+  },
+  "node/9991444350": {
+    "lat": 49.1849729,
+    "lon": 20.0617255,
+    "demEle": 2302.9,
+    "tags": {
+      "ele": "2389",
+      "name": "Mięguszowiecki Szczyt Pośredni / Prostredný Mengusovský štít",
+      "name:de": "Mittlere Mengsdorfer Spitze",
+      "name:hu": "Középső-Menguszfalvi-csúcs",
+      "name:pl": "Mięguszowiecki Szczyt Pośredni",
+      "name:sk": "Prostredný Mengusovský štít",
+      "natural": "peak",
+      "ref:prng": "80259",
+      "wikidata": "Q1664928",
+      "wikipedia": "pl:Mięguszowiecki Szczyt Pośredni"
+    },
+    "fetched": "2026-11-22"
+  },
+  "node/10027944667": {
+    "lat": 49.233366,
+    "lon": 19.9402452,
+    "tags": {
+      "alt_name": "Suchý vrch Kondracký",
+      "ele": "1895",
+      "name": "Suchá kopa",
+      "name:pl": "Suchy Wierch Kondracki",
+      "natural": "peak",
+      "source:name:sk": "skgeodesy.sk"
+    },
+    "fetched": "2026-11-16"
+  },
+  "node/10027944669": {
+    "lat": 49.233029,
+    "lon": 19.9484398,
+    "tags": {
+      "ele": "1832",
+      "name": "Mała Sucha Czuba Kondracka",
+      "natural": "peak",
+      "ref:prng": "174793",
+      "wikidata": "Q11772105",
+      "wikipedia": "pl:Mała Sucha Czuba Kondracka"
+    },
+    "fetched": "2026-11-16"
+  },
+  "node/10027944670": {
+    "lat": 49.2328061,
+    "lon": 19.9502356,
+    "tags": {
+      "ele": "1844",
+      "name": "Pośrednia Sucha Czuba Kondracka",
+      "natural": "peak",
+      "ref:prng": "174794",
+      "wikidata": "Q11826406",
+      "wikipedia": "pl:Pośrednia Sucha Czuba Kondracka"
+    },
+    "fetched": "2026-11-16"
+  },
+  "node/10027944672": {
+    "lat": 49.2322708,
+    "lon": 19.954076,
+    "tags": {
+      "ele": "1876",
+      "name": "Wysoka Sucha Czuba Kondracka",
+      "natural": "peak",
+      "ref:prng": "174795",
+      "wikidata": "Q9380224",
+      "wikipedia": "pl:Wysoka Sucha Czuba Kondracka"
+    },
+    "fetched": "2026-11-16"
+  },
+  "node/10027944678": {
+    "lat": 49.2323604,
+    "lon": 19.957138,
+    "tags": {
+      "alt_name:sk": "Horičkova kopa",
+      "ele": "1911",
+      "name": "Goričkova kopa / Goryczkowa Czuba",
+      "name:pl": "Goryczkowa Czuba",
+      "name:sk": "Goričkova kopa",
+      "natural": "peak"
+    },
+    "fetched": "2026-11-16"
   },
   "node/10300162542": {
     "lat": 47.7018864,
@@ -5355,6 +6368,34 @@
     },
     "fetched": "2026-10-26"
   },
+  "way/27952583": {
+    "lat": 49.197357,
+    "lon": 20.0697153,
+    "demEle": 1393.0,
+    "tags": {
+      "alt_name": "Moko",
+      "description": "Największe jezioro w Tatrach",
+      "ele": "1395",
+      "name": "Morskie Oko",
+      "name:be": "Марское Вока",
+      "name:de": "Meerauge",
+      "name:en": "Eye of the Sea",
+      "name:he": "אגם מורסקי",
+      "name:hu": "Halas-tó",
+      "name:pl": "Morskie Oko",
+      "name:sk": "Morské oko",
+      "name:uk": "Морське око",
+      "natural": "water",
+      "old_name": "Rybi Staw;Rybie Jezioro",
+      "ref:ckkp": "MA00380",
+      "ref:prng": "83345",
+      "short_name": "Moko",
+      "water": "lake",
+      "wikidata": "Q163246",
+      "wikipedia": "pl:Morskie Oko"
+    },
+    "fetched": "2026-11-16"
+  },
   "way/28963332": {
     "lat": 48.9184865,
     "lon": 12.20466935,
@@ -5369,6 +6410,82 @@
       "wikipedia": "de:Schloss Alteglofsheim"
     },
     "fetched": "2026-10-26"
+  },
+  "way/29239539": {
+    "lat": 49.18855105,
+    "lon": 20.07626455,
+    "demEle": 1578.0,
+    "tags": {
+      "alt_name": "Czarny Staw nad Morskim Okiem",
+      "description": "Drugie pod względem głębokości jezioro w Tatrach (76.4 m)",
+      "ele": "1583",
+      "name": "Czarny Staw pod Rysami",
+      "name:de": "Schwarzer See unter der Meeraugspitze",
+      "name:hu": "Tengerszem",
+      "name:pl": "Czarny Staw pod Rysami",
+      "natural": "water",
+      "ref:prng": "19625",
+      "water": "lake",
+      "wikidata": "Q981116",
+      "wikipedia": "pl:Czarny Staw pod Rysami"
+    },
+    "fetched": "2026-11-22"
+  },
+  "way/29239542": {
+    "lat": 49.211927349999996,
+    "lon": 20.04887665,
+    "demEle": 1664.9,
+    "tags": {
+      "ele": "1668",
+      "name": "Przedni Staw Polski",
+      "name:de": "Vorderer Polnischer See",
+      "name:hu": "Elülső-tó",
+      "natural": "water",
+      "official_name": "Przedni Staw",
+      "ref:prng": "110797",
+      "water": "lake",
+      "wikidata": "Q11828332",
+      "wikipedia": "pl:Przedni Staw Polski"
+    },
+    "fetched": "2026-11-16"
+  },
+  "way/29239554": {
+    "lat": 49.2085272,
+    "lon": 20.0396306,
+    "demEle": 1664.0,
+    "tags": {
+      "description": "Trzecie pod względem głębokości jezioro w Polsce i najgłębsze w Tatrach (79.3 m)",
+      "ele": "1665",
+      "name": "Wielki Staw Polski",
+      "name:de": "Großer Polnischer See",
+      "name:hu": "Nagy-tó",
+      "name:sk": "Veľké pleso",
+      "natural": "water",
+      "official_name": "Wielki Staw",
+      "ref:prng": "146315",
+      "water": "lake",
+      "wikidata": "Q3067240",
+      "wikipedia": "pl:Wielki Staw Polski"
+    },
+    "fetched": "2026-11-16"
+  },
+  "way/29239574": {
+    "lat": 49.204230800000005,
+    "lon": 20.0261004,
+    "demEle": 1719.2,
+    "tags": {
+      "alt_name": "Czarny Staw",
+      "ele": "1722",
+      "name": "Czarny Staw Polski",
+      "name:de": "Schwarzer Polnischer See",
+      "name:hu": "Fekete-tó",
+      "natural": "water",
+      "ref:prng": "19623",
+      "water": "lake",
+      "wikidata": "Q9198218",
+      "wikipedia": "pl:Czarny Staw Polski"
+    },
+    "fetched": "2026-11-22"
   },
   "way/29313903": {
     "lat": 47.3988588,
@@ -6155,6 +7272,23 @@
     },
     "fetched": "2026-10-26"
   },
+  "way/85511474": {
+    "lat": 49.255995600000006,
+    "lon": 20.103047,
+    "demEle": 982.8,
+    "tags": {
+      "access": "yes",
+      "amenity": "parking",
+      "fee": "yes",
+      "name": "Palenica Białczańska",
+      "parking": "surface",
+      "payment:prepaid_ticket": "only",
+      "supervised": "no",
+      "surface": "paved",
+      "website": "https://tpn.gov.pl/parkingi-morskie-oko"
+    },
+    "fetched": "2026-11-16"
+  },
   "way/89308953": {
     "lat": 47.7349079,
     "lon": 11.86095985,
@@ -6243,6 +7377,22 @@
       "wikipedia": "de:Schönfeldhütte"
     },
     "fetched": "2026-10-26"
+  },
+  "way/95951672": {
+    "lat": 49.22864495,
+    "lon": 19.998990650000003,
+    "tags": {
+      "ele": "1672",
+      "name": "Zielony Staw Gąsienicowy",
+      "name:hu": "Gesienciai Zöld-tó",
+      "natural": "water",
+      "official_name": "Zielony Staw",
+      "ref:prng": "161515",
+      "water": "lake",
+      "wikidata": "Q9391054",
+      "wikipedia": "pl:Zielony Staw Gąsienicowy"
+    },
+    "fetched": "2026-11-16"
   },
   "way/96257977": {
     "lat": 47.65490645,
@@ -7156,6 +8306,26 @@
     },
     "fetched": "2026-10-26"
   },
+  "way/184072780": {
+    "lat": 49.245208500000004,
+    "lon": 20.006123000000002,
+    "demEle": 1514.0,
+    "tags": {
+      "building": "yes",
+      "building:levels": "2",
+      "email": "betlejemka@pza.org.pl",
+      "fee": "yes",
+      "name": "Betlejemka",
+      "phone": "+48603424101",
+      "reservation": "yes",
+      "shower": "yes",
+      "source:building": "BDOT",
+      "stove": "yes",
+      "tourism": "chalet",
+      "website": "http://betlejemka.org.pl/betlejemka/"
+    },
+    "fetched": "2026-11-21"
+  },
   "way/185528411": {
     "lat": 48.61229675,
     "lon": 12.1963693,
@@ -7176,6 +8346,21 @@
       "wikipedia": "de:Schloss Mirskofen"
     },
     "fetched": "2026-10-26"
+  },
+  "way/200463482": {
+    "lat": 49.23348115,
+    "lon": 19.996964900000002,
+    "demEle": 1618.8,
+    "tags": {
+      "ele": "1618",
+      "name": "Litworowy Staw Gąsienicowy",
+      "natural": "water",
+      "ref:prng": "69806",
+      "water": "lake",
+      "wikidata": "Q11762036",
+      "wikipedia": "pl:Litworowy Staw Gąsienicowy"
+    },
+    "fetched": "2026-11-22"
   },
   "way/201223707": {
     "lat": 27.71493105,
@@ -7415,6 +8600,29 @@
     },
     "fetched": "2026-10-26"
   },
+  "way/250746663": {
+    "lat": 49.21364105000001,
+    "lon": 20.0487403,
+    "demEle": 1672.6,
+    "tags": {
+      "beds": "67",
+      "building": "yes",
+      "ele": "1670",
+      "material": "stone",
+      "name": "Schronisko PTTK w Dolinie Pięciu Stawów Polskich",
+      "owner": "Polskie Towarzystwo Turystyczno-Krajoznawcze",
+      "power_supply": "yes",
+      "reservation": "recommended",
+      "roof:material": "wood",
+      "rooms": "13",
+      "start_date": "1954",
+      "tourism": "alpine_hut",
+      "website": "https://www.piecstawow.pl/",
+      "wikidata": "Q9334421",
+      "wikipedia": "pl:Schronisko PTTK w Dolinie Pięciu Stawów Polskich"
+    },
+    "fetched": "2026-11-16"
+  },
   "way/258604435": {
     "lat": 43.454262099999994,
     "lon": 16.679570849999998,
@@ -7447,6 +8655,38 @@
       "wikipedia": "de:Mariä Geburt (Traubing)"
     },
     "fetched": "2026-10-26"
+  },
+  "way/300719423": {
+    "lat": 49.2014275,
+    "lon": 20.07126015,
+    "demEle": 1400.3,
+    "tags": {
+      "addr:city": "Zakopane",
+      "addr:postcode": "34-500",
+      "alt_name": "Morskie Oko",
+      "building": "yes",
+      "elevation": "1410",
+      "heritage": "2",
+      "heritage:operator": "nid",
+      "historic": "building",
+      "image": "https://commons.wikimedia.org/wiki/File:Schronisko_morskie_oko.jpg",
+      "name": "Schronisko PTTK Morskie Oko",
+      "name:de": "Meeraughütte",
+      "name:hu": "Halas-tavi menedékház",
+      "name:lt": "Kalnų namelis",
+      "owner": "Polskie Towarzystwo Turystyczno-Krajoznawcze",
+      "phone": "+48 18 207 76 09",
+      "power_supply": "yes",
+      "ref:nid": "210/76",
+      "shower": "yes",
+      "start_date": "1908",
+      "teryt:simc": "0418432",
+      "tourism": "alpine_hut",
+      "website": "https://schroniskomorskieoko.pl/",
+      "wikidata": "Q3475532",
+      "wikipedia": "pl:Schronisko PTTK nad Morskim Okiem"
+    },
+    "fetched": "2026-11-16"
   },
   "way/313172002": {
     "lat": 47.4913995,
@@ -7641,6 +8881,17 @@
     },
     "fetched": "2026-10-26"
   },
+  "way/622728030": {
+    "lat": 49.269037100000006,
+    "lon": 19.979264049999998,
+    "demEle": 1032.2,
+    "tags": {
+      "access": "private",
+      "amenity": "parking",
+      "parking": "surface"
+    },
+    "fetched": "2026-11-21"
+  },
   "way/627403025": {
     "lat": 47.38284615,
     "lon": 10.967648,
@@ -7822,6 +9073,17 @@
       "wikipedia": "en:Taleju Temple, Kathmandu"
     },
     "fetched": "2026-10-26"
+  },
+  "way/1535577520": {
+    "lat": 49.270281350000005,
+    "lon": 19.97984835,
+    "demEle": 1014.7,
+    "tags": {
+      "amenity": "parking",
+      "parking": "street_side",
+      "surface": "paved"
+    },
+    "fetched": "2026-11-21"
   },
   "relation/1207420": {
     "lat": 47.97445055,

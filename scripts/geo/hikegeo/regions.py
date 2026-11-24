@@ -55,6 +55,8 @@ SOURCES: dict[str, dict] = {
     "ester-mountains": {"kind": "range", "osm": ["R2131430"]},
     "karwendel": {"kind": "range", "osm": ["R2114147"]},
     "wetterstein": {"kind": "range", "osm": ["R2131103"]},
+    # Western, High and Belianske Tatras, both sides of the PL/SK border.
+    "tatra": {"kind": "range", "osm": ["R1934542"]},
     "mangfall-mountains": {"kind": "range", "split": {
         "of": "bavarian-prealps", "river": "R273028", "side": "east"}},
     "walchensee-mountains": {"kind": "range", "split": {
@@ -71,6 +73,8 @@ SOURCES: dict[str, dict] = {
     "walchensee": {"kind": "area", "buffer": {"osm": "R168897", "metres": 1000}},
     # OSM maps the valley as a line along its floor.
     "risstal": {"kind": "area", "buffer": {"osm": "W660104910", "metres": 1500}},
+    # Tatra County: Zakopane, Kościelisko, Poronin and Bukowina Tatrzańska (Morskie Oko).
+    "zakopane": {"kind": "area", "osm": ["R2431739"]},
 }
 
 

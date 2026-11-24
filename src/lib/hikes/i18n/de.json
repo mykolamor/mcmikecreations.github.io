@@ -182,6 +182,7 @@
 				"karwendel": "Karwendel",
 				"walchensee-mountains": "Walchenseeberge",
 				"mangfall-mountains": "Mangfallgebirge",
+				"tatra": "Tatra",
 				"wetterstein": "Wetterstein",
 				"ammertal": "Ammertal",
 				"ehrwald": "Ehrwald",
@@ -189,7 +190,8 @@
 				"schliersee": "Schliersee und Spitzingsee",
 				"schwangau": "Schwangau",
 				"tegernsee": "Tegernsee",
-				"walchensee": "Walchensee"
+				"walchensee": "Walchensee",
+				"zakopane": "Zakopane"
 			},
 			"category": {
 				"summit": "Gipfeltour",

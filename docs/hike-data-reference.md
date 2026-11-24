@@ -33,7 +33,7 @@ One route has one **slug** (`schneefernerkopf`). Every file is named after it.
 | `static/_projects/data-viz/hikes/geojson/<slug>.json` | The route line, with elevation per point. | openrouteservice export |
 | `static/_projects/data-viz/hikes/gpx/<slug>.gpx` | The recorded (or planned) track, offered as a download. | Your watch or app |
 | `static/_projects/data-viz/hikes/gpx/bailouts/*.gpx` | Planned bailout routes, referenced from `facts.bailouts[].route`. | A route planner |
-| `static/_projects/data-viz/hikes/facts-library.json` | **The facts library.** Stops, transport, lifts, parking and tickets shared by several hikes; see [the shared library](#the-shared-library-facts-libraryjson). | You |
+| `static/_projects/data-viz/hikes/facts-library.json` | **The facts library.** Stops, transport, lifts, parking, tickets and permits shared by several hikes; see [the shared library](#the-shared-library-facts-libraryjson). | You |
 | `static/_projects/data-viz/hikes/places/<slug>.md` | **A place doc.** Reference text about a hut or peak, shown under every post that lists it. | You, plus the image tools |
 | `src/lib/data/hikes.json` | Only hikes that still have **no post**, and their dates. | You |
 | `src/lib/data/contacts.json` | People's avatars and links, matched by `people:` names. | You |
@@ -299,7 +299,7 @@ story, **G** = guide below the story, **C** = elevation charts, **M** = 2D and 3
 | `access.lifts[]` | `use` ([library](#the-shared-library-facts-libraryjson) record id), `name`, `kind`, span, `direction`, `open`, `first`, `last`, `price[]`, `url`, `note`, `checked` | G | |
 | `access.tickets[]` | `use` ([library](#the-shared-library-facts-libraryjson) record id), `name`, `includes[]`, `price[]`, `validity`, `url`, `note`, `checked` | G | |
 | `access.borders[]` | `at`, `from`, `to` (country codes), `note` | G | |
-| `permits[]` | `name`, `required`, `where`, `price[]`, `url`, `note`, `checked` | G | |
+| `permits[]` | `use` ([library](#the-shared-library-facts-libraryjson) record id), `name`, `required`, `where`, `price[]`, `url`, `note`, `checked` | G | A park's entry ticket shared by its hikes belongs in the library. |
 | `protectedAreas` | text | G | Naturschutzgebiet and similar zones, in your words. |
 | `drones` | text | G | Where drones are forbidden and why. |
 | `rules[]` | `kind` (protected-area, no-camping, no-drones, dogs-on-leash, …), `label?`, span, `season`, `note` | G | Short, place-bound rules. See [Rules](#rules). |
@@ -906,6 +906,7 @@ Route-level, so they go in the sidecar. They're what the future hub pages
   | `ester-mountains` | Ester Mountains | Estergebirge | range |
   | `karwendel` | Karwendel | Karwendel | range |
   | `mangfall-mountains` | Mangfall Mountains | Mangfallgebirge | range |
+  | `tatra` | Tatra Mountains | Tatra | range |
   | `walchensee-mountains` | Walchensee Mountains | Walchenseeberge | range |
   | `wetterstein` | Wetterstein | Wetterstein | range |
   | `ammertal` | Ammer Valley | Ammertal | area |
@@ -915,6 +916,7 @@ Route-level, so they go in the sidecar. They're what the future hub pages
   | `schwangau` | Schwangau | Schwangau | area |
   | `tegernsee` | Tegernsee | Tegernsee | area |
   | `walchensee` | Walchensee | Walchensee | area |
+  | `zakopane` | Zakopane | Zakopane | area (Tatra County) |
 
   Each region also has an outline, `static/_projects/data-viz/hikes/regions/<slug>.json`
   (GeoJSON, from OpenStreetMap), built by `scripts/region_shapes.py`; `deploy.sh` builds
@@ -1193,14 +1195,15 @@ so in one line.
 	"transport": { "train-rb-6-oberau": { "mode": "train", "from": "Munich", "to": { "name": "Oberau" }, "line": "RB 6" } },
 	"lifts": {},
 	"parking": {},
-	"tickets": {}
+	"tickets": {},
+	"permits": {}
 }
 ```
 
 | Kind | Record id | How a hike uses it |
 |---|---|---|
 | `stops` | the typed OSM ref of the stop's place (`node/…`, `way/…`, `relation/…`) | Nothing to write: a `stops[]` entry whose `at` resolves to that ref (by name or `{ref}`) starts from the record. `{ "at": "Obere Firstalm" }` is a whole entry. |
-| `transport`, `lifts`, `parking`, `tickets` | lowercase words joined by `-`: `train-rb-6-oberau` | `"use": "<id>"` on an entry of `access.transport[]`, `access.lifts[]`, `access.parking[]` or `access.tickets[]`. |
+| `transport`, `lifts`, `parking`, `tickets`, `permits` | lowercase words joined by `-`: `train-rb-6-oberau` | `"use": "<id>"` on an entry of `access.transport[]`, `access.lifts[]`, `access.parking[]`, `access.tickets[]` or `permits[]`. |
 
 **A record** is the matching facts entry without what ties it to one hike: a
 stop's record has no `at` (the key is the place), and no record has a `use`.
@@ -1255,7 +1258,7 @@ run changes nothing. Run with `JITI_ALIAS='{"$lib":"'"$PWD"'/src/lib"}' node_mod
   moved only when its `at` resolved to one OSM ref, the same in every document and
   with no other stop at that place; a copy that read differently from the record
   stayed inline. The pass printed the entries that share a key but differ (stops by
-  OSM ref, transport by `mode`/`from`/`to`/`line`, lifts and tickets by `name`,
+  OSM ref, transport by `mode`/`from`/`to`/`line`, lifts, tickets and permits by `name`,
   parking by `name` and `at`) and wrote them to `scripts/crm/data/near-duplicates.json`
   (not in git), so they can be merged by hand. Both passes print a summary and the
   list of what they couldn't convert.

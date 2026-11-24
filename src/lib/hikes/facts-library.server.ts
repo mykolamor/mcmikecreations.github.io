@@ -1,7 +1,7 @@
 /**
  * The shared facts library, `static/_projects/data-viz/hikes/facts-library.json`:
- * stops, transport, lifts, parking and tickets written once and used by any
- * number of hikes. A `transport`, `lifts`, `parking` or `tickets` entry names
+ * stops, transport, lifts, parking, tickets and permits written once and used by
+ * any number of hikes. A `transport`, `lifts`, `parking`, `tickets` or `permits` entry names
  * its record with `use: "<id>"`; a stop starts from the record keyed by the
  * OSM ref its `at` resolves to. Either way the hike's own fields deep-merge on
  * top (library ← sidecar ← post), in `readHikeFacts`.
@@ -16,13 +16,13 @@
 
 import { REF_RE } from '$lib/data/osm-store';
 import { FactsError, validateLibraryRecord } from './facts.server';
-import type { Lift, Parking, Place, Stop, Text, Ticket, Transport } from './facts-schema';
+import type { Lift, Parking, Permit, Place, Stop, Text, Ticket, Transport } from './facts-schema';
 import { LIBRARY_ID_RE, LIBRARY_KINDS, type LibraryKind } from './facts-spec';
 
 export { LIBRARY_ID_RE, LIBRARY_KINDS, type LibraryKind };
 
 /** A record's name in messages. */
-export const RECORD_NAMES: Record<LibraryKind, string> = { stops: 'stop', transport: 'transport', lifts: 'lift', parking: 'parking', tickets: 'ticket' };
+export const RECORD_NAMES: Record<LibraryKind, string> = { stops: 'stop', transport: 'transport', lifts: 'lift', parking: 'parking', tickets: 'ticket', permits: 'permit' };
 
 /** A text as written: a string, or one key per language. */
 export type AuthoredText = string | Text;
@@ -50,6 +50,7 @@ export type TransportRecord = Authored<Transport>;
 export type LiftRecord = Authored<Lift>;
 export type ParkingRecord = Authored<Parking>;
 export type TicketRecord = Authored<Ticket>;
+export type PermitRecord = Authored<Permit>;
 
 export type FactsLibrary = {
 	stops: Record<string, StopRecord>;
@@ -57,10 +58,11 @@ export type FactsLibrary = {
 	lifts: Record<string, LiftRecord>;
 	parking: Record<string, ParkingRecord>;
 	tickets: Record<string, TicketRecord>;
+	permits: Record<string, PermitRecord>;
 };
 
 export function emptyFactsLibrary(): FactsLibrary {
-	return { stops: {}, transport: {}, lifts: {}, parking: {}, tickets: {} };
+	return { stops: {}, transport: {}, lifts: {}, parking: {}, tickets: {}, permits: {} };
 }
 
 function isObj(v: unknown): v is Record<string, unknown> {

@@ -1,0 +1,458 @@
+{
+  "name": {
+    "en": "Kasprowy Wierch",
+    "de": "Kasprowy Wierch",
+    "uk": "Каспровий Верх"
+  },
+  "height": 512,
+  "checkpoints": [
+    [19.9322676, 49.2365407],
+    [19.9403201, 49.2336471],
+    [19.9815609, 49.2318014],
+    [19.9879231, 49.2282368],
+    [19.9815609, 49.2318014],
+    [19.998990650000003, 49.22864495],
+    [20.0048452, 49.2558619],
+    [19.9808508, 49.270251]
+  ],
+  "description": {
+    "en": "Hike from Kasprowy Wierch to Kuźnice via Kasprowy Wierch (1987 m), Pośredni Goryczkowy Wierch (1874 m), Goryczkowa Czuba (1912 m), Wysoka Sucha Czuba Kondracka (1876 m), Suchá kopa (1895 m), Kopa Kondracka (2005 m), Beskid (2012 m), Wielka Królowa Kopa (1531 m), Wysokie (1287 m), and Boczań (1224 m).",
+    "de": "Wanderung vom Kasprowy Wierch nach Kuźnice über Kasprowy Wierch (1987 m), Pośredni Goryczkowy Wierch (1874 m), Goryczkowa Czuba (1912 m), Wysoka Sucha Czuba Kondracka (1876 m), Suchá kopa (1895 m), Kopa Kondracka (2005 m), Beskid (2012 m), Wielka Królowa Kopa (1531 m), Wysokie (1287 m) und Boczań (1224 m).",
+    "uk": "Піший маршрут від Kasprowy Wierch до Кузьниць через Kasprowy Wierch (1987 м), Pośredni Goryczkowy Wierch (1874 м), Goryczkowa Czuba (1912 м), Wysoka Sucha Czuba Kondracka (1876 м), Suchá kopa (1895 м), Kopa Kondracka (2005 м), Beskid (2012 м), Wielka Królowa Kopa (1531 м), Wysokie (1287 м) та Boczań (1224 м)."
+  },
+  "nodes": ["node/3552158247", "node/343492983", "node/3558357900", "node/3560695684", "node/1295278148", "node/10027944667", "node/10027944669", "node/10027944670", "node/10027944672", "node/10027944678", "node/1295278137", "node/1295278125", "node/4239028296", "node/430646675", "way/95951672", "node/3633401218", "node/8518741430", "node/2604672434", "way/184072780", "way/1535577520", "node/3633357479", "way/200463482"],
+  "facts": {
+    "bailouts": [
+      {
+        "at": {
+          "ref": "node/3552158247"
+        },
+        "to": {
+          "en": "Kuźnice",
+          "de": "Kuźnice",
+          "uk": "Кузьниці"
+        },
+        "via": "trail",
+        "time": 188,
+        "note": {
+          "en": "Follow the ridge all the way down.",
+          "de": "Folgt dem Grat ganz hinunter.",
+          "uk": "Йдіть уздовж хребта аж до самого низу."
+        },
+        "last": false,
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/kasprowy_wierch-kuznice.gpx"
+      },
+      {
+        "at": {
+          "ref": "node/3558357900"
+        },
+        "to": {
+          "en": "Kuźnice",
+          "de": "Kuźnice",
+          "uk": "Кузьниці"
+        },
+        "time": 137,
+        "via": "trail",
+        "last": false,
+        "note": {
+          "en": "Follow the northern slope down from the saddle.",
+          "de": "Steigt vom Sattel über den Nordhang ab.",
+          "uk": "Спускайтеся вниз по північному схилу від сідловини."
+        },
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/kondracke_sedlo-kuznice.gpx"
+      },
+      {
+        "at": {
+          "ref": "node/3560695684"
+        },
+        "to": {
+          "en": "Kuźnice",
+          "de": "Kuźnice",
+          "uk": "Кузьниці"
+        },
+        "via": "trail",
+        "time": 161,
+        "note": {
+          "en": "Follow the ridge down north.",
+          "de": "Folgt dem Grat nach Norden hinunter.",
+          "uk": "Йдіть уздовж хребта вниз на північ."
+        },
+        "last": true,
+        "route": "/_projects/data-viz/hikes/gpx/bailouts/kondracka_kopa-kuznice.gpx"
+      }
+    ],
+    "route": {
+      "peaks": [
+        {
+          "ref": "node/3552158247"
+        },
+        {
+          "ref": "node/1295278125"
+        },
+        {
+          "ref": "node/1295278137"
+        },
+        {
+          "ref": "node/10027944678"
+        },
+        {
+          "ref": "node/10027944672"
+        },
+        {
+          "ref": "node/10027944670"
+        },
+        {
+          "ref": "node/10027944669"
+        },
+        {
+          "ref": "node/10027944667"
+        },
+        {
+          "ref": "node/1295278148"
+        },
+        {
+          "ref": "node/3560695684"
+        },
+        {
+          "ref": "node/430646675"
+        },
+        {
+          "ref": "node/3633401218"
+        },
+        {
+          "ref": "node/8518741430"
+        },
+        {
+          "ref": "node/2604672434"
+        }
+      ],
+      "regions": ["tatra", "zakopane"],
+      "categories": ["ridge", "peak-bagging", "hut"],
+      "countries": ["PL"],
+      "start": {
+        "ref": "node/3552158247"
+      },
+      "end": {
+        "ref": "node/343492983"
+      },
+      "type": "out-and-back",
+      "official": {
+        "en": "The official route starts and finishes at the Kasprowy Wierch cable car station.",
+        "de": "Die offizielle Route beginnt und endet an der Seilbahnstation Kasprowy Wierch.",
+        "uk": "Офіційний маршрут починається і закінчується на станції канатної дороги Kasprowy Wierch."
+      },
+      "terrain": ["forest-road", "path", "ridge"],
+      "shade": "low",
+      "huts": [
+        {
+          "ref": "node/4239028296"
+        },
+        {
+          "ref": "way/184072780"
+        }
+      ]
+    },
+    "summary": {
+      "en": "A popular out-and-back route along the border between Poland and Slovakia, starting at Kasprowy Wierch.",
+      "de": "Eine beliebte Hin- und Rückroute entlang der Grenze zwischen Polen und der Slowakei, die am Kasprowy Wierch beginnt.",
+      "uk": "Популярний маршрут туди й назад уздовж кордону між Польщею та Словаччиною, що починається на Kasprowy Wierch."
+    },
+    "difficulty": {
+      "sac": "T2",
+      "exposure": {
+        "level": "moderate",
+        "note": {
+          "en": "A few narrow sections which may be hard to traverse after heavy snowfall.",
+          "de": "Einige enge Abschnitte, die nach starken Schneefällen möglicherweise schwer zu passieren sind.",
+          "uk": "Кілька вузьких ділянок, які можуть бути важкими для проходження після сильного снігопаду."
+        }
+      },
+      "fitness": 3,
+      "winter": {
+        "note": {
+          "en": "Possible in winter with snowshoes and/or shovels.",
+          "de": "Im Winter mit Schneeschuhen und/oder Schaufeln möglich.",
+          "uk": "Можливо взимку з використанням снігоступів та/або лопат."
+        }
+      }
+    },
+    "season": {
+      "best": [5, 6, 7, 8, 9, 10],
+      "possible": [2, 3, 4, 11]
+    },
+    "navigation": {
+      "marking": "good",
+      "note": {
+        "en": "Colored markings for different sections of the route.",
+        "de": "Farbige Markierungen für verschiedene Abschnitte der Strecke.",
+        "uk": "Кольорові позначки для різних ділянок маршруту."
+      },
+      "offline": false
+    },
+    "hazards": [
+      {
+        "from": {
+          "ref": "node/10027944678"
+        },
+        "to": {
+          "ref": "node/10027944670"
+        },
+        "kind": "fall-risk",
+        "severity": "low",
+        "season": [1, 2, 11, 12],
+        "note": {
+          "en": "More exposed slope and ridge that may be covered with ice.",
+          "de": "Stärker exponierte Hänge und Grate, die vereist sein können.",
+          "uk": "Більш відкриті схили та гребені, які можуть бути вкриті льодом."
+        }
+      }
+    ],
+    "water": [
+      {
+        "at": {
+          "ref": "node/4239028296"
+        },
+        "kind": "shop",
+        "reliable": "yes"
+      },
+      {
+        "at": {
+          "ref": "way/95951672"
+        },
+        "kind": "lake",
+        "reliable": "seasonal",
+        "treat": true,
+        "note": {
+          "en": "A mountain lake with a stream flowing out.",
+          "de": "Ein Bergsee, aus dem ein Bach fließt.",
+          "uk": "Гірське озеро, з якого витікає струмок."
+        }
+      }
+    ],
+    "signal": [
+      {
+        "quality": "patchy"
+      }
+    ],
+    "stops": [
+      {
+        "at": {
+          "ref": "node/4239028296"
+        }
+      }
+    ],
+    "access": {
+      "carFree": "yes",
+      "borders": [
+        {
+          "from": "pl",
+          "to": "sk",
+          "at": {
+            "ref": "node/3552158247"
+          },
+          "note": {
+            "en": "A trail across the border leads south.",
+            "de": "Ein Weg über die Grenze führt nach Süden.",
+            "uk": "Стежка, що пролягає через кордон, веде на південь."
+          }
+        }
+      ],
+      "transport": [
+        {
+          "use": "bus-12-zakopane-kuznice"
+        }
+      ],
+      "parking": [
+        {
+          "use": "parking-lot-kuznice"
+        }
+      ],
+      "lifts": [
+        {
+          "use": "kasprowy-wierch-cable-car"
+        }
+      ],
+      "checked": "2026-11-21"
+    },
+    "sources": [
+      {
+        "url": "https://mapa-turystyczna.pl/trail/346#49.23756/19.96302/14",
+        "title": {
+          "en": "Touristic map of the Przełęcz pod Kopą Kondracką ↔ Kasprowy Wierch trail.",
+          "de": "Touristenkarte des Wanderwegs Przełęcz pod Kopą Kondracką ↔ Kasprowy Wierch.",
+          "uk": "Туристична карта маршруту Przełęcz pod Kopą Kondracką ↔ Kasprowy Wierch."
+        },
+        "kind": "map",
+        "lang": "pl"
+      }
+    ],
+    "plan": {
+      "alternatives": {
+        "similar": ["2026-04-11-snezka_krakonos"],
+        "easier": ["2026-11-15-morskie_oko"]
+      },
+      "timing": {
+        "start": "08:00",
+        "turnaround": "14:00"
+      },
+      "notFor": [
+        {
+          "en": "Hikers not used to elevation change",
+          "de": "Wanderer, die nicht an Höhenunterschiede gewöhnt sind",
+          "uk": "Туристи, які не звикли до перепадів висот"
+        },
+        {
+          "en": "People with weak knees",
+          "de": "Menschen mit schwachen Knien",
+          "uk": "Люди зі слабкими колінами"
+        }
+      ],
+      "for": [
+        {
+          "en": "Experienced hikers looking for a medium-to-hard hike",
+          "de": "Erfahrene Wanderer, die eine mittelschwere bis anspruchsvolle Wanderung suchen",
+          "uk": "Досвідчені туристи, які шукають маршрут середньої та високої складності"
+        },
+        {
+          "en": "People exploring the most popular Polish ridge",
+          "de": "Menschen, die den beliebtesten polnischen Grat erkunden",
+          "uk": "Люди, які досліджують найпопулярніший польський гірський хребет"
+        }
+      ],
+      "gear": [
+        {
+          "item": "boots",
+          "need": "conditional",
+          "when": {
+            "en": "in snowy seasons",
+            "de": "in der Schneesaison",
+            "uk": "у сніжні пори року"
+          }
+        },
+        {
+          "item": "poles",
+          "need": "essential",
+          "when": {
+            "en": "for the descent",
+            "de": "für den Abstieg",
+            "uk": "для спуску"
+          }
+        },
+        {
+          "item": "water",
+          "amount": {
+            "en": "3–4 L",
+            "de": "3–4 l",
+            "uk": "3–4 л"
+          }
+        },
+        {
+          "item": "headlamp",
+          "need": "conditional",
+          "when": {
+            "en": "for shorter daylight hikes",
+            "de": "bei kürzerem Tageslicht",
+            "uk": "коли світловий день короткий"
+          }
+        }
+      ]
+    },
+    "legs": [
+      {
+        "to": {
+          "ref": "node/10027944678"
+        },
+        "sac": "T2",
+        "terrain": ["path"],
+        "marking": "good",
+        "note": {
+          "en": "Popular crowded segment.",
+          "de": "Ein beliebtes, stark frequentiertes Segment.",
+          "uk": "Популярний сегмент з великою кількістю відвідувачів."
+        }
+      },
+      {
+        "to": {
+          "ref": "node/3560695684"
+        },
+        "sac": "T2",
+        "terrain": ["path"],
+        "marking": "good"
+      },
+      {
+        "to": {
+          "km": 10
+        },
+        "sac": "T2",
+        "terrain": ["path"],
+        "marking": "good"
+      },
+      {
+        "to": {
+          "ref": "node/430646675"
+        },
+        "sac": "T2",
+        "terrain": ["path"],
+        "marking": "good",
+        "optional": true,
+        "note": {
+          "en": "Popular non-hiker segment.",
+          "de": "Auch bei Nicht-Wanderern beliebter Abschnitt.",
+          "uk": "Популярний сегмент серед тих, хто не займається пішим туризмом."
+        },
+        "onProfile": true
+      },
+      {
+        "to": {
+          "ref": "way/95951672"
+        },
+        "sac": "T2",
+        "terrain": ["path"],
+        "marking": "good"
+      },
+      {
+        "to": {
+          "ref": "way/184072780"
+        },
+        "sac": "T2",
+        "terrain": ["path"],
+        "marking": "good"
+      },
+      {
+        "to": {
+          "ref": "node/3633357479"
+        },
+        "sac": "T2",
+        "terrain": ["path"],
+        "marking": "good"
+      },
+      {
+        "to": {
+          "ref": "node/343492983"
+        },
+        "sac": "T2",
+        "terrain": ["path"],
+        "marking": "good"
+      }
+    ],
+    "suitability": {
+      "kids": "older",
+      "dogs": "no",
+      "stroller": false,
+      "bike": "no",
+      "winter": "with-gear",
+      "night": "yes",
+      "solo": "yes",
+      "note": {
+        "en": "A lot of snow gathers on the ridge in winter.",
+        "de": "Im Winter sammelt sich auf dem Grat viel Schnee an.",
+        "uk": "Взимку на хребті накопичується багато снігу."
+      }
+    }
+  },
+  "origin": {
+    "lat": 49.247509,
+    "lon": 19.969883
+  },
+  "image": "/images/projects/data-viz/hikes/kasprowy_wierch.jpg"
+}
