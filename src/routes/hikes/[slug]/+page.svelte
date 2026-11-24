@@ -69,14 +69,6 @@
 	const showElapsed = $derived(hasElapsed(tileInput));
 	let allHikesLink = $derived(data.post.page > 1 ? `/hikes/page/${data.post.page}/#${data.post.anchor}` : `/hikes/#${data.post.anchor}`);
 
-	// The full resolution header image, tagged with the post it belongs to: on a
-	// client-side navigation the next post's hero mounts before afterNavigate
-	// runs, and must never be handed the previous post's image.
-	let fullRes = $state<{ anchor: string; src: string } | undefined>(undefined);
-	const fullResImageSrc = $derived(fullRes?.anchor === data.post.anchor ? fullRes.src : undefined);
-	function loadFullImage() {
-		if (data.post.imageFull) fullRes = { anchor: data.post.anchor, src: data.post.imageFull };
-	}
 
 	let galleryOpen = $state(false);
 	let galleryIndex = $state(0);
@@ -91,11 +83,14 @@
 		const media = [...data.post.media, ...(data.places ?? []).flatMap((p) => p.media)];
 		const full = data.post.imageFull;
 		if (!full) return media;
+		const picture = data.post.picture;
 		const header: GalleryItem = {
 			kind: 'image',
-			src: full,
-			// The thumb doubles as the blurred stand-in while the full image loads.
-			placeholder: data.post.image !== full ? data.post.image : undefined,
+			// The largest AVIF tier, not the camera original (tens of MB).
+			src: picture?.largest ?? full,
+			// The blur (else the thumb) is the stand-in while it loads.
+			placeholder: picture?.blur ?? (data.post.image !== full ? data.post.image : undefined),
+			thumb: data.post.image !== full ? data.post.image : undefined,
 			alt: data.post.title
 		};
 		return [header, ...media];
@@ -107,9 +102,6 @@
 	}
 
 	function openHeaderImage() {
-		// The full resolution image is fetched lazily and never on small screens,
-		// so make sure its request is under way before slide 0 appears.
-		if (!fullResImageSrc) loadFullImage();
 		openGallery(0);
 	}
 
@@ -165,27 +157,6 @@
 	afterNavigate(async () => {
 		const runId = ++contentRunId;
 		teardownContent();
-
-		// Delay loading of the full resolution image to allow other assets to finish loading first
-		fullRes = undefined;
-		if (data.post.imageFull) {
-			const scheduleFullImage = () => {
-				setTimeout(() => {
-					if (runId === contentRunId) loadFullImage();
-				}, 100);
-			};
-			// `load` only fires once per full page load, never again on a client-side
-			// navigation, so on the second+ hike post the page is already complete.
-			if (document.readyState === 'complete') {
-				scheduleFullImage();
-			} else {
-				window.addEventListener('load', scheduleFullImage, { once: true });
-				// Fallback in case window load already fired
-				setTimeout(() => {
-					if (runId === contentRunId && !fullResImageSrc) loadFullImage();
-				}, 1000);
-			}
-		}
 
 		// Let Svelte finish applying this navigation's `{@html data.clientHtml}`
 		// before touching the DOM it produced.
@@ -430,7 +401,7 @@
 			{allHikesLink}
 			image={data.post.image}
 			imageFull={data.post.imageFull}
-			{fullResImageSrc}
+			picture={data.post.picture}
 			onOpenImage={openHeaderImage}
 			{tiles}
 		/>

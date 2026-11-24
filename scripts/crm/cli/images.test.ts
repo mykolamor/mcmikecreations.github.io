@@ -98,6 +98,49 @@ test('images covers an image only a translation shows', async () => {
 	assert.deepEqual(out.warnings, []);
 });
 
+const HEADERS = 'static/images/projects/data-viz/hikes';
+
+test("images gives a post's header image (its sidecar's) tiers and an entry under the full href", async () => {
+	const { root, post } = await setup('Text only.\n', 'title: Foo\n');
+	writeFileSync(join(root, HEADERS, 'foo.jpg'), await jpeg(3000, 2000));
+	writeFileSync(join(repoPaths(root).markdown, 'foo.hike.json'), JSON.stringify({ name: 'Foo', image: '/images/projects/data-viz/hikes/foo.jpg' }));
+	const { code, out } = await go(root);
+	assert.equal(code, 0, out.warnings.join('\n'));
+	for (const t of [640, 1280, 2560]) assert.ok(existsSync(join(root, HEADERS, `foo-${t}.avif`)), String(t));
+	assert.match(readFileSync(post, 'utf8'), /\n {2}\/images\/projects\/data-viz\/hikes\/foo\.jpg: \{w: 3000, h: 2000, blur: 'data:image\/webp;base64,[^']+'\}\n/);
+	// a place doc has no header image, and a second run changes nothing
+	const again = await go(root);
+	assert.deepEqual(again.out.changes, []);
+});
+
+test("images prefers a post's own image over its sidecar's", async () => {
+	const { root, post } = await setup('Text only.\n', 'title: Foo\nimage: /images/projects/data-viz/hikes/own.jpg\n');
+	writeFileSync(join(root, HEADERS, 'own.jpg'), await jpeg(1400, 1000));
+	writeFileSync(join(root, HEADERS, 'foo.jpg'), await jpeg(3000, 2000));
+	writeFileSync(join(repoPaths(root).markdown, 'foo.hike.json'), JSON.stringify({ name: 'Foo', image: '/images/projects/data-viz/hikes/foo.jpg' }));
+	const { code } = await go(root);
+	assert.equal(code, 0);
+	const text = readFileSync(post, 'utf8');
+	assert.match(text, /\/images\/projects\/data-viz\/hikes\/own\.jpg: \{w: 1400, h: 1000/);
+	assert.ok(!text.includes('hikes/foo.jpg'));
+	assert.ok(existsSync(join(root, HEADERS, 'own-1280.avif')));
+	assert.ok(!existsSync(join(root, HEADERS, 'foo-640.avif')));
+});
+
+test("a post's header image never takes a same-named body image's entry for its own", async () => {
+	// the body's topo map is keyed by its bare name, as older posts have it
+	const front = "title: Foo\nimages:\n  map.png: {w: 700, h: 700, blur: 'data:x'}\n";
+	const { root, post } = await setup('![map](/images/hikes/topo/map.png)\n', front);
+	writeFileSync(join(root, HEADERS, 'map.png'), await jpeg(3000, 2000));
+	writeFileSync(join(repoPaths(root).markdown, 'foo.hike.json'), JSON.stringify({ name: 'Foo', image: '/images/projects/data-viz/hikes/map.png' }));
+	const { code, out } = await go(root);
+	assert.equal(code, 0, out.warnings.join('\n'));
+	const text = readFileSync(post, 'utf8');
+	assert.match(text, /\n {2}map\.png: \{w: 700, h: 700, blur: 'data:x'\}\n/);
+	assert.match(text, /\n {2}\/images\/projects\/data-viz\/hikes\/map\.png: \{w: 3000, h: 2000, blur: 'data:image\/webp;base64,[^']+'\}\n/);
+	assert.ok(existsSync(join(root, HEADERS, 'map-2560.avif')));
+});
+
 async function setupBlog(post: string) {
 	const root = mkdtempSync(join(tmpdir(), 'crm-cli-blog-images-'));
 	const blog = join(root, 'static/_blog');

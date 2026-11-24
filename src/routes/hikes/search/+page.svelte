@@ -6,7 +6,8 @@
 	import AppMeta from '$lib/components/AppMeta.svelte';
 	import AppBreadcrumbs from '$lib/components/AppBreadcrumbs.svelte';
 	import HikesSearchBar from '$lib/hikes/HikesSearchBar.svelte';
-	import { Badge, Heading, Img, Span } from 'flowbite-svelte';
+	import { Badge, Heading, Span } from 'flowbite-svelte';
+	import HikeCardImage from '$lib/components/HikeCardImage.svelte';
 	import DateBadge from '$lib/components/DateBadge.svelte';
 	import { normalize } from '$lib/hikes/search-normalize';
 	import { hashQuery } from '$lib/hikes/name-hash';
@@ -127,8 +128,10 @@
 						<div
 							class="block md:max-h-40 md:min-h-40 md:min-w-56 !aspect-crt overflow-hidden rounded-t-lg md:rounded-tr-none md:rounded-l-lg"
 						>
-							<Img
+							<HikeCardImage
 								src={r.image}
+								srcset={r.srcset}
+								sizes="(min-width: 768px) 14rem, calc(100vw - 2rem)"
 								class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
 							/>
 						</div>

@@ -1,5 +1,6 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
+import { parse as parseJsonc } from 'jsonc-parser';
 import { isMap, type YAMLMap } from 'yaml';
 import { keyFor, ownFolderOf } from '../lib/image-key';
 import { encodeTiersTo, localImageRefs } from '../lib/images';
@@ -11,6 +12,7 @@ import { avifTiers, avifVariantHref, type HikeImageMeta } from '../../../src/lib
 import { isTranslationFile, translationBodies } from '../server/translations';
 import type { Command, Output } from './index';
 import { docFiles, dryRunNote, plural } from './posts';
+import { repoPaths } from '../server/paths';
 
 const FIELDS = ['w', 'h', 'blur'] as const;
 
@@ -26,7 +28,8 @@ type DocResult = { what: string[]; missing: number };
 /**
  * Gives every href in `refs` its AVIF tiers and `w`, `h` and `blur` in the doc's `images` map, where missing, and
  * writes the doc back when it changed (not under `dryRun`). `keyOf` names a new entry; an existing entry under the
- * full href or the bare file name is the one updated.
+ * full href or the bare file name is the one updated. An `exact` href (a header image) matches and is keyed by its
+ * full href only: a body image of the same file name elsewhere (a topo map) is a different picture.
  */
 async function updateDocImages(
 	root: string,
@@ -34,7 +37,8 @@ async function updateDocImages(
 	refs: Iterable<string>,
 	keyOf: (href: string) => string,
 	dryRun: boolean,
-	out: Output
+	out: Output,
+	exact: ReadonlySet<string> = new Set()
 ): Promise<DocResult> {
 	const rel = path.relative(root, file);
 	const raw = readFileSync(file, 'utf8');
@@ -43,7 +47,7 @@ async function updateDocImages(
 	const what: string[] = [];
 	let missing = 0;
 	for (const href of refs) {
-		const meta = imageMetaFor(all, href);
+		const meta = exact.has(href) ? (Object.hasOwn(all, href) ? all[href] : undefined) : imageMetaFor(all, href);
 		const fields = FIELDS.filter((k) => meta?.[k] === undefined || meta?.[k] === null || meta?.[k] === '');
 		const tiers = missingTiers(root, href, meta);
 		if (!fields.length && !tiers.length) continue;
@@ -54,7 +58,7 @@ async function updateDocImages(
 			missing++;
 			continue;
 		}
-		const key = Object.hasOwn(all, href) ? href : meta ? path.basename(href) : keyOf(href);
+		const key = exact.has(href) || Object.hasOwn(all, href) ? href : meta ? path.basename(href) : keyOf(href);
 		if (!dryRun) {
 			const r = await encodeTiersTo(src, href, root, { skipExisting: true });
 			let map = doc.get('images', true) as YAMLMap | undefined;
@@ -90,7 +94,8 @@ async function runImages(
 	refsOf: (file: string, body: string, front: Record<string, unknown>) => string[],
 	keyOf: (file: string) => (href: string) => string,
 	dryRun: boolean,
-	out: Output
+	out: Output,
+	exactOf: (file: string, front: Record<string, unknown>) => string[] = () => []
 ): Promise<number> {
 	let docs = 0;
 	let encoded = 0;
@@ -101,7 +106,7 @@ async function runImages(
 		try {
 			const { doc, body } = readFrontmatterDoc(readFileSync(file, 'utf8'));
 			const front = (doc.toJS() ?? {}) as Record<string, unknown>;
-			const r = await updateDocImages(root, file, refsOf(file, body, front), keyOf(file), dryRun, out);
+			const r = await updateDocImages(root, file, refsOf(file, body, front), keyOf(file), dryRun, out, new Set(exactOf(file, front)));
 			missing += r.missing;
 			if (!r.what.length) continue;
 			out.change(rel, r.what.join('; '));
@@ -119,6 +124,27 @@ async function runImages(
 	return failed ? 1 : 0;
 }
 
+/** Raster images under /images/ only: an SVG or GIF stays as it is, with no tiers and no blur. */
+const RASTER_HREF = /^\/images\/[^\s]+\.(?:jpe?g|png|webp)$/i;
+
+/**
+ * A dated post's header image: its own `image`, else its sidecar's (`metaPath`, else `<slug>.hike.json` beside it),
+ * as the site resolves it. Undefined for a place doc, or when neither names a local raster image.
+ */
+export function postHeaderRef(root: string, file: string, front: Record<string, unknown>): string | undefined {
+	const m = /^\d{4}-\d{2}-\d{2}-(.+)\.md$/.exec(path.basename(file));
+	if (!m || path.dirname(file) !== repoPaths(root).markdown) return undefined;
+	let href = typeof front.image === 'string' ? front.image.trim() : undefined;
+	if (!href) {
+		const sidecar = typeof front.metaPath === 'string' ? path.join(root, 'static', front.metaPath) : path.join(path.dirname(file), `${m[1]}.hike.json`);
+		if (existsSync(sidecar)) {
+			const image = (parseJsonc(readFileSync(sidecar, 'utf8')) as { image?: unknown } | undefined)?.image;
+			if (typeof image === 'string') href = image.trim();
+		}
+	}
+	return href && RASTER_HREF.test(href) ? href : undefined;
+}
+
 /**
  * Brings every local image a post or place doc shows up to the standard: AVIF tiers next to it, and `w`, `h` and
  * `blur` in its `images` entry (the former oneoff/avif-backfill.ts). Only what is missing is added: existing tiers
@@ -128,7 +154,7 @@ async function runImages(
  */
 export const images: Command = {
 	name: 'images',
-	summary: 'AVIF tiers, w, h and blur for every local image a post or place doc shows, where missing',
+	summary: 'AVIF tiers, w, h and blur for every local image a post or place doc shows (a post\'s header image too), where missing',
 	flags: ['dry-run'],
 	async run(root, args, out) {
 		if (args.positional.length) {
@@ -139,20 +165,20 @@ export const images: Command = {
 			'images',
 			root,
 			docFiles(root),
-			// A translation shows photos too, described by this doc's `images`.
-			(file, body) => [...new Set([body, ...translationBodies(file)].flatMap(localImageRefs))],
+			// The header image first (the hero, the list cards); a translation shows photos too, described by this doc's `images`.
+			(file, body, front) => [
+				...new Set([postHeaderRef(root, file, front), ...[body, ...translationBodies(file)].flatMap(localImageRefs)].filter((r): r is string => !!r))
+			],
 			(file) => (href) => keyFor(href, ownFolderOf(path.basename(file))),
 			args.flags.has('dry-run'),
-			out
+			out,
+			(file, front) => [postHeaderRef(root, file, front)].filter((r): r is string => !!r)
 		);
 	}
 };
 
 /** Where blog posts live, relative to the repo root. */
 export const BLOG_DIR = 'static/_blog';
-
-/** Raster images under /images/ only: an SVG or GIF stays as it is, with no tiers and no blur. */
-const RASTER_HREF = /^\/images\/[^\s]+\.(?:jpe?g|png|webp)$/i;
 
 /** The blog posts (translations excluded), sorted. */
 export function blogFiles(root: string): string[] {

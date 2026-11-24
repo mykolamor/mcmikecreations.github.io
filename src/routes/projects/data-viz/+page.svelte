@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Card, Heading } from 'flowbite-svelte';
+	import HikeCardImage from '$lib/components/HikeCardImage.svelte';
 	import AppMeta from '$lib/components/AppMeta.svelte';
 	import AppBreadcrumbs from '$lib/components/AppBreadcrumbs.svelte';
 	import AppJsonLd from '$lib/components/AppJsonLd.svelte';
@@ -39,9 +40,10 @@
 			{#each hikes as map}
 				<Card
 						href={`${map.route}/`}
-						img={map.image.replace('/hikes/', '/hikes/thumb/')}
 						class={map.properties?.draft === true ? 'hidden' : ''}
 				>
+					<!-- Card size sm: at most 24rem wide. -->
+					<HikeCardImage src={map.image.replace('/hikes/', '/hikes/thumb/')} srcset={map.srcset} sizes="(min-width: 640px) 24rem, calc(100vw - 2rem)" class="rounded-t-lg" />
 					<div class="m-4 sm:m-6">
 						<Heading tag="h3" class="break-words">{(map.properties.draft ? '⏳ ' : '') + map.name}</Heading>
 					</div>

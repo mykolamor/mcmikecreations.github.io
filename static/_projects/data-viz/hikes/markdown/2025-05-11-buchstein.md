@@ -18,6 +18,7 @@ images:
   2025-05-11-06.jpg: {w: 4640, h: 3472, lat: 47.657948, lon: 11.611504, demEle: 902.5, taken: '2025-05-11T20:36:14+02:00', blur: 'data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAAAwBQCdASoYABIAPtFUpk2oJCOiMBgIAQAaCWUAw3APAokq8ziy/KtSWiHstvbB4btBIAD+l+tNHlyB+z9saUXLMR8tJZ7cElDpNeSfNtyL+THM74/iwIWb7Y6jqJ2tnU3+Sbsuc6aF072zV/gT6+/AaZ2BHLc+4ZW/RcVJrvJCnjLRcRkFO4CtOH3Ex/t76PcEDE39lFSAAA=='}
   buchstein.jpg: {w: 1240, h: 1754}
   /images/hikes/topo/buchstein.jpg: {w: 1240, h: 1754, blur: 'data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAACwAwCdASoRABgAPtFgqU+oJaOiKAgBABoJaQAALtAsH+cBXZkqgAD+9OwzjNkFNasVXX3IvjCbDxy1ctx22rxR9BWbmX5k3Dy+dpavdwLxQM5Klu89t+YikEGmvKHo4vg8AAAA'}
+  /images/projects/data-viz/hikes/buchstein.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRsYAAABXRUJQVlA4ILoAAADwBACdASoYABIAPtFcpU6oJSMiKAqpABoJZACdMoM3nCdNXsb/Sw4O1gMUZP+XaIAA/rIp5xD3YxmjUwWxOld+3OcbKrEsmrHq303TjhpjgYOuzF5ODhfhA4s23ui6t1sy688W8mXYvIiYftcMi9lt4WjzrBaY07LRsSxM71jwPMqzKk3B8VRFRF14p4g/RBauSB3/2u77j/b08u2xcQ5WDHguyHH2043N6iMQeT7DAdf9HtCv5rlOAAA='}
 ---
 Topo from [bergsteigen.com](https://www.bergsteigen.com/touren/klettern/sahnestueckchen-buchstein/):
 ![Topo of the climb](/images/hikes/topo/buchstein.jpg)

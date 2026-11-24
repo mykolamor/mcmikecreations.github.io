@@ -17,6 +17,7 @@ images:
   2025-06-29-04.jpg: {w: 4640, h: 3472, lat: 48.07445, lon: 11.476067, demEle: 572.3, blur: 'data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAACQBACdASoYABIAPtFcpk6oJSMiKAqpABoJZQDM0YxELgmsE5a/sacWylUMESAA29s2bXmrgaXFrWNSnBVrFbJqG5XQxtK6Amzufj1yvFl4Xs+WUmrFMIeL4XG+rifFYnwZ3qO6tZ9/WkQZK2CGOEyg4gv05AfRyj8L3vcCPPVSxFuEdCNb70U7UjsgXBIslR4thWSZSJGY9zUGpsD7iV/wdBHkThODRaEDKM+zB4Y/DnQAAAA='}
   2025-06-29-05.jpg: {w: 4640, h: 3472, lat: 48.0198, lon: 11.415311, demEle: 636.0, blur: 'data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAAAwBQCdASoYABIAPtFYpU0oJSOiMBgIAQAaCWIAsR8YAOQer8K3NRj1p03w1TLfL/BAAAD+kZdBiRyYuw9FQVWjgbKxOi1K/SxmQOv8rDwQreEhzfyb6c/S6xhC6qlvKjOPtLnGGWE9mwYSftBrL42AFbAYiDb2zQZeA8+UsMWEWCWSSEOal8BIRZDhFzgFGIAAAA=='}
   2025-06-29-06.jpg: {w: 4640, h: 3472, lat: 48.015347, lon: 11.410172, demEle: 642.9, blur: 'data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACwBACdASoYABIAPtFYpU0oJKOiMBgIAQAaCUAXYAHCt+ESrNBowgZKEGCw96OAAP7FgdlUSj57S1dwzQF+wbewx1yRHPz870Fr4fSVBqrJP1F0vT2zdS26D1rfyco1ptLV6DzH6slQlEjlZKnkqJLC82Mlisnj4kL3985ympEdQOpCgFfXAM0MwAA='}
+  /images/projects/data-viz/hikes/muenchen_starnberg.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAADwBACdASoYABIAPtFapE0oJSOiMBgIAQAaCUAXYAHCuBXSa8OTEg57VYxqhxzEmwAA/sWB2VRKPntLV3DNAX7BtDVjUteEiLw5QH2HMhVVkn6i6agKXxQcblkjkRs5xlr7jEIZTwZx1VOxlBGDZP1ZGMDDsL6LyH2eE3uny2rSIhU1OQBQigDNDMAAAA=='}
 ---
 Having climbed [Zugspitze (2962 m) the week before](/hikes/2025-06-21-zugspitze_reintal/),
 I was eager to downscale my ambitions a bit. As part of my

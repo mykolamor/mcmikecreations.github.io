@@ -30,6 +30,7 @@ images:
   2026-02-15-20.jpg: {w: 8160, h: 6120, lat: 47.583862, lon: 10.997566, demEle: 1461.7, taken: '2026-02-15T17:00:14+01:00', blur: 'data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACQBACdASoYABIAPsFIoEunpCMht/qoAPAYCWcAvsAejKIavWUBtGHEKLpmQ9AA/uqaAdqV91isS3VEYc/+sLFnEN+4IlyvilGRbjDuAzr3UvTMX5dmECk6QeUnriAmm7oDBqJH63QLZTF+IPzXnaXVGK4Ts3q928ouNyMm8Vg0/ylyysc+KqA5oAA='}
   2026-02-15-21.jpg: {w: 8160, h: 6120, lat: 47.607783, lon: 11.017805, demEle: 927.3, blur: 'data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAADQBACdASoYABIAPtFaqU2oJSQiKAqpABoJQBWAMYdGSORusj9HukQBzMKDNOXvwAD4JntthJkcE4XHfgwAMkC4IsSUCuhuDhCO4782xVsSNcK8Jsb4kzuErRvbfxin5N9ZGB/FOhoYmH4mjR8x08JVnQOprI92uueEpQP3uNR+bCofyTsXwOA4qK+ce0MKsl9Lgx0481NgWz5NsyxTAKjL5JrhwAAA'}
   2026-02-15-22.jpg: {w: 6120, h: 8160, blur: 'data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAACQBACdASoSABgAPtFWpk2oJCOiMBgIAQAaCUAVgAG6RLKB7IEHwCEvFqSJAgAA/tlDzmJNiZsnhWwhBnPEayYSiLamplmKDN2EzP2VQMm99KHn/EWlubN37bcIdvTV9pcyedU2m/pvs6hkSXJu3aO6M5uqLNN6fxycWQYL29Biim45h0vYI+P1q+R0kEhsAAA='}
+  /images/projects/data-viz/hikes/oberammergau_sonnenberg.jpg: {w: 8160, h: 6120, blur: 'data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAABwBACdASoYABIAPs1SpUunpKOhsBgMAPAZiWcAvkgQ6k83U1DkSlVKnNo0oAD+5xkAY0HgZGX3K38kEUSsHNTe8CLEapNSH9XMhu7zHt52MLQ6NJ0HCuUzV0F0NSvGAAA='}
 ---
 Yet another fall from a cliff. If you've read my story about fracturing my
 finger on [Vordere Kesselschneid (2002 m)](/hikes/2025-11-23-vordere_kesselschneid/),

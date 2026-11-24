@@ -18,6 +18,7 @@ images:
   hoehengluecksteig.png: {w: 1754, h: 1240}
   /images/hikes/topo/norissteig.png: {w: 2105, h: 1492, blur: 'data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAACwBACdASoYABEAPtFapk4oJKMiKAqpABoJZwDM0A8fq6zdFze5SHalM3JgBmyAAP7V69skpy3Y06eE3loVMQWdm3EMPIlI9NSi85vF10ytUQYnWmdsvRLguiiJlwQeWVzBKBDL4YCHT77TV/O3SIW3wvN0hBWxkxrn5kapBOUyAAAA'}
   /images/hikes/topo/hoehengluecksteig.png: {w: 1754, h: 1240, blur: 'data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAADwBACdASoYABEAPtFWpE2oJCMiMBgIAQAaCWcAyrQQ5DqTfAN7wz+tSU/v3s4cLgAA/vPOvGMStn/lP1dznAfzZNB/ASlgsO6V0ZXQsLPv5VSFHgJbKpuCdGGciJDjczF4os9+xM3XLheZdwd7xo4/DFordxs+6tocU+H/UE//GS9xpkL9+deZyGs4qwWRsWiQh8VvWgGAAA=='}
+  /images/projects/data-viz/hikes/hoehengluecksteig_david.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAAAQBQCdASoYABIAPtFapE0oJSOiMBgIAQAaCUAM8ABSuif+x4SGFQa6wB3pzSmwwhkgAP7tfaIcb6PMBURSaRo0nzxI6fkq1F+zHWYEEVzsRKyoXy0DjHA2o4nBbHUMni0a/xFWUDPYEyr5DTZYnbeT9asOXUBM5S13hdj+jzofDuVPhQAAAA=='}
 ---
 Topo from bergsteigen.com for [Norissteig](https://www.bergsteigen.com/touren/klettersteig/norissteig-klettersteig/)
 and [Höhenglücksteig](https://www.bergsteigen.com/touren/klettersteig/hoehengluecksteig-klettersteig/):

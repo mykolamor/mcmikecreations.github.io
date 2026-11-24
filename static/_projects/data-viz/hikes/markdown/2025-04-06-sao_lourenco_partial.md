@@ -10,6 +10,7 @@ descent: 130
 images:
   2025-04-06-00.jpg: {w: 4640, h: 3472, lat: 32.748998, lon: -16.697682, demEle: 30.2, taken: '2025-04-06T16:46:27+01:00', blur: 'data:image/webp;base64,UklGRuYAAABXRUJQVlA4INoAAABQBQCdASoYABIAPtFYpEuoJSOhsAgBABoJaACdMoCHAiBkcWAdDSPZ7ykCZvvRXfEwKQAA1mF2E5YeguCb+8oBnsHQFWzzc8a0T6n6NXdx2EUvn0f4Qq3MCnRoHTHddUwjL572Vh2f/XWqp6geDPNcWOGEEdRdJx6N6QeTAf15tfnnzYua4cHyQORiARZsCzLD88tYXhBdHYhBVjFX8RVGZCLMslx2WKzewfwySH1bH8cz2YrUXwSoqCYqe2zyYWxdBkf3gOpTx4RFhoiJYYiNqFWfbObiR4AAAA=='}
   2025-04-06-01.jpg: {w: 4640, h: 3472, lat: 32.749386, lon: -16.693677, demEle: 83.7, taken: '2025-04-06T17:44:17+01:00', blur: 'data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAAAwBQCdASoYABIAPtFcpk6oJSOiKAqpABoJQBajbIA0S6srTOcLffsjcctmllBStHsUAAD+xGINSmioqMaQ8AlBbFsZo9hWyYYR3tVlpxo9ZUL0dj1fp9269QnEDquK+gwSrPiRxLb9ko/6w1/gBa8MXWZWAVCMi9uox9AhQFA1QYf8uPvEyefhg34rlBJw9d2uaoD4b9s21cCjFewyuYyZjaej4APyC7RDoCTQ3zqMo/IMAAA='}
+  /images/projects/data-viz/hikes/sao_lourenco_partial.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRs4AAABXRUJQVlA4IMIAAADwBACdASoYABIAPtFgqU+oJSOiKAgBABoJYgC07rLQMzhpBcGOTC2UXN3aJZC+IgAAyrTaF7scYRsJK945J+KTFZCTKpzROZ06PNy1XMFFS21KOhs76maNbDPfMX6Hobide456aUyhNMf4XEEol5Pe54esjgTKbZDGwHn6srw2kZfDVsP4nySlZzOXOA3EtD3HaS13z0/KPo3xj0ZNSNLFVCdl9NRhKBsA4IUrWE6hBkXpDF5Jzm6EPTD4GT72z2KAAA=='}
 ---
 On the last day after hiking to [Pedra Rija](/hikes/2025-04-04-pedra_rija/) and [Caldeirão Verde](/hikes/2025-04-04-caldeirao_verde/)
 I and Serhii decided to hop on a short hike before the airport.

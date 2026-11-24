@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit';
 import { resolveHikeForDate } from '$lib/data/hikes-db';
-import { hikes } from '$lib/hikes/hikes.server';
+import { headerPicture, hikes } from '$lib/hikes/hikes.server';
 import type { Map } from '$lib/data/map-info';
 import { hashPeople } from '$lib/hikes/name-hash';
 
@@ -15,6 +15,8 @@ export interface SearchEntry {
 	description: string;
 	date: string;
 	image?: string;
+	/** The header image's AVIF tiers, `image` being the thumb fallback. */
+	srcset?: string;
 	peopleHashes: string[];
 }
 
@@ -41,6 +43,7 @@ export async function GET() {
 				description: ((d.description ?? '') + ' ' + hike.description).trim(),
 				date: d.date,
 				image: (d.image ?? hike.image)?.replace('/hikes/', '/hikes/thumb/') ?? undefined,
+				srcset: headerPicture(d.image ?? hike.image)?.srcset,
 				peopleHashes: await hashPeople(d.people ?? [])
 			});
 		}

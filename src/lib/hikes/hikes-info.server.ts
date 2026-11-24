@@ -7,7 +7,7 @@
  * cannot ship to the client.
  */
 
-import { hikes, resolveHikeForPost } from '$lib/hikes/hikes.server';
+import { headerPicture, hikes, resolveHikeForPost } from '$lib/hikes/hikes.server';
 import type { ProcessedPost } from '$lib/hikes/hikes-info';
 
 interface HikeParams {
@@ -37,6 +37,7 @@ export function getAllPosts(): ProcessedPost[] {
 					url: `/hikes/${d.date}-${slug}/`,
 					title: d.title ?? hike.name,
 					image: (d.image ?? hike.image)?.replace('/hikes/', '/hikes/thumb/'),
+					srcset: headerPicture(d.image ?? hike.image)?.srcset,
 					description: (d.description ? d.description + ' ' : '') + hike.description,
 					tags: d.tags,
 					people: d.people,

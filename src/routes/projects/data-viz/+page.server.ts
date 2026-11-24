@@ -1,4 +1,4 @@
-import { hikes } from '$lib/hikes/hikes.server';
+import { headerPicture, hikes } from '$lib/hikes/hikes.server';
 
 export const prerender = true;
 
@@ -14,6 +14,7 @@ export function load() {
 		.map((h) => ({
 			name: h.name,
 			image: h.image,
+			srcset: headerPicture(h.image)?.srcset ?? null,
 			route: h.route,
 			properties: {
 				draft: h.properties.draft,

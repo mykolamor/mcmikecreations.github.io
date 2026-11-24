@@ -28,6 +28,8 @@ export interface ProcessedPost {
     url: string;
     title: string;
     image?: string;
+    /** The header image's AVIF tiers as a `srcset`, when made (`pnpm crm images`); `image` is the thumb fallback. */
+    srcset?: string;
     description: string;
     tags: string[];
     people: string[] | null;

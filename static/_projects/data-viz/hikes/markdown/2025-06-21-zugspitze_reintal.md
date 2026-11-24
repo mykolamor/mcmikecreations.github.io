@@ -36,6 +36,7 @@ images:
   2025-06-21-22.jpg: {w: 4640, h: 3472, lat: 47.405061, lon: 11.035417, demEle: 1371.2, blur: 'data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAACwBACdASoYABIAPtFgqU+oJSOiKAgBABoJZQC/7BEc2PXDULNptGB0nLd41kYAAP72gvl0kJMFl622c2UrWe5qdXfYMLiY30ZTa/7+mHECpwiKxak1w20AS11/mYA2DwtjzwdrdEQkxLcg6i1RhOsnSadkizALCr8mPhtwDkiieSxcUX70KPAA'}
   2025-06-21-23.jpg: {w: 4032, h: 3024, lat: 47.461839, lon: 11.12525, demEle: 876.1, blur: 'data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAAAQBQCdASoYABIAPrlInUunJCKht+gA4BcJYwDGfDJQmuAjuq9PJyJMtQ219jY28eYAAP75C7YTpiplySXaCTF2QVdhKQlX6H8Q8dAGYYNvhQVtMMYDosAs0Nm08FdY9cb19ESd/K406WnbOWBBDf+gw1DyCr+DEe8fLxB5q47ub/cKTxaULAFx4DzCAoShHIpBaiy2z9wgIsrSIQRoLkgBVAAAAA=='}
   2025-06-21-24.png: {w: 3024, h: 4032, blur: 'data:image/webp;base64,UklGRsQAAABXRUJQVlA4ILgAAAAQBQCdASoSABgAPtFYpk0oJSOlsBgIAQAaCWYAt9i9AQxEAkk5WiIITtsbdHfzAcgAAP7yYTyb/xedd7i3DrJNfcz7KRKE5EHKERcbZffXXAhvkLlE7iFf6oBN+jCbLE7+5For0gtj0QlY28qjyXj8Rc4gyFBd6ZDsgc1Sb9qyknYO9tQqz2OwjCuca46iVTnFeD43p8C+YY3g0yq0YyplK38A0S0775sDgPNVgNBSC1qSU4UAcQAA'}
+  /images/projects/data-viz/hikes/zugspitze_reintal.jpg: {w: 8064, h: 6048, blur: 'data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAADwBACdASoYABIAPtFcpk6oJSMiKAqpABoJZwC3uBET2Y9HEyGAr//tVSPTbzP+IEAA/t9Ha/rU4aFGp+5ZmwBp3agIktzfP66MmasAaDhDhtjgKx90mr8By72AtKE3KRblwV07sUKO23oNeCZfaAvQoAgWX0/KZqZI196SkF5NxFFVbgtPBUT4tkUdFQAA'}
 ---
 After much consideration, I and David decided to choose the Reintal route to
 hike up Zugspitze, the highest mountain in Germany at 2962 m. We chose the

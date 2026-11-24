@@ -9,6 +9,7 @@ ascent: 380
 descent: 410
 images:
   2025-04-04-00.jpg: {w: 3472, h: 4640, lat: 32.738942, lon: -16.933792, demEle: 1618.7, taken: '2025-04-04T11:59:27+01:00', blur: 'data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAACwBQCdASoSABgAPtFWo0uoJKMhsAgBABoJZgCxHuN/gK7CaCisWEl81RRqvLK2dKwKljYE4AAA/lLWVf1NaV9bYObGxF7v/J0JEVgKE/Wz3AIwgA0/ts8XX1KsiuAZ/JtJFzPWfrSQe/QlsE5WhpQ5FSakamK4hUjQ9YlMXAglQHYqTf0+IvI+zEaZCcCGML+sYoGQ6l0KLRG4pUliPdKqZGyqbrR+dClCpnx15fCjFQtjdLOwsyeeX770S8gAAAA='}
+  /images/projects/data-viz/hikes/pedra_rija.jpg: {w: 4032, h: 3024, blur: 'data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAACwBQCdASoYABIAPsVSoEunpKMhsAwA8BiJQBTihH92jXNtPh5xURgHLp+nacHpXEzi/x7GSsAA/vHq0no6xoOo3V+iE6C8HTHrKNMkuuXedxNRtiIIEZdp8Uh/m2FXXtv5hEzcJnRnMYouFs/zeIWgYawNs21Ro89G1HpROCvMYBJ0YoewXX30YMQ466SCyQQAAA=='}
 ---
 As soon as I and Serhii landed at the Madeira airport, we immediately took
 a taxi and drove to Pico do Arieiro (1818 m). The taxi driver was really confused where

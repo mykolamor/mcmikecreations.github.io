@@ -22,6 +22,8 @@ import { assembleHikes, metaFolder, resolveHikeForPost as resolveWith } from '$l
 import type { Map, MapDate, MapProperties } from '$lib/data/map-info';
 import { readHikeFrontmatter } from '$lib/hikes/frontmatter.server';
 import { placeTranslations } from '$lib/hikes/places.server';
+import { headerPictureFrom, indexHeaderImages } from '$lib/hikes/header-image';
+import type { ResponsivePicture } from '$lib/renderers/responsive-image';
 import {
 	collectTranslations,
 	mergeTranslations,
@@ -74,6 +76,17 @@ export const hikes: Map[] = assembleHikes({
 	getHikeMeta,
 	hasGpxFile
 });
+
+const headerImages = indexHeaderImages(Object.values(frontmatterByPath));
+
+/**
+ * A hike header image (a sidecar's or a post's `image`) as a picture with its
+ * AVIF tiers, from whichever post's `images` front matter describes it; null
+ * until `pnpm crm images` has made them.
+ */
+export function headerPicture(href: string | null | undefined): ResponsivePicture | null {
+	return headerPictureFrom(href, headerImages);
+}
 
 /** A post's parsed front matter, or undefined for a date with no markdown. */
 export function getPostFrontmatter(path: string | null | undefined): Dict | undefined {

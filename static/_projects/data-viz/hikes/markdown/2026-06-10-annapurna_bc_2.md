@@ -29,6 +29,7 @@ images:
   2026-06-10-14.jpg: {w: 8160, h: 6120, lat: 28.478877, lon: 83.885118, demEle: 2722.0, taken: '2026-06-10T13:53:35+05:45', blur: 'data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAADwBACdASoYABIAPtFepU6oJSMiKAqpABoJZQC+SA/UI69ilb+8+hAopBN8/184jnAA/tnXInF5X7SkdnCpxUwx1Eeujjb1qP8aOWHso1i/XLkqGjMGlTQcntDtPiveO6Yinb9MOXtO7d83qWpO46wSJpsUbdjIHVx/PsDkiF2ztypo0S/2OHBKlr9jF/c0n4gkdaNf3Rkv/KoAU1aVm60GAAA='}
   2026-06-10-15.jpg: {w: 6120, h: 8160, lat: 28.478859, lon: 83.884935, demEle: 2717.1, taken: '2026-06-10T13:51:27+05:45', blur: 'data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABwBACdASoSABgAPtFepU6oJSMiKAqpABoJQBm4AadVaW5nMl/JnUw1zY+K4AD1WNMu04fcMykEKwuJbE382TFhrXg7ZQt50tbfFS3m/vBbL0eSN6mGMQKhoBWPGVuysopRk/6cRH3rh+QzRWLzhoSpCTIS++H8rGzT24w6JRzjkH8wMKjcT2v9mKPkwAAA'}
   2026-06-10-16.jpg: {w: 8160, h: 6120, lat: 28.482386, lon: 83.886453, demEle: 2825.2, blur: 'data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAwBQCdASoYABIAPtFapE0oJSMiMBgIAQAaCWcAyJgPQ1gUclUGgvZZ17K9C4NRKw6ccADhFxHiaXHzx29tQQyh26AMifqfWX8hQuTlNneohVFqGBEuDwHTSP00Xl8vWagiXzUfI8CHiSL3/CtbE8QDTEktlXcAAAA='}
+  /images/projects/data-viz/hikes/annapurna_bc_2.jpg: {w: 5204, h: 3904, blur: 'data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAACwBACdASoYABIAPtFYpE0oJSOiMBgIAQAaCWUAADF/6Xqtr8iEWA/kxduD1IiwAP7ItPWzm41uzgAmloULNPy/UtPTydRDgLYcvciX8g07jG3oy8LdGy8rDUaOjAN2FU2VeAAA'}
 ---
 The [first section](/hikes/2026-06-09-annapurna_bc_1/) of the Annapurna Base
 Camp trek was quite short and easy, giving me a taste of what was to come.

@@ -1,6 +1,6 @@
 import { error, isHttpError } from '@sveltejs/kit';
 import { existsSync, readFileSync } from 'node:fs';
-import { hikes } from '$lib/hikes/hikes.server';
+import { headerPicture, hikes } from '$lib/hikes/hikes.server';
 import { readingTime } from 'reading-time-estimator';
 import resume from '$lib/data/resume.json';
 import { parseMarkdown } from '$lib/hikes/hikes-info';
@@ -219,6 +219,8 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 				description: (mergedDate.description ? (mergedDate.description + ' ') : '') + mergedHike.description,
 				image: mergedDate.image?.replace('/hikes/', '/hikes/thumb/') ?? mergedHike.image?.replace('/hikes/', '/hikes/thumb/'),
 				imageFull: mergedDate.image ?? mergedHike.image,
+				// The header image's AVIF tiers and blur, when `pnpm crm images` has made them.
+				picture: headerPicture(mergedDate.image ?? mergedHike.image),
 				headers: headers,
 				time: stats.text,
 				date: dateStr,

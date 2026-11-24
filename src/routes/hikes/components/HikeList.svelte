@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { Heading, Img, Span, Badge } from 'flowbite-svelte';
+    import { Heading, Span, Badge } from 'flowbite-svelte';
+    import HikeCardImage from '$lib/components/HikeCardImage.svelte';
     import { UserSolid } from 'flowbite-svelte-icons';
     import DateBadge from '$lib/components/DateBadge.svelte';
     import type { ProcessedPost } from '$lib/hikes/hikes-info';
@@ -11,7 +12,7 @@
 </script>
 
 <div data-sveltekit-preload-data="off" class="flex flex-col gap-8">
-    {#each posts as p}
+    {#each posts as p, i}
         <div
             class="flex flex-col md:flex-row w-full md:min-h-48
     rounded-lg shadow-lg
@@ -25,7 +26,8 @@
 
             <div class="block md:max-h-48 md:min-h-48 md:min-w-64 !aspect-crt overflow-hidden rounded-t-lg md:rounded-tr-none md:rounded-l-lg">
                 {#if p.image}
-                    <Img src={p.image ?? undefined} class="w-full h-full aspect-crt object-cover object-center group-hover:scale-105 transition-transform duration-500" />
+                    <!-- 4:3 at 12rem tall from md (16rem wide), the card's full width below. -->
+                    <HikeCardImage src={p.image} srcset={p.srcset} sizes="(min-width: 768px) 16rem, calc(100vw - 2rem)" eager={i < 2} class="w-full h-full aspect-crt object-cover object-center group-hover:scale-105 transition-transform duration-500" />
                 {/if}
             </div>
             <div class="flex-grow flex flex-col p-4">

@@ -25,6 +25,7 @@ images:
   2024-10-27-10.jpg: {w: 4640, h: 3472, lat: 47.421287, lon: 10.34439, demEle: 2134.8, taken: '2024-10-27T15:56:31+01:00', blur: 'data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAACwBACdASoYABIAPtFapE0oJSMiKA1RABoJQBBF4DxVcM0hzYq3WJaA/JnNJ6gAANnYrpoHkxaC1vCOq3R6uxkzoN8ukbmtkCA74Eh7Qf8HB/7kWMBQX/MJcOXwtglsaLYxDquwianKbfBVP3DgIIyqkuzpw1Un9haaoUtUVZ+prIpC+0pJex4c3FRp3wAA'}
   2024-10-27-11.jpg: {w: 4640, h: 3472, lat: 47.4134, lon: 10.346967, demEle: 1916.7, taken: '2024-10-27T16:14:41+01:00', blur: 'data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACwBACdASoYABIAPtFYpU0oJKOiMBgIAQAaCWUAuzMvwPufWPzGoauPL6NPxrgAAP3jOjjKVCvK2+gx8k1J476m4fpPNp/DbmqtOmnd7kTrlt6hjrTd5C9jU+0Lgmnt0MgJdhkLW+rmGHAjT+uwrbo+xlKYlrp025BXcJp9PKTso8iXBwR0pVAAAAA='}
   2024-10-27-12.jpg: {w: 4640, h: 3472, lat: 47.408776, lon: 10.29778, demEle: 1027.1, taken: '2024-10-27T17:39:12+01:00', blur: 'data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAQBACdASoYABIAPslUoEunpSMhsAwA8BkJZwCsAB58IwjtTLxHsahOgAD+1RavXeDr3cs9kLZuVMglSdkkL6ukuP17uAf1Z7Y43cbjTGYO8PjWI9u5fYCv2Szkar0kXkbn39GZvHZkePur53dOJKSjmm5xo/GnEQznjgAA'}
+  /images/projects/data-viz/hikes/nebelhorn_2024.jpg: {w: 4640, h: 3472, blur: 'data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAAAQBQCdASoYABIAPtFWpU2oJCOiMBgIAQAaCUAABfSZPXJJerrkitx7h7ipW2gzfVHIAMtEGEdUEaBsmz2PioHMRNswEcLaW4n/6mUsji11qKQdv+ydUjRofngYkjTPOpRsSs0wJcMsO/A9kltcWGEqQR4J72BYx+9AN2Uav5cnsoqLdTa6vV0wl2A7gMzNWlXxnnxbiuW5R/Qb+iF+q0AA'}
 ---
 Having the last two unsuccessful attempts to climb to the top of
 Nebelhorn (2224 m) [in 2023](/404/)

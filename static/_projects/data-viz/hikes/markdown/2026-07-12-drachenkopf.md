@@ -35,6 +35,7 @@ images:
   2026-07-12-18.jpg: {w: 3213, h: 5712, lat: 47.368064, lon: 10.935786, demEle: 1662.9, taken: '2026-07-12T15:51:18+02:00', blur: 'data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAABQBACdASoOABgAPtFUo0uoJKMhsAgBABoJbACdAYvW3zpmS2mmDEoICLsAAP644AJYzqmoiObLW1PIFofafg7ZnAFP366od1LYC5Ab0zM8vPsqwtRKOhTlGCPu/F21gAAh4q8sjAhJpzedhjdgqc4xBlKmQ7shgTFGbkZLfcxAzzfZW+glibmEcZOaLgbsBNfk0FAiQZa0vRY5+V6bzL88AAA='}
   hoher_gang.jpg: {w: 1200, h: 900}
   /images/hikes/topo/hoher_gang.jpg: {w: 1200, h: 900, blur: 'data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAADQBACdASoYABIAPtFYpUyoJSOiKA1RABoJYwC7ABEDlE4pAqw3CKDBKpzsdrxO0AD+8gOPJw+wPYM6zn1hFpJgj66CJ71RVW62M+41RvtPrCO/fy/YFo4DtDFAVTtKkc2KTn2GXb2rufJxNe7xdciCUewJ5b9slqqCqC3BcrXVW+eOto0JCsm2TEWpz5FDS+3V0OCrAnJDCRx52YgjRekAAAA='}
+  /images/projects/data-viz/hikes/drachenkopf.jpg: {w: 4080, h: 3060, blur: 'data:image/webp;base64,UklGRroAAABXRUJQVlA4IK4AAADQBACdASoYABIAPtFepU6oJSMiKAqpABoJYwCuHA/Hexqro9wKtIdIQIpxvXg/2AD+j7PmygYV2YKwGCgQKs/TrFLW+GWhpKDclzr+52yOzdeAlZpLR0qFkWEYMURMEnAXKEXGDLBVZD4C+h5o8+T3QhEt1j3I+SgQwPcctf2NkwSnrF3aIouLkBjdBZuiSQibX9Vj7iEFzZI1wCeWnTpdz3Kif0PWXXyeEHnaUAA='}
 ---
 During the [outing to Drachensee](/hikes/2026-06-21-drachensee/)
 I've been to recently, the original plan was to gather a small group with

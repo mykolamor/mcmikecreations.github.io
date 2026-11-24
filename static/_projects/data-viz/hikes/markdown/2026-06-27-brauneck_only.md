@@ -29,6 +29,7 @@ images:
   2026-06-27-16.jpg: {w: 4080, h: 3060, lat: 47.663191, lon: 11.526683, demEle: 1496.6, taken: '2026-06-27T21:08:44+02:00', blur: 'data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAAAQBQCdASoYABIAPtFUo0uoJKMhsBgMAQAaCUAYmwIdqJUe6JUe89MWmAZQB0ZHkC2AAP3O6Xygg4hv6R7OVdDPkC2cZw0Iwm++GcnRwLAiXgWuy0iH8Y7oUYJpu4YwYlfctC7GKWLavkSH8sd/4jL49JkCiod2rjGDKYxePerLp8ZIeHglhoxTv86elo7tlaxAtCM/QfyLDHgUG6mFgAAA'}
   2026-06-27-17.jpg: {w: 6288, h: 4720, lat: 47.663104, lon: 11.527412, demEle: 1482.5, taken: '2026-06-27T21:28:49+02:00', blur: 'data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAADQBACdASoYABIAPtFSoUwoJCMiMBgMAQAaCWMAuwAQ68U3QgWnJabiZCr1m+4+0AD+3zywN961oeBdVeb9InszPDX50t5RZ1XS5rOwug+O+UXWDsNZCMipGB3vx8YXSYrVxAcQ0G54hoy0CpbZylUCPd5smN8sEQiCKOZ1N96vDqSUfAAAAA=='}
   2026-06-27-18.jpg: {w: 4080, h: 3060, lat: 47.663102, lon: 11.527394, demEle: 1482.9, taken: '2026-06-27T21:56:18+02:00', blur: 'data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAACQBACdASoYABIAPtFYpEyoJSOiKA1RABoJZwCnFBEcn1tvdW2TBfvo4oR/kgAA/u5+3on4yWYVvoekUrhYxTpTts/Ftr6bGic48xEhwgFLRHCgSwAUExqSmMSRfDWs7gjoP+5DUZSAAA=='}
+  /images/projects/data-viz/hikes/brauneck_only.jpg: {w: 11832, h: 8872, blur: 'data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAADQBACdASoYABIAPtFYo0uoJSMhsAgBABoJZQC7AB9lSyC69eFs1NxA8FMRHgRooAD3swfvSG8Lftbo20kl099x1Ah38tVuDJhrX1dNwvjolwfFflvwLMiV37PIE3SCG7IEGI8T+AvyluAeXY69jp1GyvRFblMv4LGcMGM4zhdx+3UeNusbhgAA'}
 ---
 After I learned that I'd miss all summer solstice celebration events when the
 holiday actually happens, I was really disappointed. To my surprise, Lenggries

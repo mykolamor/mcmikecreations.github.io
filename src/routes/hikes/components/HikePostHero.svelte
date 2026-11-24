@@ -30,6 +30,8 @@
 	import { enumLabel } from '$lib/hikes/facts-format';
 	import type { Lang } from '$lib/hikes/facts-schema';
 	import type { HikeTile } from '$lib/hikes/hike-tiles';
+	import { heroSizes } from '$lib/hikes/header-image';
+	import type { ResponsivePicture } from '$lib/renderers/responsive-image';
 	import StatTile from './StatTile.svelte';
 
 	interface Props {
@@ -47,18 +49,18 @@
 		regions: string[];
 		categories: string[];
 		allHikesLink: string;
-		/** The thumb. */
+		/** The 400px thumb: shown when there are no tiers, and to browsers without AVIF. */
 		image?: string;
 		imageFull?: string;
-		/** Set by the page once the rest of it has loaded; only ever this post's. */
-		fullResImageSrc?: string;
+		/** The header image's AVIF tiers and blur (`pnpm crm images`). */
+		picture: ResponsivePicture | null;
 		onOpenImage: () => void;
 		tiles: HikeTile[];
 	}
 
 	let {
 		lang, title, description, author, readTime, date, updated, tags, regions, categories, allHikesLink,
-		image, imageFull, fullResImageSrc, onOpenImage, tiles
+		image, imageFull, picture, onOpenImage, tiles
 	}: Props = $props();
 
 	const ICONS: Record<HikeTile['icon'], typeof ClockOutline> = {
@@ -85,9 +87,6 @@
 	const chipClass = 'px-2.5 py-0.5 rounded-sm text-sm';
 	const tagClass = `${chipClass} bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-300 no-underline hover:bg-primary-200 dark:hover:bg-primary-800`;
 	const plainChipClass = `${chipClass} bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200`;
-
-	// The page keys this component by post, so this starts over on every post.
-	let fullImageLoaded = $state(false);
 
 	let expanded = $state(false);
 	/** Tiles below the visible rows. Unknown before the first measure, so the button renders in the prerendered HTML. */
@@ -140,23 +139,35 @@
 </script>
 
 <header class="hike-hero relative w-full">
-	<div class="hike-hero-photo relative isolate overflow-hidden flex flex-col min-h-[85svh] md:min-h-[min(80svh,52rem)] {image ? 'bg-gray-800' : 'bg-primary-800'}">
-		{#if image}
-			<img src={image} alt="" class="absolute inset-0 w-full h-full object-cover m-0 {fullImageLoaded ? 'opacity-0 delay-500' : 'opacity-100'} transition-opacity duration-1000" />
-			{#if fullResImageSrc && imageFull}
-				<picture class="absolute inset-0 w-full h-full m-0">
-					<source media="(min-width: 768px)" srcset={fullResImageSrc} />
-					<img src={image} alt="" class="w-full h-full object-cover m-0 transition-opacity duration-500 {fullImageLoaded ? 'opacity-100' : 'opacity-0'}" onload={() => (fullImageLoaded = true)} />
-				</picture>
-			{/if}
-			{#if imageFull}
-				<button
-					type="button"
-					aria-label={t(lang, 'post.expandImage')}
-					onclick={onOpenImage}
-					class="absolute inset-0 w-full h-full cursor-pointer bg-transparent border-0 p-0 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-500 focus-visible:outline-hidden"
-				></button>
-			{/if}
+	<div class="hike-hero-photo relative isolate overflow-hidden flex flex-col min-h-[85svh] md:min-h-[min(80svh,52rem)] {image || picture ? 'bg-gray-800' : 'bg-primary-800'}">
+		<!-- The photo is decorative here: the h1 names the post, the button says what a click does. -->
+		{#if picture}
+			<!-- The blur paints at once; the tier the screen needs (the LCP image) loads eagerly and paints over it.
+			     Never hidden until `onload`: one cached before hydration would never get it. -->
+			<img src={picture.blur} alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover m-0 scale-105 blur-md" />
+			<picture class="absolute inset-0 block w-full h-full m-0">
+				<source type="image/avif" srcset={picture.srcset} sizes={heroSizes(picture.width, picture.height)} />
+				<img
+					src={image ?? picture.src}
+					alt=""
+					width={picture.width}
+					height={picture.height}
+					loading="eager"
+					fetchpriority="high"
+					decoding="async"
+					class="relative w-full h-full object-cover m-0"
+				/>
+			</picture>
+		{:else if image}
+			<img src={image} alt="" fetchpriority="high" class="absolute inset-0 w-full h-full object-cover m-0" />
+		{/if}
+		{#if imageFull}
+			<button
+				type="button"
+				aria-label={t(lang, 'post.expandImage')}
+				onclick={onOpenImage}
+				class="absolute inset-0 w-full h-full cursor-pointer bg-transparent border-0 p-0 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-500 focus-visible:outline-hidden"
+			></button>
 		{/if}
 		<div class="pointer-events-none absolute inset-x-0 top-0 h-40 bg-linear-to-b from-black/55 to-transparent"></div>
 		<div class="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-black/60 to-transparent"></div>
