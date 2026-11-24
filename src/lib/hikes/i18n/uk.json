@@ -651,6 +651,10 @@
 		"category": "Спорт"
 	},
 	"post": {
+		"hero": {
+			"viewRoute": "Переглянути маршрут",
+			"contactAuthor": "Зв'язатися з автором"
+		},
 		"pagePath": "Шлях сторінки",
 		"updated": "Оновлено {date}",
 		"expandImage": "Збільшити зображення",
@@ -665,7 +669,8 @@
 			"highPoint": "Найвища точка",
 			"lowPoint": "Найнижча точка",
 			"routeType": "Тип маршруту",
-			"showAll": "Показати все ({count})"
+			"showAll": "Показати все ({count})",
+			"showLess": "Згорнути"
 		},
 		"notes": {
 			"duration": {

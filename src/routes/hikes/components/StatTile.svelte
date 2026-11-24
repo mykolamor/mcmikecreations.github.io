@@ -12,21 +12,31 @@
 		/** Makes the value a link. */
 		href?: string;
 		class?: string;
+		/** `glass`: its own translucent card, readable over the hero photo and on the page alike. */
+		variant?: 'plain' | 'glass';
 	}
 
-	let { icon: Icon, label, value, hint, href, class: className = '' }: Props = $props();
+	let { icon: Icon, label, value, hint, href, class: className = '', variant = 'plain' }: Props = $props();
+
+	const variantClass = $derived(
+		variant === 'glass'
+			? 'h-full min-w-0 px-3 rounded-lg bg-white/80 dark:bg-gray-900/75 backdrop-blur-md shadow-sm text-gray-900 dark:text-white'
+			: 'basis-[140px] grow'
+	);
+	// Half a phone's width leaves a glass tile ~80px of text: long values truncate, the full one in its tooltip.
+	const valueClass = $derived(variant === 'glass' ? 'truncate' : '');
 </script>
 
-<div class="flex items-center gap-3 basis-[140px] grow {className}" title={hint}>
+<div class="flex items-center gap-3 {variantClass} {className}" title={hint}>
 	<div class="text-primary-600 dark:text-primary-500 bg-primary-100 dark:bg-primary-900 rounded-lg p-2 shrink-0">
 		<Icon class="w-6 h-6" />
 	</div>
-	<div>
+	<div class="min-w-0">
 		<div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">{label}</div>
 		{#if href}
-			<a class="block font-semibold whitespace-nowrap underline decoration-dotted underline-offset-4 hover:decoration-solid" {href} translate="no">{value}</a>
+			<a class="block font-semibold whitespace-nowrap {valueClass} underline decoration-dotted underline-offset-4 hover:decoration-solid" title={variant === 'glass' ? value : undefined} {href} translate="no">{value}</a>
 		{:else}
-			<div class="font-semibold whitespace-nowrap" translate="no">{value}</div>
+			<div class="font-semibold whitespace-nowrap {valueClass}" title={variant === 'glass' ? value : undefined} translate="no">{value}</div>
 		{/if}
 	</div>
 </div>

@@ -1,25 +1,10 @@
 <script lang="ts">
 	/* eslint-disable @typescript-eslint/ban-ts-comment */
 	import type { PageData } from './$types';
-	import { Breadcrumb, BreadcrumbItem, Heading, A } from 'flowbite-svelte';
-	import {
-		ClockOutline,
-		MapPinOutline,
-		ArrowUpOutline,
-		ArrowDownOutline,
-		ArrowLeftOutline,
-		HourglassOutline,
-		UsersGroupOutline,
-		ChartLineUpOutline,
-		ChartLineDownOutline,
-		ArrowsRepeatOutline,
-		SortHorizontalOutline,
-		FlagOutline
-	} from 'flowbite-svelte-icons';
+	import { A } from 'flowbite-svelte';
 	import ToTopButton from '$lib/components/ToTopButton.svelte';
 	import MediaGallery from '$lib/components/MediaGallery.svelte';
 	import type { GalleryItem } from '$lib/renderers/gallery-item';
-	import { getDistance, getTime } from '$lib/hikes/build-statistics';
 	import { onDestroy, tick } from 'svelte';
 	import { afterNavigate } from '$app/navigation';
 	import 'leaflet/dist/leaflet.css';
@@ -28,12 +13,11 @@
 	import HikeJsonLd from '../components/HikeJsonLd.svelte';
 	import { hikePostTitle } from '$lib/hikes/hikes-meta';
 	import { t, tSplit } from '$lib/i18n/strings';
-	import { enumLabel } from '$lib/hikes/facts-format';
 	import AppBreadcrumbs from '$lib/components/AppBreadcrumbs.svelte';
 	import { parseMarkdown } from '$lib/hikes/hikes-info';
 	import HikeContacts from '../components/HikeContacts.svelte';
-	import HikeFactsTiles from '../components/HikeFactsTiles.svelte';
-	import StatTile from '../components/StatTile.svelte';
+	import HikePostHero from '../components/HikePostHero.svelte';
+	import { hikeTiles, showElapsed as hasElapsed } from '$lib/hikes/hike-tiles';
 	import HikeFactsSafety from '../components/HikeFactsSafety.svelte';
 	import HikeFactsGuide from '../components/HikeFactsGuide.svelte';
 	import HikePlaces from '../components/HikePlaces.svelte';
@@ -55,12 +39,6 @@
 
 	const lang = 'en';
 
-	const ROUTE_TYPE_ICONS = {
-		'loop': ArrowsRepeatOutline,
-		'out-and-back': SortHorizontalOutline,
-		'point-to-point': FlagOutline
-	};
-
 	const DURATION_NOTES = {
 		gpx: t(lang, 'post.notes.duration.gpx'),
 		manual: t(lang, 'post.notes.duration.manual'),
@@ -78,30 +56,27 @@
 
 	// The last body change, when there was one after the hike: readers judge
 	// route info by how recent it is. The same date as the JSON-LD dateModified.
-	const [updatedBefore, updatedAfter] = tSplit(lang, 'post.updated', 'date');
 	const updated = $derived(data.post.dateModified !== data.post.date ? data.post.dateModified : null);
 
-	// A moving time equal to the elapsed time to the minute means no breaks were
-	// detected; showing the same number twice would only confuse.
-	const showElapsed = $derived(
-		data.facts.elapsed != null && Math.abs(data.facts.elapsed.minutes - (data.map.properties.duration ?? 0)) > 1
-	);
-	// Mobile shows the tiles a reader decides by (difficulty, highest point, route type,
-	// season, getting there, typical time) and collapses the rest behind "Show all".
-	let showAllTiles = $state(false);
-	const secondaryTileClass = $derived(showAllTiles ? '' : 'max-md:hidden');
-	const secondaryTileCount = $derived(
-		[
-			showElapsed && data.facts.elapsed,
-			data.facts.lowPoint != null,
-			data.authoredFacts?.difficulty?.exposure,
-			data.authoredFacts?.difficulty?.fitness
-		].filter(Boolean).length
-	);
+	// One ordered list for the hero's strip; the footnotes below follow its marks.
+	const tileInput = $derived({
+		properties: data.map.properties,
+		durationSource: data.durationSource,
+		facts: data.facts,
+		authoredFacts: data.authoredFacts
+	});
+	const tiles = $derived(hikeTiles(tileInput, lang));
+	const showElapsed = $derived(hasElapsed(tileInput));
 	let allHikesLink = $derived(data.post.page > 1 ? `/hikes/page/${data.post.page}/#${data.post.anchor}` : `/hikes/#${data.post.anchor}`);
 
-	let fullResImageSrc = $state<string | undefined>(undefined);
-	let fullImageLoaded = $state(false);
+	// The full resolution header image, tagged with the post it belongs to: on a
+	// client-side navigation the next post's hero mounts before afterNavigate
+	// runs, and must never be handed the previous post's image.
+	let fullRes = $state<{ anchor: string; src: string } | undefined>(undefined);
+	const fullResImageSrc = $derived(fullRes?.anchor === data.post.anchor ? fullRes.src : undefined);
+	function loadFullImage() {
+		if (data.post.imageFull) fullRes = { anchor: data.post.anchor, src: data.post.imageFull };
+	}
 
 	let galleryOpen = $state(false);
 	let galleryIndex = $state(0);
@@ -134,9 +109,7 @@
 	function openHeaderImage() {
 		// The full resolution image is fetched lazily and never on small screens,
 		// so make sure its request is under way before slide 0 appears.
-		if (data.post.imageFull && !fullResImageSrc) {
-			fullResImageSrc = data.post.imageFull;
-		}
+		if (!fullResImageSrc) loadFullImage();
 		openGallery(0);
 	}
 
@@ -194,12 +167,11 @@
 		teardownContent();
 
 		// Delay loading of the full resolution image to allow other assets to finish loading first
-		fullResImageSrc = undefined;
-		fullImageLoaded = false;
+		fullRes = undefined;
 		if (data.post.imageFull) {
 			const scheduleFullImage = () => {
 				setTimeout(() => {
-					if (runId === contentRunId) fullResImageSrc = data.post.imageFull;
+					if (runId === contentRunId) loadFullImage();
 				}, 100);
 			};
 			// `load` only fires once per full page load, never again on a client-side
@@ -210,9 +182,7 @@
 				window.addEventListener('load', scheduleFullImage, { once: true });
 				// Fallback in case window load already fired
 				setTimeout(() => {
-					if (runId === contentRunId && !fullResImageSrc) {
-						fullResImageSrc = data.post.imageFull;
-					}
+					if (runId === contentRunId && !fullResImageSrc) loadFullImage();
 				}, 1000);
 			}
 		}
@@ -444,121 +414,54 @@
 	placeName={data.map.name}
 />
 
-<div class="container mx-auto">
-	<div class="mx-4 2xl:mx-0 md:px-24 mb-8">
-		<article class="mx-auto">
+<article>
+	{#key data.post.anchor}
+		<HikePostHero
+			{lang}
+			title={data.post.title}
+			description={data.post.description}
+			author={data.post.author}
+			readTime={data.post.time}
+			date={data.post.date}
+			{updated}
+			tags={data.post.tags ?? []}
+			regions={data.authoredFacts?.route?.regions ?? []}
+			categories={data.authoredFacts?.route?.categories ?? []}
+			{allHikesLink}
+			image={data.post.image}
+			imageFull={data.post.imageFull}
+			{fullResImageSrc}
+			onOpenImage={openHeaderImage}
+			{tiles}
+		/>
+	{/key}
+	<div class="container mx-auto">
+		<div class="mx-4 2xl:mx-0 md:px-24 mb-8">
 			<div class="mx-auto prose dark:prose-invert prose-a:text-primary-600 dark:prose-a:text-primary-500 md:prose-lg lg:prose-xl min-h-80">
-				<div class="mt-2 flex md:hidden">
-					<A href={allHikesLink} class="inline-flex items-center">
-						<ArrowLeftOutline class="w-5 h-5 me-2" />
-						{t(lang, 'nav.backToAll')}
-					</A>
-				</div>
-				<Breadcrumb aria-label={t(lang, 'post.pagePath')} class="mt-4 not-prose hidden md:flex">
-					<BreadcrumbItem href="/" home>{t(lang, 'nav.home')}</BreadcrumbItem>
-					<!-- /hikes/, as in the JSON-LD trail: the paginated anchor goes stale as posts are added. -->
-					<BreadcrumbItem href="/hikes/">{t(lang, 'nav.hikes')}</BreadcrumbItem>
-					<BreadcrumbItem>{data.post.title}</BreadcrumbItem>
-				</Breadcrumb>
-				<Heading tag="h1" class="!mb-0 !mt-2">{data.post.title}</Heading>
-				<div class="flex flex-row flex-wrap gap-2 !mt-2 !mb-4">
-					<span>{data.post.author}</span>
-					·
-					<span>{data.post.time}</span>
-					·
-					<a class="underline underline-offset-2 hover:decoration-2 cursor-pointer" href="/hikes/year/{new Date(data.post.date).getFullYear()}/">{new Date(data.post.date).toLocaleDateString('en-us', { year:"numeric", month:"short", day:"numeric"})}</a>
-					{#if updated}
-						·
-						<span>{updatedBefore}<time datetime={updated}>{new Date(updated).toLocaleDateString('en-us', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' })}</time>{updatedAfter}</span>
-					{/if}
-					{#if data.post.tags?.length}
-						·
-						<div class="flex flex-row flex-wrap justify-end gap-2 items-center" aria-details="tags">
-							<span aria-label={t(lang, 'list.tagsLabel')} class="sr-only"></span>
-							{#each data.post.tags as tag}
-								<a class="bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-300 px-2.5 py-0.5 rounded-sm no-underline hover:bg-primary-200 dark:hover:bg-primary-800" href="/hikes/tag/{encodeURIComponent(tag)}/">{tag}</a>
-							{/each}
-						</div>
-					{/if}
-				</div>
 				<div>
-					<div class="flex flex-col gap-4 md:gap-6 mb-6 not-prose w-full max-w-none">
-						<div class="flex flex-col md:flex-row gap-6">
-							{#if data.post.imageFull}
-								<div class="relative w-full md:w-48 lg:w-[24rem] aspect-video md:aspect-auto m-0 shrink-0 rounded-lg md:rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800">
-									<img src={data.post.image} alt={data.post.title} class="absolute inset-0 w-full h-full object-cover m-0 {fullImageLoaded ? 'opacity-0 delay-500' : 'opacity-100'} transition-opacity duration-1000" />
-									{#if fullResImageSrc}
-										<picture class="absolute inset-0 w-full h-full m-0">
-											<source media="(min-width: 768px)" srcset={fullResImageSrc} />
-											<img src={data.post.image} alt={data.post.title} class="w-full h-full object-cover m-0 transition-opacity duration-500 {fullImageLoaded ? 'opacity-100' : 'opacity-0'}" onload={() => fullImageLoaded = true} />
-										</picture>
-									{/if}
-									<button
-										type="button"
-										aria-label={t(lang, 'post.expandImage')}
-										onclick={openHeaderImage}
-										class="absolute inset-0 w-full h-full cursor-pointer bg-transparent border-0 p-0 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-500 focus-visible:outline-hidden"
-									></button>
-								</div>
+					<div class="flex flex-col mt-4 mb-6 not-prose w-full max-w-none">
+						<div class="text-sm text-gray-500 dark:text-gray-400 flex flex-col gap-1">
+							<span>* {DURATION_NOTES[data.durationSource]}</span>
+							{#if showElapsed && data.facts.elapsed}
+								<span>** {ELAPSED_NOTES[data.facts.elapsed.source]}</span>
 							{/if}
-							<div class="flex flex-row flex-wrap md:flex-col md:justify-center gap-4 w-full md:[&>*]:basis-auto md:[&>*]:grow-0">
-								<StatTile icon={ClockOutline} label={t(lang, data.durationSource === 'planner' ? 'post.stats.plannerEstimate' : 'post.stats.movingTime') + '*'} value={getTime(data.map.properties.duration ?? 0)} />
-								<StatTile icon={MapPinOutline} label={t(lang, 'post.stats.distance')} value={getDistance(data.map.properties.distance ?? 0)} />
-								<StatTile icon={ArrowUpOutline} label={t(lang, 'post.stats.ascent')} value={getDistance(data.map.properties.ascent ?? 0)} />
-								<StatTile icon={ArrowDownOutline} label={t(lang, 'post.stats.descent')} value={getDistance(data.map.properties.descent ?? 0)} />
-							</div>
-						</div>
-						<div class="flex flex-col">
-							<div class="flex flex-row flex-wrap gap-4 md:gap-6">
-								{#if showElapsed && data.facts.elapsed}
-									<StatTile icon={HourglassOutline} label={t(lang, 'post.stats.elapsed') + '**'} value={(data.facts.elapsed.source === 'photos' ? '≥ ' : '') + getTime(data.facts.elapsed.minutes)} class={secondaryTileClass} />
-								{/if}
-								{#if data.facts.typicalDuration != null}
-									<StatTile icon={UsersGroupOutline} label={t(lang, 'post.stats.typical') + '***'} value={'≈ ' + getTime(Math.round(data.facts.typicalDuration / 15) * 15)} />
-								{/if}
-								{#if data.facts.highPoint != null}
-									<StatTile icon={ChartLineUpOutline} label={t(lang, 'post.stats.highPoint')} value={t(lang, 'units.m', { value: data.facts.highPoint })} />
-								{/if}
-								{#if data.facts.lowPoint != null}
-									<StatTile icon={ChartLineDownOutline} label={t(lang, 'post.stats.lowPoint')} value={t(lang, 'units.m', { value: data.facts.lowPoint })} class={secondaryTileClass} />
-								{/if}
-								{#if data.facts.routeType}
-									<StatTile icon={ROUTE_TYPE_ICONS[data.facts.routeType]} label={t(lang, 'post.stats.routeType')} value={enumLabel(lang, 'routeType', data.facts.routeType)} />
-								{/if}
-								{#if data.authoredFacts}
-									<HikeFactsTiles facts={data.authoredFacts} {lang} secondaryClass={secondaryTileClass} />
-								{/if}
-							</div>
-							{#if secondaryTileCount > 0 && !showAllTiles}
-								<button
-									type="button"
-									class="md:hidden self-start mt-3 text-sm font-medium text-primary-600 dark:text-primary-500 underline decoration-dotted underline-offset-4 hover:decoration-solid"
-									onclick={() => (showAllTiles = true)}
-								>{t(lang, 'post.stats.showAll', { count: secondaryTileCount })}</button>
-							{/if}
-							<div class="text-sm text-gray-500 dark:text-gray-400 mt-2 flex flex-col gap-1">
-								<span>* {DURATION_NOTES[data.durationSource]}</span>
-								{#if showElapsed && data.facts.elapsed}
-									<span class={secondaryTileClass}>** {ELAPSED_NOTES[data.facts.elapsed.source]}</span>
-								{/if}
-								{#if data.facts.typicalDuration != null}
-									<span>*** {t(lang, 'post.notes.typical')}</span>
-								{/if}
-							</div>
-							{#if data.display.filePrimary || data.display.fileGpx}
-								<blockquote class="!mb-0 mt-4 border-l-4 border-gray-300 dark:border-gray-600 pl-4 py-1 italic text-gray-600 dark:text-gray-400">
-									{grabBefore}{#if data.display.fileGpx && data.display.filePrimary}
-										<A href={fileGpx.path} download={fileGpx.path.substring(fileGpx.path.lastIndexOf('/') + 1)}>{fileGpx.type}</A>
-										{t(lang, 'post.files.or')}
-									{:else if data.display.fileGpx}
-										<A href={fileGpx.path} download={fileGpx.path.substring(fileGpx.path.lastIndexOf('/') + 1)}>{fileGpx.type}</A>
-									{/if}
-									{#if data.display.filePrimary}
-										<A href={filePrimary.path} download={filePrimary.path.substring(filePrimary.path.lastIndexOf('/') + 1)}>{filePrimary.type}</A>
-									{/if}{grabAfter}
-								</blockquote>
+							{#if data.facts.typicalDuration != null}
+								<span>*** {t(lang, 'post.notes.typical')}</span>
 							{/if}
 						</div>
+						{#if data.display.filePrimary || data.display.fileGpx}
+							<blockquote class="!mb-0 mt-4 border-l-4 border-gray-300 dark:border-gray-600 pl-4 py-1 italic text-gray-600 dark:text-gray-400">
+								{grabBefore}{#if data.display.fileGpx && data.display.filePrimary}
+									<A href={fileGpx.path} download={fileGpx.path.substring(fileGpx.path.lastIndexOf('/') + 1)}>{fileGpx.type}</A>
+									{t(lang, 'post.files.or')}
+								{:else if data.display.fileGpx}
+									<A href={fileGpx.path} download={fileGpx.path.substring(fileGpx.path.lastIndexOf('/') + 1)}>{fileGpx.type}</A>
+								{/if}
+								{#if data.display.filePrimary}
+									<A href={filePrimary.path} download={filePrimary.path.substring(filePrimary.path.lastIndexOf('/') + 1)}>{filePrimary.type}</A>
+								{/if}{grabAfter}
+							</blockquote>
+						{/if}
 					</div>
 					{#if data.authoredFacts}
 						<HikeFactsSafety facts={data.authoredFacts} {lang} />
@@ -575,9 +478,9 @@
 					<HikeContacts contacts={data.contacts} {lang} />
 				</div>
 			</div>
-		</article>
+		</div>
 	</div>
-</div>
+</article>
 
 <MediaGallery
 	items={galleryItems}

@@ -20,12 +20,14 @@ import EN from './i18n/en.json';
  */
 const POST_FILES = [
 	'src/routes/hikes/[slug]/+page.svelte',
+	'src/routes/hikes/components/HikePostHero.svelte',
 	'src/routes/hikes/components/HikeContacts.svelte',
 	'src/routes/hikes/components/HikePlaces.svelte',
 	'src/routes/hikes/components/HikeJsonLd.svelte',
 	'src/routes/hikes/components/FactsPlace.svelte',
 	'src/lib/components/MediaGallery.svelte',
 	'src/lib/hikes/hikes-info.ts',
+	'src/lib/hikes/hike-tiles.ts',
 	'src/lib/hikes/place-docs.ts',
 	'src/lib/hikes/photo-stops.ts',
 	'src/lib/hikes/photo-pins-view.ts',
@@ -41,7 +43,6 @@ const POST_FILES = [
 const QUIET_FILES = [
 	'src/routes/hikes/[slug]/+page.server.ts',
 	'src/routes/hikes/[slug]/+page.ts',
-	'src/routes/hikes/components/HikeFactsTiles.svelte',
 	'src/routes/hikes/components/HikeFactsGuide.svelte',
 	'src/routes/hikes/components/HikeFactsSafety.svelte',
 	'src/routes/hikes/components/FactsSpan.svelte',
@@ -92,6 +93,9 @@ test('the post page\'s strings read as before', () => {
 		'post.stats.highPoint': 'Highest point',
 		'post.stats.lowPoint': 'Lowest point',
 		'post.stats.routeType': 'Route type',
+		'post.stats.showLess': 'Show less',
+		'post.hero.viewRoute': 'View the Route',
+		'post.hero.contactAuthor': 'Contact the Author',
 		'post.notes.duration.gpx': 'Moving time from my recorded track, breaks excluded.',
 		'post.notes.duration.manual': 'My moving time, breaks excluded.',
 		'post.notes.duration.planner': "The route planner's (openrouteservice) walking estimate.",

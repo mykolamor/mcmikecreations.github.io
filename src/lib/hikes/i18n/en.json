@@ -638,6 +638,10 @@
 		"category": "Sports"
 	},
 	"post": {
+		"hero": {
+			"viewRoute": "View the Route",
+			"contactAuthor": "Contact the Author"
+		},
 		"pagePath": "Page path",
 		"updated": "Updated {date}",
 		"expandImage": "Expand image",
@@ -652,7 +656,8 @@
 			"highPoint": "Highest point",
 			"lowPoint": "Lowest point",
 			"routeType": "Route type",
-			"showAll": "Show all ({count})"
+			"showAll": "Show all ({count})",
+			"showLess": "Show less"
 		},
 		"notes": {
 			"duration": {
