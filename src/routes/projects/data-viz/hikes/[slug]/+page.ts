@@ -19,9 +19,6 @@ export const load: PageLoad = async ({ data, fetch, params }) => {
 
 		const dates = [...meta.properties.dates].sort((a, b) => a.date > b.date ? -1 : 1);
 
-		let gpxPath: string | null =
-			dates[0]?.gpx ?? meta.properties.filePath.replace('geojson', 'gpx').replace('json', 'gpx');
-
 		do {
 			// Only redirect if every date has a blog post (markdown).
 			if (dates.length == 0) break;
@@ -35,10 +32,6 @@ export const load: PageLoad = async ({ data, fetch, params }) => {
 			const url = `/hikes/${date.date}-${params.slug}/`;
 			redirect(301, url);
 		} while (false);
-
-		if (!(await fetch(gpxPath, { method: 'OPTIONS' })).ok) {
-			gpxPath = null;
-		}
 
 		// Fully-blogged hikes redirected above, so anything still here has at most
 		// some dates blogged. Where one is, its post carries this route's prose, so
@@ -114,7 +107,7 @@ export const load: PageLoad = async ({ data, fetch, params }) => {
 		return {
 			map: meta,
 			properties: properties,
-			gpxPath: gpxPath,
+			gpxPath: data.gpxPath,
 			canonical: canonical,
 			origin: originData,
 			statistics: statistics

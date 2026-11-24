@@ -539,6 +539,213 @@
 			}
 		}
 	},
+	"meta": {
+		"blogTitle": "Wandern, Klettern, Klettersteige & Tourenkarten | Persönliche Tourenberichte",
+		"blogDescription": "Die ausführlichsten Tourenberichte im Netz",
+		"section": "Touren",
+		"postTitle": "{title} | Tour",
+		"listTitle": "Wanderblog – Seite {page} | Persönliche Tourenberichte",
+		"listDescription": "Beiträge im Wanderblog durchstöbern – Seite {page}",
+		"tagTitle": "Touren mit dem Tag „{tag}“{page, select, 1 {} other { – Seite {page}}} | Persönliche Tourenberichte",
+		"tagDescription": "Beiträge im Wanderblog mit dem Tag {tag} durchstöbern{page, select, 1 {} other { – Seite {page}}}",
+		"yearTitle": "Touren aus {year}{page, select, 1 {} other { – Seite {page}}} | Persönliche Tourenberichte",
+		"yearDescription": "Beiträge im Wanderblog aus {year} durchstöbern{page, select, 1 {} other { – Seite {page}}}"
+	},
+	"nav": {
+		"home": "Startseite",
+		"hikes": "Touren",
+		"page": "Seite {page}",
+		"backToAll": "Zurück zu allen Touren",
+		"years": "Jahre:",
+		"pagination": "Seitennavigation",
+		"previous": "Zurück",
+		"next": "Weiter"
+	},
+	"home": {
+		"title": "Touren",
+		"projects": "Projekte",
+		"blog": "Blog",
+		"enableJs": "Aktiviere JavaScript, um fortzufahren."
+	},
+	"showcase": {
+		"web": {
+			"title": "Wandernetz",
+			"alt": "Vorschau des Wandernetzes",
+			"text": [
+				"Ein Versuch, alle begangenen Wanderwege zu einem einzigen Netz zu verbinden.",
+				"Alle vereinfachten Routen auf der Seite lassen sich vollständig erkunden, manche enthalten sogar Beschreibungen und Fotos von der Tour. Dazu gibt es Statistiken zur Häufigkeit und Länge der Touren.",
+				"Die vereinfachten Routen beruhen auf den ungefähren Start- und Zielpunkten der Touren und enthalten die Kreuzungspunkte mit anderen vereinfachten Routen.",
+				"Derzeit sind die meisten Touren in Südbayern verbunden."
+			]
+		},
+		"climb": {
+			"title": "Klettersteige",
+			"alt": "Vorschau einer Klettersteigtour",
+			"text": [
+				"Eine Sammlung vollständiger Aufnahmen von Klettersteigen, mit oder ohne Ausrüstung.",
+				"Wer diesen Klettersteigen folgen will, sollte das nur mit der nötigen Ausrüstung und unter Beachtung aller Sicherheitsregeln und Vorschriften tun."
+			]
+		}
+	},
+	"list": {
+		"tagsLabel": "Tags",
+		"allPage": "Alle Touren – Seite {page}",
+		"year": "Touren aus {year}{page, select, 1 {} other { – Seite {page}}}",
+		"tagged": "Touren mit dem Tag: {tag}",
+		"tagPage": "{tag} – Seite {page}"
+	},
+	"tags": {
+		"Web": {
+			"label": "Netz",
+			"title": "Wandernetz | Alle Routen und Gipfel sammeln",
+			"description": "Alle Gipfel in einem möglichst großen Gebiet besuchen und dabei dieselben Start- und Zielpunkte wie bei anderen Touren nutzen.",
+			"breadcrumb": "Wandernetz",
+			"heading": "Wandernetz: Alle Routen und Gipfel sammeln",
+			"intro": [
+				"In diesen Beiträgen geht es darum, alle Gipfel in einem möglichst großen Gebiet zu besuchen und dabei dieselben Start- und Zielpunkte wie bei anderen Touren zu nutzen."
+			]
+		},
+		"Climb": {
+			"label": "Klettern",
+			"title": "Klettersteig-Abenteuer | Steile Routen und Kletterpassagen",
+			"description": "Beiträge im Wanderblog mit dem Tag Klettern durchstöbern",
+			"breadcrumb": "Klettersteige",
+			"heading": "Klettersteig-Abenteuer: Steile Routen und Kletterpassagen",
+			"intro": "Beiträge mit dem Tag {tag} zeigen Routen mit vielen Höhenmetern und längeren Klettersteigpassagen."
+		}
+	},
+	"web": {
+		"stats": {
+			"hikes": "Touren gesamt",
+			"time": "Gesamtzeit",
+			"distance": "Strecke",
+			"ascent": "Aufstieg",
+			"descent": "Abstieg"
+		},
+		"weekLabel": "{start} bis {end}",
+		"week": "Woche: {label}",
+		"weekHikes": "{label}: {count} Touren",
+		"peaks": "Bestiegene Gipfel: {count}",
+		"unnamedPeak": "Namenloser Gipfel",
+		"elevation": "{value} m",
+		"toggleColors": "Farben umschalten",
+		"ranges": "Gebirgsgruppen",
+		"areas": "Tourengebiete",
+		"popup": {
+			"distance": "Strecke: {value}",
+			"duration": "Dauer: {value}",
+			"ascent": "Aufstieg: {value}",
+			"descent": "Abstieg: {value}",
+			"posts": "Beiträge: {links}",
+			"mapLink": "Kartenlink",
+			"geojson": "GeoJSON",
+			"gpx": "GPX{n, select, 1 {} other { {n}}}"
+		}
+	},
+	"feeds": {
+		"rssTitle": "RSS-Feed von Mykolas Wanderblog",
+		"atomTitle": "Atom-Feed von Mykolas Wanderblog",
+		"rss": "RSS-Feed",
+		"atom": "Atom-Feed",
+		"json": "JSON-Feed",
+		"category": "Sport"
+	},
+	"post": {
+		"pagePath": "Seitenpfad",
+		"updated": "Aktualisiert am {date}",
+		"expandImage": "Bild vergrößern",
+		"stats": {
+			"movingTime": "Gehzeit",
+			"plannerEstimate": "Schätzung des Routenplaners",
+			"distance": "Strecke",
+			"ascent": "Aufstieg",
+			"descent": "Abstieg",
+			"elapsed": "Gesamtzeit",
+			"typical": "Richtzeit",
+			"highPoint": "Höchster Punkt",
+			"lowPoint": "Tiefster Punkt",
+			"routeType": "Routentyp",
+			"showAll": "Alle anzeigen ({count})"
+		},
+		"notes": {
+			"duration": {
+				"gpx": "Gehzeit aus meinem aufgezeichneten Track, ohne Pausen.",
+				"manual": "Meine Gehzeit, ohne Pausen.",
+				"planner": "Die Gehzeitschätzung des Routenplaners (openrouteservice)."
+			},
+			"elapsed": {
+				"gpx": "Die Gesamtzeit ist die volle Zeit vom Start bis zum Ende des aufgezeichneten Tracks, mit Pausen.",
+				"photos": "Die Gesamtzeit ist die Zeit zwischen meinem ersten und letzten Foto auf der Route, die tatsächliche Zeit war also länger.",
+				"manual": "Die Gesamtzeit ist die volle Zeit vom Start bis zum Ziel, mit Pausen."
+			},
+			"typical": "Gehzeit nach DAV-Standard ohne Pausen: 300 m Aufstieg oder 500 m Abstieg pro Stunde, 4 km pro Stunde in der Ebene."
+		},
+		"files": {
+			"grab": "Hol dir die {files}-Datei und brich zu deinem eigenen Abenteuer auf!",
+			"or": "oder",
+			"gpx": "GPX",
+			"geojson": "GeoJSON"
+		},
+		"contacts": {
+			"heading": "Mit dabei",
+			"link": "Link"
+		},
+		"places": {
+			"heading": "Orte auf dieser Route"
+		}
+	},
+	"render": {
+		"showOnMap": "Auf der Karte zeigen",
+		"placeDocAbout": "Über {title}",
+		"stop": {
+			"trackTime": "Zeit aus meinem aufgezeichneten Track, als er diese Stelle passierte",
+			"photoTime": "Aufnahmezeit des Fotos",
+			"showOnMap": "{stop}, auf der Karte zeigen"
+		}
+	},
+	"map": {
+		"photos": "Fotos",
+		"facts": "Tourendaten",
+		"osmMirror": "OSM-Kopie",
+		"photo": "Foto",
+		"closePopup": "Popup schließen",
+		"showOnMap": "Auf der Karte zeigen",
+		"poi": "POI",
+		"tags": {
+			"phone": "Telefon",
+			"website": "Website",
+			"email": "E-Mail",
+			"link": "Link"
+		}
+	},
+	"gallery": {
+		"label": "Mediengalerie",
+		"close": "Galerie schließen",
+		"thumbnails": "Galerie-Vorschaubilder",
+		"previous": "Vorheriges Element",
+		"next": "Nächstes Element",
+		"watch": "{name} auf YouTube ansehen (öffnet in einem neuen Tab)",
+		"video": "Video"
+	},
+	"jsonLd": {
+		"difficulty": "Schwierigkeit (SAC)",
+		"ferrataGrade": "Klettersteig-Schwierigkeit",
+		"ferrataScale": "{scale}-Skala",
+		"climbingGrade": "Kletterschwierigkeit ({scale})",
+		"exposure": "Ausgesetztheit",
+		"routeType": "Routentyp",
+		"highPoint": "Höchster Punkt",
+		"season": "Saison",
+		"carFree": "Anreise ohne Auto",
+		"distance": "Strecke",
+		"ascent": "Aufstieg",
+		"descent": "Abstieg",
+		"duration": "Dauer"
+	},
+	"units": {
+		"km": "{value} km",
+		"m": "{value} m"
+	},
 	"presentation": {
 		"prev": "Zurück",
 		"next": "Weiter",
@@ -552,12 +759,6 @@
 		"slide": "Folie {slide}",
 		"exportPdf": "Als PDF herunterladen",
 		"exportingPdf": "PDF wird erstellt … {done} / {total}"
-	},
-	"post": {
-		"stats": {
-			"showAll": "Alle anzeigen ({count})"
-		},
-		"updated": "Aktualisiert am {date}"
 	},
 	"techTree": {
 		"title": "SmackDB",

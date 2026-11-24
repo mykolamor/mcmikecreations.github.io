@@ -437,6 +437,8 @@ export async function parseMarkdown(
         renderer: {
             paragraph(token: any) {
                 const text = (this as any).parser.parseInline(token.tokens);
+                // A paragraph holding only a placeholder image (below) has nothing left to show.
+                if (!text.trim()) return '';
                 if (/^\s*(<figure[\s\S]*?<\/figure>\s*)+$/.test(text)) {
                     return text + '\n';
                 }
@@ -471,6 +473,9 @@ export async function parseMarkdown(
             },
             image(token: any) {
                 const href = token.href || '';
+                // `/404/` marks media that isn't up yet (a video still to upload). Like a
+                // placeholder link it renders as nothing a reader or prerender could follow.
+                if (isPlaceholderHref(href)) return '';
                 const title = token.title || '';
                 const text = token.text || '';
 

@@ -72,6 +72,13 @@ test('no place links in headings, links or figure captions', async () => {
 	assert.doesNotMatch(media[0].captionHtml ?? '', /mk-place/);
 });
 
+test('a placeholder image renders nothing, so prerender never fetches /404/', async () => {
+	const { html, media } = await parseMarkdown(body('Before.\n\n![Full via ferrata climb](/404/)\n\nAfter.\n'), []);
+	assert.doesNotMatch(html, /404/);
+	assert.doesNotMatch(html, /<p>\s*<\/p>/);
+	assert.equal(media.length, 0);
+});
+
 test('without nodes, references are only protected from translation', async () => {
 	const { html } = await parseMarkdown(body('Up to Knorrhütte (2052 m).'), []);
 	assert.deepEqual(placeLinks(html), []);

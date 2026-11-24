@@ -1,4 +1,6 @@
+import { existsSync } from 'node:fs';
 import { error } from '@sveltejs/kit';
+import { defaultGpxPath } from '$lib/data/hikes-core';
 import { hikeSlugs } from '$lib/data/hikes-db';
 import { hikes } from '$lib/hikes/hikes.server';
 import type { PageServerLoad } from './$types';
@@ -26,5 +28,8 @@ export const load: PageServerLoad = ({ params }) => {
 		console.log(`Failed to fetch /maps/${params.slug} metadata.`);
 		error(404, { message: `Failed to fetch "${params.slug}"` });
 	}
-	return { meta };
+
+	const newest = [...meta.properties.dates].sort((a, b) => (a.date > b.date ? -1 : 1))[0];
+	const gpx = newest?.gpx ?? defaultGpxPath(meta.properties.filePath);
+	return { meta, gpxPath: existsSync(`static${gpx}`) ? gpx : null };
 };

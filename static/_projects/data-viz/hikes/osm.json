@@ -338,6 +338,7 @@
   "node/260278694": {
     "lat": 49.1628335,
     "lon": 20.0000452,
+    "demEle": 2428.1,
     "tags": {
       "alt_name:de": "Krummhorn;Ochsenhorn",
       "ele": "2494",
@@ -1411,6 +1412,7 @@
   "node/343492983": {
     "lat": 49.270251,
     "lon": 19.9808508,
+    "demEle": 1011.6,
     "tags": {
       "is_in:city": "Zakopane",
       "name": "Kuźnice",
@@ -1776,6 +1778,7 @@
   "node/430646675": {
     "lat": 49.2282368,
     "lon": 19.9879231,
+    "demEle": 1972.8,
     "tags": {
       "ele": "2012",
       "name": "Beskid / Beskyd",
@@ -2945,6 +2948,7 @@
   "node/1295278125": {
     "lat": 49.2312889,
     "lon": 19.9661663,
+    "demEle": 1842.0,
     "tags": {
       "ele": "1874",
       "name": "Pośredni Goryczkowy Wierch / Prostredný Goričkový vrch",
@@ -2960,6 +2964,7 @@
   "node/1295278137": {
     "lat": 49.2322686,
     "lon": 19.9576008,
+    "demEle": 1867.4,
     "tags": {
       "alt_name:sk": "Horičkova kopa",
       "ele": "1912",
@@ -2976,6 +2981,7 @@
   "node/1295278148": {
     "lat": 49.2336471,
     "lon": 19.9403201,
+    "demEle": 1873.4,
     "tags": {
       "alt_name:sk": "Suchý vrch Kondracký",
       "ele": "1893",
@@ -3970,6 +3976,7 @@
   "node/2604672434": {
     "lat": 49.2646101,
     "lon": 19.9871382,
+    "demEle": 1212.0,
     "tags": {
       "ele": "1224",
       "name": "Boczań",
@@ -4577,6 +4584,7 @@
   "node/3508683869": {
     "lat": 49.1785869,
     "lon": 20.0793064,
+    "demEle": 2203.4,
     "tags": {
       "ele": "2291",
       "name": "Żabi Koń",
@@ -4594,6 +4602,7 @@
   "node/3509905952": {
     "lat": 49.1794211,
     "lon": 20.0740814,
+    "demEle": 2326.1,
     "tags": {
       "ele": "2365",
       "ele:bpv": "2373.41",
@@ -4629,6 +4638,7 @@
   "node/3552158247": {
     "lat": 49.2318014,
     "lon": 19.9815609,
+    "demEle": 1965.0,
     "tags": {
       "ele": "1987",
       "name": "Kasprov vrch / Kasprowy Wierch",
@@ -4650,6 +4660,7 @@
   "node/3558357900": {
     "lat": 49.2342617,
     "lon": 19.9387605,
+    "demEle": 1855.9,
     "tags": {
       "alt_name:pl": "Przełęcz pod Kondracką Czubą",
       "ele": "1863",
@@ -4681,6 +4692,7 @@
   "node/3560695684": {
     "lat": 49.2365407,
     "lon": 19.9322676,
+    "demEle": 1987.6,
     "tags": {
       "alt_name:pl": "Kondracka Kopa",
       "ele": "2005",
@@ -4716,6 +4728,7 @@
   "node/3633401218": {
     "lat": 49.2558619,
     "lon": 20.0048452,
+    "demEle": 1517.3,
     "tags": {
       "ele": "1531",
       "name": "Wielka Królowa Kopa",
@@ -4973,6 +4986,7 @@
   "node/4239028296": {
     "lat": 49.232815,
     "lon": 19.9826983,
+    "demEle": 1947.4,
     "tags": {
       "addr:postcode": "34-500",
       "amenity": "restaurant",
@@ -5008,6 +5022,7 @@
   "node/4366169405": {
     "lat": 49.1795756,
     "lon": 20.0881081,
+    "demEle": 2467.8,
     "tags": {
       "description": "Najwyższy szczyt w Polsce",
       "ele": "2499",
@@ -5496,6 +5511,7 @@
   "node/8518741430": {
     "lat": 49.2643061,
     "lon": 19.9940869,
+    "demEle": 1279.6,
     "tags": {
       "ele": "1287",
       "name": "Wysokie",
@@ -5797,6 +5813,7 @@
   "node/10027944667": {
     "lat": 49.233366,
     "lon": 19.9402452,
+    "demEle": 1869.3,
     "tags": {
       "alt_name": "Suchý vrch Kondracký",
       "ele": "1895",
@@ -5810,6 +5827,7 @@
   "node/10027944669": {
     "lat": 49.233029,
     "lon": 19.9484398,
+    "demEle": 1793.1,
     "tags": {
       "ele": "1832",
       "name": "Mała Sucha Czuba Kondracka",
@@ -5823,6 +5841,7 @@
   "node/10027944670": {
     "lat": 49.2328061,
     "lon": 19.9502356,
+    "demEle": 1798.2,
     "tags": {
       "ele": "1844",
       "name": "Pośrednia Sucha Czuba Kondracka",
@@ -5836,6 +5855,7 @@
   "node/10027944672": {
     "lat": 49.2322708,
     "lon": 19.954076,
+    "demEle": 1828.8,
     "tags": {
       "ele": "1876",
       "name": "Wysoka Sucha Czuba Kondracka",
@@ -5849,6 +5869,7 @@
   "node/10027944678": {
     "lat": 49.2323604,
     "lon": 19.957138,
+    "demEle": 1873.6,
     "tags": {
       "alt_name:sk": "Horičkova kopa",
       "ele": "1911",
@@ -7381,6 +7402,7 @@
   "way/95951672": {
     "lat": 49.22864495,
     "lon": 19.998990650000003,
+    "demEle": 1673.9,
     "tags": {
       "ele": "1672",
       "name": "Zielony Staw Gąsienicowy",

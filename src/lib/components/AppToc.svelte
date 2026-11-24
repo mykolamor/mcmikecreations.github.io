@@ -4,7 +4,7 @@
 	import tocbot from 'tocbot';
 	import { BarsFromLeftOutline } from 'flowbite-svelte-icons';
 	import { tick } from 'svelte';
-	import {onDestroy, onMount} from "svelte";
+	import { onMount } from "svelte";
 
 	/*
 None					width: 100%;
@@ -66,11 +66,11 @@ xl (1280px)		max-width: 1280px;
 			cancelled = true;
 		};
 	});
-	onMount(tocbot.refresh);
 
-	onDestroy(() => {
-		tocbot.destroy();
-	})
+	onMount(() => {
+		tocbot.refresh();
+		return () => tocbot.destroy();
+	});
 
 	function close(event: MouseEvent) {
 		if (!aside?.contains(event.target as Node)) open = false;

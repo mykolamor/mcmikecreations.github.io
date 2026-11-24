@@ -50,11 +50,12 @@
 	<div class="mx-auto mt-8 flex flex-wrap justify-center gap-4 px-4 sm:px-0">
 		<div
 			class="relative w-full md:w-auto md:min-w-[24rem] max-w-md p-4
-			before:content-[''] before:bg-[url('{resume.basics.image}')]
+			before:content-[''] before:bg-[image:var(--profile-url)]
 			before:h-full before:w-full before:absolute before:-z-10 before:top-0 before:left-0
 			before:bg-cover before:bg-center before:bg-origin-border
 			before:transition-all before:duration-200
 			before:blur-xl before:contrast-200 before:opacity-0 before:hover:opacity-25"
+			style="--profile-url: url('{resume.basics.image}')"
 		>
 			<Img src={resume.basics.image} alt="Profile" />
 		</div>

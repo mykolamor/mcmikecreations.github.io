@@ -1,15 +1,17 @@
 ---
 title: 'The Basics of Databases'
 date: '2026-11-12'
-description: Everything you need to know to read my database posts
+image: /images/blog/database-basics.jpg
+description: Everything you need to know to read my database posts.
 author: Mykola Morozov
 tags:
   - Databases
-draft: true
 techTree:
   timelines: [query-processing]
   year: 1970
   intro: true
+images:
+  /images/blog/database-basics.jpg: {w: 1062, h: 708, blur: 'data:image/webp;base64,UklGRsAAAABXRUJQVlA4ILQAAABQBACdASoYABAAPtFUo0uoJKMhsAgBABoJbACdMoAlvhcm4captuTzUMcAAPz5p/rC/wny2OX1Ljkh3EmI8huCKUJaHX3ZaHeu5pIy7qPPHwUrCGqMHqVh0M4evP69tIf48XxbqObYyMTZF7qWXId9O61fRjhlhzzAGpwGY4dvsN7f7mSdjII0PDd3IJ9D73EO/JB8pE61dQ/abL4b8TbOyPCy2k6Aj4yLfYsvwjmXDB1AAAA='}
 ---
 # The Basics of Databases
 
@@ -19,20 +21,20 @@ they are. I'm making this post for two reasons: correct the record for
 people vaguely familiar with databases, and give an introduction to those who
 know nothing about them.
 
-## What is a database
+## What Is a Database
 
 There are a lot of interchangeable terms people use when talking about DBs.
 I will also mix them up down the line, but for this post specifically, I will
 make sure I use the correct term.
 
-- **Database** - the rules and structure that can be found in a collection of
+- **Database** — the rules and structure that can be found in a collection of
 data (the blueprint/schema, logical model).
-- **Database Instance** - an actual example of this structured data governed by
+- **Database Instance** — an actual example of this structured data governed by
 the given rules (the data constructed following the blueprint).
-- **Database Engine** - the specific software used to process the raw data,
+- **Database Engine** — the specific software used to process the raw data,
 including storage (creating, reading, updating, securing data, enforcing the
 rules).
-- **Database Management System** (DBMS) - the full software package, including
+- **Database Management System** (DBMS) — the full software package, including
 network protocols, user management, backups, request processing, etc.
 
 Most of the interesting research, subjectively, happens on the database engine
@@ -41,9 +43,9 @@ Now for a more concrete example.
 
 The following definition of a table is, in fact, a **database**.
 - The identifier is a whole natural number ranging from $1$ to $2^{32}$;
-- the country codes have to be lowercase alphabetic latin 3-letter words
-  following the ISO 3166-1 alpha-3 standard (eng, ukr, deu, etc.);
-- the currency codes have to be lowercase alphabetic latin 3-letter words
+- the country codes have to be lowercase alphabetic Latin 3-letter words
+  following the ISO 3166-1 alpha-3 standard (usa, ukr, deu, etc.);
+- the currency codes have to be lowercase alphabetic Latin 3-letter words
   following the ISO 4217 standard (eur, usd, uah).
 
 |Identifier|CountryCode|CurrencyCode|
@@ -58,7 +60,7 @@ Once we actually fill this table with data, it becomes a **database instance**:
 |2|usa|usd|
 |3|ukr|uah|
 
-To add or remove rows to this table, and save the table to disk, we'd use
+To add rows to or remove rows from this table, and save the table to disk, we'd use
 a **database engine**. And when our sysadmin wants to set up automatic
 backups of the database instance across the network as part of their
 central management system, they'd interact with the **DBMS**.
@@ -89,7 +91,7 @@ otherwise);
 - analysis and estimation (checking information stored in the database instance
 to come up with faster ways to process this information exploiting qualities and
 statistics the data has);
-- arguably optimization, final execution plan generation (more on this below);
+- arguably optimization, final execution plan generation (more on this in following posts);
 - extension and plugin management.
 
 In simple terms, frontend components help the DBMS, the surrounding systems, and
@@ -98,9 +100,9 @@ frontend components, get set up in the control components, and get executed by
 the backend components.
 
 The **backend** components then include:
-- low-level query optimization and/or compilation (more on it below);
+- low-level query optimization and/or compilation (more on it in following posts);
 - actual processing operation implementations in code;
-- storage management (storing and loading information to disk or over Internet);
+- storage management (storing and loading information to disk or over the Internet);
 - computation and usage of additional information (sorted copies of data,
 pre-computed relations between information pieces);
 - compression, encoding, encryption, low-level security;
@@ -109,7 +111,7 @@ that runs the DBMS, cleaning up after the data was processed).
 
 In short, backend components are the backbone of the DBMS, actually executing
 the information processing commands issued by users or other systems.
-There have been some successful systems foregoing frontend components and
+There have been some successful systems forgoing frontend components and
 focusing on making backend ones easy to use and integrate into other systems
 (since these data processing operations, storage management, etc. have usage
 outside of databases, in medical programs, document editors, statistics
@@ -118,10 +120,10 @@ exist without backend components supporting them.
 
 The control components hold everything together and help components in other
 categories to talk to each other and get work done. They include:
-- transactions (ensuring only one user changes the same piece of information
-at a time to avoid wrong data);
-- concurrency control (executing operations across many computers, executing
-many operations on one computer, etc.);
+- transactions (grouping several changes so that either all of them happen or
+none do, e.g., money leaving one account and arriving in another);
+- concurrency control (letting many users read and change data at the same time
+without one user's changes corrupting or overwriting another's);
 - deadlock detection (many users trying to change the same information and the
 system getting stuck trying to do it);
 - recovery (restarting if the system crashes, making checkpoints to resume from,
@@ -129,7 +131,7 @@ tracking and reporting the progress);
 - authentication/authorization, user access;
 - auditing and data masking for privacy;
 - computer resource management and distribution to different operations;
-- pefrormance, error, event monitoring;
+- performance, error, event monitoring;
 - backups and restores automation, tool reorganization (e.g., recomputing that
 pre-calculated sorted data when it changes);
 - distribution of tasks and operations between different database engines,
@@ -142,13 +144,13 @@ works reliably, and the computers running the DBMS are doing work.
 ## Database Types
 
 Now that we've discussed topics that apply to all sorts of databases, we need to
-figure out what aforementioned sorts of databases exist. There are a lot of
+figure out what the aforementioned sorts of databases exist. There are a lot of
 them, and a lot of categorizations too, but here's the one I like to use.
 
 **Relational (SQL) Databases**. The information stored inside is organized into
-tables records (information objects), and relations are described between them.
+tables/records (information objects), and relations are described between them.
 The table above is an example of a relational database instance. Modern DBMS
-falling into this category include *PostgreSQL, MySQL, OracleDB, SQLite* and
+falling into this category include *PostgreSQL, MySQL, Oracle Database, SQLite* and
 more. Since this category is heavily structured and broken down into separate
 tables, processing them and finding relevant pieces of information can get quite
 complex.
@@ -159,7 +161,7 @@ varying and freeform data, but often include duplicates and deeply nested
 data structures, making processing them more difficult. Examples include
 *MongoDB, Couchbase, Firestore*.
 
-**Key-Value Databases**. Every piece of information is assigned a key, when it
+**Key-Value Databases**. Every piece of information is assigned a key when it
 is added to the database instance. This key can then be used to retrieve or
 change this information. While this category of databases is less flexible, it
 can use some unique assumptions and optimizations to make data processing
@@ -183,12 +185,12 @@ flat file databases work directly on the file system on a computer. I hope to
 cover all of these at some point in the future, but for now let's focus on the
 basics.
 
-There are other categorizations of databases, independent of (or complimentary
+There are other categorizations of databases, independent of (or complementary
 to) the ones above. Someone can group databases by storage location (on disk or
 only inside the operating memory of a computer), by workload (many small
 transactions adding, updating, and deleting data; large statistical computations
 over unchanging data; mixed workloads; data continuously streaming from outside
-sources and being processed on-the-go), by architecture (embedded,
+sources and being processed on the go), by architecture (embedded,
 client-server, distributed across many computers and centrally managed,
 federated and running tasks across multiple independent computers), by
 deployment (where the DBMS is running, so local/self-hosted, cloud, etc.).
