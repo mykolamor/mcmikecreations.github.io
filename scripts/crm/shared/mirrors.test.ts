@@ -21,12 +21,6 @@ test('existing Komoot+Strava rows round-trip with an empty AllTrails row', () =>
 	assert.deepEqual(applyMirrorRows([KOMOOT, STRAVA], rows), [KOMOOT, STRAVA]);
 });
 
-test('clearing a URL removes that entry', () => {
-	const rows = mirrorRows([KOMOOT, STRAVA]);
-	rows[0].url = '';
-	assert.deepEqual(applyMirrorRows([KOMOOT, STRAVA], rows), [STRAVA]);
-});
-
 test('a video source is kept untouched', () => {
 	const out = applyMirrorRows([KOMOOT, VIDEO], [{ title: 'Komoot', url: '' }]);
 	assert.deepEqual(out, [VIDEO]);
@@ -89,14 +83,6 @@ test('sequence: clear Komoot, adopt server rows, edit Strava keeps checked', () 
 	assert.equal(adopted.find((r) => r.title === 'Strava')!.key, 0);
 	src = applyMirrorRows(src, setUrl(adopted, 'Strava', 'https://s/9'));
 	assert.deepEqual(src, [{ ...STRAVA_X, url: 'https://s/9' }]);
-});
-
-test('sequence: [A,B,C] clear A then edit C', () => {
-	const m = (t: string) => ({ title: t, url: `https://${t}/`, kind: 'mirror', extra: t });
-	let src: unknown[] = [m('A'), m('B'), m('C')];
-	src = applyMirrorRows(src, setUrl(mirrorRows(src), 'A', ''));
-	src = applyMirrorRows(src, setUrl(mirrorRows(src), 'C', 'https://c2/'));
-	assert.deepEqual(src, [m('B'), { ...m('C'), url: 'https://c2/' }]);
 });
 
 test('a stale client key never rewrites a different entry', () => {

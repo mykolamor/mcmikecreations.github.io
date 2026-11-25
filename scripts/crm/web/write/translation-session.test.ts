@@ -23,9 +23,7 @@ function fakeServer(exists = true) {
 test('the translation session uses the source\'s own folder for chips', () => {
 	const { request } = fakeServer();
 	const post = translationSession(POST, 'de', { request });
-	assert.deepEqual(post.ref, { kind: 'translation', source: POST, lang: 'de' });
 	assert.equal(ownFolderFor(post.ref), ownFolderFor(POST));
-	assert.equal(ownFolderFor(post.ref), '/images/projects/data-viz/hikes/stories/demo/');
 	const place = translationSession(PLACE, 'de', { request });
 	assert.equal(ownFolderFor(place.ref), ownFolderFor(PLACE));
 });

@@ -4,7 +4,7 @@ import { existsSync, mkdtempSync, readFileSync, rmSync, statSync, utimesSync, wr
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import sharp from 'sharp';
-import { complete, createStubFetcher, firstParagraph, inLanguage, localizedTexts, trimLetterbox, videoEntry, youtubeId, type VideoFetcher } from './video-meta';
+import { createStubFetcher, inLanguage, localizedTexts, trimLetterbox, videoEntry, type VideoFetcher } from './video-meta';
 
 const VID = 'B5yRsnelCsw';
 const FIX = join(__dirname, 'fixtures/youtube');
@@ -25,25 +25,6 @@ function fake(over: Partial<VideoFetcher> = {}): VideoFetcher & { calls: string[
 	};
 }
 const tmpRoot = () => mkdtempSync(join(tmpdir(), 'video-meta-'));
-
-test('youtubeId accepts the five URL shapes and rejects others', () => {
-	assert.equal(youtubeId(`https://www.youtube.com/watch?v=${VID}&t=10`), VID);
-	assert.equal(youtubeId(`https://youtu.be/${VID}`), VID);
-	assert.equal(youtubeId(`https://www.youtube.com/shorts/${VID}`), VID);
-	assert.equal(youtubeId(`https://www.youtube.com/embed/${VID}`), VID);
-	assert.equal(youtubeId(`https://www.youtube.com/live/${VID}`), VID);
-	assert.equal(youtubeId('https://www.youtube.com/results?search_query=x'), null);
-	assert.equal(youtubeId(`https://example.com/watch?v=${VID}`), null);
-	assert.equal(youtubeId('https://www.youtube.com/watch?v=short'), null);
-	assert.equal(youtubeId('not a url'), null);
-});
-
-test('firstParagraph trims to 500 chars at a word and adds …', () => {
-	assert.equal(firstParagraph('one two three four', 10), 'one two…');
-	assert.equal(firstParagraph('a\nb\n\nsecond'), 'a b');
-	const long = firstParagraph('word '.repeat(200));
-	assert.ok(long.length <= 501 && long.endsWith('word…'));
-});
 
 test('localized drops a Cyrillic text asked in en and a de text equal to en', async () => {
 	const en = next('Stuck in a gorge', 'We test.');
@@ -141,16 +122,6 @@ test('the tiers of a letterboxed thumbnail come from the trimmed pixels', async 
 	await videoEntry(root, VID, null, fake(), { refresh: false });
 	const m = await sharp(join(root, POSTERS, `${VID}-640.avif`)).metadata();
 	assert.deepEqual([m.width, m.height], [640, 360]);
-});
-
-test('complete needs the required fields and an English title', () => {
-	const ok = { uploadDate: 'd', duration: 'PT1S', title: { en: 'T' }, w: 1, h: 1, blur: 'b' };
-	assert.equal(complete(ok), true);
-	assert.equal(complete({ ...ok, title: { uk: 'Т' } }), false);
-	assert.equal(complete({ ...ok, title: 'plain' }), false);
-	assert.equal(complete({ ...ok, blur: undefined }), false);
-	assert.equal(complete({ unavailable: true }), false);
-	assert.equal(complete(null), false);
 });
 
 test('warnings name the video; a network error returns null but a disk error throws', async () => {

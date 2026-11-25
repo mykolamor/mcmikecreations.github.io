@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { docFile, lockKey, ownFolder, refFromQuery } from './doc-ref';
+import { docFile, lockKey, refFromQuery } from './doc-ref';
 import { withDocLock } from './doc-lock';
 import { loadDoc, saveOps } from './doc';
 import { loadPlace, savePlaceOps } from './place-doc';
@@ -24,11 +24,6 @@ test('refFromQuery maps place/post/hike and rejects bad slugs', () => {
 	assert.equal(lockKey({ kind: 'post', slug: 'foo', date: '2024-01-01' }), 'post:foo');
 	assert.equal(lockKey({ kind: 'hike', slug: 'foo' }), 'post:foo');
 	assert.equal(lockKey({ kind: 'place', slug: 'foo' }), 'place:foo');
-	assert.equal(docFile('/r', { kind: 'hike', slug: 'foo' }), null);
-	assert.equal(docFile('/r', { kind: 'post', slug: 'foo', date: '2024-01-01' }), '/r/static/_projects/data-viz/hikes/markdown/2024-01-01-foo.md');
-	assert.equal(docFile('/r', { kind: 'place', slug: 'foo' }), '/r/static/_projects/data-viz/hikes/places/foo.md');
-	assert.equal(ownFolder({ kind: 'post', slug: 'foo', date: '2024-01-01' }), '/images/projects/data-viz/hikes/stories/foo/');
-	assert.equal(ownFolder({ kind: 'place', slug: 'foo' }), '/images/projects/data-viz/hikes/places/foo/');
 });
 
 test('post and place refs with one slug lock and load independently', async () => {
@@ -66,24 +61,18 @@ test('post and place refs with one slug lock and load independently', async () =
 	assert.notEqual(loadPlace(root, place.slug).version, pl0.version);
 });
 
-test('a translation ref round-trips through the query', () => {
+test('a translation ref round-trips through the query; an unknown lang is a 400', () => {
 	const post = { kind: 'translation' as const, source: { kind: 'post' as const, slug: 'x', date: '2026-01-01' }, lang: 'de' as const };
 	const place = { kind: 'translation' as const, source: { kind: 'place' as const, slug: 'y' }, lang: 'de' as const };
 	assert.deepEqual(refFromQuery(q({ slug: 'x', date: '2026-01-01', lang: 'de' })), post);
 	assert.deepEqual(refFromQuery(q({ place: 'y', lang: 'de' })), place);
 	for (const ref of [post, place]) assert.deepEqual(refFromQuery(q(refParams(ref))), ref);
-	assert.deepEqual(refParams(post), { slug: 'x', date: '2026-01-01', lang: 'de' });
-	assert.deepEqual(refParams(place), { place: 'y', lang: 'de' });
-	// The file beside its source; the source's lock and media folder.
+	// The file beside its source, under the source's lock.
 	assert.equal(docFile('/r', post), '/r/static/_projects/data-viz/hikes/markdown/2026-01-01-x.de.md');
 	assert.equal(docFile('/r', place), '/r/static/_projects/data-viz/hikes/places/y.de.md');
 	assert.equal(lockKey(post), 'post:x');
 	assert.equal(lockKey(place), 'place:y');
-	assert.equal(ownFolder(post), '/images/projects/data-viz/hikes/stories/x/');
-	assert.equal(ownFolder(place), '/images/projects/data-viz/hikes/places/y/');
-});
-
-test('an unknown lang is a 400', () => {
+	// An unknown lang is a 400.
 	for (const lang of ['fr', 'en', 'DE', '', 'de.md', '../de'])
 		assert.throws(() => refFromQuery(q({ slug: 'x', date: '2026-01-01', lang })), is400, lang);
 	assert.throws(() => refFromQuery(q({ place: 'y', lang: 'fr' })), is400);

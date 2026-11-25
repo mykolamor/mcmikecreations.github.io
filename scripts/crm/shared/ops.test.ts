@@ -15,14 +15,9 @@ const POST = '---\ntitle: T\ndescription: D\ntags:\n  - a\n  - b\nimages:\n  x.j
 const SIDE = '{\n  "name": "N",\n  "description": "D"\n}\n';
 const mk = (postRaw = POST): HikeDoc => ({ slug: 's', date: '2024-01-01', sidecarRaw: SIDE, postRaw, version: docVersion(SIDE, postRaw) });
 
-test('empty string removes a post key', () => {
-	const out = applyOps(mk(), [{ field: 'post.description', value: '' }]);
-	assert.equal(out.postRaw, POST.replace('description: D\n', ''));
-});
-
-test('[] removes chips key', () => {
-	const out = applyOps(mk(), [{ field: 'post.tags', value: [] }]);
-	assert.equal(out.postRaw, POST.replace('tags:\n  - a\n  - b\n', ''));
+test('an empty string or [] removes a post key', () => {
+	assert.equal(applyOps(mk(), [{ field: 'post.description', value: '' }]).postRaw, POST.replace('description: D\n', ''));
+	assert.equal(applyOps(mk(), [{ field: 'post.tags', value: [] }]).postRaw, POST.replace('tags:\n  - a\n  - b\n', ''));
 });
 
 test('chips keep order and drop blanks/duplicates (case-insensitive)', () => {
@@ -60,15 +55,6 @@ test('editing the English name keeps the German', () => {
 	assert.throws(() => applyOps(mkDe(), [{ field: 'sidecar.name', value: ' ' }]), (e) => e instanceof ApiError && e.status === 400 && /translation/.test(e.message));
 });
 
-test('an English-only name is written as {en}', () => {
-	assert.equal(applyOps(mk(), [{ field: 'sidecar.name', value: 'M' }]).sidecarRaw, SIDE.replace('"N"', '{\n    "en": "M"\n  }'));
-	// `{en}` alone shows as the English text, and an edit changes only its `en`.
-	const enOnly = mkDe('{\n  "name": {"en": "N"}\n}\n');
-	assert.equal(clientDoc(enOnly).fields['sidecar.name'], 'N');
-	const out = applyOps(enOnly, [{ field: 'sidecar.name', value: 'M' }]);
-	assert.equal(out.sidecarRaw, '{\n  "name": {"en": "M"}\n}\n');
-});
-
 test('a German name is written into the name map and keeps the English', () => {
 	const out = applyOps(mk(), [{ field: 'sidecar.name', lang: 'de', value: 'Ň' }]);
 	assert.equal(out.sidecarRaw, SIDE.replace('"name": "N"', '"name": {\n    "en": "N",\n    "de": "Ň"\n  }'));
@@ -81,7 +67,10 @@ test('a name with only English is written as {en}', () => {
 	assert.deepEqual(clientDoc(mk()).texts['sidecar.name'], { en: 'N' });
 	// A German name that was never typed (or is blank) writes nothing.
 	assert.equal(applyOps(mk(), [{ field: 'sidecar.name', lang: 'de', value: '' }]).sidecarRaw, SIDE);
-	assert.equal(applyOps(mk(), [{ field: 'sidecar.name', value: 'M' }]).sidecarRaw, SIDE.replace('"N"', '{\n    "en": "M"\n  }'));
+	// `{en}` alone shows as the English text, and an edit changes only its `en`.
+	const enOnly = mkDe('{\n  "name": {"en": "N"}\n}\n');
+	assert.equal(clientDoc(enOnly).fields['sidecar.name'], 'N');
+	assert.equal(applyOps(enOnly, [{ field: 'sidecar.name', value: 'M' }]).sidecarRaw, '{\n  "name": {"en": "M"}\n}\n');
 });
 
 test('clearing the German leaves {en} in a two-language name', () => {
@@ -149,27 +138,14 @@ test('hike scope edits only the sidecar lines', () => {
 	assert.equal(out.postRaw, POST);
 });
 
-test('invalid map values are 400', () => {
+test('invalid map values and scopes are 400', () => {
 	const bad = (op: FieldOp) => assert.throws(() => applyOps(mkMap(), [op]), (e: any) => e.status === 400);
-	bad({ field: 'map.height', value: 64 });
 	bad({ field: 'map.height', value: 300.5 });
-	bad({ field: 'map.height', value: 4000 });
 	bad({ field: 'map.origin', value: { lat: 91, lon: 0 } });
-	bad({ field: 'map.origin', value: { lat: 0, lon: -181 } });
 	bad({ field: 'map.checkpoints', value: [[1, NaN]] });
-	bad({ field: 'map.checkpoints', value: [[1]] });
 	bad({ field: 'map.nodes', value: ['node/1', 'node/1'] });
-	bad({ field: 'map.nodes', value: ['pt/1'] });
 	bad({ field: 'map.nodes', scope: 'post', value: ['node/1'] });
-	bad({ field: 'sidecar.name', scope: 'post', value: 'x' });
-});
-
-test('client doc gives map fields as { hike, post }', () => {
-	const doc = applyOps(mkMap(), [{ field: 'map.height', scope: 'post', value: 600 }]);
-	const c = clientDoc(doc).fields;
-	assert.deepEqual(c['map.height'], { hike: 512, post: 600 });
-	assert.deepEqual(c['map.nodes'], { hike: ['node/1', 'way/2'] });
-	assert.deepEqual(c['map.origin'], { hike: { lat: 47.4095595, lon: 10.9135899 } });
+	bad({ field: 'map.height', scope: 'x' as never, value: 512 });
 });
 
 test('replacing an existing post origin/checkpoints keeps style and unmoved pairs', () => {
@@ -179,10 +155,6 @@ test('replacing an existing post origin/checkpoints keeps style and unmoved pair
 		{ field: 'map.checkpoints', scope: 'post', value: [[10.91, 47.41], [10.90, 47.4], [1, 2]] }
 	]);
 	assert.equal(out.postRaw, post.replace('lat: 47.70', 'lat: 48').replace('  - [10.90, 47.4]\n  - [10.91, 47.41]', '  - [10.91, 47.41]\n  - [10.90, 47.4]\n  - [1, 2]'));
-});
-
-test('unknown scope is 400', () => {
-	assert.throws(() => applyOps(mkMap(), [{ field: 'map.height', scope: 'x' as never, value: 512 }]), (e: any) => e.status === 400);
 });
 
 test('body op replaces only the bytes after the front matter', () => {

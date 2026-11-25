@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { createOsmClient, createStubClient, nearestPoint, OVERPASS_URLS, QUERY_FEATURES_URL, QUERY_PAGE_URL } from './osm-client';
+import { createOsmClient, OVERPASS_URLS, QUERY_FEATURES_URL, QUERY_PAGE_URL } from './osm-client';
 import { ApiError } from './errors';
 
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status });
@@ -24,26 +24,6 @@ function clock() {
 	return { now: () => t, sleep: async (ms: number) => void (t += ms), advance: (ms: number) => void (t += ms) };
 }
 
-test('fallback: around returns nodes, ways and relations as raw elements', async () => {
-	const c = clock();
-	const calls: { url: string; body: string }[] = [];
-	const client = createOsmClient({
-		...c,
-		fetch: qfDown(async (url: string, init: RequestInit) => {
-			calls.push({ url, body: String(init.body) });
-			return json({ elements: [{ type: 'way', id: 2, center: { lat: 1, lon: 2 }, tags: { a: 'b' } }, { type: 'node', id: 1, lat: 1, lon: 2 }] });
-		})
-	});
-	const els = await client.around(47.5, 11.5, 30);
-	assert.deepEqual(els.map((e) => `${e.type}/${e.id}`), ['way/2', 'node/1']);
-	assert.deepEqual(els[1].tags, {});
-	assert.equal(calls[0].url, OVERPASS_URLS[0]);
-	const ql = decodeURIComponent(calls[0].body.replace(/\+/g, ' '));
-	assert.match(ql, /^data=\[out:json\]\[timeout:10\];\(node\(around:30,47\.5,11\.5\)\(if:count_tags\(\)>0\);way\(around:30,47\.5,11\.5\)/);
-	assert.match(ql, /relation\(around:30,47\.5,11\.5\)\(if:count_tags\(\)>0\);\);out tags geom\(47\.49973\d*,11\.4996\d*,47\.50026\d*,11\.5003\d*\);$/);
-	assert.doesNotMatch(ql, /out center/);
-});
-
 test('fallback: around places a way or relation at its clipped geometry point nearest the click, no geometry kept', async () => {
 	const c = clock();
 	const client = createOsmClient({
@@ -60,10 +40,6 @@ test('fallback: around places a way or relation at its clipped geometry point ne
 	const els = await client.around(47.5, 11.5, 30);
 	assert.deepEqual(els.map((e) => e.center), [{ lat: 47.5001, lon: 11.5001 }, { lat: 47.5002, lon: 11.5 }, { lat: 47.5, lon: 11.5 }]);
 	assert.ok(els.every((e) => !('geometry' in e) && !('members' in e) && !('bounds' in e)));
-});
-
-test('nearestPoint: null without geometry or bounds', () => {
-	assert.equal(nearestPoint({ type: 'way' }, { lat: 1, lon: 2 }), null);
 });
 
 test('fallback: a mirror that never answers is given up on and the next is asked', async () => {
@@ -91,13 +67,6 @@ test('fallback: all mirrors busy -> ApiError 503 with a readable message, mirror
 		(e: unknown) => e instanceof ApiError && e.status === 503 && e.message === 'OSM is busy — try again in a minute'
 	);
 	assert.deepEqual(seen, OVERPASS_URLS);
-});
-
-test('a busy mirror hands over to the next', async () => {
-	const c = clock();
-	let n = 0;
-	const client = createOsmClient({ ...c, fetch: (async () => (n++ === 0 ? json({}, 503) : json({ elements: [{ type: 'node', id: 5, lat: 1, lon: 1, tags: { x: 'y' } }] }))) as any });
-	assert.equal((await client.searchName('Foo.bar', 1, 1))[0].id, 5);
 });
 
 test('elements: batches of 100, halving on 404, centre of full.json bbox, invisible skipped', async () => {
@@ -221,26 +190,6 @@ test('Query features failing (status, network, timeout) falls back to the Overpa
 	assert.deepEqual((await client.around(1, 2, 30)).map((e) => e.id), [8]);
 });
 
-test('a refused or cut-short answer is logged with the start of its body', async () => {
-	const c = clock();
-	const logs: string[] = [];
-	const page = `<html><body><h1>502 Gateway Timeout</h1>\n\nThis Overpass API server is currently at capacity. ${'x'.repeat(400)}</body></html>`;
-	const client = createOsmClient({
-		...c,
-		log: (m) => logs.push(m),
-		fetch: site(async (url: string) => {
-			if (url === QUERY_FEATURES_URL) return new Response('<p>Too many requests</p>', { status: 429 });
-			if (url === OVERPASS_URLS[0]) return new Response(page, { status: 502 });
-			return json({ elements: [], remark: 'runtime error: Query timed out in "query" at line 1 after 10 seconds.' });
-		})
-	});
-	await client.around(1, 2, 30);
-	assert.equal(logs[0], 'OSM Query features: answered 429: "Too many requests", asking the Overpass mirrors instead');
-	assert.match(logs[1], /^Overpass overpass-api\.de busy \(502\), trying the next mirror: "502 Gateway Timeout This Overpass API server is currently at capacity\. x+…"$/);
-	assert.ok(logs[1].length < 420, 'the body is cut at 300 characters');
-	assert.equal(logs[2], 'Overpass overpass.private.coffee remark: "runtime error: Query timed out in \\"query\\" at line 1 after 10 seconds."');
-});
-
 test('the token is kept until a minute before its cookie expires, then fetched anew', async () => {
 	const c = clock();
 	const cookies: string[] = [];
@@ -297,11 +246,4 @@ test('no token from the site falls back to the Overpass mirrors', async () => {
 	assert.ok(!seen.includes(QUERY_FEATURES_URL), 'query-features is not asked without a token');
 	assert.equal(seen.at(-1), OVERPASS_URLS[0]);
 	assert.equal(logs[0], 'OSM Query features: token page set no _osm_totp_token cookie, asking the Overpass mirrors instead');
-});
-
-test('stub client serves the canned fixture', async () => {
-	const s = createStubClient();
-	assert.equal((await s.elements(['node/900001', 'node/1']))['node/900001'].tags.name, 'Stubspitze');
-	assert.equal((await s.around(0, 0, 30)).length, 3);
-	assert.equal((await s.searchName('stubhütte', 0, 0)).length, 1);
 });

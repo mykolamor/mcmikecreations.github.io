@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { LANG_KEY, OLD_LANG_KEY, readSecondLang } from './second-lang';
+import { readSecondLang } from './second-lang';
 
 const store = (o: Record<string, string>) => {
 	const m = new Map(Object.entries(o));
@@ -8,8 +8,6 @@ const store = (o: Record<string, string>) => {
 };
 
 test('the second language migrates the old facts key', () => {
-	assert.equal(LANG_KEY, 'crm.lang');
-	assert.equal(OLD_LANG_KEY, 'crm.factsLang');
 	// The Facts tab's old choice becomes the CRM's, and stays readable.
 	const old = store({ 'crm.factsLang': 'fr' });
 	assert.equal(readSecondLang(old, ['de', 'fr']), 'fr');

@@ -29,13 +29,11 @@ test('hash matches the Python implementation on 3 fixture images', async () => {
 	}
 });
 
-test('same image re-encoded matches with distance <= 0.004', async () => {
+test('same image re-encoded matches with distance <= 0.004, a different one does not', async () => {
 	const re = await sharp(load('sky-ridge.jpg')).resize(480).jpeg({ quality: 55 }).toBuffer();
 	assert.ok(hamming(await phash(load('sky-ridge.jpg')), await phash(re)) <= 4);
 	assert.ok(blockMeanDistance(await blockMean(load('sky-ridge.jpg')), await blockMean(re)) <= 0.004);
-});
-
-test('a different image does not', async () => {
+	// A different image does not.
 	const d = blockMeanDistance(await blockMean(load('sky-ridge.jpg')), await blockMean(load('meadow-hut.jpg')));
 	assert.ok(d > 0.004, `distance ${d}`);
 	assert.ok(hamming(await phash(load('sky-ridge.jpg')), await phash(load('dusk-lake.jpg'))) > 4);

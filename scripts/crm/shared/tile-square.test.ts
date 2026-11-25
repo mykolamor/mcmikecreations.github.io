@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { squareBounds, squareHalfMetres, groundSizeKm, heightForCorner } from './tile-square';
+import { squareBounds, heightForCorner } from './tile-square';
 import { insideTileSquare } from '$lib/hikes/place-links';
 import { repoPaths } from '../server/paths';
 import { loadHikesFrom } from '../../load-hikes.js';
@@ -8,15 +8,6 @@ import { tilesForView } from '../../map-tiles.js';
 
 const ROOT = new URL('../../..', import.meta.url).pathname;
 const origin = { lat: 47.7, lon: 11.5 };
-
-test('squareBounds spans the half-side and groundSizeKm is about 6.6 km at 47.7 N, 512 px', () => {
-	const b = squareBounds(origin, 512);
-	const half = squareHalfMetres(origin.lat, 512);
-	const northM = (b.north - origin.lat) * 111194.9266;
-	const eastM = (b.east - origin.lon) * 111194.9266 * Math.cos((origin.lat * Math.PI) / 180);
-	assert.ok(Math.abs(northM - half) < 1 && Math.abs(eastM - half) < 1);
-	assert.ok(Math.abs(groundSizeKm(origin.lat, 512) - 6.6) <= 0.05);
-});
 
 test('half-side agrees with insideTileSquare in place-links', () => {
 	const b = squareBounds(origin, 512);

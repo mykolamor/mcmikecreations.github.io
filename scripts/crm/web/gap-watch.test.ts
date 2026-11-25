@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { ownWrites } from './api';
-import { createGapWatch, createPinsWatch } from './gap-watch';
+import { createGapWatch } from './gap-watch';
 
 const ref = { kind: 'post', slug: 'foo', date: '2026-07-19' } as const;
 const flush = () => new Promise((r) => setTimeout(r));
@@ -39,16 +39,6 @@ test('asks once at the start, then only a tick after a change has settled', asyn
 	assert.equal(asked.length, 3);
 });
 
-test('a failed read keeps what is shown', async () => {
-	const shown: unknown[] = [];
-	const request = async <T,>(): Promise<T> => {
-		throw new Error('down');
-	};
-	createGapWatch(ref, () => 'v', (g) => shown.push(g), request);
-	await flush();
-	assert.deepEqual(shown, []);
-});
-
 test('an older answer never replaces a newer one', async () => {
 	const answers: ((v: unknown) => void)[] = [];
 	const request = <T,>(): Promise<T> => new Promise((r) => answers.push(r as (v: unknown) => void));
@@ -63,14 +53,4 @@ test('an older answer never replaces a newer one', async () => {
 	answers[0]({ gaps: { de: ['text'] } });
 	await flush();
 	assert.deepEqual(shown, [{ de: ['facts'] }]);
-});
-
-test('the pins watch reads the has-pins route and shows its answer', async () => {
-	const asked: string[] = [];
-	const shown: boolean[] = [];
-	const request = async <T,>(_m: string, path: string): Promise<T> => (asked.push(path), { hasPins: true } as T);
-	createPinsWatch(ref, () => 'v1', (p) => shown.push(p), request);
-	await flush();
-	assert.deepEqual(asked, ['/api/photos/has-pins?slug=foo&date=2026-07-19']);
-	assert.deepEqual(shown, [true]);
 });

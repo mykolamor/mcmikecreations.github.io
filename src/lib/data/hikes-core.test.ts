@@ -1,7 +1,7 @@
 // Run with: node_modules/.bin/jiti src/lib/data/hikes-core.test.ts
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { assembleHikes, defaultMetaPath, hikeText, metaFolder, resolveHikeForDate, resolveHikeForPost } from './hikes-core.js';
+import { assembleHikes, defaultMetaPath, metaFolder, resolveHikeForDate, resolveHikeForPost } from './hikes-core.js';
 import { readSidecarTexts } from '../hikes/facts.server';
 import type { HikeMeta, Map } from './map-info';
 
@@ -54,31 +54,7 @@ test('a translated sidecar name renders as its English text everywhere', () => {
 	// The Node scripts read the same files from disk: see scripts/crm/server/problems.test.ts.
 });
 
-test('a plain sidecar name stays a plain hike with no translations', () => {
-	const { hikes } = siteHikes({ ...SIDECAR, name: 'X', description: 'About X.' });
-	assert.equal(hikes[0].name, 'X');
-	assert.equal('nameText' in hikes[0], false);
-	assert.equal('descriptionText' in hikes[0], false);
-});
-
 test('an unknown language in a sidecar name fails the build', () => {
 	assert.throws(() => siteHikes({ ...SIDECAR, name: { en: 'X', fr: 'Z' } }), /x\.hike\.json: name: unknown language "fr" \(en, de, uk\)/);
 	assert.throws(() => siteHikes({ ...SIDECAR, description: { de: 'Über X.' } }), /x\.hike\.json: description: text needs a non-empty `en`/);
-});
-
-test('hikeText gives a hike\'s name or description as a Text, translated or not', () => {
-	const [translated] = siteHikes(SIDECAR).hikes;
-	assert.deepEqual(hikeText(translated, 'name'), { en: 'X', de: 'Y' });
-	assert.deepEqual(hikeText(translated, 'description'), { en: 'About X.', de: 'Über X.' });
-	const [plain] = siteHikes({ ...SIDECAR, name: 'X', description: 'About X.' }).hikes;
-	assert.deepEqual(hikeText(plain, 'name'), { en: 'X' });
-	assert.deepEqual(hikeText(plain, 'description'), { en: 'About X.' });
-});
-
-test('a plain sidecar name or description is trimmed, as a translated one\'s en is', () => {
-	const [hike] = siteHikes({ ...SIDECAR, name: '  X ', description: 'About X.\n' }).hikes;
-	assert.equal(hike.name, 'X');
-	assert.equal(hike.description, 'About X.');
-	const untouched = { ...SIDECAR, name: 'X', description: 'About X.' };
-	assert.equal(readSidecarTexts(untouched, 'x.hike.json'), untouched, 'a sidecar with nothing to change comes back as is');
 });

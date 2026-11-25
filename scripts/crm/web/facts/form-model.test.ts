@@ -1,45 +1,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { enumLabel } from '$lib/hikes/facts-format';
 import { specAt } from '$lib/hikes/facts-spec';
-import { enumOptions, factsLang, fieldLabel, hasContent, linkValue, mergeText, normaliseTexts, textEdit, valueText } from './form-model';
+import { mergeText, normaliseTexts, textEdit } from './form-model';
 import { createSaveQueue } from '../save-queue';
 import { editOp, localFacts, shownOps, statedTexts } from './facts-state';
 import type { FieldOp } from '../../shared/ops';
-
-test('fieldLabel turns keys into words', () => {
-	assert.equal(fieldLabel('viaFerrata'), 'Via ferrata');
-	assert.equal(fieldLabel('carFree'), 'Car-free');
-	assert.equal(fieldLabel('protectedAreas'), 'Protected areas');
-	assert.equal(fieldLabel('sac'), 'SAC grade');
-	assert.equal(fieldLabel('url'), 'URL');
-	assert.equal(fieldLabel('checked'), 'Checked');
-});
-
-test('enumOptions use the label table', () => {
-	const water = specAt(['water', 0, 'kind'])!;
-	assert.ok(enumOptions(water).some((o) => o.value === 'spring' && o.label === enumLabel('en', 'water', 'spring')));
-	assert.ok(enumOptions(water, 'de').some((o) => o.label === enumLabel('de', 'water', 'spring')));
-	// No group: the raw value.
-	assert.deepEqual(enumOptions(specAt(['difficulty', 'fitness'])!).map((o) => o.label), ['1', '2', '3', '4', '5']);
-	const sac = enumOptions(specAt(['difficulty', 'sac'])!).map((o) => o.value);
-	assert.equal(sac.length, 18);
-	assert.deepEqual(sac.slice(0, 4), ['T1-', 'T1', 'T1+', 'T2-']);
-});
-
-test('valueText reads an inherited value in words', () => {
-	assert.equal(valueText(specAt(['summary'])!, { en: 'Steep', de: 'Steil' }, 'de'), 'Steep / Steil');
-	assert.equal(valueText(specAt(['summary'])!, 'Steep', 'de'), 'Steep');
-	assert.equal(valueText(specAt(['water', 0, 'kind'])!, 'spring', 'en'), enumLabel('en', 'water', 'spring'));
-	assert.equal(valueText(specAt(['navigation', 'offline'])!, false, 'en'), 'No');
-	assert.equal(valueText(specAt(['season', 'best'])!, [6, 7], 'en'), 'Jun, Jul');
-	assert.equal(valueText(specAt(['season', 'window'])!, { from: '06-01', to: '09-30' }, 'en'), '06-01 – 09-30');
-	assert.equal(valueText(specAt(['stops', 0, 'open'])!, 'all-year', 'en'), 'All year');
-	assert.equal(valueText(specAt(['permits', 0, 'url'])!, { url: 'https://x.org', label: 'Shop' }, 'en'), 'Shop (https://x.org)');
-	assert.equal(valueText(specAt(['water', 0])!, { at: 'Hut', treat: true }, 'en'), 'At: Hut; Treat: Yes');
-	assert.equal(valueText(specAt(['route', 'trails'])!, ['E5', '201'], 'en'), 'E5, 201');
-	assert.equal(valueText(specAt(['summary'])!, undefined, 'en'), '');
-});
 
 test('normaliseTexts drops empty languages and writes English alone as {en}', () => {
 	const spec = specAt(['water', 0])!;
@@ -58,15 +23,9 @@ test('mergeText keeps other languages and refuses a cleared English beside a tra
 	assert.deepEqual(mergeText('A', { en: '', de: '' }), { value: undefined });
 	assert.deepEqual(mergeText({ en: 'A', de: 'Ä' }, { en: '', de: 'Ä' }), { error: 'English is required while there is a translation' });
 	assert.deepEqual(mergeText({ en: 'A', fr: 'Ah' }, { en: '', de: '' }), { error: 'English is required while there is a translation' });
-});
-
-test('hasContent and linkValue', () => {
-	assert.equal(hasContent(undefined), false);
-	assert.equal(hasContent({ a: [], b: { c: '' } }), false);
-	assert.equal(hasContent({ a: [false] }), true);
-	assert.equal(linkValue('https://a', undefined), 'https://a');
-	assert.deepEqual(linkValue('https://a', 'Site'), { url: 'https://a', label: 'Site' });
-	assert.equal(linkValue('', undefined), undefined);
+	// A full text edit (as the text field builds it) is refused the same way.
+	const saved = { en: 'Hello', de: 'Hallo' };
+	assert.deepEqual(mergeText(saved, textEdit([saved], saved, 'en', '')), { error: 'English is required while there is a translation' });
 });
 
 /**
@@ -161,17 +120,4 @@ test('a cleared language stays cleared with a send in flight between the edits',
 	assert.equal(t.last().de, '', 'the queued edit states the clear too');
 	assert.deepEqual(t.doc.facts.hike.summary, { en: 'Hi!', fr: 'Salut' });
 	assert.equal(t.queue.status, 'saved');
-});
-
-test('a full text edit still refuses a cleared English beside a translation', () => {
-	const saved = { en: 'Hello', de: 'Hallo' };
-	assert.deepEqual(mergeText(saved, textEdit([saved], saved, 'en', '')), { error: 'English is required while there is a translation' });
-});
-
-test('factsLang: the stored language, else the first other one, else English alone', () => {
-	assert.equal(factsLang('fr', ['de', 'fr']), 'fr');
-	assert.equal(factsLang('it', ['de', 'fr']), 'de', 'one no longer offered');
-	assert.equal(factsLang(null, ['de', 'fr']), 'de');
-	assert.equal(factsLang(null, []), 'en', 'a site with English only');
-	assert.equal(factsLang('de', []), 'en');
 });

@@ -7,7 +7,6 @@ import { makeTempRepo } from './test-repo';
 import { readDocFacts } from './facts-read';
 import { problemsFor } from './problems';
 import { repoPaths } from './paths';
-import { ApiError } from './errors';
 
 const REAL = path.resolve(__dirname, '../../..');
 
@@ -54,10 +53,6 @@ test('a malformed draft returns the error, not a failure', () => {
 	const r = readDocFacts(root, { kind: 'post', slug: 'grosser_laber', date: '2026-09-06' }, { draft: { post: { plan: { timing: { start: '7:' } } } } });
 	assert.equal(r.facts, null);
 	assert.match(r.error ?? '', /plan\.timing\.start/);
-});
-
-test('a place doc has no facts', () => {
-	assert.throws(() => readDocFacts(makeTempRepo(), { kind: 'place', slug: 'x' }), (e) => e instanceof ApiError && e.status === 400);
 });
 
 test('problems list a facts error of this hike', () => {

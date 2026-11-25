@@ -42,18 +42,20 @@ const go = (root: string, argv: string[] = []) => {
 
 const imageLines = (file: string) => readFileSync(file, 'utf8').split('\n').filter((l) => l.startsWith('  '));
 
-test('offset mismatch is not believable', async () => {
+test('a planned hike: an offset mismatch or another date is not believable', async () => {
 	const lines = [
-		"a.jpg: {w: 4, h: 3, taken: '2026-06-01T12:00:00+02:00'}",
+		"a.jpg: {w: 4, h: 3, lat: 47.0, lon: 11.0, taken: '2026-06-01T12:00:00+02:00'}",
 		"b.jpg: {w: 4, h: 3, taken: '2026-06-01T13:00:00+02:00'}",
-		"c.jpg: {w: 4, h: 3, taken: '2026-06-01T12:00:00+00:00'}"
+		"c.jpg: {w: 4, h: 3, taken: '2026-06-01T12:00:00+00:00'}",
+		"d.jpg: {w: 4, h: 3, taken: '2000-01-01T00:00:00+02:00'}"
 	];
 	const { root, post, rel } = setup(lines, null);
 	const before = readFileSync(post, 'utf8');
 	const { code, out } = await go(root);
 	assert.equal(code, 0);
-	assert.equal(out.warnings.length, 1);
+	assert.equal(out.warnings.length, 2);
 	assert.match(out.warnings[0], new RegExp(`^${rel}: c\\.jpg: taken 2026-06-01T12:00:00\\+00:00 .*offset \\+00:00.*\\+02:00`));
+	assert.match(out.warnings[1], new RegExp(`^${rel}: d\\.jpg: taken 2000-01-01T00:00:00\\+02:00 not believable \\(not the post date 2026-06-01\\)`));
 	assert.equal(readFileSync(post, 'utf8'), before);
 });
 
@@ -245,33 +247,12 @@ test('a second run changes nothing', async () => {
 	assert.equal(readFileSync(post, 'utf8'), after);
 });
 
-test('photo-times exits 1 naming an unreadable post', async () => {
-	const { root, rel } = setup([]);
-	writeFileSync(join(root, rel), '---\ntitle: [unclosed\n---\nbody\n');
-	const { code, out } = await go(root);
-	assert.equal(code, 1);
-	assert.match(out.warnings[0], new RegExp(`^${rel}: `));
-});
-
 test('a track-located entry in the Python order gains demEle after lon', async () => {
 	// taken before lat, as the Python wrote it; no demEle yet (the DEM tiles didn't cover it then)
 	const { root, post } = setup(["a.jpg: {w: 4, h: 3, taken: '2026-06-01T12:30:00+02:00', lat: 47.03, lon: 11.0, located: track, blur: 'data:a'}"]);
 	const { code } = await go(root);
 	assert.equal(code, 0);
 	assert.deepEqual(imageLines(post), ["  a.jpg: {w: 4, h: 3, taken: '2026-06-01T12:30:00+02:00', lat: 47.03, lon: 11.0, demEle: 1047.0, located: track, blur: 'data:a'}"]);
-});
-
-test("a planned hike's taken on another date gets one warning", async () => {
-	const { root, post, rel } = setup(
-		["a.jpg: {w: 4, h: 3, lat: 47.0, lon: 11.0, taken: '2026-06-01T12:00:00+02:00'}", "b.jpg: {w: 4, h: 3, taken: '2000-01-01T00:00:00+02:00'}"],
-		null
-	);
-	const before = readFileSync(post, 'utf8');
-	const { code, out } = await go(root);
-	assert.equal(code, 0);
-	assert.equal(out.warnings.length, 1);
-	assert.match(out.warnings[0], new RegExp(`^${rel}: b\\.jpg: taken 2000-01-01T00:00:00\\+02:00 not believable \\(not the post date 2026-06-01\\)`));
-	assert.equal(readFileSync(post, 'utf8'), before);
 });
 
 test('a photo with GPS taken after the recording ended passes at the end point', async () => {

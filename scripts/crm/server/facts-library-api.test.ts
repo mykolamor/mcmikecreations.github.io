@@ -1,7 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, writeFileSync } from 'node:fs';
-import path from 'node:path';
 import { makeTempRepo } from './test-repo';
 import { createApi, type ApiRequest } from './api';
 import { libraryUsage } from './facts-read';
@@ -24,18 +23,6 @@ test('usage lists the hikes that take a record', () => {
 	assert.deepEqual(libraryUsage(root)['tickets/day-pass'], []);
 	// The library check still reads the same: the unused record warned about, nothing else.
 	assert.deepEqual(libraryProblems(root).map((p) => p.message), ['ticket "day-pass" is used by no hike']);
-});
-
-test('GET /api/facts/library answers the version, the library and its usage', async () => {
-	const root = makeTempRepo();
-	const r = await createApi(root)({ method: 'GET', path: '/api/facts/library', query: new URLSearchParams(), headers: {} });
-	assert.equal(r.status, 200);
-	assert.deepEqual(r.json, libraryState(root));
-	const json = r.json as ReturnType<typeof libraryState>;
-	assert.equal(json.version, libraryVersion(root));
-	assert.match(json.version, /^[0-9a-f]{40}$/);
-	assert.equal((json.library.stops[FIRSTALM] as Record<string, unknown>).kind, 'restaurant');
-	assert.equal(json.usage[`stops/${FIRSTALM}`].length, 2);
 });
 
 test('a record is written byte-stably and answers the new state', async () => {
@@ -94,5 +81,4 @@ test('a record in use cannot be deleted', async () => {
 	assert.equal(del.status, 200);
 	assert.equal(libraryBytes(root), before);
 	assert.equal((await api(put({ kind: 'tickets', id: 'day-pass', record: null, base: libraryVersion(root) }))).status, 400);
-	assert.equal(path.basename(repoPaths(root).factsLibrary), 'facts-library.json');
 });

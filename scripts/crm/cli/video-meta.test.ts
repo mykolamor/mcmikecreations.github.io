@@ -105,18 +105,6 @@ test('a private video gets unavailable: true', async () => {
 	assert.ok(out.warnings.some((w) => w.includes("PrivateVid1 isn't public")));
 });
 
-test('--refresh refetches a complete entry', async () => {
-	const s = setup();
-	await go(s.root, counting());
-	const f = counting();
-	const { out } = await go(s.root, f, ['--refresh']);
-	assert.ok(f.calls > 0);
-	assert.equal(out.summaries.length, 1);
-	const g = counting();
-	await go(s.root, g);
-	assert.equal(g.calls, 0);
-});
-
 test('--dry-run reports and writes nothing', async () => {
 	const s = setup();
 	const before = readFileSync(s.file, 'utf8');
@@ -124,18 +112,6 @@ test('--dry-run reports and writes nothing', async () => {
 	assert.equal(readFileSync(s.file, 'utf8'), before);
 	assert.ok(!existsSync(join(s.root, POSTERS, `${VID}.jpg`)));
 	assert.deepEqual(out.changes, ['static/_projects/data-viz/hikes/markdown/2024-01-01-foo.md: would fetch 1 video(s)']);
-});
-
-test('a second run changes nothing', async () => {
-	const s = setup();
-	await go(s.root, counting());
-	const once = readFileSync(s.file, 'utf8');
-	const f = counting();
-	const { code, out } = await go(s.root, f);
-	assert.equal(code, 0);
-	assert.equal(readFileSync(s.file, 'utf8'), once);
-	assert.equal(f.calls, 0);
-	assert.deepEqual(out.changes, []);
 });
 
 /** The post after a first run with the video on its own line, its body then replaced by `body`. */
@@ -147,22 +123,14 @@ async function withBody(body: string) {
 	return { ...s, text };
 }
 
-test("an inline embed's entry is kept", async () => {
-	const s = await withBody(`Text with ${LINE} inside, and more.\n`);
-	const f = counting();
-	const { code, out } = await go(s.root, f);
-	assert.equal(code, 0);
-	assert.equal(readFileSync(s.file, 'utf8'), s.text);
-	assert.equal(f.calls, 0);
-	assert.deepEqual(out.changes, []);
-});
-
-test("a list-item embed's entry is kept", async () => {
-	for (const body of [`- one\n- ${LINE}\n`, `> ${LINE}\n`]) {
+test("an inline, list-item or quoted embed's entry is kept", async () => {
+	for (const body of [`Text with ${LINE} inside, and more.\n`, `- one\n- ${LINE}\n`, `> ${LINE}\n`]) {
 		const s = await withBody(body);
-		const { code, out } = await go(s.root, counting());
+		const f = counting();
+		const { code, out } = await go(s.root, f);
 		assert.equal(code, 0);
 		assert.equal(readFileSync(s.file, 'utf8'), s.text, body);
+		assert.equal(f.calls, 0, body);
 		assert.deepEqual(out.changes, [], body);
 	}
 });

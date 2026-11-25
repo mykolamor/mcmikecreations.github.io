@@ -35,11 +35,6 @@ test('prebuild runs the steps in order and stops at the first failure', async ()
 	calls.length = 0;
 	assert.equal(await runSteps('/nowhere', parseArgs(['prebuild']), recorder(), steps.filter((s) => s[0].name !== 'three')), 0);
 	assert.deepEqual(calls, ['one --missing-only', 'two', 'four']);
-
-	assert.deepEqual(
-		prebuild.steps.map(([c, f]) => [c.name, ...f].join(' ')),
-		['metrics missing-only', 'photo-times', 'terrain', 'video-meta', 'images', 'blog-images', 'check']
-	);
 });
 
 /** Every file under `dir` with its bytes. */

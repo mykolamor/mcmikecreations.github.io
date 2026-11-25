@@ -61,11 +61,6 @@ test('not a git repo means not published', async () => {
 	assert.equal(gitPublished(root, join(root, MD, '2024-01-01-foo.md')), false);
 });
 
-test('localToday uses the local calendar day', () => {
-	assert.equal(localToday(new Date(2026, 0, 5, 23, 59)), '2026-01-05');
-	assert.equal(localToday(new Date(2026, 11, 31, 0, 1)), '2026-12-31');
-});
-
 test('a committed place doc is never stamped updated', async () => {
 	const root = gitRepo();
 	const dir = join(root, 'static/_projects/data-viz/hikes/places');

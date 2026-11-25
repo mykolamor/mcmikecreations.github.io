@@ -32,7 +32,7 @@ function repo(): string {
 	return root;
 }
 
-test('uses post overrides and site gpx defaults', () => {
+test('uses post overrides and site gpx defaults; others exclude this hike; photos with lat/lon', () => {
 	const p = mapPayload(repo(), 'foo', '2024-01-01');
 	assert.deepEqual(p.origin, { lat: 47.5, lon: 11.5 });
 	assert.equal(p.height, 512);
@@ -41,15 +41,7 @@ test('uses post overrides and site gpx defaults', () => {
 	assert.match(p.routeUrl!, /^\/_projects\/data-viz\/hikes\/geojson\/foo\.json\?v=/);
 	assert.deepEqual(p.checkpoints, [[11.1, 47.1]]);
 	assert.deepEqual(p.nodes, [{ ref: 'node/1', name: 'Gipfel', kind: 'natural=peak', lat: 47.01, lon: 11.01, local: { name: 'Gipfel' } }]);
-});
-
-test('others excludes the current hike', () => {
-	const p = mapPayload(repo(), 'foo', '2024-01-01');
 	assert.deepEqual(p.others, [{ slug: 'bar', name: 'Bar', checkpoints: [[12, 48]] }]);
-});
-
-test('photos come from images entries with lat/lon', () => {
-	const p = mapPayload(repo(), 'foo', '2024-01-01');
 	assert.deepEqual(p.photos, [{ key: '2024-01-01-00.jpg', lat: 47.2, lon: 11.2, caption: 'Nice view' }]);
 });
 

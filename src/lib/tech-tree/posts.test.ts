@@ -20,14 +20,12 @@ test("the blog's tech tree data builds", () => {
 
 const POST = '---\ntitle: Basics\ndate: 2026-01-01\ntags: [Databases]\ntechTree:\n  timelines: [query-processing]\n  year: 1970\n---\nbody';
 
-test('a translation with a title gives that title', () => {
-	const index = buildBlogIndex({ '2026-01-01-a.md': POST, '2026-01-01-a.de.md': '---\ntitle: Grundlagen\n---\nText' });
+test('a translation gives its title, or none to fall back to English', () => {
+	const index = buildBlogIndex({
+		'2026-01-01-a.md': POST,
+		'2026-01-01-a.de.md': '---\ntitle: Grundlagen\n---\nText',
+		'2026-01-01-a.uk.md': '---\ndescription: Nur Text\n---\nText'
+	});
 	const [tl] = techTreeLayouts(index);
 	assert.deepEqual(tl.nodes[0].titles, { en: 'Basics', de: 'Grundlagen' });
-});
-
-test('a translation without a title falls back to English', () => {
-	const index = buildBlogIndex({ '2026-01-01-a.md': POST, '2026-01-01-a.de.md': '---\ndescription: Nur Text\n---\nText' });
-	const [tl] = techTreeLayouts(index);
-	assert.equal(tl.nodes[0].titles.de, undefined);
 });

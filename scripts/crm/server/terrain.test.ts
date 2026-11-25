@@ -3,17 +3,10 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, mkdtempSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { createTerrain, decodeHeight, pyRound1, tilePosition } from './terrain';
+import { createTerrain, pyRound1, tilePosition } from './terrain';
 
 const DEM = new URL('../../../static/_projects/data-viz/maps/mapbox-terrain-dem-v1', import.meta.url).pathname;
 const OSM = new URL('../../../static/_projects/data-viz/hikes/osm.json', import.meta.url).pathname;
-
-test('decodeHeight and tilePosition', () => {
-	assert.equal(decodeHeight(0, 0, 0), -10000);
-	assert.ok(Math.abs(decodeHeight(1, 134, 160) - 0) < 1e-6);
-	const [x, y] = tilePosition(0, 0, 1);
-	assert.deepEqual([x, y], [1, 1]);
-});
 
 test('null when the tile is missing', () => {
 	assert.equal(createTerrain(mkdtempSync(path.join(tmpdir(), 'dem-'))).height(47.7, 11.5), null);

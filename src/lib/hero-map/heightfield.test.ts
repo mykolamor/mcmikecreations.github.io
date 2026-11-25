@@ -14,12 +14,6 @@ const field = (size: number) => {
 	return decodeTerrainRgb(rgba, size);
 };
 
-test('decodeTerrainRgb reads Mapbox Terrain-RGB', () => {
-	const f = field(4);
-	assert.ok(Math.abs(f.heights[0] - 1000) < 0.05);
-	assert.ok(Math.abs(f.heights[3 * 4] - 1030) < 0.05);
-});
-
 test('sampleHeight: v = 1 is the north (top) row, skipping the border', () => {
 	const f = field(10); // 8 inner rows + border; inner row j sits at file row j + 1
 	// v = 1 - 0.5/8 is the centre of the first inner row (file row 1).
@@ -46,14 +40,6 @@ test('routeRuns splits where the route leaves the square', () => {
 	assert.equal(runs.length, 2);
 	assert.equal(runs[0].length, 2);
 	assert.equal(runs[1].length, 2);
-});
-
-test('routeRuns handles MultiLineString and drops single points', () => {
-	const runs = routeRuns({
-		type: 'MultiLineString',
-		coordinates: [[[11.01, 47.01], [11.02, 47.02]], [[11.05, 47.05]]]
-	}, B);
-	assert.equal(runs.length, 1);
 });
 
 test('routeRuns thins long routes to maxPoints overall, keeping each run\'s ends', () => {

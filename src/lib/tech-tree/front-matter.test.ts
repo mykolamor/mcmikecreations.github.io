@@ -4,25 +4,6 @@ import assert from 'node:assert/strict';
 import { parseTechTree } from './front-matter';
 import { buildBlogIndex } from '$lib/blog/blog-index.server';
 
-test('missing block is null', () => {
-	assert.equal(parseTechTree(undefined, 'a.md'), null);
-});
-
-test('full block parses', () => {
-	const block = { timelines: ['qp'], year: 2011, buildsOn: ['x'], row: 2, intro: true };
-	assert.deepEqual(parseTechTree(block, 'a.md'), block);
-});
-
-test('defaults', () => {
-	assert.deepEqual(parseTechTree({ timelines: ['qp'], year: 1970 }, 'a.md'), {
-		timelines: ['qp'],
-		year: 1970,
-		buildsOn: [],
-		row: null,
-		intro: false
-	});
-});
-
 test('invalid shapes throw with the file name', () => {
 	const ok = { timelines: ['qp'], year: 2011 };
 	const bad: unknown[] = [

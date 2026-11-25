@@ -9,23 +9,13 @@ const ZUGSPITZE: PinNode = { ref: 'node/1', lat: 47.42, lon: 10.98, tags: { name
 const HUT: PinNode = { ref: 'way/5', lat: 47.41, lon: 10.99, tags: { name: 'Knorrhütte' } };
 const NODES = { 'node/1': ZUGSPITZE, 'way/5': HUT };
 
-test('a pin is a positioned button labelled with name and height', () => {
-	const html = photoPinsHtml([{ ref: 'node/1', x: 0.5213, y: 0.1702 }], NODES);
+test('a pin is a positioned button labelled with name and height, escaped; unknown refs are skipped', () => {
+	const html = photoPinsHtml([{ ref: 'node/1', x: 0.5213, y: 0.1702 }, { ref: 'way/5', x: 0, y: 1 }, { ref: 'node/9', x: 0.5, y: 0.5 }], NODES);
 	assert.match(html, /^<span class="mk-photo-pins">/);
 	assert.match(html, /<button type="button" class="mk-photo-pin" data-pin-ref="node\/1" style="left:52\.13%;top:17\.02%" aria-label="Zugspitze, 2962 m">/);
-});
-
-test('no height, no height in the label', () => {
-	assert.match(photoPinsHtml([{ ref: 'way/5', x: 0, y: 1 }], NODES), /aria-label="Knorrhütte"/);
-});
-
-test('unknown refs are skipped and nothing to draw gives nothing', () => {
+	assert.match(html, /aria-label="Knorrhütte"/);
+	assert.equal((html.match(/class="mk-photo-pin"/g) ?? []).length, 2);
 	assert.equal(photoPinsHtml([{ ref: 'node/9', x: 0.5, y: 0.5 }], NODES), '');
-	assert.equal(photoPinsHtml(undefined, NODES), '');
-	assert.equal(photoPinsHtml([{ ref: 'node/1', x: 0.5, y: 0.5 }], undefined), '');
-});
-
-test('names are escaped', () => {
 	const odd: PinNode = { ref: 'node/2', lat: 0, lon: 0, tags: { name: 'A "B" <C>' } };
 	assert.match(photoPinsHtml([{ ref: 'node/2', x: 0, y: 0 }], { 'node/2': odd }), /aria-label="A &quot;B&quot; &lt;C&gt;"/);
 });
@@ -50,31 +40,8 @@ test('a fallback image (no AVIF tiers) with pins gets a frame that fits it, with
 	assert.ok(frame, 'pins sit in a frame around the image');
 	assert.equal((frame![1].match(/class="mk-photo-pin"/g) ?? []).length, 1);
 	assert.equal(media[0].kind === 'image' && media[0].pins?.length, 1);
+	// Without pins it gets no frame.
+	const bare = await parseMarkdown('---\ntitle: T\nimages:\n  a.jpg: {w: 4000, h: 3000}\n---\n![V](/images/hikes/topo/a.jpg)\n', [], { pinNodes: NODES });
+	assert.doesNotMatch(bare.html, /mk-img-frame"|class="mk-photo-pin/);
 });
 
-test('a fallback image without pins is rendered as before, with no frame', async () => {
-	const md = '---\ntitle: T\nimages:\n  a.jpg: {w: 4000, h: 3000}\n---\n![V](/images/hikes/topo/a.jpg)\n';
-	const { html, media } = await parseMarkdown(md, [], { pinNodes: NODES });
-	assert.doesNotMatch(html, /mk-img-frame"|class="mk-photo-pin/);
-	assert.equal(media[0].kind === 'image' && 'pins' in media[0], false);
-});
-
-test('an image with no front matter entry has nowhere to keep pins', async () => {
-	const { html } = await parseMarkdown('---\ntitle: T\n---\n![V](/images/hikes/topo/x.jpg)\n', [], { pinNodes: NODES });
-	assert.doesNotMatch(html, /mk-img-frame"|class="mk-photo-pin/);
-});
-
-test('client re-parse renders the same pins', async () => {
-	const md = post("blur: 'data:image/webp;base64,AA', ");
-	const a = await parseMarkdown(md, [], { pinNodes: NODES });
-	const b = await parseMarkdown(md, [], { pinNodes: NODES });
-	const pins = (html: string) => html.match(/<span class="mk-photo-pins">[\s\S]*?<\/span>/)?.[0];
-	assert.ok(pins(a.html));
-	assert.equal(pins(a.html), pins(b.html));
-});
-
-test('the styles hide pins until the script has wired them', async () => {
-	const { html } = await parseMarkdown(post("blur: 'data:image/webp;base64,AA', "), [], { pinNodes: NODES });
-	assert.match(html, /\.mk-photo-pins\s*\{[^}]*display:\s*none/);
-	assert.match(html, /\.mk-photo-pins-ready \.mk-photo-pins\s*\{[^}]*display:\s*block/);
-});

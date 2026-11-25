@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { cpSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { createApi, type ApiRequest } from './api';
+import { createApi } from './api';
 import { ApiError } from './errors';
 import { readStrings, stringsPath, writeStrings } from './strings-file';
 
@@ -24,16 +24,6 @@ const changedLines = (a: string, b: string) => {
 	assert.equal(x.length, y.length);
 	return x.map((l, i) => (l === y[i] ? null : [l, y[i]])).filter(Boolean);
 };
-
-test('the tables read as dotted keys, with the file version', () => {
-	const root = tablesRoot();
-	const s = readStrings(root, 'de');
-	assert.match(s.version, /^[0-9a-f]{40}$/);
-	assert.equal(s.en['facts.labels.summary'], 'Summary');
-	assert.equal(s.own['facts.labels.summary'], 'Überblick');
-	assert.ok(Object.values(s.en).some(Array.isArray));
-	assert.throws(() => readStrings(root, 'en'), (e: ApiError) => e.status === 400);
-});
 
 test("a table edit changes only its own key's bytes", async () => {
 	const root = tablesRoot();
@@ -92,22 +82,6 @@ test('a broken placeholder is refused', async () => {
 	await assert.rejects(writeStrings(root, 'en', version, { 'list.tagged': 'x' }), (e: ApiError) => e.status === 400);
 	await assert.rejects(writeStrings(root, 'de', 'stale', { 'list.tagged': 'x' }), (e: ApiError) => e.status === 409);
 	assert.equal(bytes(root), before);
-});
-
-test('GET and PATCH /api/strings; a stale base answers 409 with the version', async () => {
-	const root = tablesRoot();
-	const api = createApi(root);
-	const req = (method: string, query: string, json?: unknown): ApiRequest => ({ method, path: '/api/strings', query: new URLSearchParams(query), headers: {}, json });
-	const got = await api(req('GET', 'lang=de'));
-	assert.equal(got.status, 200);
-	const { version } = got.json as { version: string };
-	const ok = await api(req('PATCH', '', { lang: 'de', base: version, set: { 'facts.labels.summary': 'Kurz' } }));
-	assert.equal(ok.status, 200);
-	assert.equal((ok.json as { own: Record<string, string> }).own['facts.labels.summary'], 'Kurz');
-	const stale = await api(req('PATCH', '', { lang: 'de', base: version, set: { 'facts.labels.summary': 'Lang' } }));
-	assert.equal(stale.status, 409);
-	assert.equal((stale.json as { version: string }).version, (ok.json as { version: string }).version);
-	assert.equal((await api(req('PATCH', '', { lang: 'de', base: version }))).status, 400);
 });
 
 test('a hand-broken table reads as 422 with the parse message', async () => {

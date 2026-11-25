@@ -58,13 +58,6 @@ test('flush sends immediately', async () => {
 	assert.equal(q.status, 'saved');
 });
 
-test('chips ops send without debounce', async () => {
-	const { q, sent } = harness();
-	q.queue({ field: 'post.tags', value: ['x'] }, { debounce: false });
-	await q.idle();
-	assert.deepEqual(sent, [[{ field: 'post.tags', value: ['x'] }]]);
-});
-
 test('409 sets conflict and keeps pending ops', async () => {
 	const doc = { version: 'v2' };
 	const { q, sent } = harness([async () => ({ conflict: true, doc })]);

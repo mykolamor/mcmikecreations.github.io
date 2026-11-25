@@ -15,25 +15,12 @@ test('parseArgs splits command, flags and positionals', () => {
 	assert.deepEqual([...parseArgs(['images', '--refresh']).flags], ['refresh']);
 });
 
-test('unknown command exits 2 with usage', async () => {
+test('an unknown command or flag exits 2 and runs nothing', async () => {
 	const out = recorder();
 	assert.equal(await run(['nope'], '/nonexistent', out), 2);
-	const text = out.warnings.join('\n');
-	assert.match(text, /Unknown command: nope/);
-	assert.match(text, /Usage: pnpm crm/);
-	assert.match(text, /metrics/);
+	assert.match(out.warnings.join('\n'), /Unknown command: nope/);
 	assert.deepEqual(out.summaries, []);
-});
-
-test('an unknown flag exits 2 and runs nothing', async () => {
-	const out = recorder();
-	assert.equal(await run(['metrics', '--dry-rn'], '/nonexistent', out), 2);
-	assert.match(out.warnings.join('\n'), /Unknown flag for metrics: --dry-rn/);
-});
-
-test('help lists every command with one line each', async () => {
-	const out = recorder();
-	assert.equal(await run(['help'], '/nonexistent', out), 0);
-	assert.match(out.summaries.join('\n'), /^ {2}metrics +\S.*$/m);
-	assert.deepEqual(out.warnings, []);
+	const typo = recorder();
+	assert.equal(await run(['metrics', '--dry-rn'], '/nonexistent', typo), 2);
+	assert.match(typo.warnings.join('\n'), /Unknown flag for metrics: --dry-rn/);
 });

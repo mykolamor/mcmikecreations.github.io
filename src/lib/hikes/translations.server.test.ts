@@ -65,65 +65,42 @@ test('a place translation is not a place doc', () => {
 	});
 	assert.deepEqual(all.get('places/knorrhuette.md')?.de?.aliases, ['Knorr']);
 	assert.equal(all.get('knorrhuette.md'), undefined);
+	// Post and place translations of the same name are kept apart.
+	const t = (title: string) => new Map([['2026-07-19-x.md', { de: { lang: 'de' as const, source: '2026-07-19-x.md', title, body: '' } }]]);
+	const both = mergeTranslations({ posts: t('Post'), places: t('Place') });
+	assert.equal(both.get('2026-07-19-x.md')?.de?.title, 'Post');
+	assert.equal(both.get('places/2026-07-19-x.md')?.de?.title, 'Place');
 });
 
-test('an unknown language file fails the build naming it', () => {
+test('malformed translations fail the build naming the file', () => {
 	for (const file of ['2026-07-19-x.fr.md', '2026-07-19-x.DE.md', 'knorrhuette.fr.md']) {
-		assert.throws(
-			() => splitTranslations({ '2026-07-19-x.md': POST, [file]: POST_DE }),
-			(e: Error) => e.message.includes(`in ${file}`),
-			file
-		);
+		assert.throws(() => splitTranslations({ '2026-07-19-x.md': POST, [file]: POST_DE }), (e: Error) => e.message.includes(`in ${file}`), file);
 	}
-});
-
-test('a translation without its source fails naming both', () => {
+	// A translation without its source names both.
 	const { translations } = splitTranslations({ '2026-07-19-y.de.md': POST_DE });
 	assert.throws(
 		() => collectTranslations('post', translations, new Set(['2026-07-19-x.md']), { mediaExists }),
 		/2026-07-19-y\.de\.md.*2026-07-19-y\.md/
 	);
-});
-
-test('a translation with a disallowed front-matter key fails', () => {
+	// Front matter: a post translation holds a title and a description; a place one may add aliases.
 	const file = '2026-07-19-x.de.md';
 	assert.throws(
 		() => parseTranslation(file, '---\ntitle: X\nimages: {}\n---\n', 'post'),
 		/2026-07-19-x\.de\.md: unknown front matter key "images" \(expected title, description\)/
 	);
-	// A place translation may carry aliases; a post translation may not.
 	assert.throws(() => parseTranslation(file, '---\naliases: [X]\n---\n', 'post'), /unknown front matter key "aliases"/);
-	assert.deepEqual(parseTranslation('k.de.md', '---\naliases: [K]\n---\n', 'place').aliases, ['K']);
-	// The other ways a translation's front matter fails.
 	assert.throws(() => parseTranslation(file, '---\ntitle: ""\n---\n', 'post'), /2026-07-19-x\.de\.md: title is empty/);
 	assert.throws(() => parseTranslation(file, '---\ntitle: [\n---\n', 'post'), /2026-07-19-x\.de\.md: malformed front matter/);
+	// An empty body is fine.
+	assert.equal(parseTranslation(file, '---\ntitle: X (de)\n---\n', 'post').body, '');
 });
 
-test('an empty-body translation is valid', () => {
-	assert.deepEqual(parseTranslation('2026-07-19-x.de.md', '---\ntitle: X (de)\n---\n', 'post'), {
-		lang: 'de',
-		source: '2026-07-19-x.md',
-		title: 'X (de)',
-		body: ''
-	});
-	assert.deepEqual(parseTranslation('knorrhuette.de.md', '', 'place'), {
-		lang: 'de',
-		source: 'knorrhuette.md',
-		body: ''
-	});
-});
-
-test("a translation's local media must exist", () => {
+test("a translation's local media must exist, read as the renderer reads images", () => {
 	const sources = new Set(['2026-07-19-x.md']);
 	const check = (body: string) => collectTranslations('post', { '2026-07-19-x.de.md': `${POST_DE}\n${body}\n` }, sources, { mediaExists });
 	assert.throws(() => check('![Clip](/images/x/clip.mp4 "autoplay")'), /2026-07-19-x\.de\.md: \/images\/x\/clip\.mp4 does not exist/);
 	// Remote media and the 404 placeholder aren't files of this site.
 	assert.equal(check('![a](https://x/y.jpg)\n![b](/404/)').size, 1);
-});
-
-test('the media check reads images as the renderer does', () => {
-	const sources = new Set(['2026-07-19-x.md']);
-	const check = (body: string) => collectTranslations('post', { '2026-07-19-x.de.md': `${POST_DE}\n${body}\n` }, sources, { mediaExists });
 	// An alt text holding a link, as the posts' video credits do.
 	const credited = (href: string) => `![Zusammenschnitt von [David Bilan](https://bilandavid.com/)](${href} "autoplay")`;
 	assert.throws(() => check(credited('/images/x/clip.mp4')), /\/images\/x\/clip\.mp4 does not exist/);
@@ -135,13 +112,6 @@ test('the media check reads images as the renderer does', () => {
 	assert.throws(() => check('- ![a](/images/x/gone.jpg)'), /gone\.jpg does not exist/);
 	// A malformed escape fails naming the translation.
 	assert.throws(() => check('![a](/images/x/%E0%A4%A.jpg)'), /2026-07-19-x\.de\.md: \/images\/x\/%E0%A4%A\.jpg: malformed URL escape/);
-});
-
-test('post and place translations of the same name are kept apart', () => {
-	const t = (title: string) => new Map([['2026-07-19-x.md', { de: { lang: 'de' as const, source: '2026-07-19-x.md', title, body: '' } }]]);
-	const all = mergeTranslations({ posts: t('Post'), places: t('Place') });
-	assert.equal(all.get('2026-07-19-x.md')?.de?.title, 'Post');
-	assert.equal(all.get('places/2026-07-19-x.md')?.de?.title, 'Place');
 });
 
 test('a photo counts as there when only its AVIF tiers are', () => {

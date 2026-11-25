@@ -10,7 +10,6 @@ import { factsDocs } from '../server/facts-read';
 import { repoPaths } from '../server/paths';
 import { makeTempRepo } from '../server/test-repo';
 import { editSidecar } from '../server/sidecar-file';
-import { extractLibrary } from '../oneoff/extract-facts-library';
 import { mergeNearDuplicates, nearDuplicateGroups, pagesToCheck } from './facts-near-duplicates';
 
 // A group is named by its exact key: two whose labels match (a translation apart) stay two.
@@ -56,10 +55,9 @@ const sidecar = (root: string, slug: string) => readFileSync(path.join(repoPaths
 const transport = (root: string, slug: string) => JSON.parse(sidecar(root, slug)).facts.access.transport[0];
 const pages = (root: string) => POSTS.map((ref) => readDocFacts(root, ref));
 
-test('groups match the one-off\'s for the seeded pair', () => {
+test('the seeded pair forms one group with its diff', () => {
 	const root = seeded();
 	const groups = nearDuplicateGroups(root);
-	assert.deepEqual(groups.map(({ id: _, record: __, ...g }) => g), extractLibrary(root, { dryRun: true }).nearDuplicates);
 	assert.deepEqual([groups[0].id, groups[0].record], [RB57.group, undefined]);
 	assert.deepEqual(groups.map((g) => [g.kind, g.key, g.entries.map((e) => e.file)]), [[RB57.kind, RB57.key, [GASSLER.file, WASENKOGEL.file]]]);
 	assert.deepEqual(groups[0].entries[0].diff, ['ticket: {"en":"Deutschlandticket valid to Gmund","de":"Deutschlandticket bis Gmund gültig"}', 'note: (none)']);

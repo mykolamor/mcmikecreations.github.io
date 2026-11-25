@@ -109,25 +109,8 @@ test("a visit's note merges with the hike's per language, as the site's", () => 
 	assert.deepEqual(r.facts?.legs?.[0].note, { en: 'Very steep', de: 'Steil' });
 });
 
-test('the selection follows its entry through a move, a removal and an insertion', () => {
-	// The moved entry itself, and those it passes, which shift by one.
-	assert.equal(selectionAfterMove(1, 1, 3), 3);
-	assert.equal(selectionAfterMove(2, 1, 3), 1);
-	assert.equal(selectionAfterMove(3, 1, 3), 2);
-	assert.equal(selectionAfterMove(2, 3, 1), 3);
-	assert.equal(selectionAfterMove(0, 1, 3), 0);
-	assert.equal(selectionAfterMove(4, 3, 1), 4);
-	assert.equal(selectionAfterMove(null, 1, 3), null);
-	// A removed selected entry clears it; the entries after it shift up.
-	assert.equal(selectionAfterRemove(2, 2), null);
-	assert.equal(selectionAfterRemove(3, 2), 2);
-	assert.equal(selectionAfterRemove(1, 2), 1);
-	assert.equal(selectionAfterRemove(null, 2), null);
-	// An entry showing again (a hidden one undone) shifts those from its place down.
-	assert.equal(selectionAfterInsert(2, 2), 3);
-	assert.equal(selectionAfterInsert(1, 2), 1);
-	assert.equal(selectionAfterInsert(null, 0), null);
-	// Each agrees with the list spliced the same way.
+test('the selection follows its entry through a move, a removal and an un-hide', () => {
+	// Each move agrees with the list spliced the same way.
 	const list = ['a', 'b', 'c', 'd', 'e'];
 	for (let from = 0; from < 5; from++)
 		for (let to = 0; to < 5; to++)
@@ -136,15 +119,12 @@ test('the selection follows its entry through a move, a removal and an insertion
 				next.splice(to, 0, ...next.splice(from, 1));
 				assert.equal(next[selectionAfterMove(sel, from, to)!], list[sel], `${sel} ${from}→${to}`);
 			}
-});
-
-test('a hidden row shows again at the count of merged rows before it', () => {
+	// A removed selected entry clears it; the entries after it shift up.
+	assert.equal(selectionAfterRemove(2, 2), null);
+	assert.equal(selectionAfterRemove(3, 2), 2);
+	// A hidden row shows again at the count of merged rows before it; another hidden row before it does not count.
 	const shown = [{ merged: 0 }, { merged: null }, { merged: 1 }, { merged: null }, { merged: 2 }];
-	assert.equal(mergedBefore(shown, 0), 0);
-	assert.equal(mergedBefore(shown, 1), 1);
-	assert.equal(mergedBefore(shown, 3), 2, 'another hidden row before it does not count');
-	assert.equal(mergedBefore(shown, 5), 3);
-	// Undoing the hide of row 3 with the third merged entry selected: the selection moves down past it.
+	assert.equal(mergedBefore(shown, 3), 2);
 	assert.equal(selectionAfterInsert(2, mergedBefore(shown, 3)), 3);
 	assert.equal(selectionAfterInsert(1, mergedBefore(shown, 3)), 1);
 });

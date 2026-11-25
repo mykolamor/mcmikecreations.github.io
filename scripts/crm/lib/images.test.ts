@@ -32,16 +32,13 @@ test('tiers by long edge, no upscaling, quality pipeline', async () => {
 	assert.deepEqual([r.w, r.h, r.tiers], [3000, 2000, [640, 1280, 2560]]);
 	assert.deepEqual(await dims(tier(landscape, 1280)), [1280, 853]);
 	assert.match(r.blur, /^data:image\/webp;base64,/);
+	assert.deepEqual((await encodeImage(small)).tiers, [640]);
 });
 
 test('EXIF-rotated portrait reports oriented size', async () => {
 	const r = await encodeImage(rotated);
 	assert.deepEqual([r.w, r.h], [2000, 3000]);
 	assert.deepEqual(await dims(tier(rotated, 640)), [427, 640]);
-});
-
-test('small image gets only fitting tiers', async () => {
-	assert.deepEqual((await encodeImage(small)).tiers, [640]);
 });
 
 test('localImageRefs skips 404, remote and video', () => {

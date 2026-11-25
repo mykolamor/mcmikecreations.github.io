@@ -20,17 +20,11 @@ const POST = '---\ntitle: Foo\ndescription: A walk\n---\nFirst block.\n\nSecond 
 const FULL_TR = '---\ntitle: Fu\ndescription: Ein Gang\n---\nErster Block.\n\nZweiter Block.\n';
 const POST_REF = { kind: 'post', slug: 'foo', date: '2026-07-19' } as const;
 
-test('a post with no translation file lacks its text and details', () => {
+test('a post lacks its text and details until fully translated', () => {
 	const { root, p } = repo();
 	writeFileSync(path.join(p.markdown, 'foo.hike.json'), JSON.stringify(FULL_NAME));
 	writeFileSync(path.join(p.markdown, '2026-07-19-foo.md'), POST);
 	assert.deepEqual(docGaps(root, POST_REF)[LANG], ['text', 'details']);
-});
-
-test('a fully translated post has no gap in that language', () => {
-	const { root, p } = repo();
-	writeFileSync(path.join(p.markdown, 'foo.hike.json'), JSON.stringify(FULL_NAME));
-	writeFileSync(path.join(p.markdown, '2026-07-19-foo.md'), POST);
 	writeFileSync(path.join(p.markdown, '2026-07-19-foo.de.md'), FULL_TR);
 	assert.equal(docGaps(root, POST_REF)[LANG], undefined);
 });

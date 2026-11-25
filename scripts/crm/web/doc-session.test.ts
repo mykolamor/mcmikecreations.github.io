@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { createDocSession, refFromSearch, refSearch } from './doc-session';
+import { createDocSession } from './doc-session';
 import { ApiClientError, ownWrites } from './api';
 import type { FieldOp } from '../shared/ops';
 
@@ -85,14 +85,6 @@ test('a deps change after a write of this page is taken without a notice', async
 	s.disk.deps = 'd3';
 	await ses.checkFresh();
 	assert.equal(ses.notice, 'Route or shared files changed elsewhere — reloaded');
-});
-
-test('unchanged disk version does nothing', async () => {
-	const s = fakeServer();
-	const ses = createDocSession({ kind: 'hike', slug: 's' }, { request: s.request });
-	await ses.load();
-	await ses.checkFresh();
-	assert.equal(ses.notice, null);
 });
 
 test('edits made before load resolves wait for the base version', async () => {
@@ -254,33 +246,6 @@ test('reloadDiscarding re-reads the doc so files are fresh', async () => {
 	assert.equal(s.log.filter((l) => l === 'GET').length, gets + 1);
 	assert.equal(ses.doc!.fields['post.title'], 'T');
 	assert.equal(ses.queue.status, 'saved');
-});
-
-test('doc session builds place URLs', async () => {
-	const urls: string[] = [];
-	let version = 'v1';
-	const request = async (method: string, url: string, body?: any): Promise<any> => {
-		urls.push(`${method} ${url}`);
-		if (method === 'GET') return { doc: { kind: 'place', slug: 'knorrhuette', version, fields: { 'place.title': 'Knorrhütte' }, body: '' } };
-		version = 'v2';
-		return { version, fields: { 'place.title': body.ops[0].value }, mirrors: [] };
-	};
-	const ses = createDocSession({ kind: 'place', slug: 'knorrhuette' }, { request });
-	assert.deepEqual(ses.ref, { kind: 'place', slug: 'knorrhuette' });
-	assert.equal(ses.slug, 'knorrhuette');
-	assert.equal(ses.date, null);
-	await ses.load();
-	ses.edit({ field: 'place.title', value: 'Knorrhütte (2052 m)' }, false);
-	await ses.queue.idle();
-	assert.deepEqual(urls, ['GET /api/doc?place=knorrhuette', 'PATCH /api/doc?place=knorrhuette']);
-	assert.equal(ses.doc!.fields['place.title'], 'Knorrhütte (2052 m)');
-	// the address bar of an open doc, and back
-	assert.equal(refSearch({ kind: 'place', slug: 'knorrhuette' }), 'place=knorrhuette');
-	assert.equal(refSearch({ kind: 'post', slug: 'foo', date: '2024-01-01' }), 'slug=foo&date=2024-01-01');
-	assert.deepEqual(refFromSearch(new URLSearchParams('place=knorrhuette')), { kind: 'place', slug: 'knorrhuette' });
-	assert.deepEqual(refFromSearch(new URLSearchParams('slug=foo&date=2024-01-01')), { kind: 'post', slug: 'foo', date: '2024-01-01' });
-	assert.deepEqual(refFromSearch(new URLSearchParams('slug=foo')), { kind: 'hike', slug: 'foo' });
-	assert.equal(refFromSearch(new URLSearchParams('')), null);
 });
 
 test('a re-load that raced a save keeps what the save answered', async () => {

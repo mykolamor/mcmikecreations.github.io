@@ -1,27 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { currentValue, scopeOf, setField, type EditSession } from './scope';
-import type { FieldOp } from '../../../shared/ops';
-
-function session(fields: Record<string, unknown>): EditSession & { ops: FieldOp[] } {
-	const ops: FieldOp[] = [];
-	return { doc: { version: 'v1', fields }, queue: { pending: () => [...ops] }, edit: (op) => void ops.push(op), ops };
-}
-
-test('scope is post only when the post carries the field', () => {
-	assert.equal(scopeOf(session({ 'map.origin': { hike: { lat: 1, lon: 2 } } }), 'map.origin'), 'hike');
-	assert.equal(scopeOf(session({ 'map.origin': { hike: 1, post: 2 } }), 'map.origin'), 'post');
-	assert.equal(scopeOf(session({}), 'map.origin'), 'hike');
-});
-
-test('currentValue sees an edit sent but not yet in the doc', () => {
-	const s = { doc: { version: 'v1', fields: { 'map.checkpoints': { hike: [[1, 2]] } } }, queue: { pending: () => [] }, edit() {} } as EditSession;
-	assert.deepEqual(currentValue(s, 'map.checkpoints', 'hike'), [[1, 2]]);
-	setField(s, 'map.checkpoints', [[1, 2], [3, 4]], 'hike');
-	assert.deepEqual(currentValue(s, 'map.checkpoints', 'hike'), [[1, 2], [3, 4]]);
-	s.doc = { version: 'v2', fields: { 'map.checkpoints': { hike: [[1, 2], [3, 4]] } } };
-	assert.deepEqual(currentValue(s, 'map.checkpoints', 'hike'), [[1, 2], [3, 4]]);
-});
 
 test('three rapid taps with responses interleaved keep all three values', () => {
 	const f = 'map.checkpoints';

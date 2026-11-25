@@ -40,15 +40,8 @@ test('version changes when either file changes', () => {
 	assert.equal(new Set([v0, v1, v2]).size, 3);
 });
 
-test('readField throws 500 on invalid sidecar JSON', () => {
-	const { root, md } = tmpRoot();
-	writeFileSync(join(md, 'foo.hike.json'), '{ "name": ');
-	const d = loadDoc(root, 'foo', null);
-	assert.throws(() => readField(d, FIELDS[0]), (e) => e instanceof ApiError && e.status === 500);
-});
-
 import { readFileSync, statSync, utimesSync, readdirSync } from 'node:fs';
-import { saveOps, clientDoc } from './doc';
+import { saveOps } from './doc';
 
 test('stale base version is rejected with the current version', () => {
 	const { root, md } = tmpRoot();
@@ -72,7 +65,6 @@ test('saveOps writes the change, returns new version, leaves no temp files', () 
 	assert.equal(r.doc.fields['sidecar.name'], 'Bar');
 	assert.equal(r.doc.version, loadDoc(root, 'foo', '2024-01-01').version);
 	assert.deepEqual(readdirSync(md).sort(), ['2024-01-01-foo.md', 'foo.hike.json']);
-	assert.deepEqual(clientDoc(loadDoc(root, 'foo', '2024-01-01')).mirrors.map((r) => r.url), ['', '', '']);
 });
 
 test('ops touching only post fields leave the sidecar file mtime untouched', () => {

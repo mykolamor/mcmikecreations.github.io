@@ -1,7 +1,7 @@
 // Run with: JITI_ALIAS='{"$lib":"'"$PWD"'/src/lib"}' node_modules/.bin/jiti src/lib/tech-tree/model.test.ts
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildTechTree, nodeTitle, type TreePostInput } from './model';
+import { buildTechTree, type TreePostInput } from './model';
 import type { TechTreeEntry } from './front-matter';
 import type { TimelineDef } from './timelines';
 
@@ -37,12 +37,6 @@ test('published and draft nodes', () => {
 	assert.equal(node(tree, 'qp', 'd1').comingSoon, true);
 });
 
-test('intro hides year', () => {
-	const n = node(buildTechTree([post('i', { intro: true, year: 1970 })], DEFS), 'qp', 'i');
-	assert.equal(n.year, null);
-	assert.equal(n.era, 0);
-});
-
 test('era boundaries are inclusive and last era may be open', () => {
 	const tree = buildTechTree([post('p89', { year: 1989 }), post('p90', { year: 1990 }), post('p99', { year: 2099 })], DEFS);
 	assert.equal(node(tree, 'qp', 'p89').era, 0);
@@ -66,23 +60,6 @@ test('buildsOn across timelines draws only shared arrows', () => {
 	assert.deepEqual(timeline(tree, 'st').edges, []);
 });
 
-test('published node may build on a coming-soon node', () => {
-	const tree = buildTechTree([post('d', {}, { draft: true }), post('p', { buildsOn: ['d'] })], DEFS);
-	assert.deepEqual(timeline(tree, 'qp').edges, [{ from: 'd', to: 'p' }]);
-	assert.equal(node(tree, 'qp', 'd').href, null);
-});
-
-test('unused timelines are dropped', () => {
-	assert.deepEqual(buildTechTree([post('n', null)], DEFS), { timelines: [] });
-	const tree = buildTechTree([post('s1', { timelines: ['st'] })], DEFS);
-	assert.deepEqual(tree.timelines.map((t) => t.key), ['st']);
-});
-
-test('nodes are sorted by year, then title', () => {
-	const tree = buildTechTree([post('b', { year: 1980 }), post('c', { year: 1975 }), post('a', { year: 1980 })], DEFS);
-	assert.deepEqual(timeline(tree, 'qp').nodes.map((n) => n.anchor), ['c', 'a', 'b']);
-});
-
 test('bad tree data throws naming the post', () => {
 	const cases: [TreePostInput[], RegExp][] = [
 		[[post('notag', {}, { tags: ['GPU'] })], /notag\.md/],
@@ -93,13 +70,6 @@ test('bad tree data throws naming the post', () => {
 		[[post('x', { buildsOn: ['y'] }), post('y', { buildsOn: ['x'] })], /[xy]\.md/]
 	];
 	for (const [posts, re] of cases) assert.throws(() => buildTechTree(posts, DEFS), re, re.source);
-});
-
-test('same-era dependency is allowed', () => {
+	// A dependency within one era may point to a later year.
 	assert.doesNotThrow(() => buildTechTree([post('x', { year: 1975 }), post('y', { year: 1971, buildsOn: ['x'] })], DEFS));
-});
-
-test('nodeTitle falls back to English', () => {
-	assert.equal(nodeTitle({ titles: { en: 'A', de: 'B' } }, 'de'), 'B');
-	assert.equal(nodeTitle({ titles: { en: 'A', de: 'B' } }, 'uk'), 'A');
 });

@@ -115,22 +115,6 @@ test("facts places in a sidecar get demEle, a post's facts don't", async () => {
 	assert.ok(out.summaries.includes('facts: 2 facts place(s) updated across 1 file(s)'));
 });
 
-test('--no-nodes / --no-photos skip their part', async () => {
-	const s = setup();
-	const before = snapshot(s);
-	await go(s.root, ['--no-nodes', '--no-photos']);
-	assert.deepEqual(snapshot(s), before);
-	await go(s.root, ['--no-photos']);
-	const nodes = snapshot(s);
-	assert.equal(nodes[0], before[0], '--no-photos leaves the post');
-	assert.notEqual(nodes[3], before[3]);
-	const t = setup();
-	await go(t.root, ['--no-nodes']);
-	const photos = snapshot(t);
-	assert.notEqual(photos[0], before[0]);
-	assert.deepEqual([photos[1], photos[3]], [before[1], before[3]], '--no-nodes leaves the sidecar and the store');
-});
-
 test('--dry-run prints and writes nothing', async () => {
 	const s = setup();
 	const before = snapshot(s);

@@ -14,16 +14,12 @@ images:
 ![A "quoted" topo](/x/b.png)
 `;
 
-test('renderer uses images alt when present', async () => {
+test('the images alt replaces the caption as the alt attribute, escaped; without one the caption stays', async () => {
 	const { html, media } = await parseMarkdown(post(", alt: 'Sunlit ridge with a \"cross\"'"), []);
-	assert.match(html, /alt="Sunlit ridge with a &quot;cross&quot;"/);
 	assert.equal(html.match(/alt="Sunlit ridge with a &quot;cross&quot;"/g)?.length, 2);
 	assert.match(html, /<figcaption class="mk-figcaption">The ridge at dawn/);
 	assert.deepEqual(media.map((m: any) => m.alt), ['Sunlit ridge with a "cross"', 'Sunlit ridge with a "cross"']);
-});
-
-test('without images alt the caption text stays the alt attribute', async () => {
-	const { html, media } = await parseMarkdown(post(''), []);
-	assert.match(html, /alt="The ridge at dawn"/);
-	assert.deepEqual(media.map((m: any) => m.alt), ['The ridge at dawn', 'A "quoted" topo']);
+	const plain = await parseMarkdown(post(''), []);
+	assert.match(plain.html, /alt="The ridge at dawn"/);
+	assert.deepEqual(plain.media.map((m: any) => m.alt), ['The ridge at dawn', 'A "quoted" topo']);
 });

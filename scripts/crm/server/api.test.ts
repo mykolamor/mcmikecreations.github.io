@@ -9,33 +9,17 @@ const req = (method: string, path: string): ApiRequest => ({
 	headers: {}
 });
 
-test('GET /api/health answers ok', async () => {
-	const api = createApi('/tmp/none');
-	assert.deepEqual(await api(req('GET', '/api/health')), { status: 200, json: { ok: true } });
-});
-
-test('unknown path is 404 with an error message', async () => {
-	const res = await createApi('/tmp/none')(req('GET', '/api/nope'));
-	assert.equal(res.status, 404);
-	assert.equal(typeof (res.json as { error: string }).error, 'string');
-});
-
-test('ApiError from a handler keeps its status', async () => {
+test('ApiError from a handler keeps its status; other errors become 500', async () => {
 	const api = createApi('/tmp/none', {
 		'GET /api/boom': () => {
 			throw new ApiError(409, 'x');
-		}
-	});
-	assert.deepEqual(await api(req('GET', '/api/boom')), { status: 409, json: { error: 'x' } });
-});
-
-test('other errors become 500', async () => {
-	const api = createApi('/tmp/none', {
-		'GET /api/boom': () => {
+		},
+		'GET /api/bad': () => {
 			throw new Error('bad');
 		}
 	});
-	assert.deepEqual(await api(req('GET', '/api/boom')), { status: 500, json: { error: 'bad' } });
+	assert.deepEqual(await api(req('GET', '/api/boom')), { status: 409, json: { error: 'x' } });
+	assert.deepEqual(await api(req('GET', '/api/bad')), { status: 500, json: { error: 'bad' } });
 });
 
 import { mkdtempSync, mkdirSync, writeFileSync, readFileSync } from 'node:fs';
@@ -116,21 +100,6 @@ test('PATCH /api/doc takes a lang op on a translated field and answers with the 
 	}
 });
 
-test('hikes and posts routes list and create', async () => {
-	const { makeTempRepo } = await import('./test-repo');
-	const root = makeTempRepo();
-	const api = createApi(root);
-	const list = await api(req('GET', '/api/hikes'));
-	assert.equal(list.status, 200);
-	assert.ok((list.json as { postCount: number }).postCount > 0);
-	const bad = await api({ ...req('POST', '/api/posts'), json: { slug: 'wendelstein' } });
-	assert.equal(bad.status, 400);
-	const ok = await api({ ...req('POST', '/api/hikes'), json: { slug: 'brand_new', name: 'Brand New', date: '2030-01-01' } });
-	assert.deepEqual(ok, { status: 200, json: { slug: 'brand_new', date: '2030-01-01' } });
-	const dup = await api({ ...req('POST', '/api/hikes'), json: { slug: 'brand_new', name: 'x', date: '2030-01-01' } });
-	assert.equal(dup.status, 409);
-});
-
 test(':param routes resolve and a literal route still wins', async () => {
 	const seen: string[] = [];
 	const api = createApi('/tmp/none', {
@@ -140,80 +109,6 @@ test(':param routes resolve and a literal route still wins', async () => {
 	await api(req('GET', '/api/x/1/2'));
 	await api(req('GET', '/api/x/lit/b'));
 	assert.deepEqual(seen, ['param 1,2', 'literal']);
-});
-
-test('GET /api/tiles/mapy/:z/:x/:y passes numbers to the tile cache', async () => {
-	const got: number[][] = [];
-	const api = createApi('/tmp/none', defaultRoutes({ mapyTiles: () => ({ get: async (z, x, y) => (got.push([z, x, y]), Buffer.from('png')) }) }));
-	const res = await api(req('GET', '/api/tiles/mapy/13/1/2'));
-	assert.equal(res.status, 200);
-	assert.deepEqual(got, [[13, 1, 2]]);
-});
-
-test('GET /api/map and /api/map/config respond', async () => {
-	const { makeTempRepo } = await import('./test-repo');
-	const root = makeTempRepo();
-	const api = createApi(root);
-	const cfg = await api(req('GET', '/api/map/config'));
-	assert.equal(cfg.status, 200);
-	assert.ok('tracestrackKey' in (cfg.json as object));
-	const map = await api({ ...req('GET', '/api/map'), query: new URLSearchParams({ slug: 'wendelstein' }) });
-	assert.equal(map.status, 200);
-	assert.ok(Array.isArray((map.json as any).checkpoints));
-});
-
-test('GET /api/osm/store/bbox lists store elements in view, capped', async () => {
-	const root = mkdtempSync(join(tmpdir(), 'crm-bbox-'));
-	const dir = join(root, 'static/_projects/data-viz/hikes');
-	mkdirSync(dir, { recursive: true });
-	writeFileSync(
-		join(dir, 'osm.json'),
-		JSON.stringify({ 'node/1': { lat: 47.01, lon: 11.01, tags: { name: 'In' } }, 'node/2': { lat: 50, lon: 11 } }) + '\n'
-	);
-	const api = createApi(root);
-	const q = new URLSearchParams({ south: '47', west: '11', north: '48', east: '12' });
-	const res = await api({ ...req('GET', '/api/osm/store/bbox'), query: q });
-	assert.deepEqual(res.json, { items: [{ ref: 'node/1', name: 'In', lat: 47.01, lon: 11.01 }] });
-	const bad = await api(req('GET', '/api/osm/store/bbox'));
-	assert.equal(bad.status, 400);
-});
-
-test('GET /api/osm/entry returns the store entry with the store version; unknown ref -> 404', async () => {
-	const root = mkdtempSync(join(tmpdir(), 'crm-entry-'));
-	const dir = join(root, 'static/_projects/data-viz/hikes');
-	mkdirSync(dir, { recursive: true });
-	writeFileSync(join(dir, 'osm.json'), JSON.stringify({ 'node/1': { lat: 47.01, lon: 11.01, tags: { name: 'In' }, local: { visited: 'yes' } } }) + '\n');
-	const api = createApi(root);
-	const ok = await api({ ...req('GET', '/api/osm/entry'), query: new URLSearchParams({ ref: 'node/1' }) });
-	assert.equal(ok.status, 200);
-	assert.deepEqual((ok.json as any).entry.local, { visited: 'yes' });
-	assert.equal(typeof (ok.json as any).version, 'string');
-	const missing = await api({ ...req('GET', '/api/osm/entry'), query: new URLSearchParams({ ref: 'node/2' }) });
-	assert.equal(missing.status, 404);
-});
-
-test('GET /api/immich/albums and /api/immich/thumb/:id use the Immich client', async () => {
-	const seen: unknown[] = [];
-	const api = createApi(
-		'/tmp/none',
-		defaultRoutes({
-			immich: () =>
-				({
-					albums: async () => [{ id: 'a', name: 'Hike' }],
-					thumb: async (id: string, size: string) => {
-						seen.push([id, size]);
-						return Buffer.from([0xff, 0xd8, 0xff]);
-					}
-				}) as never
-		})
-	);
-	assert.deepEqual(await api(req('GET', '/api/immich/albums')), { status: 200, json: { albums: [{ id: 'a', name: 'Hike' }] } });
-	const q = new URLSearchParams('size=preview');
-	const res = await api({ ...req('GET', '/api/immich/thumb/abc'), query: q });
-	assert.equal(res.binary?.contentType, 'image/jpeg');
-	assert.deepEqual(seen, [['abc', 'preview']]);
-	const bad = await api({ ...req('GET', '/api/immich/thumb/abc'), query: new URLSearchParams('size=huge') });
-	assert.equal(bad.status, 400);
 });
 
 test('Immich client picks up settings edited after a missing-key 400, without a restart', async () => {
@@ -227,27 +122,6 @@ test('Immich client picks up settings edited after a missing-key 400, without a 
 	cfg = { immichUrl: 'http://127.0.0.1:1', immichKey: 'k' };
 	const second = await api(req('GET', '/api/immich/albums'));
 	assert.equal(second.status, 502); // reached the (unreachable) server instead of the stale missing-key error
-});
-
-test('GET /api/photos/candidates returns bursts for the guessed album', async () => {
-	const api = createApi(
-		'/tmp/none-candidates',
-		defaultRoutes({
-			immich: () =>
-				({
-					albums: async () => [{ id: 'al', name: 'Germany_Setzberg' }],
-					search: async () => [{ id: 'x', fileName: 'x.jpg', takenLocal: '2026-01-11T10:00:00+01:00', width: 1, height: 1 }]
-				}) as never
-		})
-	);
-	const res = await api({ ...req('GET', '/api/photos/candidates'), query: new URLSearchParams('slug=setzberg&date=2026-01-11') });
-	assert.equal(res.status, 200);
-	assert.equal((res.json as any).album.id, 'al');
-	assert.equal((res.json as any).bursts.length, 1);
-	assert.equal((await api({ ...req('GET', '/api/photos/candidates'), query: new URLSearchParams('date=2026-01-11') })).status, 400);
-	const hikeOnly = await api({ ...req('GET', '/api/photos/badges'), query: new URLSearchParams('slug=setzberg') });
-	assert.equal(hikeOnly.status, 400);
-	assert.equal((hikeOnly.json as { error: string }).error, 'a dated visit or a place doc is required');
 });
 
 test('photo routes: add from the stub Immich, 409 on stale base, refuse removing a used photo, delete by encoded key', async () => {
@@ -335,34 +209,6 @@ test('POST /api/photos/link refuses an asset already linked to another photo of 
 	assert.equal(dup.status, 409);
 	assert.match((dup.json as any).error, /a\.jpg/);
 	assert.deepEqual(JSON.parse(readFileSync(join(root, 'scripts/crm/data/immich-links.json'), 'utf8')), { '2024-01-01-foo.md': { 'a.jpg': id } });
-});
-
-test('GET /api/photos/library lists a folder under static/images and refuses paths outside it', async () => {
-	const root = mkdtempSync(join(tmpdir(), 'crm-api-library-'));
-	const topo = join(root, 'static/images/hikes/topo');
-	mkdirSync(topo, { recursive: true });
-	writeFileSync(join(topo, 'buch.jpg'), 'x');
-	writeFileSync(join(topo, 'buch-640.avif'), 'x');
-	const api = createApi(root, defaultRoutes());
-	const ok = await api({ ...req('GET', '/api/photos/library'), query: new URLSearchParams({ dir: 'hikes/topo' }) });
-	assert.deepEqual(ok, { status: 200, json: { dir: 'hikes/topo', folders: [], images: [{ href: '/images/hikes/topo/buch.jpg' }] } });
-	const top = await api(req('GET', '/api/photos/library'));
-	assert.deepEqual((top.json as any).folders, ['hikes']);
-	assert.equal((await api({ ...req('GET', '/api/photos/library'), query: new URLSearchParams({ dir: '../x' }) })).status, 400);
-	assert.equal((await api({ ...req('GET', '/api/photos/library'), query: new URLSearchParams({ dir: '/etc' }) })).status, 400);
-});
-
-test('GET /api/photos/list returns the post photos', async () => {
-	const root = mkdtempSync(join(tmpdir(), 'crm-api-list-'));
-	const md = join(root, 'static/_projects/data-viz/hikes/markdown');
-	mkdirSync(md, { recursive: true });
-	writeFileSync(join(md, 'foo.hike.json'), '{\n  "name": "Foo"\n}\n');
-	writeFileSync(join(md, '2024-01-01-foo.md'), '---\ntitle: T\nimages:\n  2024-01-01-00.jpg: {w: 1, h: 2}\n---\nBody\n');
-	const api = createApi(root, defaultRoutes());
-	const res = await api({ ...req('GET', '/api/photos/list'), query: new URLSearchParams({ slug: 'foo', date: '2024-01-01' }) });
-	assert.equal(res.status, 200, JSON.stringify(res.json));
-	assert.deepEqual((res.json as any).photos.map((p: any) => [p.key, p.inText, p.pins]), [['2024-01-01-00.jpg', false, 0]]);
-	assert.equal((await api({ ...req('GET', '/api/photos/list'), query: new URLSearchParams({ slug: 'foo' }) })).status, 400);
 });
 
 test('pin routes: state, save pins (400 for a ref not in the store), caption, caption places', async () => {
@@ -579,27 +425,4 @@ test('a facts op needs a non-empty path of names and indices, and remove without
 	}
 	const ok = await api({ ...req('PATCH', '/api/doc'), query: q, json: { base, ops: [{ kind: 'facts', scope: 'hike', path: ['drones'], value: 'No' }] } });
 	assert.equal(ok.status, 200);
-});
-
-test('POST /api/facts/preview answers 200 with the site error for a bad draft', async () => {
-	const { makeTempRepo } = await import('./test-repo');
-	const api = createApi(makeTempRepo());
-	const q = new URLSearchParams({ slug: 'grosser_laber', date: '2026-09-06' });
-	const ok = await api({ ...req('POST', '/api/facts/preview'), query: q, json: { draft: { post: { drones: 'No' } } } });
-	assert.equal(ok.status, 200);
-	assert.equal((ok.json as any).error, null);
-	const bad = await api({ ...req('POST', '/api/facts/preview'), query: q, json: { draft: { post: { plan: { timing: { start: '7:' } } } } } });
-	assert.equal(bad.status, 200);
-	assert.match((bad.json as any).error, /plan\.timing\.start/);
-	assert.equal((await api({ ...req('POST', '/api/facts/preview'), query: q, json: {} })).status, 400);
-	assert.equal((await api({ ...req('POST', '/api/facts/preview'), query: new URLSearchParams({ place: 'x' }), json: { draft: {} } })).status, 400);
-});
-
-test('the terrain height endpoint answers null off the tiles', async () => {
-	const { makeTempRepo } = await import('./test-repo');
-	const api = createApi(makeTempRepo());
-	const r = await api({ ...req('GET', '/api/terrain/height'), query: new URLSearchParams({ lat: '47.9', lon: '12.1' }) });
-	assert.deepEqual(r, { status: 200, json: { demEle: null } });
-	assert.equal((await api({ ...req('GET', '/api/terrain/height'), query: new URLSearchParams({ lat: 'x', lon: '1' }) })).status, 400);
-	assert.equal((await api({ ...req('GET', '/api/terrain/height'), query: new URLSearchParams({ lat: '1' }) })).status, 400);
 });

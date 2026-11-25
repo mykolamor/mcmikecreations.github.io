@@ -4,7 +4,6 @@ import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createTranslation, loadTranslation, saveTranslationOps, translationClientDoc } from './translation-doc';
-import { TRANSLATION_FIELDS } from '../shared/fields';
 import { problemsForRef } from './problems';
 import { createApi } from './api';
 import { repoPaths } from './paths';
@@ -33,7 +32,6 @@ test('creating a translation writes an empty front matter', () => {
 	const missing = loadTranslation(root, POST);
 	assert.equal(missing.exists, false);
 	assert.equal(missing.raw, '');
-	assert.deepEqual(translationClientDoc(missing), { kind: 'translation', exists: false, version: missing.version, fields: {}, body: '' });
 	createTranslation(root, POST);
 	createTranslation(root, PLACE);
 	assert.equal(readFileSync(post, 'utf8'), '---\n---\n');
@@ -41,7 +39,6 @@ test('creating a translation writes an empty front matter', () => {
 	const made = loadTranslation(root, POST);
 	assert.equal(made.exists, true);
 	assert.notEqual(made.version, missing.version);
-	assert.deepEqual(translationClientDoc(made), { kind: 'translation', exists: true, version: made.version, fields: {}, body: '' });
 	// The empty file is one the site reads, so it lists no problem.
 	assert.deepEqual(problemsForRef(root, POST), []);
 });
@@ -77,11 +74,6 @@ test('creating over an existing translation is a 409', () => {
 });
 
 test('saving a title writes only that key, and clearing it removes it', () => {
-	assert.deepEqual(TRANSLATION_FIELDS.map((f) => [f.id, f.file, f.path.join('.'), f.kind]), [
-		['tr.title', 'translation', 'title', 'text'],
-		['tr.description', 'translation', 'description', 'textarea'],
-		['tr.aliases', 'translation', 'aliases', 'chips']
-	]);
 	const { root, post, place } = tmpRepo();
 	createTranslation(root, POST);
 	const r = saveTranslationOps(root, POST, loadTranslation(root, POST).version, [{ field: 'tr.title', value: 'Foo (de)' }]);

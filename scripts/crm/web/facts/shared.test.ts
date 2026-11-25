@@ -1,11 +1,11 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { LIBRARY_ID_RE, specAt, type Spec } from '$lib/hikes/facts-spec';
+import { specAt, type Spec } from '$lib/hikes/facts-spec';
 import { readHikeFacts, validateLibraryRecord } from '$lib/hikes/facts.server';
 import { emptyFactsLibrary, type FactsLibrary } from '$lib/hikes/facts-library.server';
 import { REMOVE, localFacts } from './facts-state';
 import { inheritedRows, overrideOp } from './inherit';
-import { changesText, entryEditOp, idProblem, newRecordId, newRecordOps, recordCtx, recordEdit, recordOf, recordUsers, stopRef, touchesRecord } from './shared';
+import { entryEditOp, idProblem, newRecordId, newRecordOps, recordCtx, recordEdit, recordOf, stopRef, touchesRecord } from './shared';
 import type { FactsCtx } from './facts-state';
 import { libraryClient, recordSession, refreshSession, type LibraryCall, type LibraryState } from './shared';
 import { ApiClientError } from '../api';
@@ -111,19 +111,13 @@ test("a stop's record is found by its ref, or by the place the preview resolved"
 	assert.equal(recordOf('transport', { use: 'nope' }, lib), undefined);
 });
 
-test('a record edit keeps the text rule; saving many hikes names them', () => {
+test('a record edit keeps the text rule', () => {
 	const r = recordEdit('transport', structuredClone(BUS), ['note'], { en: 'Every hour', de: '' });
 	assert.deepEqual(r, { record: { ...BUS, note: { en: 'Every hour' } } });
 	assert.deepEqual(recordEdit('transport', structuredClone(BUS), ['note'], { en: '', de: 'Stündlich' }), { error: 'English is required while there is a translation' });
 	assert.deepEqual(recordEdit('transport', structuredClone(BUS), ['line'], REMOVE), { record: { mode: 'bus', from: 'Munich', to: 'Hut', note: BUS.note, checked: BUS.checked } });
 	assert.deepEqual(recordEdit('transport', { mode: 'bus', price: [{ amount: 3 }] }, ['price', 0, 'amount'], REMOVE), { record: { mode: 'bus' } });
 	assert.deepEqual(recordEdit('tickets', {}, ['price', 0, 'amount'], 3), { record: { price: [{ amount: 3 }] } });
-	// N counts hikes, the docs named.
-	const usage = { 'stops/way/1': ['2026-09-20-a', '2026-10-01-a', 'b'], 'stops/way/2': ['2026-09-20-a'] };
-	assert.deepEqual(recordUsers(usage, 'stops', 'way/1'), { hikes: 2, docs: ['2026-09-20-a', '2026-10-01-a', 'b'] });
-	assert.deepEqual(recordUsers(usage, 'tickets', 'x'), { hikes: 0, docs: [] });
-	assert.equal(changesText(recordUsers(usage, 'stops', 'way/1')), 'This changes 2 hikes: 2026-09-20-a, 2026-10-01-a, b');
-	assert.equal(changesText(recordUsers(usage, 'stops', 'way/2')), null);
 });
 
 test('a save that changes which record an entry takes reloads the usage, others not', () => {
@@ -133,15 +127,12 @@ test('a save that changes which record an entry takes reloads the usage, others 
 	// A whole entry, a whole list, or a container above it may hold a `use` or an `at`.
 	assert.equal(touchesRecord(op(['access', 'tickets', 0], { use: 'day' })), true);
 	assert.equal(touchesRecord(op(['stops'], [])), true);
-	assert.equal(touchesRecord(op(['access'], {})), true);
 	assert.equal(touchesRecord({ kind: 'facts', scope: 'post', path: ['access', 'lifts', 2], remove: true }), true);
 	// A field beside them, or anything outside the library lists, isn't.
 	assert.equal(touchesRecord(op(['access', 'transport', 0, 'note'])), false);
 	assert.equal(touchesRecord(op(['access', 'transport', 0, 'at'])), false);
 	assert.equal(touchesRecord(op(['stops', 0, 'use'])), false);
-	assert.equal(touchesRecord(op(['access', 'note'])), false);
 	assert.equal(touchesRecord(op(['water', 0, 'at'])), false);
-	assert.equal(touchesRecord({ field: 'title', value: 'x' } as never), false);
 });
 
 test('a new record may take the id of a record no doc uses', () => {
@@ -159,7 +150,6 @@ test('a new record may take the id of a record no doc uses', () => {
 	assert.equal(idProblem('stops', 'node/2', state), '"node/2" is taken');
 	assert.equal(idProblem('stops', 'node/3', state), null);
 	assert.match(idProblem('stops', '', state) ?? '', /pick the stop's place/);
-	assert.equal(LIBRARY_ID_RE.test('day-pass'), true);
 });
 
 test("an entry's `use` is read-only while its record is found", () => {

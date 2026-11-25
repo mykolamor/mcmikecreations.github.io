@@ -70,29 +70,6 @@ test('inserting a nested key and an array leaves siblings alone', () => {
 	assert.ok(out2.includes('"b": [1, 2],'));
 });
 
-test('reordering checkpoints in every real sidecar changes only the checkpoints block', () => {
-	let n = 0;
-	for (const f of files) {
-		const raw = readFileSync(join(DIR, f), 'utf8');
-		const cps = JSON.parse(raw).checkpoints as number[][] | undefined;
-		if (!cps || cps.length < 3) continue;
-		n++;
-		const swapped = cps.slice();
-		[swapped[0], swapped[2]] = [swapped[2], swapped[0]];
-		const out = editSidecar(raw, [{ path: ['checkpoints'], value: swapped }]);
-		assert.deepEqual(JSON.parse(out).checkpoints, swapped, f);
-		const a = raw.split('\n'), b = out.split('\n');
-		assert.equal(a.length, b.length, f);
-		const start = a.findIndex((l) => l.startsWith('  "checkpoints"'));
-		const end = a.findIndex((l, i) => i > start && l.startsWith('  ]'));
-		for (let i = 0; i < a.length; i++) if (i < start || i > end) assert.equal(b[i], a[i], `${f}:${i}`);
-		assert.equal(b[start + 1] !== a[start + 1] || b[start + 3] !== a[start + 3], true, f);
-		assert.equal(b[start], a[start], f);
-		assert.equal(b[end], a[end], f);
-	}
-	assert.ok(n > 10);
-});
-
 test('adding a node ref changes only the nodes line', () => {
 	for (const f of files) {
 		const raw = readFileSync(join(DIR, f), 'utf8');
@@ -115,7 +92,7 @@ test('changing origin lat leaves lon and layout alone', () => {
 	assert.equal(out, raw.replace(/"lat": [\d.]+/, '"lat": 1.5'));
 });
 
-test('swapping checkpoints permutes the original lines byte-for-byte', () => {
+test('swapping checkpoints in every real sidecar permutes the original lines byte-for-byte, inside the block only', () => {
 	let n = 0;
 	for (const f of files) {
 		const raw = readFileSync(join(DIR, f), 'utf8');
@@ -126,8 +103,13 @@ test('swapping checkpoints permutes the original lines byte-for-byte', () => {
 		[swapped[0], swapped[2]] = [swapped[2], swapped[0]];
 		const out = editSidecar(raw, [{ path: ['checkpoints'], value: swapped }]);
 		const a = raw.split('\n'), b = out.split('\n');
+		assert.deepEqual(JSON.parse(out).checkpoints, swapped, f);
 		const strip = (l: string) => l.replace(/,$/, '');
 		assert.deepEqual(b.map(strip).sort(), a.map(strip).sort(), f);
+		// Nothing outside the checkpoints block moves.
+		const start = a.findIndex((l) => l.startsWith('  "checkpoints"'));
+		const end = a.findIndex((l, i) => i > start && l.startsWith('  ]'));
+		for (let i = 0; i < a.length; i++) if (i < start || i > end) assert.equal(b[i], a[i], `${f}:${i}`);
 	}
 	assert.ok(n > 10);
 	const raw = '{\n  "checkpoints": [\n    [83.8240430, 28.4095174],\n    [1.0, 2.0],\n    [3.50, 4.0]\n  ]\n}\n';

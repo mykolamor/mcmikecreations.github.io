@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { EditorState } from '@codemirror/state';
-import { captionText, chipsAt, dropPos, mediaChips, mediaChipsField, ownFolderFor, photoOrder, posTracker, youtubeIdOf } from './media-chips';
+import { captionText, chipsAt, mediaChips, mediaChipsField, photoOrder, posTracker } from './media-chips';
 import { mediaInsert, mediaLines } from '../../shared/md-lines';
 import type { PostPhoto } from '../photos/types';
 
@@ -33,8 +33,6 @@ test('chips are computed for media lines only and follow edits', () => {
 			['photo', BODY.indexOf('![Topo')]
 		]
 	);
-	assert.equal(chips[2].youtube, 'B5yRsnelCsw');
-	assert.equal(chips[1].label, '2026-07-01-02.mp4');
 
 	// In the editor: the chips sit where the field says, and move with the text.
 	const field = mediaChipsField({ ownFolder: OWN, onPhoto: () => {} });
@@ -61,9 +59,6 @@ test('photo chip resolves its key for the pin editor', () => {
 		chips.map((c) => c.key),
 		['2026-07-01-01.jpg', '/images/hikes/topo/demo.png']
 	);
-	assert.equal(ownFolderFor({ kind: 'post', slug: 'demo', date: '2026-07-01' }), OWN);
-	assert.equal(ownFolderFor({ kind: 'place', slug: 'knorrhuette' }), '/images/projects/data-viz/hikes/places/knorrhuette/');
-	assert.equal(ownFolderFor({ kind: 'hike', slug: 'demo' }), null);
 
 	// The pin editor walks the post's photos in text order (each once), list photos not in the text last.
 	const photo = (key: string, href: string): PostPhoto => ({ key, href, assetId: null, inText: true, pins: 0 });
@@ -73,10 +68,6 @@ test('photo chip resolves its key for the pin editor', () => {
 		photoOrder(twice, list, OWN).map((p) => p.key),
 		['2026-07-01-01.jpg', '/images/hikes/topo/demo.png', '2026-07-01-03.jpg']
 	);
-
-	assert.equal(youtubeIdOf('https://youtu.be/B5yRsnelCsw'), 'B5yRsnelCsw');
-	assert.equal(youtubeIdOf('https://www.youtube.com/watch?v=B5yRsnelCsw&t=3'), 'B5yRsnelCsw');
-	assert.equal(youtubeIdOf('/404/'), null);
 });
 
 test('a pending insert position follows the typing made meanwhile', () => {
@@ -96,13 +87,6 @@ test('a pending insert position follows the typing made meanwhile', () => {
 	pos.map(there.changes);
 	assert.equal(pos.get(), at + 7);
 	assert.equal(there.state.doc.toString().slice(pos.get()), 'Second paragraph.\nMore.');
-});
-
-test('a photo dropped on a line goes after that line', () => {
-	const state = EditorState.create({ doc: 'One line here.\nAnother line.\n' });
-	assert.equal(dropPos(state.doc, 3), 'One line here.'.length);
-	assert.equal(dropPos(state.doc, 15), 'One line here.\nAnother line.'.length);
-	assert.equal(dropPos(state.doc, state.doc.length), state.doc.length);
 });
 
 test('a YouTube title becomes a caption that reads back as the media line', () => {

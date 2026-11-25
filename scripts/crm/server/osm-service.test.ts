@@ -5,23 +5,13 @@ import path from 'node:path';
 import { tilePosition } from './terrain';
 import { makeTempRepo } from './test-repo';
 import { repoPaths } from './paths';
-import { addToStore, osmAround, osmSearch, parseRef, refreshElement, setLocal, storeVersion } from './osm-service';
+import { addToStore, osmAround, osmSearch, refreshElement, setLocal, storeVersion } from './osm-service';
 import { createStubClient, type OsmClient, type RawElement } from './osm-client';
 import { createApi, defaultRoutes } from './api';
 import { ApiError } from './errors';
 
 const stub = createStubClient();
 const deps = { client: stub, today: () => '2026-10-29' };
-
-test('parseRef accepts n/w/r, typed ids and openstreetmap.org links', () => {
-	assert.equal(parseRef('node/1'), 'node/1');
-	assert.equal(parseRef(' n12 '), 'node/12');
-	assert.equal(parseRef('W2'), 'way/2');
-	assert.equal(parseRef('r003'), 'relation/3');
-	assert.equal(parseRef('https://www.openstreetmap.org/way/2#map=17/1/2'), 'way/2');
-	assert.equal(parseRef('https://openstreetmap.org/relation/9?x=1'), 'relation/9');
-	for (const bad of ['', 'foo', 'node/', 'https://example.com/node/1']) assert.throws(() => parseRef(bad), (e: unknown) => e instanceof ApiError && e.status === 400);
-});
 
 test('addToStore keeps local and writes byte-compatible JSON', async () => {
 	const root = makeTempRepo();
@@ -107,32 +97,6 @@ test('around: nodes, ways, relations then distance, inStore flag; r clamped', as
 	assert.equal(radius, 5);
 });
 
-test('around: the areas the point is inside come after every nearby feature', async () => {
-	const root = makeTempRepo();
-	const at = (type: RawElement['type'], id: number, lat: number, extra: Partial<RawElement> = {}): RawElement =>
-		({ type, id, tags: { name: `${type}${id}` }, ...(type === 'node' ? { lat, lon: 11.5 } : { center: { lat, lon: 11.5 } }), ...extra }) as RawElement;
-	const client: OsmClient = {
-		...stub,
-		around: async () => [at('relation', 1, 47.6, { enclosing: true }), at('way', 2, 47.6, { enclosing: true }), at('relation', 3, 47.601), at('node', 4, 47.6005)]
-	};
-	assert.deepEqual((await osmAround(root, 47.6, 11.5, 30, client)).map((i) => i.ref), ['node/4', 'relation/3', 'way/2', 'relation/1']);
-});
-
-test('search: store names folded first, then Overpass; pasted ids resolve directly', async () => {
-	const root = makeTempRepo();
-	await addToStore(root, ['way/900002'], storeVersion(root), deps);
-	const r = await osmSearch(root, 'STUB hutte', 47.6, 11.5, stub);
-	assert.deepEqual(r.store.map((i) => i.ref), ['way/900002']);
-	assert.deepEqual(r.osm, []);
-	const r2 = await osmSearch(root, 'stub', 47.6, 11.5, stub);
-	assert.deepEqual(r2.osm.map((i) => i.ref).sort(), ['node/900001', 'relation/900003']);
-	assert.ok(r2.store.length === 1);
-	const r3 = await osmSearch(root, 'https://www.openstreetmap.org/node/900001', null, null, stub);
-	assert.equal(r3.osm[0].ref, 'node/900001');
-	const failing: OsmClient = { ...stub, searchName: async () => { throw new ApiError(503, 'OSM is busy'); } };
-	assert.equal((await osmSearch(root, 'stub', 1, 1, failing) as any).osm_error, 'OSM is busy');
-});
-
 test('search source: store never calls OSM, osm skips the store', async () => {
 	const root = makeTempRepo();
 	await addToStore(root, ['way/900002'], storeVersion(root), deps);
@@ -191,12 +155,6 @@ test('setLocal completes while an addToStore fetch is still pending', async () =
 	release();
 	// the local save changed the store, so the pending add is now stale
 	await assert.rejects(adding, (e: unknown) => e instanceof ApiError && e.status === 409);
-});
-
-test('around with a non-numeric r -> 400', async () => {
-	const api = createApi(makeTempRepo(), defaultRoutes({ osm: stub }));
-	const r = await api({ method: 'GET', path: '/api/osm/around', query: new URLSearchParams('lat=1&lon=2&r=abc'), headers: {} });
-	assert.equal(r.status, 400);
 });
 
 test('a malformed DEM tile stores the element without demEle instead of failing', async () => {

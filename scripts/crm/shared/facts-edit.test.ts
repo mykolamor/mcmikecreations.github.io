@@ -5,7 +5,7 @@ import path from 'node:path';
 import { findNodeAtLocation, parse, parseTree } from 'jsonc-parser';
 import { applyFactsEdit, type FactsOp } from './facts-edit';
 import { applyOps } from './ops';
-import { clientDoc, docVersion, loadDoc, saveOps, sidecarPath, type HikeDoc } from '../server/doc';
+import { docVersion, loadDoc, saveOps, sidecarPath, type HikeDoc } from '../server/doc';
 import { ApiError } from '../server/errors';
 import { makeTempRepo } from '../server/test-repo';
 import { editSidecar } from '../server/sidecar-file';
@@ -168,12 +168,4 @@ facts:
 	// An appended entry is a new block map; the others keep their nodes.
 	const more = applyFactsEdit(yaml, 'post', post(['legs', 3], { value: { to: 'D', terrain: ['path'] } }));
 	assert.equal(more, yaml.replace('    - to: C\n', '    - to: C\n    - to: D\n      terrain: [path]\n'));
-});
-
-test('the client doc carries the raw facts of each file', () => {
-	const side = '{\n  "facts": {"drones": {"en": "No", "de": "Nein"}}\n}\n';
-	const d = clientDoc(mk(side, '---\ntitle: T\nfacts:\n  checked: 2026-10-01\n  route: {shade: null}\n---\n'));
-	assert.deepEqual(d.facts, { hike: { drones: { en: 'No', de: 'Nein' } }, post: { checked: '2026-10-01', route: { shade: null } } });
-	assert.deepEqual(clientDoc(mk('{}\n')).facts, { hike: null, post: null });
-	assert.deepEqual(clientDoc(mk('{}\n', '---\ntitle: T\n---\n')).facts, { hike: null, post: null });
 });

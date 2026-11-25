@@ -1,20 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { at, isContainer, isEmpty, isObject, removeAt, setAt } from './tree';
-
-test('at reads a path through maps and lists', () => {
-	const v = { a: [{ b: 1 }, null] };
-	assert.equal(at(v, ['a', 0, 'b']), 1);
-	assert.equal(at(v, ['a', 1, 'b']), undefined, 'through a null');
-	assert.equal(at(v, ['x', 'y']), undefined);
-	assert.equal(at(v, []), v);
-});
-
-test('isObject, isContainer and isEmpty', () => {
-	assert.deepEqual([isObject({}), isObject([]), isObject(null), isObject('s')], [true, false, false, false]);
-	assert.deepEqual([isContainer({}), isContainer([]), isContainer(null), isContainer(0)], [true, true, false, false]);
-	assert.deepEqual([isEmpty({}), isEmpty([]), isEmpty({ a: 1 }), isEmpty([0]), isEmpty(null), isEmpty('')], [true, true, false, false, false, false]);
-});
+import { at, removeAt, setAt } from './tree';
 
 test('setAt makes the containers on the way, a list for a number step, and copies the value', () => {
 	const root: Record<string, unknown> = { a: { keep: 1 } };

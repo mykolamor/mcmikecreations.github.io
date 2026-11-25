@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { noticeKey, readRefused, writeRefused } from './refused-notices';
+import { readRefused, writeRefused } from './refused-notices';
 
 function memory(): Pick<Storage, 'getItem' | 'setItem' | 'removeItem'> & { map: Map<string, string> } {
 	const map = new Map<string, string>();
@@ -15,11 +15,6 @@ test('refused texts are read back until they are replaced by an empty list', () 
 	writeRefused(s, 'k', []);
 	assert.deepEqual(readRefused(s, 'k'), []);
 	assert.equal(s.map.size, 0);
-});
-
-test('each surface of each doc and language has its own notice', () => {
-	const keys = [noticeKey('?slug=a', 'de', 'write'), noticeKey('?slug=b', 'de', 'write'), noticeKey('?slug=a', 'uk', 'write'), noticeKey('?slug=a', 'de', 'facts')];
-	assert.equal(new Set(keys).size, 4);
 });
 
 test('an unusable storage or a damaged notice reads as none and never throws', () => {

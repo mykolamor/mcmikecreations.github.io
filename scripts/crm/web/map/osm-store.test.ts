@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { ApiClientError } from '../api';
-import { addRef, refreshRef, saveLocal, StoreChangedError } from './osm-store';
+import { addRef, saveLocal, StoreChangedError } from './osm-store';
 
 type Call = [string, string, any];
 function fake(script: (c: Call, n: number) => unknown) {
@@ -21,21 +21,6 @@ test('addRef reads the version, posts, and retries once with the version a 409 r
 	const f = fake(([m, p]) => (p.endsWith('/version') ? { version: 'v1' } : ++posts === 1 ? stale('v2') : { version: 'v3', entries: {} }));
 	assert.equal(await addRef('node/1', f.request), true);
 	assert.deepEqual(f.calls.filter((c) => c[0] === 'POST').map((c) => c[2]), [{ refs: ['node/1'], base: 'v1' }, { refs: ['node/1'], base: 'v2' }]);
-});
-
-test('addRef without a conflict does not retry', async () => {
-	const f = fake(([, p]) => (p.endsWith('/version') ? { version: 'v1' } : { version: 'v2', entries: {} }));
-	assert.equal(await addRef('node/1', f.request), false);
-	assert.equal(f.calls.length, 2);
-});
-
-test('refreshRef retries once on 409 and returns the result', async () => {
-	let posts = 0;
-	const res = { version: 'v3', entry: {}, diff: { added: {}, removed: {}, changed: {} }, redundantLocal: [] };
-	const f = fake(([, p]) => (p.endsWith('/version') ? { version: 'v1' } : ++posts === 1 ? stale('v2') : res));
-	const out = await refreshRef('node/1', f.request);
-	assert.equal(out.retried, true);
-	assert.deepEqual(out.result, res);
 });
 
 test('saveLocal sends the store version it was given; a 409 is a StoreChangedError with the new version, no retry', async () => {

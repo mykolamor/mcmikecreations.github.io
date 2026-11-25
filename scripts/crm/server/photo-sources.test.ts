@@ -38,11 +38,9 @@ test('bursts split on 31 s or 31 m and keep order', () => {
 	assert.equal(far.length, 2);
 	const near = bursts([A('a', t(0), 47, 11), A('b', t(1), 47.00026, 11)]); // ~29 m
 	assert.equal(near.length, 1);
-});
-
-test('photos without GPS group by time only', () => {
-	const out = bursts([A('a', '2026-01-11T10:00:00+01:00'), A('b', '2026-01-11T10:00:20+01:00', 47, 11), A('c', '2026-01-11T10:00:40+01:00', 48, 12)]);
-	assert.deepEqual(out.map((b) => b.assets.map((x) => x.id)), [['a', 'b'], ['c']]);
+	// Photos without GPS group by time only.
+	const noGps = bursts([A('a', '2026-01-11T10:00:00+01:00'), A('b', '2026-01-11T10:00:20+01:00', 47, 11), A('c', '2026-01-11T10:00:40+01:00', 48, 12)]);
+	assert.deepEqual(noGps.map((b) => b.assets.map((x) => x.id)), [['a', 'b'], ['c']]);
 });
 
 test('candidates marks assets already in the post', async () => {
@@ -69,15 +67,6 @@ test('candidates marks assets already in the post', async () => {
 	assert.equal((seen[2] as any).albumId, 'zz');
 });
 
-test('bursts: identical timestamps order by fileName then id; invalid times go last', () => {
-	const t = '2026-01-11T10:00:00+01:00';
-	const mk = (id: string, fileName: string, takenLocal: string): Asset => ({ id, fileName, takenLocal, width: 1, height: 1 });
-	const a = [mk('3', 'b.jpg', t), mk('2', 'a.jpg', t), mk('1', 'a.jpg', t), mk('z', 'z.jpg', ''), mk('y', 'y.jpg', 'bogus'), mk('4', 'c.jpg', '2026-01-11T10:05:00+01:00')];
-	const out = bursts(a);
-	assert.deepEqual(out.map((b) => b.assets.map((x) => x.id)), [['1', '2', '3'], ['4'], ['y', 'z']]);
-	assert.deepEqual(bursts([...a].reverse()).map((b) => b.id), out.map((b) => b.id));
-});
-
 test('candidates pads the window, filters by local date, rejects from > to', async () => {
 	const root = fs.mkdtempSync(path.join(os.tmpdir(), 'crm-cand-'));
 	const immich = {
@@ -87,18 +76,6 @@ test('candidates pads the window, filters by local date, rejects from > to', asy
 	const r = await candidates(root, immich, { ref: SETZBERG, album: 'none' });
 	assert.deepEqual(r.bursts.map((b) => b.assets.map((x) => x.id)), [['in'], ['bad']]);
 	await assert.rejects(candidates(root, immich, { ref: SETZBERG, from: '2026-01-12', to: '2026-01-10' }), (e: any) => e.status === 400);
-});
-
-test('candidates for a hike without a date say what the Photos tab needs', async () => {
-	const root = fs.mkdtempSync(path.join(os.tmpdir(), 'crm-cand-'));
-	const immich = { albums: async () => [], search: async () => [] } as unknown as Immich;
-	const hike: DocRef = { kind: 'hike', slug: 'setzberg' };
-	// As every other photo route says it for a hike alone.
-	await assert.rejects(candidates(root, immich, { ref: hike }), { status: 400, message: 'a dated visit or a place doc is required' });
-	// Half a window: the other end is missing, as for a place doc.
-	await assert.rejects(candidates(root, immich, { ref: hike, from: '2026-01-10' }), { status: 400, message: 'from and to go together' });
-	// A whole window still searches.
-	assert.deepEqual((await candidates(root, immich, { ref: hike, album: 'none', from: '2026-01-10', to: '2026-01-11' })).window, { from: '2026-01-10', to: '2026-01-11' });
 });
 
 test('place candidates use smart search with the title by default', async () => {

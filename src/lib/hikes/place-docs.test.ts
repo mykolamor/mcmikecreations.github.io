@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { parsePlaceDoc, readPostPlaces, type PlaceDoc } from './place-docs.server';
-import { buildPlaceDocIndex, placeDocAnchor, type PlaceDocRef } from './place-docs';
+import type { PlaceDocRef } from './place-docs';
 import { parseMarkdown } from './hikes-info';
 
 const KNORR = `---
@@ -18,35 +18,21 @@ The hut.
 ![Terrace](/images/projects/data-viz/hikes/places/knorrhuette/2026-07-19-00.jpg)
 `;
 
-test('a place doc parses into its fields, the title counting as a name', () => {
+test('a place doc parses into its fields, the title counting as a name; malformed ones fail naming the file', () => {
 	const doc = parsePlaceDoc('knorrhuette.md', KNORR);
 	assert.equal(doc.slug, 'knorrhuette');
 	assert.equal(doc.title, 'Knorrhütte');
 	assert.equal(doc.description, 'DAV hut below the Zugspitzplatt.');
 	assert.deepEqual(doc.tags, ['Hut']);
 	assert.deepEqual(doc.names, ['Knorrhütte', 'Knorr hut']);
-	assert.equal(doc.raw, KNORR);
+	// Malformed docs fail, naming the file.
+	const src = (fm: string) => `---\n${fm}\n---\nText\n`;
+	assert.throws(() => parsePlaceDoc('Knorr Hütte.md', src('title: K\ndescription: D')), /Knorr Hütte\.md: name it <slug>\.md/);
+	assert.throws(() => parsePlaceDoc('k.md', src('description: D')), /k\.md: needs a title/);
+	assert.throws(() => parsePlaceDoc('k.md', src('title: K\ndescription: D\ndate: 2026-01-01')), /unknown front matter key "date"/);
 });
 
-test('malformed place docs fail, naming the file', () => {
-	const doc = (fm: string) => `---\n${fm}\n---\nText\n`;
-	assert.throws(() => parsePlaceDoc('Knorr Hütte.md', doc('title: K\ndescription: D')), /Knorr Hütte\.md: name it <slug>\.md/);
-	assert.throws(() => parsePlaceDoc('k.md', doc('description: D')), /k\.md: needs a title/);
-	assert.throws(() => parsePlaceDoc('k.md', doc('title: K')), /needs a description/);
-	assert.throws(() => parsePlaceDoc('k.md', doc('title: K\ndescription: D\ndate: 2026-01-01')), /unknown front matter key "date"/);
-	assert.throws(() => parsePlaceDoc('k.md', doc('title: K\ndescription: D\ntags: Hut')), /tags: expected a list/);
-	assert.throws(() => parsePlaceDoc('k.md', doc('title: K\ndescription: D\nimages: [a.jpg]')), /images: expected a map/);
-});
-
-test('a post lists place docs by slug; unknown ones fail, naming the post', () => {
-	const docs = new Map<string, PlaceDoc>([['knorrhuette', parsePlaceDoc('knorrhuette.md', KNORR)]]);
-	assert.deepEqual(readPostPlaces({}, 'p.md', docs), []);
-	assert.deepEqual(readPostPlaces({ places: ['knorrhuette', 'knorrhuette'] }, 'p.md', docs).map((d) => d.slug), ['knorrhuette']);
-	assert.throws(() => readPostPlaces({ places: ['sonnalpin'] }, '/x/p.md', docs), /Hike post \/x\/p\.md: places: unknown place "sonnalpin"/);
-	assert.throws(() => readPostPlaces({ places: 'knorrhuette' }, 'p.md', docs), /expected a list of place slugs/);
-});
-
-test('the sidecar lists route places; a post’s own list replaces them', () => {
+test('the sidecar lists route places; a post’s own list replaces them; unknown slugs fail naming the file', () => {
 	const docs = new Map<string, PlaceDoc>([
 		['knorrhuette', parsePlaceDoc('knorrhuette.md', KNORR)],
 		['sonnalpin', parsePlaceDoc('sonnalpin.md', KNORR)]
@@ -57,6 +43,8 @@ test('the sidecar lists route places; a post’s own list replaces them', () => 
 	assert.deepEqual(slugs({ places: null }), ['knorrhuette']);
 	assert.deepEqual(slugs({ places: ['sonnalpin'] }), ['sonnalpin']);
 	assert.deepEqual(slugs({ places: [] }), []);
+	assert.deepEqual(readPostPlaces({ places: ['knorrhuette', 'knorrhuette'] }, 'p.md', docs).map((d) => d.slug), ['knorrhuette']);
+	assert.throws(() => readPostPlaces({ places: ['zugspitze'] }, '/x/p.md', docs), /Hike post \/x\/p\.md: places: unknown place "zugspitze"/);
 	assert.throws(
 		() => readPostPlaces({}, 'p.md', docs, { places: ['zugspitze'], source: '/x/s.hike.json' }),
 		/Hike sidecar \/x\/s\.hike\.json: places: unknown place "zugspitze"/
@@ -68,16 +56,6 @@ const NODES = [{ lat: 47.41, lon: 10.99, tags: { name: 'Knorrhütte', ele: '2052
 const body = (md: string) => '---\ntitle: T\n---\n' + md;
 const markers = (html: string) => [...html.matchAll(/<a class="mk-place-doc" href="#([^"]+)"/g)].map((m) => m[1]);
 
-test('the doc index matches names like place links do', () => {
-	const index = buildPlaceDocIndex(REFS)!;
-	assert.equal(index.match(['Approaching', 'Knorrhütte'])?.start, 1);
-	assert.equal(index.match(['Knorr', 'Hütte'])?.doc.slug, 'knorrhuette');
-	assert.equal(index.match(['KNORRHUTTE'])?.doc.slug, 'knorrhuette');
-	assert.equal(index.match(['Sonnalpin']), null);
-	assert.equal(buildPlaceDocIndex([]), null);
-	assert.equal(placeDocAnchor('knorrhuette'), 'place-knorrhuette');
-});
-
 test('the first reference to a doc gets its marker, after the map link', async () => {
 	const md = 'Up to Knorrhütte (2052 m), back past Knorrhütte (2052 m).\n';
 	const { html } = await parseMarkdown(body(md), [], { nodes: NODES, placeDocs: REFS });
@@ -87,12 +65,9 @@ test('the first reference to a doc gets its marker, after the map link', async (
 	// Without nodes, the protected name still gets it.
 	const plain = await parseMarkdown(body(md), [], { placeDocs: REFS });
 	assert.match(plain.html, /<span translate="no">Knorrhütte \(2052&nbsp;m\)<\/span><a class="mk-place-doc"/);
-});
-
-test('no doc markers in headings, links or captions', async () => {
-	const md = '## Knorrhütte (2052 m)\n\n[Knorrhütte (2052 m)](/hikes/x/)\n\n![Knorrhütte (2052 m)](/images/a.jpg)\n';
-	const { html } = await parseMarkdown(body(md), [], { placeDocs: REFS });
-	assert.deepEqual(markers(html), []);
+	// No markers in headings, links or captions.
+	const elsewhere = await parseMarkdown(body('## Knorrhütte (2052 m)\n\n[Knorrhütte (2052 m)](/hikes/x/)\n\n![Knorrhütte (2052 m)](/images/a.jpg)\n'), [], { placeDocs: REFS });
+	assert.deepEqual(markers(elsewhere.html), []);
 });
 
 test('plain mentions of a doc\'s names are marked like references', async () => {

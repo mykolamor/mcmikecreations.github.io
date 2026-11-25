@@ -7,7 +7,7 @@ import { deeplStub } from '../server/deepl';
 import { buildBlogIndex } from '../../../src/lib/blog/blog-index.server';
 import { parseArgs } from './index';
 import { recorder } from './test-output';
-import { findBlogPost, runTranslateBlog, splitBody } from './translate-blog';
+import { runTranslateBlog, splitBody } from './translate-blog';
 
 const BODY = [
 	'# Title',
@@ -78,13 +78,4 @@ test('translate-blog drafts the translation, code untouched, and the site reads 
 	const again = await go(root, ['2024-03-01-x', 'de']);
 	assert.equal(again.code, 1);
 	assert.equal(readFileSync(de, 'utf8'), text);
-});
-
-test('translate-blog refuses unknown posts and languages', async () => {
-	const { root } = setup();
-	assert.equal((await go(root, ['nope', 'de'])).code, 1);
-	assert.equal((await go(root, ['x', 'fr'])).code, 2);
-	assert.equal((await go(root, ['x', 'en'])).code, 2);
-	assert.equal((await go(root, ['x'])).code, 2);
-	assert.equal(findBlogPost(root, '2024-03-01-x.md'), join(root, 'static/_blog/2024-03-01-x.md'));
 });

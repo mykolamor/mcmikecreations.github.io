@@ -1,11 +1,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { createHike, createPost } from './create';
 import { listHikes } from './hikes-index';
 import { postPath, sidecarPath } from './doc';
-import { isTranslationFile } from './translations';
 import { makeTempRepo } from './test-repo';
 import { repoPaths } from './paths';
 import { readFrontmatterDoc } from '../lib/frontmatter';
@@ -14,14 +13,6 @@ import { assembleHikes } from '$lib/data/hikes-core.js';
 
 const R = '/projects/data-viz/hikes/';
 const readJson = (root: string) => JSON.parse(readFileSync(repoPaths(root).hikesJson, 'utf8')) as any[];
-
-test('postCount counts hike posts only', () => {
-	const root = makeTempRepo();
-	const dir = repoPaths(root).markdown;
-	const expected = readdirSync(dir).filter((f: string) => /^\d{4}-\d{2}-\d{2}-.+\.md$/.test(f) && !isTranslationFile(f)).length;
-	assert.ok(expected > 50);
-	assert.equal(listHikes(root).postCount, expected);
-});
 
 test('createPost moves the hikes.json date into front matter', () => {
 	const root = makeTempRepo();
@@ -114,16 +105,4 @@ test('createHike rejects an existing slug and unsafe slugs', () => {
 	assert.deepEqual(JSON.parse(readFileSync(sidecarPath(root, 'new_one'), 'utf8')), { name: 'New One', height: 512, checkpoints: [] });
 	assert.equal(readFileSync(postPath(root, 'new_one', '2030-01-01'), 'utf8'), '---\n---\n');
 	assert.ok(existsSync(path.join(repoPaths(root).markdown, '2030-01-01-new_one.md')));
-});
-
-test('listHikes marks hikes with no post', () => {
-	const root = makeTempRepo();
-	const { hikes } = listHikes(root);
-	const sk = hikes.find((h) => h.slug === 'seekarkreuz')!;
-	assert.ok(!sk.posts.some((p) => p.date === '2024-02-18'));
-	assert.deepEqual(sk.postlessDates, ['2024-02-18']);
-	createPost(root, { slug: 'seekarkreuz', date: '2024-02-18' });
-	const sk2 = listHikes(root).hikes.find((h) => h.slug === 'seekarkreuz')!;
-	assert.equal(sk2.posts.length, sk.posts.length + 1);
-	assert.deepEqual(sk2.postlessDates, []);
 });

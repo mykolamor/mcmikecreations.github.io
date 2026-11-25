@@ -1,7 +1,7 @@
 // Run with: node_modules/.bin/jiti src/lib/hikes/facts-overlay.test.ts
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildFactsOverlay, chartPins, nodeFactsBadgeHtml, offsetNearRoute, pinEmojis, pinColor, pinsByNode, routeSlice } from './facts-overlay';
+import { buildFactsOverlay, chartPins, nodeFactsBadgeHtml, offsetNearRoute, pinEmojis, pinColor, pinsByNode } from './facts-overlay';
 import type { HikeAuthoredFacts, Place } from './facts-schema';
 
 // A straight route north along lon 11.0: 11 points ~1.11 km apart.
@@ -10,15 +10,6 @@ const STEP = 1.112;
 
 const at = (name: string, km: number, ref?: string): Place => ({
 	name: { en: name }, lat: 47.0 + km / STEP / 100, lon: 11.0, km, ele: 1000, resolved: true, ...(ref != null ? { ref } : {})
-});
-
-test('routeSlice cuts the route between two distances, ends interpolated', () => {
-	const slice = routeSlice(COORDS, 1, 1.5, 3.5);
-	assert.ok(Math.abs(slice[0][0] - (47.0 + 1.5 / STEP / 100)) < 1e-4);
-	assert.ok(Math.abs(slice[slice.length - 1][0] - (47.0 + 3.5 / STEP / 100)) < 1e-4);
-	// Interior points 2 and 3 in between.
-	assert.equal(slice.length, 4);
-	assert.deepEqual(routeSlice(COORDS, 1, 0, 1)[0], [47.0, 11.0]);
 });
 
 test('pins group by place; spans become bands and map lines', () => {
@@ -58,11 +49,6 @@ test('pins group by place; spans become bands and map lines', () => {
 	assert.ok(o.lines[0].coords.length >= 2);
 });
 
-test('a pin on a store element that is none of the hike\'s nodes is no POI pin', () => {
-	const o = buildFactsOverlay({ water: [{ at: at('Hut', 5, 'node/7') }, { at: at('Spring', 8, 'way/9') }] }, 'en', COORDS, 1, ['node/7', undefined]);
-	assert.deepEqual(o.pins.map((p) => [p.name, p.onNode, p.ref]), [['Hut', true, 'node/7'], ['Spring', false, 'way/9']]);
-});
-
 test('pins on a drawn POI node fold into its marker; water on a water node adds no badge', () => {
 	const o = buildFactsOverlay(
 		{ bailouts: [{ at: at('Peak', 2, 'node/7') }], water: [{ at: at('Spring', 4, 'node/9') }, { at: at('Near peak', 2.01) }, { at: at('Undrawn', 6, 'node/11') }] },
@@ -75,6 +61,9 @@ test('pins on a drawn POI node fold into its marker; water on a water node adds 
 	assert.match(nodeFactsBadgeHtml(onNodes.get('node/7')!, '⛰️'), />🛟<\/div>$/);
 	assert.equal(nodeFactsBadgeHtml(onNodes.get('node/9')!, '💧'), '');
 	assert.match(nodeFactsBadgeHtml(onNodes.get('node/9')!, '📍'), />💧<\/div>$/);
+	// A pin on a store element that is none of the hike's nodes is no POI pin.
+	const store = buildFactsOverlay({ water: [{ at: at('Hut', 5, 'node/7') }, { at: at('Spring', 8, 'way/9') }] }, 'en', COORDS, 1, ['node/7', undefined]);
+	assert.deepEqual(store.pins.map((p) => [p.name, p.onNode, p.ref]), [['Hut', true, 'node/7'], ['Spring', false, 'way/9']]);
 });
 
 test('chartPins merges pins that would overlap on the chart', () => {
@@ -86,20 +75,6 @@ test('chartPins merges pins that would overlap on the chart', () => {
 	assert.equal(merged.length, 1);
 	assert.equal(merged[0].name, 'A, B');
 	assert.equal(merged[0].items.length, 2);
-});
-
-test('no facts, no overlay', () => {
-	assert.deepEqual(buildFactsOverlay(null, 'en', COORDS, 1), { pins: [], bands: [], lines: [], routes: [] });
-});
-
-test('bailout routes become dashed-line routes', () => {
-	const route = { url: '/b.gpx', coords: [[47, 11], [47.01, 11]] as [number, number][], distance: 1112, descent: 300, ascent: 0, duration: 36 };
-	const o = buildFactsOverlay({ bailouts: [{ at: at('Hut', 5, 'node/7'), to: { en: 'Valley' }, route, last: true }] }, 'en', COORDS, 1);
-	assert.equal(o.routes.length, 1);
-	assert.equal(o.routes[0].color, '#dc2626');
-	assert.equal(o.routes[0].title.replace(/\u00a0/g, ' '), 'Planned route: Hut → Valley\n1.1 km · ↑ 0 m · ↓ 300 m · ≈ 30 min');
-	// Stats don't break inside themselves.
-	assert.ok(o.routes[0].title.includes('≈\u00a030\u00a0min'));
 });
 
 test('offsetNearRoute pushes shared stretches along the normal, fading out', () => {

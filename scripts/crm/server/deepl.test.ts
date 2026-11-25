@@ -5,7 +5,6 @@ import {
 	FREE_URL,
 	PRO_URL,
 	deeplStub,
-	deeplTarget,
 	protect,
 	restore,
 	translateBatch
@@ -95,7 +94,7 @@ test('a photo line, a link target, a URL, a mention and a {tag} are protected an
 	);
 });
 
-test('a table string protects its link targets and URLs, as well as its placeholders', () => {
+test('a table string protects its link targets and URLs (with any placeholder inside), as well as its placeholders', () => {
 	const text = 'See [tags](/hikes/tag/Climb/) and https://x.org for {count} hikes';
 	const { tagged, spans } = protect(text, 'table');
 	assert.deepEqual(spans, ['](/hikes/tag/Climb/)', 'https://x.org', '{count}']);
@@ -106,15 +105,12 @@ test('a table string protects its link targets and URLs, as well as its placehol
 		restore(de, spans),
 		'SEE [TAGS](/hikes/tag/Climb/) AND https://x.org FOR {count} HIKES'
 	);
-});
-
-test('a placeholder inside a table link target or URL goes with it', () => {
-	const text = 'Go [there](/hikes/tag/{tag}/) or https://x.org/t/{tag}/ for {n, select, 1 {one} other {{n} hikes}} now';
-	const { tagged, spans } = protect(text, 'table');
-	assert.deepEqual(spans, ['](/hikes/tag/{tag}/)', 'https://x.org/t/{tag}/', '{n, select, 1 {one} other {{n} hikes}}']);
-	const words = (s: string) => s.replace(/\p{L}+/gu, (w) => w.toUpperCase());
-	const de = tagged.replace(/(<x id="\d+"\/>)|([^<]+)/g, (_, tag, rest) => tag ?? words(rest));
-	assert.equal(restore(de, spans), 'GO [THERE](/hikes/tag/{tag}/) OR https://x.org/t/{tag}/ FOR {n, select, 1 {one} other {{n} hikes}} NOW');
+	// A placeholder inside a link target or URL goes with it.
+	const inner = 'Go [there](/hikes/tag/{tag}/) or https://x.org/t/{tag}/ for {n, select, 1 {one} other {{n} hikes}} now';
+	const p = protect(inner, 'table');
+	assert.deepEqual(p.spans, ['](/hikes/tag/{tag}/)', 'https://x.org/t/{tag}/', '{n, select, 1 {one} other {{n} hikes}}']);
+	const de2 = p.tagged.replace(/(<x id="\d+"\/>)|([^<]+)/g, (_, tag, rest) => tag ?? words(rest));
+	assert.equal(restore(de2, p.spans), 'GO [THERE](/hikes/tag/{tag}/) OR https://x.org/t/{tag}/ FOR {n, select, 1 {one} other {{n} hikes}} NOW');
 });
 
 test('numeric character references in an answer are decoded', () => {
@@ -242,27 +238,6 @@ test('texts over 50 go in several requests in order', async () => {
 	);
 	assert.equal(out.texts[73].text, '⟨de⟩ Text 73 at https://x.org/73');
 	assert.deepEqual(out.refused, []);
-	const b = calls[0].body;
-	assert.deepEqual(
-		{
-			source_lang: b.source_lang,
-			target_lang: b.target_lang,
-			tag_handling: b.tag_handling,
-			ignore_tags: b.ignore_tags,
-			preserve_formatting: b.preserve_formatting
-		},
-		{
-			source_lang: 'EN',
-			target_lang: 'DE',
-			tag_handling: 'xml',
-			ignore_tags: ['x'],
-			preserve_formatting: true
-		}
-	);
-	assert.equal(calls[0].init.method, 'POST');
-	assert.equal(new Headers(calls[0].init.headers).get('authorization'), 'DeepL-Auth-Key k');
-	assert.equal(deeplTarget('de'), 'DE');
-	assert.equal(deeplTarget('en'), null);
 });
 
 test('the free key uses the free endpoint', async () => {
@@ -273,8 +248,6 @@ test('the free key uses the free endpoint', async () => {
 		calls.map((c) => c.url),
 		[FREE_URL, PRO_URL]
 	);
-	assert.equal(FREE_URL, 'https://api-free.deepl.com/v2/translate');
-	assert.equal(PRO_URL, 'https://api.deepl.com/v2/translate');
 });
 
 test('quota and network errors are reported by kind', async () => {

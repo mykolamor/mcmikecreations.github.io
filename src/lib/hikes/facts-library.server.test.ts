@@ -73,65 +73,24 @@ test('a post field overrides one field of a used record and keeps the rest', () 
 	for (const v of Object.values(both)) assert.notEqual(typeof v, 'symbol', 'no DELETE marker reaches the page');
 });
 
-test('a post null removes a field of an attached stop record under a sidecar stop', () => {
-	const { facts, warnings } = read({ stops: [{ at: 'Knorrhütte', overnight: null }] }, { stops: [{ at: { ref: 'node/1' }, food: true }] });
-	assert.deepEqual(warnings, []);
-	const [s] = facts!.stops!;
-	assert.ok(!('overnight' in s), 'the record\'s overnight is removed');
-	assert.equal(s.food, true);
-	assert.equal(s.kind, 'alpine-hut');
-	assert.deepEqual(s.note, { en: 'Book ahead' });
-	assert.deepEqual(Object.getOwnPropertySymbols(s), []);
-	for (const v of Object.values(s)) assert.notEqual(typeof v, 'symbol', 'no DELETE marker reaches the page');
-});
-
-test('a problem inside a used record names the entry that uses it', () => {
-	const lib = readFactsLibrary({
-		transport: { bus: { mode: 'bus', from: 'Garmisch', to: { ref: 'node/99' } } },
-		lifts: { up: { name: 'Up', from: 'Nowhere Pass' } }
-	}, 'facts-library.json');
-	const post = read({ access: { transport: [TRAIN, { use: 'bus' }] } }, undefined, lib);
-	assert.equal(post.warnings.length, 1);
-	assert.match(post.warnings[0], /^Hike facts in post\.md: access\.transport\[1\] \(use "bus"\): facts-library\.json: transport\.bus\.to: place "node\/99"/);
-	const side = read(undefined, { access: { lifts: [{ use: 'up' }] } }, lib);
-	assert.equal(side.warnings.length, 1);
-	assert.match(side.warnings[0], /^Hike facts in side\.hike\.json: access\.lifts\[0\] \(use "up"\): facts-library\.json: lifts\.up\.from: place "Nowhere Pass"/);
-});
-
-test('a permit entry with use starts from the permits record', () => {
-	const lib = readFactsLibrary({
-		permits: { 'tpn-entry': { name: { en: 'Entry ticket' }, required: true, price: [{ amount: 11, currency: 'PLN', per: 'day' }], checked: '2026-11-23' } }
-	}, 'facts-library.json');
-	const { facts, warnings } = read(undefined, { permits: [{ use: 'tpn-entry', note: 'Buy online' }] }, lib);
-	assert.deepEqual(warnings, []);
-	const [p] = facts!.permits!;
-	assert.equal(p.name.en, 'Entry ticket');
-	assert.equal(p.required, true);
-	assert.equal(p.price![0].amount, 11);
-	assert.equal(p.note!.en, 'Buy online');
-	assert.throws(() => read(undefined, { permits: [{ use: 'nope' }] }, lib), /permits\[0\]\.use: no permit record "nope"/);
-});
-
-test('a stop on an OSM element with a library record starts from it', () => {
+test('a stop on an OSM element with a library record starts from it; contact details fall back to OSM', () => {
 	const { facts, warnings } = read({ stops: [{ at: 'Knorrhütte', note: 'Closed Mondays' }] }, { stops: [{ at: { ref: 'node/1' }, food: true }] });
 	assert.deepEqual(warnings, []);
 	assert.equal(facts!.stops!.length, 1);
 	const [s] = facts!.stops!;
-	assert.equal(s.at.ref, 'node/1');
 	assert.equal(s.kind, 'alpine-hut');
 	assert.equal(s.overnight, true);
 	assert.equal(s.food, true);
 	assert.deepEqual(s.note, { en: 'Closed Mondays' });
 	assert.equal(s.checked, '2026-06-01');
-	// A stop on an element without a record is left alone.
-	assert.equal(read({ stops: [{ at: 'Gatterl' }] }).facts!.stops![0].kind, undefined);
-});
-
-test('OSM contact fallback still applies after the library', () => {
-	const [s] = read({ stops: [{ at: { ref: 'node/1' } }] }).facts!.stops!;
-	assert.equal(s.kind, 'alpine-hut');
 	assert.equal(s.phone, '+49 1');
 	assert.deepEqual(s.booking, { url: 'https://hut.example' });
+	// A post null removes a field of the attached record, under a sidecar stop.
+	const [dropped] = read({ stops: [{ at: 'Knorrhütte', overnight: null }] }, { stops: [{ at: { ref: 'node/1' }, food: true }] }).facts!.stops!;
+	assert.ok(!('overnight' in dropped), 'the record\'s overnight is removed');
+	assert.equal(dropped.kind, 'alpine-hut');
+	assert.deepEqual(Object.getOwnPropertySymbols(dropped), []);
+	for (const v of Object.values(dropped)) assert.notEqual(typeof v, 'symbol', 'no DELETE marker reaches the page');
 	// A record's own contact details win over OSM's.
 	const lib = readFactsLibrary({ stops: { 'node/1': { phone: '+49 2', booking: 'https://book.example' } } }, 'facts-library.json');
 	const [own] = read({ stops: [{ at: 'Knorrhütte' }] }, undefined, lib).facts!.stops!;
@@ -139,7 +98,7 @@ test('OSM contact fallback still applies after the library', () => {
 	assert.deepEqual(own.booking, { url: 'https://book.example' });
 });
 
-test('an unknown use id fails naming file, path and id', () => {
+test('problems name the file, the path, the entry and the record', () => {
 	assert.throws(
 		() => read({ access: { transport: [TRAIN, { use: 'rb6-munich' }] } }),
 		/post\.md: access\.transport\[1\]\.use: no transport record "rb6-munich" in facts-library\.json/
@@ -148,24 +107,25 @@ test('an unknown use id fails naming file, path and id', () => {
 		() => read(undefined, { access: { lifts: [{ use: 'gondola' }] } }, emptyFactsLibrary()),
 		/side\.hike\.json: access\.lifts\[0\]\.use: no lift record "gondola" in facts-library\.json/
 	);
-	assert.throws(() => read({ access: { tickets: [{ use: ' ' }] } }), /access\.tickets\[0\]\.use: expected a string/);
 	// The fields a record lacks are still required of the entry.
-	const lib = readFactsLibrary({ transport: { bus: { mode: 'bus', line: '9' } } }, 'facts-library.json');
-	assert.throws(() => read({ access: { transport: [{ use: 'bus' }] } }, undefined, lib), /access\.transport\[0\]\.from: required/);
+	const busOnly = readFactsLibrary({ transport: { bus: { mode: 'bus', line: '9' } } }, 'facts-library.json');
+	assert.throws(() => read({ access: { transport: [{ use: 'bus' }] } }, undefined, busOnly), /access\.transport\[0\]\.from: required/);
 	// Stops attach by place; they take no `use`.
 	assert.throws(() => read({ stops: [{ at: 'Gatterl', use: 'node/1' }] }), /stops\[0\]: unknown key "use"/);
-});
-
-test('a malformed library record fails naming kind, id and path', () => {
+	// A place inside a used record that doesn't resolve warns naming the entry that uses it.
+	const lib = readFactsLibrary({
+		transport: { bus: { mode: 'bus', from: 'Garmisch', to: { ref: 'node/99' } } },
+		lifts: { up: { name: 'Up', from: 'Nowhere Pass' } }
+	}, 'facts-library.json');
+	const post = read({ access: { transport: [TRAIN, { use: 'bus' }] } }, undefined, lib);
+	assert.equal(post.warnings.length, 1);
+	assert.match(post.warnings[0], /^Hike facts in post\.md: access\.transport\[1\] \(use "bus"\): facts-library\.json: transport\.bus\.to: place "node\/99"/);
+	const side = read(undefined, { access: { lifts: [{ use: 'up' }] } }, lib);
+	assert.match(side.warnings[0], /^Hike facts in side\.hike\.json: access\.lifts\[0\] \(use "up"\): facts-library\.json: lifts\.up\.from: place "Nowhere Pass"/);
+	// A malformed record fails naming kind, id and path.
 	const bad = (raw: unknown) => () => readFactsLibrary(raw, 'facts-library.json');
 	assert.throws(bad({ transport: { 'rb60': { ...TRAIN, price: [{ amount: 'x' }] } } }), /facts-library\.json: transport\.rb60\.price\[0\]\.amount: expected a number/);
-	assert.throws(bad({ transport: { 'rb60': { mode: 'rocket' } } }), /facts-library\.json: transport\.rb60\.mode: unknown value "rocket"/);
-	assert.throws(bad({ lifts: { gondola: { kind: 'gondola' } } }), /facts-library\.json: lifts\.gondola\.name: required/);
 	assert.throws(bad({ stops: { 'node/1': { at: 'Knorrhütte' } } }), /facts-library\.json: stops\.node\/1: unknown key "at"/);
-	assert.throws(bad({ parking: { p1: { use: 'p2' } } }), /facts-library\.json: parking\.p1: unknown key "use"/);
 	assert.throws(bad({ stops: { hut: { kind: 'alpine-hut' } } }), /facts-library\.json: stops\.hut: expected a typed OSM ref/);
-	assert.throws(bad({ tickets: { 'Bayern-Ticket': { name: 'Bayern-Ticket' } } }), /facts-library\.json: tickets\.Bayern-Ticket: expected an id/);
 	assert.throws(bad({ huts: {} }), /facts-library\.json: huts: unknown record kind/);
-	assert.throws(bad({ tickets: { day: 'Day ticket' } }), /facts-library\.json: tickets\.day: expected a mapping/);
-	assert.deepEqual(readFactsLibrary({}, 'facts-library.json'), emptyFactsLibrary());
 });

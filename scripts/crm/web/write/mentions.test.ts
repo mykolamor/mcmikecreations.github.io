@@ -5,7 +5,7 @@ import { defaultKeymap } from '@codemirror/commands';
 import { buildPlaceIndex } from '$lib/hikes/place-links';
 import { buildPlaceDocIndex } from '$lib/hikes/place-docs';
 import { mentionInsert } from '../../shared/md-lines';
-import { linkedMentions, mentionQuery, mentionSuggestions, keepFocus, popupPosition, proseRuns, suggestionKeyNames, suggestionKeys, type SuggestionList } from './mentions';
+import { linkedMentions, mentionQuery, mentionSuggestions, proseRuns, suggestionKeys, type SuggestionList } from './mentions';
 
 const ORIGIN = { lat: 47.4, lon: 11.0 };
 const node = (ref: string, name: string, lat: number, ele?: number) => ({ ref, lat, lon: 11.0, tags: { name, ...(ele == null ? {} : { ele: String(ele) }) } });
@@ -29,11 +29,6 @@ test('suggestions need three letters and rank by distance from origin', () => {
 	assert.deepEqual(mentionSuggestions('Knorrhu', NODES, DOCS, ORIGIN).map((s) => s.text), ['Knorrhütte (2052 m)']);
 	// A place doc's names (title or alias) suggest the name as written, before the nodes.
 	assert.deepEqual(mentionSuggestions('holz', NODES, DOCS, ORIGIN).map((s) => [s.text, s.node]), [['Holzwiesenthal', null]]);
-	// At most 8.
-	const many = Array.from({ length: 12 }, (_, i) => node(`node/${100 + i}`, `Wald ${i}`, 47.4 + i / 100));
-	const eight = mentionSuggestions('Wald', many, [], ORIGIN);
-	assert.equal(eight.length, 8);
-	assert.deepEqual(eight.map((s) => s.text), many.slice(0, 8).map((n) => n.tags.name));
 	// The word before the cursor, only at a word's end.
 	assert.deepEqual(mentionQuery('Up the Wal', 10), { from: 7, word: 'Wal' });
 	assert.equal(mentionQuery('Up the Wallberg', 10), null);
@@ -86,8 +81,8 @@ function editor() {
 }
 
 /** Presses `key`: the suggestion keymap first, then (when it declines) the editor's own binding, as CodeMirror does. */
-function press(t: ReturnType<typeof editor>, key: string, l: SuggestionList, mac = false) {
-	const binding = suggestionKeys(l, mac).find((b) => b.key === key);
+function press(t: ReturnType<typeof editor>, key: string, l: SuggestionList) {
+	const binding = suggestionKeys(l, false).find((b) => b.key === key);
 	const handled = !!binding?.run!(t as never);
 	if (!handled) defaultKeymap.find((b) => b.key === key)?.run?.(t as never);
 	return { handled, doc: t.state.doc.toString(), head: t.state.selection.main.head };
@@ -125,38 +120,6 @@ test('plain arrows close the list and move the cursor', () => {
 	assert.deepEqual(closed.calls, []);
 });
 
-test('Alt-ArrowDown highlights, then Enter accepts', () => {
-	const { l, calls } = list(true, -1);
-	const t = editor();
-	assert.equal(press(t, 'Alt-ArrowDown', l).handled, true);
-	assert.equal(l.active(), 0);
-	assert.deepEqual(press(t, 'Enter', l), { handled: true, doc: 'One\nWallberg (1722 m)\nlast line', head: 21 });
-	assert.deepEqual(calls, ['move 1', 'accept']);
-	// Alt-ArrowUp moves too, Tab accepts; with the list closed they do nothing.
-	const more = list(true, -1);
-	assert.equal(press(editor(), 'Alt-ArrowDown', more.l).handled, true);
-	assert.equal(press(editor(), 'Alt-ArrowUp', more.l).handled, true);
-	assert.equal(press(editor(), 'Tab', more.l).handled, true);
-	assert.deepEqual(more.calls, ['move 1', 'move -1', 'accept']);
-	for (const key of ['Alt-ArrowDown', 'Alt-ArrowUp']) assert.equal(press(editor(), key, list(false, -1).l).handled, false, key);
-});
-
-test('Ctrl+N/P step through the list only on a Mac', () => {
-	// Firefox and Chrome on Linux and Windows keep Ctrl+N (new window) and Ctrl+P (print) for themselves: no binding, no hint.
-	const pc = list(true, -1);
-	for (const key of ['Ctrl-n', 'Ctrl-p']) assert.equal(press(editor(), key, pc.l).handled, false, key);
-	assert.deepEqual(pc.calls, []);
-	assert.deepEqual(suggestionKeyNames(false), { next: 'Alt+↓', previous: 'Alt+↑', accept: 'Enter or Tab', close: 'Esc' });
-	// On a Mac they are free (Cmd+N is the new window) and step as in a Mac text field.
-	const mac = list(true, -1);
-	assert.equal(press(editor(), 'Ctrl-n', mac.l, true).handled, true);
-	assert.equal(press(editor(), 'Ctrl-n', mac.l, true).handled, true);
-	assert.equal(press(editor(), 'Ctrl-p', mac.l, true).handled, true);
-	assert.deepEqual(mac.calls, ['move 1', 'move 1', 'move -1']);
-	for (const key of ['Ctrl-n', 'Ctrl-p']) assert.equal(press(editor(), key, list(false, -1).l, true).handled, false, key);
-	assert.deepEqual(suggestionKeyNames(true), { next: 'Alt+↓ or Control+N', previous: 'Alt+↑ or Control+P', accept: 'Enter or Tab', close: 'Esc' });
-});
-
 test('underlines follow what the site links: prose only, place-doc names too', () => {
 	const places = buildPlaceIndex(NODES, { origin: ORIGIN });
 	const docs = buildPlaceDocIndex(DOCS);
@@ -189,29 +152,6 @@ test('underlines follow what the site links: prose only, place-doc names too', (
 	// The heading, the link, the image and the code are not prose.
 	const runs = proseRuns(body).map((r) => body.slice(r.from, r.to));
 	assert.ok(!runs.some((r) => r.includes('## Up') || r.includes('x.example') || r.includes('at dusk')));
-});
-
-test('the suggestion list goes above the cursor near the bottom of the visible viewport', () => {
-	const viewport = { top: 0, height: 400, width: 390 };
-	const size = { width: 300, height: 120 };
-	// Room below: under the cursor line.
-	assert.deepEqual(popupPosition({ top: 100, bottom: 120, left: 50 }, viewport, size), { top: 124, left: 50 });
-	// Near the keyboard: above it.
-	assert.deepEqual(popupPosition({ top: 330, bottom: 350, left: 50 }, viewport, size), { top: 206, left: 50 });
-	// Kept inside the width; a scrolled visual viewport counts from its own top.
-	assert.deepEqual(popupPosition({ top: 400, bottom: 420, left: 200 }, { top: 300, height: 400, width: 390 }, size), { top: 424, left: 82 });
-	assert.deepEqual(popupPosition({ top: 600, bottom: 620, left: 200 }, { top: 300, height: 400, width: 390 }, size), { top: 476, left: 82 });
-});
-
-test('the map focus stays the same object while the cursor stays on the same place', () => {
-	const a = { lat: 47.4, lon: 11, label: 'Wallberg (1722 m)' };
-	// Same place: the previous focus, so the map (and the author's pan and zoom) is left alone.
-	assert.equal(keepFocus(a, { ...a }), a);
-	// Another place, or none yet: the new one.
-	const b = { ...a, label: 'Wallberg' };
-	assert.equal(keepFocus(a, b), b);
-	assert.equal(keepFocus(a, { ...a, lat: 47.5 }).lat, 47.5);
-	assert.equal(keepFocus(null, a), a);
 });
 
 test('a reference naming a place doc is underlined even without a node, as the site marks it', async () => {

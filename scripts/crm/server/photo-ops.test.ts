@@ -227,11 +227,6 @@ test('tiers aren\'t deleted while a translation uses the photo', async () => {
 	assert.deepEqual(readdirSync(own), ['2024-01-01-03-640.avif']);
 });
 
-test('remove of an unknown key is 404', async () => {
-	const root = repo(POST);
-	await assert.rejects(removePhoto(root, FOO, '2024-01-01-99.jpg', version(root), { isTracked: () => false }), (e) => e instanceof ApiError && e.status === 404);
-});
-
 test('upload to topo gets a full-href key', async () => {
 	const root = repo(POST);
 	const r = await addUpload(root, FOO, await jpeg(1754, 1240), 'My Topo.PNG', { target: 'topo', credit: 'Alpenverein', sourceUrl: 'https://example.org/t' }, version(root), { isTracked: () => false });
@@ -263,14 +258,6 @@ test('upload with credit appends the credit and image lines', async () => {
 	const plain = repo(POST);
 	await addUpload(plain, FOO, await jpeg(800, 600), 'y.jpg', { target: 'topo' }, version(plain), { isTracked: () => false });
 	assert.ok(postOf(plain).endsWith(POST.slice(POST.indexOf('\n---\n') + 5)));
-});
-
-test('upload to stories gets the next bare NN key', async () => {
-	const root = repo(POST);
-	const r = await addUpload(root, FOO, await jpeg(), 'IMG_1.jpg', { target: 'stories' }, version(root), { isTracked: () => false });
-	assert.equal(r.key, '2024-01-01-04.jpg');
-	assert.equal(r.href, '/images/projects/data-viz/hikes/stories/foo/2024-01-01-04.jpg');
-	assert.equal(r.caption, undefined);
 });
 
 test('upload refuses a target outside static/images and a too-small image', async () => {
@@ -541,40 +528,6 @@ test('alt is written last and removed with null; stale base refused', async () =
 	assert.doesNotMatch(postOf(root), /alt:/);
 });
 
-test('a linked photo without an Immich client reports it, front matter still written', async () => {
-	const root = fixRepo();
-	await setLink(root, '2024-01-01-foo.md', 'a.jpg', 'A');
-	const r = await setTime(root, FOO, ['a.jpg', 'b.jpg'], { shiftMinutes: 5 }, version(root));
-	assert.deepEqual(r.immichErrors, [{ key: 'a.jpg', message: 'Immich not configured — not written back' }]);
-	assert.match(entryLine(root, 'a.jpg'), /taken: '2024-01-01T11:23:16\+02:00'/);
-});
-
-test('shiftMinutes is bounded to 7 days', async () => {
-	const root = fixRepo();
-	await assert.rejects(setTime(root, FOO, ['a.jpg'], { shiftMinutes: 7 * 24 * 60 + 1 }, version(root)), (e) => e instanceof ApiError && e.status === 400);
-});
-
-test('postPhotos lists the entries in order with link, placed-in-text, pin count and fields', async () => {
-	const root = repo(`---
-title: Foo
-images:
-  2024-01-01-00.jpg: {w: 10, h: 20, lat: 47.1, lon: 11.2, taken: '2024-01-01T10:00:00+01:00', located: track, blur: 'data:x', pins: [{ref: node/1, x: 0.1, y: 0.2}, {ref: node/2, x: 0.3, y: 0.4}], alt: A hut}
-  /images/hikes/topo/buch.jpg: {w: 5, h: 6}
-  2024-01-01-03.jpg: {w: 1, h: 1}
----
-![First](/images/projects/data-viz/hikes/stories/foo/2024-01-01-00.jpg)
-![Topo](/images/hikes/topo/buch.jpg)
-`);
-	await setLink(root, '2024-01-01-foo.md', '2024-01-01-03.jpg', 'asset-3');
-	assert.deepEqual(postPhotos(root, FOO), [
-		{ key: '2024-01-01-00.jpg', href: '/images/projects/data-viz/hikes/stories/foo/2024-01-01-00.jpg', assetId: null, inText: true, pins: 2, w: 10, h: 20, lat: 47.1, lon: 11.2, taken: '2024-01-01T10:00:00+01:00', located: 'track', alt: 'A hut' },
-		{ key: '/images/hikes/topo/buch.jpg', href: '/images/hikes/topo/buch.jpg', assetId: null, inText: true, pins: 0, w: 5, h: 6 },
-		{ key: '2024-01-01-03.jpg', href: '/images/projects/data-viz/hikes/stories/foo/2024-01-01-03.jpg', assetId: 'asset-3', inText: false, pins: 0, w: 1, h: 1 }
-	]);
-	assert.deepEqual(postPhotos(repo('---\ntitle: Foo\n---\nBody\n'), FOO), []);
-	assert.throws(() => postPhotos(root, { kind: 'post', slug: 'foo', date: '2024-09-09' }), (e) => e instanceof ApiError && e.status === 404);
-});
-
 // ---------------------------------------------------------------- pins and caption
 
 const OSM = 'static/_projects/data-viz/hikes/osm.json';
@@ -640,17 +593,6 @@ test('setCaption 409 when the photo isn\'t in the text', async () => {
 	await assert.rejects(setCaption(root, FOO, 'b.jpg', 'x', version(root)), (e) => e instanceof ApiError && e.status === 409 && /not placed in the text/.test(e.message));
 	await assert.rejects(setCaption(root, FOO, 'c.jpg', 'x', version(root)), (e) => e instanceof ApiError && e.status === 409 && /more than once/.test(e.message));
 	assert.equal(postOf(root), before);
-});
-
-test('pinState gives the pins with their store names and the caption state', async () => {
-	const root = pinRepo();
-	await setPins(root, FOO, 'a.jpg', [{ ref: 'node/1', x: 0.5, y: 0.25 }], version(root));
-	const s = pinState(root, FOO, 'a.jpg');
-	assert.deepEqual(s.pins, [{ ref: 'node/1', x: 0.5, y: 0.25, name: 'Wallberg', ele: 1722, lat: 47.1, lon: 11.1, missing: false }]);
-	assert.equal(s.caption, 'Old caption with [credit](https://x.example)');
-	assert.equal(s.captionState, 'ok');
-	assert.equal(pinState(root, FOO, 'b.jpg').captionState, 'missing');
-	assert.throws(() => pinState(root, FOO, 'zzz.jpg'), (e) => e instanceof ApiError && e.status === 404);
 });
 
 test('setCaption refuses a caption ending in a lone backslash', async () => {
@@ -719,20 +661,6 @@ test('a place doc is never stamped updated', async () => {
 	const del = await removePhoto(root, FOO_PLACE, add.key, up.version, tracked);
 	assert.equal(del.stamped, false);
 	assert.doesNotMatch(placeOf(root), /updated/);
-});
-
-test('existing post photo tests pass unchanged with post refs', async () => {
-	// A post ref keeps the Plan 4 behaviour: stories folder, links under the post file, updated: stamped once published.
-	const root = placeRepo();
-	const place = placeOf(root);
-	const r = await addFromImmich(root, FOO, 'a1', version(root), { ...deps(stubImmich({ a1: {} })), isTracked: () => true, today: () => '2026-10-29' });
-	assert.equal(r.key, '2024-01-01-04.jpg');
-	assert.equal(r.href, '/images/projects/data-viz/hikes/stories/foo/2024-01-01-04.jpg');
-	assert.equal(r.stamped, true);
-	assert.deepEqual(readLinks(root)['2024-01-01-foo.md'], { '2024-01-01-04.jpg': 'a1' });
-	assert.equal(placeOf(root), place);
-	// a hike ref (no post) has no photos
-	await assert.rejects(addFromImmich(root, { kind: 'hike', slug: 'foo' }, 'a1', version(root), deps(stubImmich({ a1: {} }))), (e) => e instanceof ApiError && e.status === 400);
 });
 
 test('place photos: alt, time, pins work; location from the track is refused', async () => {

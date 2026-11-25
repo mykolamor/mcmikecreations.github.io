@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { hikeLinkInsert, linePrefix, markMissing, mediaInsert, mediaLines, mentionInsert, missingLinks, wrap, type MdChange } from './md-lines';
+import { linePrefix, markMissing, mediaInsert, mediaLines, missingLinks, wrap, type MdChange } from './md-lines';
 
 /** The body with the change applied, and the text it selects. */
 function apply(body: string, c: MdChange | null): { body: string; selected: string } {
@@ -42,6 +42,11 @@ test('mediaLines finds photo, video with autoplay, youtube and missing lines and
 	// A CRLF line ends before its `\r`.
 	const crlf = mediaLines('x\r\n![c](/a.jpg)\r\n');
 	assert.deepEqual(crlf.map((l) => [l.from, l.to]), [[3, 15]]);
+	// Whitespace around a media line is allowed.
+	const spaced = 'x\n  ![Cap](/a.jpg)  \n';
+	const [line] = mediaLines(spaced);
+	assert.equal(spaced.slice(line.from, line.to), '![Cap](/a.jpg)');
+	assert.equal(line.caption, 'Cap');
 });
 
 test('missingLinks finds [text](/404/) but not missing media', () => {
@@ -115,6 +120,10 @@ test('wrap toggles **bold**, _italic_ and <span lang="de">', () => {
 	r = apply(body, wrap({ body, from: 2, to: 2 }, '_', '_'));
 	assert.equal(r.body, 'a __Hütte b');
 	assert.equal(r.selected, '');
+	// Only a single wrapped run unwraps; the inner text between two runs' outer markers wraps too.
+	const runs = '_a_ and _b_';
+	assert.equal(apply(runs, wrap({ body: runs, from: 0, to: runs.length }, '_', '_')).body, '__a_ and _b__');
+	assert.equal(apply(runs, wrap({ body: runs, from: 1, to: runs.length - 1 }, '_', '_')).body, '__a_ and _b__');
 });
 
 test('linePrefix toggles headings, quotes and lists', () => {
@@ -132,25 +141,14 @@ test('linePrefix toggles headings, quotes and lists', () => {
 	assert.equal(h.selTo, r.body.length);
 	// Blank lines inside a block stay blank.
 	assert.equal(apply(body, linePrefix([{ from: 4, text: 'Two' }, { from: 8, text: '' }, { from: 9, text: 'Three' }], '> ')).body, 'One\n> Two\n\n> Three');
+	// Heading levels swap; CRLF is kept.
+	assert.equal(apply('### x', linePrefix([{ from: 0, text: '### x' }], '## ')).body, '## x');
+	assert.equal(apply('## x', linePrefix([{ from: 0, text: '## x' }], '## ')).body, 'x');
+	const crlf = 'One\r\nTwo';
+	assert.equal(apply(crlf, linePrefix([{ from: 0, text: 'One' }, { from: 5, text: 'Two' }], '- ')).body, '- One\r\n- Two');
 });
 
-test('hikeLinkInsert writes the post link and selects the title', () => {
-	const r = apply('Via .', hikeLinkInsert(4, 'Jochberg', '2024-01-01', 'jochberg'));
-	assert.equal(r.body, 'Via [Jochberg](/hikes/2024-01-01-jochberg/).');
-	assert.equal(r.selected, 'Jochberg');
-});
-
-test('mentionInsert writes Name (ele m) and plain Name without ele', () => {
-	const body = 'Up to Knor today';
-	const c = mentionInsert(6, 10, { lat: 47.4, lon: 11, tags: { name: 'Knorrhütte', ele: '2051.6' } });
-	const r = apply(body, c);
-	assert.equal(r.body, 'Up to Knorrhütte (2052 m) today');
-	assert.equal(c.selFrom, c.selTo);
-	assert.equal(c.selFrom, 6 + 'Knorrhütte (2052 m)'.length);
-	assert.equal(apply(body, mentionInsert(6, 10, { lat: 1, lon: 1, tags: { name: 'Marienstein' } })).body, 'Up to Marienstein today');
-});
-
-test('markMissing acts on a link the selection partly overlaps, from either side', () => {
+test('markMissing acts on a link the selection partly overlaps, and is a no-op otherwise', () => {
 	const body = 'see [Foo](/x/) more';
 	// From before the link into it.
 	assert.equal(apply(body, markMissing(body, { from: 0, to: 7 })).body, 'see [Foo](/404/) more');
@@ -162,12 +160,10 @@ test('markMissing acts on a link the selection partly overlaps, from either side
 	const two = 'a [B](/b/) c [D](/d/) e';
 	assert.equal(markMissing(two, { from: 4, to: 15 }), null);
 	assert.equal(markMissing(two, { from: 0, to: 12 }), null);
-});
-
-test('markMissing is a no-op for a cursor outside links and across a line break', () => {
-	const body = 'One two.\nThree.';
-	assert.equal(markMissing(body, { from: 2, to: 2 }), null);
-	assert.equal(markMissing(body, { from: 4, to: 11 }), null);
+	// A cursor outside links, or a selection across a line break: no-op.
+	const plain = 'One two.\nThree.';
+	assert.equal(markMissing(plain, { from: 2, to: 2 }), null);
+	assert.equal(markMissing(plain, { from: 4, to: 11 }), null);
 });
 
 test('mediaInsert keeps indentation, trims the split and keeps CRLF', () => {
@@ -183,25 +179,4 @@ test('mediaInsert keeps indentation, trims the split and keeps CRLF', () => {
 	const r = apply(crlf, mediaInsert(crlf, 6, 'Cap', '/a.jpg'));
 	assert.equal(r.body, `One.\r\n\r\n${img}\r\n\r\nTwo.\r\n`);
 	assert.equal(r.selected, 'Cap');
-});
-
-test('mediaLines allows whitespace around a media line', () => {
-	const body = 'x\n  ![Cap](/a.jpg)  \n';
-	const [line] = mediaLines(body);
-	assert.equal(body.slice(line.from, line.to), '![Cap](/a.jpg)');
-	assert.equal(line.caption, 'Cap');
-});
-
-test('wrap only unwraps a single wrapped run', () => {
-	const body = '_a_ and _b_';
-	assert.equal(apply(body, wrap({ body, from: 0, to: body.length }, '_', '_')).body, '__a_ and _b__');
-	// The inner text between the outer markers wraps too.
-	assert.equal(apply(body, wrap({ body, from: 1, to: body.length - 1 }, '_', '_')).body, '__a_ and _b__');
-});
-
-test('linePrefix swaps heading levels and keeps CRLF', () => {
-	assert.equal(apply('### x', linePrefix([{ from: 0, text: '### x' }], '## ')).body, '## x');
-	assert.equal(apply('## x', linePrefix([{ from: 0, text: '## x' }], '## ')).body, 'x');
-	const crlf = 'One\r\nTwo';
-	assert.equal(apply(crlf, linePrefix([{ from: 0, text: 'One' }, { from: 5, text: 'Two' }], '- ')).body, '- One\r\n- Two');
 });

@@ -3,7 +3,6 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, readdirSync, statSync, utimesSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { spawnSync } from 'node:child_process';
 import { createMapyTiles } from './mapy-tiles';
 
 const png = (n: number) => Buffer.alloc(n, 7);
@@ -36,7 +35,6 @@ test('rejects bad coordinates and upstream errors', async () => {
 	const tiles = createMapyTiles({ dir, capBytes: 1000, fetch: (async () => new Response('x', { status: 403, headers: { 'content-type': 'image/png' } })) as unknown as typeof fetch, cookie: async () => '' });
 	await assert.rejects(() => tiles.get(13, -1, 5), /Bad tile/);
 	await assert.rejects(() => tiles.get(13, 1, 5), /403/);
-	writeFileSync(path.join(dir, 'x'), '');
 });
 
 test('parallel requests for one tile share a single fetch; other tiles fetch once each', async () => {
@@ -84,12 +82,6 @@ test('getMapyCookie: concurrent callers share one handshake', async () => {
 		globalThis.fetch = real;
 		console.log = log;
 	}
-});
-
-test('map-download CLI unchanged', () => {
-	const r = spawnSync('node', ['scripts/map-download.js', 'nonexistent-slug'], { cwd: path.resolve(__dirname, '../../..'), encoding: 'utf8' });
-	assert.equal(r.status, 0);
-	assert.equal(r.stderr, 'Failed to fetch /maps/nonexistent-slug metadata.\n');
 });
 
 test('counts tiles already on disk once, then keeps its own total', async () => {

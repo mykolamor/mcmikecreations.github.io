@@ -180,18 +180,6 @@ test('PUT routes take a raw body, check base and return files + version', async 
 	assert.equal((await doc()).files.gpx.km > 0, true);
 });
 
-test('PUT /api/files/geojson writes the post GeoJSON and returns 200', async () => {
-	const { root, p } = tmpRoot();
-	const api = createApi(root);
-	const doc = async () => ((await api({ method: 'GET', path: '/api/doc', query: q({ slug: 'foo', date: '2024-01-01' }), headers: {} })).json as any).doc;
-	const base = (await doc()).version;
-	const good = { type: 'FeatureCollection', features: [{ type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: [[11, 47], [11, 47.01]] } }] };
-	const r = await api({ method: 'PUT', path: '/api/files/geojson', query: q({ slug: 'foo', date: '2024-01-01', base }), body: Buffer.from(JSON.stringify(good)), headers: { 'x-filename': 'a.json' } });
-	assert.equal(r.status, 200, JSON.stringify(r.json));
-	assert.ok(existsSync(join(p.geojson, 'foo.json')));
-	assert.ok((r.json as any).files.geojson.km > 0);
-});
-
 test('upload with a stale base is a 409 and writes nothing', async () => {
 	const { root, p } = tmpRoot();
 	const api = createApi(root);

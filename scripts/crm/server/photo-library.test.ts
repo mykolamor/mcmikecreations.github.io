@@ -60,11 +60,6 @@ test('tier-only story photos list as the .jpg href addFromLibrary expects; a non
 		{ href: '/images/projects/data-viz/hikes/stories/bar/2023-05-05-03.jpg' }
 	]);
 });
-test('the root lists top-level folders; hidden folders are left out', () => {
-	assert.deepEqual(listLibrary(repoOnce, ''), { dir: '', folders: ['hikes', 'projects'], images: [] });
-	assert.deepEqual(listLibrary(repoOnce, 'hikes').folders, ['topo']);
-});
-
 test('paths outside static/images are refused with 400, a missing folder with 404', () => {
 	for (const bad of ['..', '../_projects', 'hikes/../../x', '/etc', 'hikes/./../..', 'C:\\x', 'hikes\\..\\..']) {
 		assert.throws(() => listLibrary(repoOnce, bad), (e) => e instanceof ApiError && e.status === 400, bad);

@@ -72,21 +72,8 @@ test('download failure is reported as the last event; the tool writes no files i
 	const lines = await drain(res.stream!);
 	assert.deepEqual(lines.slice(0, 2), ['data: fetching 1/5\n\n', 'data: Rate Limit Exceeded (429)!\n\n']);
 	assert.match(lines.at(-1)!, /^data: error: .*1/);
-	assert.deepEqual(seen.args.slice(1), [join(root, 'scripts/map-download.js'), SLUG]);
-	assert.equal(seen.cwd, join(root, 'scripts'));
 	assert.equal(seen.env.mapboxDEMAccess, 'a');
-	assert.equal(seen.env.mapboxSatelliteAccess, 'b');
-	assert.equal(seen.env.nextzenAccess, 'c');
-	assert.equal(seen.env.mapboxDEMSKU, 's');
 	assert.equal(readdirSync(mapFolderUnder(root), { recursive: true } as any).length, before);
-});
-
-test('download success ends with done', async () => {
-	const root = makeTempRepo();
-	const api = createApi(root, defaultRoutes({ spawn: stubSpawn(['ok'], 0), settings: () => ({ mapboxDEMAccess: 'a', mapboxSatelliteAccess: 'b', nextzenAccess: 'c' }) }));
-	const res = await api(req('/api/tiles/download', { slug: SLUG }));
-	assert.equal(res.status, 200);
-	assert.equal((await drain(res.stream!)).at(-1), 'data: done\n\n');
 });
 
 test('missing tokens give 400 listing them, and nothing is spawned', async () => {

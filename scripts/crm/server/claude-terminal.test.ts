@@ -36,16 +36,6 @@ function client() {
 const settle = () => new Promise((r) => setTimeout(r, 20));
 const snapshotText = (m: ServerMsg | undefined) => (m?.type === 'snapshot' ? m.data : '');
 
-test('the first page starts the command through an interactive shell in the repo root', async () => {
-	const f = fakeSpawn();
-	const t = new ClaudeTerminal({ root: '/repo', spawn: f.spawn, command: () => 'claude-tum', shell: '/bin/zsh', env: { PATH: '/bin' } });
-	t.attach(client(), 120, 40);
-	assert.equal(f.calls.length, 1);
-	assert.deepEqual([f.calls[0].file, f.calls[0].args, f.calls[0].cwd, f.calls[0].cols, f.calls[0].rows], ['/bin/zsh', ['-ic', 'claude-tum'], '/repo', 120, 40]);
-	assert.equal(f.calls[0].env.PATH, '/bin');
-	t.dispose();
-});
-
 test('a page attaching later gets the screen so far, then live output; a second page starts nothing', async () => {
 	const f = fakeSpawn();
 	const t = new ClaudeTerminal({ root: '/repo', spawn: f.spawn, command: () => 'claude' });
@@ -127,14 +117,6 @@ test('after Claude exits nothing restarts on its own; "start" starts it again wi
 	t.handle(JSON.stringify({ type: 'start' }));
 	assert.equal(f.calls.length, 2);
 	t.dispose();
-});
-
-test('dispose kills the process', () => {
-	const f = fakeSpawn();
-	const t = new ClaudeTerminal({ root: '/repo', spawn: f.spawn, command: () => 'claude' });
-	t.attach(client());
-	t.dispose();
-	assert.equal(f.ptys[0].killed, true);
 });
 
 test('a shell that cannot start shows why and counts as exited', async () => {

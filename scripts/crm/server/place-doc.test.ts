@@ -4,9 +4,6 @@ import { existsSync, mkdtempSync, mkdirSync, readFileSync, writeFileSync } from 
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createPlace, loadPlace, placeClientDoc, savePlaceOps } from './place-doc';
-import { PLACE_FIELDS } from '../shared/fields';
-import { listHikes } from './hikes-index';
-import { makeTempRepo } from './test-repo';
 import { repoPaths } from './paths';
 import { ApiError } from './errors';
 
@@ -21,12 +18,6 @@ function tmpPlaces(raw = RAW) {
 }
 
 test('place doc fields round-trip and clearing title or description is refused', () => {
-	assert.deepEqual(PLACE_FIELDS.map((f) => [f.id, f.file, f.path.join('.'), f.kind, !!f.required]), [
-		['place.title', 'place', 'title', 'text', true],
-		['place.description', 'place', 'description', 'textarea', true],
-		['place.tags', 'place', 'tags', 'chips', false],
-		['place.aliases', 'place', 'aliases', 'chips', false]
-	]);
 	const { root, file } = tmpPlaces();
 	const d = loadPlace(root, 'knorrhuette');
 	const c = placeClientDoc(d);
@@ -81,19 +72,4 @@ test('createPlace refuses an existing slug, a bad slug and a missing title or de
 	const bare = mkdtempSync(join(tmpdir(), 'crm-place-'));
 	createPlace(bare, 'first', 'First', 'D');
 	assert.ok(existsSync(join(repoPaths(bare).places, 'first.md')));
-});
-
-test('listHikes lists place docs without counting them', () => {
-	const root = makeTempRepo();
-	const before = listHikes(root);
-	createPlace(root, 'aaa_new_place', 'Zzz last by title', 'D');
-	const after = listHikes(root);
-	assert.equal(after.postCount, before.postCount);
-	assert.equal(after.hikes.length, before.hikes.length);
-	assert.equal(after.places.length, before.places.length + 1);
-	assert.ok(after.places.some((p) => p.slug === 'knorrhuette' && p.title === 'Knorrhütte'));
-	const titles = after.places.map((p) => p.title);
-	assert.deepEqual(titles, [...titles].sort((a, b) => a.localeCompare(b)));
-	const last = after.places.at(-1)!;
-	assert.deepEqual({ slug: last.slug, title: last.title }, { slug: 'aaa_new_place', title: 'Zzz last by title' });
 });

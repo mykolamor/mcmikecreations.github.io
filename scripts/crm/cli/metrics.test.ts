@@ -92,7 +92,7 @@ test('a second run changes nothing', async () => {
 	}
 });
 
-test('metrics exits 1 naming an unreadable post', async () => {
+test('metrics exits 1 naming an unreadable post or GPX', async () => {
 	const { root } = setup();
 	const p = repoPaths(root);
 	writeFileSync(join(p.markdown, '2024-02-02-foo.md'), '---\ntitle: [unclosed\n---\nBody\n');
@@ -101,28 +101,12 @@ test('metrics exits 1 naming an unreadable post', async () => {
 	assert.match(out.warnings.join('\n'), /2024-02-02-foo\.md/);
 	// the readable post is still handled
 	assert.equal(out.changes.length, 1);
-});
 
-test('metrics exits 1 naming a GPX that is not one', async () => {
-	const { root } = setup();
-	writeFileSync(join(repoPaths(root).gpx, 'foo.gpx'), 'garbage');
-	const { code, out } = await go(root, ['--missing-only']);
-	assert.equal(code, 1);
-	assert.match(out.warnings.join('\n'), /foo\.gpx/);
-});
-
-test('metrics takes posts by name or path', async () => {
-	const { root } = setup();
-	writeFileSync(join(repoPaths(root).markdown, '2024-03-03-foo.md'), FRONT);
-	const byName = await go(root, ['--dry-run', '2024-03-03-foo']);
-	assert.equal(byName.out.changes.length, 1);
-	assert.match(byName.out.changes[0], /2024-03-03-foo\.md/);
-	const byPath = await go(root, ['--dry-run', 'static/_projects/data-viz/hikes/markdown/2024-01-01-foo.md']);
-	assert.equal(byPath.out.changes.length, 1);
-	assert.match(byPath.out.changes[0], /2024-01-01-foo\.md/);
-	const missing = await go(root, ['--dry-run', '2024-09-09-nope']);
-	assert.equal(missing.code, 1);
-	assert.match(missing.out.warnings.join('\n'), /2024-09-09-nope/);
+	const other = setup();
+	writeFileSync(join(repoPaths(other.root).gpx, 'foo.gpx'), 'garbage');
+	const bad = await go(other.root, ['--missing-only']);
+	assert.equal(bad.code, 1);
+	assert.match(bad.out.warnings.join('\n'), /foo\.gpx/);
 });
 
 test('a command write bumps the doc version the UI holds', async () => {

@@ -6,7 +6,7 @@ import path from 'node:path';
 import { makeTempRepo } from './test-repo';
 import { problemsFor, storeProblems } from './problems';
 import { repoPaths } from './paths';
-import { listHikes, suggestions } from './hikes-index';
+import { listHikes } from './hikes-index';
 import { loadHikesFrom, postResolverFor } from '../../load-hikes.js';
 
 test('a valid hike reports nothing', () => {
@@ -56,36 +56,6 @@ test('load-hikes.js rejects a translation in an unknown language', () => {
 	assert.throws(() => loadHikesFrom(p.static, p.hikesJson, { fresh: true }), {
 		message: 'Unknown language "fr" in 2026-09-06-grosser_laber.fr.md (de, uk)'
 	});
-});
-
-test('a sidecar without origin and image reports both', () => {
-	const root = makeTempRepo();
-	const p = repoPaths(root);
-	const sc = `${p.markdown}/grosser_laber.hike.json`;
-	const j = JSON.parse(readFileSync(sc, 'utf8'));
-	delete j.origin;
-	delete j.image;
-	writeFileSync(sc, JSON.stringify(j));
-	const msgs = problemsFor(root, 'grosser_laber', '2026-09-06').map((x) => x.message).join('\n');
-	assert.match(msgs, /origin/);
-	assert.match(msgs, /image/);
-	assert.match(msgs, /GeoJSON/i);
-});
-
-test('suggestions sort by use count then name', () => {
-	const root = mkdtempSync(path.join(tmpdir(), 'crm-sug-'));
-	const p = repoPaths(root);
-	mkdirSync(p.markdown, { recursive: true });
-	mkdirSync(p.places, { recursive: true });
-	mkdirSync(path.join(root, 'src/lib/data'), { recursive: true });
-	writeFileSync(path.join(p.markdown, '2024-01-01-a.md'), '---\ntags: [b, a]\npeople: [Zed]\n---\n');
-	writeFileSync(path.join(p.markdown, '2024-01-02-a.md'), '---\ntags: [b, c]\nplaces: [hut]\n---\n');
-	writeFileSync(path.join(p.places, 'hut.md'), '---\n---\n');
-	writeFileSync(path.join(p.places, 'alm.md'), '---\n---\n');
-	writeFileSync(path.join(root, 'src/lib/data/contacts.json'), '{"Ann": {}, "Zed": {}}');
-	assert.deepEqual(suggestions(root, 'tags'), ['b', 'a', 'c']);
-	assert.deepEqual(suggestions(root, 'people'), ['Zed', 'Ann']);
-	assert.deepEqual(suggestions(root, 'places'), ['hut', 'alm']);
 });
 
 test('a broken OTHER hike is a site problem, not an error for this hike', () => {

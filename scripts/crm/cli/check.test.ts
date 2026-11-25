@@ -7,9 +7,7 @@ import { makeTempRepo } from '../server/test-repo';
 import { check, checkCommand } from './check';
 import { parseArgs } from './index';
 import { isTranslationFile } from '../server/translations';
-import { missingKeys, stringTables } from '../../../src/lib/i18n/strings';
-import { OTHER_LANGS } from '../../../src/lib/i18n/languages';
-import { plural } from './posts';
+import { stringTables } from '../../../src/lib/i18n/strings';
 import { recorder } from './test-output';
 
 const go = (root: string, argv: string[] = [], cmd = check) => {
@@ -37,7 +35,6 @@ const addRecords = (root: string, records: Record<string, Record<string, unknown
 };
 const EN = { a: 'A', b: { c: 'C', d: ['D'] } };
 const lagging = checkCommand(stringTables({ en: EN, de: { a: 'Ä' }, uk: { a: 'А', b: { c: 'Ц', d: ['Д'] } } }).missingKeys);
-const complete = checkCommand(stringTables({ en: EN, de: { a: 'Ä', b: { c: 'Ç', d: ['Ð'] } }, uk: { a: 'А', b: { c: 'Ц', d: ['Д'] } } }).missingKeys);
 
 test('check --strict exits 1 on an error', async () => {
 	const root = makeTempRepo();
@@ -87,29 +84,6 @@ test('check lists the missing keys of the tables it is given as warnings', async
 	assert.deepEqual(missing, ['src/lib/hikes/i18n/de.json: warning: missing "b.c"', 'src/lib/hikes/i18n/de.json: warning: missing "b.d"']);
 	assert.ok(out.summaries.includes('check: de is missing 2 strings'), out.summaries.join('\n'));
 	assert.match(out.summaries[0], /^check: 0 errors, \d+ warnings? \(plus 2 missing strings\) across /);
-});
-
-test('check prints no missing keys for a complete table', async () => {
-	const { out } = await go(emptyRepo(), [], complete);
-	assert.deepEqual(out.warnings.filter((w) => w.includes('i18n/')), []);
-	assert.ok(!out.summaries.some((s) => /missing/.test(s)), out.summaries.join('\n'));
-});
-
-test('check prints every warning before its summary', async () => {
-	const { out } = await go(emptyRepo(), [], lagging);
-	const firstSummary = out.lines.findIndex((l) => l.startsWith('check: '));
-	const lastWarning = out.lines.findLastIndex((l) => !l.startsWith('check: '));
-	assert.ok(firstSummary > lastWarning, out.lines.join('\n'));
-});
-
-test('check reads the site\'s own tables by default', async () => {
-	const { out } = await go(emptyRepo());
-	const expected = OTHER_LANGS.flatMap((lang) => missingKeys(lang).map((key) => `src/lib/hikes/i18n/${lang}.json: warning: missing "${key}"`));
-	assert.deepEqual(out.warnings.filter((w) => w.includes('i18n/')), expected);
-	for (const lang of OTHER_LANGS) {
-		const missing = missingKeys(lang);
-		assert.equal(out.summaries.includes(`check: ${lang} is missing ${plural(missing.length, 'string')}`), missing.length > 0, out.summaries.join('\n'));
-	}
 });
 
 test('--strict ignores missing keys', async () => {

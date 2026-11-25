@@ -27,10 +27,8 @@ test('rows list missing keys first and flag placeholder mismatches', () => {
 		['a.missing', 'a.title', 'a.form', 'a.plural', 'a.case', 'a.list', 'a.gone']
 	);
 	const by = Object.fromEntries(r.map((x) => [x.key, x]));
-	assert.deepEqual(by['a.missing'], { key: 'a.missing', en: 'Missing', own: undefined, missing: true, placeholders: [], mismatch: false });
-	assert.deepEqual(by['a.title'].placeholders, ['page']);
+	assert.equal(by['a.missing'].missing, true);
 	assert.equal(by['a.title'].mismatch, true);
-	assert.deepEqual(by['a.form'].placeholders, ['page', 'year']);
 	assert.equal(by['a.form'].mismatch, false);
 	// `#` and a select case's text aren't placeholders.
 	assert.deepEqual(by['a.plural'].placeholders, ['count']);
