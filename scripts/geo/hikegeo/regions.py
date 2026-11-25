@@ -61,6 +61,8 @@ SOURCES: dict[str, dict] = {
         "of": "bavarian-prealps", "river": "R273028", "side": "east"}},
     "walchensee-mountains": {"kind": "range", "split": {
         "of": "bavarian-prealps", "river": "R273028", "side": "west", "minus": ["ester-mountains"]}},
+    # The city state of Berlin.
+    "berlin": {"kind": "area", "osm": ["R62422"]},
     "ehrwald": {"kind": "area", "osm": ["R37838"]},
     # Oberammergau, Unterammergau and Ettal, Graswang and Linderhof included.
     "ammertal": {"kind": "area", "osm": ["R937907", "R937895", "R939317"]},

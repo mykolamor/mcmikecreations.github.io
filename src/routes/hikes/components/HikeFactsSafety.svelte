@@ -29,7 +29,7 @@
 </script>
 
 {#if show}
-	<section class="not-prose mb-8 flex flex-col gap-4 text-base" {lang} aria-label={label(lang, 'safety')}>
+	<section class="not-prose mb-8 flex flex-col gap-4 text-base break-words" {lang} aria-label={label(lang, 'safety')}>
 		{#if facts.summary}
 			<p class="text-lg text-gray-700 dark:text-gray-300">{textIn(facts.summary, lang)}</p>
 		{/if}
@@ -47,7 +47,7 @@
 									<span class="text-xs font-medium px-2 py-0.5 rounded {SEVERITY_CLASS[h.severity ?? 'medium']}">{enumLabel(lang, 'severity', h.severity ?? 'medium')}</span>
 									<span class="font-medium">{enumLabel(lang, 'hazard', h.kind, h.label)}</span>
 									{#if h.at || h.from || h.to}
-										<span class="text-gray-700 dark:text-gray-300"><FactsSpan {lang} at={h.at} from={h.from} to={h.to} /></span>
+										<span class="min-w-0 text-gray-700 dark:text-gray-300"><FactsSpan {lang} at={h.at} from={h.from} to={h.to} /></span>
 									{/if}
 									{#if h.season?.length}
 										<span class="text-sm text-gray-500 dark:text-gray-400">({formatMonths(lang, h.season)})</span>
@@ -110,7 +110,7 @@
 		{#if c}
 			<details class="rounded-lg border border-gray-200 dark:border-gray-700 p-4">
 				<summary class="cursor-pointer font-semibold flex items-center gap-2"><SunOutline class="w-5 h-5 text-primary-600" />{label(lang, 'conditions')}</summary>
-				<dl class="mt-3 grid grid-cols-[max-content_1fr] gap-x-4 gap-y-1">
+				<dl class="mt-3 grid grid-cols-[max-content_minmax(0,1fr)] gap-x-4 gap-y-1">
 					{#if c.weather?.length}<dt class="text-gray-500 dark:text-gray-400">{label(lang, 'weather')}</dt><dd>{c.weather.map((w) => enumLabel(lang, 'weather', w)).join(', ')}</dd>{/if}
 					{#if c.temp}<dt class="text-gray-500 dark:text-gray-400">{label(lang, 'temp')}</dt><dd translate="no">{[c.temp.min, c.temp.max].filter((x) => x != null).map((x) => `${x} °C`).join(' – ')}</dd>{/if}
 					{#if c.visibility}<dt class="text-gray-500 dark:text-gray-400">{label(lang, 'visibility')}</dt><dd>{enumLabel(lang, 'visibility', c.visibility)}</dd>{/if}

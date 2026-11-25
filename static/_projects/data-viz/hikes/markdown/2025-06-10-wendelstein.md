@@ -4,6 +4,8 @@ description: A hike I organized for the Chair for Database Systems at TUM.
 image: /images/projects/data-viz/hikes/wendelstein_tumdb.jpg
 tags:
   - Work
+people:
+  - Tobias Götz
 gpx: /_projects/data-viz/hikes/gpx/wendelstein_tumdb.gpx
 ascent: 990
 descent: 990

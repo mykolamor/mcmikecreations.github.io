@@ -300,6 +300,30 @@
 			},
 			"checked": "2026-11-21"
 		},
+		"bus-169-berlin-kopenick-muggelseeperle": {
+			"mode": "bus",
+			"from": {
+				"en": "Berlin-Köpenick",
+				"de": "Berlin-Köpenick",
+				"uk": "Берлін-Кепенік"
+			},
+			"to": {
+				"ref": "node/3239724410"
+			},
+			"direction": "there",
+			"duration": 14,
+			"changes": 0,
+			"line": "169",
+			"operator": "BVG",
+			"first": "05:11",
+			"last": "00:10",
+			"frequency": {
+				"en": "every 20 minutes",
+				"de": "alle 20 Minuten",
+				"uk": "кожні 20 хвилин"
+			},
+			"checked": "2026-11-25"
+		},
 		"bus-326-ettal-klostergasthof-oberau": {
 			"mode": "bus",
 			"from": {
@@ -964,6 +988,53 @@
 				"de": "Umstieg in Starnberg.",
 				"uk": "Пересадка в Штарнберзі."
 			}
+		},
+		"train-s3-berlin-central-station-berlin-kopenick": {
+			"mode": "train",
+			"from": {
+				"en": "Berlin Central Station",
+				"de": "Berlin Hbf",
+				"uk": "Головний вокзал Берліна"
+			},
+			"to": {
+				"name": {
+					"en": "Berlin-Köpenick",
+					"de": "Berlin-Köpenick",
+					"uk": "Берлін-Кепенік"
+				}
+			},
+			"direction": "there",
+			"duration": 29,
+			"changes": 0,
+			"line": "S3",
+			"operator": "S-Bahn Berlin GmbH",
+			"first": "04:26",
+			"last": "23:26",
+			"frequency": {
+				"en": "every 10 minutes",
+				"de": "alle 10 Minuten",
+				"uk": "кожні 10 хвилин"
+			},
+			"price": [
+				{
+					"amount": 11.2,
+					"currency": "EUR",
+					"per": "day",
+					"note": {
+						"en": "Adult day ticket.",
+						"de": "Tageskarte für Erwachsene.",
+						"uk": "Одноденний квиток для дорослих."
+					},
+					"checked": "2026-11-25"
+				}
+			],
+			"ticket": {
+				"en": "24-Stunden-Karte Regeltarif",
+				"de": "24-Stunden-Karte zum Regeltarif",
+				"uk": "24-годинний проїзний за стандартним тарифом"
+			},
+			"url": "https://int.bahn.de/en/",
+			"checked": "2026-11-25"
 		}
 	},
 	"lifts": {
@@ -1157,6 +1228,14 @@
 			"fills": "always",
 			"url": "https://tpn.gov.pl/parkingi-morskie-oko",
 			"checked": "2026-11-23"
+		},
+		"parking-lot-rubezahl": {
+			"at": {
+				"ref": "way/23370026"
+			},
+			"size": "medium",
+			"fills": "summer",
+			"checked": "2026-11-25"
 		},
 		"parking-lot-schliersee": {
 			"at": {

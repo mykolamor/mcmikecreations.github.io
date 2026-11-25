@@ -17,7 +17,9 @@
 	const name = $derived(textIn(place.name, lang));
 </script>
 
-<span translate="no" class="whitespace-nowrap">{#if place.lat != null && place.lon != null}<a
+<!-- Wraps between words: a long hut name must not push its table or list wider than a phone. The
+     elevation stays on the name's last word (the &nbsp;s). -->
+<span translate="no">{#if place.lat != null && place.lon != null}<a
 			class="mk-place"
 			href="#hike-map"
 			data-place-lat={place.lat}

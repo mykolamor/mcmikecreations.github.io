@@ -30,7 +30,7 @@ export const ROUTE_TYPES = ['loop', 'out-and-back', 'point-to-point', 'lollipop'
 export const REGIONS = [
 	'ammergau-alps', 'bavarian-prealps', 'ester-mountains', 'karwendel', 'mangfall-mountains',
 	'tatra', 'walchensee-mountains', 'wetterstein',
-	'ammertal', 'ehrwald', 'risstal', 'schliersee', 'schwangau', 'tegernsee', 'walchensee', 'zakopane'
+	'ammertal', 'berlin', 'ehrwald', 'risstal', 'schliersee', 'schwangau', 'tegernsee', 'walchensee', 'zakopane'
 ] as const;
 export const CATEGORIES = [
 	'summit', 'peak-bagging', 'ridge', 'via-ferrata', 'scramble', 'high-alpine', 'glacier',

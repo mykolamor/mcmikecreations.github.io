@@ -145,6 +145,21 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/31492302": {
+    "lat": 52.4239669,
+    "lon": 13.6293626,
+    "demEle": 39.9,
+    "tags": {
+      "bench": "yes",
+      "bin": "yes",
+      "highway": "bus_stop",
+      "lit": "yes",
+      "name": "Rübezahl",
+      "shelter": "yes",
+      "tactile_paving": "no"
+    },
+    "fetched": "2026-11-25"
+  },
   "node/67233894": {
     "lat": 47.4815666,
     "lon": 11.3571077,
@@ -509,6 +524,30 @@
       "wikipedia": "de:Zwiesel (Kocheler Berge)"
     },
     "fetched": "2026-10-26"
+  },
+  "node/261585960": {
+    "lat": 52.4167743,
+    "lon": 13.6426458,
+    "tags": {
+      "ele": "114.8",
+      "name": "Großer Müggelberg",
+      "natural": "peak",
+      "summit:cross": "yes",
+      "summit:cross:material": "wood",
+      "summit:register": "no",
+      "website": "https://www.berliner-woche.de/mueggelheim/kultur/berlins-hoechste-natuerliche-erhebung-ist-1148-meter-hoch-d49353.html",
+      "wikidata": "Q451104",
+      "wikipedia": "de:Müggelberge"
+    },
+    "fetched": "2026-11-25"
+  },
+  "node/262137153": {
+    "lat": 52.4168386,
+    "lon": 13.6349599,
+    "tags": {
+      "tourism": "viewpoint"
+    },
+    "fetched": "2026-11-25"
   },
   "node/263534391": {
     "lat": 47.6636283,
@@ -4450,6 +4489,21 @@
     },
     "fetched": "2026-10-26"
   },
+  "node/3239724410": {
+    "lat": 52.4216636,
+    "lon": 13.6403858,
+    "demEle": 48.6,
+    "tags": {
+      "bench": "yes",
+      "bin": "yes",
+      "highway": "bus_stop",
+      "lit": "yes",
+      "name": "Müggelseeperle",
+      "shelter": "yes",
+      "tactile_paving": "no"
+    },
+    "fetched": "2026-11-25"
+  },
   "node/3253363153": {
     "lat": 47.6018138,
     "lon": 11.0038927,
@@ -6182,6 +6236,38 @@
       "year_of_construction": "1921..1922"
     },
     "fetched": "2026-10-26"
+  },
+  "way/23370026": {
+    "lat": 52.4241928,
+    "lon": 13.63022045,
+    "demEle": 39.2,
+    "tags": {
+      "access": "yes",
+      "amenity": "parking",
+      "capacity": "180",
+      "capacity:disabled": "3",
+      "fee": "no",
+      "markings": "yes",
+      "operator:type": "government",
+      "orientation": "perpendicular",
+      "parking": "surface",
+      "surface": "concrete"
+    },
+    "fetched": "2026-11-25"
+  },
+  "way/23370036": {
+    "lat": 52.4196558,
+    "lon": 13.6297778,
+    "demEle": 36.3,
+    "tags": {
+      "ele": "34",
+      "name": "Teufelssee",
+      "natural": "water",
+      "wikidata": "Q2407221",
+      "wikimedia_commons": "Category:Teufelssee (Berlin-Köpenick)",
+      "wikipedia": "de:Teufelssee (Berlin-Köpenick)"
+    },
+    "fetched": "2026-11-25"
   },
   "way/25075130": {
     "lat": 47.64876715,

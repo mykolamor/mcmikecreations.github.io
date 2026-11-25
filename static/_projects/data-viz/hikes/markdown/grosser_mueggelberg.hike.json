@@ -1,0 +1,236 @@
+{
+  "name": {
+    "en": "Großer Müggelberg",
+    "de": "Großer Müggelberg",
+    "uk": "Гросер Мюггельберг"
+  },
+  "height": 256,
+  "checkpoints": [
+    [13.6403858, 52.4216636],
+    [13.6426458, 52.4167743],
+    [13.6349599, 52.4168386],
+    [13.6293626, 52.4239669]
+  ],
+  "image": "/images/projects/data-viz/hikes/grosser_mueggelberg.jpg",
+  "origin": {
+    "lat": 52.418806,
+    "lon": 13.637166
+  },
+  "nodes": ["node/261585960", "node/262137153", "way/23370036"],
+  "description": {
+    "en": "Hike between two bus stops in the Müggelberge forest.",
+    "de": "Wanderung zwischen zwei Bushaltestellen im Wald der Müggelberge.",
+    "uk": "Прогулянка між двома автобусними зупинками в лісі Müggelberge."
+  },
+  "facts": {
+    "checked": "2026-11-25",
+    "summary": {
+      "en": "A short point-to-point visiting the highest mountain of the Berlin region.",
+      "de": "Eine kurze Punkt-zu-Punkt-Tour zum höchsten Berg der Region Berlin.",
+      "uk": "Короткий маршрут «від точки до точки» з відвідуванням найвищої гори Берлінського регіону."
+    },
+    "difficulty": {
+      "sac": "T1",
+      "exposure": {
+        "level": "none"
+      },
+      "fitness": 1
+    },
+    "season": {
+      "best": [3, 4, 5, 6, 7, 8, 9],
+      "possible": [1, 2, 10, 11, 12]
+    },
+    "route": {
+      "start": {
+        "ref": "node/3239724410"
+      },
+      "end": {
+        "ref": "node/31492302"
+      },
+      "type": "point-to-point",
+      "official": {
+        "en": "The official route follows the accessible gravel/asphalt road up the hill to the peak and back.",
+        "de": "Die offizielle Route führt über die barrierefreie Schotter-/Asphaltstraße den Hügel hinauf bis zum Gipfel und wieder zurück.",
+        "uk": "Офіційний маршрут пролягає доступною гравійною/асфальтованою дорогою вгору по схилу до вершини і назад."
+      },
+      "terrain": ["forest-road", "path"],
+      "shade": "high",
+      "trails": ["Wanderlehrpfad Teufelssee"],
+      "peaks": [
+        {
+          "ref": "node/261585960"
+        }
+      ],
+      "regions": ["berlin"],
+      "categories": ["summit", "lake"],
+      "countries": ["DE"]
+    },
+    "navigation": {
+      "marking": "partial",
+      "note": {
+        "en": "Occasional signs point to the peak.",
+        "de": "Vereinzelte Schilder weisen den Weg zum Gipfel.",
+        "uk": "Подекуди вказівники ведуть до вершини."
+      },
+      "offline": false
+    },
+    "hazards": [
+      {
+        "from": {
+          "lat": 52.4166138,
+          "lon": 13.6354198,
+          "name": {
+            "en": "Detour near a viewpoint",
+            "de": "Umweg in der Nähe eines Aussichtspunkts",
+            "uk": "Обхід поблизу оглядового майданчика"
+          },
+          "demEle": 110.4
+        },
+        "to": {
+          "lat": 52.4175187,
+          "lon": 13.6358893,
+          "name": {
+            "en": "Crossroads near a viewpoint",
+            "de": "Kreuzung in der Nähe eines Aussichtspunkts",
+            "uk": "Перехрестя поблизу оглядового майданчика"
+          },
+          "demEle": 95.4
+        },
+        "kind": "fall-risk",
+        "severity": "low",
+        "season": [1, 2, 3, 10, 11, 12],
+        "note": {
+          "en": "Steeper hill covered in slippery leaves.",
+          "de": "Ein steilerer Hügel, der mit rutschigen Blättern bedeckt ist.",
+          "uk": "Більш крутий схил, вкритий слизьким листям."
+        }
+      }
+    ],
+    "water": [
+      {
+        "at": {
+          "ref": "way/23370036"
+        },
+        "kind": "lake",
+        "reliable": "seasonal",
+        "treat": true
+      }
+    ],
+    "signal": [
+      {
+        "quality": "good"
+      }
+    ],
+    "access": {
+      "carFree": "yes",
+      "checked": "2026-11-25",
+      "parking": [
+        {
+          "use": "parking-lot-rubezahl"
+        }
+      ],
+      "transport": [
+        {
+          "use": "train-s3-berlin-central-station-berlin-kopenick"
+        },
+        {
+          "use": "bus-169-berlin-kopenick-muggelseeperle"
+        }
+      ]
+    },
+    "suitability": {
+      "kids": "yes",
+      "dogs": "yes",
+      "stroller": true,
+      "bike": "yes",
+      "winter": "yes",
+      "night": "yes",
+      "solo": "yes",
+      "note": {
+        "en": "Strollers may have a hard time getting to the very peak.",
+        "de": "Für Kinderwagen könnte es schwierig sein, bis ganz nach oben zu gelangen.",
+        "uk": "Людям з дитячими колясками може бути важко піднятися аж на саму вершину."
+      }
+    },
+    "legs": [
+      {
+        "to": {
+          "ref": "node/261585960"
+        },
+        "sac": "T1",
+        "terrain": ["forest-road", "path"],
+        "marking": "partial"
+      },
+      {
+        "to": {
+          "ref": "node/262137153"
+        },
+        "sac": "T1",
+        "terrain": ["road", "forest-road"],
+        "marking": "partial"
+      },
+      {
+        "to": {
+          "ref": "way/23370036"
+        },
+        "sac": "T1",
+        "terrain": ["path", "forest-road"],
+        "marking": "none"
+      },
+      {
+        "to": {
+          "ref": "node/31492302"
+        },
+        "sac": "T1",
+        "terrain": ["road"],
+        "marking": "partial"
+      }
+    ],
+    "plan": {
+      "gear": [
+        {
+          "item": "water",
+          "amount": {
+            "en": "1–2 L",
+            "de": "1–2 l",
+            "uk": "1–2 л"
+          }
+        },
+        {
+          "item": "trail-shoes",
+          "need": "optional"
+        }
+      ],
+      "for": [
+        {
+          "en": "Peak baggers",
+          "de": "Gipfelsammler",
+          "uk": "Збирачі вершин"
+        },
+        {
+          "en": "People looking for a quick retreat in Berlin",
+          "de": "Menschen, die in Berlin einen kurzen Rückzugsort suchen",
+          "uk": "Люди, які шукають можливість швидко відпочити в Берліні"
+        }
+      ],
+      "notFor": [
+        {
+          "en": "Hardcore hikers",
+          "de": "Hardcore-Wanderer",
+          "uk": "Завзяті туристи"
+        },
+        {
+          "en": "Cliff climbing enjoyers",
+          "de": "Liebhaber des Felskletterns",
+          "uk": "Любителі скелелазіння"
+        }
+      ],
+      "timing": {
+        "start": "09:30"
+      },
+      "alternatives": {
+        "harder": ["2025-09-28-moosburg_freising", "2024-12-14-spitzingsee_schlittenfahrt"]
+      }
+    }
+  }
+}

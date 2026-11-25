@@ -67,11 +67,11 @@
 	const meta = 'text-sm text-gray-500 dark:text-gray-400';
 </script>
 
-<div class="not-prose flex flex-col gap-8 mt-8 text-base" {lang}>
+<div class="not-prose flex flex-col gap-8 mt-8 text-base break-words" {lang}>
 	{#if hasRoute}
 		<section aria-labelledby="facts-route">
 			<h2 id="facts-route" class={h2}><MapPinAltOutline class="w-6 h-6 text-primary-600" />{label(lang, 'route')}</h2>
-			<dl class="grid grid-cols-[max-content_1fr] gap-x-4 gap-y-1">
+			<dl class="grid grid-cols-[max-content_minmax(0,1fr)] gap-x-4 gap-y-1">
 				{#if d?.sac}
 					<dt class={dt}>{label(lang, 'sac')}</dt>
 					<dd><span translate="no" class="font-semibold">{d.sac}</span>{#if d.sacSource === 'computed'}{' '}<span class={meta}>({label(lang, 'sacComputed')})</span>{/if}{#if d.note}{' — '}{t(d.note)}{/if}</dd>
@@ -405,7 +405,7 @@
 
 			{#if s}
 				<h3 class={h3}>{label(lang, 'suitability')}</h3>
-				<dl class="grid grid-cols-[max-content_1fr] gap-x-4 gap-y-1">
+				<dl class="grid grid-cols-[max-content_minmax(0,1fr)] gap-x-4 gap-y-1">
 					{#if s.kids}<dt class={dt}>{label(lang, 'kids')}</dt><dd>{enumLabel(lang, 'kids', s.kids)}</dd>{/if}
 					{#if s.dogs}<dt class={dt}>{label(lang, 'dogs')}</dt><dd>{enumLabel(lang, 'dogs', s.dogs)}</dd>{/if}
 					{#if s.stroller != null}<dt class={dt}>{label(lang, 'stroller')}</dt><dd>{label(lang, s.stroller ? 'yes' : 'no')}</dd>{/if}
@@ -472,7 +472,7 @@
 
 			{#if p?.alternatives}
 				<h3 class={h3}>{label(lang, 'alternatives')}</h3>
-				<dl class="grid grid-cols-[max-content_1fr] gap-x-4 gap-y-1">
+				<dl class="grid grid-cols-[max-content_minmax(0,1fr)] gap-x-4 gap-y-1">
 					{#each [['easier', p.alternatives.easier], ['harder', p.alternatives.harder], ['similar', p.alternatives.similar]] as const as [key, slugs]}
 						{#if slugs?.length}
 							<dt class={dt}>{label(lang, key)}</dt>

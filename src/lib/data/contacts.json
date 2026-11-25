@@ -92,6 +92,13 @@
 			{ "network": "LinkedIn", "url": "https://www.linkedin.com/in/dennis-makhandia/" }
 		]
 	},
+	"Tobias Götz": {
+		"links": [
+			{ "network": "LinkedIn", "url": "https://www.linkedin.com/in/tobias-g-3b8823252/" },
+			{ "network": "Strava", "url": "https://www.strava.com/athletes/1968342750" },
+			{ "network": "Komoot", "url": "https://www.komoot.com/user/6337830885300" }
+		]
+	},
 	"Dmytro Servetnyk": {},
 	"Natalia Kushch": {},
 	"Liubov Bilinska": {}
