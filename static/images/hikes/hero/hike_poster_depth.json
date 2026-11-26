@@ -1,0 +1,51 @@
+{
+  "_encoding": {
+    "webp": "v = R channel as integer 0..255; v == 0 -> no depth; depth_m = exp(ln(min) + (v - 1) / 254 * (ln(max) - ln(min)))",
+    "exr": "single-channel float16 depth in meters along camera +z; +inf -> no depth",
+    "model": "MoGe-3 ViT-G on the full source photo (IMG_6847, fov_x 56.82 deg from EXIF); per-layer MoGe for hidden (hand-filled) parts, log-fitted to the scene depth. All layers share one metric scale."
+  },
+  "layers": {
+    "hike_poster_0": {
+      "min": 4.2022,
+      "max": 7.0856,
+      "width": 1008,
+      "height": 1344
+    },
+    "hike_poster_1": {
+      "min": 3.3129,
+      "max": 6.7264,
+      "width": 1008,
+      "height": 1344
+    },
+    "hike_poster_2": {
+      "min": 4.1099,
+      "max": 11.0079,
+      "width": 1008,
+      "height": 1344
+    },
+    "hike_poster_3": {
+      "min": 21.192,
+      "max": 324.2239,
+      "width": 1008,
+      "height": 1344
+    },
+    "hike_poster_4": {
+      "min": 42.9723,
+      "max": 3564.2979,
+      "width": 1008,
+      "height": 1344
+    },
+    "hike_poster_4_bg_2": {
+      "min": 5936.9873,
+      "max": 7956.0166,
+      "width": 1008,
+      "height": 1344
+    }
+  },
+  "_calibration": {
+    "anchor": "Wendelstein summit, line of sight 2683.7 m from Breitenstein summit (WGS84 geodesic 2675.1 m, +213.9 m)",
+    "moge_anchor_m": 733.0,
+    "far_field_stretch": "d' = d*exp(0.31972*softrelu(ln(d/10.0)))",
+    "note": "near range (<~10 m) is MoGe metric; far end pinned by the anchor; mid-range (~100 m-2 km) shape is assumed"
+  }
+}
